@@ -1,5 +1,16 @@
 FILE(GLOB e2programs "${CMAKE_CURRENT_SOURCE_DIR}/*.py")
 
+add_executable(e2c11 e2c11.cpp)
+target_link_libraries(e2c11 EM2)
+add_custom_target(Programs-CPP
+				  COMMAND ${CMAKE_COMMAND} -DCOMPONENT=Programs-CPP -P cmake_install.cmake
+				  DEPENDS e2c11
+				  )
+INSTALL(TARGETS  e2c11
+		DESTINATION    bin #${SP_DIR}
+		COMPONENT Programs-CPP
+		)
+
 INSTALL(PROGRAMS ${e2programs}
 		DESTINATION    bin 
 		COMPONENT PythonFiles
