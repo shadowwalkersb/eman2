@@ -6,6 +6,10 @@ PROJECT(EMAN
 
 include(cmake/functions.cmake)
 
+set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
+
 OPTION(DEBUG_CMAKE_TARGETS "enable debug output for cmake target properties" OFF)
 if(DEBUG_CMAKE_TARGETS)
 	set(CMAKE_DEBUG_TARGET_PROPERTIES
@@ -191,6 +195,10 @@ IF(CMAKE_COMPILER_IS_GNUCXX)
 ENDIF()
 
 SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${EMAN_CXX_FLAGS} ${OPT_FLAGS}")
+
+if ("${CMAKE_CXX_COMPILER_ID}" MATCHES "Clang")
+	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -stdlib=libc++")
+endif()
 
 if(WIN32)
 	add_definitions(-DNOMINMAX)
