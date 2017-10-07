@@ -58,6 +58,18 @@ import traceback
 import weakref
 
 
+try:
+	from PyQt5.QtCore import QString
+except ImportError:
+	# we are using Python3 so QString is not defined
+	QString = type("")
+
+try:
+	from PyQt5.QtCore import QChar
+except ImportError:
+	# we are using Python3 so QChar is not defined
+	QChar = type(str)
+
 def display_error(msg) :
 	"""Displays an error message, in gui and on terminal."""
 
