@@ -9,7 +9,13 @@ env:
     - MINICONDA_FILE="Miniconda2-latest-MacOSX-x86_64.sh"
   matrix:
     - build_scrt="build_recipe.sh"
+      CONDA_PY=27
     - build_scrt="build_no_recipe.sh"
+      CONDA_PY=27
+    - build_scrt="build_recipe.sh"
+      CONDA_PY=35
+    - build_scrt="build_no_recipe.sh"
+      CONDA_PY=35
 
 
 before_install:
