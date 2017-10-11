@@ -321,7 +321,7 @@ file(GENERATE OUTPUT "parse_errors.sh"
 "
 	 )
 add_custom_command(TARGET py-compile
-				   COMMAND ${PYTHON_EXECUTABLE} -m compileall -q ${CMAKE_SOURCE_DIR} | bash "${CMAKE_BINARY_DIR}/parse_errors.sh"
+				   COMMAND ${PYTHON_EXECUTABLE} -m compileall -q -x \"sparx|rt\" ${CMAKE_SOURCE_DIR} | bash "${CMAKE_BINARY_DIR}/parse_errors.sh"
 				   WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
 )
 
