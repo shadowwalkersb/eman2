@@ -70,6 +70,19 @@ except ImportError:
 	# we are using Python3 so QChar is not defined
 	QChar = type(str)
 
+try:
+    QString = unicode
+except NameError:
+    # Python 3
+    QString = str
+QStringList = list
+
+try:
+    QChar = unichr
+except NameError:
+    # Python 3
+    QChar = chr
+
 def display_error(msg) :
 	"""Displays an error message, in gui and on terminal."""
 
