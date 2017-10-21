@@ -37,8 +37,7 @@ from builtins import object
 from EMAN2 import *
 from EMAN2jsondb import js_open_dict
 from PyQt4 import QtCore, QtGui
-from PyQt4.QtCore import QModelIndex
-from PyQt4.QtGui import QAction
+from PyQt4.QtCore import Qt
 from .emapplication import EMApp
 from .emimage2d import *
 from .emimagemx import *
@@ -71,6 +70,19 @@ except ImportError:
 	QChar = type(str)
 
 #---------------------------------------------------------------------------
+try:
+    QString = unicode
+except NameError:
+    # Python 3
+    QString = str
+QStringList = list
+
+try:
+    QChar = unichr
+except NameError:
+    # Python 3
+    QChar = chr
+
 def display_error(msg) :
 	"""Displays an error message, in gui and on terminal."""
 
