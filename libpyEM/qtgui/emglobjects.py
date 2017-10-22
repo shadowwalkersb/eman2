@@ -1065,12 +1065,14 @@ class EMOpenGLFlagsAndTools(object):
 			
 			if self.power_of_two_init_check == True:
 				try:
-					if str("GL_ARB_texture_non_power_of_two") not in glGetString(GL_EXTENSIONS) :
+					print("Let's try")
+					# print(glGetString(GL_EXTENSIONS))
+					if str("GL_ARB_texture_non_power_of_two") not in glGetString(GL_EXTENSIONS).decode('UTF-8') :
 						self.use_mipmaps = True
-						#print "EMAN(ALPHA) message: No support for non power of two textures detected. Using mipmaps."
+						print("EMAN(ALPHA) message: No support for non power of two textures detected. Using mipmaps.")
 					else:
 						self.use_mipmaps = False
-						#print "EMAN(ALPHA) message: Support for non power of two textures detected."
+						print("EMAN(ALPHA) message: Support for non power of two textures detected.")
 				except:
 					print("error, OpenGL seems not to be initialized")
 					return False
@@ -1121,10 +1123,10 @@ class EMOpenGLFlagsAndTools(object):
 				try:
 					if str("GL_ARB_imaging") not in glGetString(GL_EXTENSIONS) :
 						self.use_blend_equation = False
-						#print "EMAN(ALPHA) message: No support for glBlendEquation detected. Disabling."
+						print("EMAN(ALPHA) message: No support for glBlendEquation detected. Disabling.")
 					else:
 						self.use_blend_equation = True
-						#print "EMAN(ALPHA) message: Support for glBlendEquation detected."
+						print("EMAN(ALPHA) message: Support for glBlendEquation detected.")
 				except:
 					print("error, OpenGL seems not to be initialized")
 					return False

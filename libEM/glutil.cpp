@@ -1028,7 +1028,19 @@ const char * GLUtil::render_amp8(EMData *emdata, int x0, int y0, int ixsize,
 	delete [] graypdftwo;
 
     cout<<"ret: "<<ret<<endl;
-	return ret.c_str();
+    cout<<"ret.size(): "<<ret.size()<<endl;
+	char * rr = new char [ret.length()+1];
+//	const char * rr = new char [1024+1];
+//    const char rr[1025]={'0'};
+    cout<<"strlen(rr): "<<strlen(rr)<<endl;
+    rr[ret.length()]='\0';
+    cout<<"strlen(rr): "<<strlen(rr)<<endl;
+    strcpy(rr, ret.c_str());
+    cout<<"rr: "<<rr<<endl;
+    cout<<"strlen(rr): "<<strlen(rr)<<endl;
+	cout<<"strlen(ret.c_str()): "<<strlen(ret.c_str())<<endl;
+	return const_cast<char *>(rr);
+//    return rr;
 }
 
 // DEPRECATED

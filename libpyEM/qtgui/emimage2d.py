@@ -955,12 +955,27 @@ class EMImage2DWidget(EMGLWidget):
 								min_val, max_val, gam_val, flags))
 		else :
 			# get grey scale data:
+			print(dir(GLUtil.render_amp8))
+			
+			for f in (values,
+					  x0, y0, wdt, hgt, wid,
+					  self.scale, pixden[0], pixden[1],
+					  min_val, max_val, gam_val, flags):
+				print(type(f))
+			ret = GLUtil.render_amp8 (values,
+									  x0, y0, wdt, hgt, wid,
+									  self.scale, pixden[0], pixden[1],
+									  min_val, max_val, gam_val, flags)
+			
+			print(type(ret))
+			print(len(ret))
+			print(ret)
+			ret = ret.encode()
+			print(type(ret))
+			print(len(ret))
 
 			return_data = (value_size, wid, hgt,
-								GLUtil.render_amp8 (values,
-								x0, y0, wdt, hgt, wid,
-								self.scale, pixden[0], pixden[1],
-								min_val, max_val, gam_val, flags))
+								ret)
 
 		return return_data
 
@@ -1043,12 +1058,15 @@ class EMImage2DWidget(EMGLWidget):
 
 		if render:
 			(bpp,w,h,a)=self.render_bitmap()
+			# a = a.encode()
 			if bpp==3 : gl_render_type = GL_RGB
 			elif bpp==4 : gl_render_type = GL_RGBA
 			else : gl_render_type = GL_LUMINANCE
 
 			if not self.glflags.npt_textures_unsupported():
 
+				print(type(a))
+				print(len(a))
 				self.hist=struct.unpack('256i',a[-1024:])
 
 				if self.tex_name != 0: glDeleteTextures(self.tex_name)
