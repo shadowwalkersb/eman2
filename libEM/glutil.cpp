@@ -258,9 +258,9 @@ void GLUtil::mx_bbox(const vector<float>& data,
 	}
 }
 
-std::string GLUtil::render_amp8(EMData* emdata, int x0, int y0, int ixsize,
-		 int iysize, int bpl, float scale, int min_gray, int max_gray,
-		 float render_min, float render_max, float gamma, int flags)
+const char * GLUtil::render_amp8(EMData *emdata, int x0, int y0, int ixsize,
+                                 int iysize, int bpl, float scale, int min_gray, int max_gray,
+                                 float render_min, float render_max, float gamma, int flags)
 {
 	ENTERFUNC;
 
@@ -268,7 +268,7 @@ std::string GLUtil::render_amp8(EMData* emdata, int x0, int y0, int ixsize,
 //	printf("%d %d %d %d %d %f %d %d %f %f %f %d\n",x0,y0,ixsize,iysize,bpl,
 // scale,min_gray,max_gray,render_min,render_max,gamma,flags);
 
-	if (emdata==NULL) return std::string();
+	if (emdata==NULL) return std::string().c_str();
 	bool invert = (min_gray > max_gray);
 	int mingray, maxgray;
 
@@ -1027,7 +1027,8 @@ std::string GLUtil::render_amp8(EMData* emdata, int x0, int y0, int ixsize,
 	delete [] gaussianlookup;
 	delete [] graypdftwo;
 
-	return ret;
+    cout<<"ret: "<<ret<<endl;
+	return ret.c_str();
 }
 
 // DEPRECATED
