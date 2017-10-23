@@ -1,0 +1,28 @@
+From 8a49c161d39f4e77aac2556c644022c455f47c75 Mon Sep 17 00:00:00 2001
+From: centerionware <roguestar191@comcast.net>
+Date: Wed, 3 Feb 2016 22:17:40 -0700
+Subject: [PATCH] Change String handlign in Python 3 to byte type
+
+The byte type allows raw binary data to be passed in from std::strings.
+It becomes necessary in the python to .decode('utf-8') in most cases,
+but allows the programmer to make the choice as to when and where the
+text is encoded in python instead of it being assumed it always need be.
+Use case - passing binary in a std::string containing 0xff and other hex
+to python, passing byte object from python to c++ std::string.
+---
+ include/boost/python/converter/builtin_converters.hpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/include/boost/python/converter/builtin_converters.hpp b/include/boost/python/converter/builtin_converters.hpp
+index c2e01c03d..6c3ee2101 100644
+--- a/include/boost/python/converter/builtin_converters.hpp
++++ b/include/boost/python/converter/builtin_converters.hpp
+@@ -155,7 +155,7 @@ BOOST_PYTHON_TO_PYTHON_BY_VALUE(unsigned BOOST_PYTHON_LONG_LONG, ::PyLong_FromUn
+ #if PY_VERSION_HEX >= 0x03000000
+ BOOST_PYTHON_TO_PYTHON_BY_VALUE(char, converter::do_return_to_python(x), &PyUnicode_Type)
+ BOOST_PYTHON_TO_PYTHON_BY_VALUE(char const*, converter::do_return_to_python(x), &PyUnicode_Type)
+-BOOST_PYTHON_TO_PYTHON_BY_VALUE(std::string, ::PyUnicode_FromStringAndSize(x.data(),implicit_cast<ssize_t>(x.size())), &PyUnicode_Type)
++BOOST_PYTHON_TO_PYTHON_BY_VALUE(std::string, ::PyBytes_FromStringAndSize(x.data(),implicit_cast<ssize_t>(x.size())), &PyByteArray_Type)
+ #else
+ BOOST_PYTHON_TO_PYTHON_BY_VALUE(char, converter::do_return_to_python(x), &PyString_Type)
+ BOOST_PYTHON_TO_PYTHON_BY_VALUE(char const*, converter::do_return_to_python(x), &PyString_Type)
