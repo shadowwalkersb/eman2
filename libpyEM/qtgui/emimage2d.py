@@ -970,9 +970,9 @@ class EMImage2DWidget(EMGLWidget):
 			print(type(ret))
 			print(len(ret))
 			print(ret)
-			# # ret = ret.encode()
-			# print(type(ret))
-			# print(len(ret))
+			ret = ret.encode()
+			print(type(ret))
+			print(len(ret))
 
 			return_data = (value_size, wid, hgt,
 								ret)

@@ -65,7 +65,6 @@ BOOST_PYTHON_MODULE(libpyTypeConverter2)
 	EMAN::vector_to_python<long>();
 	EMAN::vector_to_python<float>();
 	EMAN::vector_to_python<double>();
-	EMAN::vector_to_python<char>();
 //	EMAN::vector_to_python<EMAN::Transform3D>();
 	EMAN::vector_to_python<EMAN::Transform>();
 	EMAN::vector_to_python<EMAN::Ctf*>();
@@ -84,7 +83,6 @@ BOOST_PYTHON_MODULE(libpyTypeConverter2)
 	EMAN::vector_from_python<int>();
 	EMAN::vector_from_python<long>();
 	EMAN::vector_from_python<float>();
-    EMAN::vector_from_python<char>();
 //	EMAN::vector_from_python<EMAN::Transform3D>();
 	EMAN::vector_from_python<EMAN::Ctf*>();
 	EMAN::vector_from_python<EMAN::Transform>();

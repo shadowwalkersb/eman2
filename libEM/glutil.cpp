@@ -53,10 +53,6 @@
 	#include "GL/glext.h"
 #endif	//__APPLE__
 
-#include <boost/python.hpp>
-#include <boost/python/detail/api_placeholder.hpp>
-
-using namespace boost::python;
 using namespace EMAN;
 
 // By depfault we need to first bind data to the GPU
@@ -143,12 +139,9 @@ unsigned int GLUtil::render_amp8_gl_texture(EMData* emdata,
 		 float gamma, int flags)
 {
 	if (emdata==NULL) return 9999999;
-    vector<char> pixels1 = render_amp8(emdata, x0, y0, ixsize,iysize, bpl, scale,
+	string pixels = render_amp8(emdata, x0, y0, ixsize,iysize, bpl, scale,
 		 mingray, maxgray, render_min, render_max, gamma, flags);
 
-	string pixels;
-    for(int i=0; i<pixels1.size(); ++i)
-        pixels.append(pixels1[i],1);
 	unsigned int tex_name;
 	glGenTextures(1, &tex_name);
 
@@ -265,7 +258,7 @@ void GLUtil::mx_bbox(const vector<float>& data,
 	}
 }
 
-vector<char> GLUtil::render_amp8(EMData *emdata, int x0, int y0, int ixsize,
+const char * GLUtil::render_amp8(EMData *emdata, int x0, int y0, int ixsize,
                                  int iysize, int bpl, float scale, int min_gray, int max_gray,
                                  float render_min, float render_max, float gamma, int flags)
 {
@@ -275,7 +268,7 @@ vector<char> GLUtil::render_amp8(EMData *emdata, int x0, int y0, int ixsize,
 //	printf("%d %d %d %d %d %f %d %d %f %f %f %d\n",x0,y0,ixsize,iysize,bpl,
 // scale,min_gray,max_gray,render_min,render_max,gamma,flags);
 
-	if (emdata==NULL) return vector<char>();
+	if (emdata==NULL) return std::string().c_str();
 	bool invert = (min_gray > max_gray);
 	int mingray, maxgray;
 
@@ -341,7 +334,7 @@ vector<char> GLUtil::render_amp8(EMData *emdata, int x0, int y0, int ixsize,
 	else if (flags & 1) asrgb = 3;
 	else asrgb = 1;
 
-    vector<char> ret;
+	std::string ret=std::string();
 //	ret.resize(iysize*bpl);
 
 	ret.assign(iysize*bpl + hist*1024, char(invert ? maxgray : mingray));
@@ -1034,22 +1027,20 @@ vector<char> GLUtil::render_amp8(EMData *emdata, int x0, int y0, int ixsize,
 	delete [] gaussianlookup;
 	delete [] graypdftwo;
 
-//    cout<<"ret: "<<ret<<endl;
-//    cout<<"ret.size(): "<<ret.size()<<endl;
-////	char * rr = new char [ret.length()+1];
-//    const char * rr = ret.c_str();
-////	const char * rr = new char [1024+1];
-////    const char rr[1025]={'0'};
-//    cout<<"strlen(rr): "<<strlen(rr)<<endl;
-////    rr[ret.length()]='\0';
-//    cout<<"strlen(rr): "<<strlen(rr)<<endl;
-////    strcpy(rr, ret.c_str());
-//    cout<<"rr: "<<rr<<endl;
-//    cout<<"strlen(rr): "<<strlen(rr)<<endl;
-//	cout<<"strlen(ret.c_str()): "<<strlen(ret.c_str())<<endl;
-//	return const_cast<char *>(rr);
+    cout<<"ret: "<<ret<<endl;
+    cout<<"ret.size(): "<<ret.size()<<endl;
+	char * rr = new char [ret.length()+1];
+//	const char * rr = new char [1024+1];
+//    const char rr[1025]={'0'};
+    cout<<"strlen(rr): "<<strlen(rr)<<endl;
+    rr[ret.length()]='\0';
+    cout<<"strlen(rr): "<<strlen(rr)<<endl;
+    strcpy(rr, ret.c_str());
+    cout<<"rr: "<<rr<<endl;
+    cout<<"strlen(rr): "<<strlen(rr)<<endl;
+	cout<<"strlen(ret.c_str()): "<<strlen(ret.c_str())<<endl;
+	return const_cast<char *>(rr);
 //    return rr;
-	return ret;
 }
 
 // DEPRECATED
