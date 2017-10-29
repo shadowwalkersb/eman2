@@ -71,14 +71,14 @@ except ImportError:
 	QChar = type(str)
 
 try:
-    QString = str
+    QString = unicode
 except NameError:
     # Python 3
     QString = str
 QStringList = list
 
 try:
-    QChar = chr
+    QChar = unichr
 except NameError:
     # Python 3
     QChar = chr
