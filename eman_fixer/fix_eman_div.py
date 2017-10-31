@@ -54,6 +54,7 @@ class FixEmanDiv(fixer_base.BaseFix):
         if (node.type == self.syms.term and
                     len(node.children) == 3 and
                 match_division(node.children[1])):
+            print "FIXER: lineno: ", node.get_lineno(), "%s %s %s" % (node.children[0], node.children[1], node.children[2])
             return node
         else:
             return False
@@ -61,12 +62,5 @@ class FixEmanDiv(fixer_base.BaseFix):
     def transform(self, node, results):
         if self.skip:
             return
-        future_import(u"division", node)
-
-        touch_import_top(u'past.utils', u'old_div', node)
-        # Strip any leading space for the first number:
-        print node
-        print node.__str__
-        print type(node)
         results.children[1] = pytree.Leaf(token.SLASH, u"//", prefix=node.prefix)
         return results
