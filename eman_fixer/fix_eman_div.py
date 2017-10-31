@@ -55,7 +55,7 @@ class FixEmanDiv(fixer_base.BaseFix):
                     len(node.children) == 3 and
                 match_division(node.children[1])):
             print "FIXER: lineno: ", node.get_lineno(), "%s %s %s" % (node.children[0], node.children[1], node.children[2])
-            return node
+            return False
         else:
             return False
 
