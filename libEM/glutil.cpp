@@ -53,6 +53,10 @@
 	#include "GL/glext.h"
 #endif	//__APPLE__
 
+#include <fstream>
+
+using namespace std;
+
 using namespace EMAN;
 
 // By depfault we need to first bind data to the GPU
@@ -998,6 +1002,11 @@ std::string GLUtil::render_amp8(EMData* emdata, int x0, int y0, int ixsize,
 	}
 
 	EXITFUNC;
+    
+    ofstream fout("ret.out");
+    for(int i=0; i<ret.size();++i)
+//        fout<<int(ret[i])<<endl;
+	fout<<ret<<endl;
 
 	// ok, ok, not the most efficient place to do this, but it works
 
