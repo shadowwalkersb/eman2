@@ -62,5 +62,5 @@ class FixEmanDiv(fixer_base.BaseFix):
     def transform(self, node, results):
         if self.skip:
             return
-        results.children[1] = pytree.Leaf(token.SLASH, u"//", prefix=node.prefix)
+        results.children[1] = pytree.Leaf(token.SLASH, u"//")
         return results
