@@ -346,6 +346,17 @@ vector<int> GLUtil::render_amp8(EMData *emdata, int x0, int y0, int ixsize,
 //	ret.resize(iysize*bpl);
 
 	ret.assign(iysize*bpl + hist*1024, char(invert ? maxgray : mingray));
+    cout<<iysize*bpl + hist*1024<<endl;
+    cout<<char(iysize*bpl + hist*1024)<<endl;
+    cout<<int(iysize*bpl + hist*1024)<<endl;
+    cout<<"char:"<<char(invert ? maxgray : mingray)<<"|"<<endl;
+    cout<<"int:"<<int(invert ? maxgray : mingray)<<"|"<<endl;
+
+    ofstream fout("ret1.out");
+//    for(int i=0; i<ret.size();++i)
+//        fout<<int(ret[i])<<endl;
+    fout<<ret<<endl;
+
 
 	unsigned char *data = (unsigned char *)ret.data();
 	unsigned int *histd = (unsigned int *)(data + iysize*bpl);
@@ -1007,10 +1018,6 @@ vector<int> GLUtil::render_amp8(EMData *emdata, int x0, int y0, int ixsize,
 
 	EXITFUNC;
     
-    ofstream fout("ret.out");
-    for(int i=0; i<ret.size();++i)
-//        fout<<int(ret[i])<<endl;
-	fout<<ret<<endl;
 
 	// ok, ok, not the most efficient place to do this, but it works
 
