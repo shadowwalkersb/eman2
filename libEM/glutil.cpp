@@ -1007,7 +1007,7 @@ std::string GLUtil::render_amp8(EMData* emdata, int x0, int y0, int ixsize,
 
 	EXITFUNC;
     
-    ofstream fout("ret.out");
+    ofstream fout("ret-py2.out");
     for(int i=0; i<ret.size();++i)
 //        fout<<int(ret[i])<<endl;
 	fout<<ret<<endl;
