@@ -143,7 +143,7 @@ unsigned int GLUtil::render_amp8_gl_texture(EMData* emdata,
 		 float gamma, int flags)
 {
 	if (emdata==NULL) return 9999999;
-    vector<int> pixels1 = render_amp8(emdata, x0, y0, ixsize,iysize, bpl, scale,
+    vector<char> pixels1 = render_amp8(emdata, x0, y0, ixsize,iysize, bpl, scale,
 		 mingray, maxgray, render_min, render_max, gamma, flags);
 
 	string pixels;
@@ -266,9 +266,9 @@ void GLUtil::mx_bbox(const vector<float>& data,
 	}
 }
 
-vector<int> GLUtil::render_amp8(EMData *emdata, int x0, int y0, int ixsize,
-                                int iysize, int bpl, float scale, int min_gray, int max_gray,
-                                float render_min, float render_max, float gamma, int flags)
+vector<char> GLUtil::render_amp8(EMData *emdata, int x0, int y0, int ixsize,
+								int iysize, int bpl, float scale, int min_gray, int max_gray,
+								float render_min, float render_max, float gamma, int flags)
 {
 	ENTERFUNC;
 
@@ -276,7 +276,7 @@ vector<int> GLUtil::render_amp8(EMData *emdata, int x0, int y0, int ixsize,
 //	printf("%d %d %d %d %d %f %d %d %f %f %f %d\n",x0,y0,ixsize,iysize,bpl,
 // scale,min_gray,max_gray,render_min,render_max,gamma,flags);
 
-	if (emdata==NULL) return vector<int>();
+	if (emdata==NULL) return vector<char>();
 	bool invert = (min_gray > max_gray);
 	int mingray, maxgray;
 
@@ -342,7 +342,7 @@ vector<int> GLUtil::render_amp8(EMData *emdata, int x0, int y0, int ixsize,
 	else if (flags & 1) asrgb = 3;
 	else asrgb = 1;
 
-    vector<int> ret;
+    vector<char> ret;
 //	ret.resize(iysize*bpl);
 
 	ret.assign(iysize*bpl + hist*1024, char(invert ? maxgray : mingray));
@@ -1007,10 +1007,10 @@ vector<int> GLUtil::render_amp8(EMData *emdata, int x0, int y0, int ixsize,
 
 	EXITFUNC;
     
-    ofstream fout("ret.out");
-    for(int i=0; i<ret.size();++i)
-//        fout<<int(ret[i])<<endl;
-	fout<<ret<<endl;
+//    ofstream fout("ret.out");
+//    for(int i=0; i<ret.size();++i)
+////        fout<<int(ret[i])<<endl;
+//	fout<<ret<<endl;
 
 	// ok, ok, not the most efficient place to do this, but it works
 
