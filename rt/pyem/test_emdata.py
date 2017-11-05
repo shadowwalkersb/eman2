@@ -1270,6 +1270,7 @@ class TestEMData(unittest.TestCase):
         e.set_size(32,32,1)
         e.process_inplace("testimage.noise.uniform.rand")
         str = GLUtil.render_amp8(e, 0, 0, 32, 32, 96, 1.2, 1, 254, 100.0, 200.0, 2.0, 3)
+        raise Exception(type(str))
         
         if(IS_TEST_EXCEPTION):
             #only apply to 2D image

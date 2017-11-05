@@ -956,11 +956,16 @@ class EMImage2DWidget(EMGLWidget):
 		else :
 			# get grey scale data:
 
+			# print(values,
+			# 	  x0, y0, wdt, hgt, wid,
+			# 	  self.scale, pixden[0], pixden[1],
+			# 	  min_val, max_val, gam_val, flags)
+			ddd=GLUtil.render_amp8 (values,
+									x0, y0, wdt, hgt, wid,
+									self.scale, pixden[0], pixden[1],
+									min_val, max_val, gam_val, flags)
 			return_data = (value_size, wid, hgt,
-								GLUtil.render_amp8 (values,
-								x0, y0, wdt, hgt, wid,
-								self.scale, pixden[0], pixden[1],
-								min_val, max_val, gam_val, flags))
+								ddd)
 
 		return return_data
 
