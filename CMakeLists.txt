@@ -371,6 +371,7 @@ add_custom_target(test-gui-coverage
 	COMMAND ${PYTEST_EXECUTABLE} -vs ${CMAKE_SOURCE_DIR}/tests/gui/ --confcutdir=${CMAKE_SOURCE_DIR}/tests/gui/
 				--cov=${EMAN_PREFIX}/bin/
 				--cov=eman2_gui
+				--cov-config=${CMAKE_SOURCE_DIR}/tests/gui/.coveragerc
 				--cov-report html:cov_html
 	DEPENDS PythonFiles
 )
