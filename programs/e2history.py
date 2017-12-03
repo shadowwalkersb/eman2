@@ -66,6 +66,8 @@ def main():
 		app.show()
 		app.execute()
 		
+		return hist
+		
 	else: print_to_std_out(options.all)
 
 class HistoryForm:
