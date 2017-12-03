@@ -88,7 +88,7 @@ def load_micrograph(filename):
 	img["apix_z"]=apix
 	return img
 
-def main():
+def main(sys_argv=None):
 	progname = os.path.basename(sys.argv[0])
 	usage = """prog [options] <image> <image2>....
 
@@ -121,7 +121,7 @@ def main():
 	parser.add_argument("--device", type=str, help="For Convnet training only. Pick a device to use. chose from cpu, gpu, or gpuX (X=0,1,...) when multiple gpus are available. default is cpu",default="cpu",guitype='strbox', row=14, col=2, rowspan=1, colspan=1,mode="boxing")
 	parser.add_argument("--verbose", "-v", dest="verbose", action="store", metavar="n", type=int, default=0, help="verbose level [0-9], higner number means higher level of verboseness")
 
-	(options, args) = parser.parse_args()
+	(options, args) = parser.parse_args(sys_argv)
 	
 	if os.environ.has_key("CUDA_VISIBLE_DEVICES"):
 		print("CUDA_VISIBLE_DEVICES is already set as environment variable. This will overwrite the device option...")
