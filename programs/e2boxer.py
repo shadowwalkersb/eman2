@@ -39,6 +39,9 @@ import threading
 import Queue
 import os,sys
 
+from eman2_gui.emapplication import EMApp
+app=EMApp()
+
 apix=0
 
 class nothing:
@@ -303,8 +306,6 @@ def main(sys_argv=None):
 			print("=====================================")
 			print("ERROR: GUI mode unavailable without PyQt4")
 			sys.exit(1)
-		from eman2_gui.emapplication import EMApp
-		app=EMApp()
 		gui=GUIBoxer(args,options.voltage,options.apix,options.cs,options.ac,options.boxsize,options.ptclsize,options.threads)
 		gui.show()
 		gui.raise_()
