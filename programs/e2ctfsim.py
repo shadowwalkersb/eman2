@@ -46,7 +46,7 @@ import weakref
 import traceback
 from numpy import array,arange
 
-def main():
+def main(sys_argv=None):
 	gui = main_loop()
 	app.execute()
 
