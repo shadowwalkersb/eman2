@@ -368,16 +368,18 @@ file(GENERATE OUTPUT "parse_errors.sh"
 	CONTENT "
 		awk '
 			/Error compiling/{
-				read_next=1
+				print $0
 				res=$0
 				sub(/.* Error compiling /,\"\", res)
 				sub(/\\.\\.\\./,\"\", res)
+				next
 			}
-			/Sorry: TabError:/ && read_next==1{
+			/Sorry: TabError:/{
+				print $0
 				sub(/.*\\, line /,\"\")
 				sub(/\\)/,\"\")
 				printf(\"%s:%d\\n\", res, $0 )
-				read_next=0
+				next
 			}
 		'
 	"
