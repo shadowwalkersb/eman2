@@ -46,7 +46,11 @@ import weakref
 import traceback
 from numpy import array,arange
 
-def main(sys_argv=None):
+def main():
+	gui = main_loop()
+	app.execute()
+
+def main_loop(sys_argv=None):
 	progname = os.path.basename(sys.argv[0])
 
 	usage = """prog [options]
@@ -67,7 +71,6 @@ A simple CTF simulation program.
 
 	gui=GUIctfsim(app,options.apix,options.voltage,options.cs,options.ac,options.samples,options.apply)
 	gui.show_guis()
-	app.execute()
 	
 	return gui
 
