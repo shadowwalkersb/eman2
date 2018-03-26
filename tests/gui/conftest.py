@@ -55,6 +55,8 @@ class Win(object):
     def setValSlider(self, qtbot, form, valSlider):
         val = valSlider.getValue()
         valSlider.setValue(2*val)
+        # qtbot.wait(100)
+        # self.snap(qtbot, form)
     
     def snap(self, qtbot, form):
         fname = '%s.png'%os.path.join(self.dir,str(self.counter))
