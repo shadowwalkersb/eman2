@@ -662,7 +662,10 @@ class EMArgumentParser(argparse.ArgumentParser):
 			print("||{}||{}||{}||".format("option", "type", "description"))
 			for key in self._option_string_actions:
 				val = self._option_string_actions[key]
-				print(val.option_strings, val.help)
+				opt_text  = str(val.option_strings)[1:-2].replace("'",'')
+				type_text = (' ', str(val.type).split("'")[1])[val.type]
+				help_text = val.help
+				print("||{}||{}||{}||".format(opt_text, type_text, help_text))
 			self.exit()
 
 		return (parsedargs, parsedargs.positionalargs)
