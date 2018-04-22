@@ -1,10 +1,10 @@
 import os
 
 
-def test_display_initial_gui(qtbot, win, curdir):
+def test_display_initial_gui(qtbot, win, datadir):
     args=[
-        os.path.join(curdir, "data", "e2cmpxplor", "projections_02_odd.hdf"),
-        os.path.join(curdir, "data", "e2cmpxplor", "BGal_000232.hdf"),
+        os.path.join(datadir, "e2cmpxplor", "projections_02_odd.hdf"),
+        os.path.join(datadir, "e2cmpxplor", "BGal_000232.hdf"),
     ]
     win = win('e2cmpxplor', args[0], args[1])
     main_form = win.main_form
