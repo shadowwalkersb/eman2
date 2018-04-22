@@ -2,10 +2,10 @@ from PyQt4.QtCore import Qt
 import os
 
 
-def test_display_initial_gui(qtbot, win, curdir):
+def test_display_initial_gui(qtbot, win, datadir):
     args=[
-        os.path.join(curdir, "data", "e2RCTboxer", "00.hdf"),
-        os.path.join(curdir, "data", "e2RCTboxer", "10.hdf"),
+        os.path.join(datadir, "e2RCTboxer", "00.hdf"),
+        os.path.join(datadir, "e2RCTboxer", "10.hdf"),
     ]
     
     win = win('e2RCTboxer', args, 256)
