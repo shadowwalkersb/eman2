@@ -1,8 +1,8 @@
 import os
 
 
-def test_display_file(qtbot, win, curdir):
-    win = win('e2evalimage',[os.path.join(curdir, 'data', 'e2evalimage', 'BGal_000232.hdf')])
+def test_display_file(qtbot, win, datadir):
+    win = win('e2evalimage',[os.path.join(datadir, 'e2evalimage', 'BGal_000232.hdf')])
     main_form = win.main_form
     qtbot.addWidget(main_form)
     
