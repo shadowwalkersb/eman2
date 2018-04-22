@@ -15,6 +15,10 @@ def pytest_unconfigure(config):
 def curdir(request):
     return request.fspath.dirname
 
+@pytest.fixture
+def datadir():
+    return '/Users/shadow_walker/Files/eclipse_workspace/workspace_work/eman-test-data'
+
 def get_main_form(module_name, sys_argv=None):
     module = __import__(module_name)
     if not os.path.isdir(module_name):
