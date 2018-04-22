@@ -107,9 +107,8 @@ class EMCmpExplorer(EM3DSymModel):
 		
 		
 	def set_data(self,projections,particles):
-		'''
-		Initialize data
-		'''
+		"""Initialize data"""
+		
 		if not file_exists(projections): raise RuntimeError("%s does not exist" %self.projection_file)
 		if not file_exists(particles): raise RuntimeError("%s does not exist" %self.particle_file)
 		
@@ -185,9 +184,8 @@ class EMCmpExplorer(EM3DSymModel):
 			self.regen_dl()
 			
 	def update_display(self,update=True):
-		'''
-		Uses self.current_particle and self.current_projection to udpate the self.mx_display
-		'''
+		"""Uses self.current_particle and self.current_projection to udpate the self.mx_display"""
+		
 		if self.mx_display == None : return
 		
 		if self.current_particle<0 or self.current_projection==None : return
