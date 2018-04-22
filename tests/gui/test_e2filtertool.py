@@ -2,8 +2,8 @@ from PyQt4.QtCore import Qt
 import os
 
 
-def test_mouseClick_altModifier(qtbot, win, curdir):
-    win = win('e2filtertool','%s'%os.path.join(curdir, 'data', 'e2display/twod.hdf'))
+def test_mouseClick_altModifier(qtbot, win, datadir):
+    win = win('e2filtertool','%s'%os.path.join(datadir, 'e2display/twod.hdf'))
     main_form = win.main_form
     qtbot.addWidget(main_form)
     
