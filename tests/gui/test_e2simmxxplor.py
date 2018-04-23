@@ -14,3 +14,4 @@ def test_display_initial_gui(qtbot, win, datadir):
     qtbot.addWidget(main_form)
 
     win.cycle(qtbot, main_form)
+    # win.cycle(qtbot, main_form.guiim)
