@@ -47,7 +47,14 @@ from eman2_gui.emglobjects import EM3DGLWidget
 from eman2_gui.emimage3dsym import EM3DSymModel,EMSymInspector, EMSymViewerWidget
 from EMAN2 import *
 
+em_app = EMApp()
+
+
 def main():
+	gui = main_loop()
+	em_app.execute()
+
+def main_loop(sys_argv=None):
 	progname = os.path.basename(sys.argv[0])
 	usage = """prog  <simmx file> <projection file>  <particles file>
 
@@ -63,13 +70,11 @@ def main():
 	parser.add_argument("--ppid", type=int, help="Set the PID of the parent process, used for cross platform PPID",default=-1)
 	parser.add_argument("--verbose", "-v", dest="verbose", action="store", metavar="n", type=int, default=0, help="verbose level [0-9], higner number means higher level of verboseness")
 
-	(options, args) = parser.parse_args()
+	(options, args) = parser.parse_args(sys_argv)
 
 
 
 	logid=E2init(sys.argv,options.ppid)
-
-	em_app = EMApp()
 
 	window = EMSymViewerWidget()
 	explorer = EMSimmxExplorer(window)
@@ -80,9 +85,10 @@ def main():
 	if len(args) > 2: explorer.set_particle_file(args[2])
 
 	em_app.show()
-	em_app.execute()
 
 	E2end(logid)
+	
+	return window
 
 
 class EMSimmxExplorer(EM3DSymModel):
