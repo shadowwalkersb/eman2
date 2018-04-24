@@ -302,6 +302,8 @@ NOTE: This program should be run from the project directory, not from within the
 
 	if not options.chunk: E2end(logid)
 
+main_loop = main
+
 def init_sfcurve(opt):
 
 	global sfcurve,sfcurve2,hasgoodsf
