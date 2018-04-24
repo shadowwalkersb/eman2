@@ -63,7 +63,7 @@ def imcount(fsp):
 def get_df(itm):
 	return itm[1].defocus
 
-def main():
+def main(sys_argv=None):
 	global debug,logid
 	progname = os.path.basename(sys.argv[0])
 
@@ -144,7 +144,7 @@ NOTE: This program should be run from the project directory, not from within the
 	parser.add_argument("--ppid", type=int, help="Set the PID of the parent process, used for cross platform PPID",default=-1)
 	parser.add_argument("--verbose", "-v", dest="verbose", action="store", metavar="n", type=int, default=0, help="verbose level [0-9], higner number means higher level of verboseness")
 
-	(options, args) = parser.parse_args()
+	(options, args) = parser.parse_args(sys_argv)
 
 	if options.dbds!=None :
 		print("--dbds no longer supported, as this was part of the retired e2workflow interface. Exiting.")
