@@ -2,9 +2,7 @@ import os
 
 
 def test_display_initial_gui(qtbot, win, datadir):
-    stack=os.path.join(datadir, "e2spt_wedge", "00bin16.hdf")
-    
-    win = win('e2spt_wedge', stack, 60.0, 0.05, 0.5)
+    win = win('e2spt_wedge', [os.path.join(datadir, "e2spt_wedge", "00bin16.hdf")])
     main_form = win.main_form
 
     win.cycle(qtbot, main_form)
