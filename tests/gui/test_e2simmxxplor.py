@@ -1,5 +1,8 @@
 import os
+import pytest
 
+
+@pytest.mark.xfail
 def test_display_initial_gui(qtbot, win, datadir):
     
     root_dir = os.path.join(datadir, "playground")
