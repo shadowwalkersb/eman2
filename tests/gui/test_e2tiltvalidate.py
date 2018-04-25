@@ -2,7 +2,7 @@ import os
 from PyQt4.QtCore import Qt
 
 def test_cli(qtbot, win, datadir):
-    win = win('e2tiltvalidate', os.path.join(datadir, 'e2tiltvalidate', 'TiltValidate_04'), -1, 360.0, plotdatalabels=False, color='#00ff00', plotzaxiscolor=False)
+    win = win('e2tiltvalidate', ["--path=%s" % os.path.join(datadir, 'e2tiltvalidate', 'TiltValidate_04'), '--gui'])
     
     main_form = win.main_form
     qtbot.addWidget(main_form)

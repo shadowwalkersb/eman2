@@ -37,7 +37,7 @@ from EMAN2 import *
 import os, math
 from EMAN2jsondb import JSTask,jsonclasses
 	
-def main():
+def main(sys_argv=None):
 	"""Program to validate a reconstruction by the Richard Henderson tilt validation method. A volume to validate, a small stack (~100 imgs) of untilted and ~10-15 degree
 	tilted particles must be presented. The untilted and tilted particle stack must have a one-to-one relationship. In the contour plot, the Tiltaxis is along positive 'Y'
 	The tiltaxis angle can be determined from e2RCTboxer.py uisng PairPicker mode. For example, if the tiltaxis is 45 degrees and the tilt angle is -15 degrees, there should
@@ -98,13 +98,13 @@ def main():
 	#other options
 	parser.add_argument("--eulerfile",type=str,help="Euler angles file, to create tiltdistance from pre-aligned particles. Format is: imgnum, name, az, alt, phi",default=None)
 	parser.add_argument("--ppid", type=int, help="Set the PID of the parent process, used for cross platform PPID",default=-1)
-	(options, args) = parser.parse_args()
+	(options, args) = parser.parse_args(sys_argv)
 		
 	# Run the GUI if in GUI mode
 	#print options
 	if options.gui:
-		display_validation_plots(options.path, options.radcut, options.planethres, plotdatalabels=options.datalabels, color=options.datalabelscolor, plotzaxiscolor=options.colorzaxis)
-		exit(0)
+		gui = display_validation_plots(options.path, options.radcut, options.planethres, plotdatalabels=options.datalabels, color=options.datalabelscolor, plotzaxiscolor=options.colorzaxis)
+		return gui
 		
 	if not (options.volume or options.eulerfile):
 		print("Error a volume to validate must be presented")
@@ -492,7 +492,9 @@ def display_validation_plots(path, radcut, planethres, plotdatalabels=False, col
 	if data:
 		image = EMImage2DWidget(data)
 		image.show()
-	app.exec_()
+	app.execute()
+	
+	return plot
 
 # Compute a RGB value to represent a data range. Basically convert Hue to GSB with I=0.33 and S=1.0
 def computeRGBcolor(value, minval, maxval):
