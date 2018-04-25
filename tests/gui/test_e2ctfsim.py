@@ -1,5 +1,5 @@
 def test_cli(qtbot, win):
-    win = win('e2ctfsim','')
+    win = win('e2ctfsim')
     main_form = win.main_form
     qtbot.addWidget(main_form)
     
