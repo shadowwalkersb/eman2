@@ -6,9 +6,10 @@ def test_display_initial_gui(qtbot, win, datadir):
     args=[
         os.path.join(datadir, "e2RCTboxer", "00.hdf"),
         os.path.join(datadir, "e2RCTboxer", "10.hdf"),
+        "--boxsize=256",
     ]
     
-    win = win('e2RCTboxer', args, 256)
+    win = win('e2RCTboxer', args)
     main_form = win.main_form
 
     win.cycle(qtbot, main_form.control_window)
