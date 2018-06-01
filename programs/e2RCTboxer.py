@@ -50,7 +50,9 @@ import os, sys, itertools
 
 EMBOXERRCT_DB = "e2boxercache/rctboxer.json"
 
-def main():
+application = EMApp()
+
+def main(sys_argv=None):
 	progname = os.path.basename(sys.argv[0])
 	usage = """prog [options] <untilted micrograph> <tilted micrograph>....
 This is a tilted - untilted particle particle picker, for use in RCT particle picking. A tilted and untilted micrograph are loaded and the user picks a untilted particle and a corresponding tilted particle.
@@ -81,7 +83,7 @@ Usage: e2RCTboxer.py untilted.hdf tilted.hdf options.
 
 
 	# Options need to be accessible, anywhere
-	(options, args) = parser.parse_args()
+	(options, args) = parser.parse_args(sys_argv)
 	
 	logid=E2init(sys.argv,options.ppid)
 	
@@ -106,13 +108,14 @@ Usage: e2RCTboxer.py untilted.hdf tilted.hdf options.
 		if options.write_boxes: rctproc.write_boxes()
 	else:
 		# Open Application, setup rct object, and run
-		application = EMApp()
 		rctboxer = RCTboxer(application, options.boxsize)	# Initialize the boxertools
 		rctboxer.load_untilt_image(args[0])		# Load the untilted image
 		rctboxer.load_tilt_image(args[1])		# Load the tilted image
 		rctboxer.init_control_pannel()
 		rctboxer.init_control_pannel_tools()			# Initialize control panel tools, this needs to be done last as loaded data maybe be used
 		application.execute()
+		
+		return rctboxer
 	
 	# Clean up
 	E2end(logid)

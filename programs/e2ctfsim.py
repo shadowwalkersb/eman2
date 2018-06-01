@@ -50,7 +50,7 @@ import traceback
 from numpy import array,arange
 
 
-def main():
+def main(sys_argv=None):
 	progname = os.path.basename(sys.argv[0])
 
 	usage = """prog [options]
@@ -67,14 +67,14 @@ A simple CTF simulation program.
 	parser.add_argument("--apply",type=str,default=None,help="A 2-D image file which the CTF will be applied to in real-time")
 	parser.add_argument("--verbose", "-v", dest="verbose", action="store", metavar="n", type=int, default=0, help="verbose level [0-9], higner number means higher level of verboseness")
 
-	(options, args) = parser.parse_args()
+	(options, args) = parser.parse_args(sys_argv)
 
-	from eman2_gui.emapplication import EMApp
-	app=EMApp()
 	gui=GUIctfsim(app,options.apix,options.voltage,options.cs,options.ac,options.samples,options.apply)
 	gui.show_guis()
 	gui.raise_()
-	app.exec_()
+	app.execute()
+	
+	return gui
 
 #		print "done execution"
 
@@ -84,6 +84,9 @@ try:
 	from PyQt4.QtCore import Qt
 	from eman2_gui.emshape import *
 	from eman2_gui.valslider import ValSlider
+	
+	from eman2_gui.emapplication import EMApp
+	app=EMApp()
 except:
 	print("Error: PyQt4 must be installed")
 	sys.exit(1)

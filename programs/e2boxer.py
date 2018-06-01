@@ -59,6 +59,9 @@ try:
 	from eman2_gui.emimagemx import EMImageMXWidget
 	from eman2_gui.valslider import ValSlider,CheckBox,ValBox
 	from eman2_gui.emshape import EMShape
+	
+	from eman2_gui.emapplication import EMApp
+	app=EMApp()
 except:
 	QtGui=nothing()
 	QtCore=nothing()
@@ -94,7 +97,7 @@ def load_micrograph(filename):
 	img["apix_z"]=apix
 	return img
 
-def main():
+def main(sys_argv=None):
 	progname = os.path.basename(sys.argv[0])
 	usage = """prog [options] <image> <image2>....
 
@@ -127,7 +130,7 @@ def main():
 	parser.add_argument("--device", type=str, help="For Convnet training only. Pick a device to use. chose from cpu, gpu, or gpuX (X=0,1,...) when multiple gpus are available. default is cpu",default="cpu",guitype='strbox', row=14, col=2, rowspan=1, colspan=1,mode="boxing")
 	parser.add_argument("--verbose", "-v", dest="verbose", action="store", metavar="n", type=int, default=0, help="verbose level [0-9], higner number means higher level of verboseness")
 
-	(options, args) = parser.parse_args()
+	(options, args) = parser.parse_args(sys_argv)
 	
 	if "CUDA_VISIBLE_DEVICES" in os.environ:
 		print("CUDA_VISIBLE_DEVICES is already set as environment variable. This will overwrite the device option...")
@@ -309,12 +312,12 @@ def main():
 			print("=====================================")
 			print("ERROR: GUI mode unavailable without PyQt4")
 			sys.exit(1)
-		from eman2_gui.emapplication import EMApp
-		app=EMApp()
 		gui=GUIBoxer(args,options.voltage,options.apix,options.cs,options.ac,options.boxsize,options.ptclsize,options.threads)
 		gui.show()
 		gui.raise_()
-		app.exec_()
+		app.execute()
+		
+		return gui
 
 	if options.write_dbbox:
 		write_boxfiles(args,boxsize)

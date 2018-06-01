@@ -2118,7 +2118,10 @@ class ProjectDialog(QtGui.QDialog):
 	def _on_cancel(self):
 		self.done(1)
 
-if __name__ == "__main__":
+from eman2_gui.emapplication import EMApp
+app = EMApp()
+
+def main(sys_argv=None):
 	import sys
 
 	if os.path.isdir("EMAN2DB") and os.path.isfile("EMAN2DB/project.bdb") :
@@ -2128,11 +2131,13 @@ first upgrade the project with e2projectupdate21.py. You can still use the e2dis
 GUI directly to browse the contents of old-style projects.""")
 		sys.exit(1)
 
-	from eman2_gui.emapplication import EMApp
-	app = EMApp()
-	#app = QtGui.QApplication(sys.argv)
 	pm = EMProjectManager()
 	pm.show()
 	try: pm.raise_()
 	except: pass
-	app.exec_()
+	app.execute()
+	
+	return pm
+
+if __name__ == "__main__":
+	main()

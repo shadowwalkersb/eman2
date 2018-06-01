@@ -47,7 +47,9 @@ from OpenGL import GL, GLU, GLUT
 from PyQt4 import QtCore, QtGui, QtOpenGL
 from PyQt4.QtCore import Qt
 
-def main():
+app = EMApp()
+
+def main(sys_argv=None):
 	progname = os.path.basename(sys.argv[0])
 	usage = """prog [options] <image file> ...
 
@@ -71,11 +73,10 @@ def main():
 	parser.add_argument("--ppid", type=int, help="Set the PID of the parent process, used for cross platform PPID",default=-2)
 	parser.add_argument("--verbose", "-v", dest="verbose", action="store", metavar="n", type=int, default=0, help="verbose level [0-9], higner number means higher level of verboseness")
 
-	(options, args) = parser.parse_args()
+	(options, args) = parser.parse_args(sys_argv)
 
 #	logid=E2init(sys.argv)
 
-	app = EMApp()
 	#gapp = app
 	#QtGui.QApplication(sys.argv)
 	win=[]
@@ -132,7 +133,9 @@ def main():
 	if options.fullrange:
 		revert_full_range(fullrangeparms)
 
-	app.exec_()
+	app.execute()
+	
+	return dialog
 
 #	E2end(logid)
 

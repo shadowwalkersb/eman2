@@ -50,7 +50,7 @@ from eman2_gui.emglobjects import EM3DGLWidget
 from eman2_gui.emimage3dsym import EM3DSymModel,EMSymInspector, EMSymViewerWidget
 from EMAN2 import *
 
-def main():
+def main(sys_argv=None):
 	progname = os.path.basename(sys.argv[0])
 	usage = """prog  <simmx file> <projection file>  <particles file>
 
@@ -66,7 +66,7 @@ def main():
 	parser.add_argument("--ppid", type=int, help="Set the PID of the parent process, used for cross platform PPID",default=-1)
 	parser.add_argument("--verbose", "-v", dest="verbose", action="store", metavar="n", type=int, default=0, help="verbose level [0-9], higner number means higher level of verboseness")
 
-	(options, args) = parser.parse_args()
+	(options, args) = parser.parse_args(sys_argv)
 
 
 
@@ -86,6 +86,8 @@ def main():
 	em_app.execute()
 
 	E2end(logid)
+	
+	return window
 
 
 class EMSimmxExplorer(EM3DSymModel):

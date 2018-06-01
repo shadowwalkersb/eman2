@@ -51,6 +51,8 @@ try:
 
 	ENABLE_GUI = True
 
+	app = EMApp()
+
 except ImportError as e:
 	print("Importing GUI libraries failed!")
 	print(e)
@@ -68,7 +70,7 @@ within a helix. Usually, all particles from a micrograph will have the same dime
 E2HELIXBOXER_DB = "bdb:" # used to use "bdb:e2helixboxercache#"
 
 
-def main():
+def main(sys_argv=None):
 	usage = """e2helixboxer.py --gui <micrograph1> <<micrograph2> <micrograph3> ...
 	e2helixboxer.py --gui --helix-width=<width> <micrograph1> <<micrograph2> <micrograph3> ...
 	e2helixboxer.py <options (not --gui)> <micrograph>
@@ -94,7 +96,7 @@ def main():
 	parser.add_argument("--gridding",      action="store_true", default=False, help="Use a gridding method for rotation operations on particles. Requires particles to be square.")
 	parser.add_argument("--save-ext",type=str,default="hdf",dest="save_ext",help="The default file extension to use when saving 'particle' images. This is simply a convenience for improved workflow. If a format other than HDF is used, metadata will be lost when saving.")
 	parser.add_argument("--ppid", type=int, help="Set the PID of the parent process, used for cross platform PPID",default=-1)
-	(options, args) = parser.parse_args()
+	(options, args) = parser.parse_args(sys_argv)
 
 	if len(args)==0 :
 		print("ERROR: please provide a list of files to be boxed at the command line")
@@ -125,12 +127,13 @@ def main():
 	if options.gui:
 		if ENABLE_GUI:
 			logid=E2init(sys.argv,options.ppid)
-			app = EMApp()
 			helixboxer = EMHelixBoxerWidget(args, app, options.helix_width,options.save_ext)
 			helixboxer.show()
 			helixboxer.raise_()
 			app.execute()
 			E2end(logid)
+			
+			return helixboxer
 		else:
 			return
 	else:

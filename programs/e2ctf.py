@@ -60,6 +60,9 @@ sfcurve=None		# This will store a global structure factor curve if specified
 sfcurve2=None
 envelopes=[]		# simplex minimizer needs to use a global at the moment
 
+from eman2_gui.emapplication import EMApp
+app=EMApp()
+
 def imcount(fsp):
 	try: return EMUtil.get_image_count(fsp)
 	except: return 0
@@ -67,7 +70,7 @@ def imcount(fsp):
 def get_df(itm):
 	return itm[1].defocus
 
-def main():
+def main(sys_argv=None):
 	global debug,logid
 	progname = os.path.basename(sys.argv[0])
 
@@ -148,7 +151,7 @@ NOTE: This program should be run from the project directory, not from within the
 	parser.add_argument("--ppid", type=int, help="Set the PID of the parent process, used for cross platform PPID",default=-1)
 	parser.add_argument("--verbose", "-v", dest="verbose", action="store", metavar="n", type=int, default=0, help="verbose level [0-9], higner number means higher level of verboseness")
 
-	(options, args) = parser.parse_args()
+	(options, args) = parser.parse_args(sys_argv)
 
 	if options.dbds!=None :
 		print("--dbds no longer supported, as this was part of the retired e2workflow interface. Exiting.")
@@ -269,13 +272,13 @@ NOTE: This program should be run from the project directory, not from within the
 		if len(img_sets) == 0:
 			if not options.chunk: E2end(logid)
 			exit(1)
-		from eman2_gui.emapplication import EMApp
-		app=EMApp()
 		gui=GUIctf(app,img_sets,options.autohp,options.nosmooth)
 		gui.show_guis()
 		gui.show()
 		gui.raise_()
-		app.exec_()
+		app.execute()
+		
+		return gui
 
 #		print "done execution"
 

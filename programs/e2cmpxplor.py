@@ -43,7 +43,9 @@ from eman2_gui.emimagemx import EMImageMXWidget
 from eman2_gui.emglobjects import EM3DGLWidget
 
 	
-def main():
+em_app = EMApp()
+
+def main(sys_argv=None):
 	progname = os.path.basename(sys.argv[0])
 	usage = """prog  <projection file>  <particles file>
 	
@@ -54,7 +56,7 @@ read into memory. Do not use it on large sets of particles !!!
 	parser = EMArgumentParser(usage=usage,version=EMANVERSION)
 	parser.add_argument("--ppid", type=int, help="Set the PID of the parent process, used for cross platform PPID",default=-1)
 
-	(options, args) = parser.parse_args()
+	(options, args) = parser.parse_args(sys_argv)
 	
 	if len(args)<2 :
 		print("Error, please specify projection file and particles file")
@@ -62,7 +64,6 @@ read into memory. Do not use it on large sets of particles !!!
 	
 	logid=E2init(sys.argv,options.ppid)
 	
-	em_app = EMApp()
 	window = EM3DGLWidget() #TODO: see if this should be a subclass of EMSymViewerWidget instead
 	explorer = EMCmpExplorer(window)
 	window.set_model(explorer)
@@ -70,6 +71,8 @@ read into memory. Do not use it on large sets of particles !!!
 
 	em_app.show()
 	em_app.execute()
+	
+	return window
 	
 	E2end(logid)
 

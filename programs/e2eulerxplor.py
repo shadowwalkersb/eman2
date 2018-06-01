@@ -52,6 +52,9 @@ import os
 import sys
 import weakref
 
+em_app = EMApp()
+
+
 def get_eulers_from(filename):
 	eulers = []
 	n = EMUtil.get_image_count(filename)
@@ -67,7 +70,7 @@ def get_eulers_from(filename):
 
 	return eulers
 
-def main():
+def main(sys_argv=None):
 	progname = os.path.basename(sys.argv[0])
 	usage = """prog
 
@@ -88,15 +91,16 @@ def main():
 	parser.add_argument("--verbose", "-v", dest="verbose", action="store", metavar="n", type=int, default=0, help="verbose level [0-9], higner number means higher level of verboseness")
 
 	global options
-	(options, args) = parser.parse_args()
+	(options, args) = parser.parse_args(sys_argv)
 
 
 	logid=E2init(sys.argv,options.ppid)
 
-	em_app = EMApp()
 	window = EMEulerWidget(file_name = options.eulerdata, read_from=args)
 	em_app.show_specific(window)
 	em_app.execute()
+	
+	return window
 
 	E2end(logid)
 
