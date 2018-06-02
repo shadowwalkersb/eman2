@@ -11,6 +11,7 @@ def test_cli(qtbot, win):
     win.clickButton(qtbot, main_form, main_form.newbut)
     qtbot.keyPress(main_form.setlist, Qt.Key_Down)
     qtbot.keyPress(main_form.setlist, Qt.Key_Alt)
+    qtbot.wait(1000)
     
     win.cycle(qtbot, main_form.guiim)
     win.clickButton(qtbot, main_form, main_form.guiim)
