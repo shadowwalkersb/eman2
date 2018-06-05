@@ -8,6 +8,7 @@ from eman2_gui import embrowser
 from eman2_gui import emfoldhunterstat 
 from eman2_gui import emform 
 from eman2_gui import emimage2d 
+from eman2_gui import emimage3d 
 from eman2_gui import emimage3diso 
 from eman2_gui import emimage3dslice 
 from eman2_gui import emimage3dsym 
@@ -70,6 +71,10 @@ def test_emsprworkflow():
 
 def test_emimage2d():
     emimage2d.main([''])
+
+@pytest.mark.qt_no_exception_capture
+def test_emimage3d():
+    emimage3d.main([''])
 
 @pytest.mark.skip(reason="Broken, segfault")
 def test_emimage3diso():
