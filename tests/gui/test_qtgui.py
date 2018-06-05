@@ -4,6 +4,7 @@ import pytest
 from eman2_gui import em3Dfonts
 from eman2_gui import emboxerbase 
 from eman2_gui import embrowse 
+from eman2_gui import emfoldhunterstat 
 from eman2_gui import emlights 
 
 
@@ -16,6 +17,9 @@ def test_emboxerbase(datadir):
 
 def test_embrowse():
     embrowse.main()
+
+def test_emfoldhunterstat():
+    emfoldhunterstat.main()
 
 def test_emlights():
     emlights.main()
