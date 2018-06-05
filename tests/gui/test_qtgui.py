@@ -12,6 +12,7 @@ from eman2_gui import emimage3diso
 from eman2_gui import emimage3dslice 
 from eman2_gui import emimage3dsym 
 from eman2_gui import emimage3dvol 
+from eman2_gui import emimagemx 
 from eman2_gui import emlights 
 from eman2_gui import emplot2d 
 from eman2_gui import emplot3d 
@@ -78,3 +79,6 @@ def test_emimage3dsym():
 
 def test_emimage3dvol():
     emimage3dvol.main([''])
+
+def test_emimagemx():
+    emimagemx.main([''])
