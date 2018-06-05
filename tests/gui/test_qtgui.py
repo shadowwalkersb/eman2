@@ -5,6 +5,8 @@ from eman2_gui import em3Dfonts
 from eman2_gui import emboxerbase 
 from eman2_gui import embrowse 
 from eman2_gui import emfoldhunterstat 
+from eman2_gui import emform 
+from eman2_gui import emimage3dslice 
 from eman2_gui import emlights 
 
 
@@ -20,6 +22,12 @@ def test_embrowse():
 
 def test_emfoldhunterstat():
     emfoldhunterstat.main()
+
+def test_emform():
+    emform.main()
+
+def test_emimage3dslice():
+    emimage3dslice.main([''])
 
 def test_emlights():
     emlights.main()
