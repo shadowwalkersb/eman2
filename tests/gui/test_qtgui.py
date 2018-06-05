@@ -16,6 +16,7 @@ from eman2_gui import emimagemx
 from eman2_gui import emlights 
 from eman2_gui import empdbitem3d 
 from eman2_gui import empdbvaltool 
+from eman2_gui import empdbviewer 
 from eman2_gui import emplot2d 
 from eman2_gui import emplot3d 
 from eman2_gui import emscene3d 
@@ -92,3 +93,6 @@ def test_empdbitem3d():
 @pytest.mark.skip(reason="Needs input files")
 def test_empdbvaltool():
     empdbvaltool.main()
+
+def test_empdbviewer():
+    empdbviewer.main()
