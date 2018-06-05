@@ -11,6 +11,7 @@ from eman2_gui import emimage3dslice
 from eman2_gui import emlights 
 from eman2_gui import emplot2d 
 from eman2_gui import emplot3d 
+from eman2_gui import emscene3d 
 
 
 @pytest.mark.qt_no_exception_capture
@@ -46,3 +47,6 @@ def test_emplot2d():
 
 def test_emplot3d():
     emplot3d.main([''])
+
+def test_emscene3d():
+    emscene3d.main()
