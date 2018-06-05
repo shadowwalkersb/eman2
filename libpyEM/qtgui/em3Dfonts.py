@@ -596,10 +596,11 @@ class EMFontInspector(QtGui.QWidget, EMLightsInspectorBase):
 			a += 1
 
 # This is just for testing, of course
+from .emapplication import EMApp
+from .emimage3d import EMImage3DWidget
+em_app = EMApp()
+
 def main():
-	from .emapplication import EMApp
-	from .emimage3d import EMImage3DWidget
-	em_app = EMApp()
 	window = EMImage3DWidget()
 	font_model = EM3DFontModel(window)
 	window.add_model(font_model)
