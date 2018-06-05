@@ -9,6 +9,8 @@ from eman2_gui import emfoldhunterstat
 from eman2_gui import emform 
 from eman2_gui import emimage3dslice 
 from eman2_gui import emlights 
+from eman2_gui import emplot2d 
+from eman2_gui import emplot3d 
 
 
 @pytest.mark.qt_no_exception_capture
@@ -37,3 +39,10 @@ def test_emimage3dslice():
 
 def test_emlights():
     emlights.main()
+
+@pytest.mark.qt_no_exception_capture
+def test_emplot2d():
+    emplot2d.main([''])
+
+def test_emplot3d():
+    emplot3d.main([''])
