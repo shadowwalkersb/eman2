@@ -12,6 +12,7 @@ from eman2_gui import emlights
 from eman2_gui import emplot2d 
 from eman2_gui import emplot3d 
 from eman2_gui import emscene3d 
+from eman2_gui import emselector 
 
 
 @pytest.mark.qt_no_exception_capture
@@ -50,3 +51,7 @@ def test_emplot3d():
 
 def test_emscene3d():
     emscene3d.main()
+
+@pytest.mark.skip(reason="Needs user response")
+def test_emselector():
+    emselector.main()
