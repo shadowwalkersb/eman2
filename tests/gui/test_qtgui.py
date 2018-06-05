@@ -14,6 +14,7 @@ from eman2_gui import emimage3dsym
 from eman2_gui import emimage3dvol 
 from eman2_gui import emimagemx 
 from eman2_gui import emlights 
+from eman2_gui import empdbitem3d 
 from eman2_gui import emplot2d 
 from eman2_gui import emplot3d 
 from eman2_gui import emscene3d 
@@ -82,3 +83,6 @@ def test_emimage3dvol():
 
 def test_emimagemx():
     emimagemx.main([''])
+
+def test_empdbitem3d():
+    empdbitem3d.main()
