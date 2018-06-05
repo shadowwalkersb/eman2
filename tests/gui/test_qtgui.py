@@ -8,6 +8,7 @@ from eman2_gui import embrowser
 from eman2_gui import emfoldhunterstat 
 from eman2_gui import emform 
 from eman2_gui import emimage2d 
+from eman2_gui import emimage3diso 
 from eman2_gui import emimage3dslice 
 from eman2_gui import emimage3dsym 
 from eman2_gui import emimage3dvol 
@@ -65,6 +66,9 @@ def test_emsprworkflow():
 
 def test_emimage2d():
     emimage2d.main([''])
+
+def test_emimage3diso():
+    emimage3diso.main()
 
 @pytest.mark.skip(reason="Needs user response")
 @pytest.mark.qt_no_exception_capture
