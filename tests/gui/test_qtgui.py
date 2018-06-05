@@ -7,6 +7,7 @@ from eman2_gui import embrowse
 from eman2_gui import embrowser 
 from eman2_gui import emfoldhunterstat 
 from eman2_gui import emform 
+from eman2_gui import emimage2d 
 from eman2_gui import emimage3dslice 
 from eman2_gui import emlights 
 from eman2_gui import emplot2d 
@@ -59,3 +60,6 @@ def test_emselector():
 
 def test_emsprworkflow():
     emsprworkflow.main()
+
+def test_emimage2d():
+    emimage2d.main([''])
