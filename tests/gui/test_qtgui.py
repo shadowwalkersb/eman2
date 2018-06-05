@@ -3,6 +3,7 @@ import pytest
 
 from eman2_gui import em3Dfonts
 from eman2_gui import emboxerbase 
+from eman2_gui import embrowse 
 from eman2_gui import emlights 
 
 
@@ -12,6 +13,9 @@ def test_em3Dfonts():
 
 def test_emboxerbase(datadir):
     emboxerbase.main([os.path.join(datadir, 'e2boxer', 'test_box.hdf')])
+
+def test_embrowse():
+    embrowse.main()
 
 def test_emlights():
     emlights.main()
