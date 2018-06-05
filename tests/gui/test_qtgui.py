@@ -9,6 +9,8 @@ from eman2_gui import emfoldhunterstat
 from eman2_gui import emform 
 from eman2_gui import emimage2d 
 from eman2_gui import emimage3dslice 
+from eman2_gui import emimage3dsym 
+from eman2_gui import emimage3dvol 
 from eman2_gui import emlights 
 from eman2_gui import emplot2d 
 from eman2_gui import emplot3d 
@@ -63,3 +65,10 @@ def test_emsprworkflow():
 
 def test_emimage2d():
     emimage2d.main([''])
+
+@pytest.mark.qt_no_exception_capture
+def test_emimage3dsym():
+    emimage3dsym.main()
+
+def test_emimage3dvol():
+    emimage3dvol.main([''])
