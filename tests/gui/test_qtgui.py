@@ -13,6 +13,7 @@ from eman2_gui import emplot2d
 from eman2_gui import emplot3d 
 from eman2_gui import emscene3d 
 from eman2_gui import emselector 
+from eman2_gui import emsprworkflow 
 
 
 @pytest.mark.qt_no_exception_capture
@@ -55,3 +56,6 @@ def test_emscene3d():
 @pytest.mark.skip(reason="Needs user response")
 def test_emselector():
     emselector.main()
+
+def test_emsprworkflow():
+    emsprworkflow.main()
