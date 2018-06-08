@@ -3229,12 +3229,12 @@ class GLdemo(QtGui.QWidget):
 		self.widget.close()
 
 def main():
-	import sys
+	from eman2_gui.emapplication import EMApp
 	#from pmwidgets import PMIntEntryWidget, PMStringEntryWidget, PMBoolWidget, PMFileNameWidget, PMComboWidget
-	app = QtGui.QApplication(sys.argv)
+	app = EMApp()
 	window = GLdemo()
 	window.show()
-	app.exec_()
+	app.execute()
 
 
 if __name__ == "__main__":
