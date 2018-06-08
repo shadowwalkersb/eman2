@@ -3696,7 +3696,7 @@ def test_result() :
 	print("Returned")
 	print(window.getResult())
 
-if __name__ == '__main__' :
+def main():
 	em_app = EMApp()
 	window = EMBrowserWidget(withmodal = True, multiselect = True)
 	window.ok.connect(test_result)
@@ -3707,3 +3707,7 @@ if __name__ == '__main__' :
 	try : window.updthreadexit = True
 	except : pass
 	sys.exit(ret)
+
+
+if __name__ == '__main__' :
+	main()
