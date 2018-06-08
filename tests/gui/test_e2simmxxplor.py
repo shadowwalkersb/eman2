@@ -2,7 +2,7 @@ import os
 import pytest
 
 
-@pytest.mark.xfail
+@pytest.mark.qt_no_exception_capture
 def test_display_initial_gui(qtbot, win, datadir):
     
     root_dir = os.path.join(datadir, "playground")

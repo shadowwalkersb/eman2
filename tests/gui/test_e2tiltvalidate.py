@@ -4,7 +4,7 @@ import pytest
 import pyautogui
 
 
-@pytest.mark.xfail
+@pytest.mark.qt_no_exception_capture
 def test_cli(qtbot, win, datadir):
     win = win('e2tiltvalidate', ["--path=%s" % os.path.join(datadir, 'e2tiltvalidate', 'TiltValidate_04'), '--gui'])
     
