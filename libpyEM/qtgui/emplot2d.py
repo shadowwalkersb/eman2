@@ -3063,7 +3063,6 @@ class EMDataFnPlotter(QtGui.QWidget):
 
 # This is just for testing, of course
 def main():
-	
 	app = EMApp()
 	window = EMPlot2DWidget(app)
 	if len(sys.argv)==1 :
