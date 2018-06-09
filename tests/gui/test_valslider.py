@@ -9,6 +9,7 @@ from PyQt4 import QtGui
 
 from OpenGL.GL import GL_LIGHT1
 from eman2_gui import valslider
+import pyautogui
 
 
 def widget_show(qtbot, widget):
@@ -45,18 +46,20 @@ def test_ValSlider(qtbot):
     
     for cl in classes:
         widget_show(qtbot, cl)
-        if hasattr(cl, 'enablebox'):
-            qtbot.mouseClick(cl.enablebox, Qt.LeftButton)
         try:
             if hasattr(cl, 'text'):
+                cl.text.clear()
+                
                 qtbot.keyClicks(cl.text, '3.0')
+                qtbot.mouseMove(cl.text, QPoint(0, 0))
+                pyautogui.click()
+                qtbot.mouseClick(cl.hboxlayout, Qt.LeftButton)
+                qtbot.wait(200)
         except:
             pass
-        # cl.setValue('11')
-        if hasattr(cl, 'textChange'):
-            cl.textChange()
-        # if hasattr(cl, 'setValue'):
-        #     cl.setValue()
+        if hasattr(cl, 'enablebox'):
+            cl.enablebox.setFocus()
+            qtbot.mouseClick(cl.enablebox, Qt.LeftButton)
         if hasattr(cl, 'lbutton'):
             qtbot.mouseClick(cl.lbutton, Qt.LeftButton)
         if hasattr(cl, 'rbutton'):
@@ -67,13 +70,18 @@ def test_ValSlider(qtbot):
         # if hasattr(cl, 'color'):
         if hasattr(cl, 'slider'):
             qtbot.mouseClick(cl.slider, Qt.LeftButton)
-        qtbot.mouseClick(cl, Qt.LeftButton)
+        # qtbot.mouseClick(cl, Qt.LeftButton)
+        # qtbot.wait(200)
+        # pyautogui.click()
+        # qtbot.wait(200)
+        qtbot.mouseMove(cl, QPoint(0, 0))
+        pyautogui.dragRel(10,10, .1)
         # qtbot.mousePress(cl, Qt.LeftButton)
         # qtbot.mouseMove(cl, QPoint(100,100))
         # qtbot.mouseRelease(cl, Qt.LeftButton)
         qtbot.wait(300)
 
-    qtbot.wait(2000)
+    # qtbot.wait(2000)
 
     # widget_show(qtbot, widg1)
     # widget.raise_()
