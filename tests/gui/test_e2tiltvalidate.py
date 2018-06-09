@@ -21,5 +21,5 @@ def test_cli(qtbot, win, datadir):
     qtbot.mouseMove(plot, QPoint(0, 0))
     # qtbot.wait(1000)
     # qtbot.mouseRelease(plot, Qt.LeftButton, delay=100)
-    pyautogui.dragRel(100,100, .1)
-    qtbot.wait(1000)
+    pyautogui.dragRel(100,100, 1)
+    qtbot.wait(2000)
