@@ -8,5 +8,7 @@ def test_cli(qtbot, win, datadir):
     qtbot.addWidget(main_form)
     
     win.cycle(qtbot, main_form)
+    win.clickButton(qtbot, main_form, main_form.bautobox)
+    win.clickButton(qtbot, main_form, main_form.bautoboxa)
     win.cycle(qtbot, main_form.wimage, Qt.LeftButton)
     win.cycle(qtbot, main_form.wparticles)
