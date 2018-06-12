@@ -4,7 +4,7 @@ PROJECT(EMAN
 		LANGUAGES CXX
 		)
 
-set(GUI_TEST_FILE _valslider)
+set(GUI_TEST_FILE e2boxer)
 
 include(cmake/functions.cmake)
 
