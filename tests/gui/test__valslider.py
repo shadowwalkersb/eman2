@@ -57,6 +57,16 @@ def test_ValSlider(qtbot):
                 qtbot.wait(200)
         except:
             pass
+        if hasattr(cl, 'setValue'):
+            try:
+                cl.setValue(33)
+            except:
+                try:
+                    cl.setValue('33')
+                except:
+                    cl.setValue(1,10)
+        if hasattr(cl, 'textChange'):
+            cl.textChange()
         if hasattr(cl, 'enablebox'):
             cl.enablebox.setFocus()
             qtbot.mouseClick(cl.enablebox, Qt.LeftButton)
@@ -80,7 +90,7 @@ def test_ValSlider(qtbot):
         # qtbot.mouseMove(cl, QPoint(100,100))
         # qtbot.mouseRelease(cl, Qt.LeftButton)
         qtbot.wait(300)
-        inp = raw_input("WOW")
+        # inp = raw_input("WOW")
 
     # qtbot.wait(2000)
 

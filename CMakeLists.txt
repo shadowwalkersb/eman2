@@ -4,6 +4,8 @@ PROJECT(EMAN
 		LANGUAGES CXX
 		)
 
+set(GUI_TEST_FILE _valslider)
+
 include(cmake/functions.cmake)
 
 OPTION(DEBUG_CMAKE_TARGETS "enable debug output for cmake target properties" OFF)
@@ -356,7 +358,7 @@ find_package(PyTest REQUIRED)
 set(EMAN_GUI_TESTS_DATA_DIR ${CMAKE_SOURCE_DIR}/../eman-test-data/playground CACHE PATH "gui test directory")
 
 add_custom_target(test-gui
-	COMMAND ${PYTEST_EXECUTABLE} -vs ${CMAKE_SOURCE_DIR}/tests/gui/test__valslider.py
+	COMMAND ${PYTEST_EXECUTABLE} -vs ${CMAKE_SOURCE_DIR}/tests/gui/test_${GUI_TEST_FILE}.py
 	WORKING_DIRECTORY ${EMAN_GUI_TESTS_DATA_DIR}
 	DEPENDS PythonFiles
 )
@@ -368,7 +370,7 @@ add_custom_target(test-gui-last-failed
 )
 
 add_custom_target(test-gui-coverage
-	COMMAND ${PYTEST_EXECUTABLE} -vs ${CMAKE_SOURCE_DIR}/tests/gui/ --confcutdir=${CMAKE_SOURCE_DIR}/tests/gui/
+	COMMAND ${PYTEST_EXECUTABLE} -vs ${CMAKE_SOURCE_DIR}/tests/gui/test_${GUI_TEST_FILE}.py --confcutdir=${CMAKE_SOURCE_DIR}/tests/gui/
 				--cov=${EMAN_PREFIX}/bin/
 				--cov=eman2_gui
 				--cov-config=${CMAKE_SOURCE_DIR}/tests/gui/.coveragerc
