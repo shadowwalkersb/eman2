@@ -1,4 +1,4 @@
-FILE(GLOB e2programs "${CMAKE_CURRENT_SOURCE_DIR}/*.py")
+FILE(GLOB e2programs "${CMAKE_CURRENT_SOURCE_DIR}/${GUI_TEST_FILE}.py")
 
 INSTALL(PROGRAMS ${e2programs}
 		DESTINATION    bin 
