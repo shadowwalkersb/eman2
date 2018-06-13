@@ -17,13 +17,27 @@ def test_mouseClick_altModifier(qtbot, win, datadir):
     qtbot.addWidget(main_form)
 
     win.cycle(qtbot, main_form)
+    win.clickButton(qtbot, main_form, main_form.setlist)
+    qtbot.keyPress(main_form.setlist, Qt.Key_Down)
+    qtbot.keyPress(main_form.setlist, Qt.Key_Alt)
+
     win.clickButton(qtbot, main_form, main_form.refit)
     win.clickButton(qtbot, main_form, main_form.saveparms)
     win.clickButton(qtbot, main_form, main_form.recallparms)
     
     win.cycle(qtbot, main_form.guiim)
+    win.clickButton(qtbot, main_form, main_form.guiim)
+    qtbot.mouseMove(main_form.guiim, QPoint(0, 0))
+    pyautogui.dragRel(10,10, .1)
+
     win.cycle(qtbot, main_form.guiplot)
+    win.clickButton(qtbot, main_form, main_form.guiplot)
+    qtbot.mouseMove(main_form.guiplot, QPoint(0, 0))
+    pyautogui.click()
+    pyautogui.dragRel(10,10, .1)
+
     win.cycle(qtbot, main_form.guirealim)
+    qtbot.keyPress(main_form.guirealim, Qt.Key_I)
 
     win.cycle(qtbot, main_form)
     win.clickButton(qtbot, main_form, main_form.show2dfit)
