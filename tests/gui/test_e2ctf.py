@@ -2,6 +2,9 @@ from PyQt4.QtCore import Qt
 import os
 import glob
 import sys
+from PyQt4.QtCore import Qt, QPoint
+# from PyQt4 import QtGui
+import pyautogui
 
 
 def test_mouseClick_altModifier(qtbot, win, datadir):
@@ -14,7 +17,19 @@ def test_mouseClick_altModifier(qtbot, win, datadir):
     qtbot.addWidget(main_form)
 
     win.cycle(qtbot, main_form)
+    win.clickButton(qtbot, main_form, main_form.refit)
+    win.clickButton(qtbot, main_form, main_form.saveparms)
+    win.clickButton(qtbot, main_form, main_form.recallparms)
+    
     win.cycle(qtbot, main_form.guiim)
     win.cycle(qtbot, main_form.guiplot)
     win.cycle(qtbot, main_form.guirealim)
 
+    win.cycle(qtbot, main_form)
+    win.clickButton(qtbot, main_form, main_form.show2dfit)
+    qtbot.mouseClick(main_form.show2dfit, Qt.LeftButton)
+    qtbot.mouseMove(main_form.show2dfit, QPoint(0, 0))
+    pyautogui.click()
+
+    win.clickButton(qtbot, main_form, main_form.showzerorings)
+    win.clickButton(qtbot, main_form, main_form.usephaseplate)

@@ -49,7 +49,7 @@ class Win(object):
         
     def clickButton(self, qtbot, form, btn, clickButton=Qt.LeftButton):
         qtbot.mouseClick(btn, clickButton)
-        qtbot.wait(100)
+        qtbot.wait(500)
         # self.snap(qtbot, form)
         
     def setValSlider(self, qtbot, form, valSlider):
