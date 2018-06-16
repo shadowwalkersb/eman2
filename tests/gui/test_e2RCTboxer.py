@@ -14,20 +14,23 @@ def test_display_initial_gui(qtbot, win, datadir):
     main_form = win.main_form
 
     win.cycle(qtbot, main_form.control_window)
+    win.clickButton(qtbot, main_form, main_form.control_window.manual_tool.clr_but)
     qtbot.keyPress(main_form.control_window, Qt.Key_Alt)
 
     win.cycle(qtbot, main_form.untilt_win.window, Qt.LeftButton)
     qtbot.keyPress(main_form.untilt_win.window, Qt.Key_Alt)
-    win.clickButton(qtbot, main_form, main_form.untilt_win.window)
+    # win.clickButton(qtbot, main_form, main_form.untilt_win.window)
     qtbot.mouseMove(main_form.untilt_win.window, QPoint(0, 0))
     pyautogui.click()
+    qtbot.wait(300)
     pyautogui.dragRel(10,10, .1)
     qtbot.wait(300)
     
     win.cycle(qtbot, main_form.tilt_win.window, Qt.LeftButton)
-    win.clickButton(qtbot, main_form, main_form.tilt_win.window)
+    # win.clickButton(qtbot, main_form, main_form.tilt_win.window)
     qtbot.mouseMove(main_form.tilt_win.window, QPoint(0, 0))
     pyautogui.click()
+    qtbot.wait(300)
     pyautogui.dragRel(10,10, .1)
     qtbot.wait(300)
 
