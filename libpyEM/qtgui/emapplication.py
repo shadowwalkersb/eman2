@@ -311,9 +311,9 @@ class EMApp(QtGui.QApplication):
 	def execute(self, logid=None):
 		print(logid)
 		if logid: E2end(logid) # We need to log the end of the process, don't we....
-		if not hasattr(EMAN2, '_called_from_test'):
-			self.exec_()
-			return sys.exit()
+		# if not hasattr(EMAN2, '_called_from_test'):
+		self.exec_()
+		return sys.exit()
 		
 	def hide_specific(self,child,inspector_too=True):
 		for child_ in self.children:
