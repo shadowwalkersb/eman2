@@ -596,7 +596,7 @@ class EM3DSliceInspector(QtGui.QWidget):
 		self.slice.setRange(min,max)
 	
 		
-def main():
+def main(sys_argv=sys.argv):
 	from .emapplication import EMApp
 	from .emglobjects import EM3DGLWidget
 	em_app = EMApp()
@@ -604,15 +604,15 @@ def main():
 	slice_model = EM3DSliceModel(window)
 	window.set_model(slice_model)
 	
-	if len(sys.argv)==1 : 
+	if len(sys_argv) == 1:
 		data = []
 		#for i in range(0,200):
 		e = EMData(64,64,64)
 		e.process_inplace('testimage.axes')
 		window.set_data(e)
 	else :
-		a=EMData(sys.argv[1])
-		window.set_file_name(sys.argv[1])
+		a=EMData(sys_argv[1])
+		window.set_file_name(sys_argv[1])
 		window.set_data(a)
 		
 	em_app.show()
