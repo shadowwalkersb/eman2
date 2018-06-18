@@ -52,6 +52,7 @@ def on_done(string_list):
 
 # This is just an example of how to make a browser. You should import the browser module from emselector
 def main():
+	global app
 	em_app = EMApp()
 	app = em_app
 	browser = EMBrowser()

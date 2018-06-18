@@ -3697,16 +3697,14 @@ def test_result() :
 	print(window.getResult())
 
 def main():
+	# global window
 	em_app = EMApp()
 	window = EMBrowserWidget(withmodal = True, multiselect = True)
 	window.ok.connect(test_result)
 	window.cancel.connect(test_result)
 
 	window.show()
-	ret = em_app.exec_()
-	try : window.updthreadexit = True
-	except : pass
-	sys.exit(ret)
+	em_app.execute()
 
 
 if __name__ == '__main__' :
