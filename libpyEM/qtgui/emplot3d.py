@@ -2646,10 +2646,10 @@ class EMDataFnPlotter(QtGui.QWidget):
 
 
 # This is just for testing, of course
-def main():
+def main(sys_argv=sys.argv):
 	app = EMApp()
 	window = EMPlot3DWidget(app)
-	if len(sys.argv)==1 :
+	if len(sys_argv)==1 :
 		l=[i/30.*pi for i in range(30)]
 		window.set_data([[0,1,2,3],[1,2,3,4],[2,3,4,3],[2,4,2,6]],"test")
 		window.set_data([l,l,l,[sin(2*i) for i in l]],"test2")
