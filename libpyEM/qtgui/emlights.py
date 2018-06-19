@@ -1433,10 +1433,11 @@ class EMLightsInspector(QtGui.QWidget,EMLightsInspectorBase):
 
 		
 # This is just for testing, of course
+from .emapplication import EMApp
+from .emglobjects import EM3DGLWidget
+em_app = EMApp()
+
 def main():
-	from .emapplication import EMApp
-	from .emglobjects import EM3DGLWidget
-	em_app = EMApp()
 	window = EM3DGLWidget()
 	em_lights = EMLights(window)
 	window.set_model(em_lights)
