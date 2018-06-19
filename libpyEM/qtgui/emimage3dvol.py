@@ -721,7 +721,7 @@ class EMVolumeInspector(QtGui.QWidget):
 		#self.scale.setValue(newscale)
 
 
-def main():
+def main(sys_argv=sys.argv):
 	from .emapplication import EMApp
 	from .emglobjects import EM3DGLWidget
 	
@@ -730,14 +730,14 @@ def main():
 	vol_model = EMVolumeModel(window)
 	window.set_model(vol_model)
 	
-	if len(sys.argv)==1 : 
+	if len(sys_argv)==1 : 
 		data = []
 		#for i in range(0,200):
 		e = test_image_3d(1,size=(64,64,64))
 		window.set_data(e)
 	else :
-		a=EMData(sys.argv[1])
-		vol_model.set_file_name(sys.argv[1])
+		a=EMData(sys_argv[1])
+		vol_model.set_file_name(sys_argv[1])
 		window.set_data(a)
 
 	em_app.show()
