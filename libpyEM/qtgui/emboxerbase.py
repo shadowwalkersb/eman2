@@ -66,6 +66,8 @@ TEMPLATE_MIN = 30
 
 EMBOXERBASE_DB = "e2boxercache/base.json"
 
+application = EMApp()
+
 def main(sys_argv=sys.argv):
 	progname = os.path.basename(sys.argv[0])
 	usage = '''%prog [options] <image> <image2>....
@@ -103,8 +105,6 @@ def main(sys_argv=sys.argv):
 		parser.error(error)
 
 	if cache_box_size: db["box_size"] = options.boxsize
-
-	application = EMApp()
 
 	module = EMBoxerModule(args,options.boxsize)
 	module.show_interfaces()
