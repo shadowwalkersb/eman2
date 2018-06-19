@@ -6626,9 +6626,10 @@ class E2ResolutionTask(WorkFlowTask):
 #	
 
 	
+from .emapplication import EMApp
+em_app = EMApp()
+
 def main():
-	from .emapplication import EMApp
-	em_app = EMApp()
 	sprinit = SPRInitTask()
 	window = sprinit.run_form()
 	window.show()
