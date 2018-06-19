@@ -2200,9 +2200,9 @@ class EMGenericFileItem(EMGenericItem):
 
 app = None
 
+em_app = EMApp()
 
 def main():
-	em_app = EMApp()
 #	em_qt_widget = EMSelectorModule(save_as_mode=False)
 #    em_app.show()
 	
