@@ -2564,21 +2564,21 @@ class EMImageInspector2D(QtGui.QWidget):
 
 
 # This is just for testing, of course
-def main():
+def main(sys_argv=sys.argv):
 	from .emapplication import EMApp
 	em_app = EMApp()
 	window = EMImage2DWidget(application=em_app)
 
-	if len(sys.argv)==1 :
+	if len(sys_argv)==1 :
 		window.set_data(test_image(size=(128,128)))
 	else :
-		a=EMData.read_images(sys.argv[1])
+		a=EMData.read_images(sys_argv[1])
 		if len(a) == 1:	a = a[0]
-		window.set_data(a,sys.argv[1])
+		window.set_data(a,sys_argv[1])
 
 	em_app.show()
 	window.optimally_resize()
-	sys.exit(em_app.exec_())
+	em_app.execute()
 
 
 if __name__ == '__main__':
