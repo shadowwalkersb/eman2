@@ -718,10 +718,11 @@ class EMIsoInspector(QtGui.QWidget):
 	def set_hist(self,hist,minden,maxden):
 		self.hist.set_data(hist,minden,maxden)
 
+from .emglobjects import EM3DGLWidget
+from .emapplication import EMApp
+app = EMApp()
+
 def main():
-	from .emglobjects import EM3DGLWidget
-	from .emapplication import EMApp
-	app = EMApp()
 	window = EM3DGLWidget()
 	iso_model = EMIsosurfaceModel(window, test_image_3d(1,size=(64,64,64)))
 	window.set_model(iso_model)
