@@ -131,6 +131,8 @@ class WorkFlowTask(object):
 		self.form.emform_cancel.connect(self.on_form_cancel)
 		self.form.emform_close.connect(self.on_form_close)
 		self.form.display_file.connect(self.on_display_file)
+		
+		return self.form
 	
 	def get_params(self): raise NotImplementedError
 	
@@ -6628,7 +6630,9 @@ def main():
 	from .emapplication import EMApp
 	em_app = EMApp()
 	sprinit = SPRInitTask()
-	window = sprinit.run_form() 
+	window = sprinit.run_form()
+	window.show()
+	window.raise_()
 	#em_app.show()
 	em_app.execute()	
 
