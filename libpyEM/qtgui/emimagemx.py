@@ -3422,11 +3422,11 @@ class EM3DDataListCache(EMMXDataCache):
 	def is_3d(self): return True
 
 
-def main():
+def main(sys_argv=sys.argv):
 	em_app = EMApp()
 	window = EMImageMXWidget(application=em_app)
 
-	if len(sys.argv)==1 :
+	if len(sys_argv)==1 :
 		data = []
 		for i in range(0,200):
 			e = test_image(Util.get_irand(0,9))
@@ -3434,8 +3434,8 @@ def main():
 
 		window.set_data(data,soft_delete=True)
 	else :
-		a=EMData.read_images(sys.argv[1])
-		window.set_file_name(sys.argv[1])
+		a=EMData.read_images(sys_argv[1])
+		window.set_file_name(sys_argv[1])
 		window.set_data(a)
 
 #	widget.show()
