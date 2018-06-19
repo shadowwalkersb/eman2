@@ -197,8 +197,9 @@ class EMPDBValWidget(QtGui.QWidget):
 		self.pdb_model.set_current_text(pdb_file) #updates GL with the new pdb file
 
 
+em_app = EMApp()
+
 def main():
-	em_app = EMApp()
 	pdb_widget = EMPDBValWidget()
 
 	pdb_widget.volume_line_edit.setText("rdv-target2.mrc")
