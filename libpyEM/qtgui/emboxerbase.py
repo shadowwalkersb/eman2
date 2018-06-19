@@ -66,7 +66,7 @@ TEMPLATE_MIN = 30
 
 EMBOXERBASE_DB = "e2boxercache/base.json"
 
-def main():
+def main(sys_argv=sys.argv):
 	progname = os.path.basename(sys.argv[0])
 	usage = '''%prog [options] <image> <image2>....
 
@@ -87,7 +87,7 @@ def main():
 
 	parser = OptionParser(usage=usage,version=EMANVERSION)
 	parser.add_option("--boxsize",type="int",help="Box size in pixels",default=-1)
-	(options, args) = parser.parse_args()
+	(options, args) = parser.parse_args(sys_argv)
 
 	db = js_open_dict(EMBOXERBASE_DB)
 	cache_box_size = True
