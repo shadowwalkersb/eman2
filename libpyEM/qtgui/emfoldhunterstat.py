@@ -443,9 +443,10 @@ class E2FoldHunterStat(object):
 		###################################################
 
 
+from .emapplication import EMApp
+em_app = EMApp()
+
 def main():
-	from .emapplication import EMApp
-	em_app = EMApp()
 	window2 = E2FoldHunterStat()
 	print("This program is meant to be run in conjunction with e2validatemed.py in the programs directory")
 	window2.show()
