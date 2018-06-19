@@ -52,8 +52,9 @@ def on_done(string_list):
 	app.quit()
 
 # This is just an example of how to make a browser. You should import the browser module from emselector
+em_app = EMApp()
+
 def main():
-	em_app = EMApp()
 	app = em_app
 	browser = EMBrowser()
 	browser.done.connect(on_done)
