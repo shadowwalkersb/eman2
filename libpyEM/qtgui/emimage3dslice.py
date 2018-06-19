@@ -596,10 +596,11 @@ class EM3DSliceInspector(QtGui.QWidget):
 		self.slice.setRange(min,max)
 	
 		
+from .emapplication import EMApp
+from .emglobjects import EM3DGLWidget
+em_app = EMApp()
+
 def main(sys_argv=sys.argv):
-	from .emapplication import EMApp
-	from .emglobjects import EM3DGLWidget
-	em_app = EMApp()
 	window = EM3DGLWidget()
 	slice_model = EM3DSliceModel(window)
 	window.set_model(slice_model)

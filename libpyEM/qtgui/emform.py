@@ -2126,9 +2126,10 @@ def on_cancel():
 
 
 # This is just for testing, of course
+from .emapplication import EMApp
+em_app = EMApp()
+
 def main():
-	from .emapplication import EMApp
-	em_app = EMApp()
 	window = EMFormWidget(params=get_example_form_params())
 	window.setWindowTitle("A test form")
 	window.emform_ok.connect(on_ok)
