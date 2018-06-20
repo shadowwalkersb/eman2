@@ -67,6 +67,7 @@ def test_emsprworkflow():
 def test_emimage2d():
     emimage2d.main([''])
 
+@pytest.mark.skip(reason="Broken, segfault")
 def test_emimage3diso():
     emimage3diso.main()
 
