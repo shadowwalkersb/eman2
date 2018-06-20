@@ -66,6 +66,7 @@ def test_emsprworkflow():
 def test_emimage2d():
     emimage2d.main([''])
 
+@pytest.mark.skip(reason="Needs user response")
 @pytest.mark.qt_no_exception_capture
 def test_emimage3dsym():
     emimage3dsym.main()
