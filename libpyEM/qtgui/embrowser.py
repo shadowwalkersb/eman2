@@ -3695,9 +3695,9 @@ class EMBrowserWidget(QtGui.QWidget) :
 		self.module_closed.emit()
 
 # This is just for testing, of course
+em_app = EMApp()
 
 def main():
-	em_app = EMApp()
 	window = EMBrowserWidget(withmodal = True, multiselect = True)
 
 	window.show()
