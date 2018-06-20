@@ -94,5 +94,6 @@ def test_empdbitem3d():
 def test_empdbvaltool():
     empdbvaltool.main()
 
+@pytest.mark.qt_no_exception_capture
 def test_empdbviewer():
     empdbviewer.main()
