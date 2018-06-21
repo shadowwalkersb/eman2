@@ -89,5 +89,6 @@ def test_emimagemx():
 def test_empdbitem3d():
     empdbitem3d.main()
 
+@pytest.mark.skip(reason="Needs input files")
 def test_empdbvaltool():
     empdbvaltool.main()
