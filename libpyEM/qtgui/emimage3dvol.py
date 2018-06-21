@@ -721,11 +721,12 @@ class EMVolumeInspector(QtGui.QWidget):
 		#self.scale.setValue(newscale)
 
 
+from .emapplication import EMApp
+from .emglobjects import EM3DGLWidget
+
+em_app = EMApp()
+
 def main(sys_argv=sys.argv):
-	from .emapplication import EMApp
-	from .emglobjects import EM3DGLWidget
-	
-	em_app = EMApp()
 	window = EM3DGLWidget()
 	vol_model = EMVolumeModel(window)
 	window.set_model(vol_model)

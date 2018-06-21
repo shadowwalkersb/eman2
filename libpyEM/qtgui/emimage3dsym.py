@@ -1947,9 +1947,9 @@ class EMSymInspector(QtGui.QWidget):
 		self.target().load_rotation(self.get_current_rotation())
 
 	
+em_app = EMApp()
+
 def main():
-	em_app = EMApp()
-	
 	#First demonstration
 	dialog = EMSymChoiceDialog()
 	choices_dict = dialog.exec_()
