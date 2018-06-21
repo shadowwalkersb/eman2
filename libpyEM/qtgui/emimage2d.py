@@ -2564,9 +2564,10 @@ class EMImageInspector2D(QtGui.QWidget):
 
 
 # This is just for testing, of course
+from .emapplication import EMApp
+em_app = EMApp()
+
 def main(sys_argv=sys.argv):
-	from .emapplication import EMApp
-	em_app = EMApp()
 	window = EMImage2DWidget(application=em_app)
 
 	if len(sys_argv)==1 :
