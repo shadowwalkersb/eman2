@@ -3073,7 +3073,7 @@ def main(sys_argv=sys.argv):
 		for i in range(1,len(sys.argv)):
 			window.set_data_from_file(sys.argv[i])
 	
-	app.show()
+	window.show()
 	app.execute()
 
 
