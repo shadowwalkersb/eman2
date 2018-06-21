@@ -3422,8 +3422,9 @@ class EM3DDataListCache(EMMXDataCache):
 	def is_3d(self): return True
 
 
+em_app = EMApp()
+
 def main(sys_argv=sys.argv):
-	em_app = EMApp()
 	window = EMImageMXWidget(application=em_app)
 
 	if len(sys_argv)==1 :
