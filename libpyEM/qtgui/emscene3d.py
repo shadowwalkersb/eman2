@@ -3287,9 +3287,10 @@ class GLdemo(QtGui.QWidget):
 		self.widget.close()
 
 
+from .emapplication import EMApp
+app = EMApp()
+
 def main():
-	from .emapplication import EMApp
-	app = EMApp()
 	window = GLdemo()
 	window.show()
 	app.execute()
