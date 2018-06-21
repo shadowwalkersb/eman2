@@ -1036,11 +1036,11 @@ class EMPDBInspector(QtGui.QWidget):
 	def set_xyz_trans(self,x,y,z):
 		self.rotation_sliders.set_xyz_trans(x,y,z)
 
-def main():
-	from .emapplication import EMApp
-	from .emimage3d import EMImage3DWidget
-	em_app = EMApp()
+from .emapplication import EMApp
+from .emimage3d import EMImage3DWidget
+em_app = EMApp()
 
+def main():
 	window = EMImage3DWidget()
 	pdb_model = EMPDBModel(window)
 	window.add_model(pdb_model)
