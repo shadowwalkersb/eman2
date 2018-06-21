@@ -1,8 +1,10 @@
+import pytest
 import os
 from PyQt4.QtCore import Qt, QPoint
 import pyautogui
 
 
+@pytest.mark.qt_no_exception_capture
 def test_display_file(qtbot, win, datadir):
     win = win('e2evalimage',[os.path.join(datadir, 'e2evalimage', 'BGal_000232.hdf')])
     main_form = win.main_form
