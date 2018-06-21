@@ -605,7 +605,7 @@ def main():
 	window.add_model(font_model)
 	window.cam.default_z = -25	# From David's "this is me hacking"
 	window.cam.cam_z = -25 		# From David's "this is me hacking"
-	em_app.show()
+	window.show()
 	em_app.execute()
 
 

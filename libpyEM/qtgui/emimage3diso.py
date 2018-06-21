@@ -726,8 +726,8 @@ def main():
 	iso_model = EMIsosurfaceModel(window, test_image_3d(1,size=(64,64,64)))
 	window.set_model(iso_model)
 	window.updateGL()
-	
-	app.show()
+
+	window.show()
 	app.execute()
 
 

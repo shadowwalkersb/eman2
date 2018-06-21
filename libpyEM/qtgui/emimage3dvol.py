@@ -740,7 +740,7 @@ def main(sys_argv=sys.argv):
 		vol_model.set_file_name(sys_argv[1])
 		window.set_data(a)
 
-	em_app.show()
+	window.show()
 	em_app.execute()
 
 

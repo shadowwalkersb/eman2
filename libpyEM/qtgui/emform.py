@@ -2139,7 +2139,7 @@ def main():
 	window2.emform_ok.connect(on_ok)
 	window2.emform_cancel.connect(on_cancel)
 	
-	em_app.show()
+	window2.show()
 	em_app.execute()
 
 

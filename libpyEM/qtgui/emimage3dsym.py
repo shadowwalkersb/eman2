@@ -1957,8 +1957,8 @@ def main():
 	
 	#Second demonstration
 	window = EMSymViewerWidget()
-	
-	em_app.show()
+
+	window.show()
 	em_app.execute()
 
 

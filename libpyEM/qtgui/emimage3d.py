@@ -855,7 +855,7 @@ def main():
 	else :
 		a=EMData(sys.argv[1])
 		window.set_data(a,sys.argv[1])
-	em_app.show()
+	window.show()
 	em_app.execute()
 
 

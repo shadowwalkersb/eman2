@@ -2576,7 +2576,7 @@ def main(sys_argv=sys.argv):
 		if len(a) == 1:	a = a[0]
 		window.set_data(a,sys_argv[1])
 
-	em_app.show()
+	window.show()
 	window.optimally_resize()
 	em_app.execute()
 

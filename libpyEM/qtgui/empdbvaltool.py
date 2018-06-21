@@ -203,8 +203,8 @@ def main():
 
 	pdb_widget.volume_line_edit.setText("rdv-target2.mrc")
 	pdb_widget.pdb_line_edit.setText("fh-solution-0-1UF2-T.pdb")
-	
-	em_app.show()
+
+	pdb_widget.show()
 	em_app.execute()
 
 

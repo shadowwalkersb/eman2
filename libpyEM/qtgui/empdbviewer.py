@@ -1045,7 +1045,7 @@ def main():
 	pdb_model = EMPDBModel(window)
 	window.add_model(pdb_model)
 
-	em_app.show()
+	window.show()
 	em_app.execute()
 
 

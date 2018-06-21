@@ -3439,7 +3439,7 @@ def main(sys_argv=sys.argv):
 		window.set_data(a)
 
 #	widget.show()
-	em_app.show()
+	window.show()
 	window.optimally_resize()
 	em_app.execute()
 

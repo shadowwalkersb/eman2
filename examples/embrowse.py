@@ -57,7 +57,7 @@ def main():
 	app = em_app
 	browser = EMBrowser()
 	browser.done.connect(on_done)
-	em_app.show()
+	browser.show()
 	em_app.execute()
 
 

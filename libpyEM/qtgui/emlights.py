@@ -1439,8 +1439,8 @@ def main():
 	em_app = EMApp()
 	window = EM3DGLWidget()
 	em_lights = EMLights(window)
-	window.set_model(em_lights) 
-	em_app.show()
+	window.set_model(em_lights)
+	window.show()
 	em_app.execute()
 		
 	
