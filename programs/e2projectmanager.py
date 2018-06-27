@@ -286,9 +286,10 @@ class EMProjectManager(QtGui.QMainWindow):
 		"""
 		self.tree_stacked_widget = QtGui.QStackedWidget()
 		self.tree_stacked_widget.setMinimumWidth(300)
+		self.tree_widgets = []
 		self.tree_stacked_widget.addWidget(self.makeTreeWidget(os.getenv("EMAN2DIR")+'/lib/pmconfig/spr.json', 'Single Particle Refinement'))
-		self.tree_stacked_widget.addWidget(self.makeTreeWidget(os.getenv("EMAN2DIR")+'/lib/pmconfig/tomo.json', 'Tomography'))
-		self.tree_stacked_widget.addWidget(self.makeTreeWidget(os.getenv("EMAN2DIR")+'/lib/pmconfig/tomo_legacy.json', 'SPT (Legacy)'))
+		# self.tree_stacked_widget.addWidget(self.makeTreeWidget(os.getenv("EMAN2DIR")+'/lib/pmconfig/tomo.json', 'Tomography'))
+		# self.tree_stacked_widget.addWidget(self.makeTreeWidget(os.getenv("EMAN2DIR")+'/lib/pmconfig/tomo_legacy.json', 'SPT (Legacy)'))
 
 		return self.tree_stacked_widget
 
@@ -597,11 +598,16 @@ class EMProjectManager(QtGui.QMainWindow):
 		"""
 		recursive helper function for loadTree
 		"""
+		# print("  toplevel[CHILDREN]: ", toplevel["CHILDREN"])
 		for child in toplevel["CHILDREN"]:
 			qtreewidget = PMQTreeWidgetItem([child["NAME"]])
 			qtreewidget.setIcon(0, self.icons[child["ICON"]])
 			# optional program
-			if "PROGRAM" in child: qtreewidget.setProgram(child["PROGRAM"])
+			if "PROGRAM" in child:
+				qtreewidget.setProgram(child["PROGRAM"])
+				# print("    child[PROGRAM]: ", child["PROGRAM"])
+				print("    child[NAME]: ", child["NAME"])
+				self.tree_widgets.append(qtreewidget)
 			# optional table to diaply rather than a program
 			if "TABLE" in child: qtreewidget.setTable(child["TABLE"])
 			# Optional mode for the program to run in. The default is to have no mode
@@ -642,7 +648,10 @@ class EMProjectManager(QtGui.QMainWindow):
 			qtreewidget = PMQTreeWidgetItem([toplevel["NAME"]])
 			qtreewidget.setIcon(0, self.icons[toplevel["ICON"]])
 			# optional program
-			if "PROGRAM" in toplevel: qtreewidget.setProgram(toplevel["PROGRAM"])
+			if "PROGRAM" in toplevel:
+				qtreewidget.setProgram(toplevel["PROGRAM"])
+				print("toplevel[NAME]: ", toplevel["NAME"])
+				self.tree_widgets.append(qtreewidget)
 			# optional table to diaply rather than a program
 			if "TABLE" in toplevel: qtreewidget.setTable(toplevel["TABLE"])
 			# Optional mode for the program to run in. The default is to have no mode
@@ -672,6 +681,7 @@ class EMProjectManager(QtGui.QMainWindow):
 
 	def _tree_widget_click(self, item, col):
 		# Display the progrma GUI
+		print("item: ", item, " col: ", col)
 		if item.getProgram():
 			self._set_GUI(item.getProgram(), item.getMode())
 			self.updateProject()
