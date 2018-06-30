@@ -1670,7 +1670,13 @@ class PMProgramWidget(QtGui.QTabWidget):
 		self.helptexteditbox.setWordWrapMode(QtGui.QTextOption.WordWrap)
 		self.helptexteditbox.setReadOnly(True)
 		self.helptexteditbox.viewport().setCursor(QtCore.Qt.ArrowCursor)
-		self.helptexteditbox.setText(self.pm().loadUsage(self.pm().getProgram()))
+		self_pm = self.pm()
+		print("self_pm: ", self_pm)
+		prog_txt = self.pm().getProgram()
+		print("prog_txt: ", prog_txt)
+		text = self.pm().loadUsage(prog_txt)
+		print("text: ", text)
+		self.helptexteditbox.setText(text)
 		self.addTab(self.helptexteditbox, "Help")
 
 		self.previoustab = 0
