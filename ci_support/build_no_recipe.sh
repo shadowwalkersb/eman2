@@ -42,4 +42,4 @@ cd $build_dir
 
 cmake ${src_dir}
 make test-gui-coverage
-coveralls --base_dir ${src_dir}
+coveralls
