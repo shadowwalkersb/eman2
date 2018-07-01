@@ -41,5 +41,7 @@ mkdir -p $build_dir
 cd $build_dir
 
 cmake ${src_dir}
+make -j${CPU_COUNT}
+
 make test-gui-coverage
 coveralls
