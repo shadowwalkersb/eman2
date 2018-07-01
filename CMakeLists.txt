@@ -374,7 +374,11 @@ add_custom_target(test-gui-coverage
 				--cov=${EMAN_PREFIX}/bin/
 				--cov=eman2_gui
 				--cov-config=${CMAKE_SOURCE_DIR}/tests/gui/.coveragerc
-				--cov-report term-missing
+				--cov-report html
+	COMMAND coveralls
+				--config_file=${CMAKE_SOURCE_DIR}/tests/gui/.coveragerc
+				--base_dir=${CMAKE_SOURCE_DIR}
+				--coveralls_yaml=${CMAKE_SOURCE_DIR}/.coveralls.yml
 	WORKING_DIRECTORY ${SP_DIR}
 	DEPENDS PythonFiles
 )
