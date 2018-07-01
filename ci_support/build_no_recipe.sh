@@ -11,7 +11,8 @@ if [ ! -z ${TRAVIS} ];then
 
     # Following Wiki instructions at
     # http://blake.bcm.edu/emanwiki/EMAN2/COMPILE_EMAN2_ANACONDA
-    conda install pyqt=4 pytest pytest-cov pytest-qt python-coveralls -c defaults -c conda-forge --yes --quiet
+    conda install eman-deps=11.2 -c cryoem -c defaults -c conda-forge --yes --quiet
+    conda install pytest pytest-cov pytest-qt python-coveralls -c defaults -c conda-forge --yes --quiet
 fi
 
 if [ ! -z ${CIRCLECI} ];then
@@ -41,4 +42,4 @@ cd $build_dir
 
 cmake ${src_dir}
 make test-gui-coverage
-coveralls
+coveralls --base_dir ${src_dir}
