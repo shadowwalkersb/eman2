@@ -1,0 +1,841 @@
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=emulateIE7" />
+    <title>Coverage for eman2_gui/emrctstrategy.py: 22%</title>
+    <link rel="stylesheet" href="style.css" type="text/css">
+    
+    <script type="text/javascript" src="jquery.min.js"></script>
+    <script type="text/javascript" src="jquery.hotkeys.js"></script>
+    <script type="text/javascript" src="jquery.isonscreen.js"></script>
+    <script type="text/javascript" src="coverage_html.js"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(coverage.pyfile_ready);
+    </script>
+</head>
+<body class="pyfile">
+
+<div id="header">
+    <div class="content">
+        <h1>Coverage for <b>eman2_gui/emrctstrategy.py</b> :
+            <span class="pc_cov">22%</span>
+        </h1>
+
+        <img id="keyboard_icon" src="keybd_closed.png" alt="Show keyboard shortcuts" />
+
+        <h2 class="stats">
+            249 statements &nbsp;
+            <span class="run hide_run shortkey_r button_toggle_run">61 run</span>
+            <span class="mis shortkey_m button_toggle_mis">188 missing</span>
+            <span class="exc shortkey_x button_toggle_exc">0 excluded</span>
+
+            
+                <span class="par run hide_run shortkey_p button_toggle_par">7 partial</span>
+            
+        </h2>
+    </div>
+</div>
+
+<div class="help_panel">
+    <img id="panel_icon" src="keybd_open.png" alt="Hide keyboard shortcuts" />
+<p class="legend">Hot-keys on this page</p>
+    <div>
+<p class="keyhelp">
+        <span class="key">r</span>
+        <span class="key">m</span>
+        <span class="key">x</span>
+        <span class="key">p</span> &nbsp; toggle line displays
+    </p>
+<p class="keyhelp">
+        <span class="key">j</span>
+        <span class="key">k</span> &nbsp; next/prev highlighted chunk
+    </p>
+<p class="keyhelp">
+        <span class="key">0</span> &nbsp; (zero) top of page
+    </p>
+<p class="keyhelp">
+        <span class="key">1</span> &nbsp; (one) first highlighted chunk
+    </p>
+    </div>
+</div>
+
+<div id="source">
+    <table>
+        <tr>
+            <td class="linenos">
+<p id="n1" class="pln"><a href="#n1">1</a></p>
+<p id="n2" class="stm run hide_run"><a href="#n2">2</a></p>
+<p id="n3" class="pln"><a href="#n3">3</a></p>
+<p id="n4" class="pln"><a href="#n4">4</a></p>
+<p id="n5" class="pln"><a href="#n5">5</a></p>
+<p id="n6" class="pln"><a href="#n6">6</a></p>
+<p id="n7" class="pln"><a href="#n7">7</a></p>
+<p id="n8" class="pln"><a href="#n8">8</a></p>
+<p id="n9" class="pln"><a href="#n9">9</a></p>
+<p id="n10" class="pln"><a href="#n10">10</a></p>
+<p id="n11" class="pln"><a href="#n11">11</a></p>
+<p id="n12" class="pln"><a href="#n12">12</a></p>
+<p id="n13" class="pln"><a href="#n13">13</a></p>
+<p id="n14" class="pln"><a href="#n14">14</a></p>
+<p id="n15" class="pln"><a href="#n15">15</a></p>
+<p id="n16" class="pln"><a href="#n16">16</a></p>
+<p id="n17" class="pln"><a href="#n17">17</a></p>
+<p id="n18" class="pln"><a href="#n18">18</a></p>
+<p id="n19" class="pln"><a href="#n19">19</a></p>
+<p id="n20" class="pln"><a href="#n20">20</a></p>
+<p id="n21" class="pln"><a href="#n21">21</a></p>
+<p id="n22" class="pln"><a href="#n22">22</a></p>
+<p id="n23" class="pln"><a href="#n23">23</a></p>
+<p id="n24" class="pln"><a href="#n24">24</a></p>
+<p id="n25" class="pln"><a href="#n25">25</a></p>
+<p id="n26" class="pln"><a href="#n26">26</a></p>
+<p id="n27" class="pln"><a href="#n27">27</a></p>
+<p id="n28" class="pln"><a href="#n28">28</a></p>
+<p id="n29" class="pln"><a href="#n29">29</a></p>
+<p id="n30" class="pln"><a href="#n30">30</a></p>
+<p id="n31" class="pln"><a href="#n31">31</a></p>
+<p id="n32" class="pln"><a href="#n32">32</a></p>
+<p id="n33" class="pln"><a href="#n33">33</a></p>
+<p id="n34" class="stm run hide_run"><a href="#n34">34</a></p>
+<p id="n35" class="pln"><a href="#n35">35</a></p>
+<p id="n36" class="stm run hide_run"><a href="#n36">36</a></p>
+<p id="n37" class="pln"><a href="#n37">37</a></p>
+<p id="n38" class="stm run hide_run"><a href="#n38">38</a></p>
+<p id="n39" class="stm run hide_run"><a href="#n39">39</a></p>
+<p id="n40" class="pln"><a href="#n40">40</a></p>
+<p id="n41" class="pln"><a href="#n41">41</a></p>
+<p id="n42" class="stm run hide_run"><a href="#n42">42</a></p>
+<p id="n43" class="stm mis"><a href="#n43">43</a></p>
+<p id="n44" class="pln"><a href="#n44">44</a></p>
+<p id="n45" class="pln"><a href="#n45">45</a></p>
+<p id="n46" class="stm run hide_run"><a href="#n46">46</a></p>
+<p id="n47" class="stm mis"><a href="#n47">47</a></p>
+<p id="n48" class="pln"><a href="#n48">48</a></p>
+<p id="n49" class="pln"><a href="#n49">49</a></p>
+<p id="n50" class="stm run hide_run"><a href="#n50">50</a></p>
+<p id="n51" class="stm mis"><a href="#n51">51</a></p>
+<p id="n52" class="pln"><a href="#n52">52</a></p>
+<p id="n53" class="pln"><a href="#n53">53</a></p>
+<p id="n54" class="stm run hide_run"><a href="#n54">54</a></p>
+<p id="n55" class="stm mis"><a href="#n55">55</a></p>
+<p id="n56" class="pln"><a href="#n56">56</a></p>
+<p id="n57" class="pln"><a href="#n57">57</a></p>
+<p id="n58" class="stm run hide_run"><a href="#n58">58</a></p>
+<p id="n59" class="stm mis"><a href="#n59">59</a></p>
+<p id="n60" class="pln"><a href="#n60">60</a></p>
+<p id="n61" class="pln"><a href="#n61">61</a></p>
+<p id="n62" class="stm run hide_run"><a href="#n62">62</a></p>
+<p id="n63" class="stm mis"><a href="#n63">63</a></p>
+<p id="n64" class="pln"><a href="#n64">64</a></p>
+<p id="n65" class="stm run hide_run"><a href="#n65">65</a></p>
+<p id="n66" class="stm mis"><a href="#n66">66</a></p>
+<p id="n67" class="pln"><a href="#n67">67</a></p>
+<p id="n68" class="stm run hide_run"><a href="#n68">68</a></p>
+<p id="n69" class="pln"><a href="#n69">69</a></p>
+<p id="n70" class="stm run hide_run"><a href="#n70">70</a></p>
+<p id="n71" class="stm run hide_run"><a href="#n71">71</a></p>
+<p id="n72" class="pln"><a href="#n72">72</a></p>
+<p id="n73" class="stm run hide_run"><a href="#n73">73</a></p>
+<p id="n74" class="stm mis"><a href="#n74">74</a></p>
+<p id="n75" class="pln"><a href="#n75">75</a></p>
+<p id="n76" class="stm run hide_run"><a href="#n76">76</a></p>
+<p id="n77" class="stm mis"><a href="#n77">77</a></p>
+<p id="n78" class="pln"><a href="#n78">78</a></p>
+<p id="n79" class="stm run hide_run"><a href="#n79">79</a></p>
+<p id="n80" class="stm mis"><a href="#n80">80</a></p>
+<p id="n81" class="pln"><a href="#n81">81</a></p>
+<p id="n82" class="stm run hide_run"><a href="#n82">82</a></p>
+<p id="n83" class="stm mis"><a href="#n83">83</a></p>
+<p id="n84" class="pln"><a href="#n84">84</a></p>
+<p id="n85" class="stm run hide_run"><a href="#n85">85</a></p>
+<p id="n86" class="stm mis"><a href="#n86">86</a></p>
+<p id="n87" class="stm mis"><a href="#n87">87</a></p>
+<p id="n88" class="stm mis"><a href="#n88">88</a></p>
+<p id="n89" class="stm mis"><a href="#n89">89</a></p>
+<p id="n90" class="stm mis"><a href="#n90">90</a></p>
+<p id="n91" class="stm mis"><a href="#n91">91</a></p>
+<p id="n92" class="stm mis"><a href="#n92">92</a></p>
+<p id="n93" class="stm mis"><a href="#n93">93</a></p>
+<p id="n94" class="stm mis"><a href="#n94">94</a></p>
+<p id="n95" class="stm mis"><a href="#n95">95</a></p>
+<p id="n96" class="stm mis"><a href="#n96">96</a></p>
+<p id="n97" class="stm mis"><a href="#n97">97</a></p>
+<p id="n98" class="pln"><a href="#n98">98</a></p>
+<p id="n99" class="stm run hide_run"><a href="#n99">99</a></p>
+<p id="n100" class="stm mis"><a href="#n100">100</a></p>
+<p id="n101" class="stm mis"><a href="#n101">101</a></p>
+<p id="n102" class="stm mis"><a href="#n102">102</a></p>
+<p id="n103" class="stm mis"><a href="#n103">103</a></p>
+<p id="n104" class="stm mis"><a href="#n104">104</a></p>
+<p id="n105" class="stm mis"><a href="#n105">105</a></p>
+<p id="n106" class="stm mis"><a href="#n106">106</a></p>
+<p id="n107" class="stm mis"><a href="#n107">107</a></p>
+<p id="n108" class="stm mis"><a href="#n108">108</a></p>
+<p id="n109" class="pln"><a href="#n109">109</a></p>
+<p id="n110" class="stm run hide_run"><a href="#n110">110</a></p>
+<p id="n111" class="stm mis"><a href="#n111">111</a></p>
+<p id="n112" class="pln"><a href="#n112">112</a></p>
+<p id="n113" class="stm run hide_run"><a href="#n113">113</a></p>
+<p id="n114" class="pln"><a href="#n114">114</a></p>
+<p id="n115" class="stm run hide_run"><a href="#n115">115</a></p>
+<p id="n116" class="stm run hide_run"><a href="#n116">116</a></p>
+<p id="n117" class="stm run hide_run"><a href="#n117">117</a></p>
+<p id="n118" class="stm run hide_run"><a href="#n118">118</a></p>
+<p id="n119" class="stm run hide_run"><a href="#n119">119</a></p>
+<p id="n120" class="stm run hide_run"><a href="#n120">120</a></p>
+<p id="n121" class="stm run hide_run"><a href="#n121">121</a></p>
+<p id="n122" class="stm run hide_run"><a href="#n122">122</a></p>
+<p id="n123" class="pln"><a href="#n123">123</a></p>
+<p id="n124" class="pln"><a href="#n124">124</a></p>
+<p id="n125" class="stm run hide_run"><a href="#n125">125</a></p>
+<p id="n126" class="stm par run hide_run"><a href="#n126">126</a></p>
+<p id="n127" class="stm par run hide_run"><a href="#n127">127</a></p>
+<p id="n128" class="stm mis"><a href="#n128">128</a></p>
+<p id="n129" class="stm mis"><a href="#n129">129</a></p>
+<p id="n130" class="pln"><a href="#n130">130</a></p>
+<p id="n131" class="pln"><a href="#n131">131</a></p>
+<p id="n132" class="stm run hide_run"><a href="#n132">132</a></p>
+<p id="n133" class="stm run hide_run"><a href="#n133">133</a></p>
+<p id="n134" class="stm run hide_run"><a href="#n134">134</a></p>
+<p id="n135" class="stm run hide_run"><a href="#n135">135</a></p>
+<p id="n136" class="pln"><a href="#n136">136</a></p>
+<p id="n137" class="stm run hide_run"><a href="#n137">137</a></p>
+<p id="n138" class="stm mis"><a href="#n138">138</a></p>
+<p id="n139" class="stm mis"><a href="#n139">139</a></p>
+<p id="n140" class="stm mis"><a href="#n140">140</a></p>
+<p id="n141" class="stm mis"><a href="#n141">141</a></p>
+<p id="n142" class="pln"><a href="#n142">142</a></p>
+<p id="n143" class="stm run hide_run"><a href="#n143">143</a></p>
+<p id="n144" class="pln"><a href="#n144">144</a></p>
+<p id="n145" class="stm run hide_run"><a href="#n145">145</a></p>
+<p id="n146" class="stm par run hide_run"><a href="#n146">146</a></p>
+<p id="n147" class="stm par run hide_run"><a href="#n147">147</a></p>
+<p id="n148" class="pln"><a href="#n148">148</a></p>
+<p id="n149" class="pln"><a href="#n149">149</a></p>
+<p id="n150" class="stm mis"><a href="#n150">150</a></p>
+<p id="n151" class="pln"><a href="#n151">151</a></p>
+<p id="n152" class="pln"><a href="#n152">152</a></p>
+<p id="n153" class="stm mis"><a href="#n153">153</a></p>
+<p id="n154" class="pln"><a href="#n154">154</a></p>
+<p id="n155" class="pln"><a href="#n155">155</a></p>
+<p id="n156" class="pln"><a href="#n156">156</a></p>
+<p id="n157" class="stm mis"><a href="#n157">157</a></p>
+<p id="n158" class="stm mis"><a href="#n158">158</a></p>
+<p id="n159" class="stm mis"><a href="#n159">159</a></p>
+<p id="n160" class="pln"><a href="#n160">160</a></p>
+<p id="n161" class="pln"><a href="#n161">161</a></p>
+<p id="n162" class="stm mis"><a href="#n162">162</a></p>
+<p id="n163" class="stm mis"><a href="#n163">163</a></p>
+<p id="n164" class="pln"><a href="#n164">164</a></p>
+<p id="n165" class="stm mis"><a href="#n165">165</a></p>
+<p id="n166" class="stm mis"><a href="#n166">166</a></p>
+<p id="n167" class="pln"><a href="#n167">167</a></p>
+<p id="n168" class="stm mis"><a href="#n168">168</a></p>
+<p id="n169" class="stm mis"><a href="#n169">169</a></p>
+<p id="n170" class="pln"><a href="#n170">170</a></p>
+<p id="n171" class="pln"><a href="#n171">171</a></p>
+<p id="n172" class="stm run hide_run"><a href="#n172">172</a></p>
+<p id="n173" class="stm par run hide_run"><a href="#n173">173</a></p>
+<p id="n174" class="stm mis"><a href="#n174">174</a></p>
+<p id="n175" class="stm mis"><a href="#n175">175</a></p>
+<p id="n176" class="stm par run hide_run"><a href="#n176">176</a></p>
+<p id="n177" class="stm mis"><a href="#n177">177</a></p>
+<p id="n178" class="pln"><a href="#n178">178</a></p>
+<p id="n179" class="stm mis"><a href="#n179">179</a></p>
+<p id="n180" class="pln"><a href="#n180">180</a></p>
+<p id="n181" class="stm mis"><a href="#n181">181</a></p>
+<p id="n182" class="pln"><a href="#n182">182</a></p>
+<p id="n183" class="pln"><a href="#n183">183</a></p>
+<p id="n184" class="stm mis"><a href="#n184">184</a></p>
+<p id="n185" class="stm mis"><a href="#n185">185</a></p>
+<p id="n186" class="stm mis"><a href="#n186">186</a></p>
+<p id="n187" class="pln"><a href="#n187">187</a></p>
+<p id="n188" class="pln"><a href="#n188">188</a></p>
+<p id="n189" class="stm mis"><a href="#n189">189</a></p>
+<p id="n190" class="stm mis"><a href="#n190">190</a></p>
+<p id="n191" class="pln"><a href="#n191">191</a></p>
+<p id="n192" class="stm mis"><a href="#n192">192</a></p>
+<p id="n193" class="stm mis"><a href="#n193">193</a></p>
+<p id="n194" class="pln"><a href="#n194">194</a></p>
+<p id="n195" class="stm mis"><a href="#n195">195</a></p>
+<p id="n196" class="stm mis"><a href="#n196">196</a></p>
+<p id="n197" class="stm run hide_run"><a href="#n197">197</a></p>
+<p id="n198" class="pln"><a href="#n198">198</a></p>
+<p id="n199" class="stm run hide_run"><a href="#n199">199</a></p>
+<p id="n200" class="pln"><a href="#n200">200</a></p>
+<p id="n201" class="pln"><a href="#n201">201</a></p>
+<p id="n202" class="stm mis"><a href="#n202">202</a></p>
+<p id="n203" class="stm mis"><a href="#n203">203</a></p>
+<p id="n204" class="stm mis"><a href="#n204">204</a></p>
+<p id="n205" class="stm mis"><a href="#n205">205</a></p>
+<p id="n206" class="stm mis"><a href="#n206">206</a></p>
+<p id="n207" class="stm mis"><a href="#n207">207</a></p>
+<p id="n208" class="stm mis"><a href="#n208">208</a></p>
+<p id="n209" class="stm mis"><a href="#n209">209</a></p>
+<p id="n210" class="stm mis"><a href="#n210">210</a></p>
+<p id="n211" class="stm mis"><a href="#n211">211</a></p>
+<p id="n212" class="stm mis"><a href="#n212">212</a></p>
+<p id="n213" class="stm mis"><a href="#n213">213</a></p>
+<p id="n214" class="stm mis"><a href="#n214">214</a></p>
+<p id="n215" class="stm mis"><a href="#n215">215</a></p>
+<p id="n216" class="stm mis"><a href="#n216">216</a></p>
+<p id="n217" class="stm mis"><a href="#n217">217</a></p>
+<p id="n218" class="stm mis"><a href="#n218">218</a></p>
+<p id="n219" class="stm mis"><a href="#n219">219</a></p>
+<p id="n220" class="pln"><a href="#n220">220</a></p>
+<p id="n221" class="pln"><a href="#n221">221</a></p>
+<p id="n222" class="stm mis"><a href="#n222">222</a></p>
+<p id="n223" class="stm mis"><a href="#n223">223</a></p>
+<p id="n224" class="pln"><a href="#n224">224</a></p>
+<p id="n225" class="stm run hide_run"><a href="#n225">225</a></p>
+<p id="n226" class="pln"><a href="#n226">226</a></p>
+<p id="n227" class="stm mis"><a href="#n227">227</a></p>
+<p id="n228" class="stm mis"><a href="#n228">228</a></p>
+<p id="n229" class="stm mis"><a href="#n229">229</a></p>
+<p id="n230" class="stm mis"><a href="#n230">230</a></p>
+<p id="n231" class="stm mis"><a href="#n231">231</a></p>
+<p id="n232" class="pln"><a href="#n232">232</a></p>
+<p id="n233" class="stm mis"><a href="#n233">233</a></p>
+<p id="n234" class="stm mis"><a href="#n234">234</a></p>
+<p id="n235" class="stm mis"><a href="#n235">235</a></p>
+<p id="n236" class="stm mis"><a href="#n236">236</a></p>
+<p id="n237" class="stm mis"><a href="#n237">237</a></p>
+<p id="n238" class="pln"><a href="#n238">238</a></p>
+<p id="n239" class="stm mis"><a href="#n239">239</a></p>
+<p id="n240" class="pln"><a href="#n240">240</a></p>
+<p id="n241" class="pln"><a href="#n241">241</a></p>
+<p id="n242" class="stm mis"><a href="#n242">242</a></p>
+<p id="n243" class="stm mis"><a href="#n243">243</a></p>
+<p id="n244" class="pln"><a href="#n244">244</a></p>
+<p id="n245" class="stm mis"><a href="#n245">245</a></p>
+<p id="n246" class="stm mis"><a href="#n246">246</a></p>
+<p id="n247" class="pln"><a href="#n247">247</a></p>
+<p id="n248" class="stm run hide_run"><a href="#n248">248</a></p>
+<p id="n249" class="stm par run hide_run"><a href="#n249">249</a></p>
+<p id="n250" class="stm mis"><a href="#n250">250</a></p>
+<p id="n251" class="stm mis"><a href="#n251">251</a></p>
+<p id="n252" class="stm mis"><a href="#n252">252</a></p>
+<p id="n253" class="stm mis"><a href="#n253">253</a></p>
+<p id="n254" class="stm mis"><a href="#n254">254</a></p>
+<p id="n255" class="stm mis"><a href="#n255">255</a></p>
+<p id="n256" class="pln"><a href="#n256">256</a></p>
+<p id="n257" class="stm mis"><a href="#n257">257</a></p>
+<p id="n258" class="stm mis"><a href="#n258">258</a></p>
+<p id="n259" class="stm mis"><a href="#n259">259</a></p>
+<p id="n260" class="stm mis"><a href="#n260">260</a></p>
+<p id="n261" class="stm mis"><a href="#n261">261</a></p>
+<p id="n262" class="stm mis"><a href="#n262">262</a></p>
+<p id="n263" class="pln"><a href="#n263">263</a></p>
+<p id="n264" class="stm run hide_run"><a href="#n264">264</a></p>
+<p id="n265" class="pln"><a href="#n265">265</a></p>
+<p id="n266" class="pln"><a href="#n266">266</a></p>
+<p id="n267" class="stm mis"><a href="#n267">267</a></p>
+<p id="n268" class="pln"><a href="#n268">268</a></p>
+<p id="n269" class="stm mis"><a href="#n269">269</a></p>
+<p id="n270" class="stm mis"><a href="#n270">270</a></p>
+<p id="n271" class="stm mis"><a href="#n271">271</a></p>
+<p id="n272" class="stm mis"><a href="#n272">272</a></p>
+<p id="n273" class="stm mis"><a href="#n273">273</a></p>
+<p id="n274" class="stm mis"><a href="#n274">274</a></p>
+<p id="n275" class="stm mis"><a href="#n275">275</a></p>
+<p id="n276" class="stm mis"><a href="#n276">276</a></p>
+<p id="n277" class="pln"><a href="#n277">277</a></p>
+<p id="n278" class="stm run hide_run"><a href="#n278">278</a></p>
+<p id="n279" class="stm mis"><a href="#n279">279</a></p>
+<p id="n280" class="pln"><a href="#n280">280</a></p>
+<p id="n281" class="stm mis"><a href="#n281">281</a></p>
+<p id="n282" class="stm mis"><a href="#n282">282</a></p>
+<p id="n283" class="pln"><a href="#n283">283</a></p>
+<p id="n284" class="stm mis"><a href="#n284">284</a></p>
+<p id="n285" class="stm mis"><a href="#n285">285</a></p>
+<p id="n286" class="pln"><a href="#n286">286</a></p>
+<p id="n287" class="stm mis"><a href="#n287">287</a></p>
+<p id="n288" class="stm mis"><a href="#n288">288</a></p>
+<p id="n289" class="pln"><a href="#n289">289</a></p>
+<p id="n290" class="stm mis"><a href="#n290">290</a></p>
+<p id="n291" class="stm mis"><a href="#n291">291</a></p>
+<p id="n292" class="pln"><a href="#n292">292</a></p>
+<p id="n293" class="stm mis"><a href="#n293">293</a></p>
+<p id="n294" class="stm mis"><a href="#n294">294</a></p>
+<p id="n295" class="pln"><a href="#n295">295</a></p>
+<p id="n296" class="stm mis"><a href="#n296">296</a></p>
+<p id="n297" class="pln"><a href="#n297">297</a></p>
+<p id="n298" class="stm run hide_run"><a href="#n298">298</a></p>
+<p id="n299" class="stm mis"><a href="#n299">299</a></p>
+<p id="n300" class="pln"><a href="#n300">300</a></p>
+<p id="n301" class="stm mis"><a href="#n301">301</a></p>
+<p id="n302" class="stm mis"><a href="#n302">302</a></p>
+<p id="n303" class="pln"><a href="#n303">303</a></p>
+<p id="n304" class="stm mis"><a href="#n304">304</a></p>
+<p id="n305" class="stm mis"><a href="#n305">305</a></p>
+<p id="n306" class="stm mis"><a href="#n306">306</a></p>
+<p id="n307" class="stm mis"><a href="#n307">307</a></p>
+<p id="n308" class="pln"><a href="#n308">308</a></p>
+<p id="n309" class="pln"><a href="#n309">309</a></p>
+<p id="n310" class="stm mis"><a href="#n310">310</a></p>
+<p id="n311" class="stm mis"><a href="#n311">311</a></p>
+<p id="n312" class="stm mis"><a href="#n312">312</a></p>
+<p id="n313" class="pln"><a href="#n313">313</a></p>
+<p id="n314" class="stm run hide_run"><a href="#n314">314</a></p>
+<p id="n315" class="stm mis"><a href="#n315">315</a></p>
+<p id="n316" class="stm mis"><a href="#n316">316</a></p>
+<p id="n317" class="stm mis"><a href="#n317">317</a></p>
+<p id="n318" class="stm mis"><a href="#n318">318</a></p>
+<p id="n319" class="stm mis"><a href="#n319">319</a></p>
+<p id="n320" class="stm mis"><a href="#n320">320</a></p>
+<p id="n321" class="pln"><a href="#n321">321</a></p>
+<p id="n322" class="stm run hide_run"><a href="#n322">322</a></p>
+<p id="n323" class="stm mis"><a href="#n323">323</a></p>
+<p id="n324" class="stm mis"><a href="#n324">324</a></p>
+<p id="n325" class="stm mis"><a href="#n325">325</a></p>
+<p id="n326" class="stm mis"><a href="#n326">326</a></p>
+<p id="n327" class="pln"><a href="#n327">327</a></p>
+<p id="n328" class="stm run hide_run"><a href="#n328">328</a></p>
+<p id="n329" class="stm mis"><a href="#n329">329</a></p>
+<p id="n330" class="stm mis"><a href="#n330">330</a></p>
+<p id="n331" class="stm mis"><a href="#n331">331</a></p>
+<p id="n332" class="stm mis"><a href="#n332">332</a></p>
+<p id="n333" class="stm mis"><a href="#n333">333</a></p>
+<p id="n334" class="stm mis"><a href="#n334">334</a></p>
+<p id="n335" class="stm mis"><a href="#n335">335</a></p>
+<p id="n336" class="stm mis"><a href="#n336">336</a></p>
+<p id="n337" class="stm mis"><a href="#n337">337</a></p>
+<p id="n338" class="stm mis"><a href="#n338">338</a></p>
+<p id="n339" class="stm mis"><a href="#n339">339</a></p>
+<p id="n340" class="stm mis"><a href="#n340">340</a></p>
+<p id="n341" class="stm mis"><a href="#n341">341</a></p>
+<p id="n342" class="stm mis"><a href="#n342">342</a></p>
+<p id="n343" class="stm mis"><a href="#n343">343</a></p>
+<p id="n344" class="stm mis"><a href="#n344">344</a></p>
+<p id="n345" class="pln"><a href="#n345">345</a></p>
+<p id="n346" class="stm mis"><a href="#n346">346</a></p>
+<p id="n347" class="pln"><a href="#n347">347</a></p>
+<p id="n348" class="pln"><a href="#n348">348</a></p>
+<p id="n349" class="stm run hide_run"><a href="#n349">349</a></p>
+<p id="n350" class="stm mis"><a href="#n350">350</a></p>
+<p id="n351" class="stm mis"><a href="#n351">351</a></p>
+<p id="n352" class="stm mis"><a href="#n352">352</a></p>
+<p id="n353" class="stm mis"><a href="#n353">353</a></p>
+<p id="n354" class="stm mis"><a href="#n354">354</a></p>
+<p id="n355" class="stm mis"><a href="#n355">355</a></p>
+<p id="n356" class="pln"><a href="#n356">356</a></p>
+<p id="n357" class="stm run hide_run"><a href="#n357">357</a></p>
+<p id="n358" class="stm mis"><a href="#n358">358</a></p>
+<p id="n359" class="pln"><a href="#n359">359</a></p>
+<p id="n360" class="stm run hide_run"><a href="#n360">360</a></p>
+<p id="n361" class="stm mis"><a href="#n361">361</a></p>
+<p id="n362" class="stm mis"><a href="#n362">362</a></p>
+<p id="n363" class="stm mis"><a href="#n363">363</a></p>
+<p id="n364" class="pln"><a href="#n364">364</a></p>
+<p id="n365" class="stm run hide_run"><a href="#n365">365</a></p>
+<p id="n366" class="stm mis"><a href="#n366">366</a></p>
+<p id="n367" class="stm mis"><a href="#n367">367</a></p>
+<p id="n368" class="stm mis"><a href="#n368">368</a></p>
+<p id="n369" class="stm mis"><a href="#n369">369</a></p>
+<p id="n370" class="stm mis"><a href="#n370">370</a></p>
+<p id="n371" class="stm mis"><a href="#n371">371</a></p>
+<p id="n372" class="pln"><a href="#n372">372</a></p>
+<p id="n373" class="stm mis"><a href="#n373">373</a></p>
+<p id="n374" class="stm mis"><a href="#n374">374</a></p>
+<p id="n375" class="stm mis"><a href="#n375">375</a></p>
+                
+            </td>
+            <td class="text">
+<p id="t1" class="pln"><span class="com">#!/usr/bin/env python</span><span class="strut">&nbsp;</span></p>
+<p id="t2" class="stm run hide_run"><span class="key">from</span> <span class="nam">__future__</span> <span class="key">import</span> <span class="nam">print_function</span><span class="strut">&nbsp;</span></p>
+<p id="t3" class="pln"><span class="com">#</span><span class="strut">&nbsp;</span></p>
+<p id="t4" class="pln"><span class="com"># Author: John Flanagan, 04/08/2011 (jfflanag@bcm.edu)</span><span class="strut">&nbsp;</span></p>
+<p id="t5" class="pln"><span class="com"># Edited by: Stephen Murray (scmurray@bcm.edu) May 2014</span><span class="strut">&nbsp;</span></p>
+<p id="t6" class="pln"><span class="com"># Copyright (c) 2000-2006 Baylor College of Medicine</span><span class="strut">&nbsp;</span></p>
+<p id="t7" class="pln"><span class="com">#</span><span class="strut">&nbsp;</span></p>
+<p id="t8" class="pln"><span class="com"># This software is issued under a joint BSD/GNU license. You may use the</span><span class="strut">&nbsp;</span></p>
+<p id="t9" class="pln"><span class="com"># source code in this file under either license. However, note that the</span><span class="strut">&nbsp;</span></p>
+<p id="t10" class="pln"><span class="com"># complete EMAN2 and SPARX software packages have some GPL dependencies,</span><span class="strut">&nbsp;</span></p>
+<p id="t11" class="pln"><span class="com"># so you are responsible for compliance with the licenses of these packages</span><span class="strut">&nbsp;</span></p>
+<p id="t12" class="pln"><span class="com"># if you opt to use BSD licensing. The warranty disclaimer below holds</span><span class="strut">&nbsp;</span></p>
+<p id="t13" class="pln"><span class="com"># in either instance.</span><span class="strut">&nbsp;</span></p>
+<p id="t14" class="pln"><span class="com">#</span><span class="strut">&nbsp;</span></p>
+<p id="t15" class="pln"><span class="com"># This complete copyright notice must be included in any revised version of the</span><span class="strut">&nbsp;</span></p>
+<p id="t16" class="pln"><span class="com"># source code. Additional authorship citations may be added, but existing</span><span class="strut">&nbsp;</span></p>
+<p id="t17" class="pln"><span class="com"># author citations must be preserved.</span><span class="strut">&nbsp;</span></p>
+<p id="t18" class="pln"><span class="com">#</span><span class="strut">&nbsp;</span></p>
+<p id="t19" class="pln"><span class="com"># This program is free software; you can redistribute it and/or modify</span><span class="strut">&nbsp;</span></p>
+<p id="t20" class="pln"><span class="com"># it under the terms of the GNU General Public License as published by</span><span class="strut">&nbsp;</span></p>
+<p id="t21" class="pln"><span class="com"># the Free Software Foundation; either version 2 of the License, or</span><span class="strut">&nbsp;</span></p>
+<p id="t22" class="pln"><span class="com"># (at your option) any later version.</span><span class="strut">&nbsp;</span></p>
+<p id="t23" class="pln"><span class="com">#</span><span class="strut">&nbsp;</span></p>
+<p id="t24" class="pln"><span class="com"># This program is distributed in the hope that it will be useful,</span><span class="strut">&nbsp;</span></p>
+<p id="t25" class="pln"><span class="com"># but WITHOUT ANY WARRANTY; without even the implied warranty of</span><span class="strut">&nbsp;</span></p>
+<p id="t26" class="pln"><span class="com"># MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the</span><span class="strut">&nbsp;</span></p>
+<p id="t27" class="pln"><span class="com"># GNU General Public License for more details.</span><span class="strut">&nbsp;</span></p>
+<p id="t28" class="pln"><span class="com">#</span><span class="strut">&nbsp;</span></p>
+<p id="t29" class="pln"><span class="com"># You should have received a copy of the GNU General Public License</span><span class="strut">&nbsp;</span></p>
+<p id="t30" class="pln"><span class="com"># along with this program; if not, write to the Free Software</span><span class="strut">&nbsp;</span></p>
+<p id="t31" class="pln"><span class="com"># Foundation, Inc., 59 Temple Place, Suite 330, Boston MA 02111-1307 USA</span><span class="strut">&nbsp;</span></p>
+<p id="t32" class="pln"><span class="com">#</span><span class="strut">&nbsp;</span></p>
+<p id="t33" class="pln"><span class="com">#</span><span class="strut">&nbsp;</span></p>
+<p id="t34" class="stm run hide_run"><span class="key">import</span> <span class="nam">numpy</span><span class="op">,</span> <span class="nam">math</span><span class="strut">&nbsp;</span></p>
+<p id="t35" class="pln"><span class="strut">&nbsp;</span></p>
+<p id="t36" class="stm run hide_run"><span class="key">class</span> <span class="nam">Strategy</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t37" class="pln">&nbsp; &nbsp; &nbsp; &nbsp; <span class="str">&#39;&#39;&#39; This is a base class for the strategy to use for pcik event hadeling&#39;&#39;&#39;</span><span class="strut">&nbsp;</span></p>
+<p id="t38" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; <span class="key">def</span> <span class="nam">__init__</span> <span class="op">(</span><span class="nam">self</span><span class="op">,</span> <span class="nam">mediator</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t39" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">self</span><span class="op">.</span><span class="nam">mediator</span> <span class="op">=</span> <span class="nam">mediator</span><span class="strut">&nbsp;</span></p>
+<p id="t40" class="pln"><span class="strut">&nbsp;</span></p>
+<p id="t41" class="pln">&nbsp; &nbsp; &nbsp; &nbsp; <span class="com"># Run this function to do initial calculation, when widget is loaded</span><span class="strut">&nbsp;</span></p>
+<p id="t42" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; <span class="key">def</span> <span class="nam">initial_calculations</span><span class="op">(</span><span class="nam">self</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t43" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="key">raise</span> <span class="nam">NotImplementedError</span><span class="op">(</span><span class="str">&quot;Subclass must implement abstract method&quot;</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t44" class="pln"><span class="strut">&nbsp;</span></p>
+<p id="t45" class="pln">&nbsp; &nbsp; &nbsp; &nbsp; <span class="com"># Run this function to respond to user input from the GUI(caller)</span><span class="strut">&nbsp;</span></p>
+<p id="t46" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; <span class="key">def</span> <span class="nam">configure_strategy</span><span class="op">(</span><span class="nam">self</span><span class="op">,</span> <span class="nam">caller</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t47" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="key">raise</span> <span class="nam">NotImplementedError</span><span class="op">(</span><span class="str">&quot;Subclass must implement abstract method&quot;</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t48" class="pln"><span class="strut">&nbsp;</span></p>
+<p id="t49" class="pln">&nbsp; &nbsp; &nbsp; &nbsp; <span class="com"># Respond to signals form the GUI</span><span class="strut">&nbsp;</span></p>
+<p id="t50" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; <span class="key">def</span> <span class="nam">handle_strategy_signal</span><span class="op">(</span><span class="nam">self</span><span class="op">,</span> <span class="nam">signal</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t51" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="key">raise</span> <span class="nam">NotImplementedError</span><span class="op">(</span><span class="str">&quot;Subclass must implement abstract method&quot;</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t52" class="pln"><span class="strut">&nbsp;</span></p>
+<p id="t53" class="pln">&nbsp; &nbsp; &nbsp; &nbsp; <span class="com"># Handle pick events</span><span class="strut">&nbsp;</span></p>
+<p id="t54" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; <span class="key">def</span> <span class="nam">pickevent</span><span class="op">(</span><span class="nam">self</span><span class="op">,</span> <span class="nam">caller</span><span class="op">,</span> <span class="nam">x</span><span class="op">,</span> <span class="nam">y</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t55" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="key">raise</span> <span class="nam">NotImplementedError</span><span class="op">(</span><span class="str">&quot;Subclass must implement abstract method&quot;</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t56" class="pln"><span class="strut">&nbsp;</span></p>
+<p id="t57" class="pln">&nbsp; &nbsp; &nbsp; &nbsp; <span class="com"># Handle unpick events</span><span class="strut">&nbsp;</span></p>
+<p id="t58" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; <span class="key">def</span> <span class="nam">unpickevent</span><span class="op">(</span><span class="nam">self</span><span class="op">,</span> <span class="nam">box_num</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t59" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="key">raise</span> <span class="nam">NotImplementedError</span><span class="op">(</span><span class="str">&quot;Subclass must implement abstract method&quot;</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t60" class="pln"><span class="strut">&nbsp;</span></p>
+<p id="t61" class="pln">&nbsp; &nbsp; &nbsp; &nbsp; <span class="com"># Handle move events</span><span class="strut">&nbsp;</span></p>
+<p id="t62" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; <span class="key">def</span> <span class="nam">moveevent</span><span class="op">(</span><span class="nam">self</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t63" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="key">raise</span> <span class="nam">NotImplementedError</span><span class="op">(</span><span class="str">&quot;Subclass must implement abstract method&quot;</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t64" class="pln"><span class="strut">&nbsp;</span></p>
+<p id="t65" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; <span class="key">def</span> <span class="nam">imagesaveevent</span><span class="op">(</span><span class="nam">self</span><span class="op">,</span> <span class="nam">image</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t66" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="key">raise</span> <span class="nam">NotImplementedError</span><span class="op">(</span><span class="str">&quot;Subclass must implement abstract method&quot;</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t67" class="pln"><span class="strut">&nbsp;</span></p>
+<p id="t68" class="stm run hide_run"><span class="key">class</span> <span class="nam">Strategy2IMGMan</span><span class="op">(</span><span class="nam">Strategy</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t69" class="pln">&nbsp; &nbsp; &nbsp; &nbsp; <span class="str">&#39;&#39;&#39; This is a derived class for the strategy to use for pcik event hadeling, more classes can be added&#39;&#39;&#39;</span><span class="strut">&nbsp;</span></p>
+<p id="t70" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; <span class="key">def</span> <span class="nam">__init__</span> <span class="op">(</span><span class="nam">self</span><span class="op">,</span> <span class="nam">mediator</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t71" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">Strategy</span><span class="op">.</span><span class="nam">__init__</span><span class="op">(</span><span class="nam">self</span><span class="op">,</span> <span class="nam">mediator</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t72" class="pln"><span class="strut">&nbsp;</span></p>
+<p id="t73" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; <span class="key">def</span> <span class="nam">initial_calculations</span><span class="op">(</span><span class="nam">self</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t74" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="key">pass</span><span class="strut">&nbsp;</span></p>
+<p id="t75" class="pln"><span class="strut">&nbsp;</span></p>
+<p id="t76" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; <span class="key">def</span> <span class="nam">configure_strategy</span><span class="op">(</span><span class="nam">self</span><span class="op">,</span> <span class="nam">caller</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t77" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="key">pass</span><span class="strut">&nbsp;</span></p>
+<p id="t78" class="pln"><span class="strut">&nbsp;</span></p>
+<p id="t79" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; <span class="key">def</span> <span class="nam">handle_strategy_signal</span><span class="op">(</span><span class="nam">self</span><span class="op">,</span> <span class="nam">signal</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t80" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="key">pass</span><span class="strut">&nbsp;</span></p>
+<p id="t81" class="pln"><span class="strut">&nbsp;</span></p>
+<p id="t82" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; <span class="key">def</span> <span class="nam">imagesaveevent</span><span class="op">(</span><span class="nam">self</span><span class="op">,</span> <span class="nam">image</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t83" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="key">pass</span><span class="strut">&nbsp;</span></p>
+<p id="t84" class="pln"><span class="strut">&nbsp;</span></p>
+<p id="t85" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; <span class="key">def</span> <span class="nam">pickevent</span><span class="op">(</span><span class="nam">self</span><span class="op">,</span> <span class="nam">caller</span><span class="op">,</span> <span class="nam">x</span><span class="op">,</span> <span class="nam">y</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t86" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="key">if</span> <span class="nam">caller</span> <span class="op">==</span> <span class="nam">self</span><span class="op">.</span><span class="nam">mediator</span><span class="op">.</span><span class="nam">untilt_win</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t87" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="key">if</span> <span class="nam">self</span><span class="op">.</span><span class="nam">mediator</span><span class="op">.</span><span class="nam">tilt_win</span><span class="op">.</span><span class="nam">boxes</span><span class="op">.</span><span class="nam">boxpopulation</span> <span class="op">&lt;</span> <span class="nam">self</span><span class="op">.</span><span class="nam">mediator</span><span class="op">.</span><span class="nam">untilt_win</span><span class="op">.</span><span class="nam">boxes</span><span class="op">.</span><span class="nam">boxpopulation</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t88" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="key">print</span><span class="op">(</span><span class="str">&quot;Error, you need to selct an untilted partilce pair, before you select a new tilted one&quot;</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t89" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="key">return</span> <span class="nam">False</span><span class="strut">&nbsp;</span></p>
+<p id="t90" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="key">if</span> <span class="nam">caller</span> <span class="op">==</span> <span class="nam">self</span><span class="op">.</span><span class="nam">mediator</span><span class="op">.</span><span class="nam">tilt_win</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t91" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="key">if</span> <span class="op">(</span><span class="nam">self</span><span class="op">.</span><span class="nam">mediator</span><span class="op">.</span><span class="nam">tilt_win</span><span class="op">.</span><span class="nam">boxes</span><span class="op">.</span><span class="nam">boxpopulation</span> <span class="op">==</span> <span class="num">0</span> <span class="key">and</span> <span class="nam">self</span><span class="op">.</span><span class="nam">mediator</span><span class="op">.</span><span class="nam">untilt_win</span><span class="op">.</span><span class="nam">boxes</span><span class="op">.</span><span class="nam">boxpopulation</span> <span class="op">==</span> <span class="num">0</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t92" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="key">print</span><span class="op">(</span><span class="str">&quot;Error, you first need to pick an untilted particle&quot;</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t93" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="key">return</span> <span class="nam">False</span><span class="strut">&nbsp;</span></p>
+<p id="t94" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="key">if</span> <span class="nam">self</span><span class="op">.</span><span class="nam">mediator</span><span class="op">.</span><span class="nam">untilt_win</span><span class="op">.</span><span class="nam">boxes</span><span class="op">.</span><span class="nam">boxpopulation</span> <span class="op">&lt;</span> <span class="nam">self</span><span class="op">.</span><span class="nam">mediator</span><span class="op">.</span><span class="nam">tilt_win</span><span class="op">.</span><span class="nam">boxes</span><span class="op">.</span><span class="nam">boxpopulation</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t95" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="key">print</span><span class="op">(</span><span class="str">&quot;Error, you need to selct an untilted partilce pair, before you select a new tilted one&quot;</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t96" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="key">return</span> <span class="nam">False</span><span class="strut">&nbsp;</span></p>
+<p id="t97" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="key">return</span> <span class="nam">True</span><span class="strut">&nbsp;</span></p>
+<p id="t98" class="pln"><span class="strut">&nbsp;</span></p>
+<p id="t99" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; <span class="key">def</span> <span class="nam">unpickevent</span><span class="op">(</span><span class="nam">self</span><span class="op">,</span> <span class="nam">caller</span><span class="op">,</span> <span class="nam">box_num</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t100" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="key">if</span> <span class="nam">caller</span> <span class="op">==</span> <span class="nam">self</span><span class="op">.</span><span class="nam">mediator</span><span class="op">.</span><span class="nam">untilt_win</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t101" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="key">if</span> <span class="nam">len</span><span class="op">(</span><span class="nam">self</span><span class="op">.</span><span class="nam">mediator</span><span class="op">.</span><span class="nam">tilt_win</span><span class="op">.</span><span class="nam">boxes</span><span class="op">.</span><span class="nam">boxlist</span><span class="op">)</span><span class="op">-</span><span class="num">1</span> <span class="op">&gt;=</span> <span class="nam">box_num</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t102" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">self</span><span class="op">.</span><span class="nam">mediator</span><span class="op">.</span><span class="nam">tilt_win</span><span class="op">.</span><span class="nam">boxes</span><span class="op">.</span><span class="nam">remove_box</span><span class="op">(</span><span class="nam">box_num</span><span class="op">,</span> <span class="nam">self</span><span class="op">.</span><span class="nam">mediator</span><span class="op">.</span><span class="nam">boxsize</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t103" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">self</span><span class="op">.</span><span class="nam">mediator</span><span class="op">.</span><span class="nam">tilt_win</span><span class="op">.</span><span class="nam">update_mainwin</span><span class="op">(</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t104" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="key">if</span> <span class="nam">caller</span> <span class="op">==</span> <span class="nam">self</span><span class="op">.</span><span class="nam">mediator</span><span class="op">.</span><span class="nam">tilt_win</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t105" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="key">if</span> <span class="nam">len</span><span class="op">(</span><span class="nam">self</span><span class="op">.</span><span class="nam">mediator</span><span class="op">.</span><span class="nam">untilt_win</span><span class="op">.</span><span class="nam">boxes</span><span class="op">.</span><span class="nam">boxlist</span><span class="op">)</span><span class="op">-</span><span class="num">1</span> <span class="op">&gt;=</span> <span class="nam">box_num</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t106" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">self</span><span class="op">.</span><span class="nam">mediator</span><span class="op">.</span><span class="nam">untilt_win</span><span class="op">.</span><span class="nam">boxes</span><span class="op">.</span><span class="nam">remove_box</span><span class="op">(</span><span class="nam">box_num</span><span class="op">,</span> <span class="nam">self</span><span class="op">.</span><span class="nam">mediator</span><span class="op">.</span><span class="nam">boxsize</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t107" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">self</span><span class="op">.</span><span class="nam">mediator</span><span class="op">.</span><span class="nam">untilt_win</span><span class="op">.</span><span class="nam">update_mainwin</span><span class="op">(</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t108" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="key">return</span> <span class="nam">True</span><span class="strut">&nbsp;</span></p>
+<p id="t109" class="pln"><span class="strut">&nbsp;</span></p>
+<p id="t110" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; <span class="key">def</span> <span class="nam">moveevent</span><span class="op">(</span><span class="nam">self</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t111" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="key">return</span> <span class="nam">True</span><span class="strut">&nbsp;</span></p>
+<p id="t112" class="pln"><span class="strut">&nbsp;</span></p>
+<p id="t113" class="stm run hide_run"><span class="key">class</span> <span class="nam">Strategy2IMGPair</span><span class="op">(</span><span class="nam">Strategy</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t114" class="pln">&nbsp; &nbsp; &nbsp; &nbsp; <span class="str">&#39;&#39;&#39; This is a derived class for the strategy to use for pcik event hadeling, more classes can be added&#39;&#39;&#39;</span><span class="strut">&nbsp;</span></p>
+<p id="t115" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; <span class="key">def</span> <span class="nam">__init__</span> <span class="op">(</span><span class="nam">self</span><span class="op">,</span> <span class="nam">mediator</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t116" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">Strategy</span><span class="op">.</span><span class="nam">__init__</span><span class="op">(</span><span class="nam">self</span><span class="op">,</span> <span class="nam">mediator</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t117" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">self</span><span class="op">.</span><span class="nam">A</span> <span class="op">=</span> <span class="nam">None</span><span class="strut">&nbsp;</span></p>
+<p id="t118" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">self</span><span class="op">.</span><span class="nam">invA</span> <span class="op">=</span> <span class="nam">None</span><span class="strut">&nbsp;</span></p>
+<p id="t119" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">self</span><span class="op">.</span><span class="nam">tiltangle</span> <span class="op">=</span> <span class="nam">None</span><span class="strut">&nbsp;</span></p>
+<p id="t120" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">self</span><span class="op">.</span><span class="nam">minpp_for_xform</span> <span class="op">=</span> <span class="num">3</span><span class="strut">&nbsp;</span></p>
+<p id="t121" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">self</span><span class="op">.</span><span class="nam">cont_update_boxes</span> <span class="op">=</span> <span class="nam">False</span><span class="strut">&nbsp;</span></p>
+<p id="t122" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">self</span><span class="op">.</span><span class="nam">centertilts</span> <span class="op">=</span> <span class="nam">False</span><span class="strut">&nbsp;</span></p>
+<p id="t123" class="pln"><span class="strut">&nbsp;</span></p>
+<p id="t124" class="pln">&nbsp; &nbsp; &nbsp; &nbsp; <span class="com"># This function is called after boxes are loaded from the DB (to intialize the strategy</span><span class="strut">&nbsp;</span></p>
+<p id="t125" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; <span class="key">def</span> <span class="nam">initial_calculations</span><span class="op">(</span><span class="nam">self</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t126" class="stm par run hide_run"><span class="annotate" title="Line 126 was executed, but never jumped to the function exit">126&#x202F;&#x219B;&#x202F;exit [?]</span>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="key">if</span> <span class="nam">self</span><span class="op">.</span><span class="nam">mediator</span><span class="op">.</span><span class="nam">untilt_win</span><span class="op">.</span><span class="nam">boxes</span><span class="op">.</span><span class="nam">boxpopulation</span> <span class="op">==</span> <span class="nam">self</span><span class="op">.</span><span class="nam">mediator</span><span class="op">.</span><span class="nam">tilt_win</span><span class="op">.</span><span class="nam">boxes</span><span class="op">.</span><span class="nam">boxpopulation</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t127" class="stm par run hide_run"><span class="annotate" title="Line 127 was executed, but never jumped to line 128">127&#x202F;&#x219B;&#x202F;128 [?]</span>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="key">if</span> <span class="nam">self</span><span class="op">.</span><span class="nam">mediator</span><span class="op">.</span><span class="nam">untilt_win</span><span class="op">.</span><span class="nam">boxes</span><span class="op">.</span><span class="nam">boxpopulation</span> <span class="op">&gt;</span> <span class="nam">self</span><span class="op">.</span><span class="nam">minpp_for_xform</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t128" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">self</span><span class="op">.</span><span class="nam">compute_transform</span><span class="op">(</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t129" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">self</span><span class="op">.</span><span class="nam">compute_tilt_angle</span><span class="op">(</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t130" class="pln"><span class="strut">&nbsp;</span></p>
+<p id="t131" class="pln">&nbsp; &nbsp; &nbsp; &nbsp; <span class="com"># This function is called to configure or reconfigure the strategy alogorithm (sort of sets the state)</span><span class="strut">&nbsp;</span></p>
+<p id="t132" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; <span class="key">def</span> <span class="nam">configure_strategy</span><span class="op">(</span><span class="nam">self</span><span class="op">,</span> <span class="nam">caller</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t133" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">self</span><span class="op">.</span><span class="nam">minpp_for_xform</span> <span class="op">=</span> <span class="nam">caller</span><span class="op">.</span><span class="nam">minpp_for_xform</span><span class="strut">&nbsp;</span></p>
+<p id="t134" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">self</span><span class="op">.</span><span class="nam">cont_update_boxes</span> <span class="op">=</span>&nbsp; <span class="nam">caller</span><span class="op">.</span><span class="nam">updateboxes</span><span class="strut">&nbsp;</span></p>
+<p id="t135" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">self</span><span class="op">.</span><span class="nam">centertilts</span> <span class="op">=</span> <span class="nam">caller</span><span class="op">.</span><span class="nam">centertilts</span><span class="strut">&nbsp;</span></p>
+<p id="t136" class="pln"><span class="strut">&nbsp;</span></p>
+<p id="t137" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; <span class="key">def</span> <span class="nam">handle_strategy_signal</span><span class="op">(</span><span class="nam">self</span><span class="op">,</span> <span class="nam">signal</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t138" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="key">if</span> <span class="nam">signal</span> <span class="op">==</span> <span class="str">&quot;updateboxes&quot;</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t139" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">self</span><span class="op">.</span><span class="nam">on_update_boxes</span><span class="op">(</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t140" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="key">if</span> <span class="nam">signal</span> <span class="op">==</span> <span class="str">&quot;centerboxes&quot;</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t141" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">self</span><span class="op">.</span><span class="nam">on_center_boxes</span><span class="op">(</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t142" class="pln"><span class="strut">&nbsp;</span></p>
+<p id="t143" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; <span class="key">def</span> <span class="nam">pickevent</span><span class="op">(</span><span class="nam">self</span><span class="op">,</span> <span class="nam">caller</span><span class="op">,</span> <span class="nam">x</span><span class="op">,</span> <span class="nam">y</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t144" class="pln">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="com"># Pick tilted particle</span><span class="strut">&nbsp;</span></p>
+<p id="t145" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="key">if</span> <span class="nam">caller</span> <span class="op">==</span> <span class="nam">self</span><span class="op">.</span><span class="nam">mediator</span><span class="op">.</span><span class="nam">untilt_win</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t146" class="stm par run hide_run"><span class="annotate" title="Line 146 was executed, but never jumped to line 172">146&#x202F;&#x219B;&#x202F;172 [?]</span>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="key">if</span> <span class="nam">self</span><span class="op">.</span><span class="nam">mediator</span><span class="op">.</span><span class="nam">untilt_win</span><span class="op">.</span><span class="nam">boxes</span><span class="op">.</span><span class="nam">boxpopulation</span> <span class="op">==</span> <span class="nam">self</span><span class="op">.</span><span class="nam">mediator</span><span class="op">.</span><span class="nam">tilt_win</span><span class="op">.</span><span class="nam">boxes</span><span class="op">.</span><span class="nam">boxpopulation</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t147" class="stm par run hide_run"><span class="annotate" title="Line 147 was executed, but never jumped to line 150">147&#x202F;&#x219B;&#x202F;150 [?]</span>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="key">if</span> <span class="nam">self</span><span class="op">.</span><span class="nam">mediator</span><span class="op">.</span><span class="nam">untilt_win</span><span class="op">.</span><span class="nam">boxes</span><span class="op">.</span><span class="nam">boxpopulation</span> <span class="op">&gt;=</span> <span class="nam">self</span><span class="op">.</span><span class="nam">minpp_for_xform</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t148" class="pln"><span class="strut">&nbsp;</span></p>
+<p id="t149" class="pln">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="com"># Compute transform</span><span class="strut">&nbsp;</span></p>
+<p id="t150" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">self</span><span class="op">.</span><span class="nam">compute_transform</span><span class="op">(</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t151" class="pln"><span class="strut">&nbsp;</span></p>
+<p id="t152" class="pln">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="com"># Compute tilt angle</span><span class="strut">&nbsp;</span></p>
+<p id="t153" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">self</span><span class="op">.</span><span class="nam">compute_tilt_angle</span><span class="op">(</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t154" class="pln"><span class="strut">&nbsp;</span></p>
+<p id="t155" class="pln">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="com"># Use the transfomration matrix to compute the tilted angle</span><span class="strut">&nbsp;</span></p>
+<p id="t156" class="pln">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="com"># I could just use the affine matrix, but better to use just the rotational part to reduce error</span><span class="strut">&nbsp;</span></p>
+<p id="t157" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">currX</span> <span class="op">=</span> <span class="op">[</span><span class="nam">x</span><span class="op">,</span><span class="nam">y</span><span class="op">,</span><span class="num">1</span><span class="op">]</span><span class="strut">&nbsp;</span></p>
+<p id="t158" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">currY</span> <span class="op">=</span> <span class="nam">numpy</span><span class="op">.</span><span class="nam">dot</span><span class="op">(</span><span class="nam">self</span><span class="op">.</span><span class="nam">A</span><span class="op">,</span><span class="nam">currX</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t159" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">self</span><span class="op">.</span><span class="nam">mediator</span><span class="op">.</span><span class="nam">tilt_win</span><span class="op">.</span><span class="nam">boxes</span><span class="op">.</span><span class="nam">append_box</span><span class="op">(</span><span class="nam">currY</span><span class="op">[</span><span class="num">0</span><span class="op">]</span><span class="op">,</span><span class="nam">currY</span><span class="op">[</span><span class="num">1</span><span class="op">]</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t160" class="pln"><span class="strut">&nbsp;</span></p>
+<p id="t161" class="pln">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="com"># Center boxes</span><span class="strut">&nbsp;</span></p>
+<p id="t162" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="key">if</span> <span class="nam">self</span><span class="op">.</span><span class="nam">centertilts</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t163" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">self</span><span class="op">.</span><span class="nam">centerboxes</span><span class="op">(</span><span class="nam">self</span><span class="op">.</span><span class="nam">mediator</span><span class="op">.</span><span class="nam">tilt_win</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t164" class="pln"><span class="strut">&nbsp;</span></p>
+<p id="t165" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">self</span><span class="op">.</span><span class="nam">mediator</span><span class="op">.</span><span class="nam">tilt_win</span><span class="op">.</span><span class="nam">update_mainwin</span><span class="op">(</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t166" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">self</span><span class="op">.</span><span class="nam">mediator</span><span class="op">.</span><span class="nam">tilt_win</span><span class="op">.</span><span class="nam">update_particles</span><span class="op">(</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t167" class="pln"><span class="strut">&nbsp;</span></p>
+<p id="t168" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="key">if</span> <span class="nam">self</span><span class="op">.</span><span class="nam">cont_update_boxes</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t169" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">self</span><span class="op">.</span><span class="nam">update_boxes</span><span class="op">(</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t170" class="pln"><span class="strut">&nbsp;</span></p>
+<p id="t171" class="pln">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="com">#pick untilted particle</span><span class="strut">&nbsp;</span></p>
+<p id="t172" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="key">if</span> <span class="nam">caller</span> <span class="op">==</span> <span class="nam">self</span><span class="op">.</span><span class="nam">mediator</span><span class="op">.</span><span class="nam">tilt_win</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t173" class="stm par run hide_run"><span class="annotate" title="Line 173 was executed, but never jumped to line 174">173&#x202F;&#x219B;&#x202F;174 [?]</span>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="key">if</span> <span class="op">(</span><span class="nam">self</span><span class="op">.</span><span class="nam">mediator</span><span class="op">.</span><span class="nam">tilt_win</span><span class="op">.</span><span class="nam">boxes</span><span class="op">.</span><span class="nam">boxpopulation</span> <span class="op">==</span> <span class="num">0</span> <span class="key">and</span> <span class="nam">self</span><span class="op">.</span><span class="nam">mediator</span><span class="op">.</span><span class="nam">untilt_win</span><span class="op">.</span><span class="nam">boxes</span><span class="op">.</span><span class="nam">boxpopulation</span> <span class="op">==</span> <span class="num">0</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t174" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="key">print</span><span class="op">(</span><span class="str">&quot;Error, you first need to pick an untilted particle&quot;</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t175" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="key">return</span> <span class="nam">False</span><span class="strut">&nbsp;</span></p>
+<p id="t176" class="stm par run hide_run"><span class="annotate" title="Line 176 was executed, but never jumped to line 177">176&#x202F;&#x219B;&#x202F;177 [?]</span>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="key">if</span> <span class="nam">self</span><span class="op">.</span><span class="nam">mediator</span><span class="op">.</span><span class="nam">untilt_win</span><span class="op">.</span><span class="nam">boxes</span><span class="op">.</span><span class="nam">boxpopulation</span> <span class="op">==</span> <span class="nam">self</span><span class="op">.</span><span class="nam">mediator</span><span class="op">.</span><span class="nam">tilt_win</span><span class="op">.</span><span class="nam">boxes</span><span class="op">.</span><span class="nam">boxpopulation</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t177" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="key">if</span> <span class="nam">self</span><span class="op">.</span><span class="nam">mediator</span><span class="op">.</span><span class="nam">tilt_win</span><span class="op">.</span><span class="nam">boxes</span><span class="op">.</span><span class="nam">boxpopulation</span> <span class="op">&gt;=</span> <span class="nam">self</span><span class="op">.</span><span class="nam">minpp_for_xform</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t178" class="pln">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="com"># Compute transform</span><span class="strut">&nbsp;</span></p>
+<p id="t179" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">self</span><span class="op">.</span><span class="nam">compute_transform</span><span class="op">(</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t180" class="pln">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="com"># Compute tilt angle</span><span class="strut">&nbsp;</span></p>
+<p id="t181" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">self</span><span class="op">.</span><span class="nam">compute_tilt_angle</span><span class="op">(</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t182" class="pln"><span class="strut">&nbsp;</span></p>
+<p id="t183" class="pln">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="com"># Compute untilted box coords</span><span class="strut">&nbsp;</span></p>
+<p id="t184" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">currX</span> <span class="op">=</span> <span class="op">[</span><span class="nam">x</span><span class="op">,</span><span class="nam">y</span><span class="op">,</span><span class="num">1</span><span class="op">]</span><span class="strut">&nbsp;</span></p>
+<p id="t185" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">currY</span> <span class="op">=</span> <span class="nam">numpy</span><span class="op">.</span><span class="nam">dot</span><span class="op">(</span><span class="nam">self</span><span class="op">.</span><span class="nam">invA</span><span class="op">,</span><span class="nam">currX</span><span class="op">)</span>&nbsp; &nbsp; &nbsp; <span class="com"># Inverse of A</span><span class="strut">&nbsp;</span></p>
+<p id="t186" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">self</span><span class="op">.</span><span class="nam">mediator</span><span class="op">.</span><span class="nam">untilt_win</span><span class="op">.</span><span class="nam">boxes</span><span class="op">.</span><span class="nam">append_box</span><span class="op">(</span><span class="nam">currY</span><span class="op">[</span><span class="num">0</span><span class="op">]</span><span class="op">,</span><span class="nam">currY</span><span class="op">[</span><span class="num">1</span><span class="op">]</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t187" class="pln"><span class="strut">&nbsp;</span></p>
+<p id="t188" class="pln">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="com"># Center boxes</span><span class="strut">&nbsp;</span></p>
+<p id="t189" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="key">if</span> <span class="nam">self</span><span class="op">.</span><span class="nam">centertilts</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t190" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">self</span><span class="op">.</span><span class="nam">centerboxes</span><span class="op">(</span><span class="nam">self</span><span class="op">.</span><span class="nam">mediator</span><span class="op">.</span><span class="nam">untilt_win</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t191" class="pln"><span class="strut">&nbsp;</span></p>
+<p id="t192" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">self</span><span class="op">.</span><span class="nam">mediator</span><span class="op">.</span><span class="nam">untilt_win</span><span class="op">.</span><span class="nam">update_mainwin</span><span class="op">(</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t193" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">self</span><span class="op">.</span><span class="nam">mediator</span><span class="op">.</span><span class="nam">untilt_win</span><span class="op">.</span><span class="nam">update_particles</span><span class="op">(</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t194" class="pln"><span class="strut">&nbsp;</span></p>
+<p id="t195" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="key">if</span> <span class="nam">self</span><span class="op">.</span><span class="nam">cont_update_boxes</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t196" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">self</span><span class="op">.</span><span class="nam">update_boxes</span><span class="op">(</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t197" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="key">return</span> <span class="nam">True</span><span class="strut">&nbsp;</span></p>
+<p id="t198" class="pln"><span class="strut">&nbsp;</span></p>
+<p id="t199" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; <span class="key">def</span> <span class="nam">compute_transform</span><span class="op">(</span><span class="nam">self</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t200" class="pln">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="com">#print &quot;calc matrix&quot;</span><span class="strut">&nbsp;</span></p>
+<p id="t201" class="pln">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="com"># Find the transformation matrix</span><span class="strut">&nbsp;</span></p>
+<p id="t202" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">Xrow1</span> <span class="op">=</span> <span class="op">[</span><span class="op">]</span><span class="strut">&nbsp;</span></p>
+<p id="t203" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">Xrow2</span> <span class="op">=</span> <span class="op">[</span><span class="op">]</span><span class="strut">&nbsp;</span></p>
+<p id="t204" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">Xrow3</span> <span class="op">=</span> <span class="op">[</span><span class="op">]</span><span class="strut">&nbsp;</span></p>
+<p id="t205" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">Yrow1</span> <span class="op">=</span> <span class="op">[</span><span class="op">]</span><span class="strut">&nbsp;</span></p>
+<p id="t206" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">Yrow2</span> <span class="op">=</span> <span class="op">[</span><span class="op">]</span><span class="strut">&nbsp;</span></p>
+<p id="t207" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">Yrow3</span> <span class="op">=</span> <span class="op">[</span><span class="op">]</span><span class="strut">&nbsp;</span></p>
+<p id="t208" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="key">for</span> <span class="nam">i</span><span class="op">,</span><span class="nam">box</span> <span class="key">in</span> <span class="nam">enumerate</span><span class="op">(</span><span class="nam">self</span><span class="op">.</span><span class="nam">mediator</span><span class="op">.</span><span class="nam">untilt_win</span><span class="op">.</span><span class="nam">boxes</span><span class="op">.</span><span class="nam">boxlist</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t209" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">Xrow1</span><span class="op">.</span><span class="nam">append</span><span class="op">(</span><span class="nam">box</span><span class="op">.</span><span class="nam">x</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t210" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">Xrow2</span><span class="op">.</span><span class="nam">append</span><span class="op">(</span><span class="nam">box</span><span class="op">.</span><span class="nam">y</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t211" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">Xrow3</span><span class="op">.</span><span class="nam">append</span><span class="op">(</span><span class="num">1.0</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t212" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">Yrow1</span><span class="op">.</span><span class="nam">append</span><span class="op">(</span><span class="nam">self</span><span class="op">.</span><span class="nam">mediator</span><span class="op">.</span><span class="nam">tilt_win</span><span class="op">.</span><span class="nam">boxes</span><span class="op">.</span><span class="nam">boxlist</span><span class="op">[</span><span class="nam">i</span><span class="op">]</span><span class="op">.</span><span class="nam">x</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t213" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">Yrow2</span><span class="op">.</span><span class="nam">append</span><span class="op">(</span><span class="nam">self</span><span class="op">.</span><span class="nam">mediator</span><span class="op">.</span><span class="nam">tilt_win</span><span class="op">.</span><span class="nam">boxes</span><span class="op">.</span><span class="nam">boxlist</span><span class="op">[</span><span class="nam">i</span><span class="op">]</span><span class="op">.</span><span class="nam">y</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t214" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">Yrow3</span><span class="op">.</span><span class="nam">append</span><span class="op">(</span><span class="num">1.0</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t215" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">X</span> <span class="op">=</span> <span class="nam">numpy</span><span class="op">.</span><span class="nam">array</span><span class="op">(</span><span class="op">[</span><span class="nam">Xrow1</span><span class="op">,</span><span class="nam">Xrow2</span><span class="op">,</span><span class="nam">Xrow3</span><span class="op">]</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t216" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">Y</span> <span class="op">=</span> <span class="nam">numpy</span><span class="op">.</span><span class="nam">array</span><span class="op">(</span><span class="op">[</span><span class="nam">Yrow1</span><span class="op">,</span><span class="nam">Yrow2</span><span class="op">,</span><span class="nam">Yrow3</span><span class="op">]</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t217" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">pinvX</span> <span class="op">=</span> <span class="nam">numpy</span><span class="op">.</span><span class="nam">linalg</span><span class="op">.</span><span class="nam">pinv</span><span class="op">(</span><span class="nam">X</span><span class="op">)</span>&nbsp; &nbsp; <span class="com"># Use pseduoinverse to find the best transformation matrix, A, in a least squares sense</span><span class="strut">&nbsp;</span></p>
+<p id="t218" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">self</span><span class="op">.</span><span class="nam">A</span> <span class="op">=</span> <span class="nam">numpy</span><span class="op">.</span><span class="nam">dot</span><span class="op">(</span><span class="nam">Y</span><span class="op">,</span><span class="nam">pinvX</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t219" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">self</span><span class="op">.</span><span class="nam">invA</span> <span class="op">=</span> <span class="nam">numpy</span><span class="op">.</span><span class="nam">linalg</span><span class="op">.</span><span class="nam">inv</span><span class="op">(</span><span class="nam">self</span><span class="op">.</span><span class="nam">A</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t220" class="pln"><span class="strut">&nbsp;</span></p>
+<p id="t221" class="pln">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="com"># Enable buttons</span><span class="strut">&nbsp;</span></p>
+<p id="t222" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">self</span><span class="op">.</span><span class="nam">set_gui_buttons</span><span class="op">(</span><span class="nam">True</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t223" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">self</span><span class="op">.</span><span class="nam">compute_mask</span><span class="op">(</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t224" class="pln"><span class="strut">&nbsp;</span></p>
+<p id="t225" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; <span class="key">def</span> <span class="nam">compute_tiltaxis</span><span class="op">(</span><span class="nam">self</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t226" class="pln">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="str">&quot;&quot;&quot; Must have already computed tilt angle for this to work!&quot;&quot;&quot;</span><span class="strut">&nbsp;</span></p>
+<p id="t227" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="key">if</span> <span class="nam">self</span><span class="op">.</span><span class="nam">A</span> <span class="op">!=</span> <span class="nam">None</span> <span class="key">and</span> <span class="nam">self</span><span class="op">.</span><span class="nam">tiltangle</span> <span class="op">!=</span> <span class="nam">None</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t228" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">rotA</span> <span class="op">=</span> <span class="nam">numpy</span><span class="op">.</span><span class="nam">array</span><span class="op">(</span><span class="op">[</span><span class="op">[</span><span class="nam">self</span><span class="op">.</span><span class="nam">A</span><span class="op">[</span><span class="num">0</span><span class="op">,</span><span class="num">0</span><span class="op">]</span><span class="op">,</span><span class="nam">self</span><span class="op">.</span><span class="nam">A</span><span class="op">[</span><span class="num">0</span><span class="op">,</span><span class="num">1</span><span class="op">]</span><span class="op">]</span><span class="op">,</span><span class="op">[</span><span class="nam">self</span><span class="op">.</span><span class="nam">A</span><span class="op">[</span><span class="num">1</span><span class="op">,</span><span class="num">0</span><span class="op">]</span><span class="op">,</span><span class="nam">self</span><span class="op">.</span><span class="nam">A</span><span class="op">[</span><span class="num">1</span><span class="op">,</span><span class="num">1</span><span class="op">]</span><span class="op">]</span><span class="op">]</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t229" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">tan_phi</span> <span class="op">=</span> <span class="op">(</span><span class="nam">rotA</span><span class="op">[</span><span class="num">0</span><span class="op">,</span><span class="num">0</span><span class="op">]</span> <span class="op">-</span> <span class="nam">rotA</span><span class="op">[</span><span class="num">1</span><span class="op">,</span><span class="num">1</span><span class="op">]</span><span class="op">*</span><span class="nam">math</span><span class="op">.</span><span class="nam">cos</span><span class="op">(</span><span class="nam">math</span><span class="op">.</span><span class="nam">radians</span><span class="op">(</span><span class="nam">self</span><span class="op">.</span><span class="nam">tiltangle</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">/</span><span class="op">(</span><span class="nam">rotA</span><span class="op">[</span><span class="num">1</span><span class="op">,</span><span class="num">0</span><span class="op">]</span><span class="op">*</span><span class="nam">math</span><span class="op">.</span><span class="nam">cos</span><span class="op">(</span><span class="nam">math</span><span class="op">.</span><span class="nam">radians</span><span class="op">(</span><span class="nam">self</span><span class="op">.</span><span class="nam">tiltangle</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="nam">rotA</span><span class="op">[</span><span class="num">0</span><span class="op">,</span><span class="num">1</span><span class="op">]</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t230" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">phi</span> <span class="op">=</span> <span class="nam">math</span><span class="op">.</span><span class="nam">atan2</span><span class="op">(</span><span class="op">(</span><span class="nam">rotA</span><span class="op">[</span><span class="num">0</span><span class="op">,</span><span class="num">0</span><span class="op">]</span> <span class="op">-</span> <span class="nam">rotA</span><span class="op">[</span><span class="num">1</span><span class="op">,</span><span class="num">1</span><span class="op">]</span><span class="op">*</span><span class="nam">math</span><span class="op">.</span><span class="nam">cos</span><span class="op">(</span><span class="nam">math</span><span class="op">.</span><span class="nam">radians</span><span class="op">(</span><span class="nam">self</span><span class="op">.</span><span class="nam">tiltangle</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">,</span><span class="op">(</span><span class="nam">rotA</span><span class="op">[</span><span class="num">1</span><span class="op">,</span><span class="num">0</span><span class="op">]</span><span class="op">*</span><span class="nam">math</span><span class="op">.</span><span class="nam">cos</span><span class="op">(</span><span class="nam">math</span><span class="op">.</span><span class="nam">radians</span><span class="op">(</span><span class="nam">self</span><span class="op">.</span><span class="nam">tiltangle</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="nam">rotA</span><span class="op">[</span><span class="num">0</span><span class="op">,</span><span class="num">1</span><span class="op">]</span><span class="op">)</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t231" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">self</span><span class="op">.</span><span class="nam">dphi</span> <span class="op">=</span> <span class="nam">math</span><span class="op">.</span><span class="nam">degrees</span><span class="op">(</span><span class="nam">phi</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t232" class="pln"><span class="strut">&nbsp;</span></p>
+<p id="t233" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">sin_gamma</span> <span class="op">=</span> <span class="nam">rotA</span><span class="op">[</span><span class="num">0</span><span class="op">,</span><span class="num">0</span><span class="op">]</span><span class="op">*</span><span class="nam">math</span><span class="op">.</span><span class="nam">sin</span><span class="op">(</span><span class="nam">phi</span><span class="op">)</span> <span class="op">+</span> <span class="nam">rotA</span><span class="op">[</span><span class="num">0</span><span class="op">,</span><span class="num">1</span><span class="op">]</span><span class="op">*</span><span class="nam">math</span><span class="op">.</span><span class="nam">cos</span><span class="op">(</span><span class="nam">phi</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t234" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="key">try</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t235" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">gamma</span> <span class="op">=</span> <span class="nam">math</span><span class="op">.</span><span class="nam">asin</span><span class="op">(</span><span class="nam">sin_gamma</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t236" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="key">except</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t237" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">gamma</span> <span class="op">=</span> <span class="nam">math</span><span class="op">.</span><span class="nam">pi</span><span class="op">/</span><span class="num">2</span><span class="strut">&nbsp;</span></p>
+<p id="t238" class="pln"><span class="strut">&nbsp;</span></p>
+<p id="t239" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">self</span><span class="op">.</span><span class="nam">dgamma</span> <span class="op">=</span> <span class="nam">math</span><span class="op">.</span><span class="nam">degrees</span><span class="op">(</span><span class="nam">gamma</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t240" class="pln">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="com">#print rotA</span><span class="strut">&nbsp;</span></p>
+<p id="t241" class="pln"><span class="strut">&nbsp;</span></p>
+<p id="t242" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">self</span><span class="op">.</span><span class="nam">mediator</span><span class="op">.</span><span class="nam">control_window</span><span class="op">.</span><span class="nam">pair_picker_tool</span><span class="op">.</span><span class="nam">tiltaxis</span><span class="op">.</span><span class="nam">setText</span><span class="op">(</span><span class="op">(</span><span class="str">&quot;%3.2f&quot;</span><span class="op">%</span><span class="nam">self</span><span class="op">.</span><span class="nam">dphi</span><span class="op">)</span><span class="op">+</span><span class="str">u&#39;\u00B0&#39;</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t243" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">self</span><span class="op">.</span><span class="nam">mediator</span><span class="op">.</span><span class="nam">control_window</span><span class="op">.</span><span class="nam">pair_picker_tool</span><span class="op">.</span><span class="nam">gamma</span><span class="op">.</span><span class="nam">setText</span><span class="op">(</span><span class="op">(</span><span class="str">&quot;%3.2f&quot;</span><span class="op">%</span><span class="nam">self</span><span class="op">.</span><span class="nam">dgamma</span><span class="op">)</span><span class="op">+</span><span class="str">u&#39;\u00B0&#39;</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t244" class="pln">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="com"># Save tilt data</span><span class="strut">&nbsp;</span></p>
+<p id="t245" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">self</span><span class="op">.</span><span class="nam">mediator</span><span class="op">.</span><span class="nam">tilt_win</span><span class="op">.</span><span class="nam">boxes</span><span class="op">.</span><span class="nam">save_tiltdata_to_db</span><span class="op">(</span><span class="op">[</span><span class="nam">self</span><span class="op">.</span><span class="nam">tiltangle</span><span class="op">,</span> <span class="nam">self</span><span class="op">.</span><span class="nam">dphi</span><span class="op">,</span> <span class="nam">self</span><span class="op">.</span><span class="nam">dgamma</span><span class="op">]</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t246" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">self</span><span class="op">.</span><span class="nam">mediator</span><span class="op">.</span><span class="nam">untilt_win</span><span class="op">.</span><span class="nam">boxes</span><span class="op">.</span><span class="nam">save_tiltdata_to_db</span><span class="op">(</span><span class="op">[</span><span class="nam">self</span><span class="op">.</span><span class="nam">tiltangle</span><span class="op">,</span> <span class="nam">self</span><span class="op">.</span><span class="nam">dphi</span><span class="op">,</span> <span class="nam">self</span><span class="op">.</span><span class="nam">dgamma</span><span class="op">]</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t247" class="pln"><span class="strut">&nbsp;</span></p>
+<p id="t248" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; <span class="key">def</span> <span class="nam">compute_mask</span><span class="op">(</span><span class="nam">self</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t249" class="stm par run hide_run"><span class="annotate" title="Line 249 was executed, but never jumped to line 250">249&#x202F;&#x219B;&#x202F;250 [?]</span>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="key">if</span> <span class="nam">self</span><span class="op">.</span><span class="nam">A</span> <span class="op">!=</span> <span class="nam">None</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t250" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">v1</span> <span class="op">=</span> <span class="nam">numpy</span><span class="op">.</span><span class="nam">dot</span><span class="op">(</span><span class="nam">self</span><span class="op">.</span><span class="nam">A</span><span class="op">,</span><span class="op">[</span><span class="num">0</span><span class="op">,</span><span class="num">0</span><span class="op">,</span><span class="num">1</span><span class="op">]</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t251" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">v2</span> <span class="op">=</span> <span class="nam">numpy</span><span class="op">.</span><span class="nam">dot</span><span class="op">(</span><span class="nam">self</span><span class="op">.</span><span class="nam">A</span><span class="op">,</span><span class="op">[</span><span class="nam">self</span><span class="op">.</span><span class="nam">mediator</span><span class="op">.</span><span class="nam">untilt_win</span><span class="op">.</span><span class="nam">win_xsize</span><span class="op">,</span><span class="num">0</span><span class="op">,</span><span class="num">1</span><span class="op">]</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t252" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">v3</span> <span class="op">=</span> <span class="nam">numpy</span><span class="op">.</span><span class="nam">dot</span><span class="op">(</span><span class="nam">self</span><span class="op">.</span><span class="nam">A</span><span class="op">,</span><span class="op">[</span><span class="nam">self</span><span class="op">.</span><span class="nam">mediator</span><span class="op">.</span><span class="nam">untilt_win</span><span class="op">.</span><span class="nam">win_xsize</span><span class="op">,</span><span class="nam">self</span><span class="op">.</span><span class="nam">mediator</span><span class="op">.</span><span class="nam">untilt_win</span><span class="op">.</span><span class="nam">win_ysize</span><span class="op">,</span><span class="num">1</span><span class="op">]</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t253" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">v4</span> <span class="op">=</span> <span class="nam">numpy</span><span class="op">.</span><span class="nam">dot</span><span class="op">(</span><span class="nam">self</span><span class="op">.</span><span class="nam">A</span><span class="op">,</span><span class="op">[</span><span class="num">0</span><span class="op">,</span><span class="nam">self</span><span class="op">.</span><span class="nam">mediator</span><span class="op">.</span><span class="nam">untilt_win</span><span class="op">.</span><span class="nam">win_ysize</span><span class="op">,</span><span class="num">1</span><span class="op">]</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t254" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">self</span><span class="op">.</span><span class="nam">mediator</span><span class="op">.</span><span class="nam">tilt_win</span><span class="op">.</span><span class="nam">paint_mask</span><span class="op">(</span><span class="nam">v1</span><span class="op">[</span><span class="num">0</span><span class="op">]</span><span class="op">,</span><span class="nam">v1</span><span class="op">[</span><span class="num">1</span><span class="op">]</span><span class="op">,</span> <span class="nam">v2</span><span class="op">[</span><span class="num">0</span><span class="op">]</span><span class="op">,</span><span class="nam">v2</span><span class="op">[</span><span class="num">1</span><span class="op">]</span><span class="op">,</span><span class="nam">v3</span><span class="op">[</span><span class="num">0</span><span class="op">]</span><span class="op">,</span><span class="nam">v3</span><span class="op">[</span><span class="num">1</span><span class="op">]</span><span class="op">,</span><span class="nam">v4</span><span class="op">[</span><span class="num">0</span><span class="op">]</span><span class="op">,</span><span class="nam">v4</span><span class="op">[</span><span class="num">1</span><span class="op">]</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t255" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">self</span><span class="op">.</span><span class="nam">mediator</span><span class="op">.</span><span class="nam">tilt_win</span><span class="op">.</span><span class="nam">update_mainwin</span><span class="op">(</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t256" class="pln"><span class="strut">&nbsp;</span></p>
+<p id="t257" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">vinv1</span> <span class="op">=</span> <span class="nam">numpy</span><span class="op">.</span><span class="nam">dot</span><span class="op">(</span><span class="nam">self</span><span class="op">.</span><span class="nam">invA</span><span class="op">,</span><span class="op">[</span><span class="num">0</span><span class="op">,</span><span class="num">0</span><span class="op">,</span><span class="num">1</span><span class="op">]</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t258" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">vinv2</span> <span class="op">=</span> <span class="nam">numpy</span><span class="op">.</span><span class="nam">dot</span><span class="op">(</span><span class="nam">self</span><span class="op">.</span><span class="nam">invA</span><span class="op">,</span><span class="op">[</span><span class="nam">self</span><span class="op">.</span><span class="nam">mediator</span><span class="op">.</span><span class="nam">tilt_win</span><span class="op">.</span><span class="nam">win_xsize</span><span class="op">,</span><span class="num">0</span><span class="op">,</span><span class="num">1</span><span class="op">]</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t259" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">vinv3</span> <span class="op">=</span> <span class="nam">numpy</span><span class="op">.</span><span class="nam">dot</span><span class="op">(</span><span class="nam">self</span><span class="op">.</span><span class="nam">invA</span><span class="op">,</span><span class="op">[</span><span class="nam">self</span><span class="op">.</span><span class="nam">mediator</span><span class="op">.</span><span class="nam">tilt_win</span><span class="op">.</span><span class="nam">win_xsize</span><span class="op">,</span><span class="nam">self</span><span class="op">.</span><span class="nam">mediator</span><span class="op">.</span><span class="nam">tilt_win</span><span class="op">.</span><span class="nam">win_ysize</span><span class="op">,</span><span class="num">1</span><span class="op">]</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t260" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">vinv4</span> <span class="op">=</span> <span class="nam">numpy</span><span class="op">.</span><span class="nam">dot</span><span class="op">(</span><span class="nam">self</span><span class="op">.</span><span class="nam">invA</span><span class="op">,</span><span class="op">[</span><span class="num">0</span><span class="op">,</span><span class="nam">self</span><span class="op">.</span><span class="nam">mediator</span><span class="op">.</span><span class="nam">tilt_win</span><span class="op">.</span><span class="nam">win_ysize</span><span class="op">,</span><span class="num">1</span><span class="op">]</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t261" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">self</span><span class="op">.</span><span class="nam">mediator</span><span class="op">.</span><span class="nam">untilt_win</span><span class="op">.</span><span class="nam">paint_mask</span><span class="op">(</span><span class="nam">vinv1</span><span class="op">[</span><span class="num">0</span><span class="op">]</span><span class="op">,</span><span class="nam">vinv1</span><span class="op">[</span><span class="num">1</span><span class="op">]</span><span class="op">,</span> <span class="nam">vinv2</span><span class="op">[</span><span class="num">0</span><span class="op">]</span><span class="op">,</span><span class="nam">vinv2</span><span class="op">[</span><span class="num">1</span><span class="op">]</span><span class="op">,</span><span class="nam">vinv3</span><span class="op">[</span><span class="num">0</span><span class="op">]</span><span class="op">,</span><span class="nam">vinv3</span><span class="op">[</span><span class="num">1</span><span class="op">]</span><span class="op">,</span><span class="nam">vinv4</span><span class="op">[</span><span class="num">0</span><span class="op">]</span><span class="op">,</span><span class="nam">vinv4</span><span class="op">[</span><span class="num">1</span><span class="op">]</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t262" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">self</span><span class="op">.</span><span class="nam">mediator</span><span class="op">.</span><span class="nam">untilt_win</span><span class="op">.</span><span class="nam">update_mainwin</span><span class="op">(</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t263" class="pln"><span class="strut">&nbsp;</span></p>
+<p id="t264" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; <span class="key">def</span> <span class="nam">compute_tilt_angle</span><span class="op">(</span><span class="nam">self</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t265" class="pln">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="com">#self.compute_tilt_angle_phil()</span><span class="strut">&nbsp;</span></p>
+<p id="t266" class="pln"><span class="strut">&nbsp;</span></p>
+<p id="t267" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="key">if</span> <span class="nam">self</span><span class="op">.</span><span class="nam">A</span> <span class="op">!=</span> <span class="nam">None</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t268" class="pln">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="com"># Use the transformation matrix to compute the tilt angle</span><span class="strut">&nbsp;</span></p>
+<p id="t269" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">rotA</span> <span class="op">=</span> <span class="nam">numpy</span><span class="op">.</span><span class="nam">array</span><span class="op">(</span><span class="op">[</span><span class="op">[</span><span class="nam">self</span><span class="op">.</span><span class="nam">A</span><span class="op">[</span><span class="num">0</span><span class="op">,</span><span class="num">0</span><span class="op">]</span><span class="op">,</span><span class="nam">self</span><span class="op">.</span><span class="nam">A</span><span class="op">[</span><span class="num">0</span><span class="op">,</span><span class="num">1</span><span class="op">]</span><span class="op">]</span><span class="op">,</span><span class="op">[</span><span class="nam">self</span><span class="op">.</span><span class="nam">A</span><span class="op">[</span><span class="num">1</span><span class="op">,</span><span class="num">0</span><span class="op">]</span><span class="op">,</span><span class="nam">self</span><span class="op">.</span><span class="nam">A</span><span class="op">[</span><span class="num">1</span><span class="op">,</span><span class="num">1</span><span class="op">]</span><span class="op">]</span><span class="op">]</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t270" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">detA</span> <span class="op">=</span> <span class="nam">numpy</span><span class="op">.</span><span class="nam">linalg</span><span class="op">.</span><span class="nam">det</span><span class="op">(</span><span class="nam">self</span><span class="op">.</span><span class="nam">A</span><span class="op">)</span> <span class="com"># The determinate is is COS of the tilt angle</span><span class="strut">&nbsp;</span></p>
+<p id="t271" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="key">try</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t272" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">self</span><span class="op">.</span><span class="nam">tiltangle</span> <span class="op">=</span> <span class="nam">math</span><span class="op">.</span><span class="nam">degrees</span><span class="op">(</span><span class="nam">math</span><span class="op">.</span><span class="nam">acos</span><span class="op">(</span><span class="nam">detA</span><span class="op">)</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t273" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">self</span><span class="op">.</span><span class="nam">mediator</span><span class="op">.</span><span class="nam">control_window</span><span class="op">.</span><span class="nam">pair_picker_tool</span><span class="op">.</span><span class="nam">tiltangle</span><span class="op">.</span><span class="nam">setText</span><span class="op">(</span><span class="op">(</span><span class="str">&quot;%3.2f&quot;</span><span class="op">%</span><span class="nam">self</span><span class="op">.</span><span class="nam">tiltangle</span><span class="op">)</span><span class="op">+</span><span class="str">u&#39;\u00B0&#39;</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t274" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="key">except</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t275" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">self</span><span class="op">.</span><span class="nam">mediator</span><span class="op">.</span><span class="nam">control_window</span><span class="op">.</span><span class="nam">pair_picker_tool</span><span class="op">.</span><span class="nam">tiltangle</span><span class="op">.</span><span class="nam">setText</span><span class="op">(</span><span class="str">&quot;Det(A) &gt; 1&quot;</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t276" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">self</span><span class="op">.</span><span class="nam">compute_tiltaxis</span><span class="op">(</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t277" class="pln"><span class="strut">&nbsp;</span></p>
+<p id="t278" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; <span class="key">def</span> <span class="nam">compute_tilt_angle_phil</span><span class="op">(</span><span class="nam">self</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t279" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="key">if</span> <span class="nam">self</span><span class="op">.</span><span class="nam">A</span> <span class="op">!=</span> <span class="nam">None</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t280" class="pln">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="com"># SVD of A</span><span class="strut">&nbsp;</span></p>
+<p id="t281" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">rotA</span> <span class="op">=</span> <span class="nam">numpy</span><span class="op">.</span><span class="nam">array</span><span class="op">(</span><span class="op">[</span><span class="op">[</span><span class="nam">self</span><span class="op">.</span><span class="nam">A</span><span class="op">[</span><span class="num">0</span><span class="op">,</span><span class="num">0</span><span class="op">]</span><span class="op">,</span><span class="nam">self</span><span class="op">.</span><span class="nam">A</span><span class="op">[</span><span class="num">0</span><span class="op">,</span><span class="num">1</span><span class="op">]</span><span class="op">]</span><span class="op">,</span><span class="op">[</span><span class="nam">self</span><span class="op">.</span><span class="nam">A</span><span class="op">[</span><span class="num">1</span><span class="op">,</span><span class="num">0</span><span class="op">]</span><span class="op">,</span><span class="nam">self</span><span class="op">.</span><span class="nam">A</span><span class="op">[</span><span class="num">1</span><span class="op">,</span><span class="num">1</span><span class="op">]</span><span class="op">]</span><span class="op">]</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t282" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">U</span><span class="op">,</span> <span class="nam">D</span><span class="op">,</span> <span class="nam">V</span> <span class="op">=</span> <span class="nam">numpy</span><span class="op">.</span><span class="nam">linalg</span><span class="op">.</span><span class="nam">svd</span><span class="op">(</span><span class="nam">rotA</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t283" class="pln">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="com"># single values are ranked by numpy</span><span class="strut">&nbsp;</span></p>
+<p id="t284" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">self</span><span class="op">.</span><span class="nam">tiltangle</span> <span class="op">=</span> <span class="nam">math</span><span class="op">.</span><span class="nam">degrees</span><span class="op">(</span><span class="nam">math</span><span class="op">.</span><span class="nam">acos</span><span class="op">(</span><span class="nam">D</span><span class="op">[</span><span class="num">1</span><span class="op">]</span><span class="op">)</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t285" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">self</span><span class="op">.</span><span class="nam">mediator</span><span class="op">.</span><span class="nam">control_window</span><span class="op">.</span><span class="nam">pair_picker_tool</span><span class="op">.</span><span class="nam">tiltangle</span><span class="op">.</span><span class="nam">setText</span><span class="op">(</span><span class="op">(</span><span class="str">&quot;%3.2f&quot;</span><span class="op">%</span><span class="nam">self</span><span class="op">.</span><span class="nam">tiltangle</span><span class="op">)</span><span class="op">+</span><span class="str">u&#39;\u00B0&#39;</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t286" class="pln">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="com"># compute tilt axis</span><span class="strut">&nbsp;</span></p>
+<p id="t287" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">self</span><span class="op">.</span><span class="nam">dphi</span> <span class="op">=</span> <span class="nam">math</span><span class="op">.</span><span class="nam">degrees</span><span class="op">(</span><span class="nam">math</span><span class="op">.</span><span class="nam">atan2</span><span class="op">(</span><span class="nam">U</span><span class="op">[</span><span class="num">0</span><span class="op">]</span><span class="op">[</span><span class="num">1</span><span class="op">]</span><span class="op">,</span><span class="nam">U</span><span class="op">[</span><span class="num">0</span><span class="op">]</span><span class="op">[</span><span class="num">0</span><span class="op">]</span><span class="op">)</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t288" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">self</span><span class="op">.</span><span class="nam">dgamma</span> <span class="op">=</span> <span class="nam">math</span><span class="op">.</span><span class="nam">degrees</span><span class="op">(</span><span class="nam">math</span><span class="op">.</span><span class="nam">atan2</span><span class="op">(</span><span class="nam">V</span><span class="op">[</span><span class="num">0</span><span class="op">]</span><span class="op">[</span><span class="num">1</span><span class="op">]</span><span class="op">,</span><span class="nam">V</span><span class="op">[</span><span class="num">0</span><span class="op">]</span><span class="op">[</span><span class="num">0</span><span class="op">]</span><span class="op">)</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t289" class="pln">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="com"># save and display data</span><span class="strut">&nbsp;</span></p>
+<p id="t290" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">self</span><span class="op">.</span><span class="nam">mediator</span><span class="op">.</span><span class="nam">control_window</span><span class="op">.</span><span class="nam">pair_picker_tool</span><span class="op">.</span><span class="nam">tiltaxis</span><span class="op">.</span><span class="nam">setText</span><span class="op">(</span><span class="op">(</span><span class="str">&quot;%3.2f&quot;</span><span class="op">%</span><span class="nam">self</span><span class="op">.</span><span class="nam">dphi</span><span class="op">)</span><span class="op">+</span><span class="str">u&#39;\u00B0&#39;</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t291" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">self</span><span class="op">.</span><span class="nam">mediator</span><span class="op">.</span><span class="nam">control_window</span><span class="op">.</span><span class="nam">pair_picker_tool</span><span class="op">.</span><span class="nam">gamma</span><span class="op">.</span><span class="nam">setText</span><span class="op">(</span><span class="op">(</span><span class="str">&quot;%3.2f&quot;</span><span class="op">%</span><span class="nam">self</span><span class="op">.</span><span class="nam">dgamma</span><span class="op">)</span><span class="op">+</span><span class="str">u&#39;\u00B0&#39;</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t292" class="pln">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="com"># Save tilt data</span><span class="strut">&nbsp;</span></p>
+<p id="t293" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">self</span><span class="op">.</span><span class="nam">mediator</span><span class="op">.</span><span class="nam">tilt_win</span><span class="op">.</span><span class="nam">boxes</span><span class="op">.</span><span class="nam">save_tiltdata_to_db</span><span class="op">(</span><span class="op">[</span><span class="nam">self</span><span class="op">.</span><span class="nam">tiltangle</span><span class="op">,</span> <span class="nam">self</span><span class="op">.</span><span class="nam">dphi</span><span class="op">,</span> <span class="nam">self</span><span class="op">.</span><span class="nam">dgamma</span><span class="op">]</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t294" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">self</span><span class="op">.</span><span class="nam">mediator</span><span class="op">.</span><span class="nam">untilt_win</span><span class="op">.</span><span class="nam">boxes</span><span class="op">.</span><span class="nam">save_tiltdata_to_db</span><span class="op">(</span><span class="op">[</span><span class="nam">self</span><span class="op">.</span><span class="nam">tiltangle</span><span class="op">,</span> <span class="nam">self</span><span class="op">.</span><span class="nam">dphi</span><span class="op">,</span> <span class="nam">self</span><span class="op">.</span><span class="nam">dgamma</span><span class="op">]</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t295" class="pln"><span class="strut">&nbsp;</span></p>
+<p id="t296" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="key">print</span><span class="op">(</span><span class="nam">D</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t297" class="pln"><span class="strut">&nbsp;</span></p>
+<p id="t298" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; <span class="key">def</span> <span class="nam">update_boxes</span><span class="op">(</span><span class="nam">self</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t299" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="key">for</span> <span class="nam">i</span><span class="op">,</span><span class="nam">box</span> <span class="key">in</span> <span class="nam">enumerate</span><span class="op">(</span><span class="nam">self</span><span class="op">.</span><span class="nam">mediator</span><span class="op">.</span><span class="nam">untilt_win</span><span class="op">.</span><span class="nam">boxes</span><span class="op">.</span><span class="nam">boxlist</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t300" class="pln">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="com"># Compute tilted box</span><span class="strut">&nbsp;</span></p>
+<p id="t301" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">boxX</span> <span class="op">=</span> <span class="op">[</span><span class="nam">self</span><span class="op">.</span><span class="nam">mediator</span><span class="op">.</span><span class="nam">untilt_win</span><span class="op">.</span><span class="nam">boxes</span><span class="op">.</span><span class="nam">boxlist</span><span class="op">[</span><span class="nam">i</span><span class="op">]</span><span class="op">.</span><span class="nam">x</span><span class="op">,</span><span class="nam">self</span><span class="op">.</span><span class="nam">mediator</span><span class="op">.</span><span class="nam">untilt_win</span><span class="op">.</span><span class="nam">boxes</span><span class="op">.</span><span class="nam">boxlist</span><span class="op">[</span><span class="nam">i</span><span class="op">]</span><span class="op">.</span><span class="nam">y</span><span class="op">,</span><span class="num">1.0</span><span class="op">]</span><span class="strut">&nbsp;</span></p>
+<p id="t302" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">boxY</span> <span class="op">=</span> <span class="nam">numpy</span><span class="op">.</span><span class="nam">dot</span><span class="op">(</span><span class="nam">self</span><span class="op">.</span><span class="nam">A</span><span class="op">,</span><span class="nam">boxX</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t303" class="pln">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="com"># Set tilted box</span><span class="strut">&nbsp;</span></p>
+<p id="t304" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">self</span><span class="op">.</span><span class="nam">mediator</span><span class="op">.</span><span class="nam">tilt_win</span><span class="op">.</span><span class="nam">boxes</span><span class="op">.</span><span class="nam">boxlist</span><span class="op">[</span><span class="nam">i</span><span class="op">]</span><span class="op">.</span><span class="nam">x</span> <span class="op">=</span> <span class="nam">boxY</span><span class="op">[</span><span class="num">0</span><span class="op">]</span><span class="strut">&nbsp;</span></p>
+<p id="t305" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">self</span><span class="op">.</span><span class="nam">mediator</span><span class="op">.</span><span class="nam">tilt_win</span><span class="op">.</span><span class="nam">boxes</span><span class="op">.</span><span class="nam">boxlist</span><span class="op">[</span><span class="nam">i</span><span class="op">]</span><span class="op">.</span><span class="nam">y</span> <span class="op">=</span> <span class="nam">boxY</span><span class="op">[</span><span class="num">1</span><span class="op">]</span><span class="strut">&nbsp;</span></p>
+<p id="t306" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">self</span><span class="op">.</span><span class="nam">mediator</span><span class="op">.</span><span class="nam">tilt_win</span><span class="op">.</span><span class="nam">boxes</span><span class="op">.</span><span class="nam">shapelist</span><span class="op">[</span><span class="nam">i</span><span class="op">]</span> <span class="op">=</span> <span class="nam">None</span><span class="strut">&nbsp;</span></p>
+<p id="t307" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">self</span><span class="op">.</span><span class="nam">mediator</span><span class="op">.</span><span class="nam">tilt_win</span><span class="op">.</span><span class="nam">boxes</span><span class="op">.</span><span class="nam">labellist</span><span class="op">[</span><span class="nam">i</span><span class="op">]</span> <span class="op">=</span> <span class="nam">None</span><span class="strut">&nbsp;</span></p>
+<p id="t308" class="pln"><span class="strut">&nbsp;</span></p>
+<p id="t309" class="pln">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="com"># Update tilted window</span><span class="strut">&nbsp;</span></p>
+<p id="t310" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">self</span><span class="op">.</span><span class="nam">mediator</span><span class="op">.</span><span class="nam">tilt_win</span><span class="op">.</span><span class="nam">boxes</span><span class="op">.</span><span class="nam">save_boxes_to_db</span><span class="op">(</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t311" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">self</span><span class="op">.</span><span class="nam">mediator</span><span class="op">.</span><span class="nam">tilt_win</span><span class="op">.</span><span class="nam">window</span><span class="op">.</span><span class="nam">update_shapes</span><span class="op">(</span><span class="nam">self</span><span class="op">.</span><span class="nam">mediator</span><span class="op">.</span><span class="nam">tilt_win</span><span class="op">.</span><span class="nam">boxes</span><span class="op">.</span><span class="nam">get_box_shapes</span><span class="op">(</span><span class="nam">self</span><span class="op">.</span><span class="nam">mediator</span><span class="op">.</span><span class="nam">boxsize</span><span class="op">)</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t312" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">self</span><span class="op">.</span><span class="nam">mediator</span><span class="op">.</span><span class="nam">tilt_win</span><span class="op">.</span><span class="nam">window</span><span class="op">.</span><span class="nam">updateGL</span><span class="op">(</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t313" class="pln"><span class="strut">&nbsp;</span></p>
+<p id="t314" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; <span class="key">def</span> <span class="nam">centerboxes</span><span class="op">(</span><span class="nam">self</span><span class="op">,</span> <span class="nam">window</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t315" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">image</span> <span class="op">=</span> <span class="nam">window</span><span class="op">.</span><span class="nam">boxes</span><span class="op">.</span><span class="nam">boxlist</span><span class="op">[</span><span class="nam">len</span><span class="op">(</span><span class="nam">window</span><span class="op">.</span><span class="nam">boxes</span><span class="op">.</span><span class="nam">boxlist</span><span class="op">)</span><span class="op">-</span><span class="num">1</span><span class="op">]</span><span class="op">.</span><span class="nam">get_image</span><span class="op">(</span><span class="nam">window</span><span class="op">.</span><span class="nam">filename</span><span class="op">,</span><span class="nam">self</span><span class="op">.</span><span class="nam">mediator</span><span class="op">.</span><span class="nam">boxsize</span><span class="op">,</span><span class="str">&quot;normalize.edgemean&quot;</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t316" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">centerimg</span> <span class="op">=</span> <span class="nam">image</span><span class="op">.</span><span class="nam">process</span><span class="op">(</span><span class="str">&quot;xform.centeracf&quot;</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t317" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">tv</span> <span class="op">=</span> <span class="nam">centerimg</span><span class="op">.</span><span class="nam">get_attr</span><span class="op">(</span><span class="str">&quot;xform.align2d&quot;</span><span class="op">)</span><span class="op">.</span><span class="nam">get_trans</span><span class="op">(</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t318" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">window</span><span class="op">.</span><span class="nam">boxes</span><span class="op">.</span><span class="nam">boxlist</span><span class="op">[</span><span class="nam">len</span><span class="op">(</span><span class="nam">window</span><span class="op">.</span><span class="nam">boxes</span><span class="op">.</span><span class="nam">boxlist</span><span class="op">)</span><span class="op">-</span><span class="num">1</span><span class="op">]</span><span class="op">.</span><span class="nam">move</span><span class="op">(</span><span class="op">-</span><span class="nam">tv</span><span class="op">[</span><span class="num">0</span><span class="op">]</span><span class="op">,</span><span class="op">-</span><span class="nam">tv</span><span class="op">[</span><span class="num">1</span><span class="op">]</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t319" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">window</span><span class="op">.</span><span class="nam">boxes</span><span class="op">.</span><span class="nam">shapelist</span><span class="op">[</span><span class="nam">len</span><span class="op">(</span><span class="nam">window</span><span class="op">.</span><span class="nam">boxes</span><span class="op">.</span><span class="nam">boxlist</span><span class="op">)</span><span class="op">-</span><span class="num">1</span><span class="op">]</span> <span class="op">=</span> <span class="nam">None</span><span class="strut">&nbsp;</span></p>
+<p id="t320" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">window</span><span class="op">.</span><span class="nam">boxes</span><span class="op">.</span><span class="nam">labellist</span><span class="op">[</span><span class="nam">len</span><span class="op">(</span><span class="nam">window</span><span class="op">.</span><span class="nam">boxes</span><span class="op">.</span><span class="nam">boxlist</span><span class="op">)</span><span class="op">-</span><span class="num">1</span><span class="op">]</span> <span class="op">=</span> <span class="nam">None</span><span class="strut">&nbsp;</span></p>
+<p id="t321" class="pln"><span class="strut">&nbsp;</span></p>
+<p id="t322" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; <span class="key">def</span> <span class="nam">imagesaveevent</span><span class="op">(</span><span class="nam">self</span><span class="op">,</span> <span class="nam">image</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t323" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="key">if</span> <span class="nam">self</span><span class="op">.</span><span class="nam">A</span> <span class="op">!=</span> <span class="nam">None</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t324" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="key">if</span> <span class="nam">image</span><span class="op">.</span><span class="nam">has_attr</span><span class="op">(</span><span class="str">&quot;tiltaxis&quot;</span><span class="op">)</span><span class="op">:</span> <span class="nam">image</span><span class="op">.</span><span class="nam">set_attr</span><span class="op">(</span><span class="str">&quot;tiltaxis&quot;</span><span class="op">,</span> <span class="nam">self</span><span class="op">.</span><span class="nam">dphi</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t325" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="key">if</span> <span class="nam">image</span><span class="op">.</span><span class="nam">has_attr</span><span class="op">(</span><span class="str">&quot;tiltgamma&quot;</span><span class="op">)</span><span class="op">:</span> <span class="nam">image</span><span class="op">.</span><span class="nam">set_attr</span><span class="op">(</span><span class="str">&quot;tiltgamma&quot;</span><span class="op">,</span> <span class="nam">self</span><span class="op">.</span><span class="nam">dgamma</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t326" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="key">if</span> <span class="nam">image</span><span class="op">.</span><span class="nam">has_attr</span><span class="op">(</span><span class="str">&quot;tiltangle&quot;</span><span class="op">)</span><span class="op">:</span> <span class="nam">image</span><span class="op">.</span><span class="nam">set_attr</span><span class="op">(</span><span class="str">&quot;tiltangle&quot;</span><span class="op">,</span> <span class="nam">self</span><span class="op">.</span><span class="nam">tiltangle</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t327" class="pln"><span class="strut">&nbsp;</span></p>
+<p id="t328" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; <span class="key">def</span> <span class="nam">unpickevent</span><span class="op">(</span><span class="nam">self</span><span class="op">,</span> <span class="nam">caller</span><span class="op">,</span> <span class="nam">box_num</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t329" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="key">if</span> <span class="nam">caller</span> <span class="op">==</span> <span class="nam">self</span><span class="op">.</span><span class="nam">mediator</span><span class="op">.</span><span class="nam">untilt_win</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t330" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="key">if</span> <span class="nam">len</span><span class="op">(</span><span class="nam">self</span><span class="op">.</span><span class="nam">mediator</span><span class="op">.</span><span class="nam">tilt_win</span><span class="op">.</span><span class="nam">boxes</span><span class="op">.</span><span class="nam">boxlist</span><span class="op">)</span><span class="op">-</span><span class="num">1</span> <span class="op">&gt;=</span> <span class="nam">box_num</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t331" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">self</span><span class="op">.</span><span class="nam">mediator</span><span class="op">.</span><span class="nam">tilt_win</span><span class="op">.</span><span class="nam">boxes</span><span class="op">.</span><span class="nam">remove_box</span><span class="op">(</span><span class="nam">box_num</span><span class="op">,</span> <span class="nam">self</span><span class="op">.</span><span class="nam">mediator</span><span class="op">.</span><span class="nam">boxsize</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t332" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="key">if</span> <span class="nam">self</span><span class="op">.</span><span class="nam">mediator</span><span class="op">.</span><span class="nam">untilt_win</span><span class="op">.</span><span class="nam">boxes</span><span class="op">.</span><span class="nam">boxpopulation</span> <span class="op">&lt;=</span> <span class="nam">self</span><span class="op">.</span><span class="nam">minpp_for_xform</span> <span class="key">or</span> <span class="nam">self</span><span class="op">.</span><span class="nam">mediator</span><span class="op">.</span><span class="nam">tilt_win</span><span class="op">.</span><span class="nam">boxes</span><span class="op">.</span><span class="nam">boxpopulation</span> <span class="op">&lt;=</span> <span class="nam">self</span><span class="op">.</span><span class="nam">minpp_for_xform</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t333" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">self</span><span class="op">.</span><span class="nam">set_gui_buttons</span><span class="op">(</span><span class="nam">False</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t334" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">self</span><span class="op">.</span><span class="nam">A</span> <span class="op">=</span> <span class="nam">None</span><span class="strut">&nbsp;</span></p>
+<p id="t335" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">self</span><span class="op">.</span><span class="nam">invA</span> <span class="op">=</span> <span class="nam">None</span><span class="strut">&nbsp;</span></p>
+<p id="t336" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">self</span><span class="op">.</span><span class="nam">mediator</span><span class="op">.</span><span class="nam">tilt_win</span><span class="op">.</span><span class="nam">update_mainwin</span><span class="op">(</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t337" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="key">if</span> <span class="nam">caller</span> <span class="op">==</span> <span class="nam">self</span><span class="op">.</span><span class="nam">mediator</span><span class="op">.</span><span class="nam">tilt_win</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t338" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="key">if</span> <span class="nam">len</span><span class="op">(</span><span class="nam">self</span><span class="op">.</span><span class="nam">mediator</span><span class="op">.</span><span class="nam">untilt_win</span><span class="op">.</span><span class="nam">boxes</span><span class="op">.</span><span class="nam">boxlist</span><span class="op">)</span><span class="op">-</span><span class="num">1</span> <span class="op">&gt;=</span> <span class="nam">box_num</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t339" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">self</span><span class="op">.</span><span class="nam">mediator</span><span class="op">.</span><span class="nam">untilt_win</span><span class="op">.</span><span class="nam">boxes</span><span class="op">.</span><span class="nam">remove_box</span><span class="op">(</span><span class="nam">box_num</span><span class="op">,</span> <span class="nam">self</span><span class="op">.</span><span class="nam">mediator</span><span class="op">.</span><span class="nam">boxsize</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t340" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="key">if</span> <span class="nam">self</span><span class="op">.</span><span class="nam">mediator</span><span class="op">.</span><span class="nam">untilt_win</span><span class="op">.</span><span class="nam">boxes</span><span class="op">.</span><span class="nam">boxpopulation</span> <span class="op">&lt;=</span> <span class="nam">self</span><span class="op">.</span><span class="nam">minpp_for_xform</span> <span class="key">or</span> <span class="nam">self</span><span class="op">.</span><span class="nam">mediator</span><span class="op">.</span><span class="nam">tilt_win</span><span class="op">.</span><span class="nam">boxes</span><span class="op">.</span><span class="nam">boxpopulation</span> <span class="op">&lt;=</span> <span class="nam">self</span><span class="op">.</span><span class="nam">minpp_for_xform</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t341" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">self</span><span class="op">.</span><span class="nam">set_gui_buttons</span><span class="op">(</span><span class="nam">False</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t342" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">self</span><span class="op">.</span><span class="nam">A</span> <span class="op">=</span> <span class="nam">None</span><span class="strut">&nbsp;</span></p>
+<p id="t343" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">self</span><span class="op">.</span><span class="nam">invA</span> <span class="op">=</span> <span class="nam">None</span><span class="strut">&nbsp;</span></p>
+<p id="t344" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">self</span><span class="op">.</span><span class="nam">mediator</span><span class="op">.</span><span class="nam">untilt_win</span><span class="op">.</span><span class="nam">update_mainwin</span><span class="op">(</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t345" class="pln"><span class="strut">&nbsp;</span></p>
+<p id="t346" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="key">return</span> <span class="nam">True</span><span class="strut">&nbsp;</span></p>
+<p id="t347" class="pln"><span class="strut">&nbsp;</span></p>
+<p id="t348" class="pln">&nbsp; &nbsp; &nbsp; &nbsp; <span class="com"># This toggle the contol buttons on and off (also controls the mask)</span><span class="strut">&nbsp;</span></p>
+<p id="t349" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; <span class="key">def</span> <span class="nam">set_gui_buttons</span><span class="op">(</span><span class="nam">self</span><span class="op">,</span> <span class="nam">toggle</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t350" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">self</span><span class="op">.</span><span class="nam">mediator</span><span class="op">.</span><span class="nam">control_window</span><span class="op">.</span><span class="nam">pair_picker_tool</span><span class="op">.</span><span class="nam">mask_combobox</span><span class="op">.</span><span class="nam">setEnabled</span><span class="op">(</span><span class="nam">toggle</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t351" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">self</span><span class="op">.</span><span class="nam">mediator</span><span class="op">.</span><span class="nam">control_window</span><span class="op">.</span><span class="nam">pair_picker_tool</span><span class="op">.</span><span class="nam">upboxes_but</span><span class="op">.</span><span class="nam">setEnabled</span><span class="op">(</span><span class="nam">toggle</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t352" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">self</span><span class="op">.</span><span class="nam">mediator</span><span class="op">.</span><span class="nam">control_window</span><span class="op">.</span><span class="nam">pair_picker_tool</span><span class="op">.</span><span class="nam">centerboxes_but</span><span class="op">.</span><span class="nam">setEnabled</span><span class="op">(</span><span class="nam">toggle</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t353" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="key">if</span> <span class="nam">toggle</span> <span class="op">==</span> <span class="nam">False</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t354" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">self</span><span class="op">.</span><span class="nam">mediator</span><span class="op">.</span><span class="nam">tilt_win</span><span class="op">.</span><span class="nam">boxes</span><span class="op">.</span><span class="nam">add_mask</span><span class="op">(</span><span class="nam">None</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t355" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">self</span><span class="op">.</span><span class="nam">mediator</span><span class="op">.</span><span class="nam">untilt_win</span><span class="op">.</span><span class="nam">boxes</span><span class="op">.</span><span class="nam">add_mask</span><span class="op">(</span><span class="nam">None</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t356" class="pln"><span class="strut">&nbsp;</span></p>
+<p id="t357" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; <span class="key">def</span> <span class="nam">moveevent</span><span class="op">(</span><span class="nam">self</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t358" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="key">return</span> <span class="nam">True</span><span class="strut">&nbsp;</span></p>
+<p id="t359" class="pln"><span class="strut">&nbsp;</span></p>
+<p id="t360" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; <span class="key">def</span> <span class="nam">on_update_boxes</span><span class="op">(</span><span class="nam">self</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t361" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">self</span><span class="op">.</span><span class="nam">compute_transform</span><span class="op">(</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t362" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">self</span><span class="op">.</span><span class="nam">compute_tilt_angle</span><span class="op">(</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t363" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">self</span><span class="op">.</span><span class="nam">update_boxes</span><span class="op">(</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t364" class="pln"><span class="strut">&nbsp;</span></p>
+<p id="t365" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; <span class="key">def</span> <span class="nam">on_center_boxes</span><span class="op">(</span><span class="nam">self</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t366" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="key">for</span> <span class="nam">i</span><span class="op">,</span><span class="nam">image</span> <span class="key">in</span> <span class="nam">enumerate</span><span class="op">(</span><span class="nam">self</span><span class="op">.</span><span class="nam">mediator</span><span class="op">.</span><span class="nam">tilt_win</span><span class="op">.</span><span class="nam">boxes</span><span class="op">.</span><span class="nam">get_particle_images</span><span class="op">(</span><span class="nam">self</span><span class="op">.</span><span class="nam">mediator</span><span class="op">.</span><span class="nam">tilt_win</span><span class="op">.</span><span class="nam">filename</span><span class="op">,</span><span class="nam">self</span><span class="op">.</span><span class="nam">mediator</span><span class="op">.</span><span class="nam">boxsize</span><span class="op">)</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t367" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">centerimg</span> <span class="op">=</span> <span class="nam">image</span><span class="op">.</span><span class="nam">process</span><span class="op">(</span><span class="str">&quot;xform.centeracf&quot;</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t368" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">tv</span> <span class="op">=</span> <span class="nam">centerimg</span><span class="op">.</span><span class="nam">get_attr</span><span class="op">(</span><span class="str">&quot;xform.align2d&quot;</span><span class="op">)</span><span class="op">.</span><span class="nam">get_trans</span><span class="op">(</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t369" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">self</span><span class="op">.</span><span class="nam">mediator</span><span class="op">.</span><span class="nam">tilt_win</span><span class="op">.</span><span class="nam">boxes</span><span class="op">.</span><span class="nam">boxlist</span><span class="op">[</span><span class="nam">i</span><span class="op">]</span><span class="op">.</span><span class="nam">move</span><span class="op">(</span><span class="op">-</span><span class="nam">tv</span><span class="op">[</span><span class="num">0</span><span class="op">]</span><span class="op">,</span><span class="op">-</span><span class="nam">tv</span><span class="op">[</span><span class="num">1</span><span class="op">]</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t370" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">self</span><span class="op">.</span><span class="nam">mediator</span><span class="op">.</span><span class="nam">tilt_win</span><span class="op">.</span><span class="nam">boxes</span><span class="op">.</span><span class="nam">shapelist</span><span class="op">[</span><span class="nam">i</span><span class="op">]</span> <span class="op">=</span> <span class="nam">None</span><span class="strut">&nbsp;</span></p>
+<p id="t371" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">self</span><span class="op">.</span><span class="nam">mediator</span><span class="op">.</span><span class="nam">tilt_win</span><span class="op">.</span><span class="nam">boxes</span><span class="op">.</span><span class="nam">labellist</span><span class="op">[</span><span class="nam">i</span><span class="op">]</span> <span class="op">=</span> <span class="nam">None</span><span class="strut">&nbsp;</span></p>
+<p id="t372" class="pln">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="com"># Update tilted window</span><span class="strut">&nbsp;</span></p>
+<p id="t373" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">self</span><span class="op">.</span><span class="nam">mediator</span><span class="op">.</span><span class="nam">tilt_win</span><span class="op">.</span><span class="nam">boxes</span><span class="op">.</span><span class="nam">save_boxes_to_db</span><span class="op">(</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t374" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">self</span><span class="op">.</span><span class="nam">mediator</span><span class="op">.</span><span class="nam">tilt_win</span><span class="op">.</span><span class="nam">window</span><span class="op">.</span><span class="nam">update_shapes</span><span class="op">(</span><span class="nam">self</span><span class="op">.</span><span class="nam">mediator</span><span class="op">.</span><span class="nam">tilt_win</span><span class="op">.</span><span class="nam">boxes</span><span class="op">.</span><span class="nam">get_box_shapes</span><span class="op">(</span><span class="nam">self</span><span class="op">.</span><span class="nam">mediator</span><span class="op">.</span><span class="nam">boxsize</span><span class="op">)</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t375" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">self</span><span class="op">.</span><span class="nam">mediator</span><span class="op">.</span><span class="nam">tilt_win</span><span class="op">.</span><span class="nam">window</span><span class="op">.</span><span class="nam">updateGL</span><span class="op">(</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+                
+            </td>
+        </tr>
+    </table>
+</div>
+
+<div id="footer">
+    <div class="content">
+        <p>
+            <a class="nav" href="index.html">&#xab; index</a> &nbsp; &nbsp; <a class="nav" href="https://coverage.readthedocs.org">coverage.py v4.0.3</a>,
+            created at 2018-07-02 05:34
+        </p>
+    </div>
+</div>
+
+</body>
+</html>

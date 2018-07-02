@@ -1,0 +1,2516 @@
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Coverage report</title>
+    <link rel="stylesheet" href="style.css" type="text/css">
+    
+    <script type="text/javascript" src="jquery.min.js"></script>
+    <script type="text/javascript" src="jquery.debounce.min.js"></script>
+    <script type="text/javascript" src="jquery.tablesorter.min.js"></script>
+    <script type="text/javascript" src="jquery.hotkeys.js"></script>
+    <script type="text/javascript" src="coverage_html.js"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(coverage.index_ready);
+    </script>
+</head>
+<body class="indexfile">
+
+<div id="header">
+    <div class="content">
+        <h1>Coverage report:
+            <span class="pc_cov">17%</span>
+        </h1>
+
+        <img id="keyboard_icon" src="keybd_closed.png" alt="Show keyboard shortcuts" />
+
+        <form id="filter_container">
+            <input id="filter" type="text" value="" placeholder="filter..." />
+        </form>
+    </div>
+</div>
+
+<div class="help_panel">
+    <img id="panel_icon" src="keybd_open.png" alt="Hide keyboard shortcuts" />
+    <p class="legend">Hot-keys on this page</p>
+    <div>
+    <p class="keyhelp">
+        <span class="key">n</span>
+        <span class="key">s</span>
+        <span class="key">m</span>
+        <span class="key">x</span>
+        
+        <span class="key">b</span>
+        <span class="key">p</span>
+        
+        <span class="key">c</span> &nbsp; change column sorting
+    </p>
+    </div>
+</div>
+
+<div id="index">
+    <table class="index">
+        <thead>
+            
+            <tr class="tablehead" title="Click to sort">
+                <th class="name left headerSortDown shortkey_n">Module</th>
+                <th class="shortkey_s">statements</th>
+                <th class="shortkey_m">missing</th>
+                <th class="shortkey_x">excluded</th>
+                
+                <th class="shortkey_b">branches</th>
+                <th class="shortkey_p">partial</th>
+                
+                <th class="right shortkey_c">coverage</th>
+            </tr>
+        </thead>
+        
+        <tfoot>
+            <tr class="total">
+                <td class="name left">Total</td>
+                <td>86410</td>
+                <td>69896</td>
+                <td>0</td>
+                
+                <td>25308</td>
+                <td>1090</td>
+                
+                <td class="right" data-ratio="18529 111718">17%</td>
+            </tr>
+        </tfoot>
+        <tbody>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2_py.html">e2.py</a></td>
+                <td>4</td>
+                <td>4</td>
+                <td>0</td>
+                
+                <td>0</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 4">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2RCTboxer_py.html">e2RCTboxer.py</a></td>
+                <td>484</td>
+                <td>157</td>
+                <td>0</td>
+                
+                <td>120</td>
+                <td>22</td>
+                
+                <td class="right" data-ratio="365 604">60%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2_real_py.html">e2_real.py</a></td>
+                <td>22</td>
+                <td>22</td>
+                <td>0</td>
+                
+                <td>0</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 22">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2a2d_align_py.html">e2a2d_align.py</a></td>
+                <td>101</td>
+                <td>101</td>
+                <td>0</td>
+                
+                <td>26</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 127">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2a2d_average_py.html">e2a2d_average.py</a></td>
+                <td>102</td>
+                <td>102</td>
+                <td>0</td>
+                
+                <td>38</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 140">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2a2d_stat_py.html">e2a2d_stat.py</a></td>
+                <td>144</td>
+                <td>144</td>
+                <td>0</td>
+                
+                <td>40</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 184">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2align2d_py.html">e2align2d.py</a></td>
+                <td>52</td>
+                <td>52</td>
+                <td>0</td>
+                
+                <td>10</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 62">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2align3d_py.html">e2align3d.py</a></td>
+                <td>125</td>
+                <td>125</td>
+                <td>0</td>
+                
+                <td>34</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 159">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2basis_py.html">e2basis.py</a></td>
+                <td>204</td>
+                <td>204</td>
+                <td>0</td>
+                
+                <td>90</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 294">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2bdb_py.html">e2bdb.py</a></td>
+                <td>434</td>
+                <td>434</td>
+                <td>0</td>
+                
+                <td>178</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 612">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2boxadjust_py.html">e2boxadjust.py</a></td>
+                <td>57</td>
+                <td>57</td>
+                <td>0</td>
+                
+                <td>12</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 69">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2boxer_py.html">e2boxer.py</a></td>
+                <td>1294</td>
+                <td>807</td>
+                <td>0</td>
+                
+                <td>356</td>
+                <td>54</td>
+                
+                <td class="right" data-ratio="555 1650">34%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2boxer_old_py.html">e2boxer_old.py</a></td>
+                <td>2181</td>
+                <td>2181</td>
+                <td>0</td>
+                
+                <td>658</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 2839">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2buildsets_py.html">e2buildsets.py</a></td>
+                <td>133</td>
+                <td>133</td>
+                <td>0</td>
+                
+                <td>38</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 171">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2buildstacks_py.html">e2buildstacks.py</a></td>
+                <td>38</td>
+                <td>38</td>
+                <td>0</td>
+                
+                <td>18</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 56">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2classaverage_py.html">e2classaverage.py</a></td>
+                <td>526</td>
+                <td>526</td>
+                <td>0</td>
+                
+                <td>224</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 750">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2classes_denovo_py.html">e2classes_denovo.py</a></td>
+                <td>32</td>
+                <td>32</td>
+                <td>0</td>
+                
+                <td>8</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 40">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2classesbyref_py.html">e2classesbyref.py</a></td>
+                <td>191</td>
+                <td>191</td>
+                <td>0</td>
+                
+                <td>62</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 253">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2classextract_py.html">e2classextract.py</a></td>
+                <td>203</td>
+                <td>203</td>
+                <td>0</td>
+                
+                <td>84</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 287">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2classify_py.html">e2classify.py</a></td>
+                <td>123</td>
+                <td>123</td>
+                <td>0</td>
+                
+                <td>60</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 183">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2classifykmeans_py.html">e2classifykmeans.py</a></td>
+                <td>143</td>
+                <td>143</td>
+                <td>0</td>
+                
+                <td>50</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 193">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2classifyligand_py.html">e2classifyligand.py</a></td>
+                <td>227</td>
+                <td>227</td>
+                <td>0</td>
+                
+                <td>64</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 291">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2classifytree_py.html">e2classifytree.py</a></td>
+                <td>335</td>
+                <td>335</td>
+                <td>0</td>
+                
+                <td>86</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 421">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2classptcl_py.html">e2classptcl.py</a></td>
+                <td>69</td>
+                <td>69</td>
+                <td>0</td>
+                
+                <td>12</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 81">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2classvsproj_py.html">e2classvsproj.py</a></td>
+                <td>96</td>
+                <td>96</td>
+                <td>0</td>
+                
+                <td>26</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 122">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2cmmtomrc_py.html">e2cmmtomrc.py</a></td>
+                <td>40</td>
+                <td>40</td>
+                <td>0</td>
+                
+                <td>8</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 48">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2cmpxplor_py.html">e2cmpxplor.py</a></td>
+                <td>234</td>
+                <td>104</td>
+                <td>0</td>
+                
+                <td>38</td>
+                <td>6</td>
+                
+                <td class="right" data-ratio="136 272">50%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2ctf_py.html">e2ctf.py</a></td>
+                <td>1674</td>
+                <td>1419</td>
+                <td>0</td>
+                
+                <td>460</td>
+                <td>20</td>
+                
+                <td class="right" data-ratio="297 2134">14%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2ctf2eman1_py.html">e2ctf2eman1.py</a></td>
+                <td>360</td>
+                <td>360</td>
+                <td>0</td>
+                
+                <td>180</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 540">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2ctf_auto_py.html">e2ctf_auto.py</a></td>
+                <td>265</td>
+                <td>265</td>
+                <td>0</td>
+                
+                <td>70</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 335">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2ctffind3util_py.html">e2ctffind3util.py</a></td>
+                <td>143</td>
+                <td>143</td>
+                <td>0</td>
+                
+                <td>60</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 203">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2ctfsim_py.html">e2ctfsim.py</a></td>
+                <td>312</td>
+                <td>96</td>
+                <td>0</td>
+                
+                <td>56</td>
+                <td>14</td>
+                
+                <td class="right" data-ratio="238 368">65%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2ddd_movie_py.html">e2ddd_movie.py</a></td>
+                <td>659</td>
+                <td>659</td>
+                <td>0</td>
+                
+                <td>254</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 913">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2ddd_particles_py.html">e2ddd_particles.py</a></td>
+                <td>219</td>
+                <td>219</td>
+                <td>0</td>
+                
+                <td>64</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 283">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2display_py.html">e2display.py</a></td>
+                <td>169</td>
+                <td>116</td>
+                <td>0</td>
+                
+                <td>42</td>
+                <td>4</td>
+                
+                <td class="right" data-ratio="57 211">27%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2emx_py.html">e2emx.py</a></td>
+                <td>292</td>
+                <td>292</td>
+                <td>0</td>
+                
+                <td>174</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 466">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2eotest_py.html">e2eotest.py</a></td>
+                <td>5</td>
+                <td>5</td>
+                <td>0</td>
+                
+                <td>2</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 7">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2erasefiducials_py.html">e2erasefiducials.py</a></td>
+                <td>254</td>
+                <td>254</td>
+                <td>0</td>
+                
+                <td>70</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 324">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2euler_refine_py.html">e2euler_refine.py</a></td>
+                <td>110</td>
+                <td>110</td>
+                <td>0</td>
+                
+                <td>20</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 130">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2eulerxplor_py.html">e2eulerxplor.py</a></td>
+                <td>519</td>
+                <td>376</td>
+                <td>0</td>
+                
+                <td>178</td>
+                <td>18</td>
+                
+                <td class="right" data-ratio="163 697">23%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2evalimage_py.html">e2evalimage.py</a></td>
+                <td>683</td>
+                <td>206</td>
+                <td>0</td>
+                
+                <td>166</td>
+                <td>45</td>
+                
+                <td class="right" data-ratio="566 849">67%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2evalparticles_py.html">e2evalparticles.py</a></td>
+                <td>353</td>
+                <td>228</td>
+                <td>0</td>
+                
+                <td>56</td>
+                <td>2</td>
+                
+                <td class="right" data-ratio="129 409">32%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2evalrefine_py.html">e2evalrefine.py</a></td>
+                <td>551</td>
+                <td>551</td>
+                <td>0</td>
+                
+                <td>128</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 679">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2extractsubparticles_py.html">e2extractsubparticles.py</a></td>
+                <td>115</td>
+                <td>115</td>
+                <td>0</td>
+                
+                <td>28</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 143">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2fhstat_py.html">e2fhstat.py</a></td>
+                <td>151</td>
+                <td>151</td>
+                <td>0</td>
+                
+                <td>20</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 171">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2filtertool_py.html">e2filtertool.py</a></td>
+                <td>524</td>
+                <td>257</td>
+                <td>0</td>
+                
+                <td>154</td>
+                <td>21</td>
+                
+                <td class="right" data-ratio="296 678">44%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2foldfitter_py.html">e2foldfitter.py</a></td>
+                <td>229</td>
+                <td>229</td>
+                <td>0</td>
+                
+                <td>54</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 283">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2fsc_py.html">e2fsc.py</a></td>
+                <td>205</td>
+                <td>205</td>
+                <td>0</td>
+                
+                <td>74</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 279">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2helixboxer_py.html">e2helixboxer.py</a></td>
+                <td>1013</td>
+                <td>746</td>
+                <td>0</td>
+                
+                <td>302</td>
+                <td>29</td>
+                
+                <td class="right" data-ratio="300 1315">23%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2help_py.html">e2help.py</a></td>
+                <td>107</td>
+                <td>107</td>
+                <td>0</td>
+                
+                <td>66</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 173">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2history_py.html">e2history.py</a></td>
+                <td>162</td>
+                <td>105</td>
+                <td>0</td>
+                
+                <td>44</td>
+                <td>3</td>
+                
+                <td class="right" data-ratio="60 206">29%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2iminfo_py.html">e2iminfo.py</a></td>
+                <td>118</td>
+                <td>118</td>
+                <td>0</td>
+                
+                <td>44</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 162">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2import_py.html">e2import.py</a></td>
+                <td>249</td>
+                <td>249</td>
+                <td>0</td>
+                
+                <td>122</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 371">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2initialmodel_py.html">e2initialmodel.py</a></td>
+                <td>205</td>
+                <td>205</td>
+                <td>0</td>
+                
+                <td>42</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 247">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2initialmodel_hisym_py.html">e2initialmodel_hisym.py</a></td>
+                <td>151</td>
+                <td>151</td>
+                <td>0</td>
+                
+                <td>46</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 197">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2initialmodel_sgd_py.html">e2initialmodel_sgd.py</a></td>
+                <td>228</td>
+                <td>228</td>
+                <td>0</td>
+                
+                <td>54</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 282">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2make3d_py.html">e2make3d.py</a></td>
+                <td>336</td>
+                <td>336</td>
+                <td>0</td>
+                
+                <td>122</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 458">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2make3dpar_py.html">e2make3dpar.py</a></td>
+                <td>331</td>
+                <td>331</td>
+                <td>0</td>
+                
+                <td>128</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 459">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2maskbyclass_py.html">e2maskbyclass.py</a></td>
+                <td>79</td>
+                <td>79</td>
+                <td>0</td>
+                
+                <td>26</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 105">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2match_py.html">e2match.py</a></td>
+                <td>297</td>
+                <td>297</td>
+                <td>0</td>
+                
+                <td>124</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 421">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2motion_py.html">e2motion.py</a></td>
+                <td>601</td>
+                <td>601</td>
+                <td>0</td>
+                
+                <td>94</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 695">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2msa_py.html">e2msa.py</a></td>
+                <td>146</td>
+                <td>146</td>
+                <td>0</td>
+                
+                <td>48</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 194">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2parallel_py.html">e2parallel.py</a></td>
+                <td>241</td>
+                <td>241</td>
+                <td>0</td>
+                
+                <td>74</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 315">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2pathwalker_py.html">e2pathwalker.py</a></td>
+                <td>563</td>
+                <td>563</td>
+                <td>0</td>
+                
+                <td>162</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 725">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2pdb2mrc_py.html">e2pdb2mrc.py</a></td>
+                <td>287</td>
+                <td>287</td>
+                <td>0</td>
+                
+                <td>80</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 367">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2pdbviewer_py.html">e2pdbviewer.py</a></td>
+                <td>28</td>
+                <td>28</td>
+                <td>0</td>
+                
+                <td>4</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 32">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2plotEulers_py.html">e2plotEulers.py</a></td>
+                <td>50</td>
+                <td>50</td>
+                <td>0</td>
+                
+                <td>10</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 60">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2proc2d_py.html">e2proc2d.py</a></td>
+                <td>744</td>
+                <td>744</td>
+                <td>0</td>
+                
+                <td>378</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 1122">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2proc2dmulti_py.html">e2proc2dmulti.py</a></td>
+                <td>202</td>
+                <td>202</td>
+                <td>0</td>
+                
+                <td>92</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 294">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2proc2dpar_py.html">e2proc2dpar.py</a></td>
+                <td>250</td>
+                <td>250</td>
+                <td>0</td>
+                
+                <td>108</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 358">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2proc3d_py.html">e2proc3d.py</a></td>
+                <td>549</td>
+                <td>549</td>
+                <td>0</td>
+                
+                <td>218</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 767">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2proc3d_huge_py.html">e2proc3d_huge.py</a></td>
+                <td>34</td>
+                <td>34</td>
+                <td>0</td>
+                
+                <td>6</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 40">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2procheader_py.html">e2procheader.py</a></td>
+                <td>219</td>
+                <td>219</td>
+                <td>0</td>
+                
+                <td>110</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 329">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2procjson_py.html">e2procjson.py</a></td>
+                <td>58</td>
+                <td>58</td>
+                <td>0</td>
+                
+                <td>24</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 82">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2proclst_py.html">e2proclst.py</a></td>
+                <td>211</td>
+                <td>211</td>
+                <td>0</td>
+                
+                <td>118</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 329">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2procpdb_py.html">e2procpdb.py</a></td>
+                <td>279</td>
+                <td>279</td>
+                <td>0</td>
+                
+                <td>90</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 369">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2proctxt_py.html">e2proctxt.py</a></td>
+                <td>50</td>
+                <td>50</td>
+                <td>0</td>
+                
+                <td>28</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 78">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2procxml_py.html">e2procxml.py</a></td>
+                <td>44</td>
+                <td>44</td>
+                <td>0</td>
+                
+                <td>18</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 62">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2project3d_py.html">e2project3d.py</a></td>
+                <td>261</td>
+                <td>261</td>
+                <td>0</td>
+                
+                <td>104</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 365">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2projectmanager_py.html">e2projectmanager.py</a></td>
+                <td>1378</td>
+                <td>1182</td>
+                <td>0</td>
+                
+                <td>250</td>
+                <td>2</td>
+                
+                <td class="right" data-ratio="202 1628">12%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2projectupdate21_py.html">e2projectupdate21.py</a></td>
+                <td>133</td>
+                <td>133</td>
+                <td>0</td>
+                
+                <td>36</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="2 169">1%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2ptcltrace_py.html">e2ptcltrace.py</a></td>
+                <td>169</td>
+                <td>169</td>
+                <td>0</td>
+                
+                <td>54</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 223">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2ptclvsmap_py.html">e2ptclvsmap.py</a></td>
+                <td>103</td>
+                <td>103</td>
+                <td>0</td>
+                
+                <td>32</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 135">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2rawdata_py.html">e2rawdata.py</a></td>
+                <td>145</td>
+                <td>145</td>
+                <td>0</td>
+                
+                <td>48</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 193">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2rct_py.html">e2rct.py</a></td>
+                <td>168</td>
+                <td>168</td>
+                <td>0</td>
+                
+                <td>68</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 236">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2refine_py.html">e2refine.py</a></td>
+                <td>2</td>
+                <td>2</td>
+                <td>0</td>
+                
+                <td>0</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 2">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2refine2d_py.html">e2refine2d.py</a></td>
+                <td>238</td>
+                <td>238</td>
+                <td>0</td>
+                
+                <td>80</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 318">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2refine2d_bispec_py.html">e2refine2d_bispec.py</a></td>
+                <td>157</td>
+                <td>157</td>
+                <td>0</td>
+                
+                <td>38</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 195">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2refine_easy_py.html">e2refine_easy.py</a></td>
+                <td>627</td>
+                <td>627</td>
+                <td>0</td>
+                
+                <td>222</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 849">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2refine_postprocess_py.html">e2refine_postprocess.py</a></td>
+                <td>230</td>
+                <td>230</td>
+                <td>0</td>
+                
+                <td>50</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 280">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2refine_split_py.html">e2refine_split.py</a></td>
+                <td>264</td>
+                <td>264</td>
+                <td>0</td>
+                
+                <td>70</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 334">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2refinefromfrealign_py.html">e2refinefromfrealign.py</a></td>
+                <td>90</td>
+                <td>90</td>
+                <td>0</td>
+                
+                <td>24</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 114">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2refinemulti_py.html">e2refinemulti.py</a></td>
+                <td>427</td>
+                <td>427</td>
+                <td>0</td>
+                
+                <td>170</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 597">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2refinemultinoali_py.html">e2refinemultinoali.py</a></td>
+                <td>360</td>
+                <td>360</td>
+                <td>0</td>
+                
+                <td>162</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 522">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2refinetofrealign_py.html">e2refinetofrealign.py</a></td>
+                <td>265</td>
+                <td>265</td>
+                <td>0</td>
+                
+                <td>60</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 325">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2refinetorelion2d_py.html">e2refinetorelion2d.py</a></td>
+                <td>277</td>
+                <td>277</td>
+                <td>0</td>
+                
+                <td>128</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 405">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2refinetorelion3d_py.html">e2refinetorelion3d.py</a></td>
+                <td>342</td>
+                <td>342</td>
+                <td>0</td>
+                
+                <td>178</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 520">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2refinevariance_py.html">e2refinevariance.py</a></td>
+                <td>213</td>
+                <td>213</td>
+                <td>0</td>
+                
+                <td>72</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 285">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2reliontoeman_py.html">e2reliontoeman.py</a></td>
+                <td>80</td>
+                <td>80</td>
+                <td>0</td>
+                
+                <td>14</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 94">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2runfrealign_py.html">e2runfrealign.py</a></td>
+                <td>31</td>
+                <td>31</td>
+                <td>0</td>
+                
+                <td>4</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 35">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2runresmap_py.html">e2runresmap.py</a></td>
+                <td>79</td>
+                <td>79</td>
+                <td>0</td>
+                
+                <td>24</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 103">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2scannereval_py.html">e2scannereval.py</a></td>
+                <td>60</td>
+                <td>60</td>
+                <td>0</td>
+                
+                <td>8</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 68">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2segment3d_py.html">e2segment3d.py</a></td>
+                <td>143</td>
+                <td>143</td>
+                <td>0</td>
+                
+                <td>46</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 189">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2seq2pdb_py.html">e2seq2pdb.py</a></td>
+                <td>66</td>
+                <td>66</td>
+                <td>0</td>
+                
+                <td>54</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 120">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2simmx_py.html">e2simmx.py</a></td>
+                <td>558</td>
+                <td>558</td>
+                <td>0</td>
+                
+                <td>262</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 820">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2simmx2stage_py.html">e2simmx2stage.py</a></td>
+                <td>122</td>
+                <td>122</td>
+                <td>0</td>
+                
+                <td>36</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 158">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2simmxxplor_py.html">e2simmxxplor.py</a></td>
+                <td>309</td>
+                <td>235</td>
+                <td>0</td>
+                
+                <td>80</td>
+                <td>1</td>
+                
+                <td class="right" data-ratio="81 389">21%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2skelpath_py.html">e2skelpath.py</a></td>
+                <td>119</td>
+                <td>119</td>
+                <td>0</td>
+                
+                <td>74</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 193">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2sparxtoeman_py.html">e2sparxtoeman.py</a></td>
+                <td>54</td>
+                <td>54</td>
+                <td>0</td>
+                
+                <td>6</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 60">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2speedtest_py.html">e2speedtest.py</a></td>
+                <td>131</td>
+                <td>131</td>
+                <td>0</td>
+                
+                <td>52</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 183">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2spt_align_py.html">e2spt_align.py</a></td>
+                <td>88</td>
+                <td>88</td>
+                <td>0</td>
+                
+                <td>22</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 110">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2spt_autoboxer_py.html">e2spt_autoboxer.py</a></td>
+                <td>1171</td>
+                <td>1171</td>
+                <td>0</td>
+                
+                <td>335</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 1506">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2spt_average_py.html">e2spt_average.py</a></td>
+                <td>156</td>
+                <td>156</td>
+                <td>0</td>
+                
+                <td>46</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 202">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2spt_average_multi_py.html">e2spt_average_multi.py</a></td>
+                <td>127</td>
+                <td>127</td>
+                <td>0</td>
+                
+                <td>48</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 175">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2spt_binarytree_py.html">e2spt_binarytree.py</a></td>
+                <td>244</td>
+                <td>244</td>
+                <td>0</td>
+                
+                <td>64</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 308">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2spt_boxer_py.html">e2spt_boxer.py</a></td>
+                <td>1192</td>
+                <td>728</td>
+                <td>0</td>
+                
+                <td>380</td>
+                <td>41</td>
+                
+                <td class="right" data-ratio="519 1572">33%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2spt_classaverage_py.html">e2spt_classaverage.py</a></td>
+                <td>1645</td>
+                <td>1645</td>
+                <td>0</td>
+                
+                <td>694</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 2339">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2spt_ctf_old_py.html">e2spt_ctf_old.py</a></td>
+                <td>1244</td>
+                <td>1244</td>
+                <td>0</td>
+                
+                <td>464</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 1708">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2spt_fftamp_py.html">e2spt_fftamp.py</a></td>
+                <td>37</td>
+                <td>37</td>
+                <td>0</td>
+                
+                <td>6</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 43">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2spt_hac_py.html">e2spt_hac.py</a></td>
+                <td>790</td>
+                <td>790</td>
+                <td>0</td>
+                
+                <td>274</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 1064">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2spt_intrafsc_py.html">e2spt_intrafsc.py</a></td>
+                <td>183</td>
+                <td>183</td>
+                <td>0</td>
+                
+                <td>52</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 235">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2spt_isr_py.html">e2spt_isr.py</a></td>
+                <td>650</td>
+                <td>650</td>
+                <td>0</td>
+                
+                <td>218</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 868">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2spt_preproc_py.html">e2spt_preproc.py</a></td>
+                <td>225</td>
+                <td>225</td>
+                <td>0</td>
+                
+                <td>116</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 341">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2spt_project_py.html">e2spt_project.py</a></td>
+                <td>78</td>
+                <td>78</td>
+                <td>0</td>
+                
+                <td>26</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 104">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2spt_recompute_py.html">e2spt_recompute.py</a></td>
+                <td>128</td>
+                <td>128</td>
+                <td>0</td>
+                
+                <td>54</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 182">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2spt_refinemsa_py.html">e2spt_refinemsa.py</a></td>
+                <td>42</td>
+                <td>42</td>
+                <td>0</td>
+                
+                <td>6</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 48">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2spt_refinemulti_py.html">e2spt_refinemulti.py</a></td>
+                <td>768</td>
+                <td>768</td>
+                <td>0</td>
+                
+                <td>264</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 1032">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2spt_resolutionplot_py.html">e2spt_resolutionplot.py</a></td>
+                <td>504</td>
+                <td>504</td>
+                <td>0</td>
+                
+                <td>174</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 678">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2spt_scramblestack_py.html">e2spt_scramblestack.py</a></td>
+                <td>31</td>
+                <td>31</td>
+                <td>0</td>
+                
+                <td>6</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 37">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2spt_simulation_py.html">e2spt_simulation.py</a></td>
+                <td>649</td>
+                <td>649</td>
+                <td>0</td>
+                
+                <td>218</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 867">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2spt_stat_py.html">e2spt_stat.py</a></td>
+                <td>75</td>
+                <td>75</td>
+                <td>0</td>
+                
+                <td>20</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 95">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2spt_subtilt_from_imod_py.html">e2spt_subtilt_from_imod.py</a></td>
+                <td>161</td>
+                <td>161</td>
+                <td>0</td>
+                
+                <td>46</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 207">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2spt_subtilt_old_py.html">e2spt_subtilt_old.py</a></td>
+                <td>642</td>
+                <td>642</td>
+                <td>0</td>
+                
+                <td>206</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 848">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2spt_tiltstacker_py.html">e2spt_tiltstacker.py</a></td>
+                <td>492</td>
+                <td>492</td>
+                <td>0</td>
+                
+                <td>192</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 684">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2spt_wedge_py.html">e2spt_wedge.py</a></td>
+                <td>171</td>
+                <td>47</td>
+                <td>0</td>
+                
+                <td>22</td>
+                <td>3</td>
+                
+                <td class="right" data-ratio="131 193">68%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2spt_wedgefill_py.html">e2spt_wedgefill.py</a></td>
+                <td>71</td>
+                <td>71</td>
+                <td>0</td>
+                
+                <td>30</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 101">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2ssehunter_py.html">e2ssehunter.py</a></td>
+                <td>453</td>
+                <td>453</td>
+                <td>0</td>
+                
+                <td>154</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 607">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2ssematch_py.html">e2ssematch.py</a></td>
+                <td>173</td>
+                <td>173</td>
+                <td>0</td>
+                
+                <td>72</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 245">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2stackanim_py.html">e2stackanim.py</a></td>
+                <td>44</td>
+                <td>44</td>
+                <td>0</td>
+                
+                <td>16</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 60">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2stacksort_py.html">e2stacksort.py</a></td>
+                <td>213</td>
+                <td>213</td>
+                <td>0</td>
+                
+                <td>94</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 307">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2symbest_py.html">e2symbest.py</a></td>
+                <td>76</td>
+                <td>76</td>
+                <td>0</td>
+                
+                <td>24</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 100">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2symsearch3d_py.html">e2symsearch3d.py</a></td>
+                <td>273</td>
+                <td>273</td>
+                <td>0</td>
+                
+                <td>80</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 353">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2tilefile_py.html">e2tilefile.py</a></td>
+                <td>145</td>
+                <td>145</td>
+                <td>0</td>
+                
+                <td>32</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 177">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2tileimage_py.html">e2tileimage.py</a></td>
+                <td>48</td>
+                <td>48</td>
+                <td>0</td>
+                
+                <td>16</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 64">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2tiltvalidate_py.html">e2tiltvalidate.py</a></td>
+                <td>401</td>
+                <td>239</td>
+                <td>0</td>
+                
+                <td>98</td>
+                <td>8</td>
+                
+                <td class="right" data-ratio="176 499">35%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2tomo_ctf_old_py.html">e2tomo_ctf_old.py</a></td>
+                <td>1183</td>
+                <td>1183</td>
+                <td>0</td>
+                
+                <td>416</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 1599">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2tomogram_py.html">e2tomogram.py</a></td>
+                <td>619</td>
+                <td>619</td>
+                <td>0</td>
+                
+                <td>150</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 769">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2tomopreproc_py.html">e2tomopreproc.py</a></td>
+                <td>339</td>
+                <td>339</td>
+                <td>0</td>
+                
+                <td>155</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 494">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2tomoresolution_py.html">e2tomoresolution.py</a></td>
+                <td>71</td>
+                <td>71</td>
+                <td>0</td>
+                
+                <td>8</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 79">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2tomoseg_buildtrainset_py.html">e2tomoseg_buildtrainset.py</a></td>
+                <td>152</td>
+                <td>152</td>
+                <td>0</td>
+                
+                <td>44</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 196">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2tomoseg_convnet_py.html">e2tomoseg_convnet.py</a></td>
+                <td>472</td>
+                <td>472</td>
+                <td>0</td>
+                
+                <td>120</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="2 592">1%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2tvrecon_py.html">e2tvrecon.py</a></td>
+                <td>404</td>
+                <td>404</td>
+                <td>0</td>
+                
+                <td>118</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 522">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2unwrap3d_py.html">e2unwrap3d.py</a></td>
+                <td>20</td>
+                <td>20</td>
+                <td>0</td>
+                
+                <td>6</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 26">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="e2version_py.html">e2version.py</a></td>
+                <td>26</td>
+                <td>26</td>
+                <td>0</td>
+                
+                <td>12</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 38">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="eman2_py.html">eman2.py</a></td>
+                <td>18</td>
+                <td>18</td>
+                <td>0</td>
+                
+                <td>0</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 18">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="smtpd_py.html">smtpd.py</a></td>
+                <td>349</td>
+                <td>349</td>
+                <td>0</td>
+                
+                <td>125</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 474">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="eman2_gui___init___py.html">eman2_gui/__init__.py</a></td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                
+                <td>0</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 0">100%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="eman2_gui_em3Dfonts_py.html">eman2_gui/em3Dfonts.py</a></td>
+                <td>465</td>
+                <td>162</td>
+                <td>0</td>
+                
+                <td>62</td>
+                <td>6</td>
+                
+                <td class="right" data-ratio="319 527">61%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="eman2_gui_emanimationutil_py.html">eman2_gui/emanimationutil.py</a></td>
+                <td>275</td>
+                <td>199</td>
+                <td>0</td>
+                
+                <td>52</td>
+                <td>6</td>
+                
+                <td class="right" data-ratio="82 327">25%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="eman2_gui_emapplication_py.html">eman2_gui/emapplication.py</a></td>
+                <td>261</td>
+                <td>130</td>
+                <td>0</td>
+                
+                <td>98</td>
+                <td>20</td>
+                
+                <td class="right" data-ratio="167 359">47%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="eman2_gui_emboxerbase_py.html">eman2_gui/emboxerbase.py</a></td>
+                <td>1616</td>
+                <td>909</td>
+                <td>0</td>
+                
+                <td>486</td>
+                <td>53</td>
+                
+                <td class="right" data-ratio="788 2102">37%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="eman2_gui_embrowse_py.html">eman2_gui/embrowse.py</a></td>
+                <td>23</td>
+                <td>7</td>
+                <td>0</td>
+                
+                <td>6</td>
+                <td>1</td>
+                
+                <td class="right" data-ratio="17 29">59%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="eman2_gui_embrowser_py.html">eman2_gui/embrowser.py</a></td>
+                <td>1995</td>
+                <td>1339</td>
+                <td>0</td>
+                
+                <td>564</td>
+                <td>42</td>
+                
+                <td class="right" data-ratio="790 2559">31%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="eman2_gui_emdataitem3d_py.html">eman2_gui/emdataitem3d.py</a></td>
+                <td>1094</td>
+                <td>829</td>
+                <td>0</td>
+                
+                <td>174</td>
+                <td>18</td>
+                
+                <td class="right" data-ratio="289 1268">23%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="eman2_gui_emdatastorage_py.html">eman2_gui/emdatastorage.py</a></td>
+                <td>418</td>
+                <td>324</td>
+                <td>0</td>
+                
+                <td>181</td>
+                <td>19</td>
+                
+                <td class="right" data-ratio="97 599">16%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="eman2_gui_emfoldhunterstat_py.html">eman2_gui/emfoldhunterstat.py</a></td>
+                <td>301</td>
+                <td>280</td>
+                <td>0</td>
+                
+                <td>88</td>
+                <td>1</td>
+                
+                <td class="right" data-ratio="24 389">6%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="eman2_gui_emform_py.html">eman2_gui/emform.py</a></td>
+                <td>1357</td>
+                <td>632</td>
+                <td>0</td>
+                
+                <td>360</td>
+                <td>20</td>
+                
+                <td class="right" data-ratio="843 1717">49%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="eman2_gui_emglobjects_py.html">eman2_gui/emglobjects.py</a></td>
+                <td>1532</td>
+                <td>902</td>
+                <td>0</td>
+                
+                <td>280</td>
+                <td>23</td>
+                
+                <td class="right" data-ratio="679 1812">37%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="eman2_gui_emhist_py.html">eman2_gui/emhist.py</a></td>
+                <td>1063</td>
+                <td>948</td>
+                <td>0</td>
+                
+                <td>288</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="115 1351">9%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="eman2_gui_emimage_py.html">eman2_gui/emimage.py</a></td>
+                <td>166</td>
+                <td>151</td>
+                <td>0</td>
+                
+                <td>84</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="15 250">6%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="eman2_gui_emimage2d_py.html">eman2_gui/emimage2d.py</a></td>
+                <td>1784</td>
+                <td>803</td>
+                <td>0</td>
+                
+                <td>520</td>
+                <td>86</td>
+                
+                <td class="right" data-ratio="1153 2304">50%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="eman2_gui_emimage3d_py.html">eman2_gui/emimage3d.py</a></td>
+                <td>608</td>
+                <td>427</td>
+                <td>0</td>
+                
+                <td>122</td>
+                <td>7</td>
+                
+                <td class="right" data-ratio="188 730">26%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="eman2_gui_emimage3diso_py.html">eman2_gui/emimage3diso.py</a></td>
+                <td>483</td>
+                <td>412</td>
+                <td>0</td>
+                
+                <td>72</td>
+                <td>2</td>
+                
+                <td class="right" data-ratio="73 555">13%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="eman2_gui_emimage3dmorph_py.html">eman2_gui/emimage3dmorph.py</a></td>
+                <td>3</td>
+                <td>3</td>
+                <td>0</td>
+                
+                <td>2</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 5">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="eman2_gui_emimage3dslice_py.html">eman2_gui/emimage3dslice.py</a></td>
+                <td>409</td>
+                <td>192</td>
+                <td>0</td>
+                
+                <td>74</td>
+                <td>11</td>
+                
+                <td class="right" data-ratio="228 483">47%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="eman2_gui_emimage3dsym_py.html">eman2_gui/emimage3dsym.py</a></td>
+                <td>1362</td>
+                <td>622</td>
+                <td>0</td>
+                
+                <td>340</td>
+                <td>57</td>
+                
+                <td class="right" data-ratio="849 1702">50%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="eman2_gui_emimage3dvol_py.html">eman2_gui/emimage3dvol.py</a></td>
+                <td>473</td>
+                <td>274</td>
+                <td>0</td>
+                
+                <td>82</td>
+                <td>8</td>
+                
+                <td class="right" data-ratio="207 555">37%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="eman2_gui_emimagemx_py.html">eman2_gui/emimagemx.py</a></td>
+                <td>2279</td>
+                <td>1084</td>
+                <td>0</td>
+                
+                <td>625</td>
+                <td>93</td>
+                
+                <td class="right" data-ratio="1381 2904">48%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="eman2_gui_emimageutil_py.html">eman2_gui/emimageutil.py</a></td>
+                <td>402</td>
+                <td>197</td>
+                <td>0</td>
+                
+                <td>74</td>
+                <td>5</td>
+                
+                <td class="right" data-ratio="218 476">46%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="eman2_gui_emitem3d_py.html">eman2_gui/emitem3d.py</a></td>
+                <td>652</td>
+                <td>524</td>
+                <td>0</td>
+                
+                <td>158</td>
+                <td>22</td>
+                
+                <td class="right" data-ratio="160 810">20%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="eman2_gui_emlights_py.html">eman2_gui/emlights.py</a></td>
+                <td>1021</td>
+                <td>612</td>
+                <td>0</td>
+                
+                <td>178</td>
+                <td>9</td>
+                
+                <td class="right" data-ratio="426 1199">36%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="eman2_gui_empdbitem3d_py.html">eman2_gui/empdbitem3d.py</a></td>
+                <td>1042</td>
+                <td>958</td>
+                <td>0</td>
+                
+                <td>148</td>
+                <td>9</td>
+                
+                <td class="right" data-ratio="93 1190">8%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="eman2_gui_empdbvaltool_py.html">eman2_gui/empdbvaltool.py</a></td>
+                <td>129</td>
+                <td>106</td>
+                <td>0</td>
+                
+                <td>16</td>
+                <td>1</td>
+                
+                <td class="right" data-ratio="24 145">17%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="eman2_gui_empdbviewer_py.html">eman2_gui/empdbviewer.py</a></td>
+                <td>855</td>
+                <td>711</td>
+                <td>0</td>
+                
+                <td>98</td>
+                <td>2</td>
+                
+                <td class="right" data-ratio="186 953">20%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="eman2_gui_emplot2d_py.html">eman2_gui/emplot2d.py</a></td>
+                <td>2152</td>
+                <td>1450</td>
+                <td>0</td>
+                
+                <td>602</td>
+                <td>74</td>
+                
+                <td class="right" data-ratio="850 2754">31%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="eman2_gui_emplot3d_py.html">eman2_gui/emplot3d.py</a></td>
+                <td>1845</td>
+                <td>1461</td>
+                <td>0</td>
+                
+                <td>506</td>
+                <td>39</td>
+                
+                <td class="right" data-ratio="453 2351">19%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="eman2_gui_empmtabwidgets_py.html">eman2_gui/empmtabwidgets.py</a></td>
+                <td>714</td>
+                <td>562</td>
+                <td>0</td>
+                
+                <td>346</td>
+                <td>10</td>
+                
+                <td class="right" data-ratio="162 1060">15%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="eman2_gui_empmwidgets_py.html">eman2_gui/empmwidgets.py</a></td>
+                <td>644</td>
+                <td>523</td>
+                <td>0</td>
+                
+                <td>130</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="121 774">16%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="eman2_gui_emrctboxergui_py.html">eman2_gui/emrctboxergui.py</a></td>
+                <td>409</td>
+                <td>76</td>
+                <td>0</td>
+                
+                <td>68</td>
+                <td>9</td>
+                
+                <td class="right" data-ratio="354 477">74%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="eman2_gui_emrctstrategy_py.html">eman2_gui/emrctstrategy.py</a></td>
+                <td>249</td>
+                <td>188</td>
+                <td>0</td>
+                
+                <td>78</td>
+                <td>7</td>
+                
+                <td class="right" data-ratio="72 327">22%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="eman2_gui_emsave_py.html">eman2_gui/emsave.py</a></td>
+                <td>411</td>
+                <td>325</td>
+                <td>0</td>
+                
+                <td>120</td>
+                <td>8</td>
+                
+                <td class="right" data-ratio="94 531">18%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="eman2_gui_emscene3d_py.html">eman2_gui/emscene3d.py</a></td>
+                <td>1711</td>
+                <td>1320</td>
+                <td>0</td>
+                
+                <td>372</td>
+                <td>11</td>
+                
+                <td class="right" data-ratio="402 2083">19%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="eman2_gui_emselector_py.html">eman2_gui/emselector.py</a></td>
+                <td>1348</td>
+                <td>827</td>
+                <td>0</td>
+                
+                <td>484</td>
+                <td>54</td>
+                
+                <td class="right" data-ratio="597 1832">33%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="eman2_gui_emshape_py.html">eman2_gui/emshape.py</a></td>
+                <td>424</td>
+                <td>295</td>
+                <td>0</td>
+                
+                <td>156</td>
+                <td>22</td>
+                
+                <td class="right" data-ratio="167 580">29%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="eman2_gui_emshapeitem3d_py.html">eman2_gui/emshapeitem3d.py</a></td>
+                <td>947</td>
+                <td>751</td>
+                <td>0</td>
+                
+                <td>58</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="196 1005">20%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="eman2_gui_emsprworkflow_py.html">eman2_gui/emsprworkflow.py</a></td>
+                <td>4220</td>
+                <td>3599</td>
+                <td>0</td>
+                
+                <td>1159</td>
+                <td>3</td>
+                
+                <td class="right" data-ratio="626 5379">12%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="eman2_gui_emtprworkflow_py.html">eman2_gui/emtprworkflow.py</a></td>
+                <td>465</td>
+                <td>465</td>
+                <td>0</td>
+                
+                <td>120</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 585">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="eman2_gui_expand_string_py.html">eman2_gui/expand_string.py</a></td>
+                <td>34</td>
+                <td>15</td>
+                <td>0</td>
+                
+                <td>18</td>
+                <td>1</td>
+                
+                <td class="right" data-ratio="26 52">50%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="eman2_gui_matching_py.html">eman2_gui/matching.py</a></td>
+                <td>75</td>
+                <td>71</td>
+                <td>0</td>
+                
+                <td>48</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="4 123">3%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="eman2_gui_pmicons_py.html">eman2_gui/pmicons.py</a></td>
+                <td>14</td>
+                <td>0</td>
+                <td>0</td>
+                
+                <td>0</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="14 14">100%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="eman2_gui_valslider_py.html">eman2_gui/valslider.py</a></td>
+                <td>818</td>
+                <td>193</td>
+                <td>0</td>
+                
+                <td>150</td>
+                <td>38</td>
+                
+                <td class="right" data-ratio="705 968">73%</td>
+            </tr>
+            
+        </tbody>
+    </table>
+
+    <p id="no_rows">
+        No items found using the specified filter.
+    </p>
+</div>
+
+<div id="footer">
+    <div class="content">
+        <p>
+            <a class="nav" href="https://coverage.readthedocs.org">coverage.py v4.0.3</a>,
+            created at 2018-07-02 05:34
+        </p>
+    </div>
+</div>
+
+</body>
+</html>
