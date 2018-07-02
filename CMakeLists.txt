@@ -4,7 +4,7 @@ PROJECT(EMAN
 		LANGUAGES CXX
 		)
 
-set(GUI_TEST_FILE _valslider)
+set(GUI_TEST_FILE qtgui)
 
 include(cmake/functions.cmake)
 
