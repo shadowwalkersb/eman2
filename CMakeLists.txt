@@ -373,6 +373,7 @@ add_custom_target(test-gui-coverage
 	COMMAND ${PYTEST_EXECUTABLE} -vs ${CMAKE_SOURCE_DIR}/tests/gui/test_${GUI_TEST_FILE}.py --confcutdir=${CMAKE_SOURCE_DIR}/tests/gui/
 				--cov=${EMAN_PREFIX}/bin/
 				--cov=eman2_gui
+				--cov=pyemtbx
 				--cov-config=${CMAKE_SOURCE_DIR}/tests/gui/.coveragerc
 				--cov-report html:${CMAKE_SOURCE_DIR}/docs
 	WORKING_DIRECTORY ${EMAN_GUI_TESTS_DATA_DIR}
