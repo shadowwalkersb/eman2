@@ -9,10 +9,15 @@ awk '
         sub(/'\''\.*/,"", fname)
         next
     }
-    /Sorry: TabError:/{
+    /Sorry: /{
+        description = $2
         sub(/.* line /,"")
         sub(/\)/,"")
-        printf("%s:%d\n", fname, $0 )
+        
+        gh_link = "../tree/master/" fname "#L" $0
+
+        printf("- [ ] %s [%s:%d](%s)\n", description, fname, $0, gh_link)
+
         next
     }
 '
