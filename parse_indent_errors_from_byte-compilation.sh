@@ -9,14 +9,14 @@ awk '
         sub(/'\''\.*/,"", fname)
         next
     }
-    /Sorry: TabError:/{
+    /Sorry: /{
+        description = $2
         sub(/.* line /,"")
         sub(/\)/,"")
         
-        description = "TabError: inconsistent use of tabs and spaces in indentation"
         gh_link = "../tree/master/" fname "#L" $0
 
-        printf("- [ ] %s: [%s:%d](%s)\n", description, fname, $0, gh_link)
+        printf("- [ ] %s [%s:%d](%s)\n", description, fname, $0, gh_link)
 
         next
     }
