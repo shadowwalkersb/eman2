@@ -32,10 +32,10 @@ def test_ValSlider(qtbot):
     # qtbot.wait(500)
 
     classes = [
-        valslider.ValSlider(rng=[1,10], label="some label", showenable=0),
-        valslider.ValBox(rng=[1,10], label="some label", showenable=0),
-        valslider.StringBox(label="some label", showenable=0),
-        valslider.CheckBox(label="some label", showenable=0),
+        valslider.ValSlider(rng=[1,10], label="ValSlider", showenable=0),
+        valslider.ValBox(rng=[1,10], label="ValBox", showenable=0),
+        valslider.StringBox(label="StringBox", showenable=0),
+        valslider.CheckBox(label="CheckBox", showenable=0),
         valslider.RangeSlider(),
         valslider.EMSpinWidget(5,.2),
         valslider.EMLightControls(GL_LIGHT1),
