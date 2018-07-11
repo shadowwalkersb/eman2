@@ -80,6 +80,7 @@ def test_ValSlider(qtbot):
         # qtbot.mouseMove(cl, QPoint(100,100))
         # qtbot.mouseRelease(cl, Qt.LeftButton)
         qtbot.wait(300)
+        inp = raw_input("WOW")
 
     # qtbot.wait(2000)
 

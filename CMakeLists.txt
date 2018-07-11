@@ -356,7 +356,7 @@ find_package(PyTest REQUIRED)
 set(EMAN_GUI_TESTS_DATA_DIR ${CMAKE_SOURCE_DIR}/../eman-test-data/playground CACHE PATH "gui test directory")
 
 add_custom_target(test-gui
-	COMMAND ${PYTEST_EXECUTABLE} -vs ${CMAKE_SOURCE_DIR}/tests/gui/
+	COMMAND ${PYTEST_EXECUTABLE} -vs ${CMAKE_SOURCE_DIR}/tests/gui/test__valslider.py
 	WORKING_DIRECTORY ${EMAN_GUI_TESTS_DATA_DIR}
 	DEPENDS PythonFiles
 )
