@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 from __future__ import print_function
+from __future__ import division
 
 #
 # Author: Steven Ludtke, 04/10/2003 (sludtke@bcm.edu)
@@ -36,6 +37,7 @@ from __future__ import print_function
 # This program will dump the local logfile of all EMAN2 programs run in the current
 # directory. The file is stored as a python 'shelve' file
 
+from past.utils import old_div
 from builtins import range
 from builtins import object
 import shelve
@@ -187,8 +189,8 @@ def local_time(secs):
 	return "%02d:%02d:%02d"%t[3:6]
 
 def time_diff(secs):
-	if secs<3600 : return "%d:%02d"%(secs/60,secs%60)
-	return "%d:%02d:%02d"%(secs/3600,(secs%3600)/60,secs%60)
+	if secs<3600 : return "%d:%02d"%(old_div(secs,60),secs%60)
+	return "%d:%02d:%02d"%(old_div(secs,3600),old_div((secs%3600),60),secs%60)
 
 #if len(sys.argv)>1 and sys.argv[1]=="--help" :
 #	print "Usage:\ne2history [--all]\n"
