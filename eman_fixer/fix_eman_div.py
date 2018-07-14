@@ -68,13 +68,14 @@ class FixEmanDiv(fixer_base.BaseFix):
         # sys.exit(0)
         if len(node.children) != 3 and any([True for n in node.children if '/' in str(n)]):
             print "ALERT: lineno: ", node.get_lineno(), "%s" % (node)
-        if (node.type == self.syms.term and
-                    len(node.children) == 3 and
-                match_division(node.children[1])):
-            print "FIXER: lineno: ", node.get_lineno(), "%s %s %s" % (node.children[0], node.children[1], node.children[2])
-            return node
-        else:
-            return False
+        return False
+        # if (node.type == self.syms.term and
+        #             len(node.children) == 3 and
+        #         match_division(node.children[1])):
+        #     print "FIXER: lineno: ", node.get_lineno(), "%s %s %s" % (node.children[0], node.children[1], node.children[2])
+        #     return node
+        # else:
+        #     return False
 
     def transform(self, node, results):
         if self.skip:
