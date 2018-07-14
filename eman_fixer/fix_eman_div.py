@@ -18,6 +18,7 @@ from lib2to3.fixer_util import syms, does_tree_import
 from libfuturize.fixer_util import (token, future_import, touch_import_top,
                                     wrap_in_fn_call)
 import sys
+import os
 
 def match_division(node):
     u"""
@@ -66,8 +67,9 @@ class FixEmanDiv(fixer_base.BaseFix):
         #     print "NOOOOO"
         # if node.get_lineno()>933:
         # sys.exit(0)
+        
         if len(node.children) != 3 and any([True for n in node.children if '/' in str(n)]):
-            print "ALERT: lineno: ", node.get_lineno(), "%s" % (node)
+            print "ALERT: FILENAME: %s lineno: " % os.getenv("FILENAME"), node.get_lineno(), "%s" % (node)
         return False
         # if (node.type == self.syms.term and
         #             len(node.children) == 3 and

@@ -2,6 +2,7 @@
 
 for f in "${@}";do
     echo "FILENAME: ${f}"
+    export FILENAME=${f}
     2to3 -w -n --no-diff -f eman_div "${f}"
     echo
 done
