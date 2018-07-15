@@ -69,7 +69,7 @@ class FixEmanDiv(fixer_base.BaseFix):
         # sys.exit(0)
         
         if len(node.children) != 3 and any([True for n in node.children if '/' in str(n)]):
-            print "ALERT: FILENAME: %s lineno: " % os.getenv("FILENAME"), node.get_lineno(), "%s" % (node)
+            print "%s:%s   %s  |  %s" % (os.getenv("FILENAME"), node.get_lineno(), node, node)
         return False
         # if (node.type == self.syms.term and
         #             len(node.children) == 3 and
