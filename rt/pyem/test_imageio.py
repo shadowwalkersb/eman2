@@ -724,19 +724,19 @@ class TestMrcIO(ImageIOTester):
 	def test_overwrite(self):
 		"""test overwrite mrc image file ...................."""
 		base = "overwrite_" + str(os.getpid())
-		imgfile1 = base + "_1.mrc"
+		imgfile1 = bytes(base + "_1.mrc")
 		TestUtil.make_image_file(imgfile1, IMAGE_MRC, EM_FLOAT, 10, 20, 1)
 		TestUtil.make_image_file(imgfile1, IMAGE_MRC, EM_FLOAT, 30, 40, 1)
 		e = EMData()
 		e.read_image(imgfile1)
 		self.assertEqual(TestUtil.verify_image_file(imgfile1, IMAGE_MRC, EM_FLOAT, 30, 40, 1), 0)
 		
-		imgfile2 = base + "_2.mrc"
+		imgfile2 = bytes(base + "_2.mrc")
 		TestUtil.make_image_file(imgfile2, IMAGE_MRC, EM_FLOAT, 30, 40, 1)
 		TestUtil.make_image_file(imgfile2, IMAGE_MRC, EM_FLOAT, 10, 20, 1)
 		self.assertEqual(TestUtil.verify_image_file(imgfile2, IMAGE_MRC, EM_FLOAT, 10, 20, 1), 0)
 		
-		imgfile3 = base + "_3.mrc"
+		imgfile3 = bytes(base + "_3.mrc")
 		TestUtil.make_image_file(imgfile3, IMAGE_MRC, EM_FLOAT, 30, 40, 1)
 		TestUtil.make_image_file2(imgfile3, IMAGE_MRC, EM_FLOAT, 30, 40, 1)
 		self.assertEqual(TestUtil.verify_image_file2(imgfile3, IMAGE_MRC, EM_FLOAT, 30, 40, 1), 0)
@@ -805,18 +805,18 @@ class TestMrcIO(ImageIOTester):
 	def test_mrcio_label(self):
 		"""test mrc file label .............................."""
 		pid = str(os.getpid())
-		infile = "test_mrcio_label_in_" + pid + ".mrc"
+		infile = bytes("test_mrcio_label_in_" + pid + ".mrc")
 		TestUtil.make_image_file(infile, IMAGE_MRC)
 
 		e = EMData()
 		e.read_image(infile)
 		label = "ByLiweiPeng"
 		label_i = 3
-		labelname = "MRC.label" + str(label_i)
+		labelname = bytes("MRC.label" + str(label_i))
 		
 		e.set_attr(labelname, label)
 
-		outfile="test_mrcio_label_out_" + pid + ".mrc"		
+		outfile=bytes("test_mrcio_label_out_" + pid + ".mrc")		
 		e.write_image(outfile, 0, IMAGE_MRC)
 		
 		e2 = EMData()
@@ -912,13 +912,13 @@ class TestImagicIO(ImageIOTester):
 
 	def test_append_image(self):
 		"""test image appending ............................."""
-		infile = "test_append_image.hed"
+		infile = bytes("test_append_image.hed")
 		TestUtil.make_image_file(infile, IMAGE_IMAGIC, EM_FLOAT, 16, 16, 10)
 			   
 		e = EMData()
 		all_imgs = e.read_images(infile)
 
-		outfile1 = "test_append_image_out_" + str(os.getpid()) + ".hed"
+		outfile1 = bytes("test_append_image_out_" + str(os.getpid()) + ".hed")
 		
 		for img in all_imgs:
 			img.append_image(outfile1)

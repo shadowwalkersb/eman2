@@ -128,9 +128,9 @@ def check_emdata(e, progname):
 	if nx > 0 and ny > 0:
 		emdata_counter = emdata_counter + 1
 		filename = progname + "_" + str(emdata_counter) + ".mrc"
-		e.write_image(filename)
+		e.write_image(bytes(filename))
 
-		os.unlink(filename)
+		os.unlink(bytes(filename))
 		
 def check_emdata_list(elist, progname):
 	for e in elist:

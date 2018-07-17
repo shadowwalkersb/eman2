@@ -2382,7 +2382,7 @@ class TestEMData(unittest.TestCase):
         nx = 32
         ny = 48
         filebase = "test_get_clip_" + str(os.getpid())
-        infile = filebase + ".mrc"
+        infile = bytes(filebase + ".mrc")
         TestUtil.make_image_file(infile, IMAGE_MRC, EM_FLOAT, nx, ny)
 
         e = EMData()
@@ -2391,7 +2391,7 @@ class TestEMData(unittest.TestCase):
         region1 = Region(old_div(nx,4), old_div(ny,4), old_div(nx,2), old_div(ny,2))
         outfile1 = filebase + "_out1.mrc"
         e2 = e.get_clip(region1)
-        e2.write_image(outfile1)
+        e2.write_image(bytes(outfile1))
 
         self.assertEqual(e2.get_xsize(), old_div(nx,2))
         self.assertEqual(e2.get_ysize(), old_div(ny,2))
@@ -2399,14 +2399,14 @@ class TestEMData(unittest.TestCase):
         region2 = Region(old_div(-nx,4), old_div(-ny,4), 2*nx, 2*ny)
         outfile2 = filebase + "_out2.mrc"
         e3 = e.get_clip(region2)
-        e3.write_image(outfile2)
+        e3.write_image(bytes(outfile2))
         
         self.assertEqual(e3.get_xsize(), nx*2)
         self.assertEqual(e3.get_ysize(), ny*2)
 
-        testlib.safe_unlink(infile)
-        testlib.safe_unlink(outfile1)
-        testlib.safe_unlink(outfile2)    
+        testlib.safe_unlink(bytes(infile))
+        testlib.safe_unlink(bytes(outfile1))
+        testlib.safe_unlink(bytes(outfile2))    
             
     def test_get_rotated_clip(self):
         """test get_rotated_clip() function ................."""
