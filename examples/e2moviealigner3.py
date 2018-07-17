@@ -4,6 +4,9 @@ from __future__ import division
 
 # Author: James Michael Bell, jmbell@bcm.edu, 10/18/2015
 
+from builtins import zip
+from builtins import map
+from builtins import str
 from past.utils import old_div
 from builtins import range
 from builtins import object

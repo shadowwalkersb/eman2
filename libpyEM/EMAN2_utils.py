@@ -5,6 +5,8 @@ from __future__ import division
 #### python utilities. 
 #### 2017-03
 
+from builtins import chr
+from builtins import str
 from past.utils import old_div
 from builtins import range
 import numpy as np

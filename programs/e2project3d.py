@@ -38,6 +38,7 @@ from __future__ import division
 # 1. Baldwin, P.R. and Penczek, P.A. 2007. The Transform Class in SPARX and EMAN2. J. Struct. Biol. 157, 250-261.
 # 2. http://blake.bcm.edu/emanwiki/EMAN2/Symmetry
 
+from builtins import str
 from past.utils import old_div
 from builtins import range
 from builtins import object

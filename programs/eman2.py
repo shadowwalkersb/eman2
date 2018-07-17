@@ -32,6 +32,7 @@ from __future__ import division
 #
 #
 
+from builtins import input
 helpstring="""Hello and welcome to EMAN2 !
 
 EMAN2 is NOT a single central graphical program, but includes a large set of programs both graphical and command-line. 

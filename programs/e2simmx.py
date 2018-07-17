@@ -36,6 +36,8 @@ from __future__ import division
 # e2simmx.py  02/03/2007	Steven Ludtke
 # This program computes a similarity matrix between two sets of images
 
+from builtins import zip
+from builtins import str
 from past.utils import old_div
 from builtins import range
 from builtins import object

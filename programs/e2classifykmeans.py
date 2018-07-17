@@ -36,6 +36,7 @@ from __future__ import division
 ###	e2classifykmeans.py	Steven Ludtke	3/4/2006
 ### Program for classifying raw 2d or 3d data by kmeans
 
+from builtins import map
 from past.utils import old_div
 from builtins import range
 import os

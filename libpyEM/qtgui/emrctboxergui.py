@@ -33,6 +33,7 @@ from __future__ import absolute_import
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston MA 02111-1307 USA
 #
 #
+from builtins import str
 from builtins import range
 from EMAN2 import get_image_directory, dump_processors_list
 from PyQt5 import QtCore, QtGui, QtWidgets

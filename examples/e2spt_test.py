@@ -36,6 +36,7 @@ from __future__ import division
 #
 #
 
+from builtins import str
 from builtins import range
 from EMAN2 import *
 

@@ -33,6 +33,7 @@ from __future__ import absolute_import
 #
 #
 
+from builtins import str
 from builtins import object
 import OpenGL
 OpenGL.ERROR_CHECKING = False

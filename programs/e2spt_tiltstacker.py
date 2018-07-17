@@ -29,6 +29,7 @@
 from __future__ import print_function
 from __future__ import division
 from optparse import OptionParser
+from builtins import str
 from past.utils import old_div
 from builtins import range
 from EMAN2_utils import *

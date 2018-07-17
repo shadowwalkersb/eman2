@@ -29,6 +29,7 @@
 from __future__ import print_function
 from __future__ import division
 
+from builtins import str
 from EMAN2_utils import *
 from EMAN2 import *
 import os

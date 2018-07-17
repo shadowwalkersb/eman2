@@ -35,6 +35,7 @@ from __future__ import division
 
 # These classes are subclasses of EMBrowserWidget to provide additional models to represent various types of files in the GUI.
 
+from builtins import str
 from past.utils import old_div
 from EMAN2 import *
 import os

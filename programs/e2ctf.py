@@ -36,6 +36,8 @@ from __future__ import division
 # e2ctf.py  10/29/2008 Steven Ludtke
 # This is a program for determining CTF parameters and (optionally) phase flipping images
 
+from builtins import zip
+from builtins import str
 from past.utils import old_div
 from builtins import range
 from builtins import object

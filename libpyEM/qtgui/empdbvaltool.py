@@ -33,6 +33,7 @@ from __future__ import absolute_import
 #
 #
 
+from builtins import str
 from EMAN2 import PDBReader, EMData
 from .emapplication import EMApp, get_application
 from PyQt5 import QtCore, QtGui, QtWidgets

@@ -38,6 +38,7 @@ from __future__ import division
 # You may also need to reimplement getArgument (which returns the argument used in calling the e2program), if the default will not work for you.
 # In addition, you'll need to add a line in the class PMGUIWidget (e2projectmanager) to instantiate the widget based on the value of 'guitype'
 
+from builtins import str
 from past.utils import old_div
 from builtins import range
 from EMAN2db import db_check_dict

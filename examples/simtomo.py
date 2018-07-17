@@ -5,6 +5,7 @@ from __future__ import division
 # with tomographic sampling. Generates a set of projections for each orientation, adds flatband noise, then reconstructs
 # from the projections.
 
+from builtins import str
 from builtins import range
 from EMAN2 import *
 

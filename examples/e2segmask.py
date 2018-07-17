@@ -33,6 +33,7 @@ Author: Jesus Galaz - Sep/2017, Last update: Sep/2017
 from __future__ import print_function
 from __future__ import division
 
+from builtins import str
 from EMAN2 import *
 from EMAN2jsondb import JSTask,jsonclasses
 

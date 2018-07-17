@@ -34,6 +34,8 @@ from __future__ import absolute_import
 #
 #
 
+from builtins import next
+from builtins import str
 from builtins import range
 from builtins import object
 from EMAN2 import get_image_directory, get_dtag, EMData, \

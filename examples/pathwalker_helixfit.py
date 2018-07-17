@@ -4,6 +4,7 @@ from __future__ import division
 # -*- coding: utf-8 -*-
 # Fit helixes using pathwalker results
 
+from builtins import map
 from past.utils import old_div
 from builtins import range
 import EMAN2

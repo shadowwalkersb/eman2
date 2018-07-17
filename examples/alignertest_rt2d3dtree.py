@@ -2,6 +2,8 @@
 from __future__ import print_function
 from __future__ import division
 # Muyuan Chen 2018-07
+from builtins import str
+from builtins import range
 from EMAN2 import *
 import numpy as np
 import threading

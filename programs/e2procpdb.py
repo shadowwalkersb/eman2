@@ -21,6 +21,7 @@ from __future__ import division
 #P [chains=<chainltr>]	eg - "ABO", for extracting a portion of a complex
 #D Simple program for manipulating PDB filess in the EMAN convention
 
+from builtins import str
 from past.utils import old_div
 from builtins import range
 from EMAN2 import *

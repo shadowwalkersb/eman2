@@ -10,6 +10,7 @@ from __future__ import division
 # the terms of the GPL/BSD license permit us to redistribute it.
 #
 #import block
+from builtins import str
 from past.utils import old_div
 from builtins import range
 from EMAN2 import *

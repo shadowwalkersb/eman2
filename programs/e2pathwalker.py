@@ -31,6 +31,10 @@ from __future__ import division
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  2111-1307 USA
 
+from builtins import input
+from builtins import chr
+from builtins import map
+from builtins import zip
 from past.utils import old_div
 from future import standard_library
 standard_library.install_aliases()

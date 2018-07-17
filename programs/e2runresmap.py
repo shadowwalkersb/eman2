@@ -11,6 +11,7 @@ from __future__ import division
 # the terms of the GPL/BSD license permit us to redistribute it.
 #********************************************************************************
 
+from builtins import str
 from EMAN2 import *
 from EMAN2db import db_open_dict
 import os

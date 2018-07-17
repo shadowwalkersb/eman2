@@ -37,6 +37,7 @@ from __future__ import division
 # This tries to match sequence based secondary structure prediction to
 # ssehunter results, based on length and distance constraints in each case
 
+from builtins import str
 from past.utils import old_div
 from builtins import range
 from EMAN2 import *

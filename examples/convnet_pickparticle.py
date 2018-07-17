@@ -2,6 +2,7 @@
 from __future__ import print_function
 from __future__ import division
 # Muyuan July 2015
+from builtins import zip
 from past.utils import old_div
 from future import standard_library
 standard_library.install_aliases()

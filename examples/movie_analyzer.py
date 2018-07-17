@@ -4,6 +4,7 @@ from __future__ import division
 
 # Author: Michael Bell 09/2016
 
+from builtins import zip
 from past.utils import old_div
 from builtins import range
 import os

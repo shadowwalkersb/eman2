@@ -30,6 +30,7 @@
 
 from __future__ import print_function
 from __future__ import division
+from builtins import str
 from sys import argv
 import os
 from EMAN2 import *

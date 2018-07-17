@@ -4,6 +4,7 @@ from __future__ import division
 # Muyuan Chen 12/2014
 # Fit beta sheets using pathwalker results
 
+from builtins import chr
 from past.utils import old_div
 from builtins import range
 import EMAN2

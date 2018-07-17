@@ -4,6 +4,7 @@ from __future__ import division
 
 # Author: Michael Bell 09/2015
 
+from builtins import str
 from past.utils import old_div
 from builtins import range
 from EMAN2 import *

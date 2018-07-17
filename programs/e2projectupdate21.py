@@ -33,6 +33,7 @@ from __future__ import division
 #
 #
 
+from builtins import input
 from builtins import range
 from math import *
 import time

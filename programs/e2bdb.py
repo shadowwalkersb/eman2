@@ -36,6 +36,8 @@ from __future__ import division
 # e2bdb.py  11/13/2008 Steven Ludtke
 # This program allows manipulation and querying of the local database
 
+from builtins import input
+from builtins import str
 from past.utils import old_div
 from future import standard_library
 standard_library.install_aliases()

@@ -36,6 +36,8 @@ from __future__ import division
 # This is a program for determining CTF parameters using the EMAN 1 model
 
 
+from builtins import str
+from builtins import map
 from past.utils import old_div
 from builtins import range
 from EMAN2 import *

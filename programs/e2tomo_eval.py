@@ -2,6 +2,7 @@
 # Muyuan Chen 2018-04
 from __future__ import print_function
 from __future__ import division
+from builtins import str
 from past.utils import old_div
 from EMAN2 import *
 import os

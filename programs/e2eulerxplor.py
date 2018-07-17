@@ -33,6 +33,7 @@ from __future__ import division
 #
 #
 
+from builtins import str
 from builtins import range
 from EMAN2 import *
 from EMAN2db import db_open_dict, db_check_dict
