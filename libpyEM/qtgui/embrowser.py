@@ -1325,6 +1325,7 @@ class EMStackFileType(EMFileType) :
 
 		EMFileType.__init__(self, path)	# the current path this FileType is representing
 		self.nimg = EMUtil.get_image_count(path)
+		print("path: ", path)
 
 		try : im0 = EMData(path, 0, True)
 		except :
@@ -1503,15 +1504,15 @@ class EMPDBFileType(EMFileType):
 # These are set all together at the end rather than after each class for efficiency
 
 EMFileType.typesbyft = {
-	"Folder"      : EMFolderFileType,
-	"JSON"        : EMJSONFileType,
-	"BDB"         : EMBdbFileType,
-	"PDB"         : EMPDBFileType,
-	"Text"        : EMTextFileType,
-	"Plot"        : EMPlotFileType,
-	"Image"       : EMImageFileType,
-	"Image Stack" : EMStackFileType,
-	"HTML"        : EMHTMLFileType
+	u"Folder"      : EMFolderFileType,
+	u"JSON"        : EMJSONFileType,
+	u"BDB"         : EMBdbFileType,
+	u"PDB"         : EMPDBFileType,
+	u"Text"        : EMTextFileType,
+	u"Plot"        : EMPlotFileType,
+	u"Image"       : EMImageFileType,
+	u"Image Stack" : EMStackFileType,
+	u"HTML"        : EMHTMLFileType
 }
 
 # Note that image types are not included here, and are handled via a separate mechanism
@@ -1807,7 +1808,7 @@ class EMDirEntry(object) :
 		# Check the cache for metadata
 
 		if self.path()[:4].lower()!="bdb:" and not (os.path.isfile(self.path()) or os.path.islink(self.path())) : 
-			self.filetype="SPECIAL"
+			self.filetype=u"SPECIAL"
 			return 0
 
 		name = 'browser'
@@ -1815,7 +1816,7 @@ class EMDirEntry(object) :
 		# BDB details are already cached and can often be retrieved quickly
 
 		if self.isbdb :
-			self.filetype = "BDB"
+			self.filetype = u"BDB"
 
 			try :
 				info = db_get_image_info(self.path())
@@ -1865,8 +1866,8 @@ class EMDirEntry(object) :
 			elif tmp["nz"] == 1 : self.dim = "%d x %d"%(tmp["nx"], tmp["ny"])
 			else : self.dim = "%d x %d x %d"%(tmp["nx"], tmp["ny"], tmp["nz"])
 
-			if self.nimg == 1 : self.filetype = "Image"
-			else : self.filetype = "Image Stack"
+			if self.nimg == 1 : self.filetype = u"Image"
+			else : self.filetype = u"Image Stack"
 
 		# Ok, we need to try to figure out what kind of file this is
 
