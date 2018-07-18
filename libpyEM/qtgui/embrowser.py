@@ -1908,7 +1908,7 @@ def nonone(val) :
 	"""Returns '-' for None, otherwise the string representation of the passed value"""
 
 	try :
-		if val != None : return str(val)
+		if val != None : return unicode(val)
 		return "-"
 	except : return "X"
 
