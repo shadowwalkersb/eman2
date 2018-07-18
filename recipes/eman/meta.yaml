@@ -10,7 +10,7 @@ requirements:
             "msinttypes",  # [win]
             "boost 1.64.*",
             "python 3.6.*",    # [not osx]
-            "python 3.6.1 2",  # [osx]
+            "python 3.5.6",  # [osx]
             "fftw-mpi",
             "numpy 1.13.*",
             "ftgl",
@@ -58,12 +58,11 @@ requirements:
         - {{ req }}
         {% endfor %}
 
-    
 test:
   requires:
     - openmpi              # [not win]
     - boost 1.64.*
-    - eman-deps=15.4
+    - eman-deps=15.7
   
   source_files:
     - examples/mpi_test.py
