@@ -522,6 +522,7 @@ EMUtil::ImageType EMUtil::get_image_type(const string & in_filename)
 
 int EMUtil::get_image_count(const string & filename)
 {
+	cout<<"Filename on C++: "<<filename<<endl;
 	ENTERFUNC;
 
 	Assert(filename != "");

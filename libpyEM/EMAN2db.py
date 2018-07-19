@@ -369,6 +369,7 @@ def db_emd_init(self,*parms):
         C++ signature :
             void* __init__(_object*,int,int [,int [,bool]])
 """
+	print(" PARMS: ", parms)
 	if len(parms)<5 and len(parms)>0 and isinstance(parms[0],str) and parms[0][:4].lower()=="bdb:":
 		self.__initc()
 		self.read_image(*parms)
@@ -540,7 +541,10 @@ Takes a path or bdb: specifier and returns the number of images in the reference
 				if i in db : n+=1
 			return n
 	try:
-		ret=EMUtil.get_image_count_c(fsp)
+		print("fsp: ", fsp)
+		print(type(fsp))
+		ret=EMUtil.get_image_count_c(bytes(fsp))
+		print("ret: ", ret)
 	except:
 #		print"Error with get_image_count on : ",fsp
 		raise Exception(fsp)

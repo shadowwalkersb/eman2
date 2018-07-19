@@ -1209,7 +1209,7 @@ class EMImageFileType(EMFileType) :
 
 		EMFileType.__init__(self, path)	# the current path this FileType is representing
 		self.nimg = EMUtil.get_image_count(path)
-		im0 = EMData(path, 0, True)
+		im0 = EMData(str(path), 0, True)
 		self.dim = (im0["nx"], im0["ny"], im0["nz"])
 
 	def closeEvent(self, event) :
@@ -1321,10 +1321,13 @@ class EMStackFileType(EMFileType) :
 		return EMStackInfoPane
 
 	def __init__(self, path) :
+		path = unicode(path)
 		if path[:2] == "./" : path = path[2:]
 
 		EMFileType.__init__(self, path)	# the current path this FileType is representing
-		self.nimg = EMUtil.get_image_count(path)
+		print("path: ", path)
+		print(type(path))
+		self.nimg = EMUtil.get_image_count(str(path))
 		print("path: ", path)
 
 		try : im0 = EMData(path, 0, True)
