@@ -70,5 +70,6 @@ convert(main_path=main_path)
 # print(normpath(slf))
 # print(normpath(__file__))
 
-print(dictWidgets.keys())
+for k in dictWidgets.keys():
+	print(k)
 print(dictCore.keys())
