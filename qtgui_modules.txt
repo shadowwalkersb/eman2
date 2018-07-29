@@ -1,0 +1,100 @@
+QFont
+QIcon
+QIntValidator
+
+- QtWidgets.QItemSelection()
++ QtCore.QItemSelection()
+
+- QtWidgets.QItemSelectionModel
++ QtCore.QItemSelectionModel
+
+QColor
+QDoubleValidator
+QTextOption
+
+- event.delta())
++ event.angleDelta()
+
+setContentsMargins
+
+QDrag
+QMouseEvent
+QKeyEvent
+QBrush
+QPainter
+QPixmap
+
+QProgressDialog in QWidgets
+
+QTextCursor
+QFontDatabase
+
+QtCore.QObject.connect
+
+modules to changes:
+QTabWidget
+QSizePolicy
+
+
+Widgets.keys():
+
+QTreeWidgetItem
+QHBoxLayout
+QSizePolicy
+QSpinBox
+QVBoxLayout
+QButtonGroup
+QListWidgetItem
+QProgressBar
+QFileDialog
+QTableWidgetItem
+QMainWindow
+QTreeWidget
+QAbstractItemView
+QProgressDialog
+QStackedWidget
+QDialogButtonBox
+QHeaderView
+QGroupBox
+QTreeView
+QTextEdit
+QTableWidget
+QComboBox
+QCheckBox
+QToolButton
+QDialog
+QGridLayout
+QScrollArea
+QLineEdit
+QTabWidget
+QStatusBar
+QRadioButton
+QSpacerItem
+QFrame
+QLabel
+QListWidget
+QPushButton
+QDoubleSpinBox
+QTextBrowser
+QInputDialog
+QSplitter
+QDesktopWidget
+QTableView
+QLayout
+QStackedLayout
+QMenuBar
+qApp
+QMenu
+QColorDialog
+QStyleFactory
+QAction
+QApplication
+QWizardPage
+QWidget
+QSlider
+QToolBar
+QMessageBox
+QWizard
+
+Core.keys():
+['QItemSelection', 'QEvent', 'QItemSelectionModel']
