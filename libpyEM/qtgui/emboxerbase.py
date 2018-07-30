@@ -1127,7 +1127,7 @@ class ParticlesWindowEventHandler(BoxEventsHandler):
 	def box_released(self,event,lc):
 		if lc == None or lc[0] == None: return
 
-		if event.modifiers()&PyQt4.QtCore.Qt.ShiftModifier:
+		if event.modifiers()&PyQt5.QtCore.Qt.ShiftModifier:
 			self.particle_window.remove_particle_image(lc[0],event,True)
 			self.particle_window.force_display_update()
 			return
@@ -1742,8 +1742,8 @@ class EMBoxerModuleVitals(object):
 		self.box_list.reset_shapes()
 		self.full_box_update()
 
-import PyQt4
-class EMBoxerModule(EMBoxerModuleVitals, PyQt4.QtCore.QObject):
+import PyQt5
+class EMBoxerModule(EMBoxerModuleVitals, PyQt5.QtCore.QObject):
 	'''
 	The EMBoxerModule is like a coordinator. It has 4 widgets: 1 inspector, 1 2D window viewer, and 2 particle
 	stack viewers (one for viewing boxed particles, one for viewing thumbnails).
@@ -1751,7 +1751,7 @@ class EMBoxerModule(EMBoxerModuleVitals, PyQt4.QtCore.QObject):
 	that would otherwise not necessary interact. Overall the interactions can be complicated and this class is an
 	attempt to correctly granulate the overall design and the complexity of the classes involved.
 	'''
-	module_closed = PyQt4.QtCore.pyqtSignal()
+	module_closed = PyQt5.QtCore.pyqtSignal()
 
 	def __init__(self,file_names=[],box_size=128):
 		'''
@@ -1759,7 +1759,7 @@ class EMBoxerModule(EMBoxerModuleVitals, PyQt4.QtCore.QObject):
 		@exception RuntimeError raised if the file does not exist
 		'''
 		EMBoxerModuleVitals.__init__(self, file_names=file_names, box_size=box_size)
-		PyQt4.QtCore.QObject.__init__(self)
+		PyQt5.QtCore.QObject.__init__(self)
 
 		self.signal_slot_handlers = {} # this is a dictionary, keys are (somewhat random) names, values are event handlers such as Main2DWindowEventHandler. This dict has the only reference to the event handlers
 		self.tools = {} # this is just to keep track of all the tools that have been added
