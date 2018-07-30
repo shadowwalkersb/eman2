@@ -1669,7 +1669,7 @@ class EMParticleImportTask(ParticleWorkFlowTask):
 	def import_data(self,params):
 
 		get_application().setOverrideCursor(Qt.BusyCursor)
-		progress = QtGui.QProgressDialog("Importing files into database...", "Abort import", 0, len(params["name_map"]),None)
+		progress = QtWidgets.QProgressDialog("Importing files into database...", "Abort import", 0, len(params["name_map"]),None)
 		progress.show()
 		i = 0
 		progress.setValue(i)
@@ -3715,7 +3715,7 @@ class E2MakeSetTask(E2ParticleExamineTask):
 				return False
 			
 		stacks_map = {}
-		progress = QtGui.QProgressDialog("Making virtual stacks...", "Abort import", 0, 1000,None)
+		progress = QtWidgets.QProgressDialog("Making virtual stacks...", "Abort import", 0, 1000,None)
 		progress.setWindowIcon(QtGui.QIcon(get_image_directory() + "/eman.png"))
 		progress.show()
 		n=-1
@@ -3799,7 +3799,7 @@ class E2MakeSetTask(E2ParticleExamineTask):
 		'''
 
 			
-		progress = QtGui.QProgressDialog("Importing files into database...", "Abort import", 0, len(filenames),None)
+		progress = QtWidgets.QProgressDialog("Importing files into database...", "Abort import", 0, len(filenames),None)
 		progress.setWindowIcon(QtGui.QIcon(get_image_directory() + "/eman.png"))
 		progress.show()
 
@@ -5301,7 +5301,7 @@ class E2RefineParticlesTaskBase(EMClassificationTools, E2Make3DTools):
 				
 			if fail: # we can't make a vstack
 				# potentially lots of e2proc2d
-				progress = QtGui.QProgressDialog("Importing files into database...", "Abort import", 0, len(filenames),None)
+				progress = QtWidgets.QProgressDialog("Importing files into database...", "Abort import", 0, len(filenames),None)
 				progress.show()
 	
 				i = 0
