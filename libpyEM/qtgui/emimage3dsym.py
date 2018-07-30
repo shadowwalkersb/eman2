@@ -1595,7 +1595,7 @@ class SparseSymChoicesWidgets(object):
 		
 		return d
 
-class EMSymChoiceDialog(QtGui.QDialog):
+class EMSymChoiceDialog(QtWidgets.QDialog):
 	'''
 	This is a dialog one can use to get the parameters you can use for 
 	generating orientations evenly covering the asymmetric unit (etc)
@@ -1606,7 +1606,7 @@ class EMSymChoiceDialog(QtGui.QDialog):
 		'''
 		@param sym some kind of symmetry, such as "d7", "icos" etc
 		'''
-		QtGui.QDialog.__init__(self)		
+		QtWidgets.QDialog.__init__(self)		
 		self.setWindowTitle("Choose Distribution Parameters")
 		self.setWindowIcon(QtGui.QIcon(get_image_directory() + "eulerxplor.png"))
 
@@ -1660,7 +1660,7 @@ class EMSymChoiceDialog(QtGui.QDialog):
 		Customized exec_ function
 		@return None if the user hit cancel or a dictionary containing important parameters if the user hit ok
 		'''
-		QtGui.QDialog.exec_(self)
+		QtWidgets.QDialog.exec_(self)
 		return self.dialog_result
 		
 	

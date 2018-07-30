@@ -913,7 +913,7 @@ class EMBrowser(EMBrowserType):
 			get_application().setOverrideCursor(Qt.ArrowCursor)
 			return
 
-EMSelectorDialogType = EMSelectorBaseTemplate(QtGui.QDialog)
+EMSelectorDialogType = EMSelectorBaseTemplate(QtWidgets.QDialog)
 class EMSelectorDialog(EMSelectorDialogType):
 	def __init__(self,single_selection=False,save_as_mode=True): #TODO: figure out whether save_as_mode is needed (unused)
 		EMSelectorDialogType.__init__(self,single_selection)	
@@ -937,10 +937,10 @@ class EMSelectorDialog(EMSelectorDialogType):
 		
 	def exec_(self):
 		'''
-		Wraps QtGui.QDialog.exec_
+		Wraps QtWidgets.QDialog.exec_
 		@return a list of selected filenames
 		'''
-		QtGui.QDialog.exec_(self)
+		QtWidgets.QDialog.exec_(self)
 		return self.dialog_result
 	
 	def set_validator(self,validator):

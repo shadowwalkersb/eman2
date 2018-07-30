@@ -2276,12 +2276,12 @@ class E2BoxerAutoTaskGeneral(E2BoxerAutoTask):
 		return params
 
 
-class OldBoxerRecoveryDialog(QtGui.QDialog):
+class OldBoxerRecoveryDialog(QtWidgets.QDialog):
 	def __init__(self):
 		'''
 		@param sym some kind of symmetry, such as "d7", "icos" etc
 		'''
-		QtGui.QDialog.__init__(self)
+		QtWidgets.QDialog.__init__(self)
 		self.setWindowTitle("Old Boxer Recovery")
 		self.setWindowIcon(QtGui.QIcon(get_image_directory() + "green_boxes.png"))
 
@@ -2330,7 +2330,7 @@ class OldBoxerRecoveryDialog(QtGui.QDialog):
 		Customized exec_ function
 		@return None if the user hit cancel or a dictionary containing important parameters if the user hit ok
 		'''
-		QtGui.QDialog.exec_(self)
+		QtWidgets.QDialog.exec_(self)
 		return self.ret_code
 
 def recover_old_boxer_database():
