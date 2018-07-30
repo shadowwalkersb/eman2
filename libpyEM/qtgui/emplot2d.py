@@ -1522,7 +1522,7 @@ class EMPlot2DStatsInsp(QtGui.QWidget):
 
 		hl1 = QtWidgets.QFrame()
 		hl1.setFrameStyle(QtWidgets.QFrame.HLine)
-		hl1.setSizePolicy(QtGui.QSizePolicy.Minimum,QtGui.QSizePolicy.Expanding)
+		hl1.setSizePolicy(QtWidgets.QSizePolicy.Minimum,QtWidgets.QSizePolicy.Expanding)
 		gbl0.addWidget(hl1,3,0,1,2)
 
 		self.wlnorm=QtWidgets.QLabel(self)
@@ -1557,7 +1557,7 @@ class EMPlot2DStatsInsp(QtGui.QWidget):
 
 		hl2 = QtWidgets.QFrame()
 		hl2.setFrameStyle(QtWidgets.QFrame.HLine)
-		hl2.setSizePolicy(QtGui.QSizePolicy.Minimum,QtGui.QSizePolicy.Expanding)
+		hl2.setSizePolicy(QtWidgets.QSizePolicy.Minimum,QtWidgets.QSizePolicy.Expanding)
 		gbl0.addWidget(hl2,9,0,1,2)
 
 		self.table = QtGui.QTableWidget() #QtGui.QTextEdit()
@@ -1821,7 +1821,7 @@ class EMPlot2DClassInsp(QtGui.QWidget):
 
 		hl1 = QtWidgets.QFrame()
 		hl1.setFrameStyle(QtWidgets.QFrame.HLine)
-		hl1.setSizePolicy(QtGui.QSizePolicy.Minimum,QtGui.QSizePolicy.Expanding)
+		hl1.setSizePolicy(QtWidgets.QSizePolicy.Minimum,QtWidgets.QSizePolicy.Expanding)
 		gbl0.addWidget(hl1,7,0,1,2)
 
 		self.threshb=QtWidgets.QPushButton(self)
@@ -1845,7 +1845,7 @@ class EMPlot2DClassInsp(QtGui.QWidget):
 
 		hl2 = QtWidgets.QFrame()
 		hl2.setFrameStyle(QtWidgets.QFrame.HLine)
-		hl2.setSizePolicy(QtGui.QSizePolicy.Minimum,QtGui.QSizePolicy.Expanding)
+		hl2.setSizePolicy(QtWidgets.QSizePolicy.Minimum,QtWidgets.QSizePolicy.Expanding)
 		gbl0.addWidget(hl2,13,0,1,2)
 
 		self.wspfix=StringBox(label="Prefix:",value="split")
@@ -2224,7 +2224,7 @@ class EMPlot2DInspector(QtGui.QWidget):
 		self.setlist=DragListWidget(self)
 		self.setlist.setDataSource(self)
 		self.setlist.setSelectionMode(3)
-		self.setlist.setSizePolicy(QtGui.QSizePolicy.Preferred,QtGui.QSizePolicy.Expanding)
+		self.setlist.setSizePolicy(QtWidgets.QSizePolicy.Preferred,QtWidgets.QSizePolicy.Expanding)
 		self.setlist.setDragEnabled(True)
 		self.setlist.setAcceptDrops(True)
 		vbl3.addWidget(self.setlist)
