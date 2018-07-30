@@ -1928,7 +1928,7 @@ class myQItemSelection(QtGui.QItemSelectionModel) :
 
 #---------------------------------------------------------------------------
 
-class EMInfoPane(QtGui.QWidget) :
+class EMInfoPane(QtWidgets.QWidget) :
 	"""Subclasses of this class will be used to display information about specific files. Each EMFileType class will return the
 	pointer to the appropriate infoPane subclass for displaying information about the file it represents. The subclass instances
 	are allocated by the infoWin class"""
@@ -1936,7 +1936,7 @@ class EMInfoPane(QtGui.QWidget) :
 	def __init__(self, parent = None) :
 		"""Set our GUI up"""
 
-		QtGui.QWidget.__init__(self, parent)
+		QtWidgets.QWidget.__init__(self, parent)
 
 		# self.setTitle("e2dispaly.py Information Pane")
 
@@ -1966,7 +1966,7 @@ class EMInfoPane(QtGui.QWidget) :
 
 class EMTextInfoPane(EMInfoPane) :
 	def __init__(self, parent = None) :
-		QtGui.QWidget.__init__(self, parent)
+		QtWidgets.QWidget.__init__(self, parent)
 
 		self.vbl = QtWidgets.QVBoxLayout(self)
 
@@ -2041,7 +2041,7 @@ class EMTextInfoPane(EMInfoPane) :
 
 class EMHTMLInfoPane(EMInfoPane) :
 	def __init__(self, parent = None) :
-		QtGui.QWidget.__init__(self, parent)
+		QtWidgets.QWidget.__init__(self, parent)
 
 		self.vbl = QtWidgets.QVBoxLayout(self)
 
@@ -2114,7 +2114,7 @@ class EMHTMLInfoPane(EMInfoPane) :
 
 class EMPDBInfoPane(EMInfoPane) :
 	def __init__(self, parent = None) :
-		QtGui.QWidget.__init__(self, parent)
+		QtWidgets.QWidget.__init__(self, parent)
 		self.vbl = QtWidgets.QVBoxLayout(self)
 		# text editing widget
 		self.text = QtWidgets.QTextEdit()
@@ -2173,7 +2173,7 @@ class EMPDBInfoPane(EMInfoPane) :
 
 class EMPlotInfoPane(EMInfoPane) :
 	def __init__(self, parent = None) :
-		QtGui.QWidget.__init__(self, parent)
+		QtWidgets.QWidget.__init__(self, parent)
 
 		self.gbl = QtWidgets.QGridLayout(self)
 
@@ -2224,7 +2224,7 @@ class EMPlotInfoPane(EMInfoPane) :
 
 class EMFolderInfoPane(EMInfoPane) :
 	def __init__(self, parent = None) :
-		QtGui.QWidget.__init__(self, parent)
+		QtWidgets.QWidget.__init__(self, parent)
 
 		self.vbl = QtWidgets.QVBoxLayout(self)
 
@@ -2239,7 +2239,7 @@ class EMBDBInfoPane(EMInfoPane) :
 	maxim = 500
 
 	def __init__(self, parent = None) :
-		QtGui.QWidget.__init__(self, parent)
+		QtWidgets.QWidget.__init__(self, parent)
 
 		self.gbl = QtWidgets.QGridLayout(self)
 
@@ -2437,7 +2437,7 @@ class EMBDBInfoPane(EMInfoPane) :
 
 class EMJSONInfoPane(EMInfoPane) :
 	def __init__(self, parent = None) :
-		QtGui.QWidget.__init__(self, parent)
+		QtWidgets.QWidget.__init__(self, parent)
 
 		self.gbl = QtWidgets.QGridLayout(self)
 
@@ -2620,7 +2620,7 @@ class EMImageInfoPane(EMInfoPane) :
 	maxim = 500
 
 	def __init__(self, parent = None) :
-		QtGui.QWidget.__init__(self, parent)
+		QtWidgets.QWidget.__init__(self, parent)
 
 		self.gbl = QtWidgets.QGridLayout(self)
 
@@ -2687,7 +2687,7 @@ class EMStackInfoPane(EMInfoPane) :
 	maxim = 500
 
 	def __init__(self, parent = None) :
-		QtGui.QWidget.__init__(self, parent)
+		QtWidgets.QWidget.__init__(self, parent)
 
 		# self.setWindowTitle("e2display.py Information Pane") # Jesus
 		# self.setTitle("e2dispaly.py Information Pane")
@@ -2908,12 +2908,12 @@ class EMStackInfoPane(EMInfoPane) :
 
 #---------------------------------------------------------------------------
 
-class EMInfoWin(QtGui.QWidget) :
+class EMInfoWin(QtWidgets.QWidget) :
 	"""The info window"""
 	winclosed = QtCore.pyqtSignal()
 
 	def __init__(self, parent = None) :
-		QtGui.QWidget.__init__(self, parent)
+		QtWidgets.QWidget.__init__(self, parent)
 
 		self.target = None
 		self.stack = QtWidgets.QStackedLayout(self)
@@ -2951,7 +2951,7 @@ class EMInfoWin(QtGui.QWidget) :
 			self.stack.setCurrentIndex(i)		# put the new pane on top
 
 	def closeEvent(self, event) :
-		QtGui.QWidget.closeEvent(self, event)
+		QtWidgets.QWidget.closeEvent(self, event)
 		self.winclosed.emit()
 
 class SortSelTree(QtWidgets.QTreeView) :
@@ -3013,7 +3013,7 @@ class SortSelTree(QtWidgets.QTreeView) :
 
 #---------------------------------------------------------------------------
 
-class EMBrowserWidget(QtGui.QWidget) :
+class EMBrowserWidget(QtWidgets.QWidget) :
 	"""This widget is a file browser for EMAN2. In addition to being a regular file browser, it supports:
 	- getting information about recognized data types
 	- embedding BDB: databases into the observed filesystem
@@ -3037,7 +3037,7 @@ class EMBrowserWidget(QtGui.QWidget) :
 		from . import emscene3d
 		from . import emdataitem3d
 
-		QtGui.QWidget.__init__(self, parent)
+		QtWidgets.QWidget.__init__(self, parent)
 
 		self.setWindowTitle("e2display.py Browser") # Jesus
 

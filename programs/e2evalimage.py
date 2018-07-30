@@ -118,7 +118,7 @@ power spectrum in various ways."""
 
 
 
-class GUIEvalImage(QtGui.QWidget):
+class GUIEvalImage(QtWidgets.QWidget):
 	def __init__(self,images,voltage=None,apix=None,cs=None,ac=10.0,box=512,usefoldername=False,constbfactor=-1,fitastig=False,phaseplate=False):
 		"""Implements the CTF fitting dialog using various EMImage and EMPlot2D widgets
 		'data' is a list of (filename,ctf,im_1d,bg_1d,quality)
@@ -135,7 +135,7 @@ class GUIEvalImage(QtGui.QWidget):
 			print("Cannot import EMAN plot GUI objects (is matplotlib installed?)")
 			sys.exit(1)
 
-		QtGui.QWidget.__init__(self,None)
+		QtWidgets.QWidget.__init__(self,None)
 		self.setWindowIcon(QtGui.QIcon(get_image_directory() + "ctf.png"))
 
 		self.nodir=not usefoldername

@@ -138,7 +138,7 @@ class EMMarkPtclTool(QtWidgets.QMainWindow):
 
 	def closeEvent(self,event):
 		self.wclasstab.close()
-		QtGui.QWidget.closeEvent(self, event)
+		QtWidgets.QWidget.closeEvent(self, event)
 
 if __name__ == "__main__":
 	main()

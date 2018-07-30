@@ -415,9 +415,9 @@ class EMBoxingTool(object):
 
 	def get_widget(self):
 		'''
-		This function should return a QtGui.QWidget - you can put in it whatever you like. Generally
+		This function should return a QtWidgets.QWidget - you can put in it whatever you like. Generally
 		you make your widget in this function and also make all of the signal-slot connections -
-		@return a QtGui.QWidget with your widgets in it
+		@return a QtWidgets.QWidget with your widgets in it
 		called in EMBoxInspector
 		'''
 		raise NotImplementedException("Inheriting classes must supply this function")
@@ -580,7 +580,7 @@ class ErasingPanel(object):
 	def get_widget(self):
 		if self.widget == None:
 			from PyQt4 import QtCore, QtGui, Qt
-			self.widget = QtGui.QWidget()
+			self.widget = QtWidgets.QWidget()
 			vbl = QtWidgets.QVBoxLayout(self.widget)
 			vbl.setMargin(0)
 			vbl.setSpacing(6)
@@ -621,7 +621,7 @@ class ManualBoxingPanel(object):
 	def get_widget(self):
 		if self.widget == None:
 			from PyQt4 import QtCore, QtGui, Qt
-			self.widget = QtGui.QWidget()
+			self.widget = QtWidgets.QWidget()
 			vbl = QtWidgets.QGridLayout(self.widget)
 			vbl.setMargin(0)
 			vbl.setSpacing(10)
@@ -2370,7 +2370,7 @@ def get_coord_outnames(params):
 	return output
 
 from PyQt4 import QtGui
-class EMBoxerInspector(QtGui.QWidget):
+class EMBoxerInspector(QtWidgets.QWidget):
 
 	PTCL_SHAPE_MAP = {}
 	PTCL_SHAPE_MAP["none"] = "hidden"
@@ -2385,7 +2385,7 @@ class EMBoxerInspector(QtGui.QWidget):
 		self.tool_dynamic_vbl = None # this will be used to dynamic add widgets as the buttons are changed
 		self.dynamic_box_button_widget = None # this will be used to dynamic add widgets as the buttons are changed
 		self.ptcl_display_dict = None # this will be a dict mapping the names in the
-		QtGui.QWidget.__init__(self,None)
+		QtWidgets.QWidget.__init__(self,None)
 		self.setWindowIcon(QtGui.QIcon(get_image_directory() +"green_boxes.png"))
 		self.setWindowTitle("e2boxer")
 		self.target=weakref.ref(target)
@@ -2437,7 +2437,7 @@ class EMBoxerInspector(QtGui.QWidget):
 
 	def get_display_tab(self):
 		from PyQt4 import QtCore, QtGui, Qt
-		widget = QtGui.QWidget()
+		widget = QtWidgets.QWidget()
 		vbl =  QtWidgets.QVBoxLayout(widget)
 
 		#  Insert the plot widget
@@ -2527,7 +2527,7 @@ class EMBoxerInspector(QtGui.QWidget):
 
 	def get_main_tab(self):
 		from PyQt4 import QtCore, QtGui, Qt
-		widget = QtGui.QWidget()
+		widget = QtWidgets.QWidget()
 		vbl = QtWidgets.QVBoxLayout(widget)
 		vbl.setMargin(0)
 		vbl.setSpacing(6)

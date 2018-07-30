@@ -93,7 +93,7 @@ def main():
 def filtchange(name,value):
 	return {}
 
-class EMProcessorWidget(QtGui.QWidget):
+class EMProcessorWidget(QtWidgets.QWidget):
 	"""A single processor with parameters"""
 	upPress = QtCore.pyqtSignal(int)
 	downPress = QtCore.pyqtSignal(int)
@@ -123,7 +123,7 @@ class EMProcessorWidget(QtGui.QWidget):
 	def __init__(self,parent=None,tag=None):
 		app=QtGui.qApp
 
-		QtGui.QWidget.__init__(self,parent)
+		QtWidgets.QWidget.__init__(self,parent)
 		self.gbl = QtWidgets.QGridLayout(self)
 		self.gbl.setColumnStretch(0,0)
 		self.gbl.setColumnStretch(1,0)
@@ -438,7 +438,7 @@ class EMFilterTool(QtWidgets.QMainWindow):
 		self.mview_new_2dwin=self.mview.addAction("Add 2D View")
 		self.mview_new_plotwin=self.mview.addAction("Add Plot View")
 
-		self.setCentralWidget(QtGui.QWidget())
+		self.setCentralWidget(QtWidgets.QWidget())
 		self.vblm = QtWidgets.QVBoxLayout(self.centralWidget())		# The contents of the main window
 
 		# List of processor sets
@@ -456,7 +456,7 @@ class EMFilterTool(QtWidgets.QMainWindow):
 		self.vblm.addWidget(self.processorsa)
 
 		# Actual widget contianing processors being scrolled
-		self.processorpanel=QtGui.QWidget()
+		self.processorpanel=QtWidgets.QWidget()
 		self.processorsa.setWidget(self.processorpanel)
 		self.processorsa.setWidgetResizable(True)
 		self.vbl = QtWidgets.QVBoxLayout(self.processorpanel)
