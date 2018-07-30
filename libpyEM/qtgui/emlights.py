@@ -835,8 +835,8 @@ class EMLightsInspectorBase(object):
 		max_lights_label = QtGui.QLabel()
 		max_lights_label.setText("Max lights : " + str(glGetInteger(GL_MAX_LIGHTS)))
 		
-		hdl_l = QtGui.QHBoxLayout()
-		hdl_t = QtGui.QHBoxLayout()
+		hdl_l = QtWidgets.QHBoxLayout()
+		hdl_t = QtWidgets.QHBoxLayout()
 		
 		hdl_l.addWidget(self.light_manip_check)
 		hdl_l.addWidget(self.local_viewer_check)
@@ -1081,7 +1081,7 @@ class EMLightsInspectorBase(object):
 		vbl.setSpacing(6)
 		vbl.setObjectName("Lights")
 		
-		hbl = QtGui.QHBoxLayout()
+		hbl = QtWidgets.QHBoxLayout()
 		hbl.setMargin(0)
 		hbl.setSpacing(6)
 		hbl.setObjectName("hbl")
@@ -1132,7 +1132,7 @@ class EMLightsInspectorBase(object):
 		self.light_z_dir.setValue(0.0)
 		
 		
-		hbl_trans = QtGui.QHBoxLayout()
+		hbl_trans = QtWidgets.QHBoxLayout()
 		hbl_trans.setMargin(0)
 		hbl_trans.setSpacing(6)
 		hbl_trans.setObjectName("Trans")
@@ -1161,7 +1161,7 @@ class EMLightsInspectorBase(object):
 		vbl.setSpacing(6)
 		vbl.setObjectName("Lights")
 		
-		hbl = QtGui.QHBoxLayout()
+		hbl = QtWidgets.QHBoxLayout()
 		hbl.setMargin(0)
 		hbl.setSpacing(6)
 		hbl.setObjectName("hbl")
@@ -1217,7 +1217,7 @@ class EMLightsInspectorBase(object):
 		self.light_z_pos.setValue(0.0)
 		
 		
-		hbl_trans = QtGui.QHBoxLayout()
+		hbl_trans = QtWidgets.QHBoxLayout()
 		hbl_trans.setMargin(0)
 		hbl_trans.setSpacing(6)
 		hbl_trans.setObjectName("Trans")
@@ -1271,7 +1271,7 @@ class EMLightsInspectorBase(object):
 		self.light_ps_zdir.setMaximum(100000)
 		self.light_ps_zdir.setValue(0.0)
 		
-		hbl_trans2 = QtGui.QHBoxLayout()
+		hbl_trans2 = QtWidgets.QHBoxLayout()
 		hbl_trans2.setMargin(0)
 		hbl_trans2.setSpacing(6)
 		hbl_trans2.setObjectName("Trans")
@@ -1326,7 +1326,7 @@ class EMLightsInspector(QtGui.QWidget,EMLightsInspectorBase):
 		self.vbl.setSpacing(6)
 		self.vbl.setObjectName("vbl")
 		
-		self.hbl = QtGui.QHBoxLayout()
+		self.hbl = QtWidgets.QHBoxLayout()
 		self.hbl.setMargin(0)
 		self.hbl.setSpacing(6)
 		self.hbl.setObjectName("hbl")
@@ -1384,7 +1384,7 @@ class EMLightsInspector(QtGui.QWidget,EMLightsInspectorBase):
 		gltab.vbl.setSpacing(6)
 		gltab.vbl.setObjectName("Main")
 		
-		self.hbl_color = QtGui.QHBoxLayout()
+		self.hbl_color = QtWidgets.QHBoxLayout()
 		self.hbl_color.setMargin(0)
 		self.hbl_color.setSpacing(6)
 		gltab.vbl.addLayout(self.hbl_color)

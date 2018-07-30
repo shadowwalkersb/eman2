@@ -842,7 +842,7 @@ class EMHistogramInspector(QtGui.QWidget):
 
 		vbl0=QtGui.QVBoxLayout(self)
 
-		hbl = QtGui.QHBoxLayout()
+		hbl = QtWidgets.QHBoxLayout()
 		hbl.setMargin(2)
 		hbl.setSpacing(6)
 		hbl.setObjectName("hbl")
@@ -866,7 +866,7 @@ class EMHistogramInspector(QtGui.QWidget):
 		vbl3.addWidget(self.setlist)
 
 		# none and all buttons for turning plot display on and off
-		hbl6 = QtGui.QHBoxLayout()
+		hbl6 = QtWidgets.QHBoxLayout()
 		hbl.setObjectName("hbl6")
 		vbl3.addLayout(hbl6)
 
@@ -884,7 +884,7 @@ class EMHistogramInspector(QtGui.QWidget):
 		vbl3.addWidget(self.showslide)
 
 		# number and step for the slider
-		hbl7 = QtGui.QHBoxLayout()
+		hbl7 = QtWidgets.QHBoxLayout()
 		hbl.setObjectName("hbl7")
 		vbl3.addLayout(hbl7)
 
@@ -900,7 +900,7 @@ class EMHistogramInspector(QtGui.QWidget):
 		vbl.setObjectName("vbl")
 		hbl.addLayout(vbl)
 
-		hbl0=QtGui.QHBoxLayout()
+		hbl0=QtWidgets.QHBoxLayout()
 		hbl0.setMargin(0)
 		hbl0.setSpacing(6)
 		vbl.addLayout(hbl0)
@@ -917,7 +917,7 @@ class EMHistogramInspector(QtGui.QWidget):
 		self.pdfb.setText("PDF")
 		hbl0.addWidget(self.pdfb)
 
-		hbl01=QtGui.QHBoxLayout()
+		hbl01=QtWidgets.QHBoxLayout()
 		hbl01.setMargin(0)
 		hbl01.setSpacing(6)
 		vbl.addLayout(hbl01)
@@ -940,7 +940,7 @@ class EMHistogramInspector(QtGui.QWidget):
 		#self.align.addItem("right")
 		hbl01.addWidget(self.align)
 
-		hbl1 = QtGui.QHBoxLayout()
+		hbl1 = QtWidgets.QHBoxLayout()
 		hbl1.setMargin(0)
 		hbl1.setSpacing(6)
 
@@ -957,7 +957,7 @@ class EMHistogramInspector(QtGui.QWidget):
 
 		vbl.addLayout(hbl1)
 
-		hbl000 = QtGui.QHBoxLayout()
+		hbl000 = QtWidgets.QHBoxLayout()
 		hbl000.setMargin(0)
 		hbl000.setSpacing(6)
 
@@ -966,7 +966,7 @@ class EMHistogramInspector(QtGui.QWidget):
 		hbl000.addWidget(self.alpha)
 		vbl.addLayout(hbl000)
 
-		hbl001 = QtGui.QHBoxLayout()
+		hbl001 = QtWidgets.QHBoxLayout()
 		hbl001.setMargin(0)
 		hbl001.setSpacing(6)
 
@@ -976,13 +976,13 @@ class EMHistogramInspector(QtGui.QWidget):
 
 		vbl.addLayout(hbl001)
 
-		hbl2 = QtGui.QHBoxLayout()
+		hbl2 = QtWidgets.QHBoxLayout()
 		hbl2.setMargin(0)
 		hbl2.setSpacing(6)
 
 		vbl.addLayout(hbl2)
 
-		hbl2 = QtGui.QHBoxLayout()
+		hbl2 = QtWidgets.QHBoxLayout()
 		hbl2.setMargin(0)
 		hbl2.setSpacing(6)
 		vbl.addLayout(hbl2)
@@ -1003,7 +1003,7 @@ class EMHistogramInspector(QtGui.QWidget):
 
 		vbl.addLayout(gl)
 
-		hbl02=QtGui.QHBoxLayout()
+		hbl02=QtWidgets.QHBoxLayout()
 		hbl02.setMargin(0)
 		hbl02.setSpacing(6)
 		vbl.addLayout(hbl02)
@@ -1016,7 +1016,7 @@ class EMHistogramInspector(QtGui.QWidget):
 		self.cumulative.setText("Cumulative")
 		hbl02.addWidget(self.cumulative)
 
-		hbl03=QtGui.QHBoxLayout()
+		hbl03=QtWidgets.QHBoxLayout()
 		hbl03.setMargin(0)
 		hbl03.setSpacing(6)
 		vbl.addLayout(hbl03)
@@ -1035,7 +1035,7 @@ class EMHistogramInspector(QtGui.QWidget):
 
 		vbl0.addLayout(hbl)
 
-		hbl2a=QtGui.QHBoxLayout()
+		hbl2a=QtWidgets.QHBoxLayout()
 
 		self.wl1=QtGui.QLabel("Min")
 		self.wl1.setAlignment(Qt.AlignHCenter)
@@ -1051,7 +1051,7 @@ class EMHistogramInspector(QtGui.QWidget):
 		hbl2a.addWidget(self.wl4)
 		vbl0.addLayout(hbl2a)
 
-		hbl2=QtGui.QHBoxLayout()
+		hbl2=QtWidgets.QHBoxLayout()
 
 		self.wxmin=ValBox(label="X:")
 		hbl2.addWidget(self.wxmin)

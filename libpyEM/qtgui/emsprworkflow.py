@@ -2295,7 +2295,7 @@ class OldBoxerRecoveryDialog(QtWidgets.QDialog):
 		text_edit.setWordWrapMode(QtGui.QTextOption.WordWrap)
 		text_edit.setText("The workflow has detected you have data stored in the local database that was generated with an old version of e2boxer. You can recover it (recommended), in which case the old data is converted so it can be interpreted within the current framework. Alternatively you can just delete it, which means the box coordinates will be lost forever.")
 		self.vbl.addWidget(text_edit)
-		self.button_hbl = QtGui.QHBoxLayout()
+		self.button_hbl = QtWidgets.QHBoxLayout()
 		self.recover = QtGui.QPushButton("Recover")
 		self.recover.setToolTip("The old database will be converted to a format recognized by the new boxer. The old database will then be deleted.")
 		self.recover.setDefault(True)
