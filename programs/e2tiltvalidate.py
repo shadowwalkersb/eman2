@@ -544,8 +544,8 @@ class EMValidationPlot(QtGui.QWidget):
 		self.pointlabel = QtGui.QLabel("Right click to pick the nearest point")
 		
 		
-		frame = QtGui.QFrame()
-		frame.setFrameShape(QtGui.QFrame.StyledPanel)
+		frame = QtWidgets.QFrame()
+		frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
 		frame.setMaximumHeight(100)
 		grid = QtGui.QGridLayout()
 		grid.addWidget(meanAngLabel, 0, 0)

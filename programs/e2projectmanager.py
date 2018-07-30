@@ -255,8 +255,8 @@ class EMProjectManager(QtGui.QMainWindow):
 		"""
 		Make the title bar widget (Project ICON + label)
 		"""
-		tbwidget = QtGui.QFrame()
-		tbwidget.setFrameShape(QtGui.QFrame.StyledPanel)
+		tbwidget = QtWidgets.QFrame()
+		tbwidget.setFrameShape(QtWidgets.QFrame.StyledPanel)
 		grid = QtGui.QGridLayout()
 		self.PMIcon = PMIcon(self.pm_icon, tbwidget)
 		self.PMIcon.setAlignment(QtCore.Qt.AlignLeft)
@@ -301,7 +301,7 @@ class EMProjectManager(QtGui.QMainWindow):
 		self.gui_stacked_widget = QtGui.QStackedWidget()
 		# Set the initial height of the browser
 		#self.gui_stacked_widget.setMinimumHeight(250)
-		self.gui_stacked_widget.setFrameShape(QtGui.QFrame.StyledPanel)
+		self.gui_stacked_widget.setFrameShape(QtWidgets.QFrame.StyledPanel)
 		# Blank screen widget
 		self.gui_stacked_widget.addWidget(QtGui.QWidget())
 		self.stackedWidgetHash = {}
@@ -312,7 +312,7 @@ class EMProjectManager(QtGui.QMainWindow):
 		"""
 		Get get ToolBar widget
 		"""
-		toolwidget = QtGui.QFrame()
+		toolwidget = QtWidgets.QFrame()
 		#toolwidget.setFrameShape(QtGui.QFrame.StyledPanel)
 		tbox = QtGui.QVBoxLayout()
 		self.browsebutton = QtGui.QToolButton()
@@ -489,8 +489,8 @@ class EMProjectManager(QtGui.QMainWindow):
 		"""
 		Get the e2program interface command buttons widget
 		"""
-		cmdwidget = QtGui.QFrame()
-		cmdwidget.setFrameShape(QtGui.QFrame.StyledPanel)
+		cmdwidget = QtWidgets.QFrame()
+		cmdwidget.setFrameShape(QtWidgets.QFrame.StyledPanel)
 		cmdwidget.setMaximumHeight(40)
 		hbox = QtGui.QHBoxLayout()
 		self.cancelbutton = QtGui.QPushButton("Cancel")
@@ -935,7 +935,7 @@ class EMAN2StatusBar(QtGui.QTextEdit):
 	"""
 	def __init__(self, text, style):
 		QtGui.QTextEdit.__init__(self)
-		self.setFrameShape(QtGui.QFrame.Panel | QtGui.QFrame.Sunken)
+		self.setFrameShape(QtWidgets.QFrame.Panel | QtWidgets.QFrame.Sunken)
 		self.setLineWidth(2)
 		#self.setMargin(4)
 		self.setTextInteractionFlags(QtCore.Qt.NoTextInteraction)
@@ -998,8 +998,8 @@ class EMWizardPage(QtGui.QWizardPage):
 		grid.addWidget(label,0,0)
 
 		# Add widgets stuff
-		frame = QtGui.QFrame()
-		frame.setFrameStyle(QtGui.QFrame.StyledPanel)
+		frame = QtWidgets.QFrame()
+		frame.setFrameStyle(QtWidgets.QFrame.StyledPanel)
 		framegrid = QtGui.QGridLayout()
 		framegrid.setContentsMargins(6,0,6,0)
 
@@ -2038,8 +2038,8 @@ class ProjectDialog(QtWidgets.QDialog):
 
 		# Dialog line edit fields
 		minwidth = 8*max(len(self.pm.pm_cwd),len(self.pm.pm_icon))
-		frame = QtGui.QFrame()
-		frame.setFrameStyle(QtGui.QFrame.StyledPanel)
+		frame = QtWidgets.QFrame()
+		frame.setFrameStyle(QtWidgets.QFrame.StyledPanel)
 		grid = QtGui.QGridLayout()
 		# add intro
 		textbox = QtGui.QTextEdit("")
