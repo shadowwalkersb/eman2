@@ -54,7 +54,7 @@ try:
 	from eman2_gui.emshape import *
 	from eman2_gui.valslider import *
 except:
-	print("Warning: PyQt4 must be installed")
+	print("Warning: PyQt5 must be installed")
 	sys.exit(1)
 
 from Simplex import Simplex

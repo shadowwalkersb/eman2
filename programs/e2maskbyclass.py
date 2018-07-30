@@ -176,7 +176,7 @@ def maskparmgui(classes):
 		from eman2_gui.emimagemx import EMImageMXWidget
 		
 	except:
-		print("Error: PyQt4 must be usable to use the --gui option")
+		print("Error: PyQt5 must be usable to use the --gui option")
 		sys.exit(1)
 
 

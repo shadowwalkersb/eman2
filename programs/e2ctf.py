@@ -2263,7 +2263,7 @@ try:
 	from eman2_gui.emshape import *
 	from eman2_gui.valslider import ValSlider,CheckBox
 except:
-	print("Warning: PyQt4 must be installed to use the --gui option")
+	print("Warning: PyQt5 must be installed to use the --gui option")
 	class dummy(object):
 		pass
 	class QWidget(object):

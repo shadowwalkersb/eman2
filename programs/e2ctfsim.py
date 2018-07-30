@@ -85,7 +85,7 @@ try:
 	from eman2_gui.emshape import *
 	from eman2_gui.valslider import ValSlider
 except:
-	print("Error: PyQt4 must be installed")
+	print("Error: PyQt5 must be installed")
 	sys.exit(1)
 
 class MyListWidget(QtWidgets.QListWidget):

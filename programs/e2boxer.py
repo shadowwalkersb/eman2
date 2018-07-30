@@ -307,7 +307,7 @@ def main():
 	if options.gui :
 		if isinstance(QtGui,nothing) :
 			print("=====================================")
-			print("ERROR: GUI mode unavailable without PyQt4")
+			print("ERROR: GUI mode unavailable without PyQt5")
 			sys.exit(1)
 		from eman2_gui.emapplication import EMApp
 		app=EMApp()
