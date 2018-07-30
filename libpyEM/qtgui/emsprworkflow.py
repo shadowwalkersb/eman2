@@ -449,7 +449,7 @@ class ChangeDirectoryTask(WorkFlowTask):
 	
 	def run_form(self):	
 		
-		fsp=QtGui.QFileDialog.getExistingDirectory(None, "Choose a directory")
+		fsp=QtWidgets.QFileDialog.getExistingDirectory(None, "Choose a directory")
 		fsp = str(fsp)
 		if os.path.exists(fsp):
 			os.chdir(fsp)
