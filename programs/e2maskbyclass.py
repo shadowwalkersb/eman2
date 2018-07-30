@@ -169,8 +169,8 @@ once complete, bispectra can be recomputed based on the masked particles, or the
 def maskparmgui(classes):
 	try:
 		from eman2_gui.emapplication import EMApp
-		from PyQt4 import QtCore, QtGui, QtOpenGL
-		from PyQt4.QtCore import Qt
+		from PyQt5 import QtCore, QtGui, QtOpenGL, QtWidgets
+		from PyQt5.QtCore import Qt
 		from OpenGL import GL,GLUT
 		from eman2_gui.valslider import ValSlider,CheckBox
 		from eman2_gui.emimagemx import EMImageMXWidget

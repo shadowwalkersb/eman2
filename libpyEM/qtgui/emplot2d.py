@@ -62,11 +62,11 @@ def safe_float(x):
 	try: return float(x)
 	except: return 0.0
 
-import PyQt4
-from PyQt4 import QtCore, QtGui, QtOpenGL
-from PyQt4.QtGui import QListWidgetItem
-from PyQt4.QtOpenGL import QGLWidget
-from PyQt4.QtCore import Qt
+import PyQt5
+from PyQt5 import QtCore, QtGui, QtOpenGL, QtWebKitWidgets, QtWidgets
+from PyQt5.QtWidgets import QListWidgetItem
+from PyQt5.QtOpenGL import QGLWidget
+from PyQt5.QtCore import Qt
 from OpenGL import GL,GLU
 from OpenGL.GL import *
 import OpenGL.GL as gl
@@ -193,7 +193,7 @@ class EMPlot2DWidget(EMGLWidget):
 		if event.key() == Qt.Key_C:
 			self.show_inspector(1)
 		elif event.key() == Qt.Key_F1:
-			try: from PyQt4 import QtWebKit
+			try: from PyQt5 import QtWebKit
 			except: return
 			try:
 				try:
@@ -1029,7 +1029,7 @@ class EMPolarPlot2DWidget(EMGLWidget):
 		if event.key() == Qt.Key_C:
 			self.show_inspector(1)
 		elif event.key() == Qt.Key_F1:
-			try: from PyQt4 import QtWebKit
+			try: from PyQt5 import QtWebKit
 			except: return
 			try:
 				try:

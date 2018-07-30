@@ -35,7 +35,7 @@ from __future__ import division
 from builtins import range
 from builtins import object
 from EMAN2 import *
-from PyQt4 import QtCore
+from PyQt5 import QtCore
 from eman2_gui.emfoldhunterstat import *
 from eman2_gui.emapplication import get_application
 from eman2_gui.empdbvaltool import EMPDBValWidget

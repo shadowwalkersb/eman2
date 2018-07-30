@@ -36,9 +36,9 @@ from __future__ import division
 
 from past.utils import old_div
 from builtins import range
-import PyQt4
-from PyQt4 import QtCore, QtGui, QtOpenGL
-from PyQt4.QtCore import Qt
+import PyQt5
+from PyQt5 import QtCore, QtGui, QtOpenGL, QtWidgets
+from PyQt5.QtCore import Qt
 from OpenGL import GL,GLU,GLUT
 from OpenGL.GL import *
 from .valslider import ValSlider,ValBox,StringBox

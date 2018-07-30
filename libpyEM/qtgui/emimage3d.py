@@ -40,8 +40,8 @@ from EMAN2 import *
 from OpenGL import GL, GLU, GLUT
 from OpenGL.GL import *
 from OpenGL.GLU import *
-from PyQt4 import QtCore, QtGui, QtOpenGL
-from PyQt4.QtCore import QTimer, Qt
+from PyQt5 import QtCore, QtGui, QtOpenGL, QtWidgets
+from PyQt5.QtCore import QTimer, Qt
 from e2eulerxplor import EMEulerExplorer
 from .emglobjects import Camera, Camera2, EMGLWidget, EMViewportDepthTools, EMGLProjectionViewMatrices, EMOpenGLFlagsAndTools
 from .emimage3diso import EMIsosurfaceModel

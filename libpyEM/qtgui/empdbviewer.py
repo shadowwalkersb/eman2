@@ -41,8 +41,8 @@ from libpyGLUtils2 import *
 from OpenGL.GL import *
 from OpenGL.GLU import *
 from .emglobjects import EM3DModel, get_default_gl_colors, EMViewportDepthTools, Camera2
-from PyQt4 import QtGui, QtCore
-from PyQt4.QtCore import Qt
+from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtCore import Qt
 import sys
 import weakref
 from .emimageutil import EMTransformPanel

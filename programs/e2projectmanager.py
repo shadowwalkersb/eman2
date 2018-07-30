@@ -35,10 +35,10 @@ from __future__ import division
 from past.utils import old_div
 from builtins import range
 from EMAN2 import *
-from PyQt4 import QtCore, QtGui
-from PyQt4.QtCore import Qt
+from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtCore import Qt
 from eman2_gui.pmicons import *
-from PyQt4.QtGui import QTreeWidgetItem
+from PyQt5.QtWidgets import QTreeWidgetItem
 import os, json, re, glob, signal
 import subprocess
 from eman2_gui.empmwidgets import *

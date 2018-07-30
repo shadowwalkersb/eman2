@@ -2257,8 +2257,8 @@ def ctf_env_points(im_1d,bg_1d,ctf) :
 #	return ret
 
 try:
-	from PyQt4 import QtCore, QtGui, QtOpenGL
-	from PyQt4.QtCore import Qt
+	from PyQt5 import QtCore, QtGui, QtOpenGL, QtWidgets
+	from PyQt5.QtCore import Qt
 	from OpenGL import GL,GLUT
 	from eman2_gui.emshape import *
 	from eman2_gui.valslider import ValSlider,CheckBox

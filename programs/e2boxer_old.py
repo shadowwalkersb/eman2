@@ -521,7 +521,7 @@ class SwarmPanel(object):
 
 	def get_widget(self):
 		if self.widget == None:
-			from PyQt4 import QtCore, QtGui, Qt
+			from PyQt5 import Qt, QtCore, QtGui, QtWidgets
 			self.widget = QtWidgets.QWidget()
 			vbl = QtWidgets.QVBoxLayout(self.widget)
 			vbl.setMargin(0)
@@ -1143,7 +1143,7 @@ class SwarmBoxer(object):
 			self.proximity_threshold = val
 			self.__remove_proximal_particles()
 		else:
-			from PyQt4 import QtCore
+			from PyQt5 import QtCore, QtWidgets
 			get_application().setOverrideCursor(QtCore.Qt.BusyCursor)
 			self.proximity_threshold = val
 			if len(self.proximal_boxes) == 0: return
@@ -1184,7 +1184,7 @@ class SwarmBoxer(object):
 #
 	def __remove_proximal_particles(self):
 		if self.gui_mode:
-			from PyQt4 import QtCore
+			from PyQt5 import QtCore, QtWidgets
 			get_application().setOverrideCursor(QtCore.Qt.BusyCursor)
 		boxes = self.target().get_boxes()
 		proximal_boxes_idxs = self.get_proximal_boxes(boxes)
@@ -1196,7 +1196,7 @@ class SwarmBoxer(object):
 		self.proximal_boxes.extend(conv)
 		self.target().remove_boxes(proximal_boxes_idxs)
 		if self.gui_mode:
-			from PyQt4 import QtCore
+			from PyQt5 import QtCore, QtWidgets
 			get_application().setOverrideCursor(QtCore.Qt.ArrowCursor)
 
 	def check_proximity_add_boxes(self,boxes):
@@ -1267,7 +1267,7 @@ class SwarmBoxer(object):
 
 			self.template_viewer.set_data(self.templates,soft_delete=True) # should work if self.templates is None
 			self.template_viewer.setWindowTitle("Templates")
-			from PyQt4 import QtCore
+			from PyQt5 import QtCore, QtWidgets
 			self.template_viewer.module_closed.connect(self.template_viewer_closed)
 
 		get_application().show_specific(self.template_viewer)
@@ -1478,7 +1478,7 @@ class SwarmBoxer(object):
 		'''
 		self.proximal_boxes = [] # this is always res
 		if self.gui_mode:
-			from PyQt4 import QtCore
+			from PyQt5 import QtCore, QtWidgets
 			get_application().setOverrideCursor(QtCore.Qt.BusyCursor)
 
 		if self.signal_template_update or force_remove_auto_boxes:
@@ -1538,7 +1538,7 @@ class SwarmBoxer(object):
 		if parameter_update:
 			if not self.update_opt_picking_data():
 				if self.gui_mode:
-					from PyQt4 import QtCore
+					from PyQt5 import QtCore, QtWidgets
 					get_application().setOverrideCursor(QtCore.Qt.ArrowCursor)
 				print("funny error")
 				return
@@ -1622,7 +1622,7 @@ class SwarmBoxer(object):
 			self.cache_to_database()
 
 		if self.gui_mode:
-			from PyQt4 import QtCore
+			from PyQt5 import QtCore, QtWidgets
 			self.panel_object.enable_auto_box(False)
 			get_application().setOverrideCursor(QtCore.Qt.ArrowCursor)
 			self.target().set_status_message("Autoboxed %d Particles" %len(boxes), 10000)
@@ -1781,7 +1781,7 @@ class SwarmTool(SwarmBoxer,EMBoxingTool):
 		return self.panel_object.get_widget()
 
 	def icon(self):
-		from PyQt4 import QtGui
+		from PyQt5 import QtGui, QtWidgets
 		return QtGui.QIcon(get_image_directory() + "swarm_icon.png")
 
 
@@ -1805,7 +1805,7 @@ class SwarmTool(SwarmBoxer,EMBoxingTool):
 	def mouse_down(self,event):
 		m = self.get_2d_window().scr_to_img((event.x(),event.y()))
 		box_num = self.target().detect_box_collision(m)
-		from PyQt4.QtCore import Qt
+		from PyQt5.QtCore import Qt
 		if box_num == -1:
 			if event.modifiers()&Qt.ShiftModifier :
 				return # the user tried to delete nothing
@@ -1815,7 +1815,7 @@ class SwarmTool(SwarmBoxer,EMBoxingTool):
 		else:
 			box = self.target().get_box(box_num)
 			if box.type in [SwarmBoxer.REF_NAME,SwarmBoxer.AUTO_NAME,SwarmBoxer.WEAK_REF_NAME]:
-				from PyQt4.QtCore import Qt
+				from PyQt5.QtCore import Qt
 				if event.modifiers()&Qt.ShiftModifier :
 					self.handle_box_delete(box,box_num)
 				else:
@@ -1838,7 +1838,7 @@ class SwarmTool(SwarmBoxer,EMBoxingTool):
 
 	def mouse_drag(self,event) :
 		m=self.get_2d_window().scr_to_img((event.x(),event.y()))
-		from PyQt4.QtCore import Qt
+		from PyQt5.QtCore import Qt
 		if event.modifiers()&Qt.ShiftModifier:
 			box_num = self.target().detect_box_collision(m)
 			box = self.target().get_box(box_num)
@@ -1971,7 +1971,7 @@ class GaussPanel(object):
 
 			gbdb = js_open_dict(GaussPanel.GDB_NAME)
 
-			from PyQt4 import QtCore, QtGui, Qt
+			from PyQt5 import Qt, QtCore, QtGui, QtWidgets
 			self.widget = QtWidgets.QWidget()
 			vbl = QtWidgets.QVBoxLayout(self.widget)
 			vbl.setMargin(0)
@@ -2726,7 +2726,7 @@ class GaussBoxer(object):
 		from sparx import filt_gaussl
 		print("Gauss method............start auto boxing")
 		if self.gui_mode:
-			from PyQt4 import QtCore
+			from PyQt5 import QtCore, QtWidgets
 			get_application().setOverrideCursor(QtCore.Qt.BusyCursor)
 
 		# user pawelautoboxer (gauss method) to compute soln
@@ -2796,7 +2796,7 @@ class GaussBoxer(object):
 		self.target().add_boxes(boxes, True)
 
 		if self.gui_mode:
-			from PyQt4 import QtCore
+			from PyQt5 import QtCore, QtWidgets
 			get_application().setOverrideCursor(QtCore.Qt.ArrowCursor)
 			self.target().set_status_message("Autoboxed %d Particles" %len(boxes), 10000)
 		else:
@@ -3091,7 +3091,7 @@ class GaussTool(GaussBoxer,EMBoxingTool):
 		return self.panel_object.get_widget()
 
 	def icon(self):
-		from PyQt4 import QtGui
+		from PyQt5 import QtGui, QtWidgets
 		return QtGui.QIcon(get_image_directory() + "swarm_icon.png")
 
 	def get_2d_window(self): return self.target().get_2d_window()
@@ -3117,7 +3117,7 @@ class GaussTool(GaussBoxer,EMBoxingTool):
 
 	def mouse_drag(self,event) :
 		m=self.get_2d_window().scr_to_img((event.x(),event.y()))
-		from PyQt4.QtCore import Qt
+		from PyQt5.QtCore import Qt
 		if event.modifiers()&Qt.ShiftModifier:
 			box_num = self.target().detect_box_collision(m)
 			box = self.target().get_box(box_num)
@@ -3225,8 +3225,8 @@ class CTFInspectorWidget(QtWidgets.QWidget):
 		# print "update..."
 
 	def paintEvent(self,event):
-		from PyQt4 import QtCore
-		from PyQt4.QtCore import Qt
+		from PyQt5 import QtCore, QtWidgets
+		from PyQt5.QtCore import Qt
 		if (self.i_start is None and (i_start_initial > 0)):
 			self.i_start = i_start_initial
 		if (self.i_stop is None and (i_stop_initial > 0)):
