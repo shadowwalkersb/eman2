@@ -281,7 +281,7 @@ def EMSelectorBaseTemplate(Type):
 	'''
 	This is templated inheritance. I need the selector to be a dialog, and I need it to be a normal widget.
 	See the EMSelectorDialogType and EMBrowserType
-	Types currently in use are the QtWidgets.QWidget and the QtWidgets.QDialog
+	Types currently in use are the QtWidgets.QWidget and the QtGui.QDialog
 	'''
 	class EMSelectorBase(Type):
 		ok = QtCore.pyqtSignal(list)

@@ -610,7 +610,7 @@ class EMFileExistsDialog(QtWidgets.QDialog):
 	
 	def exec_(self):
 		'''
-		Wraps QtWidgets.QDialog.exec_ but returns a custom return value
+		Wraps QtGui.QDialog.exec_ but returns a custom return value
 		@return important integer code
 		The return integer codes are as follows:
 		0 - The user hit cancel

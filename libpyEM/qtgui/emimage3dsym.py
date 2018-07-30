@@ -1297,7 +1297,7 @@ class SparseSymChoicesWidgets(object):
 		Adds 4 buttons in a grid
 		| Display Eulers | Display Triangles |
 		| Display Arcs   | All Syms          |
-		@param vbl a QtWidgets.QVBoxLayout - all widgets and layouts are added to it
+		@param vbl a QtGui.QVBoxLayout - all widgets and layouts are added to it
 		'''
 		self.busy = True
 		self.button_hbl1 = QtWidgets.QHBoxLayout()
@@ -1366,8 +1366,8 @@ class SparseSymChoicesWidgets(object):
 	
 	def add_symmetry_options(self,vbl,enable_orient_gen=True):
 		'''
-		Add common symmetry options to a QtWidgets.QVBoxLayout
-		@param vbl a QtWidgets.QVBoxLayout - all widgets and layouts are added to it
+		Add common symmetry options to a QtGui.QVBoxLayout
+		@param vbl a QtGui.QVBoxLayout - all widgets and layouts are added to it
 		@param enable_orient_gen a boolean indicating whether or not the user should be permitted to change the distribution of eulers - this is False when using E2eulerxplor to examine refinement results
 		
 		Makes QtCore.QObject connections to functions of self.target() (see bottom of this function)

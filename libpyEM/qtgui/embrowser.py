@@ -2955,7 +2955,7 @@ class EMInfoWin(QtWidgets.QWidget) :
 		self.winclosed.emit()
 
 class SortSelTree(QtWidgets.QTreeView) :
-	"""This is a subclass of QtWidgets.QTreeView. It is almost identical but implements selection processing with sorting.
+	"""This is a subclass of QtGui.QTreeView. It is almost identical but implements selection processing with sorting.
 	The correct way of doing this in QT4.2 is to use a QSortFilterProxy object, but that won't work properly in this case."""
 
 	def __init__(self, parent = None) :

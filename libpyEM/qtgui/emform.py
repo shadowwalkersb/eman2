@@ -75,7 +75,7 @@ class EMButtonDialog(object):
 	def add_to_layout(self,layout):
 		'''
 		Add the button to the given layout
-		@param layout a QtWidgets.QLayout object
+		@param layout a QtGui.QLayout object
 		'''
 		if self.icon != None: self.button = QtWidgets.QPushButton(self.icon,self.desc_short)
 		else: self.button = QtWidgets.QPushButton(self.desc_short)
@@ -188,7 +188,7 @@ class EMParamTable(list):
 		When the associated table is being created and added in the form module, this function is called, enabling
 		different things to be added to the layout in a custom fashion (such as an "Add" button).
 		@param layout a Qt Layout (e.g. QVBoxLayout, QHBoxLayout - objects that support the 'addWidget' and 'addLayout' syntax
-		@param table_widget - the table widget itself, which is an instance of a QtWidgets.QTableWidget
+		@param table_widget - the table widget itself, which is an instance of a QtGui.QTableWidget
 		'''
 		pass
 	
@@ -198,7 +198,7 @@ class EMParamTable(list):
 		as the basis for creating context menus (context_menu attribute, which is a dictionary), and for
 		converting the name in the table to the absolute file system path (convert_text attribute,
 		which is a function)
-		@param table_widget the QtWidgets.QTableWidget which will have the new attributes
+		@param table_widget the QtGui.QTableWidget which will have the new attributes
 		'''
 		optional_attr = ["convert_text","context_menu"] # these two attributes are the only ones currently used (even for inheriting classes)
 		for opt in optional_attr:
@@ -350,7 +350,7 @@ class EMFileTable(QtWidgets.QTableWidget):
 		'''
 		@return a dictionary - keys are used to add context menu items, values are functions which are called
 		These functions (which are the dictionary values) take two arguments, the first being a list of strings
-		the second being a QtWidgets.QTableWidget
+		the second being a QtGui.QTableWidget
 		'''
 		return self.context_menu_data
 	
@@ -549,7 +549,7 @@ class EMFileTable(QtWidgets.QTableWidget):
 
 	def contextMenuEvent(self,event):
 		'''
-		Redefinition of QtWidgets.QTableWidget.contextMenuEvent
+		Redefinition of QtGui.QTableWidget.contextMenuEvent
 		Creates a context menu using self.context_menu_data, which is a dictionary
 		@param event a QtGui.QContextMenuEvent - it is accepted
 		'''
@@ -926,7 +926,7 @@ class EMBrowseEventHandler(object):
 def get_table_items_in_column(table_widget,column):
 	'''
 	Gets the table items from a particular column
-	@param table_widget a QtWidgets.QTableWidget
+	@param table_widget a QtGui.QTableWidget
 	@param column the column from which you want to retrieve the table items
 	@return a list of QtGui.QTableWidgetItemsW 
 	'''

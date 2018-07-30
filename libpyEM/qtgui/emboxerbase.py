@@ -415,9 +415,9 @@ class EMBoxingTool(object):
 
 	def get_widget(self):
 		'''
-		This function should return a QtWidgets.QWidget - you can put in it whatever you like. Generally
+		This function should return a QtGui.QWidget - you can put in it whatever you like. Generally
 		you make your widget in this function and also make all of the signal-slot connections -
-		@return a QtWidgets.QWidget with your widgets in it
+		@return a QtGui.QWidget with your widgets in it
 		called in EMBoxInspector
 		'''
 		raise NotImplementedException("Inheriting classes must supply this function")
