@@ -2342,7 +2342,7 @@ class EMImageInspectorMX(QtGui.QWidget):
 		self.banim.setChecked(self.target().animation_enabled)
 		self.hbl.addWidget(self.banim)
 
-		self.tabwidget = QtGui.QTabWidget()
+		self.tabwidget = QtWidgets.QTabWidget()
 
 		self.tabwidget.addTab(self.get_image_manip_page(),"Main")
 

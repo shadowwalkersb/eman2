@@ -2395,7 +2395,7 @@ class EMBoxerInspector(QtGui.QWidget):
 		self.vbl.setSpacing(6)
 		self.vbl.setObjectName("vbl")
 
-		self.tab_widget = QtGui.QTabWidget()
+		self.tab_widget = QtWidgets.QTabWidget()
 		self.tab_widget.addTab(self.get_main_tab(),"Main")
 		self.tab_widget.addTab(self.get_display_tab(),"Display")
 		self.vbl.addWidget(self.tab_widget)
