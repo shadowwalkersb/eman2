@@ -63,7 +63,7 @@ except:
 	QtGui=nothing()
 	QtCore=nothing()
 	QtCore.QObject=nothing()
-	QtWidgets.QWidget=nothing()
+	QtGui.QWidget=nothing()
 
 
 # ok, this is kind of bad style, but really don't want to have to drag this flag around through many objects

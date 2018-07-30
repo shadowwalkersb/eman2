@@ -248,8 +248,8 @@ except:
 				traceback.print_exc()
 
 	QtGui=dummy(True)
-	QtWidgets.QWidget=dummy
-	QtWidgets.QMainWindow=dummy
+	QtGui.QWidget=dummy
+	QtGui.QMainWindow=dummy
 	QtCore=dummy(True)
 	QtCore.QAbstractTableModel=dummy
 	

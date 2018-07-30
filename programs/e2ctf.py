@@ -2275,8 +2275,8 @@ except:
 		def __init__(self,parent):
 			print("Qt4 has not been loaded")
 	QtGui=dummy()
-	QtWidgets.QWidget=QWidget
-	QtWidgets.QListWidget=QListWidget
+	QtGui.QWidget=QWidget
+	QtGui.QListWidget=QListWidget
 
 def notzero(x):
 	if x==0 : return 1.0

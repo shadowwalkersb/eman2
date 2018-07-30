@@ -452,7 +452,7 @@ except:
 		def __init__(self,parent):
 			print("Qt4 has not been loaded")
 	QtGui=dummy()
-	QtWidgets.QWidget=QWidget
+	QtGui.QWidget=QWidget
 
 def display_validation_plots(path, radcut, planethres, plotdatalabels=False, color='#00ff00', plotzaxiscolor=False):
 	from eman2_gui.emimage2d import EMImage2DWidget
