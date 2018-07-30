@@ -2234,7 +2234,7 @@ class EMImageInspectorMX(QtGui.QWidget):
 		self.target=weakref.ref(target)
 		self.busy = 1
 		self.vals = QtWidgets.QMenu()
-		self.valsbut = QtGui.QPushButton("Values")
+		self.valsbut = QtWidgets.QPushButton("Values")
 		self.valsbut.setMenu(self.vals)
 
 		self.update_vals()
@@ -2265,14 +2265,14 @@ class EMImageInspectorMX(QtGui.QWidget):
 		self.vbl2.setObjectName("vboxlayout")
 		self.hbl3.addLayout(self.vbl2)
 
-		self.bsavedata = QtGui.QPushButton("Save")
+		self.bsavedata = QtWidgets.QPushButton("Save")
 		self.vbl2.addWidget(self.bsavedata)
 
 		if allow_opt_button:
-			self.opt_fit = QtGui.QPushButton("Opt. Fit")
+			self.opt_fit = QtWidgets.QPushButton("Opt. Fit")
 			self.vbl2.addWidget(self.opt_fit)
 
-		self.bsnapshot = QtGui.QPushButton("Snap")
+		self.bsnapshot = QtWidgets.QPushButton("Snap")
 		self.vbl2.addWidget(self.bsnapshot)
 		if get_platform() != "Linux":
 			self.bsnapshot.setEnabled(False)
@@ -2291,15 +2291,15 @@ class EMImageInspectorMX(QtGui.QWidget):
 		self.hbl2.setObjectName("hboxlayout")
 		self.vbl.addLayout(self.hbl2)
 
-		self.mapp = QtGui.QPushButton("App")
+		self.mapp = QtWidgets.QPushButton("App")
 		self.mapp.setCheckable(1)
 		self.hbl2.addWidget(self.mapp)
 
-		self.mDel = QtGui.QPushButton("Del")
+		self.mDel = QtWidgets.QPushButton("Del")
 		self.mDel.setCheckable(1)
 		self.hbl2.addWidget(self.mDel)
 
-		self.mdrag = QtGui.QPushButton("Drag")
+		self.mdrag = QtWidgets.QPushButton("Drag")
 		self.mdrag.setCheckable(1)
 		self.hbl2.addWidget(self.mdrag)
 
@@ -2337,7 +2337,7 @@ class EMImageInspectorMX(QtGui.QWidget):
 		self.font_size.valueChanged[int].connect(self.target().set_font_size)
 
 
-		self.banim = QtGui.QPushButton("Animate")
+		self.banim = QtWidgets.QPushButton("Animate")
 		self.banim.setCheckable(True)
 		self.banim.setChecked(self.target().animation_enabled)
 		self.hbl.addWidget(self.banim)
@@ -2388,7 +2388,7 @@ class EMImageInspectorMX(QtGui.QWidget):
 	def add_panel(self,widget,name):
 		self.tabwidget.addTab(widget,name)
 
-		button = QtGui.QPushButton(name)
+		button = QtWidgets.QPushButton(name)
 		button.setCheckable(1)
 		self.hbl2.addWidget(button)
 
@@ -2628,11 +2628,11 @@ class EMMXSetsPanel(QtGui.QWidget):
 
 		vbl = QtGui.QVBoxLayout()
 
-		self.new_set_button = QtGui.QPushButton("New")
+		self.new_set_button = QtWidgets.QPushButton("New")
 		vbl.addWidget(self.new_set_button)
-		self.delete_set_button = QtGui.QPushButton("delete")
+		self.delete_set_button = QtWidgets.QPushButton("delete")
 		vbl.addWidget(self.delete_set_button)
-		self.save_set_button = QtGui.QPushButton("Save")
+		self.save_set_button = QtWidgets.QPushButton("Save")
 		vbl.addWidget(self.save_set_button)
 
 		hbl.addLayout(vbl)

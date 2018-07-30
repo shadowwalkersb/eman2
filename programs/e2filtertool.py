@@ -157,20 +157,20 @@ class EMProcessorWidget(QtGui.QWidget):
 #		self.gbl2.setColumnStretch(1,1)
 
 #		self.wup = QtGui.QPushButton(app.style().standardIcon(QtGui.QStyle.SP_ArrowUp),"")
-		self.wup = QtGui.QPushButton(pix_up,"",self)
+		self.wup = QtWidgets.QPushButton(pix_up,"",self)
 		self.wup.setMaximumSize(QtCore.QSize(17, 17))
 #		self.wup.setSizePolicy(QtGui.QSizePolicy.Fixed,QtGui.QSizePolicy.Fixed)
 		self.gbl2.addWidget(self.wup,0,0)
 
-		self.wdown = QtGui.QPushButton(pix_down,"",self)
+		self.wdown = QtWidgets.QPushButton(pix_down,"",self)
 		self.wdown.setMaximumSize(QtCore.QSize(17, 17))
 		self.gbl2.addWidget(self.wdown,1,0)
 
-		self.wplus = QtGui.QPushButton(pix_plus,"",self)
+		self.wplus = QtWidgets.QPushButton(pix_plus,"",self)
 		self.wplus.setMaximumSize(QtCore.QSize(17, 17))
 		self.gbl2.addWidget(self.wplus,1,1)
 
-		self.wminus= QtGui.QPushButton(pix_minus,"",self)
+		self.wminus= QtWidgets.QPushButton(pix_minus,"",self)
 		self.wminus.setMaximumSize(QtCore.QSize(17, 17))
 		self.gbl2.addWidget(self.wminus,0,1)
 

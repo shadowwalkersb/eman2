@@ -1039,7 +1039,7 @@ class EMPlot3DStatsInsp(QtGui.QWidget):
 		self.target=weakref.ref(target)
 		gbl0=QtWidgets.QGridLayout(self)
 
-		self.summary=QtGui.QPushButton(self)
+		self.summary=QtWidgets.QPushButton(self)
 		self.summary.setText("Summary Table")
 		gbl0.addWidget(self.summary,2,0,1,2)
 
@@ -1074,7 +1074,7 @@ class EMPlot3DStatsInsp(QtGui.QWidget):
 		self.wnround.intonly=1
 		gbl0.addWidget(self.wnround,6,1)
 
-		self.run=QtGui.QPushButton(self)
+		self.run=QtWidgets.QPushButton(self)
 		self.run.setText("Compute")
 		gbl0.addWidget(self.run,8,0,1,2)
 
@@ -1229,7 +1229,7 @@ class EMPlot3DRegrInsp(QtGui.QWidget):
 		self.wcomb_norm.addItem("Maxmin")
 		gbl0.addWidget(self.wcomb_norm,6,1)
 
-		self.regrb=QtGui.QPushButton(self)
+		self.regrb=QtWidgets.QPushButton(self)
 		self.regrb.setText("Regress")
 		gbl0.addWidget(self.regrb,8,0,1,2)
 
@@ -1339,7 +1339,7 @@ class EMPlot3DClassInsp(QtGui.QWidget):
 		#self.wimgfilebut.setText("Browse")
 		#gbl0.addWidget(self.wimgfilebut,0,1)
 
-		self.kmeansb=QtGui.QPushButton(self)
+		self.kmeansb=QtWidgets.QPushButton(self)
 		self.kmeansb.setText("K-means")
 		gbl0.addWidget(self.kmeansb,2,0,1,2)
 
@@ -1358,7 +1358,7 @@ class EMPlot3DClassInsp(QtGui.QWidget):
 		hl1.setSizePolicy(QtGui.QSizePolicy.Minimum,QtGui.QSizePolicy.Expanding)
 		gbl0.addWidget(hl1,7,0,1,2)
 
-		self.threshb=QtGui.QPushButton(self)
+		self.threshb=QtWidgets.QPushButton(self)
 		self.threshb.setText("Threshold")
 		gbl0.addWidget(self.threshb,8,0,1,2)
 
@@ -1385,7 +1385,7 @@ class EMPlot3DClassInsp(QtGui.QWidget):
 		self.wspfix=StringBox(label="Prefix:",value="split")
 		gbl0.addWidget(self.wspfix,14,0)
 
-		self.wbmakeset=QtGui.QPushButton()
+		self.wbmakeset=QtWidgets.QPushButton()
 		self.wbmakeset.setText("New Sets")
 		gbl0.addWidget(self.wbmakeset,14,1)
 
@@ -1768,11 +1768,11 @@ class EMPlot3DInspector(QtGui.QWidget):
 		hbl.setObjectName("hbl6")
 		vbl3.addLayout(hbl6)
 
-		self.nonebut=QtGui.QPushButton(self)
+		self.nonebut=QtWidgets.QPushButton(self)
 		self.nonebut.setText("None")
 		hbl6.addWidget(self.nonebut)
 
-		self.allbut=QtGui.QPushButton(self)
+		self.allbut=QtWidgets.QPushButton(self)
 		self.allbut.setText("All")
 		hbl6.addWidget(self.allbut)
 
@@ -1803,15 +1803,15 @@ class EMPlot3DInspector(QtGui.QWidget):
 		hbl0.setSpacing(6)
 		vbl.addLayout(hbl0)
 
-		self.saveb=QtGui.QPushButton(self)
+		self.saveb=QtWidgets.QPushButton(self)
 		self.saveb.setText("Save")
 		hbl0.addWidget(self.saveb)
 
-		self.concatb=QtGui.QPushButton(self)
+		self.concatb=QtWidgets.QPushButton(self)
 		self.concatb.setText("Concat")
 		hbl0.addWidget(self.concatb)
 
-		self.pdfb=QtGui.QPushButton(self)
+		self.pdfb=QtWidgets.QPushButton(self)
 		self.pdfb.setText("PDF")
 #		self.pdfb.setEnabled(False)
 		hbl0.addWidget(self.pdfb)
@@ -1821,15 +1821,15 @@ class EMPlot3DInspector(QtGui.QWidget):
 		hbl01.setSpacing(6)
 		vbl.addLayout(hbl01)
 
-		self.stats=QtGui.QPushButton(self)
+		self.stats=QtWidgets.QPushButton(self)
 		self.stats.setText("Statistics")
 		hbl01.addWidget(self.stats)
 
-		self.regress=QtGui.QPushButton(self)
+		self.regress=QtWidgets.QPushButton(self)
 		self.regress.setText("Regression")
 		hbl01.addWidget(self.regress)
 
-		self.classb=QtGui.QPushButton(self)
+		self.classb=QtWidgets.QPushButton(self)
 		self.classb.setText("Classification")
 		hbl01.addWidget(self.classb)
 
@@ -1861,7 +1861,7 @@ class EMPlot3DInspector(QtGui.QWidget):
 		vbl2a.setSpacing(6)
 		hbl2.addLayout(vbl2a)
 
-		self.lintog=QtGui.QPushButton(self)
+		self.lintog=QtWidgets.QPushButton(self)
 		self.lintog.setText("Line")
 		self.lintog.setCheckable(1)
 		vbl2a.addWidget(self.lintog)
@@ -1883,7 +1883,7 @@ class EMPlot3DInspector(QtGui.QWidget):
 		vbl2b.setSpacing(6)
 		hbl2.addLayout(vbl2b)
 
-		self.symtog=QtGui.QPushButton(self)
+		self.symtog=QtWidgets.QPushButton(self)
 		self.symtog.setText("Symbol")
 		self.symtog.setCheckable(1)
 		vbl2b.addWidget(self.symtog)
@@ -1950,17 +1950,17 @@ class EMPlot3DInspector(QtGui.QWidget):
 
 		hbl2 = QtWidgets.QHBoxLayout()
 
-		self.xlogtog=QtGui.QPushButton(self)
+		self.xlogtog=QtWidgets.QPushButton(self)
 		self.xlogtog.setText("X Log")
 		self.xlogtog.setCheckable(1)
 		hbl2.addWidget(self.xlogtog)
 
-		self.ylogtog=QtGui.QPushButton(self)
+		self.ylogtog=QtWidgets.QPushButton(self)
 		self.ylogtog.setText("Y Log")
 		self.ylogtog.setCheckable(1)
 		hbl2.addWidget(self.ylogtog)
 
-		self.zlogtog=QtGui.QPushButton(self)
+		self.zlogtog=QtWidgets.QPushButton(self)
 		self.zlogtog.setText("Z Log")
 		self.zlogtog.setCheckable(1)
 		hbl2.addWidget(self.zlogtog)
@@ -1972,7 +1972,7 @@ class EMPlot3DInspector(QtGui.QWidget):
 
 		vbl.addLayout(hbl2)
 
-		self.wrescale=QtGui.QPushButton(self)
+		self.wrescale=QtWidgets.QPushButton(self)
 		self.wrescale.setText("Rescale")
 		vbl.addWidget(self.wrescale)
 
