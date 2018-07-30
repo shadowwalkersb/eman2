@@ -104,8 +104,8 @@ XYData.__len__=XYData.get_size
 
 try:
 	if __IPYTHON__ : GUIMode=True
-	import PyQt4
-	app=PyQt4.QtWidgets.qApp
+	import PyQt5
+	app=PyQt5.QtGui.qApp
 except:
 	GUIMode=False
 	app = 0
