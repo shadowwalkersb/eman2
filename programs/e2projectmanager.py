@@ -1941,12 +1941,12 @@ class PMGUIWidget(QtWidgets.QScrollArea):
 	def _on_message(self, s):
 		self.pm().statusbar.setMessage(str(s),"color:red;")
 
-class PMQTreeWidgetItem(QtGui.QTreeWidgetItem):
+class PMQTreeWidgetItem(QtWidgets.QTreeWidgetItem):
 	"""
 	Custon QTreeWidget for PM, holds a bunch of properites relating to the e2program(or table) it represnsts.
 	"""
 	def __init__(self, qstring):
-		QtGui.QTreeWidgetItem.__init__(self, qstring)
+		QtWidgets.QTreeWidgetItem.__init__(self, qstring)
 		self.program = None
 		self.table = None
 		self.mode = ""

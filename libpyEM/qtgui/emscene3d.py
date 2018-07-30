@@ -2947,13 +2947,13 @@ class EMQTreeWidget(QtWidgets.QTreeWidget):
 			self.editItem.emit(self.currentItem())
 			
 			
-class EMQTreeWidgetItem(QtGui.QTreeWidgetItem):
+class EMQTreeWidgetItem(QtWidgets.QTreeWidgetItem):
 	"""
 	Subclass of QTreeWidgetItem
 	adds functionality
 	"""
 	def __init__(self, qstring, item3d, parentnode):
-		QtGui.QTreeWidgetItem.__init__(self, qstring)
+		QtWidgets.QTreeWidgetItem.__init__(self, qstring)
 		self.name = qstring.join('')
 		self.item3d = weakref.ref(item3d)
 		if parentnode: self.parent = weakref.ref(parentnode)
