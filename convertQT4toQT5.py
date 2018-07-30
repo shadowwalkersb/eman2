@@ -25,7 +25,7 @@ def fixFile(line_list, module_to_update):
 
 		result = re.search('QtGui\.(\w+)', each)
 
-		if result and result.group(1) == module_to_update:
+		if result and result.group(1) == module_to_update and each.strip()[0] != '#':
 			line_list[num] = each.replace('QtGui', 'QtWidgets')
 			changed = True
 			dictWidgets[result.group(1)] = 1
