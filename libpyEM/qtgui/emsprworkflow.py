@@ -2290,7 +2290,7 @@ class OldBoxerRecoveryDialog(QtWidgets.QDialog):
 		self.vbl.setSpacing(6)
 		self.vbl.setObjectName("vbl")
 		
-		text_edit = QtGui.QTextEdit("")
+		text_edit = QtWidgets.QTextEdit("")
 		text_edit.setReadOnly(True)
 		text_edit.setWordWrapMode(QtGui.QTextOption.WordWrap)
 		text_edit.setText("The workflow has detected you have data stored in the local database that was generated with an old version of e2boxer. You can recover it (recommended), in which case the old data is converted so it can be interpreted within the current framework. Alternatively you can just delete it, which means the box coordinates will be lost forever.")
