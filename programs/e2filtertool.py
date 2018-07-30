@@ -452,7 +452,7 @@ class EMFilterTool(QtWidgets.QMainWindow):
 		self.vblm.addWidget(self.wsetname)
 
 		# scrollarea for processor widget
-		self.processorsa=QtGui.QScrollArea()
+		self.processorsa=QtWidgets.QScrollArea()
 		self.vblm.addWidget(self.processorsa)
 
 		# Actual widget contianing processors being scrolled
