@@ -48,9 +48,11 @@ def fixFile(line_list, module_to_update):
 
 def convert(main_path, module_to_convert):
 	for dirs, folders, files in os.walk(main_path):
-		for each in [x for x in files if x.endswith('.py') and normpath(x) != normpath(__file__) and not normpath(x).startswith('sparx')]:
+		for each in [x for x in files if x.endswith('.py') and normpath(x) != normpath(__file__)]:
 			file_path = os.path.join(dirs, each).replace(os.sep, '/')
 			# print(file_path)
+			if normpath(file_path).startswith('sparx'):
+				continue
 			# os.chmod(file_path, stat.S_IWRITE)
 
 			with open(file_path, 'r+') as out_file:
