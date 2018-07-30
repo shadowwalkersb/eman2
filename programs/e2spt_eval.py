@@ -63,7 +63,7 @@ class SptEvalGUI(QtGui.QWidget):
 		QtCore.QObject.connect(self.imglst,QtCore.SIGNAL("cellClicked(int,int)"),self.select_folder)
 		QtCore.QObject.connect(hdr,QtCore.SIGNAL("sectionPressed(int)"),self.sortlst)
 		
-		self.dp_folder=QtGui.QComboBox()
+		self.dp_folder=QtWidgets.QComboBox()
 		self.dp_folder.setToolTip("Folder suffix")
 		self.gbl.addWidget(self.dp_folder, 0,1,1,1)
 		sfxlst=["spt", "sptsgd"]
