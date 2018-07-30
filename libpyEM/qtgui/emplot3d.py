@@ -219,7 +219,7 @@ class EMPlot3DWidget(EMGLWidget):
 				try:
 					test = self.browser
 				except:
-					self.browser = QtWebKit.QWebView()
+					self.browser = QtWebKitWidgets.QWebView()
 					self.browser.load(QtCore.QUrl("http://blake.bcm.edu/emanwiki/e2display"))
 					self.browser.resize(800,800)
 

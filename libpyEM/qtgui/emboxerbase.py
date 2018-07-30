@@ -2661,7 +2661,7 @@ class EMBoxerInspector(QtWidgets.QWidget):
 				try:
 					test = self.browser
 				except:
-					self.browser = QtWebKit.QWebView()
+					self.browser = QtWebKitWidgets.QWebView()
 					self.browser.load(QtCore.QUrl("http://blake.bcm.edu/emanwiki/e2boxer"))
 					self.browser.resize(800,800)
 

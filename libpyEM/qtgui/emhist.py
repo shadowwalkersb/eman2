@@ -190,7 +190,7 @@ class EMHistogramWidget(EMGLWidget):
 			try:
 				try: test = self.browser
 				except:
-					self.browser = QtWebKit.QWebView()
+					self.browser = QtWebKitWidgets.QWebView()
 					self.browser.load(QtCore.QUrl("http://blake.bcm.edu/emanwiki/e2display"))
 					self.browser.resize(800,800)
 				if not self.browser.isVisible(): self.browser.show()

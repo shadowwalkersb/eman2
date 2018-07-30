@@ -177,7 +177,7 @@ class EMGLWidget(QtOpenGL.QGLWidget):
 				try:
 					test = self.browser
 				except: 
-					self.browser = QtWebKit.QWebView()
+					self.browser = QtWebKitWidgets.QWebView()
 					self.browser.load(QtCore.QUrl())
 					self.browser.resize(800,800)
 				
