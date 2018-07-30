@@ -1933,7 +1933,7 @@ class GUIBoxer(QtWidgets.QWidget):
 
 		#self.writeCurParm()
 		event.accept()
-		QtGui.qApp.exit(0)
+		QtWidgets.qApp.exit(0)
 		#app=QtGui.qApp			if b[2] not in ("refgood","refbad"):
 		#if self.wimage != None:
 			#app.close_specific(self.wimage)
