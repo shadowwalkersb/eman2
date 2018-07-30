@@ -528,7 +528,7 @@ class EMMotion(QtWidgets.QMainWindow):
 
 	def menuFileOpen(self,x):
 		if self.particles!=None:
-			QtGui.QMessageBox.warning(None,"Error","%s already contains a stack of particles. A new folder is required to start with a new stack of particles. Rerun without --path option."%self.path)
+			QtWidgets.QMessageBox.warning(None,"Error","%s already contains a stack of particles. A new folder is required to start with a new stack of particles. Rerun without --path option."%self.path)
 			return
 
 		self.dialog = embrowser.EMBrowserWidget(withmodal=True,multiselect=False)
@@ -911,7 +911,7 @@ class EMMotion(QtWidgets.QMainWindow):
 		
 		if mode==0 : self.doComputePCA()
 		elif mode==1 : self.doComputeAvD()
-		else : QtGui.QMessageBox.warning("Unknown mode %d"%mode)
+		else : QtWidgets.QMessageBox.warning("Unknown mode %d"%mode)
 		
 		return
 		

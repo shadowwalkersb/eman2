@@ -60,7 +60,7 @@ class EMFileTypeValidator(object):
 		@return 0 if something went wrong, for example, the file is not valid
 		'''
 		
-		msg = QtGui.QMessageBox()
+		msg = QtWidgets.QMessageBox()
 		vals = file_name.split(".")
 		if len(vals) < 2 or vals[-1] != self.type:
 			# error is therefore a string
@@ -111,7 +111,7 @@ class EMCoordFileValidator(object):
 				return 1
 				
 			except:
-				msg = QtGui.QMessageBox()
+				msg = QtWidgets.QMessageBox()
 				msg.setText("%s is not a valid coordinate file" %file_name)
 				msg.exec_()
 				return 0
@@ -257,7 +257,7 @@ class EMSingleImageSaveDialog(EMFileSaver):
 		try:
 			self.__item.write_image(out_file, -1)
 		except:
-			msg = QtGui.QMessageBox()
+			msg = QtWidgets.QMessageBox()
 			msg.setText("An exception occured while writing %s, please try again" %out_file)
 			msg.exec_()
 			tmp_file_object.remove_tmp_file()
@@ -333,7 +333,7 @@ class EMSaveImageValidator(object):
 		@return 0 if something went wrong (e.g. the user cancelled), 1 if it's okay to call save now
 		'''
 		
-		msg = QtGui.QMessageBox()
+		msg = QtWidgets.QMessageBox()
 		error = self.__validate_file_name(file_name)
 		if error != None:
 			# error is therefore a string
@@ -416,7 +416,7 @@ class EMStackSaveDialog(EMFileSaver):
 		@return 0 if there was an error, 1 if there was not
 		@exception NotImplementedError raised when the EMFileExistsDialog returns an unknown code
 		'''
-		msg = QtGui.QMessageBox()
+		msg = QtWidgets.QMessageBox()
 			
 		tmp_file_object = EMDummyTmpFileHandle(file)
 		if self.validator.is_overwriting():

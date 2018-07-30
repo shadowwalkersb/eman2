@@ -1561,7 +1561,7 @@ def sptboxergui(options,args):
 
 
 		def menu_file_open(self,tog):
-			QtGui.QMessageBox.warning(None,"Error","Sorry, in the current version, you must provide a file to open on the command-line.")
+			QtWidgets.QMessageBox.warning(None,"Error","Sorry, in the current version, you must provide a file to open on the command-line.")
 
 		def load_box_yshort(self, boxcoords):
 			if options.yshort:

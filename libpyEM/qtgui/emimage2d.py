@@ -2397,7 +2397,7 @@ class EMImageInspector2D(QtGui.QWidget):
 
 		ret= os.system("ffmpeg -i tmp.%%03d.png %s"%fsp)
 		if ret!=0 :
-			QtGui.QMessageBox.warning(None,"Error","Movie conversion (ffmpeg) failed. Please make sure ffmpeg is in your path. Frames not deleted.")
+			QtWidgets.QMessageBox.warning(None,"Error","Movie conversion (ffmpeg) failed. Please make sure ffmpeg is in your path. Frames not deleted.")
 			return
 
 		for i in range(self.stminsb.value()-1,self.stmaxsb.value()):
@@ -2414,7 +2414,7 @@ class EMImageInspector2D(QtGui.QWidget):
 
 		ret= os.system("convert tmp.???.png %s"%fsp)
 		if ret!=0 :
-			QtGui.QMessageBox.warning(None,"Error","GIF conversion failed. Please make sure ImageMagick (convert program) is installed and in your path. Frames not deleted.")
+			QtWidgets.QMessageBox.warning(None,"Error","GIF conversion failed. Please make sure ImageMagick (convert program) is installed and in your path. Frames not deleted.")
 			return
 
 		for i in range(self.stminsb.value()-1,self.stmaxsb.value()):
