@@ -314,7 +314,7 @@ class EMProjectManager(QtWidgets.QMainWindow):
 		"""
 		toolwidget = QtWidgets.QFrame()
 		#toolwidget.setFrameShape(QtGui.QFrame.StyledPanel)
-		tbox = QtGui.QVBoxLayout()
+		tbox = QtWidgets.QVBoxLayout()
 		self.browsebutton = QtWidgets.QToolButton()
 		self.browsebutton.setIcon(QtGui.QIcon(QtGui.QPixmap(browseicon)))
 		self.browsebutton.setToolTip("Browse button")

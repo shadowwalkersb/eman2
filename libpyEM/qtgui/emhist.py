@@ -840,7 +840,7 @@ class EMHistogramInspector(QtGui.QWidget):
 		self.setWindowIcon(QtGui.QIcon(get_image_directory() +"plot.png"))
 		self.target=weakref.ref(target)
 
-		vbl0=QtGui.QVBoxLayout(self)
+		vbl0=QtWidgets.QVBoxLayout(self)
 
 		hbl = QtWidgets.QHBoxLayout()
 		hbl.setMargin(2)
@@ -849,7 +849,7 @@ class EMHistogramInspector(QtGui.QWidget):
 
 		gbx = QtWidgets.QGroupBox("Data sets")
 
-		vbl3 = QtGui.QVBoxLayout()
+		vbl3 = QtWidgets.QVBoxLayout()
 		vbl3.setMargin(4)
 		vbl3.setSpacing(6)
 		vbl3.setObjectName("vbl3")
@@ -894,7 +894,7 @@ class EMHistogramInspector(QtGui.QWidget):
 		self.stepbox=ValBox(label="stp:",value=1)
 		hbl7.addWidget(self.stepbox)
 
-		vbl = QtGui.QVBoxLayout()
+		vbl = QtWidgets.QVBoxLayout()
 		vbl.setMargin(0)
 		vbl.setSpacing(6)
 		vbl.setObjectName("vbl")

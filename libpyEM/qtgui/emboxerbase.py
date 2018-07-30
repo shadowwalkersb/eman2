@@ -581,7 +581,7 @@ class ErasingPanel(object):
 		if self.widget == None:
 			from PyQt4 import QtCore, QtGui, Qt
 			self.widget = QtGui.QWidget()
-			vbl = QtGui.QVBoxLayout(self.widget)
+			vbl = QtWidgets.QVBoxLayout(self.widget)
 			vbl.setMargin(0)
 			vbl.setSpacing(6)
 			vbl.setObjectName("vbl")
@@ -2390,7 +2390,7 @@ class EMBoxerInspector(QtGui.QWidget):
 		self.setWindowTitle("e2boxer")
 		self.target=weakref.ref(target)
 
-		self.vbl = QtGui.QVBoxLayout(self)
+		self.vbl = QtWidgets.QVBoxLayout(self)
 		self.vbl.setMargin(0)
 		self.vbl.setSpacing(6)
 		self.vbl.setObjectName("vbl")
@@ -2438,10 +2438,10 @@ class EMBoxerInspector(QtGui.QWidget):
 	def get_display_tab(self):
 		from PyQt4 import QtCore, QtGui, Qt
 		widget = QtGui.QWidget()
-		vbl =  QtGui.QVBoxLayout(widget)
+		vbl =  QtWidgets.QVBoxLayout(widget)
 
 		#  Insert the plot widget
-		viewhbl = QtGui.QVBoxLayout()
+		viewhbl = QtWidgets.QVBoxLayout()
 
 		self.viewboxes = QtWidgets.QCheckBox("Particle Window")
 		self.viewboxes.setChecked(True)
@@ -2528,7 +2528,7 @@ class EMBoxerInspector(QtGui.QWidget):
 	def get_main_tab(self):
 		from PyQt4 import QtCore, QtGui, Qt
 		widget = QtGui.QWidget()
-		vbl = QtGui.QVBoxLayout(widget)
+		vbl = QtWidgets.QVBoxLayout(widget)
 		vbl.setMargin(0)
 		vbl.setSpacing(6)
 
@@ -2591,8 +2591,8 @@ class EMBoxerInspector(QtGui.QWidget):
 		from PyQt4 import QtCore, QtGui, Qt
 
 		self.tool_button_group_box = QtWidgets.QGroupBox("Tools")
-		self.tool_button_group_box_vbl = QtGui.QVBoxLayout(self.tool_button_group_box)
-		self.tool_dynamic_vbl = QtGui.QVBoxLayout()
+		self.tool_button_group_box_vbl = QtWidgets.QVBoxLayout(self.tool_button_group_box)
+		self.tool_dynamic_vbl = QtWidgets.QVBoxLayout()
 
 		hbl = QtWidgets.QHBoxLayout()
 		current_tool_label = QtWidgets.QLabel("Current Boxing Tool:")

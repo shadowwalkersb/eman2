@@ -525,7 +525,7 @@ class EMValidationPlot(QtGui.QWidget):
 	"""Make a plot to display validation info"""
 	def __init__(self):
 		QtGui.QWidget.__init__(self)
-		box = QtGui.QVBoxLayout()
+		box = QtWidgets.QVBoxLayout()
 		self.polarplot = EMPolarPlot2DWidget()
 		self.polarplot.setMinimumHeight(50)
 		self.polarplot.setMinimumWidth(50)

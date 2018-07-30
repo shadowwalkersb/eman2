@@ -2285,7 +2285,7 @@ class OldBoxerRecoveryDialog(QtWidgets.QDialog):
 		self.setWindowTitle("Old Boxer Recovery")
 		self.setWindowIcon(QtGui.QIcon(get_image_directory() + "green_boxes.png"))
 
-		self.vbl = QtGui.QVBoxLayout(self)
+		self.vbl = QtWidgets.QVBoxLayout(self)
 		self.vbl.setMargin(0)
 		self.vbl.setSpacing(6)
 		self.vbl.setObjectName("vbl")

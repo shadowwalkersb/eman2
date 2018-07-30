@@ -1968,7 +1968,7 @@ class EMTextInfoPane(EMInfoPane) :
 	def __init__(self, parent = None) :
 		QtGui.QWidget.__init__(self, parent)
 
-		self.vbl = QtGui.QVBoxLayout(self)
+		self.vbl = QtWidgets.QVBoxLayout(self)
 
 		# text editing widget
 
@@ -2043,7 +2043,7 @@ class EMHTMLInfoPane(EMInfoPane) :
 	def __init__(self, parent = None) :
 		QtGui.QWidget.__init__(self, parent)
 
-		self.vbl = QtGui.QVBoxLayout(self)
+		self.vbl = QtWidgets.QVBoxLayout(self)
 
 		# text editing widget
 
@@ -2115,7 +2115,7 @@ class EMHTMLInfoPane(EMInfoPane) :
 class EMPDBInfoPane(EMInfoPane) :
 	def __init__(self, parent = None) :
 		QtGui.QWidget.__init__(self, parent)
-		self.vbl = QtGui.QVBoxLayout(self)
+		self.vbl = QtWidgets.QVBoxLayout(self)
 		# text editing widget
 		self.text = QtWidgets.QTextEdit()
 		self.text.setAcceptRichText(False)
@@ -2226,7 +2226,7 @@ class EMFolderInfoPane(EMInfoPane) :
 	def __init__(self, parent = None) :
 		QtGui.QWidget.__init__(self, parent)
 
-		self.vbl = QtGui.QVBoxLayout(self)
+		self.vbl = QtWidgets.QVBoxLayout(self)
 
 	def display(self, target) :
 		"""display information for the target EMDirEntry"""
@@ -3130,7 +3130,7 @@ class EMBrowserWidget(QtGui.QWidget) :
 
 		self.wbookmarkfr = QtWidgets.QFrame()
 		self.wbookmarkfr.setFrameStyle(QtWidgets.QFrame.StyledPanel|QtWidgets.QFrame.Raised)
-		self.wbmfrbl = QtGui.QVBoxLayout(self.wbookmarkfr)
+		self.wbmfrbl = QtWidgets.QVBoxLayout(self.wbookmarkfr)
 
 		self.wbookmarks = QtWidgets.QToolBar()
 		# self.wbookmarks.setAutoFillBackground(True)

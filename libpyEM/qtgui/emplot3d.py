@@ -1738,7 +1738,7 @@ class EMPlot3DInspector(QtGui.QWidget):
 		QtGui.QWidget.__init__(self,None)
 		self.setWindowIcon(QtGui.QIcon(get_image_directory() +"plot.png"))
 		self.target=weakref.ref(target)
-		vbl0=QtGui.QVBoxLayout(self)
+		vbl0=QtWidgets.QVBoxLayout(self)
 
 		hbl = QtWidgets.QHBoxLayout()
 		hbl.setMargin(2)
@@ -1747,7 +1747,7 @@ class EMPlot3DInspector(QtGui.QWidget):
 
 		gbx = QtWidgets.QGroupBox("Data sets")
 
-		vbl3 = QtGui.QVBoxLayout()
+		vbl3 = QtWidgets.QVBoxLayout()
 		vbl3.setMargin(4)
 		vbl3.setSpacing(6)
 		vbl3.setObjectName("vbl3")
@@ -1792,7 +1792,7 @@ class EMPlot3DInspector(QtGui.QWidget):
 		self.stepbox=ValBox(label="stp:",value=1)
 		hbl7.addWidget(self.stepbox)
 
-		vbl = QtGui.QVBoxLayout()
+		vbl = QtWidgets.QVBoxLayout()
 		vbl.setMargin(0)
 		vbl.setSpacing(6)
 		vbl.setObjectName("vbl")
@@ -1856,7 +1856,7 @@ class EMPlot3DInspector(QtGui.QWidget):
 		vbl.addLayout(hbl2)
 
 		# This is for line parms
-		vbl2a = QtGui.QVBoxLayout()
+		vbl2a = QtWidgets.QVBoxLayout()
 		vbl2a.setMargin(0)
 		vbl2a.setSpacing(6)
 		hbl2.addLayout(vbl2a)
@@ -1878,7 +1878,7 @@ class EMPlot3DInspector(QtGui.QWidget):
 		vbl2a.addWidget(self.linwid)
 
 		# This is for point parms
-		vbl2b = QtGui.QVBoxLayout()
+		vbl2b = QtWidgets.QVBoxLayout()
 		vbl2b.setMargin(0)
 		vbl2b.setSpacing(6)
 		hbl2.addLayout(vbl2b)

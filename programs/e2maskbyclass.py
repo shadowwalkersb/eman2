@@ -191,7 +191,7 @@ def maskparmgui(classes):
 			self.classes=classes
 			self.classview=EMImageMXWidget(self,classes)
 			
-			self.vbl = QtGui.QVBoxLayout(self)
+			self.vbl = QtWidgets.QVBoxLayout(self)
 			self.vbl.addWidget(self.classview)
 			
 			self.hbl = QtWidgets.QHBoxLayout()
