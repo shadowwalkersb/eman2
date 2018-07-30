@@ -801,7 +801,7 @@ class EMFilterTool(QtWidgets.QMainWindow):
 		allfilt=" ".join([i.getAsProc() for i in self.processorlist])
 
 		n=EMUtil.get_image_count(self.datafile)
-		from PyQt4.QtGui import QProgressDialog
+		from PyQt5.QtWidgets import QProgressDialog
 		progressdialog=QProgressDialog("Processing Images","Abort",0,n,self)
 		progressdialog.setMinimumDuration(1000)
 
