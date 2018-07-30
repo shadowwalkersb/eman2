@@ -2479,7 +2479,7 @@ class EMInspector3D(QtGui.QWidget):
 		"""
 		self.cameratab_open = False
 		cwidget = QtGui.QWidget()
-		grid = QtGui.QGridLayout()
+		grid = QtWidgets.QGridLayout()
 		grid.setContentsMargins(11,5,11,5)
 		self.camerawidget = CameraControls(scenegraph=self.scenegraph())
 		grid.addWidget(self.camerawidget, 0, 0, 1, 3)
@@ -2503,7 +2503,7 @@ class EMInspector3D(QtGui.QWidget):
 		# The frame for linking capping, etc
 		cframe = QtWidgets.QFrame()
 		cframe.setFrameShape(QtWidgets.QFrame.StyledPanel)
-		cframegrid = QtGui.QGridLayout()
+		cframegrid = QtWidgets.QGridLayout()
 		self.linkcb = QtWidgets.QCheckBox("Link clipping planes")
 		self.linkcb.setMinimumHeight(40.0)
 		cframegrid.addWidget(self.linkcb, 0, 0, 1, 2)
@@ -2634,7 +2634,7 @@ class EMInspector3D(QtGui.QWidget):
 		# Controls frame
 		frame = QtWidgets.QFrame()
 		frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
-		gridbox = QtGui.QGridLayout()
+		gridbox = QtWidgets.QGridLayout()
 		backgroundcolor_label = QtGui.QLabel("Background Color", frame)
 		backgroundcolor_label.setFont(font)
 		self.backgroundcolor = EMQTColorWidget(parent=frame)
@@ -2799,7 +2799,7 @@ class EMSGNodeInspector(EMItem3DInspector):
 		EMItem3DInspector.__init__(self, name, item3d)
 		if name=="All Objects":
 			tabwidget = QtGui.QWidget()
-			gridbox = QtGui.QGridLayout()
+			gridbox = QtWidgets.QGridLayout()
 			
 			EMSGNodeInspector.addExtraTabAllObjects(self, gridbox)
 			
@@ -2839,7 +2839,7 @@ class EMSGNodeInspector(EMItem3DInspector):
 		super(EMSGNodeInspector, self).addControls(gridbox)
 		buttonframe = QtWidgets.QFrame()
 		buttonframe.setFrameShape(QtWidgets.QFrame.StyledPanel)
-		buttongrid = QtGui.QGridLayout()
+		buttongrid = QtWidgets.QGridLayout()
 		# Make buttons
 		centerall = QtGui.QPushButton("Center All")
 		distributeall =  QtGui.QPushButton("Distribute All")
@@ -3015,7 +3015,7 @@ class NodeEditDialog(QtWidgets.QDialog):
 		QtWidgets.QDialog.__init__(self)
 		self.item = item
 		self.inspector = weakref.ref(inspector)
-		grid = QtGui.QGridLayout(self)
+		grid = QtWidgets.QGridLayout(self)
 		label = QtGui.QLabel("Node Name")
 		self.nodename = QtGui.QLineEdit(self.item.item3d().getLabel())
 		grid.addWidget(label, 0, 0, 1, 2)

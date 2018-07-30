@@ -1939,7 +1939,7 @@ class EMImageInspector2D(QtGui.QWidget):
 
 		# Save tab
 		self.savetab = QtGui.QWidget()
-		self.stlay = QtGui.QGridLayout(self.savetab)
+		self.stlay = QtWidgets.QGridLayout(self.savetab)
 
 		self.stsnapbut = QtGui.QPushButton("Snapshot")
 		self.stsnapbut.setToolTip(".pgm, .ppm, .jpeg, .png, or .tiff format only")
@@ -1982,7 +1982,7 @@ class EMImageInspector2D(QtGui.QWidget):
 
 		# Filter tab
 		self.filttab = QtGui.QWidget()
-		self.ftlay=QtGui.QGridLayout(self.filttab)
+		self.ftlay=QtWidgets.QGridLayout(self.filttab)
 
 		self.procbox1=StringBox(label="Process1:",value="filter.lowpass.gauss:cutoff_abs=0.125",showenable=0)
 		self.ftlay.addWidget(self.procbox1,2,0)
@@ -2007,7 +2007,7 @@ class EMImageInspector2D(QtGui.QWidget):
 
 		# Probe tab
 		self.probetab = QtGui.QWidget()
-		self.ptlay=QtGui.QGridLayout(self.probetab)
+		self.ptlay=QtWidgets.QGridLayout(self.probetab)
 
 		self.ptareasize= ValBox(label="Probe Size:",value=32)
 		self.ptareasize.setIntonly(True)
@@ -2048,7 +2048,7 @@ class EMImageInspector2D(QtGui.QWidget):
 
 		# Measure tab
 		self.meastab = QtGui.QWidget()
-		self.mtlay = QtGui.QGridLayout(self.meastab)
+		self.mtlay = QtWidgets.QGridLayout(self.meastab)
 
 		#self.mtl1= QtGui.QLabel("A/Pix")
 		#self.mtl1.setAlignment(Qt.AlignRight)
@@ -2086,7 +2086,7 @@ class EMImageInspector2D(QtGui.QWidget):
 
 		# Draw tab
 		self.drawtab = QtGui.QWidget()
-		self.drawlay = QtGui.QGridLayout(self.drawtab)
+		self.drawlay = QtWidgets.QGridLayout(self.drawtab)
 
 		self.dtl1 = QtGui.QLabel("Pen Size:")
 		self.dtl1.setAlignment(Qt.AlignRight)
@@ -2120,7 +2120,7 @@ class EMImageInspector2D(QtGui.QWidget):
 
 		# PSpec tab
 		self.pstab = QtGui.QWidget()
-		self.pstlay = QtGui.QGridLayout(self.pstab)
+		self.pstlay = QtWidgets.QGridLayout(self.pstab)
 
 		self.psbsing = QtGui.QPushButton("Single")
 		self.pstlay.addWidget(self.psbsing,0,0)
@@ -2133,7 +2133,7 @@ class EMImageInspector2D(QtGui.QWidget):
 
 		# Python tab
 		self.pytab = QtGui.QWidget()
-		self.pytlay = QtGui.QGridLayout(self.pytab)
+		self.pytlay = QtWidgets.QGridLayout(self.pytab)
 
 		self.pyinp = QtGui.QLineEdit()
 		self.pytlay.addWidget(self.pyinp,0,0)
@@ -2170,7 +2170,7 @@ class EMImageInspector2D(QtGui.QWidget):
 		self.hbl.addWidget(self.hist)
 
 		# Buttons next to the histogram
-		self.vbl2 = QtGui.QGridLayout()
+		self.vbl2 = QtWidgets.QGridLayout()
 		self.vbl2.setMargin(0)
 		self.vbl2.setSpacing(6)
 		self.vbl2.setObjectName("vbl2")

@@ -2175,7 +2175,7 @@ class EMPlotInfoPane(EMInfoPane) :
 	def __init__(self, parent = None) :
 		QtGui.QWidget.__init__(self, parent)
 
-		self.gbl = QtGui.QGridLayout(self)
+		self.gbl = QtWidgets.QGridLayout(self)
 
 		# List as alternate mechanism for selecting image number(s)
 
@@ -2241,7 +2241,7 @@ class EMBDBInfoPane(EMInfoPane) :
 	def __init__(self, parent = None) :
 		QtGui.QWidget.__init__(self, parent)
 
-		self.gbl = QtGui.QGridLayout(self)
+		self.gbl = QtWidgets.QGridLayout(self)
 
 		# Spinbox for selecting image number
 
@@ -2266,7 +2266,7 @@ class EMBDBInfoPane(EMInfoPane) :
 
 		# Lower region has buttons for actions
 
-		self.hbl2 = QtGui.QGridLayout()
+		self.hbl2 = QtWidgets.QGridLayout()
 
 		self.wbutmisc = []
 
@@ -2439,7 +2439,7 @@ class EMJSONInfoPane(EMInfoPane) :
 	def __init__(self, parent = None) :
 		QtGui.QWidget.__init__(self, parent)
 
-		self.gbl = QtGui.QGridLayout(self)
+		self.gbl = QtWidgets.QGridLayout(self)
 
 		# List of keys
 
@@ -2458,7 +2458,7 @@ class EMJSONInfoPane(EMInfoPane) :
 
 		# Lower region has buttons for actions
 
-		self.hbl2 = QtGui.QGridLayout()
+		self.hbl2 = QtWidgets.QGridLayout()
 
 		self.wbutmisc = []
 
@@ -2622,7 +2622,7 @@ class EMImageInfoPane(EMInfoPane) :
 	def __init__(self, parent = None) :
 		QtGui.QWidget.__init__(self, parent)
 
-		self.gbl = QtGui.QGridLayout(self)
+		self.gbl = QtWidgets.QGridLayout(self)
 
 		# Actual header contents
 
@@ -2692,7 +2692,7 @@ class EMStackInfoPane(EMInfoPane) :
 		# self.setWindowTitle("e2display.py Information Pane") # Jesus
 		# self.setTitle("e2dispaly.py Information Pane")
 
-		self.gbl = QtGui.QGridLayout(self)
+		self.gbl = QtWidgets.QGridLayout(self)
 
 		self.gbl.label1 = QtGui.QLabel("Images") # Jesus
 		self.gbl.addWidget(self.gbl.label1, 0, 0) # Jesus
@@ -2731,7 +2731,7 @@ class EMStackInfoPane(EMInfoPane) :
 
 		'''Lower region has buttons for actions'''
 
-		self.hbl2 = QtGui.QGridLayout()
+		self.hbl2 = QtWidgets.QGridLayout()
 
 		self.wbutmisc = []
 
@@ -3049,7 +3049,7 @@ class EMBrowserWidget(QtGui.QWidget) :
 		self.multiselect = multiselect
 
 		self.resize(780, 580)
-		self.gbl = QtGui.QGridLayout(self)
+		self.gbl = QtWidgets.QGridLayout(self)
 
 		# Top Toolbar area
 
@@ -3161,7 +3161,7 @@ class EMBrowserWidget(QtGui.QWidget) :
 
 		# Lower region has buttons for actions
 
-		self.hbl2 = QtGui.QGridLayout()
+		self.hbl2 = QtWidgets.QGridLayout()
 
 		self.wbutmisc = []
 

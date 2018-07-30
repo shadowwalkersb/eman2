@@ -622,7 +622,7 @@ class ManualBoxingPanel(object):
 		if self.widget == None:
 			from PyQt4 import QtCore, QtGui, Qt
 			self.widget = QtGui.QWidget()
-			vbl = QtGui.QGridLayout(self.widget)
+			vbl = QtWidgets.QGridLayout(self.widget)
 			vbl.setMargin(0)
 			vbl.setSpacing(10)
 			vbl.setObjectName("vbl")
