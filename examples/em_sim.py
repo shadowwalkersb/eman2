@@ -809,7 +809,7 @@ class Microscope(QtOpenGL.QGLWidget):
 	def mousePressEvent(self, QMouseEvent):
 		p=self.scr_to_img(QMouseEvent.pos())
 		self.startpy=p[1]
-		modifiers = QtGui.QApplication.keyboardModifiers()
+		modifiers = QtWidgets.QApplication.keyboardModifiers()
 		if modifiers == QtCore.Qt.ShiftModifier:
 			self.hold_shift=True
 		else:

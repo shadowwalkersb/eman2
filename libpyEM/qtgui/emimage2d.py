@@ -483,7 +483,7 @@ class EMImage2DWidget(EMGLWidget):
 			if needresize:
 				x=self.data["nx"]
 				y=self.data["ny"]
-				xys=QtGui.QApplication.desktop().availableGeometry()
+				xys=QtWidgets.QApplication.desktop().availableGeometry()
 				mx=old_div((y-self.plotlim[1]),self.plotlim[3])
 				my=old_div(xys.height()*2,3)
 

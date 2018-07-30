@@ -1548,7 +1548,7 @@ class TaskManager(QtGui.QWidget):
 
 	def _on_kill(self):
 		killsig=signal.SIGTERM
-		modifiers = QtGui.QApplication.keyboardModifiers()
+		modifiers = QtWidgets.QApplication.keyboardModifiers()
 		if modifiers == QtCore.Qt.ShiftModifier:
 			print("Shift held. Will force kill processes")
 			killsig=signal.SIGKILL
