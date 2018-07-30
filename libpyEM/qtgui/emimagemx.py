@@ -2622,7 +2622,7 @@ class EMMXSetsPanel(QtGui.QWidget):
 
 		# now build the interface
 		hbl = QtWidgets.QHBoxLayout(self)
-		self.setlist=QtGui.QListWidget()
+		self.setlist=QtWidgets.QListWidget()
 		self.setlist.setSizePolicy(QtGui.QSizePolicy.Preferred,QtGui.QSizePolicy.Expanding)
 		hbl.addWidget(self.setlist)
 

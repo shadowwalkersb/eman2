@@ -2251,7 +2251,7 @@ class EMBDBInfoPane(EMInfoPane) :
 
 		# List as alternate mechanism for selecting image number(s)
 
-		self.wimlist = QtGui.QListWidget()
+		self.wimlist = QtWidgets.QListWidget()
 		self.gbl.addWidget(self.wimlist, 1, 0)
 
 		# Actual header contents
@@ -2443,7 +2443,7 @@ class EMJSONInfoPane(EMInfoPane) :
 
 		# List of keys
 
-		self.wkeylist = QtGui.QListWidget()
+		self.wkeylist = QtWidgets.QListWidget()
 		self.gbl.addWidget(self.wkeylist, 1, 0)
 
 		# contents of a single key
@@ -2712,7 +2712,7 @@ class EMStackInfoPane(EMInfoPane) :
 
 		'''List as alternate mechanism for selecting image number(s)'''
 
-		self.wimlist = QtGui.QListWidget()
+		self.wimlist = QtWidgets.QListWidget()
 
 		# self.gbl.addWidget(self.wimlist, 1, 0) # JOHN
 
