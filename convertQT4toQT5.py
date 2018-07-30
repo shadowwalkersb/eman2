@@ -18,10 +18,10 @@ def fixFile(line_list, module_to_update):
 
 	for each in line_generator:
 		num += 1
-		if 'from PyQt4 import' in each.strip():
-			line_list[num] = 'from PyQt5 import QtWidgets, QtGui, QtCore\n'
-			changed = True
-			continue
+		# if 'from PyQt4 import' in each.strip():
+		# 	line_list[num] = 'from PyQt5 import QtWidgets, QtGui, QtCore\n'
+		# 	changed = True
+		# 	continue
 
 		result = re.search('QtGui\.(\w+)', each)
 
