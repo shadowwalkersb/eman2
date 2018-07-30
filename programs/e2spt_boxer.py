@@ -1741,7 +1741,7 @@ class EMTomoSetsPanel(QtGui.QWidget):
 		for i,k in enumerate(keys):
 			
 			kname="{:02d} :: {}".format(int(k), self.target().sets[k])
-			item=QtGui.QListWidgetItem(kname)
+			item=QtWidgets.QListWidgetItem(kname)
 			item.setFlags(self.itemflags)
 			item.setTextColor(self.target().setcolors[i%len(self.target().setcolors)])
 			self.setlist.addItem(item)

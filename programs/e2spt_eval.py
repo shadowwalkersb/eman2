@@ -177,7 +177,7 @@ class SptEvalGUI(QtGui.QWidget):
 		
 		self.setspanel.clear()
 		for k in sorted(self.paramlst.keys()):
-			item=QtGui.QListWidgetItem(k)
+			item=QtWidgets.QListWidgetItem(k)
 			item.setFlags(self.itemflags)
 			self.setspanel.addItem(item)
 			item.setCheckState(Qt.Checked)

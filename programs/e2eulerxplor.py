@@ -764,7 +764,7 @@ class EMAsymmetricUnitInspector(EMSymInspector):
 		for i,vals in enumerate(self.au_data[self.refine_dir]):
 			choice = vals[0]
 
-			a = QtGui.QListWidgetItem(str(choice),self.list_widget)
+			a = QtWidgets.QListWidgetItem(str(choice),self.list_widget)
 			if first_time and i == 0:
 				self.list_widget.setItemSelected(a,True)
 			elif len(choice) > 4 and (choice[-4:] == s_text):

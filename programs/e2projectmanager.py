@@ -1612,10 +1612,10 @@ class TaskManager(QtGui.QWidget):
 		self.pm().taskmanager = None
 		self.pm().updateProject()
 
-class PMQListWidgetItem(QtGui.QListWidgetItem):
+class PMQListWidgetItem(QtWidgets.QListWidgetItem):
 	""" A subclass of the QListWidgetItem for use in the task manger listwidget"""
 	def __init__(self, text):
-		QtGui.QListWidgetItem.__init__(self, text)
+		QtWidgets.QListWidgetItem.__init__(self, text)
 		self.pid = None
 		self.programname = None
 

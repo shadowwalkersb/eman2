@@ -2694,7 +2694,7 @@ class EMMXSetsPanel(QtGui.QWidget):
 		self.setlist.clear()
 
 		for i,k in enumerate(keys):
-			item=QtGui.QListWidgetItem(k)
+			item=QtWidgets.QListWidgetItem(k)
 			item.setFlags(self.itemflags)
 			item.setTextColor(self.target().setcolors[i%len(self.target().setcolors)])
 			self.setlist.addItem(item)

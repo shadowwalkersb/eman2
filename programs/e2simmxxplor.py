@@ -434,7 +434,7 @@ class EMSimmxXplorInspector(EMSymInspector):
 		for i,vals in enumerate(data[3]):
 			choice = vals
 
-			a = QtGui.QListWidgetItem(str(choice),self.list_widget)
+			a = QtWidgets.QListWidgetItem(str(choice),self.list_widget)
 			if first_time and i == 0:
 				self.list_widget.setItemSelected(a,True)
 			elif choice == s_text:

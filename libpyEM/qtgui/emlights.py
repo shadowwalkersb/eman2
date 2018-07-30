@@ -986,7 +986,7 @@ class EMLightsInspectorBase(object):
 			if glIsEnabled(l):
 				pos = glGetLightfv(l,GL_POSITION)
 				if pos[3] == 0:
-					a = QtGui.QListWidgetItem("Light "+str(i),self.light_list)
+					a = QtWidgets.QListWidgetItem("Light "+str(i),self.light_list)
 					if len(self.light_list.selectedItems()) == 0:
 						a.setSelected(True)
 						
@@ -996,7 +996,7 @@ class EMLightsInspectorBase(object):
 			if glIsEnabled(l):
 				pos = glGetLightfv(l,GL_POSITION)
 				if pos[3] == 1:
-					a = QtGui.QListWidgetItem("Light "+str(i),self.light_list)
+					a = QtWidgets.QListWidgetItem("Light "+str(i),self.light_list)
 					if len(self.light_list.selectedItems()) == 0 and len(self.point_light_list.selectedItems()) == 0:
 						a.setSelected(True)
 		
@@ -1031,11 +1031,11 @@ class EMLightsInspectorBase(object):
 				new_label = "Light "+str(i)
 				
 				if not point_source: 
-					a = QtGui.QListWidgetItem(new_label,self.light_list)
+					a = QtWidgets.QListWidgetItem(new_label,self.light_list)
 					for item in self.point_light_list.selectedItems(): item.setSelected(False)
 						
 				else:
-					a = QtGui.QListWidgetItem(new_label,self.point_light_list)
+					a = QtWidgets.QListWidgetItem(new_label,self.point_light_list)
 					for item in self.light_list.selectedItems(): item.setSelected(False)
 					
 				a.setSelected(True)
@@ -1050,7 +1050,7 @@ class EMLightsInspectorBase(object):
 				glEnable(l)
 				new_label = "Light "+str(i)
 				
-				a = QtGui.QListWidgetItem(new_label,self.light_list)
+				a = QtWidgets.QListWidgetItem(new_label,self.light_list)
 				a.setSelected(True)
 				
 				self.refresh_light_states()
