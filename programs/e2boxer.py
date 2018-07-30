@@ -1352,7 +1352,7 @@ class GUIBoxer(QtGui.QWidget):
 		
 		
 		# Autoboxing Tabs
-		self.autolbl = QtGui.QLabel("Autoboxing Methods:")
+		self.autolbl = QtWidgets.QLabel("Autoboxing Methods:")
 		self.gbl.addWidget(self.autolbl,7,2)
 		self.autotab = QtGui.QTabWidget()
 		self.gbl.addWidget(self.autotab,8,2,5,3)

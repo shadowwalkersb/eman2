@@ -832,7 +832,7 @@ class EMLightsInspectorBase(object):
 		self.local_viewer_check.setChecked(glGetInteger(GL_LIGHT_MODEL_LOCAL_VIEWER))
 		show_lights = QtWidgets.QCheckBox("Show lights")
 		show_lights.setChecked(self.target().display_lights)
-		max_lights_label = QtGui.QLabel()
+		max_lights_label = QtWidgets.QLabel()
 		max_lights_label.setText("Max lights : " + str(glGetInteger(GL_MAX_LIGHTS)))
 		
 		hdl_l = QtWidgets.QHBoxLayout()
@@ -1107,7 +1107,7 @@ class EMLightsInspectorBase(object):
 		vbl2.addWidget(del_light)
 		
 		
-		x_label = QtGui.QLabel()
+		x_label = QtWidgets.QLabel()
 		x_label.setText('x')
 		
 		self.light_x_dir = QtWidgets.QDoubleSpinBox(self)
@@ -1115,7 +1115,7 @@ class EMLightsInspectorBase(object):
 		self.light_x_dir.setMaximum(100000)
 		self.light_x_dir.setValue(0.0)
 	
-		y_label = QtGui.QLabel()
+		y_label = QtWidgets.QLabel()
 		y_label.setText('y')
 		
 		self.light_y_dir = QtWidgets.QDoubleSpinBox(self)
@@ -1123,7 +1123,7 @@ class EMLightsInspectorBase(object):
 		self.light_y_dir.setMaximum(100000)
 		self.light_y_dir.setValue(0.0)
 		
-		z_label = QtGui.QLabel()
+		z_label = QtWidgets.QLabel()
 		z_label.setText('z')
 		
 		self.light_z_dir = QtWidgets.QDoubleSpinBox(self)
@@ -1189,10 +1189,10 @@ class EMLightsInspectorBase(object):
 		vbl2.addWidget(del_light)
 		
 		
-		pos_label = QtGui.QLabel()
+		pos_label = QtWidgets.QLabel()
 		pos_label.setText('Pos: ')
 		
-		x_label = QtGui.QLabel()
+		x_label = QtWidgets.QLabel()
 		x_label.setText('x')
 		
 		self.light_x_pos = QtWidgets.QDoubleSpinBox(self)
@@ -1200,7 +1200,7 @@ class EMLightsInspectorBase(object):
 		self.light_x_pos.setMaximum(100000)
 		self.light_x_pos.setValue(0.0)
 	
-		y_label = QtGui.QLabel()
+		y_label = QtWidgets.QLabel()
 		y_label.setText('y')
 		
 		self.light_y_pos = QtWidgets.QDoubleSpinBox(self)
@@ -1208,7 +1208,7 @@ class EMLightsInspectorBase(object):
 		self.light_y_pos.setMaximum(100000)
 		self.light_y_pos.setValue(0.0)
 		
-		z_label = QtGui.QLabel()
+		z_label = QtWidgets.QLabel()
 		z_label.setText('z')
 		
 		self.light_z_pos = QtWidgets.QDoubleSpinBox(self)
@@ -1247,7 +1247,7 @@ class EMLightsInspectorBase(object):
 		vbl.addWidget(self.quad_atten)
 		
 		
-		dir_label = QtGui.QLabel()
+		dir_label = QtWidgets.QLabel()
 		dir_label.setText('Dir: ')
 		
 		self.light_ps_xdir = QtWidgets.QDoubleSpinBox(self)
@@ -1255,7 +1255,7 @@ class EMLightsInspectorBase(object):
 		self.light_ps_xdir.setMaximum(100000)
 		self.light_ps_xdir.setValue(0.0)
 	
-		y_label = QtGui.QLabel()
+		y_label = QtWidgets.QLabel()
 		y_label.setText('y')
 		
 		self.light_ps_ydir = QtWidgets.QDoubleSpinBox(self)
@@ -1263,7 +1263,7 @@ class EMLightsInspectorBase(object):
 		self.light_ps_ydir.setMaximum(100000)
 		self.light_ps_ydir.setValue(0.0)
 		
-		z_label = QtGui.QLabel()
+		z_label = QtWidgets.QLabel()
 		z_label.setText('z')
 		
 		self.light_ps_zdir = QtWidgets.QDoubleSpinBox(self)
@@ -1389,7 +1389,7 @@ class EMLightsInspector(QtGui.QWidget,EMLightsInspectorBase):
 		self.hbl_color.setSpacing(6)
 		gltab.vbl.addLayout(self.hbl_color)
 
-		self.color_label = QtGui.QLabel()
+		self.color_label = QtWidgets.QLabel()
 		self.color_label.setText('Material')
 		self.hbl_color.addWidget(self.color_label)
 		
