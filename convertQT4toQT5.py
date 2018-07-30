@@ -51,27 +51,28 @@ def convert(main_path, module_to_convert):
 		for each in [x for x in files if x.endswith('.py') and normpath(x) != normpath(__file__)]:
 			file_path = os.path.join(dirs, each).replace(os.sep, '/')
 			# print(file_path)
+			# print(normpath(file_path), normpath(file_path).startswith('sparx'))
 			if normpath(file_path).startswith('sparx'):
 				continue
 			# os.chmod(file_path, stat.S_IWRITE)
 
-			with open(file_path, 'r+') as out_file:
-				line_list = out_file.readlines()
-
-			fixed_lines = fixFile(line_list, module_to_convert)
-
-			if fixed_lines:
-				print file_path
-
-				with open(file_path, 'w+') as out_file:
-					out_file.write(fixed_lines)
+			# with open(file_path, 'r+') as out_file:
+			# 	line_list = out_file.readlines()
+			# 
+			# fixed_lines = fixFile(line_list, module_to_convert)
+			# 
+			# if fixed_lines:
+			# 	print file_path
+			# 
+			# 	with open(file_path, 'w+') as out_file:
+			# 		out_file.write(fixed_lines)
 
 for k in qtWidgets_modules:
 	print(k)
 	convert('.', k)
-	subprocess.call(["git", "status"])
-	subprocess.call(["git", "add", "."])
-	subprocess.call(["git", "commit", "-m", k])
+	# subprocess.call(["git", "status"])
+	# subprocess.call(["git", "add", "."])
+	# subprocess.call(["git", "commit", "-m", k])
 # slf='./convertQT4toQT5.py'
 # print(slf)
 # print(__file__)
