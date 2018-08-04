@@ -4,7 +4,7 @@ PROJECT(EMAN
 		LANGUAGES CXX
 		)
 
-set(GUI_TEST_FILE e2projectmanager)
+set(GUI_TEST_FILE qtgui)
 
 include(cmake/functions.cmake)
 
@@ -371,10 +371,14 @@ add_custom_target(test-gui-last-failed
 
 add_custom_target(test-gui-coverage
 	COMMAND ${PYTEST_EXECUTABLE} -vs ${CMAKE_SOURCE_DIR}/tests/gui/test_${GUI_TEST_FILE}.py --confcutdir=${CMAKE_SOURCE_DIR}/tests/gui/
-#				--cov=${EMAN_PREFIX}/bin/
+				--cov=${EMAN_PREFIX}/bin/
 				--cov=eman2_gui
 				--cov-config=${CMAKE_SOURCE_DIR}/tests/gui/.coveragerc
-				--cov-report html:cov_html
-	WORKING_DIRECTORY ${EMAN_GUI_TESTS_DATA_DIR}
+				--cov-report html
+	COMMAND coveralls
+				--config_file=${CMAKE_SOURCE_DIR}/tests/gui/.coveragerc
+				--base_dir=${CMAKE_SOURCE_DIR}
+				--coveralls_yaml=${CMAKE_SOURCE_DIR}/.coveralls.yml
+	WORKING_DIRECTORY ${SP_DIR}
 	DEPENDS PythonFiles
 )
