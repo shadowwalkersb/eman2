@@ -350,3 +350,29 @@ add_custom_target(test-py-compile
 		COMMAND ${CMAKE_CTEST_COMMAND} -V -C Release -R py-compile
 		DEPENDS PythonFiles
 		)
+
+find_package(PyTest REQUIRED)
+
+set(EMAN_GUI_TESTS_DATA_DIR ${CMAKE_SOURCE_DIR}/../eman-test-data/playground CACHE PATH "gui test directory")
+
+add_custom_target(test-gui
+	COMMAND ${PYTEST_EXECUTABLE} -vs ${CMAKE_SOURCE_DIR}/tests/gui/
+	WORKING_DIRECTORY ${EMAN_GUI_TESTS_DATA_DIR}
+	DEPENDS PythonFiles
+)
+
+add_custom_target(test-gui-last-failed
+	COMMAND ${PYTEST_EXECUTABLE} -vs ${CMAKE_SOURCE_DIR}/tests/gui/ --lf
+	WORKING_DIRECTORY ${EMAN_GUI_TESTS_DATA_DIR}
+	DEPENDS PythonFiles
+)
+
+add_custom_target(test-gui-coverage
+	COMMAND ${PYTEST_EXECUTABLE} -vs ${CMAKE_SOURCE_DIR}/tests/gui/ --confcutdir=${CMAKE_SOURCE_DIR}/tests/gui/
+				--cov=${EMAN_PREFIX}/bin/
+				--cov=eman2_gui
+				--cov-config=${CMAKE_SOURCE_DIR}/tests/gui/.coveragerc
+				--cov-report html:cov_html
+	WORKING_DIRECTORY ${EMAN_GUI_TESTS_DATA_DIR}
+	DEPENDS PythonFiles
+)
