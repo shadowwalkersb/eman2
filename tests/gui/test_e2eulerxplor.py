@@ -1,6 +1,6 @@
-from PyQt4.QtCore import Qt
+from PyQt5.QtCore import Qt
 import pytest
-from PyQt4.QtCore import Qt, QPoint
+from PyQt5.QtCore import Qt, QPoint
 import pyautogui
 
 

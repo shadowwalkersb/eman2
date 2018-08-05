@@ -1,7 +1,7 @@
 # import os
 # import glob
-from PyQt4.QtCore import Qt, QPoint
-from PyQt4 import QtGui
+from PyQt5.QtCore import Qt, QPoint
+from PyQt5 import QtGui
 # import eman2_gui
 # # from eman2_gui import emlights
 # import inspect

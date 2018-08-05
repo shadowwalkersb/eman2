@@ -1,8 +1,8 @@
-from PyQt4.QtCore import Qt
+from PyQt5.QtCore import Qt
 import os
 import glob
 import sys
-from PyQt4.QtCore import Qt, QPoint
+from PyQt5.QtCore import Qt, QPoint
 # from PyQt4 import QtGui
 import pyautogui
 

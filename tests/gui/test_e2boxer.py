@@ -1,5 +1,5 @@
 import os
-from PyQt4.QtCore import Qt
+from PyQt5.QtCore import Qt
 
 
 def test_cli(qtbot, win, datadir):

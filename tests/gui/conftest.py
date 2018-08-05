@@ -1,6 +1,6 @@
 import pytest
-from PyQt4.QtGui import QPixmap
-from PyQt4.QtCore import Qt
+from PyQt5.QtGui import QPixmap
+from PyQt5.QtCore import Qt
 import os
 
 
