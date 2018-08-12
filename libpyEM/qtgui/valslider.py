@@ -1225,3 +1225,30 @@ class EMANToolButton(QtGui.QToolButton):
 		
 	def mouseReleaseEvent(self, event):
 		pass
+
+
+def main():
+	from .emapplication import EMApp
+	app = EMApp()
+	classes = [
+		ValSlider(rng=[1,10], label="ValSlider", showenable=0),
+		ValBox(rng=[1,10], label="ValBox", showenable=0),
+		StringBox(label="StringBox", showenable=0),
+		CheckBox(label="CheckBox", showenable=0),
+		RangeSlider(),
+		EMSpinWidget(5,.2),
+		EMLightControls(GL_LIGHT1),
+		EMQTColorWidget(),
+		# CameraControls(),
+		EMANToolButton(),
+	]
+	
+	for cl in classes:
+		cl.show()
+		cl.raise_()
+	
+	app.execute()
+
+
+if __name__ == '__main__':
+	main()
