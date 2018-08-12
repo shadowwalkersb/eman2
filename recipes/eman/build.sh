@@ -16,10 +16,3 @@ cmake $SRC_DIR
 
 make -j${CPU_COUNT}
 make install
-
-if [ "$JOB_NAME" != "Centos7" ];then
-    if [ "${CONDA_BUILD_STATE}" == "BUILD" ];then
-        rm -rfv ${SRC_DIR}/tests/gui/__pycache__
-    fi
-    make test-gui
-fi

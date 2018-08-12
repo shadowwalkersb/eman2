@@ -22,9 +22,6 @@ requirements:
             "libtiff 4.0.9 hafacce9_0",  # [win]
             "libpng 1.6.34",
             "zlib",
-            "pyautogui",
-            "pytest",
-            "pytest-qt",
     ] %}
     
     build:
