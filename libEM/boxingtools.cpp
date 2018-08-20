@@ -133,7 +133,7 @@ map< unsigned int, unsigned int> BoxSVDClassifier::go()
 	// 	setDims(mData);
 
 
-	unsigned int local_columns = mColumns;
+	auto local_columns = mColumns;
 	if ( mRows < mColumns )
 	{
 // 		cerr << "Warning: gsl SVD works only when m > n, you have m = " << mRows << " and n = " << mColumns << endl;
