@@ -272,6 +272,10 @@ ADD_SUBDIRECTORY(doc)
 ADD_SUBDIRECTORY(images)
 ADD_SUBDIRECTORY(recipes)
 
+add_custom_target(develop
+				  COMMAND ${CMAKE_COMMAND} -DCOMPONENT=develop -P cmake_install.cmake
+				  )
+
 add_custom_target(PythonFiles
 				  COMMAND ${CMAKE_COMMAND} -DCOMPONENT=PythonFiles -P cmake_install.cmake
 				  )

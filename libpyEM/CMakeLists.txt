@@ -86,6 +86,8 @@ install(FILES ${empythonlibs}
 		COMPONENT PythonFiles
 		)
 
+install_develop_mode(${SP_DIR})
+
 add_subdirectory(qtgui)
 
 target_link_libraries(pyUtils2         NumPy)

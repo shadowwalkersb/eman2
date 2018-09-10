@@ -5,6 +5,8 @@ INSTALL(PROGRAMS ${e2programs}
 		COMPONENT PythonFiles
 )
 
+install_develop_mode("${CMAKE_INSTALL_PREFIX}/bin")
+
 IF(WIN32)
 	INSTALL(FILES e2boxer.py
 		DESTINATION bin

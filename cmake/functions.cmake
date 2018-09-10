@@ -65,3 +65,21 @@ function(CHECK_LIB_ONLY upper lower)
 	message(STATUS "CHECK_LIB_ONLY upper lower")
 	message_var(${upper}_LIBRARY)
 endfunction()
+
+function(install_develop_mode dest_dir)
+	FILE(GLOB files RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} "${CMAKE_CURRENT_SOURCE_DIR}/*.py")
+	
+	foreach(p ${files})
+		set(source_file "${CMAKE_CURRENT_SOURCE_DIR}/${p}")
+		set(dest_file   "${dest_dir}/${p}")
+#		message_var(p)
+#		message("${source_file} ${dest_file}")
+		INSTALL(CODE "execute_process(
+					COMMAND ${CMAKE_COMMAND} -E create_symlink
+					${source_file} ${dest_file}
+					)"
+				COMPONENT develop
+				EXCLUDE_FROM_ALL
+				)
+	endforeach()
+endfunction()

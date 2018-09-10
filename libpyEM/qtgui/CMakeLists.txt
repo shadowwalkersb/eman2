@@ -6,3 +6,5 @@ INSTALL(FILES ${qtguifiles}
 		DESTINATION  ${SP_DIR}/eman2_gui
 		COMPONENT PythonFiles
 		)
+
+install_develop_mode(${SP_DIR}/eman2_gui)
