@@ -18,13 +18,30 @@ def fixFile(line_list, module_to_update):
 
 	for each in line_generator:
 		num += 1
+		# if 'from PyQt4 import' in each.strip():
+		# 	line_list[num] = 'from PyQt5 import QtWidgets, QtGui, QtCore\n'
+		# 	changed = True
+		# 	continue
 
 		result = re.search('QtGui\.(\w+)', each)
+
+		# if result and result.group(1) == module_to_update and each.strip()[0] != '#':
+		# 	line_list[num] = each.replace('QtGui.' + module_to_update, 'QtWidgets.' + module_to_update)
+		# 	changed = True
+		# 	dictWidgets[result.group(1)] = 1
+		# 	# if result.group(1) not in qtWidgets_modules:
+		# 	# 	dictWidgets[result.group(1)] = 0
+		# 	# else:
+		# 	# 	dictWidgets[result.group(1)] += 1
 
 		if result and result.group(1) == module_to_update and each.strip()[0] != '#':
 			line_list[num] = each.replace('QtGui', 'QtCore')
 			changed = True
 			dictCore[result.group(1)] = 1
+			# if result.group(1) not in qtCore_modules:
+			# 	dictCore[result.group(1)] = 0
+			# else:
+			# 	dictCore[result.group(1)] += 1
 
 	if changed:
 		return ''.join(line_list)
@@ -55,3 +72,12 @@ for k in qtCore_modules:
 	subprocess.call(["git", "status"])
 	subprocess.call(["git", "add", "."])
 	subprocess.call(["git", "commit", "-m", k])
+# slf='./convertQT4toQT5.py'
+# print(slf)
+# print(__file__)
+# print(normpath(slf))
+# print(normpath(__file__))
+
+# for k in dictWidgets.keys():
+# 	print(k)
+# print(dictCore.keys())
