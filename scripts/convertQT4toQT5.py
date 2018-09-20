@@ -22,9 +22,9 @@ def fixFile(line_list, module_to_update):
 		result = re.search('QtGui\.(\w+)', each)
 
 		if result and result.group(1) == module_to_update and each.strip()[0] != '#':
-			line_list[num] = each.replace('QtGui.' + module_to_update, 'QtWidgets.' + module_to_update)
+			line_list[num] = each.replace('QtGui', 'QtCore')
 			changed = True
-			dictWidgets[result.group(1)] = 1
+			dictCore[result.group(1)] = 1
 
 	if changed:
 		return ''.join(line_list)
@@ -49,7 +49,7 @@ def convert(main_path, module_to_convert):
 				with open(file_path, 'w+') as out_file:
 					out_file.write(fixed_lines)
 
-for k in qtWidgets_modules:
+for k in qtCore_modules:
 	print(k)
 	convert('.', k)
 	subprocess.call(["git", "status"])
