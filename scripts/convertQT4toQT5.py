@@ -1,6 +1,5 @@
 import os, re, stat
 from os.path import normpath
-import subprocess
 
 from PyQt5 import QtWidgets, QtCore
 main_path = '.'
@@ -69,9 +68,7 @@ def convert(main_path, module_to_convert):
 for k in qtCore_modules:
 	print(k)
 	convert('.', k)
-	subprocess.call(["git", "status"])
-	subprocess.call(["git", "add", "."])
-	subprocess.call(["git", "commit", "-m", k])
+	git_commit(k)
 # slf='./convertQT4toQT5.py'
 # print(slf)
 # print(__file__)
