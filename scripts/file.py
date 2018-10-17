@@ -2,6 +2,17 @@ import re
 
 from scripts import is_comment_line, re_compile_imports_usage
 
+def find_matching_parentheses(line, pos):
+	count = 0
+	for i in range(pos, len(line)):
+		if line[i] == '(':
+			count += 1
+		if line[i] == ')':
+			count -= 1
+			if count == 0:
+				return i
+	else:
+		return None
 
 class File:
 	
@@ -10,18 +21,19 @@ class File:
 		self._docstring_quote = ''
 	
 	def _read_lines(self, pathlib_file):
-		# with pathlib_file.open() as fin:
-		# 	self.lines = fin.readlines()
+		with pathlib_file.open() as fin:
+			self.lines = fin.readlines()
 			
 		with pathlib_file.open() as fin:
 			self.file_context = fin.read()
 			
 	def write(self, pathlib_file):
-		# with pathlib_file.open('w') as fout:
-		# 	fout.writelines(self.lines)
-
 		with pathlib_file.open('w') as fout:
 			fout.write(self.file_context)
+
+	def writelines(self, pathlib_file):
+		with pathlib_file.open('w') as fout:
+			fout.writelines(self.lines)
 
 	def _iter_lines(self):
 		for i in range(len(self.lines)):
@@ -133,3 +145,19 @@ class File:
 	
 	def qapp(self):
 		self.file_context = re.sub(r'qApp', 'QApplication.instance()', self.file_context)
+		
+	def fix_qfile_dialog(self):
+		# QtWidgets.QFileDialog.getOpenFileName
+		# QtWidgets.QFileDialog.getSaveFileName
+		for i, line in self._iter_lines():
+			sre = re.search(r'QFileDialog\.get(Open|Save)FileName', line)
+			if sre:
+				pos = sre.end()
+				end = find_matching_parentheses(line, pos)
+				self.lines[i] = line[:end+1] + '[0]' + line[end+1:]
+				print("    {} : {}".format(i, line.strip()))
+				# print("    {} : {}".format(i, line_new.strip()))
+				print(sre.group())
+				print(line[pos:pos+4], line[end-4:end+1])
+				print(pos, end)
+

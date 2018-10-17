@@ -77,6 +77,16 @@ def fix_imports():
 			
 	git_commit("imports: PyQt5.Qt*")
 
+def fix_qfile_dialog():
+	# for f in iter_py_files_debug():
+	for f in iter_py_files():
+		file = File(f)
+		file.fix_qfile_dialog()
+		file.writelines(f)
+		# file_write(f, file_contents)
+				
+	git_commit("getOpenFileName, getSaveFileName")
+
 
 fix_margins_all()
 fix_qapp()
