@@ -73,6 +73,11 @@ def fix_margins(line):
 				  '.setContentsMargins(\g<1>, \g<1>, \g<1>, \g<1>)', 
 				  line) 
 
+def fix_delta(line):
+	return re.sub(r'event.delta\(\)', 
+				  'event.angleDelta().y()', 
+				  line) 
+
 def qapp1(file_context):
 	return re.sub(r'qApp\.', 'QApplication.', file_context)
 

@@ -13,6 +13,9 @@ def process_all_files(func, commit_message, *args, **kwargs):
 def fix_margins_all():
 	process_all_files(fix_margins, ".setMargin -> .setContentsMargins")
 
+def fix_delta_all():
+	process_all_files(fix_delta, ".delta() -> .angleDelta().y()")
+
 def fix_qapp():
 	process_all_files(qapp1, "qApp. -> QApplication.")
 	process_all_files(qapp2, "qApp -> QApplication")
@@ -79,3 +82,4 @@ fix_margins_all()
 fix_qapp()
 fix_module_names()
 fix_imports()
+fix_delta_all()
