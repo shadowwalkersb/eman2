@@ -41,7 +41,41 @@ def fix_module_names():
 			file.write(f)
 		git_commit("update pyqt5 imports")
 
+from collections import defaultdict
+
+def fix_imports():
+	sre = re.compile(r'from +(PyQt[4,5]\.\w+) +import +(.*)')
+
+	# for f in iter_py_files_debug():
+	for f in iter_py_files():
+		file_contents = file_read(f)
+		sreee = sre.findall(file_contents)
+
+		imports = defaultdict(list)
+		imports_orig = defaultdict(list)
+		for sree in sreee:
+			src = sree #.group()
+			modules = [s.strip() for s in sree[1].split(',')]
+			for m in modules:
+				parent = sree[0]
+				imports_orig[parent].append(m)
+				
+				if m in PYQT[5]:
+					imports[PYQT[5][m]].append(m)
+				else:
+					imports[parent].append(m)
+
+		if imports_orig != imports:
+			repl = '\n'.join(["from {} import {}".format(k, ', '.join(v)) 
+							  for k,v in sorted(imports.iteritems())])
+			file_contents = re.sub(r'from PyQt[4,5]\..*(\nfrom PyQt[4,5]\..*)+', 'from PyQt.', file_contents)
+			file_contents = re.sub(r'from PyQt\..*', repl, file_contents)
+			file_write(f, file_contents)
+			
+	git_commit("imports: PyQt5.Qt*")
+
 
 fix_margins_all()
 fix_qapp()
 fix_module_names()
+fix_imports()
