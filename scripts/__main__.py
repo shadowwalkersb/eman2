@@ -19,6 +19,7 @@ def fix_delta_all():
 def fix_qapp():
 	process_all_files(qapp1, "qApp. -> QApplication.")
 	process_all_files(qapp2, "qApp -> QApplication")
+	process_all_files(qapp21, "QtGui.QApplication -> QtWidgets.QApplication")
 
 def fix_imports_pyqt4_to_pyqt5():
 	process_all_files(rename_imports_pyqt4_to_pyqt5, "PyQt4 -> PyQt5")

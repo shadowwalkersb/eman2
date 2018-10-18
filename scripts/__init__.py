@@ -84,6 +84,9 @@ def qapp1(file_context):
 def qapp2(file_context):
 	return re.sub(r'qApp', 'QApplication.instance()', file_context)
 
+def qapp21(file_context):
+	return re.sub(r'QtGui\.QApplication', 'QtWidgets.QApplication', file_context)
+
 def re_compile_imports_usage(modules):
 	return re.compile(r'(?:(\bQt\w+)\.)' 
 							+ r'(' 
