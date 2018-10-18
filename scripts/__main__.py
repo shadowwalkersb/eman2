@@ -88,8 +88,8 @@ def fix_qfile_dialog():
 	git_commit("getOpenFileName, getSaveFileName")
 
 
-fix_margins_all()
-fix_qapp()
 fix_module_names()
 fix_imports()
+fix_qapp()
+fix_margins_all()
 fix_delta_all()
