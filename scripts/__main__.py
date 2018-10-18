@@ -24,7 +24,7 @@ def fix_imports_pyqt4_to_pyqt5():
 	process_all_files(rename_imports_pyqt4_to_pyqt5, "PyQt4 -> PyQt5")
 
 def fix_module_names():
-	fix_imports_pyqt4_to_pyqt5()
+	# fix_imports_pyqt4_to_pyqt5()
 	
 	for m in sorted(list(QTWIDGETS[5]&QTGUI[4])):
 		print(m)
@@ -89,6 +89,7 @@ def fix_qfile_dialog():
 
 
 fix_module_names()
+fix_imports_pyqt4_to_pyqt5()
 fix_imports()
 fix_qapp()
 fix_margins_all()
