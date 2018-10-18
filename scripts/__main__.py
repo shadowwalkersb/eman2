@@ -29,20 +29,21 @@ def fix_module_names():
 	for m in sorted(list(QTWIDGETS[5]&QTGUI[4])):
 		print(m)
 		process_all_files(rename_module_usage, m, 'QtWidgets', [m])
-		for f in iter_py_files():
-			file = File(f)
-			file.update_imports()
-			file.write(f)
-		git_commit("imports")
+		# update_imports()
 
 	for m in sorted(list(QTCORE[5]&QTGUI[4])):
 		print(m)
 		process_all_files(rename_module_usage, m, 'QtCore', [m])
-		for f in iter_py_files():
-			file = File(f)
-			file.update_imports()
-			file.write(f)
-		git_commit("update pyqt5 imports")
+		# update_imports()
+
+
+def update_imports():
+	for f in iter_py_files():
+		file = File(f)
+		file.update_imports()
+		file.write(f)
+	git_commit("update pyqt5 imports")
+
 
 from collections import defaultdict
 
@@ -89,8 +90,10 @@ def fix_qfile_dialog():
 
 
 fix_module_names()
+update_imports()
 fix_imports_pyqt4_to_pyqt5()
 fix_imports()
 fix_qapp()
 fix_margins_all()
 fix_delta_all()
+fix_qfile_dialog()
