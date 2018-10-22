@@ -21,6 +21,9 @@ def fix_qapp():
 	process_all_files(qapp2, "qApp -> QApplication")
 	process_all_files(qapp21, "QtGui.QApplication -> QtWidgets.QApplication")
 
+def fix_qweb():
+	process_all_files(qweb, "QtWebKit -> QtWebEngineWidgets")
+
 def fix_imports_pyqt4_to_pyqt5():
 	process_all_files(rename_imports_pyqt4_to_pyqt5, "PyQt4 -> PyQt5")
 
@@ -98,3 +101,4 @@ fix_qapp()
 fix_margins_all()
 fix_delta_all()
 fix_qfile_dialog()
+fix_qweb()
