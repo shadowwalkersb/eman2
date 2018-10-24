@@ -161,3 +161,10 @@ class File:
 				print(line[pos:pos+4], line[end-4:end+1])
 				print(pos, end)
 
+	def check_single_imports(self, regex):
+		for i, line in self._iter_lines():
+			line = line.partition('#')[0]
+			sre = regex.findall(line)
+			if sre:
+				print("    {} : {}".format(i, line.strip()))
+			

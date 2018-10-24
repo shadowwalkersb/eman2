@@ -6,9 +6,12 @@ def process_all_files(func, commit_message, *args, **kwargs):
 	for f in iter_py_files():
 		file_contents = file_read(f)
 		file_contents = func(file_contents, *args, **kwargs)
-		file_write(f, file_contents)
+		if file_contents:
+			print(f)
+			print(file_contents)
+		# file_write(f, file_contents)
 		
-	git_commit(commit_message)
+	# git_commit(commit_message)
 
 def fix_margins_all():
 	process_all_files(fix_margins, ".setMargin -> .setContentsMargins")
@@ -92,13 +95,33 @@ def fix_qfile_dialog():
 				
 	git_commit("getOpenFileName, getSaveFileName")
 
+regex = re.compile(r'(?<!QtCore\.)(?<!QtWidgets\.)(?<!QtGui\.)\b({})\b'.format("|".join(QTGUI[5])))
+# regex = re.compile(r'QProcess')
 
-fix_module_names()
-update_imports()
-fix_imports_pyqt4_to_pyqt5()
-fix_imports()
-fix_qapp()
-fix_margins_all()
-fix_delta_all()
-fix_qfile_dialog()
-fix_qweb()
+def check_single_import_usage():
+	def func(s):
+
+		sre = regex.findall(s)
+		# if sre:
+		# 	res = sre.groups()
+		# else:
+		# 	res = None
+		return sre
+	
+	# process_all_files(func, '')
+	for f in iter_py_files():
+		file = File(f)
+		file.check_single_imports(regex)
+		# file.write(f)
+
+
+check_single_import_usage()
+# fix_module_names()
+# update_imports()
+# fix_imports_pyqt4_to_pyqt5()
+# fix_imports()
+# fix_qapp()
+# fix_margins_all()
+# fix_delta_all()
+# fix_qfile_dialog()
+# fix_qweb()
