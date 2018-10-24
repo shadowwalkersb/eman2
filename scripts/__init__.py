@@ -10,20 +10,18 @@ from .constants import *
 cur = pathlib2.Path('.')
 
 files = [
-		 # 'libpyEM/qtgui/empmwidgets.py',
-		 # 'libpyEM/qtgui/embrowser.py',
-		 # 'libpyEM/qtgui/emform.py',
-		 # 'libpyEM/qtgui/emsave.py',
-		 # 'broken/e2preferences.py',
-		 # 'broken/em3Dhelloworld.py',
-		 # 'libpyEM/qtgui/emplot2d.py',
-		 # 'examples/alignbystars.py',
-		 # 'programs/e2tomo_showali.py',
-		 # 'programs/e2maskbyclass.py',
-		 # 'libpyEM/qtgui/emshapeitem3d.py',
-		 # 'libpyEM/qtgui/embrowser.py',
-		 'pyemtbx/boxertools.py',
-		 # 'examples/e2tomoseg.py'
+		 'libpyEM/qtgui/empmwidgets.py',
+		 'libpyEM/qtgui/embrowser.py',
+		 'libpyEM/qtgui/emform.py',
+		 'libpyEM/qtgui/emsave.py',
+		 'broken/e2preferences.py',
+		 'broken/em3Dhelloworld.py',
+		 'libpyEM/qtgui/emplot2d.py',
+		 'examples/alignbystars.py',
+		 'programs/e2tomo_showali.py',
+		 'programs/e2maskbyclass.py',
+		 'libpyEM/qtgui/emshapeitem3d.py',
+		 'libpyEM/qtgui/embrowser.py',
 		 ]
 
 def iter_py_files_debug():
