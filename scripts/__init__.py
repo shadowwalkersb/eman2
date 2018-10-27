@@ -22,6 +22,9 @@ files = [
 		 'programs/e2maskbyclass.py',
 		 'libpyEM/qtgui/emshapeitem3d.py',
 		 'libpyEM/qtgui/embrowser.py',
+		 'examples/crystal_index.py',
+		 'libpyEM/EMAN2.py',
+		 'examples/e2pw_pathrefine.py',
 		 ]
 
 def iter_py_files_debug():
