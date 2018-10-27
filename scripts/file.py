@@ -37,7 +37,7 @@ class File:
 
 	def _iter_lines(self):
 		for i in range(len(self.lines)):
-			line = self.lines[i].partition('#')[0]
+			line = self.lines[i]
 
 			# Skip lines containing only strings wrapped in " " or ' '
 			sre_string=re.search(r'^[ \t]*("|\')(?!"|\').+(\1)[ \t]*$', line)
