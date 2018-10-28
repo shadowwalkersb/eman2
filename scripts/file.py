@@ -39,24 +39,24 @@ class File:
 		for i in range(len(self.lines)):
 			line = self.lines[i]
 
-			# Skip lines containing only strings wrapped in " " or ' '
-			sre_string=re.search(r'^[ \t]*("|\')(?!"|\').+(\1)[ \t]*$', line)
-			if sre_string:
-				continue
+			# # Skip lines containing only strings wrapped in " " or ' '
+			# sre_string=re.search(r'^[ \t]*("|\')(?!"|\').+(\1)[ \t]*$', line)
+			# if sre_string:
+			# 	continue
 
-			# Skip lines containing only strings wrapped in """ """ or ''' '''
-			# or docstrings spanning multiple lines
-			sre = re.findall(r'("""|\'\'\')', line)
-			if len(sre) == 2:
-				continue
-			elif sre and not self._docstring_quote:
-				self._docstring_quote = sre[0]
-				line = line.partition(self._docstring_quote)[0]
-			elif sre and self._docstring_quote:
-				line = line.partition(self._docstring_quote)[2]
-				self._docstring_quote = ''
-			elif not sre and self._docstring_quote:
-				continue
+			# # Skip lines containing only strings wrapped in """ """ or ''' '''
+			# # or docstrings spanning multiple lines
+			# sre = re.findall(r'("""|\'\'\')', line)
+			# if len(sre) == 2:
+			# 	continue
+			# elif sre and not self._docstring_quote:
+			# 	self._docstring_quote = sre[0]
+			# 	line = line.partition(self._docstring_quote)[0]
+			# elif sre and self._docstring_quote:
+			# 	line = line.partition(self._docstring_quote)[2]
+			# 	self._docstring_quote = ''
+			# elif not sre and self._docstring_quote:
+			# 	continue
 
 			if not line.strip() or is_comment_line(line):
 				continue
