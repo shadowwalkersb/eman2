@@ -25,6 +25,8 @@ files = [
 		 'examples/crystal_index.py',
 		 'libpyEM/EMAN2.py',
 		 'examples/e2pw_pathrefine.py',
+		 'examples/e2spt_refprep.py',
+		 'broken/e2modeleval.py'
 		 ]
 
 def iter_py_files_debug():
