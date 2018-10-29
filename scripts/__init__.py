@@ -1,13 +1,13 @@
 import subprocess
 import re
 
-import pathlib2
+import pathlib
 
 from collections import defaultdict
 
 from .constants import *
 
-cur = pathlib2.Path('.')
+cur = pathlib.Path('.')
 
 files = [
 		 'libpyEM/qtgui/empmwidgets.py',
@@ -28,14 +28,14 @@ files = [
 		 ]
 
 def iter_py_files_debug():
-	for p in (pathlib2.Path(f) for f in files):
+	for p in (pathlib.Path(f) for f in files):
 		yield p
 
 def iter_py_files():
 	for p in (p for p in cur.glob('**/*.py') if \
 			  not str(p).startswith('sparx') \
 			  and not str(p).startswith('scripts') \
-			  and p.parent != pathlib2.Path(__file__).parent):
+			  and p.parent != pathlib.Path(__file__).parent):
 		yield p
 
 def iter_py_file_lines():
