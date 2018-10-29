@@ -1073,6 +1073,6 @@ PYQT = {4:{}, 5:{}}
 for ver in [4,5]:
 	for k in PYQT_MAIN_MODULES[ver].keys():
 		PYQT[ver][k] = "PyQt{}".format(ver)
-	for k, v in PYQT_MAIN_MODULES[ver].iteritems():
+	for k, v in PYQT_MAIN_MODULES[ver].items():
 		for m in v:
 			PYQT[ver][m] = "PyQt{}.{}".format(ver, k)

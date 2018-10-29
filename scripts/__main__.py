@@ -75,7 +75,7 @@ def fix_imports():
 
 		if imports_orig != imports:
 			repl = '\n'.join(["from {} import {}".format(k, ', '.join(v)) 
-							  for k,v in sorted(imports.iteritems())])
+							  for k,v in sorted(imports.items())])
 			file_contents = re.sub(r'from PyQt[4,5]\..*(\nfrom PyQt[4,5]\..*)+', 'from PyQt.', file_contents)
 			file_contents = re.sub(r'from PyQt\..*', repl, file_contents)
 			file_write(f, file_contents)

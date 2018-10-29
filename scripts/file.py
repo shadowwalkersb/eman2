@@ -102,7 +102,7 @@ class File:
 		# 		print("    {} : {}".format(i, line.strip()))
 		# 		print(upd)
 		# 		imports.update(upd)
-		# 		for k,v in upd.iteritems():
+		# 		for k,v in upd.items():
 		# 			print("k,v",k,v)
 		# 			for vv in v:
 		# 				# imp_key = PYQT4_ALL_FROM[vv]
