@@ -161,3 +161,7 @@ class File:
 				print(line[pos:pos+4], line[end-4:end+1])
 				print(pos, end)
 
+	def fix_old_div(self, func):
+		for i, line in self._iter_lines():
+			if 'old_div(' in line:
+				self.lines[i] = replace_old_div(line, func)
