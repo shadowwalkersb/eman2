@@ -92,6 +92,15 @@ def fix_qfile_dialog():
 				
 	git_commit("getOpenFileName, getSaveFileName")
 
+def fix_old_div(func, commit_message):
+	# for f in iter_py_files_debug():
+	for f in iter_py_files():
+		file = File(f)
+		file.fix_old_div(func)
+		file.writelines(f)
+		# file_write(f, file_contents)
+				
+	git_commit(commit_message)
 
 fix_module_names()
 update_imports()
