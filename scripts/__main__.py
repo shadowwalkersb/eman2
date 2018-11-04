@@ -102,15 +102,15 @@ def fix_old_div(func, op_sym, commit_message):
 				
 	git_commit(commit_message)
 
-fix_module_names()
-update_imports()
-fix_imports_pyqt4_to_pyqt5()
-fix_imports()
-fix_qapp()
-fix_margins_all()
-fix_delta_all()
-fix_qfile_dialog()
-fix_qweb()
+# fix_module_names()
+# update_imports()
+# fix_imports_pyqt4_to_pyqt5()
+# fix_imports()
+# fix_qapp()
+# fix_margins_all()
+# fix_delta_all()
+# fix_qfile_dialog()
+# fix_qweb()
 
 def op_bool_any(args):
 	return any(is_bin_op_float(arg) for arg in args)
