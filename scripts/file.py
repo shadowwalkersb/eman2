@@ -1,18 +1,7 @@
 import re
 
-from scripts import is_comment_line, re_compile_imports_usage
+from scripts import is_comment_line, re_compile_imports_usage, find_matching_parentheses, replace_old_div
 
-def find_matching_parentheses(line, pos):
-	count = 0
-	for i in range(pos, len(line)):
-		if line[i] == '(':
-			count += 1
-		if line[i] == ')':
-			count -= 1
-			if count == 0:
-				return i
-	else:
-		return None
 
 class File:
 	
@@ -161,7 +150,8 @@ class File:
 				print(line[pos:pos+4], line[end-4:end+1])
 				print(pos, end)
 
-	def fix_old_div(self, func):
+	def fix_old_div(self, func, op_sym):
 		for i, line in self._iter_lines():
+			# print("    {} : {}".format(i, line.strip()))
 			if 'old_div(' in line:
-				self.lines[i] = replace_old_div(line, func)
+				self.lines[i] = replace_old_div(line, func, op_sym)

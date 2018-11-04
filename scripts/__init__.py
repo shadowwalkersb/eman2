@@ -1,3 +1,4 @@
+import ast
 import subprocess
 import re
 
@@ -161,3 +162,151 @@ def rename_modules(line, modules):
 				line = ''.join(line_partioned)
 				new_imports.add(parent_module)
 	return new_imports, line
+
+
+def find_matching_parentheses(line, pos):
+	count = 0
+	for i in range(pos, len(line)):
+		if line[i] == '(':
+			count += 1
+		if line[i] == ')':
+			count -= 1
+			if count == 0:
+				return i
+	else:
+		return None
+
+
+SEARCH_FUNC = 'old_div'
+lenSEARCH_FUNC = len(SEARCH_FUNC)
+
+
+def partition_old_div(s):
+	p = s.partition(SEARCH_FUNC)
+	# print(p)
+	if p[1] != '':
+		end = find_matching_parentheses(p[2], 0)
+		
+		return p[0], p[1]+p[2][:end+1], p[2][end+1:]
+	else:
+		return s, '', ''
+
+
+def replace_old_div(line, func, op_sym):
+	p = partition_old_div(line)
+	# print(p)
+	if p[1] == '':
+		return line
+	if not SEARCH_FUNC in p[1][lenSEARCH_FUNC:]:
+		res = p[1]
+	else:
+		res = SEARCH_FUNC +'(' + replace_old_div(p[1][lenSEARCH_FUNC+1:-1], func, op_sym) + ')'
+	
+	res = old_div_replace_func(res, func, op_sym)
+	return p[0] + res + replace_old_div(p[2], func, op_sym)
+
+
+def old_div_replace_func(s, func, op_sym='/'):
+	print(s)
+
+	root = ast.parse(s)
+	args = root.body[0].value.args
+	
+	if func(args):
+		print(s)
+	
+		# for i, arg in enumerate(args):
+		# 	print("^"*arg.col_offset)
+		loffset = max(args[0].col_offset, max(n.col_offset for n in ast.walk(args[0]) if hasattr(n, 'col_offset')))
+		roffset = min(args[1].col_offset, min(n.col_offset for n in ast.walk(args[1]) if hasattr(n, 'col_offset')))
+		print("^"*loffset)
+		print("^"*roffset)
+		ind = s.rfind(',', loffset, roffset)
+		# print("^"*(ind+1))
+		arg2 = s[ind+1:-1]
+		if arg2[0] == ' ':
+			space = ' '
+		else:
+			space = ''
+		arg1 = s[len('old_div('):ind] + space
+		s = "{}{}{}".format(arg1, op_sym, arg2)
+		print(s)
+		# for i, arg in enumerate(args):
+		# 	print("arg{}:".format(i))
+		# 	print("is_float(arg): {}".format(is_float(arg)))
+
+	return s
+
+
+def is_num_float(node):
+	if isinstance(node, ast.Num) and isinstance(node.n, float): return True
+	else: return False
+
+def is_func_float(node):
+	if isinstance(node, ast.Call) and isinstance(node.func, ast.Name) and node.func.id == "float": return True
+	else: return False
+
+def is_math_func(node):
+	if isinstance(node, ast.Call) and isinstance(node.func, ast.Attribute) and isinstance(node.func.value, ast.Name) and node.func.value.id == "math": return True
+	else: return False
+
+def is_np_func(node):
+	if isinstance(node, ast.Call) and isinstance(node.func, ast.Attribute) and isinstance(node.func.value, ast.Name) and node.func.value.id == "np": return True
+	else: return False
+
+def is_math_const(node):
+	if isinstance(node, ast.Attribute) and hasattr(node.value, 'id') and node.value.id == "math": return True
+	else: return False
+
+def is_np_const(node):
+	if isinstance(node, ast.Attribute) and hasattr(node.value, 'id') and node.value.id == "np": return True
+	else: return False
+
+def is_num_int(node):
+	if isinstance(node, ast.Num) and isinstance(node.n, int): return True
+	else: return False
+
+def is_func_int(node):
+	if isinstance(node, ast.Call) and isinstance(node.func, ast.Name) and node.func.id == "int": return True
+	else: return False
+
+def is_func_len(node):
+	if isinstance(node, ast.Call) and isinstance(node.func, ast.Name) and node.func.id == "len": return True
+	else: return False
+
+def is_func_size(node):
+	if isinstance(node, ast.Call) and isinstance(node.func, ast.Attribute) and "size" in node.func.attr: return True
+	else: return False
+
+def is_const_size(node):
+	if isinstance(node, ast.Attribute) and "size" in node.attr: return True
+	else: return False
+
+
+funcs_float = [
+]
+
+def is_bin_op_float(node):
+	if isinstance(node, ast.BinOp):
+		return is_bin_op_float(node.left) or is_bin_op_float(node.right)
+	else:
+		return any(f(node) for f in funcs_float)
+
+funcs_int = [
+]
+
+def is_bin_op_int(node):
+	if isinstance(node, ast.BinOp):
+		return is_bin_op_int(node.left) and is_bin_op_int(node.right)
+	else:
+		return any(f(node) for f in funcs_int)
+
+def is_float(node):
+	# print(node)
+	# print(node.func)
+	# print(dir(node.func))
+
+	if isinstance(node, ast.Attribute) and hasattr(node.value, 'id') and node.value.id == "math": return True
+	if isinstance(node, ast.Attribute) and hasattr(node.value, 'id') and node.value.id == "np": return True
+	if isinstance(node, ast.BinOp):
+		return is_float(node.left) or is_float(node.right)
