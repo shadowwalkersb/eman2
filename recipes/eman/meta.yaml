@@ -20,6 +20,8 @@ requirements:
             "libtiff",
             "libpng 1.6.36",
             "zlib",
+            "future",
+            "configparser",
     ] %}
     
     build:
