@@ -21,3 +21,5 @@ fi
 
 make -j${CPU_COUNT}
 make install
+
+e2speedtest.py
