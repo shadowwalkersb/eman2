@@ -17,8 +17,8 @@ def fix_delta_all():
 	process_all_files(fix_delta, ".delta() -> .angleDelta().y()")
 
 def fix_qapp():
-	process_all_files(qapp1, "qApp. -> QApplication.")
-	process_all_files(qapp2, "qApp -> QApplication")
+	# process_all_files(qapp1, "qApp. -> QApplication.")
+	# process_all_files(qapp2, "qApp -> QApplication")
 	process_all_files(qapp21, "QtGui.QApplication -> QtWidgets.QApplication")
 
 def fix_qweb():
