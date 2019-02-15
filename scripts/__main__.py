@@ -112,38 +112,38 @@ fix_delta_all()
 fix_qfile_dialog()
 fix_qweb()
 
-def op_bool_any(args):
-	return any(is_bin_op_float(arg) for arg in args)
-
-def op_bool_all(args):
-	return all(is_bin_op_int(arg) for arg in args)
-
-from functools import partial
-
-
-func_list_and_commit_messages = [[
-	[is_num_float,   	"float literal"],
-	[is_func_float,  	"float func"],
-	[is_math_const,  	"math const"],
-	[is_np_const,    	"np const"],
-	[is_math_func,   	"math func"],
-	[is_np_func,     	"np func"],
-	# [is_bin_op_float,  	"recursive float"],
-	],
-	[
-	[is_num_int,     	"int literal"],
-	[is_func_int,    	"int func"],
-	[is_func_len,    	"len func"],
-	[is_func_size,    	"size func"],
-	[is_const_size,    	"size const"],
-	# [is_bin_op_int,  	"recursive int"],
-	]
-]
-
-for f_m in func_list_and_commit_messages[0]:
-	funcs_float.append(f_m[0])
-	fix_old_div(op_bool_any, '/', f_m[1])
-
-for f_m in func_list_and_commit_messages[1]:
-	funcs_int.append(f_m[0])
-	fix_old_div(op_bool_all, '//', f_m[1])
+# def op_bool_any(args):
+# 	return any(is_bin_op_float(arg) for arg in args)
+# 
+# def op_bool_all(args):
+# 	return all(is_bin_op_int(arg) for arg in args)
+# 
+# from functools import partial
+# 
+# 
+# func_list_and_commit_messages = [[
+# 	[is_num_float,   	"float literal"],
+# 	[is_func_float,  	"float func"],
+# 	[is_math_const,  	"math const"],
+# 	[is_np_const,    	"np const"],
+# 	[is_math_func,   	"math func"],
+# 	[is_np_func,     	"np func"],
+# 	# [is_bin_op_float,  	"recursive float"],
+# 	],
+# 	[
+# 	[is_num_int,     	"int literal"],
+# 	[is_func_int,    	"int func"],
+# 	[is_func_len,    	"len func"],
+# 	[is_func_size,    	"size func"],
+# 	[is_const_size,    	"size const"],
+# 	# [is_bin_op_int,  	"recursive int"],
+# 	]
+# ]
+# 
+# for f_m in func_list_and_commit_messages[0]:
+# 	funcs_float.append(f_m[0])
+# 	fix_old_div(op_bool_any, '/', f_m[1])
+# 
+# for f_m in func_list_and_commit_messages[1]:
+# 	funcs_int.append(f_m[0])
+# 	fix_old_div(op_bool_all, '//', f_m[1])
