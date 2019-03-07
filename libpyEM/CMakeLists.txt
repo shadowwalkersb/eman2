@@ -30,26 +30,33 @@ function(ADD_PYSTE_LIB libname)
 	install(TARGETS ${libname} DESTINATION ${SP_DIR})
 endfunction()
 
-ADD_PYSTE_LIB(pyAligner2)
-ADD_PYSTE_LIB(pyAverager2)
-ADD_PYSTE_LIB(pyCmp2)
-ADD_PYSTE_LIB(pyProcessor2)
-ADD_PYSTE_LIB(pyReconstructor2) 
-ADD_PYSTE_LIB(pyProjector2)
-ADD_PYSTE_LIB(pyEMObject2) 
-ADD_PYSTE_LIB(pyEMData2)
+set(PYLIBS 
+pyAligner2
+pyAverager2
+pyCmp2
+pyProcessor2
+pyReconstructor2 
+pyProjector2
+pyEMObject2 
+pyEMData2
+pyGeometry2
+pyTransform2
+pyPointArray2
+pyUtils2
+pyBoxingTools2
+pyFundamentals2
+pyTypeConverter2
+pyPolarData2
+pyAnalyzer2
+pyPDBReader2
+	)
+
+foreach(lib ${PYLIBS})
+	ADD_PYSTE_LIB(${lib})
+endforeach()
+
 target_sources(pyEMData2 PRIVATE emdata_wrapitems.cpp)
-ADD_PYSTE_LIB(pyGeometry2)
-ADD_PYSTE_LIB(pyTransform2)
-ADD_PYSTE_LIB(pyPointArray2)
-ADD_PYSTE_LIB(pyUtils2)
-ADD_PYSTE_LIB(pyBoxingTools2)
-ADD_PYSTE_LIB(pyFundamentals2)
-ADD_PYSTE_LIB(pyTypeConverter2)
 target_sources(pyTypeConverter2 PRIVATE typeconverter.cpp)
-ADD_PYSTE_LIB(pyPolarData2)
-ADD_PYSTE_LIB(pyAnalyzer2)
-ADD_PYSTE_LIB(pyPDBReader2)
 
 if(NOT WIN32)
 	ADD_PYSTE_LIB(pyTomoSeg2)
