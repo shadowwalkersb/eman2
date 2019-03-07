@@ -32,7 +32,6 @@ pyPointArray2
 pyUtils2
 pyBoxingTools2
 pyFundamentals2
-pyTypeConverter2
 pyPolarData2
 pyAnalyzer2
 pyPDBReader2
@@ -42,6 +41,9 @@ foreach(lib ${PYLIBS})
 	ADD_PYSTE_LIB(${lib})
 	target_link_libraries(${lib} EM2 ${Boost_LIBRARIES} Python::Python)
 endforeach()
+
+ADD_PYSTE_LIB(pyTypeConverter2)
+target_link_libraries(pyTypeConverter2 EM2 ${Boost_LIBRARIES} Python::Python)
 
 target_sources(pyEMData2 PRIVATE emdata_wrapitems.cpp)
 target_sources(pyTypeConverter2 PRIVATE typeconverter.cpp)
