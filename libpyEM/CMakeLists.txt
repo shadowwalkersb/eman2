@@ -14,19 +14,6 @@ function(ADD_PYSTE_LIB libname)
 			LINK_LIBRARIES "EM2;Boost::python3"
 			)
 	
-	if(APPLE)
-		set_target_properties(${libname}
-			PROPERTIES
-			LINK_FLAGS "-undefined dynamic_lookup -flat_namespace" # Superseeded by LINK_OPTIONS in 3.13
-			)
-	elseif(WIN32)
-		set_property(TARGET ${libname}
-			APPEND_STRING
-			PROPERTY
-			LINK_LIBRARIES "Python::Python"
-			)
-	endif()
-	
 	install(TARGETS ${libname} DESTINATION ${SP_DIR})
 endfunction()
 
@@ -53,6 +40,7 @@ pyPDBReader2
 
 foreach(lib ${PYLIBS})
 	ADD_PYSTE_LIB(${lib})
+	target_link_libraries(${lib} EM2 ${Boost_LIBRARIES} Python::Python)
 endforeach()
 
 target_sources(pyEMData2 PRIVATE emdata_wrapitems.cpp)
@@ -60,6 +48,7 @@ target_sources(pyTypeConverter2 PRIVATE typeconverter.cpp)
 
 if(NOT WIN32)
 	ADD_PYSTE_LIB(pyTomoSeg2)
+	target_link_libraries(pyTomoSeg2 EM2 ${Boost_LIBRARIES} Python::Python)
 endif()
 
 option(ENABLE_OPENGL "enable EMAN2 OpenGL usage" ON)
@@ -74,7 +63,9 @@ if(ENABLE_OPENGL)
 	add_subdirectory(fonts)
 
 	ADD_PYSTE_LIB(pyGLUtils2)
+		target_link_libraries(pyGLUtils2 EM2 ${Boost_LIBRARIES} Python::Python)
 	ADD_PYSTE_LIB(pyMarchingCubes2)
+		target_link_libraries(pyMarchingCubes2 EM2 ${Boost_LIBRARIES} Python::Python)
 	
 	target_sources(pyMarchingCubes2 PRIVATE
 				   marchingcubes.cpp
