@@ -38,7 +38,7 @@ pyPDBReader2
 
 foreach(lib ${PYLIBS})
 	ADD_PYSTE_LIB(${lib})
-	target_link_libraries(${lib} EM2 ${Boost_LIBRARIES} Python::Python)
+	target_link_libraries(${lib} EM2 ${Boost_LIBRARIES} Python::Python -flat_namespace)
 endforeach()
 
 ADD_PYSTE_LIB(pyTypeConverter2)
