@@ -27,7 +27,6 @@ pyProjector2
 pyEMObject2 
 pyEMData2
 pyGeometry2
-pyTransform2
 pyPointArray2
 pyUtils2
 pyBoxingTools2
@@ -43,7 +42,11 @@ foreach(lib ${PYLIBS})
 endforeach()
 
 ADD_PYSTE_LIB(pyTypeConverter2)
-target_link_libraries(pyTypeConverter2 EM2 ${Boost_LIBRARIES} Python::Python)
+
+target_link_libraries(pyTypeConverter2 EM2 Boost::python3 Boost::numpy3 Python::Python -flat_namespace)
+
+ADD_PYSTE_LIB(pyTransform2)
+target_link_libraries(pyTransform2 EM2 Boost::python3 Boost::numpy3 Python::Python -flat_namespace)
 
 target_sources(pyEMData2 PRIVATE emdata_wrapitems.cpp)
 target_sources(pyTypeConverter2 PRIVATE typeconverter.cpp)
