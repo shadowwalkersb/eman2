@@ -101,6 +101,25 @@ if(ENABLE_FFTW3)
 	endif()
 endif()
 
+if(WIN32)
+    target_link_libraries(EM2 FFTW3::FFTW3)
+else()
+    if(ENABLE_FFTW3)
+    	target_link_libraries(EM2 FFTW3::FFTW3)
+    endif()
+	target_link_libraries(EM2 m)
+endif()
+
+find_package(GSL REQUIRED)
+if(WIN32)
+	set_target_properties(GSL::gsl
+						  PROPERTIES
+						  INTERFACE_COMPILE_DEFINITIONS GSL_DLL
+						  )
+endif()
+
+target_link_libraries(EM2 GSL::gsl GSL::gslcblas -flat_namespace)
+
 option(ENABLE_TIFF "enable TIFF support" ON)
 if(ENABLE_TIFF)
 	include(${CMAKE_SOURCE_DIR}/cmake/TIFF.cmake)
