@@ -35,6 +35,7 @@
 // Boost Includes ==============================================================
 #include <boost/python.hpp>
 #include <boost/python/numpy.hpp>
+#include <boost/python/suite/indexing/vector_indexing_suite.hpp>
 
 // Includes ====================================================================
 #include <typeconverter.h>
@@ -68,15 +69,28 @@ BOOST_PYTHON_MODULE(libpyTypeConverter2)
         .staticmethod("assign_numpy_to_emdata")
     ;
 
+//	def (vector_indexing_suite< std::vector<int> >());
+	class_<std::vector<int> >("stl_vector_int")
+        .def(vector_indexing_suite<std::vector<int> >())
+    ;
+
+	class_<std::vector<float> >("stl_vector_float")
+        .def(vector_indexing_suite<std::vector<float> >())
+    ;
+
+	class_<std::vector<double> >("stl_vector_double")
+        .def(vector_indexing_suite<std::vector<double> >())
+    ;
+
 
     init_numpy();
 	python::numeric::array::set_module_and_type("numpy", "ndarray");
 
 
-	EMAN::vector_to_python<int>();
-	EMAN::vector_to_python<long>();
-	EMAN::vector_to_python<float>();
-	EMAN::vector_to_python<double>();
+//	EMAN::vector_to_python<int>();
+//	EMAN::vector_to_python<long>();
+//	EMAN::vector_to_python<float>();
+//	EMAN::vector_to_python<double>();
 //	EMAN::vector_to_python<EMAN::Transform3D>();
 	EMAN::vector_to_python<EMAN::Transform>();
 	EMAN::vector_to_python<EMAN::Ctf*>();
