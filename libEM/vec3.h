@@ -676,18 +676,12 @@ namespace EMAN
 
 	template<typename Type,typename Type2>
 	inline bool operator ==(const Vec3<Type> &v1, const Vec3<Type2> &v2) {
-		if (v1[0] == v2[0] && v1[1] == v2[1] && v1[2] == v2[2]) {
-			return true;
-		}
-		return false;
+		return v1[0] == v2[0] && v1[1] == v2[1] && v1[2] == v2[2];
 	}
 
 	template<typename Type,typename Type2>
 	inline bool operator !=(const Vec3<Type> &v1, const Vec3<Type2> &v2) {
-		if (v1[0] != v2[0] || v1[1] != v2[1] || v1[2] != v2[2]) {
-			return true;
-		}
-		return false;
+		return !(v1 == v2);
 	}
 
 	typedef Vec3<float> Vec3f;
