@@ -30,7 +30,7 @@ def main():
 	m[m<0]=0
 	m/=np.max(m)
 	hole=img_open-m
-	a=from_numpy(hole)
+	a=EMNumPy.numpy2em(hole)
 
 	
 	a["apix_x"]=apix

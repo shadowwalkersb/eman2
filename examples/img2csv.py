@@ -10,6 +10,6 @@ import numpy as np
 from sys import argv
 
 im=EMData(argv[1],0)
-data=to_numpy(im).copy()
+data=EMNumPy.em2numpy(im).copy()
 np.savetxt(argv[1].rsplit(".",1)[0]+".csv",data,delimiter=",")
 

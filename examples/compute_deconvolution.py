@@ -37,7 +37,7 @@ imx=np.linalg.inv(mx)
 
 
 row=imx[40].reshape(9,9)
-emd=from_numpy(row)
+emd=EMNumPy.numpy2em(row)
 
 
 gau=EMData(9,9,1)

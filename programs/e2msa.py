@@ -145,7 +145,7 @@ handled this way."""
 	except: pass
 	mean=np.mean(data,0)
 	for i in range(len(data)): data[i]-=mean
-	from_numpy(mean).process("misc.mask.pack",{"mask":mask,"unpack":1}).write_image(args[1],0)
+	EMNumPy.numpy2em(mean).process("misc.mask.pack",{"mask":mask,"unpack":1}).write_image(args[1],0)
 	
 	shift=0
 	# This is where the actual action takes place!
@@ -209,11 +209,11 @@ handled this way."""
 		msa.fit(data)
 
 	# write mean
-	if not options.nomean: from_numpy(mean).process("misc.mask.pack",{"mask":mask,"unpack":1}).write_image(args[1],0)
+	if not options.nomean: EMNumPy.numpy2em(mean).process("misc.mask.pack",{"mask":mask,"unpack":1}).write_image(args[1],0)
 
 		
 #	print(msa.components_.shape)
-#	c=from_numpy(msa.components_.copy()).write_image("z.hdf",0)
+#	c=EMNumPy.numpy2em(msa.components_.copy()).write_image("z.hdf",0)
 
 	if options.verbose>0 : print("MSA complete")
 
@@ -221,7 +221,7 @@ handled this way."""
 	if options.nomean: offset=0
 	else: offset=1
 	for i,v in enumerate(msa.components_):
-		im=from_numpy(v.copy()).process("misc.mask.pack",{"mask":mask,"unpack":1})
+		im=EMNumPy.numpy2em(v.copy()).process("misc.mask.pack",{"mask":mask,"unpack":1})
 		if options.mode=="pca":
 			im["eigval"]=float(msa.singular_values_[i])
 			im["explvarfrac"]=float(msa.explained_variance_ratio_[i])
@@ -267,7 +267,7 @@ handled this way."""
 			proj=msa.transform(chunk)		# into subspace
 			if options.normproj:
 				for i in range(len(proj)): proj[i]/=np.linalg.norm(proj[i])
-			im=from_numpy(proj.copy())
+			im=EMNumPy.numpy2em(proj.copy())
 			out.insert_clip(im,(0,start,0))
 			start+=chunksize
 			
@@ -293,7 +293,7 @@ def simmx_get(images,simmxpath,mask,step):
 		imm=im.process("misc.mask.pack",{"mask":mask})
 		ret.insert_clip(imm,(0,i,0))
 		
-	return to_numpy(ret).copy()
+	return EMNumPy.em2numpy(ret).copy()
 
 def normal_get(images,mask,step):
 	"""returns an array of transformed masked images as arrays for PCA"""
@@ -306,7 +306,7 @@ def normal_get(images,mask,step):
 		imm=im.process("misc.mask.pack",{"mask":mask})
 		ret.insert_clip(imm,(0,i,0))
 	
-	return to_numpy(ret).copy()
+	return EMNumPy.em2numpy(ret).copy()
 	
 def get_xform(n,simmx):
 	"""Will produce a Transform representing the best alignment from a similarity matrix for particle n

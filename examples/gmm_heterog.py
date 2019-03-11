@@ -255,7 +255,7 @@ def calc_motion(ballrec, options, grad, glst=None):
 	for i,p in enumerate(pp):
 		ballrec.conf.set_value(p)
 		mp=get_map()
-		e=from_numpy(mp)
+		e=EMNumPy.numpy2em(mp)
 		e.write_image(mpsave, i)
 	print("Motion maps are saved to {}".format(mpsave))
 	return vec
@@ -354,10 +354,10 @@ def calc_grad(ballrec, options, data, orient):
 		if b<50:
 			img=get_2dimg_out(b)[0]
 			m0= data[b].eval().reshape((options.sz,options.sz))
-			e=from_numpy(m0)
+			e=EMNumPy.numpy2em(m0)
 			e.write_image(options.path+"/tmpimgcmps.hdf",b*2)
 			
-			e=from_numpy(img.copy())
+			e=EMNumPy.numpy2em(img.copy())
 			e.write_image(options.path+"/tmpimgcmps.hdf",b*2+1)
 			#exit()
 		c,gd=get_grad_ballpos(b)
@@ -436,7 +436,7 @@ def write_3d(ballrec,options):
 		
 	mapnp=get_map()
 	print("Map shape:  ",np.shape(mapnp), ", apix: ", options.apix)
-	outmap=from_numpy(mapnp)
+	outmap=EMNumPy.numpy2em(mapnp)
 	outmap["apix_x"]=options.apix
 	outmap["apix_y"]=options.apix
 	outmap["apix_z"]=options.apix

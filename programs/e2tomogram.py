@@ -838,7 +838,7 @@ def calc_tltax_rot(imgs, options):
 	vs[-nw:]*=(1-0.3*np.arange(1,nw+1, dtype=float)/nw)
 	
 	tltax=angs[np.argmax(vs)]
-	e=from_numpy(sm)
+	e=EMNumPy.numpy2em(sm)
 	if options.writetmp: 
 		e.write_image(os.path.join(options.tmppath,"commonline.hdf"))
 		np.savetxt(os.path.join(options.tmppath,"tltrot.txt"), np.vstack([angs, vs]).T)
@@ -961,7 +961,7 @@ def make_tomogram_tile(imgs, tltpm, options, errtlt=[], clipz=-1):
 	f=1+np.exp(-(x**2+y**2)/0.1) - np.exp(-((abs(x)-0.5)**2+(abs(y)-0.5)**2)/0.1)
 	f+=1.5
 	f3=np.repeat(f[None, :,:], outz, axis=0)
-	msk=from_numpy(f3).copy()
+	msk=EMNumPy.numpy2em(f3).copy()
 	#####
 
 	

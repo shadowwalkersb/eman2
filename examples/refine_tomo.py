@@ -133,7 +133,7 @@ def main():
 		rets.append(que)
 		#print mid
 	
-	#### hand built queue to avoid the memory leaking in from_numpy()
+	#### hand built queue to avoid the memory leaking in EMNumPy.numpy2em()
 	numleft=len(jobs)
 	running=[-1]*options.threads
 	kj=0
@@ -253,7 +253,7 @@ def refine_align(job,ret):
 			imft=mapft[ind[2], ind[1], ind[0]]
 			v=tr.transform(vv)
 			img=get_img(imft).T
-			pp=from_numpy(img)
+			pp=EMNumPy.numpy2em(img)
 			pp.translate(v[0],v[1],0)
 			#score.append(imgs[i].cmp("frc", pp,{'maxres':30}))
 			score.append(imgs[i].cmp("ccc", pp))

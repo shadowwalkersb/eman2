@@ -112,7 +112,7 @@ def drawmap(pts, val, shape, apix=1.,fname="mapcolor_tmp0.hdf"):
 	for i,p in enumerate(pts):
 	#	 if dd0[i]<0: continue
 		mapclr[p[2],p[1],p[0]]=val[i]
-	e=from_numpy(mapclr)
+	e=EMNumPy.numpy2em(mapclr)
 	e["apix_x"]=e["apix_y"]=e["apix_z"]=apix
 	e.write_image(fname)
 

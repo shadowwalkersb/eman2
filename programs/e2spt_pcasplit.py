@@ -260,7 +260,7 @@ def main():
 		eg=c[:l]+c[l:]*1j
 		egmap=eg.reshape((sz,sz,sz))
 		o=np.real(np.fft.ifftn(np.fft.ifftshift(egmap)))
-		m=from_numpy(o.copy())
+		m=EMNumPy.numpy2em(o.copy())
 		m.write_image(basisfile,i)
 
 	print("Classifying particles...")

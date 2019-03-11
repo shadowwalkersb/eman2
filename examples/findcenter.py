@@ -143,7 +143,7 @@ def main():
 				if options.filter == 'rbf':
 					ptcl_array = ptcl.numpy()
 					conv2d = scipy.signal.convolve2d(ptcl_array, kernel, boundary='symm', mode='same')
-					ptcl = from_numpy(np.float32(conv2d))
+					ptcl = EMNumPy.numpy2em(np.float32(conv2d))
 					ptcl.process_inplace('threshold.belowtozero',{'minval':options.threshold})
 				if options.filter == 'bandpass':
 					apix = ptcl.get_attr('ctf').apix

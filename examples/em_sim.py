@@ -293,10 +293,10 @@ class Microscope(QtOpenGL.QGLWidget):
 		
 		self.imgwindow.shapes={ i:shapes[i] for i in range(len(shapes)) }
 		self.imgwindow.shapechange=1
-		#self.imgwindow.set_data([from_numpy(abs(d)*np.sin(np.angle(d))) for d in alldata])
+		#self.imgwindow.set_data([EMNumPy.numpy2em(abs(d)*np.sin(np.angle(d))) for d in alldata])
 		self.imgwindow.set_data([
-			from_numpy(abs(alldata[0]).astype("float32")), 
-			from_numpy(np.cos(np.angle(alldata[0])).astype("float32")) ])
+			EMNumPy.numpy2em(abs(alldata[0]).astype("float32")), 
+			EMNumPy.numpy2em(np.cos(np.angle(alldata[0])).astype("float32")) ])
 		
 		if self.pltwindow:
 			
@@ -458,7 +458,7 @@ class Microscope(QtOpenGL.QGLWidget):
 			imgs.append(img)
 			vz -= zmax-1
 
-		self.twodwindow.set_data([from_numpy(np.real(d).copy().astype("float32")) for d in imgs])
+		self.twodwindow.set_data([EMNumPy.numpy2em(np.real(d).copy().astype("float32")) for d in imgs])
 		return imgs[-1]
 	
 	#### draw vertex and keep track of the distance

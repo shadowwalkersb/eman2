@@ -162,13 +162,13 @@ def tf_save_cnn(convnet, fname, session):
 		w=w.transpose(3,2,0,1).copy()
 		s=w.shape
 
-		e=from_numpy(b)
+		e=EMNumPy.numpy2em(b)
 		e["w_shape"]=s
 		e.write_image(fname,k)
 		k+=1
 		w=w.reshape(s[0]*s[1], s[2], s[3])
 		for wi in w:
-			e=from_numpy(wi)
+			e=EMNumPy.numpy2em(wi)
 			e.write_image(fname,k)
 			k+=1
 
@@ -183,11 +183,11 @@ def write_output_train(convnet,outfile, session, ncopy=10):
 			ox=outx[i].reshape((sz,sz))
 			oy=outy[i].reshape((outsz, outsz))
 
-			e0=from_numpy(ox.copy())
+			e0=EMNumPy.numpy2em(ox.copy())
 			e0.process_inplace("normalize")
 			e0.write_image(outfile, -1)
 
-			e1=from_numpy(oy.copy())
+			e1=EMNumPy.numpy2em(oy.copy())
 			e1=e1.get_clip(Region(old_div(-(sz-outsz),2),old_div(-(sz-outsz),2),sz,sz))
 			e1.scale(old_div(sz,outsz))
 

@@ -285,7 +285,7 @@ class PairwiseCoherence(object):
 					max_coh = coh
 					best_cps = cps
 				coherence[i,j] = coh
-		pwcc = from_numpy(coherence)
+		pwcc = EMNumPy.numpy2em(coherence)
 		x,y,z = pwcc.calc_max_location_wrap(-1,-1,0)
 		print2line("\t\t\t({},{})".format(x,y))
 		best_cps.do_ift().write_image('{}_best_coherent_pws.hdf'.format(self.fname[:-4]),-1)

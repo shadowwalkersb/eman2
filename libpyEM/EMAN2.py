@@ -104,13 +104,6 @@ except:
 GUIbeingdragged=None
 originalstdout = sys.stdout
 
-# Aliases
-EMData.get=EMData.get_value_at
-EMData.set=EMData.set_value_at
-EMData.numpy=EMNumPy.em2numpy
-from_numpy=EMNumPy.numpy2em
-to_numpy=EMNumPy.em2numpy
-
 def emdata_to_string(self):
 	"""This returns a compressed string representation of the EMData object, suitable for storage
 	or network communication. The EMData object is pickled, then compressed wth zlib. Restore with

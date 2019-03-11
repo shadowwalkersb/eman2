@@ -444,7 +444,7 @@ def main():
 					if options.symcopy:
 						enp=e.numpy()[:,0]
 						anp=np.tile(enp,[nsym,1]).T.copy()
-						a=from_numpy(anp)
+						a=EMNumPy.numpy2em(anp)
 						a.write_image(newclsmx[s],i)
 					else:	
 						e.write_image(newclsmx[s],i)

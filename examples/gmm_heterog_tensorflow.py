@@ -464,7 +464,7 @@ class GaussianModel(object):
 			d=(ind_np-p)**2
 			w=wt[i]
 			mp+=a*np.exp(old_div(-np.sum(d,axis=3),(w)))
-		e=from_numpy(mp)
+		e=EMNumPy.numpy2em(mp)
 		#     e.process_inplace("xform.applysym",{"sym":"d7"})
 		return e
 

@@ -281,7 +281,7 @@ def generate_masks(options,img):
 			circle = x*x + y*y <= r*r
 			sharp_msk = np.logical_or(sharp_msk,circle)
 		sharp_msk = sharp_msk.astype(int)
-		sharp_msk = from_numpy(sharp_msk.T)
+		sharp_msk = EMNumPy.numpy2em(sharp_msk.T)
 		
 	else:
 		img.process_inplace("normalize")
@@ -305,7 +305,7 @@ def generate_masks(options,img):
 			se2=np.ones((s,s))
 			nproc = ndimage.binary_closing(nproc,structure=se2).astype(int)
 			nproc = ndimage.binary_opening(nproc,structure=se2).astype(int)
-			sharp_msk = from_numpy(nproc)
+			sharp_msk = EMNumPy.numpy2em(nproc)
 
 	# grow slightly and create soft mask
 	sharp_msk = sharp_msk.process("mask.addshells.gauss",{"val1":8,"val2":0})

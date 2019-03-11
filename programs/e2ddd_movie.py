@@ -928,7 +928,7 @@ def calc_ccf_wrapper(options,N,box,step,dataa,datab,out,locs,ii,fsp):
 
 	popt,ccpeakval = bimodal_peak_model(options,csum)
 	if popt == None:
-		csum = from_numpy(np.zeros((box,box))).process("normalize.edgemean")
+		csum = EMNumPy.numpy2em(np.zeros((box,box))).process("normalize.edgemean")
 		locs.put((N,[]))
 		out.put((N,csum))
 	else:
@@ -936,11 +936,11 @@ def calc_ccf_wrapper(options,N,box,step,dataa,datab,out,locs,ii,fsp):
 		if options.phaseplate:
 			ncc = csum.numpy().copy()
 			pcsum = neighbormean_origin(ncc)
-			csum = from_numpy(pcsum)
+			csum = EMNumPy.numpy2em(pcsum)
 			locs.put((N,[popt[0],popt[1],ccpeakval,csum["maximum"]]))
 		else:
 			cc_model = correlation_peak_model((xx,yy),popt[0],popt[1],popt[2],popt[3]).reshape(box,box)
-			csum = from_numpy(cc_model)
+			csum = EMNumPy.numpy2em(cc_model)
 			locs.put((N,[popt[0],popt[1],popt[2],popt[3],popt[4],popt[5],ccpeakval,csum["maximum"]]))
 		out.put((N,csum))
 	if ii>=0 and options.debug:
@@ -1102,9 +1102,9 @@ def bimodal_peak_model(options,ccf):
 		# if options.debug:
 		# 	try:
 		# 		ii = EMUtil.get_image_count("tmp.hdf")
-		# 		from_numpy(pncc).write_image("tmp.hdf",ii)`
+		# 		EMNumPy.numpy2em(pncc).write_image("tmp.hdf",ii)`
 		# 	except:
-		# 		from_numpy(pncc).write_image("tmp.hdf",0)
+		# 		EMNumPy.numpy2em(pncc).write_image("tmp.hdf",0)
 		return [x1,y1,s1,a1,s2,a2,offset],ccf.sget_value_at_interp(x1,y1)
 		# try: # run optimization
 		# 	bds = [(-np.inf, -np.inf,  0.01, 0.01),(np.inf, np.inf, 100.0, 100000.0)]

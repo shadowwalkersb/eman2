@@ -206,7 +206,7 @@ def main():
 	if options.verbose > 9: print("Writing Projections to Disk... ")
 	outpath = options.path + "/" + "projections.hdf"
 	for i in range( nslices ):
-		from_numpy(projections[i*xlen:(i+1)*xlen]).write_image( outpath, i )
+		EMNumPy.numpy2em(projections[i*xlen:(i+1)*xlen]).write_image( outpath, i )
 	
 	# Reconstruction
 	if options.verbose > 2: print("Starting Reconstruction...")
@@ -217,7 +217,7 @@ def main():
 	
 	# Store reconstruction in instance outfile directory
 	outpath = options.path + "/" + outfile
-	from_numpy( recon[-1] ).write_image( outpath )
+	EMNumPy.numpy2em( recon[-1] ).write_image( outpath )
 	
 	if options.fsc != False:
 		if options.verbose > 3: print("Generating an FSC plot...")
@@ -248,7 +248,7 @@ def get_data( options, nslices, noisiness, imgnum=0 ):
 			if (options.noise != False) and (noisiness != 0.0):	# Add Noise to Projections
 				if options.verbose > 2: print("Adding Noise to Input Data...")
 				np_img += noisiness * np.random.randn(*np_img.shape)
-				from_numpy(np_img).write_image(options.path + "noisy_img.hdf")
+				EMNumPy.numpy2em(np_img).write_image(options.path + "noisy_img.hdf")
 			npstack.append( np_img )
 		data = np.asarray( npstack )
 		dim = [img["nx"],img["ny"],img["nz"]]

@@ -241,12 +241,12 @@ def do_training(args=None):
 	
 	for i,mm in enumerate(tstout):
 		t=train_set_x[i].eval().reshape(sz,sz)
-		img=from_numpy(t)
+		img=EMNumPy.numpy2em(t)
 		#img.process_inplace("normalize")
 		img.write_image(trainoutfile, -1)
 		
 		for m in mm:
-			img=from_numpy(m)
+			img=EMNumPy.numpy2em(m)
 			nx=img["nx"]
 			img=img.get_clip(Region(old_div(-nx,2),old_div(-nx,2),nx*2,nx*2))
 			img.scale(2.)

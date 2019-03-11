@@ -173,12 +173,12 @@ def main():
 		# Store 2D reconstructions in options.path if requested
 		if options.saveslices:
 			twodpath = options.path + "/slices.hdf"
-			from_numpy( recon ).write_image( twodpath, i )
+			EMNumPy.numpy2em( recon ).write_image( twodpath, i )
 		
 		np_recons.append( recon )
 		
 	reconstack = np.dstack( np_recons )
-	threed_recon = from_numpy( reconstack )
+	threed_recon = EMNumPy.numpy2em( reconstack )
 	threed_recon['apix_x'] = apix
 	threed_recon['apix_y'] = apix
 	threed_recon['apix_z'] = apix
@@ -299,7 +299,7 @@ def twod_recon( options, sinogram, y, projection_operator, tiltangles, ylen ):
 	
 	if options.savesinograms:
 		for i in range(len(tiltangles)):
-			from_numpy(projections[i*xlen:(i+1)*xlen]).write_image(options.path + '/projections' + str(y).zfill( len( str( ylen ))) + '.hdf',i)
+			EMNumPy.numpy2em(projections[i*xlen:(i+1)*xlen]).write_image(options.path + '/projections' + str(y).zfill( len( str( ylen ))) + '.hdf',i)
 	
 	if options.verbose > 2: 
 		print("\nStarting reconstruction for slice", y)
