@@ -110,7 +110,7 @@ def rename_module_usage(file_context, parent_module, modules):
 	return re_compile_imports_usage(modules).sub('{}.\g<2>'.format(parent_module), file_context)
 
 def rename_imports_pyqt4_to_pyqt5(file_context):
-	return re.sub(r'PyQt4', 'PyQt5', file_context)
+	return re.sub(r'(#*[\t ]*)from OpenGL', '\g<1>import OpenGL\n\g<1>OpenGL.ERROR_CHECKING = False\n\g<1>from OpenGL', file_context, 1)
 
 RE_IMPORTS = re.compile(r'from +(PyQt[4,5](\.(?:' 
 						+ "|".join(PYQT_MAIN_MODULES[5].keys()) 

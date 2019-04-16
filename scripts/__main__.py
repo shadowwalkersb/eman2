@@ -25,7 +25,7 @@ def fix_qweb():
 	process_all_files(qweb, "QtWebKit -> QtWebEngineWidgets")
 
 def fix_imports_pyqt4_to_pyqt5():
-	process_all_files(rename_imports_pyqt4_to_pyqt5, "PyQt4 -> PyQt5")
+	process_all_files(rename_imports_pyqt4_to_pyqt5, "turn off opengl error checking")
 
 def fix_module_names():
 	# fix_imports_pyqt4_to_pyqt5()
@@ -157,7 +157,7 @@ def is_import_line():
 
 # fix_module_names()
 # update_imports()
-# fix_imports_pyqt4_to_pyqt5()
+fix_imports_pyqt4_to_pyqt5()
 # fix_imports()
 # fix_qapp()
 # fix_margins_all()
