@@ -91,15 +91,12 @@ install(TARGETS EM2
 
 if(ENABLE_FFTW3)
 	find_package(FFTW3 REQUIRED)
+	target_link_libraries(EM2 FFTW3::FFTW3)
 	
 	if(ENABLE_NFFT2)
 		find_package(NFFT2 REQUIRED)
 		target_link_libraries(NFFT2 FFTW3D::FFTW3D)
 	endif()
-endif()
-
-if(WIN32 OR ENABLE_FFTW3)
-    target_link_libraries(EM2 FFTW3::FFTW3)
 endif()
 
 target_link_libraries(EM2 GSL::gsl GSL::gslcblas)
