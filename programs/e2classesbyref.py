@@ -69,7 +69,7 @@ def main():
 	parser.add_argument("--classinfo",type=str,help="Store results in a classinfo_xx.json style file",default=None)
 	parser.add_argument("--classes",type=str,help="Generate class-averages directly. No bad particle exclusion or iteration. Specify filename.",default=None)
 	parser.add_argument("--averager",type=str,help="Averager to use for class-averages",default="ctf.weight")	
-        parser.add_argument("--invartype",choices=["auto","bispec","harmonic"],help="Which type of invariants to generate: (bispec,harmonic)",default="auto")
+	parser.add_argument("--invartype",choices=["auto","bispec","harmonic"],help="Which type of invariants to generate: (bispec,harmonic)",default="auto")
 
 	parser.add_argument("--threads", default=4,type=int,help="Number of threads to run in parallel on the local computer")
 	parser.add_argument("--verbose", "-v", dest="verbose", action="store", metavar="n",type=int, default=0, help="verbose level [0-9], higher number means higher level of verboseness")
@@ -85,11 +85,11 @@ def main():
 	options.raligncmp=parsemodopt(options.raligncmp)
 	options.cmp=parsemodopt(options.cmp)
 
-        if options.invartype=="auto" :
-                try: options.invartype=str(project(["global.invartype"]))
-                except: 
-                        print("Warning: no project invariant type spectified, using bispectrum")
-                        options.invartype="bispec"
+	if options.invartype=="auto" :
+		try: options.invartype=str(project(["global.invartype"]))
+		except: 
+			print("Warning: no project invariant type spectified, using bispectrum")
+			options.invartype="bispec"
 
 	
 	E2n=E2init(sys.argv, options.ppid)
@@ -112,7 +112,7 @@ def main():
 #		print("\nError! No good invariants found for refs. Please rerun CTF generate output and set building.")
 #		sys.exit(1)
 
-        	if options.invartype=="bispec" :
+		if options.invartype=="bispec" :
 			com="e2proc2dpar.py {inp} {out} --process filter.highpass.gauss:cutoff_freq=0.01 --process normalize.edgemean --process mask.soft:outer_radius={maskrad}:width={maskw} --process math.bispectrum.slice:size={bssize}:fp={bsdepth} --threads {threads}".format(
 			inp=args[0],out=refsbsfs,maskrad=int(refs[0]["nx"]//2.2),maskw=int(refs[0]["nx"]//15),bssize=bispec_invar_parm[0],bsdepth=bispec_invar_parm[1],threads=options.threads)
 		else:
@@ -337,4 +337,4 @@ def run(command):
 
 
 if __name__ == "__main__":
-    main()
+	main()
