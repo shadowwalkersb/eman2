@@ -1,17 +1,11 @@
 # Find Boost
 set(Boost_USE_MULTITHREADED ON)
 set(Boost_NO_BOOST_CMAKE ON)
-find_package(Boost COMPONENTS python REQUIRED)
+find_package(Boost COMPONENTS python3 numpy3 REQUIRED)
 
 message("Boost_LIBRARIES:   ${Boost_LIBRARIES}")
 message("Boost_INCLUDE_DIR: ${Boost_INCLUDE_DIR}")
 
-#this definition is for boost.python > 1.35.0 
-set_target_properties(Boost::python
-					  PROPERTIES
-					  INTERFACE_COMPILE_DEFINITIONS BOOST_PYTHON_NO_PY_SIGNATURES
-					  INTERFACE_LINK_LIBRARIES Python::Python
-					  )
 if(WIN32)
 	ADD_DEFINITIONS(-DBOOST_DISABLE_ASSERTS)
 endif()
@@ -35,7 +29,7 @@ function(ADD_PYSTE_LIB libname)
 			SUFFIX ${suffix}
 			)
 	
-	target_link_libraries(${libname} EM2 Boost::python)
+	target_link_libraries(${libname} EM2 Boost::python3 Boost::numpy3  Python::Python)
 	install(TARGETS ${libname} DESTINATION ${SP_DIR})
 endfunction()
 
@@ -54,6 +48,11 @@ ADD_PYSTE_LIB(pyPointArray2)
 ADD_PYSTE_LIB(pyUtils2)
 ADD_PYSTE_LIB(pyBoxingTools2)
 ADD_PYSTE_LIB(pyFundamentals2)
+#	target_link_libraries(${lib} EM2 ${Boost_LIBRARIES} Python::Python -flat_namespace)
+#	target_link_libraries(${lib} EM2 ${Boost_LIBRARIES} Python::Python "-undefined dynamic_lookup")
+#	target_link_libraries(${lib} EM2 ${Boost_LIBRARIES} Python::Python -weak_library ${PYTHON_LIBRARIES})
+#	target_link_libraries(${lib} EM2 ${Boost_LIBRARIES} Python::Python -weak_library ${PYTHON_LIBRARIES} -lazy_library ${PYTHON_LIBRARIES})
+
 ADD_PYSTE_LIB(pyTypeConverter2)
 target_sources(pyTypeConverter2 PRIVATE typeconverter.cpp)
 ADD_PYSTE_LIB(pyPolarData2)
