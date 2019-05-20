@@ -48,23 +48,19 @@ using namespace EMAN;
 np::ndarray EMAN::make_numeric_array(const float *const data, vector<npy_intp> dims)
 {
 //	Py_Initialize();
-//	cout<<"HERE 1"<<endl;
-	Py_intptr_t dim2=0;
-	if(dims.size()==3) dim2=dims[2];
-	Py_intptr_t shape[3] = { dims[0], dims[1], dim2 };
-    np::ndarray result = np::zeros(dims.size(), shape, np::dtype::get_builtin<float>());
+	cout<<"HERE 1"<<endl;
+	Py_intptr_t shape[3] = { dims[0], dims[1], dims[2] };
+    bn::ndarray result = bn::zeros(3, shape, bn::dtype::get_builtin<float>());
 //	PyObject * pyObj = PyArray_SimpleNewFromData(dims.size(),&dims[0],
 //	                                                              NPY_FLOAT32, (char*)data);
-//	cout<<"HERE 2"<<endl;
+	cout<<"HERE 2"<<endl;
 //	python::handle<> handle(pyObj);
-//	cout<<"HERE 3"<<endl;
-//	np::ndarray arr( handle );
+	cout<<"HERE 3"<<endl;
+//	python::numeric::array arr( handle );
 //	python::object obj(handle);
-	if(dim2==0) dim2=1;
-	std::copy(data, data+dims[0]*dims[1]*dim2, reinterpret_cast<float*>(result.get_data()));
-//	cout<<"HERE 4"<<endl;
+	cout<<"HERE 4"<<endl;
 
-//	return python::extract<np::ndarray>(obj);
+//	return python::extract<python::numeric::array>(obj);
 //	return arr;
 	return result;
 }
@@ -218,7 +214,7 @@ EMNumPy::~EMNumPy()
 	// Setting rdata data member of EMData to 0 (Null)
 	// avoids that the destructor of EMData Buffer deletes the valid memory,
 	// which allocated and owned by the other object (e.g. NumPy)
-	unregister_numpy_from_emdata();
+	emdata_buffer.unregister_buffer_data();
 }
 
 EMData* EMNumPy::register_numpy_to_emdata(const np::ndarray& array)
