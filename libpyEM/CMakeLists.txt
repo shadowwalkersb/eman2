@@ -35,8 +35,7 @@ function(ADD_PYSTE_LIB libname)
 			SUFFIX ${suffix}
 			)
 	
-	target_link_libraries(${libname} EM2 Boost::python "-undefined dynamic_lookup")# -flat_namespace)
-#	set_target_properties(${libname} PROPERTIES LINK_FLAGS "-undefined dynamic_lookup -flat_namespace")
+	target_link_libraries(${libname} EM2 Boost::python)
 	install(TARGETS ${libname} DESTINATION ${SP_DIR})
 endfunction()
 
@@ -57,7 +56,6 @@ ADD_PYSTE_LIB(pyBoxingTools2)
 ADD_PYSTE_LIB(pyFundamentals2)
 ADD_PYSTE_LIB(pyTypeConverter2)
 target_sources(pyTypeConverter2 PRIVATE typeconverter.cpp)
-#target_link_libraries(pyTypeConverter2 Python::Python)
 ADD_PYSTE_LIB(pyPolarData2)
 ADD_PYSTE_LIB(pyAnalyzer2)
 ADD_PYSTE_LIB(pyPDBReader2)
@@ -78,7 +76,7 @@ if(ENABLE_OPENGL)
 				   ${CMAKE_SOURCE_DIR}/libEM/glutil.cpp
 				   ${CMAKE_SOURCE_DIR}/libEM/marchingcubes.cpp
 				   )
-	target_link_libraries(pyGLUtils2       OpenGL::OpenGL FTGL::FTGL "-undefined dynamic_lookup")
+	target_link_libraries(pyGLUtils2       OpenGL::OpenGL FTGL::FTGL)
 	target_link_libraries(pyMarchingCubes2 OpenGL::OpenGL)
 endif()
 
@@ -91,4 +89,4 @@ install(FILES ${empythonlibs}
 add_subdirectory(qtgui)
 
 target_link_libraries(pyUtils2         NumPy)
-target_link_libraries(pyTypeConverter2 NumPy "-undefined dynamic_lookup")
+target_link_libraries(pyTypeConverter2 NumPy)
