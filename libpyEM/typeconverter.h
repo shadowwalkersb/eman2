@@ -44,14 +44,12 @@
 #include "ctf.h"
 
 #include <boost/python.hpp>
-#include <boost/python/numpy.hpp>
 
 #include <vector>
 #include <map>
 #include <string>
 
 namespace python = boost::python;
-namespace np = boost::python::numpy;
 
 using std::vector;
 using std::map;
