@@ -32,11 +32,11 @@
 	#pragma warning(disable:4819)
 #endif	//_WIN32
 
+#include <Python.h>
 #include <numpy/arrayobject.h>
 
 // Boost Includes ==============================================================
 #include <boost/python.hpp>
-#include <boost/python/numpy.hpp>
 
 // Includes ====================================================================
 #include <emdata.h>
@@ -53,7 +53,6 @@
 
 // Using =======================================================================
 using namespace boost::python;
-namespace np = boost::python::numpy;
 
 #if PY_MAJOR_VERSION >= 3
 	#define IS_PY3K
@@ -64,7 +63,7 @@ namespace  {
 
 BOOST_PYTHON_FUNCTION_OVERLOADS(EMAN_Util_im_diff_overloads_2_3, EMAN::Util::im_diff, 2, 3)
 
-//BOOST_PYTHON_FUNCTION_OVERLOADS(EMAN_Util_TwoDTestFunc_overloads_5_7, EMAN::Util::TwoDTestFunc, 5, 7)
+BOOST_PYTHON_FUNCTION_OVERLOADS(EMAN_Util_TwoDTestFunc_overloads_5_7, EMAN::Util::TwoDTestFunc, 5, 7)
 
 BOOST_PYTHON_FUNCTION_OVERLOADS(EMAN_Util_even_angles_overloads_1_5, EMAN::Util::even_angles, 1, 5)
 
@@ -278,9 +277,9 @@ struct EMAN_Util_Wrapper: EMAN::Util
 	PyObject* py_self;
 };*/
 
-namespace np = boost::python::numpy;
+using boost::np::ndarray;
 
-float* get_fptr( np::ndarray& a )
+float* get_fptr( array& a )
 {
 /*
 	if (!PyArray_Check(a.ptr())) {
@@ -305,7 +304,7 @@ float* get_fptr( np::ndarray& a )
 }
 
 
-int* get_iptr( np::ndarray& a )
+int* get_iptr( array& a )
 {
 /*
 	if (!PyArray_Check(a.ptr())) {
@@ -327,7 +326,7 @@ int* get_iptr( np::ndarray& a )
 
 
 
-int pysstevd(const string& jobz, int n, np::ndarray& diag, np::ndarray& subdiag, np::ndarray& qmat, int kstep, np::ndarray& fwork, int lfwrk, np::ndarray& iwork, int liwrk )
+int pysstevd(const string& jobz, int n, array& diag, array& subdiag, array& qmat, int kstep, array& fwork, int lfwrk, array& iwork, int liwrk )
 {
     int info;
 
@@ -341,13 +340,13 @@ int pysstevd(const string& jobz, int n, np::ndarray& diag, np::ndarray& subdiag,
     return info;
 }
 
-float pysnrm2( int n, np::ndarray& a, int incx )
+float pysnrm2( int n, array& a, int incx )
 {
     float* f = get_fptr( a );
     return snrm2_(&n, f, &incx);
 }
 
-int pysgemv( const string& trans, int m, int n, float alpha, np::ndarray& a, int lda, np::ndarray& x, int incx, float beta, np::ndarray& y, int incy )
+int pysgemv( const string& trans, int m, int n, float alpha, array& a, int lda, array& x, int incx, float beta, array& y, int incy )
 {
     float* fa = get_fptr( a );
     float* fx = get_fptr( x );
@@ -355,14 +354,14 @@ int pysgemv( const string& trans, int m, int n, float alpha, np::ndarray& a, int
     return sgemv_( trans.c_str(), &m, &n, &alpha, fa, &lda, fx, &incx, &beta, fy, &incy );
 }
 
-int pysaxpy( int n, float alpha, np::ndarray& x, int incx, np::ndarray& y, int incy )
+int pysaxpy( int n, float alpha, array& x, int incx, array& y, int incy )
 {
     float* fx = get_fptr( x );
     float* fy = get_fptr( y );
     return saxpy_( &n, &alpha, fx, &incx, fy, &incy );
 }
 
-float pysdot( int n, np::ndarray& x, int incx, np::ndarray& y, int incy )
+float pysdot( int n, array& x, int incx, array& y, int incy )
 {
     float* fx = get_fptr( x );
     float* fy = get_fptr( y );
@@ -370,27 +369,11 @@ float pysdot( int n, np::ndarray& x, int incx, np::ndarray& y, int incy )
     return sdot_( &n, fx, &incx, fy, &incy );
 }
 
-#ifdef IS_PY3K
-static PyObject *PyIOBase_TypeObj;
-
-static int init_file_emulator(void)
-{
-    PyObject *io = PyImport_ImportModule("_io");
-    if(io == NULL) return -1;
-    PyIOBase_TypeObj = PyObject_GetAttrString(io, "_IOBase");
-    if(PyIOBase_TypeObj == NULL) return -1;
-    
-    return 0;
-}
-
-#endif	//IS_PY3K
-
-void readarray( object& f, np::ndarray& x, int size)
+void readarray( object& f, array& x, int size)
 {
 #ifdef IS_PY3K
-	if (init_file_emulator() < 0) return;
-	
-	if(!PyObject_IsInstance(f.ptr(), PyIOBase_TypeObj))
+	extern PyTypeObject PyIOBase_Type;
+	if(!PyObject_IsInstance(f.ptr(), (PyObject *)&PyIOBase_Type) )
 #else
 	if( !PyFile_Check(f.ptr()) )
 #endif	//IS_PY3K
@@ -412,7 +395,7 @@ void readarray( object& f, np::ndarray& x, int size)
 
 
 // k_means_cont_table_ is locate to util_sparx.cpp
-int pyk_means_cont_table(np::ndarray& group1, np::ndarray& group2, np::ndarray& stb, long int s1, long int s2, int flag) {
+int pyk_means_cont_table(array& group1, array& group2, array& stb, long int s1, long int s2, int flag) {
     int* pt_group1 = get_iptr(group1);
     int* pt_group2 = get_iptr(group2);
     int* pt_stb  = get_iptr(stb);
@@ -420,7 +403,7 @@ int pyk_means_cont_table(np::ndarray& group1, np::ndarray& group2, np::ndarray& 
 }
 
 // bb_enumerateMPI is locate in util_sparx.cpp
-vector<int> pybb_enumerateMPI(np::ndarray& parts, np::ndarray& classDims, int nParts, int nClasses, int T, int nguesses,int LARGEST_CLASS,int J, int max_branching, float stmult, int
+vector<int> pybb_enumerateMPI(array& parts, array& classDims, int nParts, int nClasses, int T, int nguesses,int LARGEST_CLASS,int J, int max_branching, float stmult, int
 branchfunc, int LIM) {
     int* pt_parts = get_iptr(parts);
     int* pt_classDims = get_iptr(classDims);
@@ -440,20 +423,20 @@ BOOST_PYTHON_MODULE(libpyUtils2)
 		.def("CANG", &EMAN::Util::CANG)
 		.def("BPCQ", &EMAN::Util::BPCQ)
 		.def("infomask", &EMAN::Util::infomask)
-		//.def("helixshiftali", &EMAN::Util::helixshiftali)
-		//.def("snakeshiftali", &EMAN::Util::snakeshiftali)
-		//.def("curhelixshiftali", &EMAN::Util::curhelixshiftali)
-		//.def("bsplineBase", &EMAN::Util::bsplineBase)
-		//.def("bsplineBasedu", &EMAN::Util::bsplineBasedu)
-		//.def("convertTocubicbsplineCoeffs", &EMAN::Util::convertTocubicbsplineCoeffs)
+		.def("helixshiftali", &EMAN::Util::helixshiftali)
+		.def("snakeshiftali", &EMAN::Util::snakeshiftali)
+		.def("curhelixshiftali", &EMAN::Util::curhelixshiftali)
+		.def("bsplineBase", &EMAN::Util::bsplineBase)
+		.def("bsplineBasedu", &EMAN::Util::bsplineBasedu)
+		.def("convertTocubicbsplineCoeffs", &EMAN::Util::convertTocubicbsplineCoeffs)
 		.def("cluster_pairwise", &EMAN::Util::cluster_pairwise, args("d", "K", "T", "F"))
 		.def("cluster_equalsize", &EMAN::Util::cluster_equalsize, args("d"))
 		.def("vareas", &EMAN::Util::vareas, args("d"))
 		.def("cyclicshift", &EMAN::Util::cyclicshift, args("image", "params"), "Performs inplace integer cyclic shift as specified by the 'dx','dy','dz' parameters on a 3d volume.\nImplements the inplace swapping using reversals as described in  also:\nhttp://www.csse.monash.edu.au/~lloyd/tildeAlgDS/Intro/Eg01/\n@author  Phani Ivatury\n@date 18-2006\n@see http://www.csse.monash.edu.au/~lloyd/tildeAlgDS/Intro/Eg01/\n\nA[0] A[1] A[2] A[3] A[4] A[5] A[6] A[7] A[8] A[9]\n\n10   20   30   40   50   60   70   80   90   100\n------------\n  m = 3 (shift left three places)\n\n  Reverse the items from 0..m-1 and m..N-1:\n\n 30   20   10   100  90   80   70   60   50   40\n\n Now reverse the entire sequence:\n\n  40   50   60   70   80   90   100  10   20   30\n\n\n  cycl_shift() in libpy/fundementals.py calls this function\n\n\
 Usage:\n EMData *im1 = new EMData();\n im1->set_size(70,80,85);\n im1->to_one();\nDict params; params['dx'] = 10;params['dy'] = 10000;params['dz'] = -10;\nUtils::cyclicshift(im1,params);\nim1.peak_search(1,1)")
 		.def("im_diff", &EMAN::Util::im_diff, EMAN_Util_im_diff_overloads_2_3(args("V1", "V2", "mask"), "V1 - \nV2 - \nmask - (default=Null)"))
-		//.def("TwoDTestFunc", &EMAN::Util::TwoDTestFunc, EMAN_Util_TwoDTestFunc_overloads_5_7(args("Size", "p", "q", "a", "b", "flag", "alphaDeg"), "Creates a Two D Test Pattern\n \nSize - must be odd\np - the x frequency\nq - the y frequency\na - the x falloff\nb - the y falloff\nflag - (default=0)\nalphaDeg - the projection angle(default=0)\n \nreturn The 2D test pattern in real space, fourier space,\nor the projection in real or fourier space\nor the FH of the pattern")[return_value_policy< manage_new_object >()])
-		//.def("splint", &EMAN::Util::splint, args("xa", "ya", "y2a", "n", "xq", "yq", "m"), "Given the arrays xa(ordered, ya of length n, which tabulate a function\nand given the array y2a which is the output of spline and an unordered array xq,\nthis routine returns a cubic-spline interpolated array yq.\n \nxa - \nya - of x is the tabulated function of length n\ny2a - is returned from spline: second derivs\nn - \nxq - is the x values to be splined: has m points.\nyq - are the splined values\nm -")
+		.def("TwoDTestFunc", &EMAN::Util::TwoDTestFunc, EMAN_Util_TwoDTestFunc_overloads_5_7(args("Size", "p", "q", "a", "b", "flag", "alphaDeg"), "Creates a Two D Test Pattern\n \nSize - must be odd\np - the x frequency\nq - the y frequency\na - the x falloff\nb - the y falloff\nflag - (default=0)\nalphaDeg - the projection angle(default=0)\n \nreturn The 2D test pattern in real space, fourier space,\nor the projection in real or fourier space\nor the FH of the pattern")[return_value_policy< manage_new_object >()])
+		.def("splint", &EMAN::Util::splint, args("xa", "ya", "y2a", "n", "xq", "yq", "m"), "Given the arrays xa(ordered, ya of length n, which tabulate a function\nand given the array y2a which is the output of spline and an unordered array xq,\nthis routine returns a cubic-spline interpolated array yq.\n \nxa - \nya - of x is the tabulated function of length n\ny2a - is returned from spline: second derivs\nn - \nxq - is the x values to be splined: has m points.\nyq - are the splined values\nm -")
 		.def("even_angles", &EMAN::Util::even_angles, EMAN_Util_even_angles_overloads_1_5(args("delta", "t1", "t2", "p1", "p2"), "Compute a vector containing quasi-evenly spaced Euler angles.\nThe order of angles in the vector is phi, theta, psi.\n \ndelta - Delta theta (spacing in theta).\nt1 - Starting (min) value of theta in degrees(default=0).\nt2 - Ending (max) value of theta in degrees(default=90).\np1 - Starting (min) value of phi in degrees(default=0)\np2 - Ending (max) value of phi in degrees(default = 359.9)\n \nreturn Vector of angles as a flat list of phi_0, theta_0, psi_0, ..., phi_N, theta_N, psi_N."))
 		.def("quadri", &EMAN::Util::quadri, args("x", "y", "nx", "ny", "image"), "Quadratic interpolation (2D).\n \nNote:  This routine starts counting from 1, not 0!\n \nThis routine uses six image points for interpolation:\n \n@see M. Abramowitz & I.E. Stegun, Handbook of Mathematical\nFunctions (Dover, New York, 1964), Sec. 25.2.67.\nhttp://www.math.sfu.ca/~cbm/aands/page_882.htm\n \n@see http://www.cl.cam.ac.uk/users/nad/pubs/quad.pdf\n \n@verbatim\n       f3    fc\n       |\n       | x\nf2-----f0----f1\n       |\n       |\n       f4\n@endverbatim\n \nf0 - f4 are image values near the interpolated point X.\nf0 is the interior mesh point nearest x.\n \nCoords:\nf0 = (x0, y0)\nf1 = (xb, y0)\nf2 = (xa, y0)\nf3 = (x0, yb)\nf4 = (x0, ya)\nfc = (xc, yc)\n \nMesh spacings:\nhxa -- x- mesh spacing to the left of f0\nhxb -- x- mesh spacing to the right of f0\n\
 hyb -- y- mesh spacing above f0\nhya -- y- mesh spacing below f0\n \nInterpolant:\n  f = f0 + c1*(x-x0) + c2*(x-x0)*(x-x1)\n		 + c3*(y-y0) + c4*(y-y0)*(y-y1)\n		 + c5*(x-x0)*(y-y0)\n \nx - x-coord value\ny - y-coord value\nnx - \nny - \nimage - Image object (pointer)\n \nreturn Interpolated value.")
@@ -469,10 +452,10 @@ hyb -- y- mesh spacing above f0\nhya -- y- mesh spacing below f0\n \nInterpolant
 		.def("fftr_d", &EMAN::Util::fftr_d, args("xcmplx", "nv"), "")
 		.def("fftc_q", &EMAN::Util::fftc_q, args("br", "bi", "ln", "ks"), "")
 		.def("fftc_d", &EMAN::Util::fftc_d, args("br", "bi", "ln", "ks"), "")
-		//.def("FCrngs", &EMAN::Util::FCrngs, return_value_policy< manage_new_object >(), args("img"), "FTC(img_rings)")
-		//.def("FCross", &EMAN::Util::FCross, return_value_policy< manage_new_object >(), args("frobj", "frings"), "Single Precision Fourier Transform sum of complex products of a set of rings followed by the IFT")
-		//.def("FCrossm", &EMAN::Util::FCrossm, return_value_policy< manage_new_object >(), args("frobj", "frings"), "Single Precision Fourier product conjg and straight to get mirror and sum of a set of complex rings followed by IFT")
-		//.def("FCross_multiref", &EMAN::Util::FCross_multiref)
+		.def("FCrngs", &EMAN::Util::FCrngs, return_value_policy< manage_new_object >(), args("img"), "FTC(img_rings)")
+		.def("FCross", &EMAN::Util::FCross, return_value_policy< manage_new_object >(), args("frobj", "frings"), "Single Precision Fourier Transform sum of complex products of a set of rings followed by the IFT")
+		.def("FCrossm", &EMAN::Util::FCrossm, return_value_policy< manage_new_object >(), args("frobj", "frings"), "Single Precision Fourier product conjg and straight to get mirror and sum of a set of complex rings followed by IFT")
+		.def("FCross_multiref", &EMAN::Util::FCross_multiref)
 		.def("multiply_rows", &EMAN::Util::multiply_rows)
 		.def("Frngs", &EMAN::Util::Frngs, args("circ", "numr"), "Single Precision Fourier Transform for a set of rings")
 		.def("Frngs_inv", &EMAN::Util::Frngs_inv, args("circ", "numr"), "Single Precision Inverse Fourier Transform for a set of rings")
@@ -505,7 +488,6 @@ hyb -- y- mesh spacing above f0\nhya -- y- mesh spacing below f0\n \nInterpolant
 		.def("ener_tot", &EMAN::Util::ener_tot, args("data", "numr", "tot"), "")
 		.def("min_dist_real", &EMAN::Util::min_dist_real, args("image", "data"), "k-means helper")
 		.def("min_dist_four", &EMAN::Util::min_dist_four, args("image", "data"), "k-means helper")
-#ifdef False
 		.def("cml_weights", &EMAN::Util::cml_weights, args("cml"), "new code common-lines\nhelper function for the weights calculation by Voronoi to Cml")
 		.def("cml_init_rot", &EMAN::Util::cml_init_rot, args("Ori"), "new code common-lines\n2009-03-25 15:35:05 JB. This function prepare rotation matrix for common-lines")
 		.def("cml_update_rot", &EMAN::Util::cml_update_rot, args("Rot", "iprj", "nph", "th", "nps"), "new code common-lines")
@@ -517,6 +499,12 @@ hyb -- y- mesh spacing above f0\nhya -- y- mesh spacing below f0\n \nInterpolant
 		.def("cml_disc", &EMAN::Util::cml_disc, args("data", "com", "seq", "weights", "n_lines"), "new code common-lines\n2009-03-30 15:44:05 JB. Compute the discrepancy belong all common-lines")
 		.def("cml_prepare_line", &EMAN::Util::cml_prepare_line, args("sino", "line", "ilf", "ihf", "pos_line", "nblines"), "new code common-lines\nThis function prepare the line from sinogram by cutting off some frequencies,\nand creating the mirror part (complex conjugate of the first part). Then\nboth lines (mirror and without) are drop to the sinogram.\nline is in Fourrier space, ilf low frequency, ihf high frequency, nblines\nnumber of lines of the half sinogram (the non miror part), sino the sinogram,\npos_line the position of the line in the sino.")
 		.def("set_line", &EMAN::Util::set_line, args("img", "posline", "line", "offset", "length"), "new code common-lines\nThis function drop a line (line) to an 2D image (img).\nThe position of the line to the image is defined by (postline).\nThe part of the line paste is defined by (offset), the begin position\nand (length) the size.")
+		.def("decimate", &EMAN::Util::decimate, EMAN_Util_decimate_overloads_2_4(args("img", "x_step", "y_step", "z_step"), "Decimates the image with respect to the image center.\n(i.e) the center of the original image is kept the same\nand then the initial start pixel is calculated with respect to the\ncenter of the image.\nworks for all 3 dimensions\n \nimg - image\nx_step - x-pixel\ny_step - y-pixel(default=1)\nz_step - z-pixel(default=1)")[ return_value_policy< manage_new_object >() ])
+		.def("window", &EMAN::Util::window, EMAN_Util_window_overloads_2_7(args("img", "new_nx", "new_ny", "new_nz", "x_offset", "y_offset", "z_offset"), "img - \nnew_nx - \nnew_ny - (defalt=1)\nnew_nz - (defalt=1)\nx_offset - (default=0)\ny_offset - (default=0)\nz_offset - (default=0)")[ return_value_policy< manage_new_object >() ])
+		.def("pad", &EMAN::Util::pad, EMAN_Util_pad_overloads_2_8(args("img", "new_nx", "new_ny", "new_nz", "x_offset", "y_offset", "z_offset", "params"), "img - \nnew_nx - \nnew_ny - (defalt=1)\nnew_nz - (defalt=1)\nx_offset - (default=0)\ny_offset - (default=0)\nz_offset - (default=0)\nparams - (default='average')")[ return_value_policy< manage_new_object >() ])
+		.def("histc", &EMAN::Util::histc, args("ref", "img", "mask"), "")
+		.def("hist_comp_freq", &EMAN::Util::hist_comp_freq, args("PA", "PB", "size_img", "hist_len", "img", "ref_freq_hist", "mask", "ref_h_diff", "ref_h_min"), "")
+		.def("tf", &EMAN::Util::tf, EMAN_Util_tf_overloads_2_7(args("dzz", "ak", "voltage", "cs", "wgh", "b_factor", "sign"), "The unit in the ctf function: dz: Angstrom, cs: CM  Ps: Angstrom, Voltage: Kv,dza: Angstrom, azz: degree wgh: None unit. b_factor: Angstrom^2\nThe CTF function takes form of   *sin(-quadpi*(dz*lambda*ak^2-cs*lambda^3*ak^4/2.)-wgh)*exp(-b_factor*ak^2)*sign\nsign can be set as +1 or -1 . The unit of frequency ak is 1/Angstrom\nAttention: Envelope function in power spectrum has a form of exp(-b_factor*ak^2\ndzz - \nak - \nvoltage - (default=300.0)\ncs - (default=2.0)\nwgh - (1.0)\nb_factor - (default=0.0)\nsign - (default=-1.0)"))
 		.def("compress_image_mask", &EMAN::Util::compress_image_mask, return_value_policy< manage_new_object >(), args("img", "mask"), "")
 		.def("reconstitute_image_mask", &EMAN::Util::reconstitute_image_mask, return_value_policy< manage_new_object >(), args("img", "mask"), "Recreates a n-d image using its compressed 1-D form and the mask")
 		.def("pw_extract", &EMAN::Util::pw_extract, args("pw", "n", "iswi", "ps"), "")
@@ -524,13 +512,6 @@ hyb -- y- mesh spacing above f0\nhya -- y- mesh spacing below f0\n \nInterpolant
 		.def("cmp1", &EMAN::Util::cmp1, args("tmp1", "tmp2"), "")
 		.def("cmp2", &EMAN::Util::cmp2, args("tmp1", "tmp2"), "")
 		.def("areav_", &EMAN::Util::areav_, args("k", "n", "x", "y", "z__", "list", "lptr", "lend", "ier"), "STRIDPACK USED COMMANDS FOR VORONOI")
-#endif
-		.def("decimate", &EMAN::Util::decimate, EMAN_Util_decimate_overloads_2_4(args("img", "x_step", "y_step", "z_step"), "Decimates the image with respect to the image center.\n(i.e) the center of the original image is kept the same\nand then the initial start pixel is calculated with respect to the\ncenter of the image.\nworks for all 3 dimensions\n \nimg - image\nx_step - x-pixel\ny_step - y-pixel(default=1)\nz_step - z-pixel(default=1)")[ return_value_policy< manage_new_object >() ])
-		.def("window", &EMAN::Util::window, EMAN_Util_window_overloads_2_7(args("img", "new_nx", "new_ny", "new_nz", "x_offset", "y_offset", "z_offset"), "img - \nnew_nx - \nnew_ny - (defalt=1)\nnew_nz - (defalt=1)\nx_offset - (default=0)\ny_offset - (default=0)\nz_offset - (default=0)")[ return_value_policy< manage_new_object >() ])
-		.def("pad", &EMAN::Util::pad, EMAN_Util_pad_overloads_2_8(args("img", "new_nx", "new_ny", "new_nz", "x_offset", "y_offset", "z_offset", "params"), "img - \nnew_nx - \nnew_ny - (defalt=1)\nnew_nz - (defalt=1)\nx_offset - (default=0)\ny_offset - (default=0)\nz_offset - (default=0)\nparams - (default='average')")[ return_value_policy< manage_new_object >() ])
-		.def("histc", &EMAN::Util::histc, args("ref", "img", "mask"), "")
-		.def("hist_comp_freq", &EMAN::Util::hist_comp_freq, args("PA", "PB", "size_img", "hist_len", "img", "ref_freq_hist", "mask", "ref_h_diff", "ref_h_min"), "")
-		.def("tf", &EMAN::Util::tf, EMAN_Util_tf_overloads_2_7(args("dzz", "ak", "voltage", "cs", "wgh", "b_factor", "sign"), "The unit in the ctf function: dz: Angstrom, cs: CM  Ps: Angstrom, Voltage: Kv,dza: Angstrom, azz: degree wgh: None unit. b_factor: Angstrom^2\nThe CTF function takes form of   *sin(-quadpi*(dz*lambda*ak^2-cs*lambda^3*ak^4/2.)-wgh)*exp(-b_factor*ak^2)*sign\nsign can be set as +1 or -1 . The unit of frequency ak is 1/Angstrom\nAttention: Envelope function in power spectrum has a form of exp(-b_factor*ak^2\ndzz - \nak - \nvoltage - (default=300.0)\ncs - (default=2.0)\nwgh - (1.0)\nb_factor - (default=0.0)\nsign - (default=-1.0)"))
 		.def("shrinkfvol", &EMAN::Util::shrinkfvol, return_value_policy< manage_new_object >(), args("img", "npad"), "shrink Fourier volume, either real or complex")
 		.def("divclreal", &EMAN::Util::divclreal, args("img1 = complex", "img2 = real", "cutoff = float"), "img1 *= 1./img2 if larger than cutoff")
 		.def("mulreal", &EMAN::Util::mulreal, return_value_policy< manage_new_object >(), args("img1", "img2"), "cmplx = (img1 * img2, 0)")
@@ -563,7 +544,6 @@ hyb -- y- mesh spacing above f0\nhya -- y- mesh spacing below f0\n \nInterpolant
 		.def("div_img", &EMAN::Util::div_img, args("img", "img1"), "img /= img1")
 		.def("square_img", &EMAN::Util::square_img, args("img"), "img = |img|^2")
 		.def("put_slice", &EMAN::Util::put_slice, args("volume", "slice", "dim", "index"), "insert slice into vol")
-		.def("plane_through_volume", &EMAN::Util::plane_through_volume, args("volume", "weights", "plane", "phi", "theta", "psi", "index"), "insert/extract plane through volume")
 		.def("div_filter", &EMAN::Util::div_filter, args("img", "img1"), "img /= Re(img1) with zero check")
 		.def("sqed", &EMAN::Util::sqed, args("img", "proj", "ctfs", "bckgnoise"), "")
 		.def("sqed_test", &EMAN::Util::sqed_test, args("img", "proj", "ctfs", "bckgnoise"), "")
@@ -605,21 +585,19 @@ hyb -- y- mesh spacing above f0\nhya -- y- mesh spacing below f0\n \nInterpolant
 		.def("multiref_peaks_ali2d", &EMAN::Util::multiref_peaks_ali2d, args("image", "crefim", "xrng", "yrng", "step", "mode", "numr", "cnx", "cny", "peaks", "peakm"), "Determine shift and rotation between image and one reference\nimage (crefim, weights have to be applied) using quadratic\ninterpolation, return a list of peaks  PAP  07/21/08\n\nccf1d keeps 1d ccfs stored as (maxrin, -kx-1:kx+1, -ky-1:ky+1)\nmargin is needed for peak search and both arrays are initialized with -1.0e20")
 		.def("multiref_peaks_compress_ali2d", &EMAN::Util::multiref_peaks_compress_ali2d, args("image", "crefim", "xrng", "yrng", "step", "mode", "numr", "cnx", "cny", "peaks", "peakm", "peaks_compress", "peakm_compress"), "Determine shift and rotation between image and one reference\nimage (crefim, weights have to be applied) using quadratic\ninterpolation, return a list of peaks  PAP  07/21/08\n\nccf1d keeps 1d ccfs stored as (maxrin, -kx-1:kx+1, -ky-1:ky+1)\nmargin is needed for peak search and both arrays are initialized with -1.0e20")
 		.def("ali2d_ccf_list", &EMAN::Util::ali2d_ccf_list, args("image", "crefim", "xrng", "yrng", "step", "mode", "numr", "cnx", "cny", "T"), "Determine shift and rotation between image and one reference\nimage (crefim, weights have to be applied) using quadratic\ninterpolation")
-		//.def("ali2d_ccf_list_snake", &EMAN::Util::ali2d_ccf_list_snake, args("image", "crefim", "xrng", "yrng", "step", "mode", "numr", "cnx", "cny", "T"), "Determine shift and rotation between image and one reference\nimage (crefim, weights have to be applied) using quadratic\ninterpolation")
+		.def("ali2d_ccf_list_snake", &EMAN::Util::ali2d_ccf_list_snake, args("image", "crefim", "xrng", "yrng", "step", "mode", "numr", "cnx", "cny", "T"), "Determine shift and rotation between image and one reference\nimage (crefim, weights have to be applied) using quadratic\ninterpolation")
 		.def("compress_image_mask", &EMAN::Util::compress_image_mask, return_value_policy< manage_new_object >())
 		.def("reconstitute_image_mask", &EMAN::Util::reconstitute_image_mask, return_value_policy< manage_new_object >())
-		//.def("pw_extract", &EMAN::Util::pw_extract)
+		.def("pw_extract", &EMAN::Util::pw_extract)
 		.def("polar_norm2", &EMAN::Util::polar_norm2)
 		.def("innerproduct", &EMAN::Util::innerproduct)
 		.def("innerproduct_np", &EMAN::Util::innerproduct_np)
 		.def("innerproductwithctf", &EMAN::Util::innerproductwithctf)
 		.def("local_inner_product", &EMAN::Util::local_inner_product)
-#ifdef False
 		.def("vrdg", &EMAN::Util::vrdg)
 		.def("cmp1", &EMAN::Util::cmp1)
 		.def("cmp2", &EMAN::Util::cmp2)
 		.def("areav_", &EMAN::Util::areav_)
-#endif
 		.def("divclreal", &EMAN::Util::divclreal)
 		.def("mulreal", &EMAN::Util::mulreal, return_value_policy< manage_new_object >())
 		.def("mulreal_2D_in_place", &EMAN::Util::mulreal_2D_in_place)
@@ -699,7 +677,7 @@ hyb -- y- mesh spacing above f0\nhya -- y- mesh spacing below f0\n \nInterpolant
 		.def("multiref_peaks_ali2d", &EMAN::Util::multiref_peaks_ali2d)
 		.def("multiref_peaks_compress_ali2d", &EMAN::Util::multiref_peaks_compress_ali2d)
 		.def("ali2d_ccf_list", &EMAN::Util::ali2d_ccf_list)
-		//.def("ali2d_ccf_list_snake", &EMAN::Util::ali2d_ccf_list_snake)
+		.def("ali2d_ccf_list_snake", &EMAN::Util::ali2d_ccf_list_snake)
 		//.def("multiref_peaks_ali", &EMAN::Util::multiref_peaks_ali)
 		.def("polar_norm2", &EMAN::Util::polar_norm2, args("image1", "numr"), "")
 		.def("innerproduct", &EMAN::Util::innerproduct, args("image1", "image2", "mask"), "")
@@ -828,12 +806,12 @@ hyb -- y- mesh spacing above f0\nhya -- y- mesh spacing below f0\n \nInterpolant
 		.staticmethod("point_is_in_triangle_2d")
 		.staticmethod("point_is_in_convex_polygon_2d")
 		.staticmethod("infomask")
-		//.staticmethod("helixshiftali")
-		//.staticmethod("snakeshiftali")
-		//.staticmethod("curhelixshiftali")
-		//.staticmethod("bsplineBase")
-		//.staticmethod("bsplineBasedu")
-		//.staticmethod("convertTocubicbsplineCoeffs")
+		.staticmethod("helixshiftali")
+		.staticmethod("snakeshiftali")
+		.staticmethod("curhelixshiftali")
+		.staticmethod("bsplineBase")
+		.staticmethod("bsplineBasedu")
+		.staticmethod("convertTocubicbsplineCoeffs")
 		.staticmethod("CANG")
 		.staticmethod("rotate_rings")
 		.staticmethod("ccc_rings")
@@ -841,7 +819,6 @@ hyb -- y- mesh spacing above f0\nhya -- y- mesh spacing below f0\n \nInterpolant
 		.staticmethod("ener_tot")
 		.staticmethod("min_dist_real")
 		.staticmethod("min_dist_four")
-#ifdef False
 		.staticmethod("cml_weights")
 		.staticmethod("cml_init_rot")
 		.staticmethod("cml_update_rot")
@@ -853,7 +830,6 @@ hyb -- y- mesh spacing above f0\nhya -- y- mesh spacing below f0\n \nInterpolant
 		.staticmethod("cml_spin_psi_now")
 		.staticmethod("set_line")
 		.staticmethod("cml_prepare_line")
-#endif
 		.staticmethod("sstrncmp")
 		.staticmethod("int2str")
 		.staticmethod("square_sum")
@@ -904,8 +880,8 @@ hyb -- y- mesh spacing above f0\nhya -- y- mesh spacing below f0\n \nInterpolant
 		.staticmethod("coveig")
 		.staticmethod("coveig_for_py")
 		.staticmethod("tf")
-		//.staticmethod("cmp1")
-		//.staticmethod("cmp2")
+		.staticmethod("cmp1")
+		.staticmethod("cmp2")
 		.staticmethod("hist_comp_freq")
 		.staticmethod("even_angles")
 		.staticmethod("get_min")
@@ -913,8 +889,8 @@ hyb -- y- mesh spacing above f0\nhya -- y- mesh spacing below f0\n \nInterpolant
 		.staticmethod("bilinear_interpolate")
 		.staticmethod("round")
 		.staticmethod("square")
-		//.staticmethod("areav_")
-		//.staticmethod("TwoDTestFunc")
+		.staticmethod("areav_")
+		.staticmethod("TwoDTestFunc")
 		.staticmethod("set_randnum_seed")
 		.staticmethod("get_randnum_seed")
 		.staticmethod("get_frand")
@@ -932,7 +908,7 @@ hyb -- y- mesh spacing above f0\nhya -- y- mesh spacing below f0\n \nInterpolant
 		.staticmethod("divabs")
 		.staticmethod("addn_img")
 		.staticmethod("muln_img")
-		//.staticmethod("pw_extract")
+		.staticmethod("pw_extract")
 		.staticmethod("divn_img")
 		.staticmethod("squaren_img")
 		.staticmethod("divn_filter")
@@ -970,7 +946,7 @@ hyb -- y- mesh spacing above f0\nhya -- y- mesh spacing below f0\n \nInterpolant
 		.staticmethod("cleanup_threads")
 		.staticmethod("version")
 		.staticmethod("move_points")
-		//.staticmethod("splint")
+		.staticmethod("splint")
 		.staticmethod("compress_image_mask")
 		.staticmethod("calc_best_fft_size")
 		.staticmethod("nonconvex")
@@ -979,7 +955,7 @@ hyb -- y- mesh spacing above f0\nhya -- y- mesh spacing below f0\n \nInterpolant
 		.staticmethod("angle_sub_pi")
 		.staticmethod("sub_img")
 		.staticmethod("reconstitute_image_mask")
-		//.staticmethod("vrdg")
+		.staticmethod("vrdg")
 		.staticmethod("update_fav")
 		.staticmethod("change_filename_ext")
 		.staticmethod("cyclicshift")
@@ -1031,7 +1007,7 @@ hyb -- y- mesh spacing above f0\nhya -- y- mesh spacing below f0\n \nInterpolant
 		//.staticmethod("multiref_peaks_ali")
 		.staticmethod("multiref_peaks_compress_ali2d")
 		.staticmethod("ali2d_ccf_list")
-		//.staticmethod("ali2d_ccf_list_snake")
+		.staticmethod("ali2d_ccf_list_snake")
 		.staticmethod("hypot3")
 		.staticmethod("histc")
 		.staticmethod("get_stats")
@@ -1052,10 +1028,10 @@ hyb -- y- mesh spacing above f0\nhya -- y- mesh spacing below f0\n \nInterpolant
 		.staticmethod("Polar2DFT")
 		.staticmethod("Polar2DShiftCoeffs")
 		.staticmethod("fast_floor")
-		//.staticmethod("FCrngs")
-		//.staticmethod("FCross")
-		//.staticmethod("FCrossm")
-		//.staticmethod("FCross_multiref")
+		.staticmethod("FCrngs")
+		.staticmethod("FCross")
+		.staticmethod("FCrossm")
+		.staticmethod("FCross_multiref")
 		.staticmethod("multiply_rows")
 		.staticmethod("Frngs")
 		.staticmethod("Frngs_inv")
@@ -1077,7 +1053,6 @@ hyb -- y- mesh spacing above f0\nhya -- y- mesh spacing below f0\n \nInterpolant
 		.staticmethod("merge_peaks")
 		.staticmethod("get_slice")
 		.staticmethod("put_slice")
-		.staticmethod("plane_through_volume")
 		.staticmethod("sstevd")
 		.staticmethod("sgemv")
 		.staticmethod("snrm2")
@@ -1245,7 +1220,6 @@ hyb -- y- mesh spacing above f0\nhya -- y- mesh spacing below f0\n \nInterpolant
         .value("EM_UINT", EMAN::EMUtil::EM_UINT)
         .value("EM_DOUBLE", EMAN::EMUtil::EM_DOUBLE)
         .value("EM_FLOAT", EMAN::EMUtil::EM_FLOAT)
-        .value("EM_COMPRESSED", EMAN::EMUtil::EM_COMPRESSED)
     ;
 
 
