@@ -33,7 +33,7 @@
 #endif	//_WIN32
 
 #include <Python.h>
-#include <numpy/arrayobject.h>
+#include <numpy/ndarrayobject.h>
 
 // Boost Includes ==============================================================
 #include <boost/python.hpp>
@@ -276,10 +276,12 @@ struct EMAN_Util_Wrapper: EMAN::Util
 
 	PyObject* py_self;
 };*/
+#include <boost/python/numpy.hpp>
 
-using boost::np::ndarray;
+namespace np = boost::python::numpy;
+using np::ndarray;
 
-float* get_fptr( array& a )
+float* get_fptr( ndarray& a )
 {
 /*
 	if (!PyArray_Check(a.ptr())) {
@@ -294,7 +296,7 @@ float* get_fptr( array& a )
         {
 		//PyErr_SetString(PyExc_ValueError, "expected a float PyArrayObject for get_fptr");
 		//return NULL;
-		throw std::runtime_error( "Expected a float array for get_fptr" );
+		throw std::runtime_error( "Expected a float ndarray for get_fptr" );
 
 	}
 
@@ -304,7 +306,7 @@ float* get_fptr( array& a )
 }
 
 
-int* get_iptr( array& a )
+int* get_iptr( ndarray& a )
 {
 /*
 	if (!PyArray_Check(a.ptr())) {
@@ -318,7 +320,7 @@ int* get_iptr( array& a )
         {
 		//cout << "datatype != 'i's: " << datatype << endl;
         	//PyErr_SetString(PyExc_ValueError, "expected an integer PyArrayObject for get_iptr");
-		throw std::runtime_error( "Expected a int array for get_fptr" );
+		throw std::runtime_error( "Expected a int ndarray for get_fptr" );
 	}
 
 	return (int*)(aptr->data);
@@ -326,7 +328,7 @@ int* get_iptr( array& a )
 
 
 
-int pysstevd(const string& jobz, int n, array& diag, array& subdiag, array& qmat, int kstep, array& fwork, int lfwrk, array& iwork, int liwrk )
+int pysstevd(const string& jobz, int n, ndarray& diag, ndarray& subdiag, ndarray& qmat, int kstep, ndarray& fwork, int lfwrk, ndarray& iwork, int liwrk )
 {
     int info;
 
@@ -340,13 +342,13 @@ int pysstevd(const string& jobz, int n, array& diag, array& subdiag, array& qmat
     return info;
 }
 
-float pysnrm2( int n, array& a, int incx )
+float pysnrm2( int n, ndarray& a, int incx )
 {
     float* f = get_fptr( a );
     return snrm2_(&n, f, &incx);
 }
 
-int pysgemv( const string& trans, int m, int n, float alpha, array& a, int lda, array& x, int incx, float beta, array& y, int incy )
+int pysgemv( const string& trans, int m, int n, float alpha, ndarray& a, int lda, ndarray& x, int incx, float beta, ndarray& y, int incy )
 {
     float* fa = get_fptr( a );
     float* fx = get_fptr( x );
@@ -354,14 +356,14 @@ int pysgemv( const string& trans, int m, int n, float alpha, array& a, int lda, 
     return sgemv_( trans.c_str(), &m, &n, &alpha, fa, &lda, fx, &incx, &beta, fy, &incy );
 }
 
-int pysaxpy( int n, float alpha, array& x, int incx, array& y, int incy )
+int pysaxpy( int n, float alpha, ndarray& x, int incx, ndarray& y, int incy )
 {
     float* fx = get_fptr( x );
     float* fy = get_fptr( y );
     return saxpy_( &n, &alpha, fx, &incx, fy, &incy );
 }
 
-float pysdot( int n, array& x, int incx, array& y, int incy )
+float pysdot( int n, ndarray& x, int incx, ndarray& y, int incy )
 {
     float* fx = get_fptr( x );
     float* fy = get_fptr( y );
@@ -369,7 +371,7 @@ float pysdot( int n, array& x, int incx, array& y, int incy )
     return sdot_( &n, fx, &incx, fy, &incy );
 }
 
-void readarray( object& f, array& x, int size)
+void readarray( object& f, ndarray& x, int size)
 {
 #ifdef IS_PY3K
 	extern PyTypeObject PyIOBase_Type;
@@ -395,7 +397,7 @@ void readarray( object& f, array& x, int size)
 
 
 // k_means_cont_table_ is locate to util_sparx.cpp
-int pyk_means_cont_table(array& group1, array& group2, array& stb, long int s1, long int s2, int flag) {
+int pyk_means_cont_table(ndarray& group1, ndarray& group2, ndarray& stb, long int s1, long int s2, int flag) {
     int* pt_group1 = get_iptr(group1);
     int* pt_group2 = get_iptr(group2);
     int* pt_stb  = get_iptr(stb);
@@ -403,7 +405,7 @@ int pyk_means_cont_table(array& group1, array& group2, array& stb, long int s1, 
 }
 
 // bb_enumerateMPI is locate in util_sparx.cpp
-vector<int> pybb_enumerateMPI(array& parts, array& classDims, int nParts, int nClasses, int T, int nguesses,int LARGEST_CLASS,int J, int max_branching, float stmult, int
+vector<int> pybb_enumerateMPI(ndarray& parts, ndarray& classDims, int nParts, int nClasses, int T, int nguesses,int LARGEST_CLASS,int J, int max_branching, float stmult, int
 branchfunc, int LIM) {
     int* pt_parts = get_iptr(parts);
     int* pt_classDims = get_iptr(classDims);
@@ -436,7 +438,7 @@ BOOST_PYTHON_MODULE(libpyUtils2)
 Usage:\n EMData *im1 = new EMData();\n im1->set_size(70,80,85);\n im1->to_one();\nDict params; params['dx'] = 10;params['dy'] = 10000;params['dz'] = -10;\nUtils::cyclicshift(im1,params);\nim1.peak_search(1,1)")
 		.def("im_diff", &EMAN::Util::im_diff, EMAN_Util_im_diff_overloads_2_3(args("V1", "V2", "mask"), "V1 - \nV2 - \nmask - (default=Null)"))
 		.def("TwoDTestFunc", &EMAN::Util::TwoDTestFunc, EMAN_Util_TwoDTestFunc_overloads_5_7(args("Size", "p", "q", "a", "b", "flag", "alphaDeg"), "Creates a Two D Test Pattern\n \nSize - must be odd\np - the x frequency\nq - the y frequency\na - the x falloff\nb - the y falloff\nflag - (default=0)\nalphaDeg - the projection angle(default=0)\n \nreturn The 2D test pattern in real space, fourier space,\nor the projection in real or fourier space\nor the FH of the pattern")[return_value_policy< manage_new_object >()])
-		.def("splint", &EMAN::Util::splint, args("xa", "ya", "y2a", "n", "xq", "yq", "m"), "Given the arrays xa(ordered, ya of length n, which tabulate a function\nand given the array y2a which is the output of spline and an unordered array xq,\nthis routine returns a cubic-spline interpolated array yq.\n \nxa - \nya - of x is the tabulated function of length n\ny2a - is returned from spline: second derivs\nn - \nxq - is the x values to be splined: has m points.\nyq - are the splined values\nm -")
+		.def("splint", &EMAN::Util::splint, args("xa", "ya", "y2a", "n", "xq", "yq", "m"), "Given the ndarrays xa(ordered, ya of length n, which tabulate a function\nand given the ndarray y2a which is the output of spline and an unordered ndarray xq,\nthis routine returns a cubic-spline interpolated ndarray yq.\n \nxa - \nya - of x is the tabulated function of length n\ny2a - is returned from spline: second derivs\nn - \nxq - is the x values to be splined: has m points.\nyq - are the splined values\nm -")
 		.def("even_angles", &EMAN::Util::even_angles, EMAN_Util_even_angles_overloads_1_5(args("delta", "t1", "t2", "p1", "p2"), "Compute a vector containing quasi-evenly spaced Euler angles.\nThe order of angles in the vector is phi, theta, psi.\n \ndelta - Delta theta (spacing in theta).\nt1 - Starting (min) value of theta in degrees(default=0).\nt2 - Ending (max) value of theta in degrees(default=90).\np1 - Starting (min) value of phi in degrees(default=0)\np2 - Ending (max) value of phi in degrees(default = 359.9)\n \nreturn Vector of angles as a flat list of phi_0, theta_0, psi_0, ..., phi_N, theta_N, psi_N."))
 		.def("quadri", &EMAN::Util::quadri, args("x", "y", "nx", "ny", "image"), "Quadratic interpolation (2D).\n \nNote:  This routine starts counting from 1, not 0!\n \nThis routine uses six image points for interpolation:\n \n@see M. Abramowitz & I.E. Stegun, Handbook of Mathematical\nFunctions (Dover, New York, 1964), Sec. 25.2.67.\nhttp://www.math.sfu.ca/~cbm/aands/page_882.htm\n \n@see http://www.cl.cam.ac.uk/users/nad/pubs/quad.pdf\n \n@verbatim\n       f3    fc\n       |\n       | x\nf2-----f0----f1\n       |\n       |\n       f4\n@endverbatim\n \nf0 - f4 are image values near the interpolated point X.\nf0 is the interior mesh point nearest x.\n \nCoords:\nf0 = (x0, y0)\nf1 = (xb, y0)\nf2 = (xa, y0)\nf3 = (x0, yb)\nf4 = (x0, ya)\nfc = (xc, yc)\n \nMesh spacings:\nhxa -- x- mesh spacing to the left of f0\nhxb -- x- mesh spacing to the right of f0\n\
 hyb -- y- mesh spacing above f0\nhya -- y- mesh spacing below f0\n \nInterpolant:\n  f = f0 + c1*(x-x0) + c2*(x-x0)*(x-x1)\n		 + c3*(y-y0) + c4*(y-y0)*(y-y1)\n		 + c5*(x-x0)*(y-y0)\n \nx - x-coord value\ny - y-coord value\nnx - \nny - \nimage - Image object (pointer)\n \nreturn Interpolated value.")
@@ -582,8 +584,8 @@ hyb -- y- mesh spacing above f0\nhya -- y- mesh spacing below f0\n \nInterpolant
 		.def("multiref_polar_ali_helical_90_local", &EMAN::Util::multiref_polar_ali_helical_90_local,EMAN_Util_multiref_polar_ali_helical_90_local_overloads_11_13(args("image", "crefim", "xrng", "yrng", "step", "ant", "psi_max", "mode", "numr", "cnx", "cny","ynumber","yrnglocal"), "formerly known as apmq\nDetermine shift and rotation between image and many reference with theta equals to 90 degree\nimages (crefim, weights have to be applied) quadratic\ninterpolation\nSearch for peaks only within +/-psi_max from 0 and 180 (helical)"))
 		.def("multiref_polar_ali_helicon_local", &EMAN::Util::multiref_polar_ali_helicon_local,EMAN_Util_multiref_polar_ali_helicon_local_overloads_11_13(args("image", "crefim", "xrng", "yrng", "step", "ant", "psi_max", "mode", "numr", "cnx", "cny","ynumber","yrnglocal"), "formerly known as apmq\nDetermine shift and rotation between image and many reference\nimages (crefim, weights have to be applied) quadratic\ninterpolation\nSearch for peaks only within +/-psi_max from 0 and 180 (helicon)"))
 		.def("multiref_polar_ali_helicon_90_local", &EMAN::Util::multiref_polar_ali_helicon_90_local,EMAN_Util_multiref_polar_ali_helicon_90_local_overloads_11_13(args("image", "crefim", "xrng", "yrng", "step", "ant", "psi_max", "mode", "numr", "cnx", "cny","ynumber","yrnglocal"), "formerly known as apmq\nDetermine shift and rotation between image and many reference with theta equals to 90 degree\nimages (crefim, weights have to be applied) quadratic\ninterpolation\nSearch for peaks only within +/-psi_max from 0 and 180 (helicon)"))
-		.def("multiref_peaks_ali2d", &EMAN::Util::multiref_peaks_ali2d, args("image", "crefim", "xrng", "yrng", "step", "mode", "numr", "cnx", "cny", "peaks", "peakm"), "Determine shift and rotation between image and one reference\nimage (crefim, weights have to be applied) using quadratic\ninterpolation, return a list of peaks  PAP  07/21/08\n\nccf1d keeps 1d ccfs stored as (maxrin, -kx-1:kx+1, -ky-1:ky+1)\nmargin is needed for peak search and both arrays are initialized with -1.0e20")
-		.def("multiref_peaks_compress_ali2d", &EMAN::Util::multiref_peaks_compress_ali2d, args("image", "crefim", "xrng", "yrng", "step", "mode", "numr", "cnx", "cny", "peaks", "peakm", "peaks_compress", "peakm_compress"), "Determine shift and rotation between image and one reference\nimage (crefim, weights have to be applied) using quadratic\ninterpolation, return a list of peaks  PAP  07/21/08\n\nccf1d keeps 1d ccfs stored as (maxrin, -kx-1:kx+1, -ky-1:ky+1)\nmargin is needed for peak search and both arrays are initialized with -1.0e20")
+		.def("multiref_peaks_ali2d", &EMAN::Util::multiref_peaks_ali2d, args("image", "crefim", "xrng", "yrng", "step", "mode", "numr", "cnx", "cny", "peaks", "peakm"), "Determine shift and rotation between image and one reference\nimage (crefim, weights have to be applied) using quadratic\ninterpolation, return a list of peaks  PAP  07/21/08\n\nccf1d keeps 1d ccfs stored as (maxrin, -kx-1:kx+1, -ky-1:ky+1)\nmargin is needed for peak search and both ndarrays are initialized with -1.0e20")
+		.def("multiref_peaks_compress_ali2d", &EMAN::Util::multiref_peaks_compress_ali2d, args("image", "crefim", "xrng", "yrng", "step", "mode", "numr", "cnx", "cny", "peaks", "peakm", "peaks_compress", "peakm_compress"), "Determine shift and rotation between image and one reference\nimage (crefim, weights have to be applied) using quadratic\ninterpolation, return a list of peaks  PAP  07/21/08\n\nccf1d keeps 1d ccfs stored as (maxrin, -kx-1:kx+1, -ky-1:ky+1)\nmargin is needed for peak search and both ndarrays are initialized with -1.0e20")
 		.def("ali2d_ccf_list", &EMAN::Util::ali2d_ccf_list, args("image", "crefim", "xrng", "yrng", "step", "mode", "numr", "cnx", "cny", "T"), "Determine shift and rotation between image and one reference\nimage (crefim, weights have to be applied) using quadratic\ninterpolation")
 		.def("ali2d_ccf_list_snake", &EMAN::Util::ali2d_ccf_list_snake, args("image", "crefim", "xrng", "yrng", "step", "mode", "numr", "cnx", "cny", "T"), "Determine shift and rotation between image and one reference\nimage (crefim, weights have to be applied) using quadratic\ninterpolation")
 		.def("compress_image_mask", &EMAN::Util::compress_image_mask, return_value_policy< manage_new_object >())
@@ -694,8 +696,8 @@ hyb -- y- mesh spacing above f0\nhya -- y- mesh spacing below f0\n \nInterpolant
 		.def("int2str", &EMAN::Util::int2str, args("n"), "Get a string format of an integer, e.g. 123 will be '123'.\n \nn - The input integer.\n \nreturn The string format of the given integer.")
 		.def("change_filename_ext", &EMAN::Util::change_filename_ext, args("old_filename", "new_ext"), "Change a file's extension and return the new filename.\nIf the given new extension is empty, the old filename is\nnot changed. If the old filename has no extension, add the\nnew extension to it.")
 		.def("remove_filename_ext", &EMAN::Util::remove_filename_ext,args("filename"), "Remove a filename's extension and return the new filename.\n \nfilename The old filename whose extension is going to be removed.\n \nreturn The new filename without extension.")
-		.def("save_data",(void (*)(float,float,const vector<float> &,const string &))&EMAN::Util::save_data, args("x0", "dx", "y_array", "filename"), "Save x, y data into a file. Each line of the file have the\nformat \"x1TABy1\", where x1 = x0 + dx*i; y1 = y_array[i].\n \nx0 - The starting point of x.\ndx - delta x. The increase step of x data.\ny_array - The y data array.\nfilename - The output filename.")
-//		.def("save_data",(void (*)(const vector<float> &,const vector<float> &,const string &))&EMAN::Util::save_data, args("x0", "dx", "y_array", "filename"), "Save x, y data into a file. Each line of the file have the\nformat \"x1TABy1\"\nfilename - The output filename.")
+		.def("save_data",(void (*)(float,float,const vector<float> &,const string &))&EMAN::Util::save_data, args("x0", "dx", "y_ndarray", "filename"), "Save x, y data into a file. Each line of the file have the\nformat \"x1TABy1\", where x1 = x0 + dx*i; y1 = y_ndarray[i].\n \nx0 - The starting point of x.\ndx - delta x. The increase step of x data.\ny_ndarray - The y data ndarray.\nfilename - The output filename.")
+//		.def("save_data",(void (*)(const vector<float> &,const vector<float> &,const string &))&EMAN::Util::save_data, args("x0", "dx", "y_ndarray", "filename"), "Save x, y data into a file. Each line of the file have the\nformat \"x1TABy1\"\nfilename - The output filename.")
 		.def("get_filename_ext", &EMAN::Util::get_filename_ext, args("filename"), "Get a filename's extension.\n \nfilename - A given filename.\n \nreturn The filename's extension, or empty string if the file has no extension.")
 		.def("sbasename", &EMAN::Util::sbasename, args("filename"), "Get a filename's basename. For example, the basename of\n'hello.c' is still 'hello.c'; The basename of\n'/tmp/abc/hello.c' is 'hello.c'.\n \nfilename - The given filename, full path or relative path.\n \nreturn The basename of the filename.")
 		.def("set_randnum_seed", &EMAN::Util::set_randnum_seed, args("seed"), "Set the seed for Randnum class\n \nseed - the seed for current random number generator")
