@@ -11,7 +11,19 @@ function(ADD_PYSTE_LIB libname)
 			PROPERTIES
 			PREFIX lib
 			SUFFIX ${suffix}
+	
+	if(APPLE)
+		set_target_properties(${libname}
+			PROPERTIES
+			LINK_FLAGS "-undefined dynamic_lookup -flat_namespace" # Superseeded by LINK_OPTIONS in 3.13
 			)
+	elseif(WIN32)
+		set_property(TARGET ${libname}
+			APPEND_STRING
+			PROPERTY
+			LINK_LIBRARIES "Python::Python"
+			)
+	endif()
 	
 	target_link_libraries(${libname} EM2 Boost::python)
 	install(TARGETS ${libname} DESTINATION ${SP_DIR})
