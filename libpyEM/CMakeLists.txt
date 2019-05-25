@@ -11,6 +11,8 @@ function(ADD_PYSTE_LIB libname)
 			PROPERTIES
 			PREFIX lib
 			SUFFIX ${suffix}
+			LINK_LIBRARIES "EM2;Boost::python"
+			)
 	
 	if(APPLE)
 		set_target_properties(${libname}
@@ -25,7 +27,6 @@ function(ADD_PYSTE_LIB libname)
 			)
 	endif()
 	
-	target_link_libraries(${libname} EM2 Boost::python)
 	install(TARGETS ${libname} DESTINATION ${SP_DIR})
 endfunction()
 
