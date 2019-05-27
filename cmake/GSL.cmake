@@ -6,5 +6,3 @@ if(WIN32)
 						  INTERFACE_COMPILE_DEFINITIONS GSL_DLL
 						  )
 endif()
-
-target_link_libraries(GSL::gsl INTERFACE GSL::gslcblas)
