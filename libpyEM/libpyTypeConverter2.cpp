@@ -61,6 +61,7 @@ BOOST_PYTHON_MODULE(libpyTypeConverter2)
     ;
 
 
+	Py_Initialize();
 	np::initialize();
 
 
