@@ -44,7 +44,7 @@ namespace np = boost::python::numpy;
 
 using namespace EMAN;
 
-np::ndarray EMAN::make_numeric_array(float * data, vector<npy_intp> dims)
+np::ndarray EMAN::make_numeric_array(float * data, vector<int> dims)
 {
 	if (dims.size() == 3) {
 	python::tuple shape = python::make_tuple(dims[0], dims[1], dims[2]);
@@ -75,7 +75,7 @@ else {
 }
 
 np::ndarray EMAN::make_numeric_complex_array(std::complex<float> * data,
-                                                        vector<npy_intp> dims)
+                                                        vector<int> dims)
 {
 	if (dims.size() == 3) {
 	python::tuple shape = python::make_tuple(dims[0], dims[1], dims[2]);
@@ -112,7 +112,7 @@ np::ndarray EMNumPy::em2numpy(const EMData *const image)
 	int ny = image->get_ysize();
 	int nz = image->get_zsize();
 
-	vector<npy_intp> dims;
+	vector<int> dims;
 
 	if (nz > 1) {
 		dims.push_back(nz);
@@ -189,7 +189,7 @@ EMData* EMNumPy::assign_numpy_to_emdata(const np::ndarray& array)
 	int ndim = PyArray_NDIM(array_ptr); //array_ptr->nd;
 	//char data_type = PyArray_DESCR(array_ptr)->type; //array_ptr->descr->type;
 
-	npy_intp * dims_ptr = (npy_intp*)PyArray_DIMS(array_ptr);
+	int * dims_ptr = (int*)PyArray_DIMS(array_ptr);
 
 #if defined (__LP64__) //is it a 64-bit platform?
 	//long * dims_ptr = (long*)array_ptr->dimensions;
@@ -244,7 +244,7 @@ EMData* EMNumPy::register_numpy_to_emdata(const np::ndarray& array)
 	int ndim = PyArray_NDIM(array_ptr); //->nd;
 	//char data_type = PyArray_DESCR(array_ptr)->type; //array_ptr->descr->type;
 
-	npy_intp *dims_ptr = (npy_intp*)PyArray_DIMS(array_ptr);
+	int *dims_ptr = (int*)PyArray_DIMS(array_ptr);
 
 #if defined (__LP64__) //is it a 64-bit platform?
 	//long * dims_ptr = (long*)array_ptr->dimensions;
@@ -410,7 +410,7 @@ PyObject* EMObject_to_python::convert(EMObject const& emobj)
 
 PyObject* MArray2D_to_python::convert(MArray2D const & marray2d)
 {
-    vector<npy_intp> dims;
+    vector<int> dims;
     const size_t * shape = marray2d.shape();
     int ndim = marray2d.num_dimensions();
     for (int i = ndim-1; i >= 0; i--) {
