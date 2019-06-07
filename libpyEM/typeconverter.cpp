@@ -77,10 +77,13 @@ else {
 np::ndarray EMAN::make_numeric_complex_array(const std::complex<float> *const data,
                                                         vector<npy_intp> dims)
 {
-	python::object obj(python::handle<>(PyArray_SimpleNewFromData(dims.size(),&dims[0],
-	                                                              NPY_CFLOAT, (char*)data)));
-
-	return python::extract<np::ndarray>(obj);
+	Py_intptr_t dim2=0;
+	if(dims.size()==3) dim2=dims[2];
+	Py_intptr_t shape[3] = { dims[0], dims[1], dim2 };
+	np::ndarray result = np::zeros(dims.size(), shape, np::dtype::get_builtin<std::complex<float> >());
+	if(dim2==0) dim2=1;
+	std::copy(data, data+dims[0]*dims[1]*dim2, reinterpret_cast<std::complex<float> *>(result.get_data()));
+	return result;
 }
 
 np::ndarray EMNumPy::em2numpy(const EMData *const image)
