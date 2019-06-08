@@ -46,10 +46,18 @@ using namespace EMAN;
 
 np::ndarray EMAN::make_numeric_array(float * data, vector<npy_intp> dims)
 {
-	python::object obj(python::handle<>(PyArray_SimpleNewFromData(dims.size(),&dims[0],
-	                                                              NPY_FLOAT32, (char*)data)));
+	Py_intptr_t dim2=0;
+	if(dims.size()==3) dim2=dims[2];
+	if(dim2==0) dim2=1;
+	python::tuple shape = python::make_tuple(dims[0], dims[1], dim2);
+	python::tuple stride = python::make_tuple(sizeof(float), sizeof(float)*dims[1], sizeof(float)*dims[1]*dim2);
 
-	return python::extract<np::ndarray>(obj);
+	np::ndarray py_array = np::from_data(data, np::dtype::get_builtin<float>(),
+                                     shape,
+                                     stride,
+                                     python::object());
+	
+	return py_array;
 }
 
 np::ndarray EMAN::make_numeric_complex_array(const std::complex<float> *const data,
