@@ -46,11 +46,11 @@ using namespace EMAN;
 
 np::ndarray EMAN::make_numeric_array(float * data, vector<npy_intp> dims)
 {
-	Py_intptr_t dim2=0;
-	if(dims.size()==3) dim2=dims[2];
-	if(dim2==0) dim2=1;
-	python::tuple shape = python::make_tuple(dims[0], dims[1], dim2);
-	python::tuple stride = python::make_tuple(sizeof(float), sizeof(float)*dims[1], sizeof(float)*dims[1]*dim2);
+	if (dims.size() == 3) {
+	python::tuple shape = python::make_tuple(dims[0], dims[1], dims[2]);
+	python::tuple stride = python::make_tuple(sizeof(float)*dims[2]*dims[1], 
+											  sizeof(float)*dims[2], 
+											  sizeof(float));
 
 	np::ndarray py_array = np::from_data(data, np::dtype::get_builtin<float>(),
                                      shape,
@@ -58,6 +58,20 @@ np::ndarray EMAN::make_numeric_array(float * data, vector<npy_intp> dims)
                                      python::object());
 	
 	return py_array;
+}
+else {
+	python::tuple shape = python::make_tuple(dims[0], dims[1]);
+	python::tuple stride = python::make_tuple(sizeof(float)*dims[1], 
+											  sizeof(float));
+	np::dtype dt = np::dtype::get_builtin<float>();
+
+	np::ndarray py_array = np::from_data(data, dt,
+                                     shape,
+                                     stride,
+                                     python::object());
+	
+	return py_array;
+	}
 }
 
 np::ndarray EMAN::make_numeric_complex_array(const std::complex<float> *const data,
