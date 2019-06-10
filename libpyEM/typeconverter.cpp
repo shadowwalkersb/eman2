@@ -74,7 +74,7 @@ else {
 	}
 }
 
-np::ndarray EMAN::make_numeric_complex_array(const std::complex<float> *const data,
+np::ndarray EMAN::make_numeric_complex_array(std::complex<float> * data,
                                                         vector<npy_intp> dims)
 {
 	if (dims.size() == 3) {

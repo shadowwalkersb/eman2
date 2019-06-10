@@ -69,7 +69,7 @@ using std::endl;
 namespace EMAN {
 
 	np::ndarray make_numeric_array(float * data, vector<npy_intp> dims);
-	np::ndarray make_numeric_complex_array(const std::complex<float> *const data,vector<npy_intp> dims);
+	np::ndarray make_numeric_complex_array(std::complex<float> * data,vector<npy_intp> dims);
 
 	class EMNumPy {
 	public:
@@ -236,7 +236,7 @@ namespace EMAN {
 				dims.push_back(shape[i]);
 			}
 
-			const std::complex<float> * data = (const std::complex<float>*)mcarray.data();
+			std::complex<float> * data = (std::complex<float>*)mcarray.data();
 			np::ndarray numarray = make_numeric_complex_array(data, dims);
 
 			return python::incref(numarray.ptr());
