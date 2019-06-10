@@ -77,13 +77,32 @@ else {
 np::ndarray EMAN::make_numeric_complex_array(const std::complex<float> *const data,
                                                         vector<npy_intp> dims)
 {
-	Py_intptr_t dim2=0;
-	if(dims.size()==3) dim2=dims[2];
-	Py_intptr_t shape[3] = { dims[0], dims[1], dim2 };
-	np::ndarray result = np::zeros(dims.size(), shape, np::dtype::get_builtin<std::complex<float> >());
-	if(dim2==0) dim2=1;
-	std::copy(data, data+dims[0]*dims[1]*dim2, reinterpret_cast<std::complex<float> *>(result.get_data()));
-	return result;
+	if (dims.size() == 3) {
+	python::tuple shape = python::make_tuple(dims[0], dims[1], dims[2]);
+	python::tuple stride = python::make_tuple(sizeof(std::complex<float>)*dims[2]*dims[1], 
+											  sizeof(std::complex<float>)*dims[2], 
+											  sizeof(std::complex<float>));
+
+	np::ndarray py_array = np::from_data(data, np::dtype::get_builtin<std::complex<float> >(),
+                                     shape,
+                                     stride,
+                                     python::object());
+	
+	return py_array;
+}
+else {
+	python::tuple shape = python::make_tuple(dims[0], dims[1]);
+	python::tuple stride = python::make_tuple(sizeof(std::complex<float>)*dims[1], 
+											  sizeof(std::complex<float>));
+	np::dtype dt = np::dtype::get_builtin<std::complex<float> >();
+
+	np::ndarray py_array = np::from_data(data, dt,
+                                     shape,
+                                     stride,
+                                     python::object());
+	
+	return py_array;
+	}
 }
 
 np::ndarray EMNumPy::em2numpy(const EMData *const image)
