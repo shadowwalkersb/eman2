@@ -1,3 +1,17 @@
+# TODO:
+# cmake 3.11
+# Commands: INTERFACE
+# Properties: COMPILE_OPTIONS
+# 
+# INTERFACE Libraries
+# add_library(enable_rtti INTERFACE)
+# target_compile_options(enable_rtti INTERFACE
+#  $<$<OR:$<COMPILER_ID:GNU>,$<COMPILER_ID:Clang>>:-rtti>
+#)
+#
+# 3.8
+# The FindOpenGL module now provides imported targets OpenGL::GL and OpenGL::GLU when the libraries are found.
+
 CMAKE_MINIMUM_REQUIRED(VERSION 3.14)
 PROJECT(EMAN
 		VERSION 2.31
