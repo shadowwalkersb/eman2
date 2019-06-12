@@ -172,58 +172,6 @@ pipeline {
         sh 'env | sort'
       }
     }
-    
-    stage('build-local') {
-      when {
-        not { expression { isBinaryBuild() } }
-        expression { isUnix() }
-      }
-      
-      steps {
-        notifyGitHub('PENDING')
-        echo 'source $(conda info --root)/bin/activate eman-deps-13.0 && bash ci_support/build_no_recipe.sh'
-      }
-    }
-    
-    stage('build-recipe') {
-      steps {
-        notifyGitHub('PENDING')
-        echo 'bash ci_support/build_recipe.sh'
-      }
-    }
-    
-    stage('package') {
-      when { expression { isBinaryBuild() } }
-      environment { PARENT_STAGE_NAME = "${STAGE_NAME}" }
-      
-      parallel {
-        stage('notify') { steps { notifyGitHub('PENDING') } }
-        stage('mini')   { steps { echo "bash ci_support/package.sh " + '${WORKSPACE} ${WORKSPACE}/ci_support/constructor-${STAGE_NAME}/' } }
-        stage('huge')   { steps { echo "bash ci_support/package.sh " + '${WORKSPACE} ${WORKSPACE}/ci_support/constructor-${STAGE_NAME}/' } }
-      }
-    }
-    
-    stage('test-package') {
-      when { expression { isBinaryBuild() } }
-      environment { PARENT_STAGE_NAME = "${STAGE_NAME}" }
-      
-      parallel {
-        stage('notify') { steps { notifyGitHub('PENDING') } }
-        stage('mini')   { steps { echo "testPackage(binary_size_suffix[STAGE_NAME], STAGE_NAME)" } }
-        stage('huge')   { steps { echo "testPackage(binary_size_suffix[STAGE_NAME], STAGE_NAME)" } }
-      }
-    }
-    
-    stage('deploy') {
-      when { expression { isBinaryBuild() } }
-      environment { PARENT_STAGE_NAME = "${STAGE_NAME}" }
-
-      parallel {
-        stage('notify') { steps { notifyGitHub('PENDING') } }
-        stage('mini')   { steps { echo 'deployPackage(binary_size_suffix[STAGE_NAME])' } }
-        stage('huge')   { steps { echo 'deployPackage(binary_size_suffix[STAGE_NAME])' } }
-      }
-    }
   }
   
   post {
