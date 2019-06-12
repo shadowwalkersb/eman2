@@ -23,4 +23,6 @@ conda list
 conda render recipes/eman
 conda build purge-all
 
+sed -e "s/CONFIG/${CONFIG}/" recipes/eman/conda_build_config.yaml.templ > conda_build_config.yaml
+
 conda build recipes/eman -c cryoem/label/dev -c cryoem -c defaults -c conda-forge
