@@ -18,6 +18,3 @@ fi
 
 # 3. Existence tests for data files like images, font files, JSON
 python "${MYDIR}/test_EMAN2DIR.py"
-
-# 6. Run e2*.py -h
-bash "${MYDIR}/run_prog_tests.sh"
