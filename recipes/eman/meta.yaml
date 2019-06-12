@@ -10,7 +10,7 @@ requirements:
             "msinttypes",  # [win]
             "boost 1.64.*",
             "python 3.6.2",    # [not osx]
-            "python 3.6.2",  # [osx]
+            "python",  # [osx]
             "fftw-mpi",
             "numpy 1.13.*",
             "ftgl",
