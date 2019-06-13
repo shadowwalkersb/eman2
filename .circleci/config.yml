@@ -5,6 +5,7 @@ jobs:
     docker:
       - image: cryoem/eman-deps:18-boost166-circleci18
     steps:
+      - run: sudo apt-get update && sudo apt-get install freeglut3-dev libgl1-mesa-glx libegl1-mesa libxrandr2 libxrandr2 libxss1 libxcursor1 libxcomposite1 libasound2 libxi6 libxtst6
       - checkout
       - run: bash ci_support/build_no_recipe.sh
 
@@ -12,6 +13,7 @@ jobs:
     docker:
       - image: cryoem/eman-deps:18-boost166-circleci18
     steps:
+      - run: sudo apt-get update && sudo apt-get install freeglut3-dev libgl1-mesa-glx libegl1-mesa libxrandr2 libxrandr2 libxss1 libxcursor1 libxcomposite1 libasound2 libxi6 libxtst6
       - checkout
       - run: bash ci_support/build_recipe.sh
 
