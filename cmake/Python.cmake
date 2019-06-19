@@ -1,4 +1,4 @@
-find_package(Python REQUIRED COMPONENTS Interpreter Development)
+find_package(Python REQUIRED COMPONENTS Interpreter Development NumPy)
 
 set(CMAKE_FIND_FRAMEWORK_BACK ${CMAKE_FIND_FRAMEWORK})
 set(CMAKE_FIND_FRAMEWORK NEVER)
