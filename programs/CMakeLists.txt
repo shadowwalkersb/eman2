@@ -17,8 +17,8 @@ IF(WIN32)
 		)
 ENDIF(WIN32)
 
-find_program(GIT_EXECUTABLE git)
-if(GIT_EXECUTABLE)
+find_package(git REQUIRED)
+if(GIT_FOUND)
 	# Get git repository's directory
 	execute_process(COMMAND ${GIT_EXECUTABLE} rev-parse --git-dir
 					WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
