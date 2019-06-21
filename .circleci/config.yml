@@ -1,7 +1,7 @@
 version: 2
 
 jobs:
-  boost-1.64:
+  setup_cache:
     docker:
       - image: circleci/buildpack-deps:16.04
     environment:
@@ -12,93 +12,12 @@ jobs:
       - checkout
       - run: source ci_support/setup_conda.sh
       - save_cache:
-          key: mini-eman-deps-14.0-boost-1.64
+          key: mini-eman-deps-14.2-0
           paths:
             - ~/miniconda2
-
-  boost-1.65:
-    docker:
-      - image: circleci/buildpack-deps:16.04
-    environment:
-      CMAKE_VERSION: 3.9
-      BOOST_VERSION: 1.65
-    steps:
-      - run: sudo apt-get update && sudo apt-get install freeglut3-dev
-      - checkout
-      - run: source ci_support/setup_conda.sh
-      - save_cache:
-          key: mini-eman-deps-14.0-boost-1.65
-          paths:
-            - ~/miniconda2
-
-  boost-1.66:
-    docker:
-      - image: circleci/buildpack-deps:16.04
-    environment:
-      CMAKE_VERSION: 3.11
-      BOOST_VERSION: 1.66
-    steps:
-      - run: sudo apt-get update && sudo apt-get install freeglut3-dev
-      - checkout
-      - run: source ci_support/setup_conda.sh
-      - save_cache:
-          key: mini-eman-deps-14.0-boost-1.66
-          paths:
-            - ~/miniconda2
-
-  boost-1.67:
-    docker:
-      - image: circleci/buildpack-deps:16.04
-    environment:
-      CMAKE_VERSION: 3.11
-      BOOST_VERSION: 1.67
-    steps:
-      - run: sudo apt-get update && sudo apt-get install freeglut3-dev
-      - checkout
-      - run: source ci_support/setup_conda.sh
-      - save_cache:
-          key: mini-eman-deps-14.0-boost-1.67
-          paths:
-            - ~/miniconda2
-
-  boost-1.68:
-    docker:
-      - image: circleci/buildpack-deps:16.04
-    environment:
-      CMAKE_VERSION: 3.11
-      BOOST_VERSION: 1.68
-    steps:
-      - run: sudo apt-get update && sudo apt-get install freeglut3-dev
-      - checkout
-      - run: source ci_support/setup_conda.sh
-      - save_cache:
-          key: mini-eman-deps-14.0-boost-1.68
-          paths:
-            - ~/miniconda2
-
-  boost-1.69:
-    docker:
-      - image: circleci/buildpack-deps:16.04
-    environment:
-      CMAKE_VERSION: 3.11
-      BOOST_VERSION: 1.69
-    steps:
-      - run: sudo apt-get update && sudo apt-get install freeglut3-dev
-      - checkout
-      - run: source ci_support/setup_conda.sh
-      - save_cache:
-          key: mini-eman-deps-14.0-boost-1.69
-          paths:
-            - ~/miniconda2
-
 
 workflows:
   version: 2
-  build_recipe_and_no_recipe:
+  setup_cache:
     jobs:
-      - boost-1.64
-      - boost-1.65
-      - boost-1.66
-      - boost-1.67
-      - boost-1.68
-      - boost-1.69
+      - setup_cache

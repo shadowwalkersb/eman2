@@ -139,6 +139,11 @@ def getHomeDir() {
     else          return "${HOME}"
 }
 
+def run_conda_command() {
+    sh "conda create -n eman-deps-14.2 eman-deps=14.2 cmake=3.14 -c cryoem/label/dev -c cryoem -c defaults -c conda-forge --yes"
+    sh "conda list -n eman-deps-14.2"
+}
+
 pipeline {
   agent {
     node { label "eman-build-agent" }
@@ -170,6 +175,12 @@ pipeline {
         selectNotifications()
         notifyGitHub('PENDING')
         sh 'env | sort'
+      }
+    }
+    
+    stage('1.63') {
+      steps {
+        run_conda_command()
       }
     }
   }
