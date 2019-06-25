@@ -140,8 +140,8 @@ def getHomeDir() {
 }
 
 def run_conda_command() {
-    sh "conda create -n eman-deps-14.2 eman-deps=14.2 cmake=3.14 -c cryoem/label/dev -c cryoem -c defaults -c conda-forge --yes"
-    sh "conda list -n eman-deps-14.2"
+    sh "conda create -n eman-deps-14.4-boost-${STAGE_NAME} eman-deps=14.4 boost=${STAGE_NAME} cmake=3.14 -c cryoem/label/boost -c cryoem -c defaults -c conda-forge --yes"
+    sh "conda list -n eman-deps-14.4-boost-${STAGE_NAME}"
 }
 
 pipeline {
@@ -178,7 +178,43 @@ pipeline {
       }
     }
     
-    stage('1.63') {
+    stage('1.64') {
+      steps {
+        run_conda_command()
+      }
+    }
+    
+    stage('1.65') {
+      steps {
+        run_conda_command()
+      }
+    }
+    
+    stage('1.66') {
+      steps {
+        run_conda_command()
+      }
+    }
+    
+    stage('1.67') {
+      steps {
+        run_conda_command()
+      }
+    }
+    
+    stage('1.68') {
+      steps {
+        run_conda_command()
+      }
+    }
+    
+    stage('1.69') {
+      steps {
+        run_conda_command()
+      }
+    }
+    
+    stage('1.70') {
       steps {
         run_conda_command()
       }
