@@ -44,10 +44,19 @@ if(Python_FOUND AND NOT TARGET Python::Python)
 	set_target_properties(Python::Python
 			PROPERTIES
 			INTERFACE_INCLUDE_DIRECTORIES ${PYTHON_INCLUDE_DIRS}
+#			Py_ENABLE_SHARED is None on Windows, so the compiler is checked if it is Microsoft Visual Studio.
+#			Link against shared python library, if the compiler is MSVC 
+#			or if Py_ENABLE_SHARED is 1 (Python interpreter is not linked statically against libpython).
 			INTERFACE_LINK_LIBRARIES      $<$<OR:$<CXX_COMPILER_ID:MSVC>,$<BOOL:${PYTHON_LIB_SHARED}>>:${PYTHON_LIBRARIES}>
 			)
 	target_link_options(Python::Python INTERFACE
+						#			If the compiler is Clang and if Py_ENABLE_SHARED is 0 (Python interpreter is linked statically against libpython),
+						#			use link options "-undefined dynamic_lookup -flat_namespace" to tell the linker not to look for undefined symbols.
+						#			They will be found at runtime.
 						"$<$<AND:$<OR:$<CXX_COMPILER_ID:Clang>,$<CXX_COMPILER_ID:AppleClang>>,$<NOT:$<BOOL:${PYTHON_LIB_SHARED}>>>:-undefined;dynamic_lookup;-flat_namespace>"
+						#			If the compiler is GCC and if Py_ENABLE_SHARED is 0 (Python interpreter is linked statically against libpython),
+						#			use link options "-undefined" to tell the linker not to look for undefined symbols.
+						#			They will be found at runtime.
 						"$<$<AND:$<CXX_COMPILER_ID:GNU>,$<NOT:$<BOOL:${PYTHON_LIB_SHARED}>>>:-undefined>"
 						)
 endif()
