@@ -180,42 +180,49 @@ pipeline {
     
     stage('1.64') {
       steps {
+        notifyGitHub('PENDING')
         run_conda_command()
       }
     }
     
     stage('1.65') {
       steps {
+        notifyGitHub('PENDING')
         run_conda_command()
       }
     }
     
     stage('1.66') {
       steps {
+        notifyGitHub('PENDING')
         run_conda_command()
       }
     }
     
     stage('1.67') {
       steps {
+        notifyGitHub('PENDING')
         run_conda_command()
       }
     }
     
     stage('1.68') {
       steps {
+        notifyGitHub('PENDING')
         run_conda_command()
       }
     }
     
     stage('1.69') {
       steps {
+        notifyGitHub('PENDING')
         run_conda_command()
       }
     }
     
     stage('1.70') {
       steps {
+        notifyGitHub('PENDING')
         run_conda_command()
       }
     }
