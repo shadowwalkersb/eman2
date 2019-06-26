@@ -17,3 +17,4 @@ conda install conda=4.6.14 conda-build=3.17.8 cmake=${CMAKE_VERSION} -c defaults
 conda install ${CIRCLE_JOB} cmake=3.14 eman-deps=14.4 -c cryoem/label/boost -c cryoem -c defaults -c conda-forge --yes
 
 conda clean --all --yes
+rm $MINICONDA_FILE
