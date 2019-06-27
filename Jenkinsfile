@@ -220,13 +220,6 @@ pipeline {
         run_conda_command()
       }
     }
-    
-    stage('1.70') {
-      steps {
-        notifyGitHub('PENDING')
-        run_conda_command()
-      }
-    }
   }
   
   post {
