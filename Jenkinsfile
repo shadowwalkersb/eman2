@@ -140,9 +140,12 @@ def getHomeDir() {
 }
 
 def run_conda_command() {
-    sh "conda create -n eman-deps-14.2 eman-deps=14.2 cmake=3.14 -c cryoem/label/dev -c cryoem -c defaults -c conda-forge --yes"
-    sh "conda list -n eman-deps-14.2"
-    sh "conda list --explicit -n eman-deps-14.2"
+    sh "conda env remove -n eman-deps-14.0-boost-${STAGE_NAME[0]+STAGE_NAME[2..3]} --yes"
+    sh "conda env remove -n eman-deps-14.2-boost-${STAGE_NAME} --yes"
+    sh "conda env remove -n eman-deps-14.3-boost-${STAGE_NAME} --yes"
+    sh "conda env remove -n eman-deps-14.4-boost-${STAGE_NAME} --yes"
+    sh "conda env remove -n eman-deps-15.2-boost-${STAGE_NAME} --yes"
+    sh "conda env remove -n eman-deps-15.7-boost-${STAGE_NAME} --yes"
 }
 
 pipeline {
@@ -179,7 +182,49 @@ pipeline {
       }
     }
     
-    stage('1.63') {
+    stage('1.64') {
+      steps {
+        notifyGitHub('PENDING')
+        run_conda_command()
+      }
+    }
+    
+    stage('1.65') {
+      steps {
+        notifyGitHub('PENDING')
+        run_conda_command()
+      }
+    }
+    
+    stage('1.66') {
+      steps {
+        notifyGitHub('PENDING')
+        run_conda_command()
+      }
+    }
+    
+    stage('1.67') {
+      steps {
+        notifyGitHub('PENDING')
+        run_conda_command()
+      }
+    }
+    
+    stage('1.68') {
+      steps {
+        notifyGitHub('PENDING')
+        run_conda_command()
+      }
+    }
+    
+    stage('1.69') {
+      steps {
+        notifyGitHub('PENDING')
+        run_conda_command()
+      }
+    }
+    
+    stage('1.70') {
       steps {
         notifyGitHub('PENDING')
         run_conda_command()
