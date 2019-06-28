@@ -1,7 +1,7 @@
 version: 2
 
 jobs:
-  boost=1.64:
+  setup_cache:
     docker:
       - image: circleci/buildpack-deps:16.04
     environment:
@@ -12,85 +12,12 @@ jobs:
       - checkout
       - run: source ci_support/setup_conda.sh
       - save_cache:
-          key: mini-eman-deps-14.4-{{ .Environment.CIRCLE_JOB }}-2
+          key: mini-eman-deps-14.2-1
           paths:
             - ~/miniconda2
-
-  boost=1.65:
-    docker:
-      - image: circleci/buildpack-deps:16.04
-    steps:
-      - checkout
-      - run: source ci_support/setup_conda.sh
-      - save_cache:
-          key: mini-eman-deps-14.4-{{ .Environment.CIRCLE_JOB }}-2
-          paths:
-            - ~/miniconda2
-
-  boost=1.66:
-    docker:
-      - image: circleci/buildpack-deps:16.04
-    steps:
-      - checkout
-      - run: source ci_support/setup_conda.sh
-      - save_cache:
-          key: mini-eman-deps-14.4-{{ .Environment.CIRCLE_JOB }}-2
-          paths:
-            - ~/miniconda2
-
-  boost=1.67:
-    docker:
-      - image: circleci/buildpack-deps:16.04
-    steps:
-      - checkout
-      - run: source ci_support/setup_conda.sh
-      - save_cache:
-          key: mini-eman-deps-14.4-{{ .Environment.CIRCLE_JOB }}-2
-          paths:
-            - ~/miniconda2
-
-  boost=1.68:
-    docker:
-      - image: circleci/buildpack-deps:16.04
-    steps:
-      - checkout
-      - run: source ci_support/setup_conda.sh
-      - save_cache:
-          key: mini-eman-deps-14.4-{{ .Environment.CIRCLE_JOB }}-2
-          paths:
-            - ~/miniconda2
-
-  boost=1.69:
-    docker:
-      - image: circleci/buildpack-deps:16.04
-    steps:
-      - checkout
-      - run: source ci_support/setup_conda.sh
-      - save_cache:
-          key: mini-eman-deps-14.4-{{ .Environment.CIRCLE_JOB }}-2
-          paths:
-            - ~/miniconda2
-
-  boost=1.70:
-    docker:
-      - image: circleci/buildpack-deps:16.04
-    steps:
-      - checkout
-      - run: source ci_support/setup_conda.sh
-      - save_cache:
-          key: mini-eman-deps-14.4-{{ .Environment.CIRCLE_JOB }}-2
-          paths:
-            - ~/miniconda2
-
 
 workflows:
   version: 2
-  setup_cache_boost:
+  setup_cache:
     jobs:
-      - boost=1.64
-      - boost=1.65
-      - boost=1.66
-      - boost=1.67
-      - boost=1.68
-      - boost=1.69
-      - boost=1.70
+      - setup_cache
