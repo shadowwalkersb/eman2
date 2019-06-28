@@ -140,7 +140,6 @@ def getHomeDir() {
 }
 
 def run_conda_command() {
-    sh "conda env remove -n eman-deps-14.2 --yes"
     sh "conda create -n eman-deps-14.2 eman-deps=14.2 cmake=3.14 -c cryoem/label/dev -c cryoem -c defaults -c conda-forge --yes"
     sh "conda list -n eman-deps-14.2"
     sh "conda list --explicit -n eman-deps-14.2"
