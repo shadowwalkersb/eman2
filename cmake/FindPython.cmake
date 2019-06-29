@@ -71,12 +71,3 @@ if(Python_FOUND AND NOT TARGET Python::Python)
 						"$<$<AND:$<CXX_COMPILER_ID:GNU>,$<NOT:$<BOOL:${PYTHON_LIB_SHARED}>>>:-undefined>"
 						)
 endif()
-
-add_custom_target(genexdebug COMMAND ${CMAKE_COMMAND} -E echo "$<$<AND:$<OR:$<CXX_COMPILER_ID:Clang>,$<CXX_COMPILER_ID:AppleClang>>,$<NOT:$<BOOL:${PYTHON_LIB_SHARED}>>>:-undefined;dynamic_lookup;-flat_namespace>")
-
-cmake_print_properties(TARGETS Python::Python PROPERTIES
-#					   LOCATION
-					   INTERFACE_INCLUDE_DIRS
-					   INTERFACE_LINK_LIBRARIES
-					   INTERFACE_LINK_OPTIONS
-					   )
