@@ -31,7 +31,9 @@ execute_process(COMMAND ${PYTHON_EXECUTABLE} -c "import sysconfig; print(sysconf
 				OUTPUT_STRIP_TRAILING_WHITESPACE
 				)
 
+#set(PYTHON_LIB_SHARED 1)
 cmake_print_variables(PYTHON_LIB_SHARED)
+message(${PYTHON_LIB_SHARED})
 cmake_print_variables(CMAKE_CXX_COMPILER_ID)
 
 include(FindPackageHandleStandardArgs)
@@ -52,7 +54,11 @@ find_package_handle_standard_args(Python
 
 if(Python_FOUND AND NOT TARGET Python::Python)
 	add_library(Python::Python INTERFACE IMPORTED)
+#	add_library(Python INTERFACE)
+#	add_library(Python::Python ALIAS Python)
+#	set_target_properties(Python
 	set_target_properties(Python::Python
+#	set_property(TARGET Python::Python
 			PROPERTIES
 			INTERFACE_INCLUDE_DIRECTORIES ${PYTHON_INCLUDE_DIRS}
 #			Py_ENABLE_SHARED is None on Windows, so the compiler is checked if it is Microsoft Visual Studio.
@@ -69,5 +75,6 @@ if(Python_FOUND AND NOT TARGET Python::Python)
 						#			use link options "-undefined" to tell the linker not to look for undefined symbols.
 						#			They will be found at runtime.
 						"$<$<AND:$<CXX_COMPILER_ID:GNU>,$<NOT:$<BOOL:${PYTHON_LIB_SHARED}>>>:-undefined>"
+#						"-undefined;dynamic_lookup;-flat_namespace"
 						)
 endif()
