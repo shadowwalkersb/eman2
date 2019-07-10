@@ -97,17 +97,16 @@ EMData* EMNumPy::numpy2em(const np::ndarray& array)
 	}
 
 	np::dtype data_type = array.get_dtype();
-	float * temparray = new float[(size_t)nx*ny*nz];
+	EMData* image;
 	
 	if(string(python::extract<char const *>(python::str(array.get_dtype()))) == "float32") {
 		float *array_data = reinterpret_cast<float *>(array.get_data());
-		std::copy(array_data, array_data + nx * ny * nz, reinterpret_cast<float *>(temparray));
+		image = new EMData((float*)array_data, nx, ny, nz);
 	}
 	else {
 		double *array_data = reinterpret_cast<double *>(array.get_data());
-		std::copy(array_data, array_data + nx * ny * nz, reinterpret_cast<float *>(temparray));
+		image = new EMData((float*)array_data, nx, ny, nz);
 	}
-	EMData* image = new EMData((float*)temparray, nx, ny, nz);
 
 	image->update();
 	return image;
