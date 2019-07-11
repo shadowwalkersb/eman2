@@ -139,7 +139,7 @@ namespace EMAN
 		 * @param nz the number of pixels in the z direction
 		 * @param attr_dict attribute dictionary for this image
 		 */
-		EMData(float* data, const int nx, const int ny, const int nz, const Dict& attr_dict = Dict());
+		EMData(float* data, const int nx, const int ny, const int nz, const Dict& attr_dict = Dict(), int dd=0);
 		
 		/** Construction from a data pointer for usage in cuda, dimensions must be supplied.
 		 * Takes possession of the pointer.

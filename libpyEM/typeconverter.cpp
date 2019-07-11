@@ -101,11 +101,11 @@ EMData* EMNumPy::numpy2em(const np::ndarray& array)
 	
 	if(string(python::extract<char const *>(python::str(array.get_dtype()))) == "float32") {
 		float *array_data = reinterpret_cast<float *>(array.get_data());
-		image = new EMData((float*)array_data, nx, ny, nz);
+		image = new EMData((float*)array_data, nx, ny, nz,Dict(),1);
 	}
 	else {
 		double *array_data = reinterpret_cast<double *>(array.get_data());
-		image = new EMData((float*)array_data, nx, ny, nz);
+		image = new EMData((float*)array_data, nx, ny, nz,Dict(),1);
 	}
 
 	image->update();
