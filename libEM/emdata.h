@@ -60,6 +60,8 @@ using std::ostream;
 #include <utility>
 using std::pair;
 
+#include <boost/shared_ptr.hpp>
+
 namespace EMAN
 {
 	class ImageIO;
@@ -823,7 +825,7 @@ namespace EMAN
 		/** to store all image header info */
 		mutable Dict attr_dict;
 		/** image real data */
-		mutable float *rdata;
+		mutable boost::shared_ptr<float[]> rdata;
 		/** supplementary data array */
 		float *supp;
 
