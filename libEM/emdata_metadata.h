@@ -75,7 +75,7 @@ inline float *get_data() const
 	return rdata;
 }
 #else
-inline float *get_data() const { return rdata; }
+inline float *get_data() const { return rdata.get(); }
 #endif
 
 /** Get the image pixel density data in a 1D float array - const version of get_data

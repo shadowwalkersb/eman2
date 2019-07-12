@@ -150,7 +150,7 @@ void EMData::do_fft_inplace()
 		offset = is_fftodd() ? 1 : 2;
 		nxreal = nx - offset;
 	}
-	EMfft::real_to_complex_nd(rdata, rdata, nxreal, ny, nz);
+	EMfft::real_to_complex_nd(rdata.get(), rdata.get(), nxreal, ny, nz);
 
 	set_complex(true);
 	if(ny==1 && nz==1)  set_complex_x(true);

@@ -149,7 +149,7 @@ EMData::EMData(const EMData& that) :
 	if (data && num_elements != 0)
 	{
 		rdata = new float[num_elements];
-		std::copy(data, data + num_elements, rdata);
+		std::copy(data, data + num_elements, rdata.get());
 	}
 #ifdef EMAN2_USING_CUDA
 	if (EMData::usecuda == 1 && num_bytes != 0 && that.cudarwdata != 0) {
@@ -185,7 +185,7 @@ EMData& EMData::operator=(const EMData& that)
 		{
 			nx = 1; // This prevents a memset in set_size
 			set_size(that.nx,that.ny,that.nz);
-			std::copy(data, data + num_bytes/sizeof(float), rdata);
+			std::copy(data, data + num_bytes/sizeof(float), rdata.get());
 		}
 
 		flags = that.flags;
@@ -389,7 +389,7 @@ void EMData::clip_inplace(const Region & area,const float& fill_value)
 		set_size(new_nx, new_ny, new_nz);
 
 		// Set pixel memory to zero - the client should expect to see nothing
-		std::fill(rdata, rdata + new_nx*new_ny*new_nz, 0);
+		std::fill(rdata.get(), rdata.get() + new_nx*new_ny*new_nz, 0);
 
 		return;
 	}
@@ -422,8 +422,8 @@ void EMData::clip_inplace(const Region & area,const float& fill_value)
 			// This could be optimized so that not so many multiplications are occurring...
 			size_t dst_inc = dst_it_begin + j*new_nx + i*new_sec_size;
 			size_t src_inc = src_it_begin + j*prev_nx + i*prev_sec_size;
-			float* local_dst = rdata + dst_inc;
-			float* local_src = rdata + src_inc;
+			float* local_dst = rdata.get() + dst_inc;
+			float* local_src = rdata.get() + src_inc;
 
 			if ( dst_inc >= src_inc )
 			{
@@ -456,8 +456,8 @@ void EMData::clip_inplace(const Region & area,const float& fill_value)
 			// Determine the memory increments as dependent on i and j
 			size_t dst_inc = dst_it_end - j*new_nx - i*new_sec_size;
 			size_t src_inc = src_it_end - j*prev_nx - i*prev_sec_size;
-			float* local_dst = rdata + dst_inc;
-			float* local_src = rdata + src_inc;
+			float* local_dst = rdata.get() + dst_inc;
+			float* local_src = rdata.get() + src_inc;
 
 			if (dst_inc <= (src_inc + civ.x_iter ))
 			{
@@ -498,13 +498,13 @@ void EMData::clip_inplace(const Region & area,const float& fill_value)
 	if (  z0 < 0 )
 	{
 		size_t inc = (-z0)*new_sec_size;
-		std::fill(rdata,rdata+inc,fill_value);
+		std::fill(rdata.get(),rdata.get()+inc,fill_value);
 	}
 
 	// Set the extra top z slices to the fill_value
 	if (  civ.new_z_top > 0 )
 	{
-		float* begin_pointer = rdata + (new_nz-civ.new_z_top)*new_sec_size;
+		float* begin_pointer = rdata.get() + (new_nz-civ.new_z_top)*new_sec_size;
 		float* end_pointer = begin_pointer+(civ.new_z_top)*new_sec_size;
 		std::fill(begin_pointer,end_pointer,fill_value);
 	}
@@ -515,7 +515,7 @@ void EMData::clip_inplace(const Region & area,const float& fill_value)
 		// Set the extra front y components to the fill_value
 		if ( y0 < 0 )
 		{
-			float* begin_pointer = rdata + i*new_sec_size;
+			float* begin_pointer = rdata.get() + i*new_sec_size;
 			float* end_pointer = begin_pointer+(-y0)*new_nx;
 			std::fill(begin_pointer,end_pointer,fill_value);
 		}
@@ -523,7 +523,7 @@ void EMData::clip_inplace(const Region & area,const float& fill_value)
 		// Set the extra back y components to the fill_value
 		if ( civ.new_y_back > 0 )
 		{
-			float* begin_pointer = rdata + i*new_sec_size + (new_ny-civ.new_y_back)*new_nx;
+			float* begin_pointer = rdata.get() + i*new_sec_size + (new_ny-civ.new_y_back)*new_nx;
 			float* end_pointer = begin_pointer+(civ.new_y_back)*new_nx;
 			std::fill(begin_pointer,end_pointer,fill_value);
 		}
@@ -534,7 +534,7 @@ void EMData::clip_inplace(const Region & area,const float& fill_value)
 			// Set the extra left x components to the fill_value
 			if ( x0 < 0 )
 			{
-				float* begin_pointer = rdata + i*new_sec_size + j*new_nx;
+				float* begin_pointer = rdata.get() + i*new_sec_size + j*new_nx;
 				float* end_pointer = begin_pointer+(-x0);
 				std::fill(begin_pointer,end_pointer,fill_value);
 			}
@@ -542,7 +542,7 @@ void EMData::clip_inplace(const Region & area,const float& fill_value)
 			// Set the extra right x components to the fill_value
 			if ( civ.new_x_right > 0 )
 			{
-				float* begin_pointer = rdata + i*new_sec_size + j*new_nx + (new_nx - civ.new_x_right);
+				float* begin_pointer = rdata.get() + i*new_sec_size + j*new_nx + (new_nx - civ.new_x_right);
 				float* end_pointer = begin_pointer+(civ.new_x_right);
 				std::fill(begin_pointer,end_pointer,fill_value);
 			}
