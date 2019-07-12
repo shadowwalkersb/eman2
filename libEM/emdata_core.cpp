@@ -51,9 +51,10 @@ using std::endl;
 void EMData::free_memory()
 {
 	ENTERFUNC;
-	if (rdata) {
+	if (rdata && EMData::totalalloc == 1) {
 		EMUtil::em_free(rdata);
 		rdata = 0;
+		EMData::totalalloc = 0;
 	}
 
 	if (supp) {
