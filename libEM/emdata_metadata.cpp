@@ -871,7 +871,7 @@ void EMData::set_size(int x, int y, int z, bool noalloc)
 		// Just pass on this for a while....see what happens
 		rdata.reset(new float[num_elements]);
 // 	rdata = static_cast < float *>(realloc(rdata, size));
-	if ( rdata == 0 )
+	if ( rdata )
 	{
 		stringstream ss;
 		string gigs;
