@@ -365,10 +365,6 @@ namespace EMAN
 		inline static void* em_calloc(const size_t nmemb,const size_t size) {
 			return calloc(nmemb,size);
 		}
-
-		inline static void* em_realloc(void* data,const size_t new_size) {
-			return realloc(data, new_size);
-		}
 	  private:
 		static ImageType fast_get_image_type(const string & filename,
 											 const void *first_block,
