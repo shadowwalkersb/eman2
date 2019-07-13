@@ -52,13 +52,13 @@ void EMData::free_memory()
 {
 	ENTERFUNC;
 	if (rdata && EMData::totalalloc == 1) {
-		EMUtil::em_free(rdata);
+		free(rdata);
 		rdata = 0;
 		EMData::totalalloc = 0;
 	}
 
 	if (supp) {
-		EMUtil::em_free(supp);
+		free(supp);
 		supp = 0;
 	}
 
@@ -81,7 +81,7 @@ void EMData::free_rdata()
 {
 	ENTERFUNC;
 	if (rdata) {
-		EMUtil::em_free(rdata);
+		free(rdata);
 		rdata = 0;
 	}
 	EXITFUNC;

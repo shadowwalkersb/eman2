@@ -909,7 +909,7 @@ void EMData::set_size(int x, int y, int z, bool noalloc)
 	}
 
 	if (supp) {
-		EMUtil::em_free(supp);
+		free(supp);
 		supp = 0;
 	}
 

@@ -91,7 +91,7 @@ inline const float * get_const_data() const { return get_data(); }
 * @param z the number of pixels in the z direction
 */
 inline void set_data(float* data, const int x, const int y, const int z) {
-	if (rdata) { EMUtil::em_free(rdata); rdata = 0; }
+	if (rdata) { free(rdata); rdata = 0; }
 #ifdef EMAN2_USING_CUDA
 	//cout << "set data" << endl;
 //	free_cuda_memory();

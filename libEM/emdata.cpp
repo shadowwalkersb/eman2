@@ -834,7 +834,7 @@ float *EMData::setup4slice(bool redo)
 
 	if (supp) {
 		if (redo) {
-			EMUtil::em_free(supp);
+			free(supp);
 			supp = 0;
 		}
 		else {
@@ -1188,7 +1188,7 @@ void EMData::rotate_translate(float az, float alt, float phi, float dx, float dy
 //
 //	if( rdata )
 //	{
-//		EMUtil::em_free(rdata);
+//		free(rdata);
 //		rdata = 0;
 //	}
 //	rdata = des_data;
