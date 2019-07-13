@@ -170,52 +170,6 @@ EMData::EMData(const EMData& that) :
 	ENTERFUNC;
 }
 
-EMData& EMData::operator=(const EMData& that)
-{
-	ENTERFUNC;
-
-	if ( this != &that )
-	{
-		// Only copy the rdata if it exists, we could be in a scenario where only the header has been read
-		float* data = that.rdata;
-		size_t num_bytes = that.nx*that.ny*that.nz*sizeof(float);
-		if (data && num_bytes != 0)
-		{
-			nx = 1; // This prevents a memset in set_size
-			set_size(that.nx,that.ny,that.nz);
-			memcpy(rdata, data, num_bytes);
-		}
-
-		flags = that.flags;
-
-		all_translation = that.all_translation;
-
-		path = that.path;
-		pathnum = that.pathnum;
-		attr_dict = that.attr_dict;
-
-		xoff = that.xoff;
-		yoff = that.yoff;
-		zoff = that.zoff;
-
-#ifdef EMAN2_USING_CUDA
-		if (EMData::usecuda == 1 && num_bytes != 0 && that.cudarwdata != 0) {
-			if(cudarwdata){rw_free();}
-			if(!rw_alloc()) throw UnexpectedBehaviorException("Bad alloc");;
-			cudaError_t error = cudaMemcpy(cudarwdata,that.cudarwdata,num_bytes,cudaMemcpyDeviceToDevice);
-			if ( error != cudaSuccess ) throw UnexpectedBehaviorException("cudaMemcpy failed in EMData copy construction with error: " + string(cudaGetErrorString(error)));
-		}
-#endif //EMAN2_USING_CUDA
-
-		changecount = that.changecount;
-
-		if (that.rot_fp != 0) rot_fp = new EMData(*(that.rot_fp));
-		else rot_fp = 0;
-	}
-	EXITFUNC;
-	return *this;
-}
-
 EMData::EMData(int nx, int ny, int nz, bool is_real) :
 #ifdef EMAN2_USING_CUDA
 		cudarwdata(0), cudarodata(0), num_bytes(0), nextlistitem(0), prevlistitem(0), roneedsupdate(0), cudadirtybit(0),

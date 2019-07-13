@@ -160,13 +160,6 @@ namespace EMAN
 		*/
 		EMData(const EMData& that);
 
-		/** EMData assignment operator
-		 * Performs a deep copy
-		 * @ingroup CUDA_ENABLED
-		 * @param that the EMData to copy
-		*/
-		EMData& operator=(const EMData& that);
-
 
 		/** Get an inclusive clip. Pads to fill if larger than this image.
 		 * .
