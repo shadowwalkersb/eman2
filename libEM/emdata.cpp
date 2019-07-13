@@ -390,7 +390,7 @@ void EMData::clip_inplace(const Region & area,const float& fill_value)
 		set_size(new_nx, new_ny, new_nz);
 
 		// Set pixel memory to zero - the client should expect to see nothing
-		EMUtil::em_memset(rdata, 0, (size_t)new_nx*new_ny*new_nz);
+		memset(rdata, 0, (size_t)new_nx*new_ny*new_nz);
 
 		return;
 	}
@@ -498,7 +498,7 @@ void EMData::clip_inplace(const Region & area,const float& fill_value)
 	// Set the extra bottom z slices to the fill_value
 	if (  z0 < 0 )
 	{
-		//EMUtil::em_memset(rdata, 0, (-z0)*new_sec_size*sizeof(float));
+		//memset(rdata, 0, (-z0)*new_sec_size*sizeof(float));
 		size_t inc = (-z0)*new_sec_size;
 		std::fill(rdata,rdata+inc,fill_value);
 	}
@@ -507,7 +507,7 @@ void EMData::clip_inplace(const Region & area,const float& fill_value)
 	if (  civ.new_z_top > 0 )
 	{
 		float* begin_pointer = rdata + (new_nz-civ.new_z_top)*new_sec_size;
-		//EMUtil::em_memset(begin_pointer, 0, (civ.new_z_top)*new_sec_size*sizeof(float));
+		//memset(begin_pointer, 0, (civ.new_z_top)*new_sec_size*sizeof(float));
 		float* end_pointer = begin_pointer+(civ.new_z_top)*new_sec_size;
 		std::fill(begin_pointer,end_pointer,fill_value);
 	}
@@ -519,7 +519,7 @@ void EMData::clip_inplace(const Region & area,const float& fill_value)
 		if ( y0 < 0 )
 		{
 			float* begin_pointer = rdata + i*new_sec_size;
-			//EMUtil::em_memset(begin_pointer, 0, (-y0)*new_nx*sizeof(float));
+			//memset(begin_pointer, 0, (-y0)*new_nx*sizeof(float));
 			float* end_pointer = begin_pointer+(-y0)*new_nx;
 			std::fill(begin_pointer,end_pointer,fill_value);
 		}
@@ -528,7 +528,7 @@ void EMData::clip_inplace(const Region & area,const float& fill_value)
 		if ( civ.new_y_back > 0 )
 		{
 			float* begin_pointer = rdata + i*new_sec_size + (new_ny-civ.new_y_back)*new_nx;
-			//EMUtil::em_memset(begin_pointer, 0, (civ.new_y_back)*new_nx*sizeof(float));
+			//memset(begin_pointer, 0, (civ.new_y_back)*new_nx*sizeof(float));
 			float* end_pointer = begin_pointer+(civ.new_y_back)*new_nx;
 			std::fill(begin_pointer,end_pointer,fill_value);
 		}
@@ -540,7 +540,7 @@ void EMData::clip_inplace(const Region & area,const float& fill_value)
 			if ( x0 < 0 )
 			{
 				float* begin_pointer = rdata + i*new_sec_size + j*new_nx;
-				//EMUtil::em_memset(begin_pointer, 0, (-x0)*sizeof(float));
+				//memset(begin_pointer, 0, (-x0)*sizeof(float));
 				float* end_pointer = begin_pointer+(-x0);
 				std::fill(begin_pointer,end_pointer,fill_value);
 			}
@@ -549,7 +549,7 @@ void EMData::clip_inplace(const Region & area,const float& fill_value)
 			if ( civ.new_x_right > 0 )
 			{
 				float* begin_pointer = rdata + i*new_sec_size + j*new_nx + (new_nx - civ.new_x_right);
-				//EMUtil::em_memset(begin_pointer, 0, (civ.new_x_right)*sizeof(float));
+				//memset(begin_pointer, 0, (civ.new_x_right)*sizeof(float));
 				float* end_pointer = begin_pointer+(civ.new_x_right);
 				std::fill(begin_pointer,end_pointer,fill_value);
 			}

@@ -1456,7 +1456,7 @@ void EMData::to_zero()
 		set_ri(false);
 	}
 
-	//EMUtil::em_memset(get_data(), 0, nxyz * sizeof(float));
+	//memset(get_data(), 0, nxyz * sizeof(float));
 	to_value(0.0);
 	update();
 	EXITFUNC;
@@ -1492,7 +1492,7 @@ void EMData::to_value(const float& value)
 
 	//the em_memset has segfault for >8GB image, use std::fill() instead, though may be slower
 //	if ( value != 0 ) std::fill(data,data+get_size(),value);
-//	else EMUtil::em_memset(data, 0, nxyz * sizeof(float)); // This might be faster, I don't know
+//	else memset(data, 0, nxyz * sizeof(float)); // This might be faster, I don't know
 
 	std::fill(data,data+get_size(),value);
 
