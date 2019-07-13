@@ -76,16 +76,6 @@ void EMData::free_memory()
 	EXITFUNC;
 }
 
-void EMData::free_rdata()
-{
-	ENTERFUNC;
-	if (rdata) {
-		EMUtil::em_free(rdata);
-		rdata = 0;
-	}
-	EXITFUNC;
-}
-
 EMData * EMData::copy() const
 {
 	ENTERFUNC;
