@@ -215,23 +215,6 @@ namespace EMAN
 		EMData* window_center(int l);
 
 
-		/** Set up for fftslice operations.
-		 * When interpolating in fourier space there is a little
-		 * problem when we get close to x=0, since f(-x,-y,-z) = f(x,y,z)* .
-		 * So this makes a supplementary array that allows for up to +-2
-		 * point interpolation all the way to the origin in x.
-		 *
-		 * 3D only; complex image only
-		 *
-		 * @param redo If true,  recalculate the supplementary array.
-		 * @exception ImageFormatException If the image is not a
-		 * complex image.
-		 * @exception ImageDimensionException If the image is not 3D.
-		 * @return The supplementary array.
-		 */
-		float *setup4slice(bool redo = true);
-
-
 		/** scale the image by a factor.
 		 * @param scale_factor scale factor.
 		 */
