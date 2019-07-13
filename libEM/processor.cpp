@@ -10279,7 +10279,7 @@ float* TransformProcessor::transform(const EMData* const image, const Transform&
 
 
 	const float * const src_data = image->get_const_data();
-	float *des_data = (float *) EMUtil::em_calloc(sizeof(float)*nx,ny*nz);
+	float *des_data = (float *) calloc(sizeof(float)*nx,ny*nz);
 
 	if ((nz == 1)&&(image -> is_real()))  {
 		Vec2f offset(nx/2,ny/2);
