@@ -66,8 +66,7 @@ struct EMData_pickle_suite : boost::python::pickle_suite
 							em.get_pathnum(),
 							em.get_attr_dict(),
 							em.get_translation(),
-							em.get_data_pickle(),
-							em.get_supp_pickle());
+							em.get_data_pickle());
 	}
 	
 	static
@@ -119,9 +118,6 @@ struct EMData_pickle_suite : boost::python::pickle_suite
 		//vector<float> vf = extract< vector<float> >(state[13]);
 		std::string vf = extract< std::string >(state[13]);
 		em.set_data_pickle(vf);
-		
-		int fake_supp = extract<int>(state[14]);
-		em.set_supp_pickle(fake_supp);
 	}
 	
 	static bool getstate_manage_dict() {return true;}
