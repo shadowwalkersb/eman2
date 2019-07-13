@@ -369,10 +369,6 @@ namespace EMAN
 		inline static void* em_realloc(void* data,const size_t new_size) {
 			return realloc(data, new_size);
 		}
-
-		inline static void em_memcpy(void* dst,const void* const src,const size_t size) {
-			memcpy(dst,src,size);
-		}
 	  private:
 		static ImageType fast_get_image_type(const string & filename,
 											 const void *first_block,
