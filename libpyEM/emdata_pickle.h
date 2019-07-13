@@ -66,8 +66,7 @@ struct EMData_pickle_suite : boost::python::pickle_suite
 							em.get_pathnum(),
 							em.get_attr_dict(),
 							em.get_translation(),
-							em.get_data_pickle(),
-							em.get_supp_pickle());
+							em.get_data_pickle());
 	}
 	
 	static
