@@ -871,7 +871,7 @@ void EMData::set_size(int x, int y, int z, bool noalloc)
 		rdata = (float*)realloc(rdata,size);
 	} else {
 		// Just pass on this for a while....see what happens
-		rdata = (float*)EMUtil::em_malloc(size);
+		rdata = (float*)malloc(size);
 	}
 // 	rdata = static_cast < float *>(realloc(rdata, size));
 	if ( rdata == 0 )

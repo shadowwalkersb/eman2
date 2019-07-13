@@ -358,10 +358,6 @@ namespace EMAN
 //#endif
 		}
 
-		inline static void* em_malloc(const size_t size) {
-			return malloc(size);
-		}
-
 	  private:
 		static ImageType fast_get_image_type(const string & filename,
 											 const void *first_block,
