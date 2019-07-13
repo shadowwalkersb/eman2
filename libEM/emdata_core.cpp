@@ -52,7 +52,7 @@ void EMData::free_memory()
 {
 	ENTERFUNC;
 	if (rdata) {
-		delete [] rdata;
+		free(rdata);
 		rdata = 0;
 	}
 
