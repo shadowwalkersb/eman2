@@ -104,7 +104,12 @@ EMData* EMNumPy::numpy2em(const np::ndarray& array)
 		image = new EMData((float*)array_data, nx, ny, nz,Dict(),1);
 	}
 	else {
-		double *array_data = reinterpret_cast<double *>(array.get_data());
+	    cout<<"dtype: "<<string(python::extract<char const *>(python::str(array.get_dtype())))<<endl;
+		double *array_data1 = reinterpret_cast<double *>(array.get_data());
+		float *array_data = reinterpret_cast<float *>(array.get_data());
+//		float *array_data = reinterpret_cast<float *>(array_data1);
+		cout<<"array_data1: "<<array_data1[0]<<endl;
+		cout<<"array_data: "<<array_data[0]<<endl;
 		image = new EMData((float*)array_data, nx, ny, nz,Dict(),1);
 	}
 
