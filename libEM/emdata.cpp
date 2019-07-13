@@ -148,7 +148,7 @@ EMData::EMData(const EMData& that) :
 	size_t num_bytes = (size_t)nx*ny*nz*sizeof(float);
 	if (data && num_bytes != 0)
 	{
-		rdata = (float*)EMUtil::em_malloc(num_bytes);
+		rdata = (float*)malloc(num_bytes);
 		memcpy(rdata, data, num_bytes);
 	}
 #ifdef EMAN2_USING_CUDA
@@ -976,7 +976,7 @@ void EMData::rotate_translate(float az, float alt, float phi, float dx, float dy
 //	float *des_data = 0;
 //
 //	src_data = get_data();
-//	des_data = (float *) EMUtil::em_malloc(nx * ny * nz * sizeof(float));
+//	des_data = (float *) malloc(nx * ny * nz * sizeof(float));
 //
 //	if (nz == 1) {
 //		float x2c =  nx / 2 - dcenter[0] + RAInv[0][3];
@@ -1141,7 +1141,7 @@ void EMData::rotate_x(int dx)
 
 
 	size_t row_size = nx * sizeof(float);
-	float *tmp = (float*)EMUtil::em_malloc(row_size);
+	float *tmp = (float*)malloc(row_size);
 	float * data = get_data();
 
 	for (int y = 0; y < ny; y++) {
