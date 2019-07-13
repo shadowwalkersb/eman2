@@ -150,7 +150,6 @@ namespace EMAN
 		{
 		}
 
-		EMData *project3d(EMData * image) const;
                 // no implementation yet
 		EMData *backproject3d(EMData * image) const;
 
