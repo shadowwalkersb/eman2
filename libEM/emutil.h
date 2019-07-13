@@ -359,9 +359,6 @@ namespace EMAN
 			return malloc(size);
 		}
 
-		inline static void* em_calloc(const size_t nmemb,const size_t size) {
-			return calloc(nmemb,size);
-		}
 	  private:
 		static ImageType fast_get_image_type(const string & filename,
 											 const void *first_block,
