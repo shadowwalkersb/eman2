@@ -190,8 +190,6 @@ namespace EMAN
 
 	  private:
 		float alt, az, phi;
-		bool interp_ft_3d(int mode, EMData * image, float x, float y,
-						  float z, float *data, float gauss_width) const;
 	};
 
 	/** Fourier gridding projection routine.
