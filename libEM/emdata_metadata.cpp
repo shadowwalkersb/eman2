@@ -1317,11 +1317,6 @@ int EMData::get_supp_pickle() const
 	return 0;
 }
 
-void EMData::set_supp_pickle(int)
-{
-	this->supp = 0;
-}
-
 float EMData::get_amplitude_thres(float thres)
 {
 
