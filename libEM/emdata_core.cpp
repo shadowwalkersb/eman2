@@ -48,34 +48,6 @@ using std::endl;
 #include "cuda/cuda_cmp.h"
 #endif // EMAN2_USING_CUDA
 
-void EMData::free_memory()
-{
-	ENTERFUNC;
-	if (rdata) {
-		free(rdata);
-		rdata = 0;
-	}
-
-	if (supp) {
-		free(supp);
-		supp = 0;
-	}
-
-	if (rot_fp != 0)
-	{
-		delete rot_fp;
-		rot_fp = 0;
-	}
-	/*
-	nx = 0;
-	ny = 0;
-	nz = 0;
-	nxy = 0;
-	 */
-
-	EXITFUNC;
-}
-
 EMData * EMData::copy() const
 {
 	ENTERFUNC;

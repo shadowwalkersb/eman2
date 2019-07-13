@@ -176,8 +176,6 @@ EMData& EMData::operator=(const EMData& that)
 
 	if ( this != &that )
 	{
-		free_memory(); // Free memory sets nx,ny and nz to 0
-
 		// Only copy the rdata if it exists, we could be in a scenario where only the header has been read
 		float* data = that.rdata;
 		size_t num_bytes = that.nx*that.ny*that.nz*sizeof(float);
@@ -334,7 +332,17 @@ EMData::~EMData()
 #ifdef FFT_CACHING
 	if (fftcache!=0) { delete fftcache; fftcache=0;}
 #endif //FFT_CACHING
-	free_memory();
+
+	if (rdata) {
+		free(rdata);
+		rdata = 0;
+	}
+
+	if (rot_fp != 0)
+	{
+		delete rot_fp;
+		rot_fp = 0;
+	}
 
 #ifdef EMAN2_USING_CUDA
 	if(cudarwdata){rw_free();}
