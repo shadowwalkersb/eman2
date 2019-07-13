@@ -47,7 +47,6 @@
 using namespace std;
 using namespace EMAN;
 
-const string GaussFFTProjector::NAME = "gauss_fft";
 const string FourierGriddingProjector::NAME = "fourier_gridding";
 const string PawelProjector::NAME = "pawel";
 const string StandardProjector::NAME = "standard";
@@ -56,7 +55,6 @@ const string ChaoProjector::NAME = "chao";
 
 template <> Factory < Projector >::Factory()
 {
-	force_add<GaussFFTProjector>();
 	force_add<PawelProjector>();
 	force_add<StandardProjector>();
 	force_add<MaxValProjector>();
@@ -1396,13 +1394,6 @@ EMData *ChaoProjector::backproject3d(EMData * imagestack) const
 #undef cord
 #undef ptrs
 #undef dm
-
-EMData *GaussFFTProjector::backproject3d(EMData * ) const
-{
-    // no implementation yet
-    EMData *ret = new EMData();
-    return ret;
-}
 
 #define images(i,j,k) images[ (k)*nx*ny + ((j)-1)*nx + (i)-1 ]
 

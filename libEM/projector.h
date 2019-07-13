@@ -143,55 +143,6 @@ namespace EMAN
      * mode 7:  10.4 / (M_PI * M_PI);
      */
 
-	class GaussFFTProjector:public Projector
-	{
-	  public:
-		GaussFFTProjector():alt(0), az(0), phi(0)
-		{
-		}
-
-                // no implementation yet
-		EMData *backproject3d(EMData * image) const;
-
-
-		void set_params(const Dict & new_params)
-		{
-			Projector::set_params(new_params);
-			alt = params["alt"];
-			az = params["az"];
-			phi = params["phi"];
-		}
-
-		string get_name() const
-		{
-			return NAME;
-		}
-
-		string get_desc() const
-		{
-			return "Projections using a Gaussian kernel in Fourier space. Produces artifacts, not recommended.";
-		}
-
-		static Projector *NEW()
-		{
-			return new GaussFFTProjector();
-		}
-
-		TypeDict get_param_types() const
-		{
-			TypeDict d;
-			d.put("transform", EMObject::TRANSFORM);
-			d.put("mode", EMObject::INT);
-			d.put("returnfft", EMObject::INT);
-			return d;
-		}
-		
-		static const string NAME;
-
-	  private:
-		float alt, az, phi;
-	};
-
 	/** Fourier gridding projection routine.
 	 *
 	 *  @see P. A. Penczek, R. Renka, and H. Schomberg,
