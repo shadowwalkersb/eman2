@@ -52,7 +52,7 @@ void EMData::free_memory()
 {
 	ENTERFUNC;
 	if (rdata) {
-		EMUtil::em_free(rdata);
+		free(rdata);
 		rdata = 0;
 	}
 
@@ -75,7 +75,7 @@ void EMData::free_rdata()
 {
 	ENTERFUNC;
 	if (rdata) {
-		EMUtil::em_free(rdata);
+		free(rdata);
 		rdata = 0;
 	}
 	EXITFUNC;

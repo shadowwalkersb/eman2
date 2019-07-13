@@ -110,7 +110,7 @@ void EMData::read_image(const string & filename, int img_index, bool nodata,
 				}
 			}
 			else {
-				if (rdata!=0) EMUtil::em_free(rdata);
+				if (rdata!=0) free(rdata);
 				rdata=0;
 			}
 

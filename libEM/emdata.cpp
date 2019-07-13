@@ -1112,7 +1112,7 @@ void EMData::rotate_translate(float az, float alt, float phi, float dx, float dy
 //
 //	if( rdata )
 //	{
-//		EMUtil::em_free(rdata);
+//		free(rdata);
 //		rdata = 0;
 //	}
 //	rdata = des_data;
