@@ -908,11 +908,6 @@ void EMData::set_size(int x, int y, int z, bool noalloc)
 		EMUtil::em_memset(get_data(),0,size);
 	}
 
-	if (supp) {
-		EMUtil::em_free(supp);
-		supp = 0;
-	}
-
 	update();
 	EXITFUNC;
 }

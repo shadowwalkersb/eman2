@@ -807,8 +807,6 @@ namespace EMAN
 		mutable Dict attr_dict;
 		/** image real data */
 		mutable float *rdata;
-		/** supplementary data array */
-		float *supp;
 
 		/** CTF data
 		 * All CTF data become attribute ctf(vector<float>) in attr_dict  --Grant Tang*/

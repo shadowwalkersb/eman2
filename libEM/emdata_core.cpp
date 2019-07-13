@@ -56,11 +56,6 @@ void EMData::free_memory()
 		rdata = 0;
 	}
 
-	if (supp) {
-		EMUtil::em_free(supp);
-		supp = 0;
-	}
-
 	if (rot_fp != 0)
 	{
 		delete rot_fp;
