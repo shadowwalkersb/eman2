@@ -688,12 +688,6 @@ inline void set_value_at_fast(int x, float v)
 	update();
 }
 
-
-/** Free memory associated with this EMData
- * Called in destructor and in assignment operator
- */
-void free_memory();
-
 EMData & operator+=(float n);
 EMData & operator-=(float n);
 EMData & operator*=(float n);
