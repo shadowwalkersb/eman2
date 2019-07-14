@@ -110,19 +110,31 @@ namespace EMAN {
 		 */
 		static EMData* numpy2em(np::ndarray& array);
 		
-//		EMNumPy(EMData &e) : em(e), arr(em2numpy(e)) {}
+		EMNumPy(EMData &e) : em(e), arr(em2numpy(&e)), data(em.get_ptr())
+		{}
 		
-		EMNumPy(np::ndarray &a) : em(*numpy2em(a)), arr(a) {}
+		EMNumPy(np::ndarray &a) 
+				: em(*numpy2em(a)), arr(a), data(em.get_ptr())
+		{}
 //		EMNumPy(){}
     
-    EMData & getEM() {return em;}
+    EMData & getEM() {
+			cout<<"use_count: "<<data.use_count()<<endl;
+			return em;
+    }
     
+    np::ndarray getARR() {
+			cout<<"use_count: "<<data.use_count()<<endl;
+			return arr;
+    }
+    
+    int use_count() const { return data.use_count();}
         
 
     private:
-//        shared_ptr<float[]> data;
         EMData em;
-        np::ndarray arr;
+		np::ndarray arr;
+		shared_ptr<float[]> data;
 	};
 
 	template <class T>

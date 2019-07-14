@@ -78,6 +78,8 @@ inline float *get_data() const
 inline float *get_data() const { return rdata.get(); }
 #endif
 
+shared_ptr<float[]> get_ptr() {return rdata;}
+
 /** Get the image pixel density data in a 1D float array - const version of get_data
  * @return The image pixel density data.
  */
