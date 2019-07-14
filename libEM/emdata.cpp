@@ -74,7 +74,7 @@ EMData::EMData() :
 #ifdef FFT_CACHING
 	fftcache(0),
 #endif //FFT_CACHING
-		attr_dict(), rdata(0), flags(0), changecount(0), nx(0), ny(0), nz(0), nxy(0), nxyz(0), xoff(0), yoff(0),
+		attr_dict(), rdata(), flags(0), changecount(0), nx(0), ny(0), nz(0), nxy(0), nxyz(0), xoff(0), yoff(0),
 		zoff(0), all_translation(),	path(""), pathnum(0), rot_fp(0)
 
 {
@@ -105,7 +105,7 @@ EMData::EMData(const string& filename, int image_index) :
 #ifdef FFT_CACHING
 	fftcache(0),
 #endif //FFT_CACHING
-		attr_dict(), rdata(0), flags(0), changecount(0), nx(0), ny(0), nz(0), nxy(0), nxyz(0), xoff(0), yoff(0), zoff(0),
+		attr_dict(), rdata(), flags(0), changecount(0), nx(0), ny(0), nz(0), nxy(0), nxyz(0), xoff(0), yoff(0), zoff(0),
 		all_translation(),	path(filename), pathnum(image_index), rot_fp(0)
 {
 	ENTERFUNC;
@@ -138,19 +138,19 @@ EMData::EMData(const EMData& that) :
 #ifdef FFT_CACHING
 	fftcache(0),
 #endif //FFT_CACHING
-		attr_dict(that.attr_dict), rdata(0), flags(that.flags), changecount(that.changecount), nx(that.nx), ny(that.ny), nz(that.nz),
+		attr_dict(that.attr_dict), rdata(), flags(that.flags), changecount(that.changecount), nx(that.nx), ny(that.ny), nz(that.nz),
 		nxy(that.nx*that.ny), nxyz((size_t)that.nx*that.ny*that.nz), xoff(that.xoff), yoff(that.yoff), zoff(that.zoff),all_translation(that.all_translation),	path(that.path),
 		pathnum(that.pathnum), rot_fp(0)
 {
 	ENTERFUNC;
 	
-	float* data = that.rdata;
+	rdata = that.rdata;
 	size_t num_bytes = (size_t)nx*ny*nz*sizeof(float);
-	if (data && num_bytes != 0)
-	{
-		rdata = (float*)malloc(num_bytes);
-		memcpy(rdata, data, num_bytes);
-	}
+//	if (data && num_bytes != 0)
+//	{
+//		rdata = (float*)malloc(num_bytes);
+//		memcpy(rdata, data, num_bytes);
+//	}
 #ifdef EMAN2_USING_CUDA
 	if (EMData::usecuda == 1 && num_bytes != 0 && that.cudarwdata != 0) {
 		//cout << "That copy constructor" << endl;
@@ -177,7 +177,7 @@ EMData::EMData(int nx, int ny, int nz, bool is_real) :
 #ifdef FFT_CACHING
 	fftcache(0),
 #endif //FFT_CACHING
-		attr_dict(), rdata(0), flags(0), changecount(0), nx(0), ny(0), nz(0), nxy(0), nxyz(0), xoff(0), yoff(0), zoff(0),
+		attr_dict(), rdata(), flags(0), changecount(0), nx(0), ny(0), nz(0), nxy(0), nxyz(0), xoff(0), yoff(0), zoff(0),
 		all_translation(),	path(""), pathnum(0), rot_fp(0)
 {
 	ENTERFUNC;
@@ -287,11 +287,11 @@ EMData::~EMData()
 	if (fftcache!=0) { delete fftcache; fftcache=0;}
 #endif //FFT_CACHING
 
-	if (rdata && EMData::totalalloc == 1) {
-		free(rdata);
-		rdata = 0;
-		EMData::totalalloc = 0;
-	}
+//	if (rdata && EMData::totalalloc == 1) {
+////		free(rdata);
+////		rdata = 0;
+//		EMData::totalalloc = 0;
+//	}
 
 	if (rot_fp != 0)
 	{
@@ -352,7 +352,7 @@ void EMData::clip_inplace(const Region & area,const float& fill_value)
 		set_size(new_nx, new_ny, new_nz);
 
 		// Set pixel memory to zero - the client should expect to see nothing
-		memset(rdata, 0, (size_t)new_nx*new_ny*new_nz);
+//		memset(rdata, 0, (size_t)new_nx*new_ny*new_nz);
 
 		return;
 	}
@@ -385,8 +385,8 @@ void EMData::clip_inplace(const Region & area,const float& fill_value)
 			// This could be optimized so that not so many multiplications are occurring...
 			size_t dst_inc = dst_it_begin + j*new_nx + i*new_sec_size;
 			size_t src_inc = src_it_begin + j*prev_nx + i*prev_sec_size;
-			float* local_dst = rdata + dst_inc;
-			float* local_src = rdata + src_inc;
+			float* local_dst = rdata.get() + dst_inc;
+			float* local_src = rdata.get() + src_inc;
 
 			if ( dst_inc >= src_inc )
 			{
@@ -419,8 +419,8 @@ void EMData::clip_inplace(const Region & area,const float& fill_value)
 			// Determine the memory increments as dependent on i and j
 			size_t dst_inc = dst_it_end - j*new_nx - i*new_sec_size;
 			size_t src_inc = src_it_end - j*prev_nx - i*prev_sec_size;
-			float* local_dst = rdata + dst_inc;
-			float* local_src = rdata + src_inc;
+			float* local_dst = rdata.get() + dst_inc;
+			float* local_src = rdata.get() + src_inc;
 
 			if (dst_inc <= (src_inc + civ.x_iter ))
 			{
@@ -462,13 +462,13 @@ void EMData::clip_inplace(const Region & area,const float& fill_value)
 	{
 		//memset(rdata, 0, (-z0)*new_sec_size*sizeof(float));
 		size_t inc = (-z0)*new_sec_size;
-		std::fill(rdata,rdata+inc,fill_value);
+		std::fill(rdata.get(),rdata.get()+inc,fill_value);
 	}
 
 	// Set the extra top z slices to the fill_value
 	if (  civ.new_z_top > 0 )
 	{
-		float* begin_pointer = rdata + (new_nz-civ.new_z_top)*new_sec_size;
+		float* begin_pointer = rdata.get() + (new_nz-civ.new_z_top)*new_sec_size;
 		//memset(begin_pointer, 0, (civ.new_z_top)*new_sec_size*sizeof(float));
 		float* end_pointer = begin_pointer+(civ.new_z_top)*new_sec_size;
 		std::fill(begin_pointer,end_pointer,fill_value);
@@ -480,7 +480,7 @@ void EMData::clip_inplace(const Region & area,const float& fill_value)
 		// Set the extra front y components to the fill_value
 		if ( y0 < 0 )
 		{
-			float* begin_pointer = rdata + i*new_sec_size;
+			float* begin_pointer = rdata.get() + i*new_sec_size;
 			//memset(begin_pointer, 0, (-y0)*new_nx*sizeof(float));
 			float* end_pointer = begin_pointer+(-y0)*new_nx;
 			std::fill(begin_pointer,end_pointer,fill_value);
@@ -489,7 +489,7 @@ void EMData::clip_inplace(const Region & area,const float& fill_value)
 		// Set the extra back y components to the fill_value
 		if ( civ.new_y_back > 0 )
 		{
-			float* begin_pointer = rdata + i*new_sec_size + (new_ny-civ.new_y_back)*new_nx;
+			float* begin_pointer = rdata.get() + i*new_sec_size + (new_ny-civ.new_y_back)*new_nx;
 			//memset(begin_pointer, 0, (civ.new_y_back)*new_nx*sizeof(float));
 			float* end_pointer = begin_pointer+(civ.new_y_back)*new_nx;
 			std::fill(begin_pointer,end_pointer,fill_value);
@@ -501,7 +501,7 @@ void EMData::clip_inplace(const Region & area,const float& fill_value)
 			// Set the extra left x components to the fill_value
 			if ( x0 < 0 )
 			{
-				float* begin_pointer = rdata + i*new_sec_size + j*new_nx;
+				float* begin_pointer = rdata.get() + i*new_sec_size + j*new_nx;
 				//memset(begin_pointer, 0, (-x0)*sizeof(float));
 				float* end_pointer = begin_pointer+(-x0);
 				std::fill(begin_pointer,end_pointer,fill_value);
@@ -510,7 +510,7 @@ void EMData::clip_inplace(const Region & area,const float& fill_value)
 			// Set the extra right x components to the fill_value
 			if ( civ.new_x_right > 0 )
 			{
-				float* begin_pointer = rdata + i*new_sec_size + j*new_nx + (new_nx - civ.new_x_right);
+				float* begin_pointer = rdata.get() + i*new_sec_size + j*new_nx + (new_nx - civ.new_x_right);
 				//memset(begin_pointer, 0, (civ.new_x_right)*sizeof(float));
 				float* end_pointer = begin_pointer+(civ.new_x_right);
 				std::fill(begin_pointer,end_pointer,fill_value);

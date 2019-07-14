@@ -45,7 +45,7 @@ public:
 */
 inline void register_buffer_data(float* buffer_data, const int x, const int y, const int z) {
 	// Do NOT free the rdata since the buffer data is supposed to owned by another object
-	rdata = buffer_data;
+	rdata.reset(buffer_data);
 	nx = x; ny = y; nz = z;
 	nxy = nx*ny;
 	nxyz = (size_t)nx*ny*nz;
@@ -59,7 +59,7 @@ inline void register_buffer_data(float* buffer_data, const int x, const int y, c
  * the memory management of EMData and Boost Python Binding.
  */
 inline void unregister_buffer_data() {
-	rdata = 0;
+//	rdata = 0;
 }
 
 /** returns the fourier harmonic transform (FH) image of the current

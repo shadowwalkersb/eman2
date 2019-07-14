@@ -110,8 +110,8 @@ void EMData::read_image(const string & filename, int img_index, bool nodata,
 				}
 			}
 			else {
-				if (rdata!=0) free(rdata);
-				rdata=0;
+//				if (rdata!=0) free(rdata);
+//				rdata=0;
 			}
 
 		}

@@ -150,7 +150,7 @@ void EMData::do_fft_inplace()
 		offset = is_fftodd() ? 1 : 2;
 		nxreal = nx - offset;
 	}
-	EMfft::real_to_complex_nd(rdata, rdata, nxreal, ny, nz);
+	EMfft::real_to_complex_nd(rdata.get(), rdata.get(), nxreal, ny, nz);
 
 	set_complex(true);
 	if(ny==1 && nz==1)  set_complex_x(true);
@@ -351,7 +351,7 @@ EMData *EMData::do_ift()
 	/* Do inplace IFT on a image copy, because the complex to real transform of
 	 * nd will destroy its input array even for out-of-place transforms.
 	 */
-	memcpy((char *) d, (char *) rdata, (size_t)nx * ny * nz * sizeof(float));
+	memcpy((char *) d, (char *) rdata.get(), (size_t)nx * ny * nz * sizeof(float));
 
 	int offset = is_fftodd() ? 1 : 2;
 	//cout << "Sending offset " << offset << " " << nx-offset << endl;

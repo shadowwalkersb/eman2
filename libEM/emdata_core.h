@@ -218,7 +218,7 @@ inline float get_value_at(int x, int y, int z) const
  */
 inline float get_value_at_index(size_t i) const
 {
-        return *(rdata + i);
+        return rdata[i];
 }
 
 /** Get the pixel density value at coordinates (x,y). 2D only.
@@ -610,7 +610,7 @@ inline void set_value_at_fast(int x, int y, int z, float v)
 
 inline void set_value_at_index(size_t i, float v)
 {
-        *(rdata + i) = v;
+        rdata[i] = v;
 }
 
 /** Set the pixel density value at coordinates (x,y).

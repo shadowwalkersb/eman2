@@ -75,7 +75,7 @@ inline float *get_data() const
 	return rdata;
 }
 #else
-inline float *get_data() const { return rdata; }
+inline float *get_data() const { return rdata.get(); }
 #endif
 
 /** Get the image pixel density data in a 1D float array - const version of get_data
@@ -91,12 +91,12 @@ inline const float * get_const_data() const { return get_data(); }
 * @param z the number of pixels in the z direction
 */
 inline void set_data(float* data, const int x, const int y, const int z) {
-	if (rdata) { free(rdata); rdata = 0; }
+//	if (rdata) { free(rdata); rdata = 0; }
 #ifdef EMAN2_USING_CUDA
 	//cout << "set data" << endl;
 //	free_cuda_memory();
 #endif
-	rdata = data;
+	rdata.reset(data);
 	nx = x; ny = y; nz = z;
 	nxy = nx*ny;
 	nxyz = (size_t)nx*ny*nz;
@@ -104,7 +104,7 @@ inline void set_data(float* data, const int x, const int y, const int z) {
 }
 
 inline void set_data(float* data) {
-	rdata = data;
+	rdata.reset(data);
 }
 
 /** Dump the image pixel data in native byte order to a disk file.

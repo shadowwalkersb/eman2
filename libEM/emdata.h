@@ -60,6 +60,9 @@ using std::ostream;
 #include <utility>
 using std::pair;
 
+#include <boost/shared_ptr.hpp>
+using boost::shared_ptr;
+
 namespace EMAN
 {
 	class ImageIO;
@@ -800,7 +803,7 @@ namespace EMAN
 		/** to store all image header info */
 		mutable Dict attr_dict;
 		/** image real data */
-		mutable float *rdata;
+		mutable shared_ptr<float[]> rdata;
 
 		/** CTF data
 		 * All CTF data become attribute ctf(vector<float>) in attr_dict  --Grant Tang*/
