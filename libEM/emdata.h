@@ -60,6 +60,12 @@ using std::ostream;
 #include <utility>
 using std::pair;
 
+#include <boost/python.hpp>
+#include <boost/python/numpy.hpp>
+
+namespace python = boost::python;
+namespace np = boost::python::numpy;
+
 namespace EMAN
 {
 	class ImageIO;
@@ -115,6 +121,9 @@ namespace EMAN
 		/** Construct an empty EMData instance. It has no image data. */
 		EMData();
 		~ EMData();
+		python::object& get_owner(){
+		    return owner;
+		}
 
 		/** Construct from an image file.
 		 * @param filename the image file name
@@ -801,6 +810,7 @@ namespace EMAN
 		mutable Dict attr_dict;
 		/** image real data */
 		mutable float *rdata;
+		python::object owner;
 
 		/** CTF data
 		 * All CTF data become attribute ctf(vector<float>) in attr_dict  --Grant Tang*/
