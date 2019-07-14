@@ -110,7 +110,7 @@ EMData* EMNumPy::numpy2em(np::ndarray& array)
 //		float *array_data = reinterpret_cast<float *>(array_data1);
 		cout<<"array_data1: "<<array_data1[0]<<endl;
 		cout<<"array_data: "<<array_data[0]<<endl;
-		image = new EMData((float*)array_data, nx, ny, nz,Dict(),1);
+//		image = new EMData((float*)array_data, nx, ny, nz,Dict(),1);
 	}
 
 	image->update();
