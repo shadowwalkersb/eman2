@@ -111,11 +111,11 @@ namespace EMAN {
 		static EMData* numpy2em(np::ndarray& array);
 		
 		EMNumPy(EMData &e) : em(e), arr(em2numpy(&e)), data(em.get_ptr())
-		{}
+		{cout<<"use_count: "<<data.use_count()<<endl;}
 		
 		EMNumPy(np::ndarray &a) 
 				: em(*numpy2em(a)), arr(a), data(em.get_ptr())
-		{}
+		{cout<<"use_count: "<<data.use_count()<<endl;}
 //		EMNumPy(){}
     
     EMData & getEM() {

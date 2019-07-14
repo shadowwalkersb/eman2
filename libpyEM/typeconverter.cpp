@@ -114,6 +114,7 @@ EMData* EMNumPy::numpy2em(np::ndarray& array)
 	}
 
 	image->update();
+	cout<<"image use_count: "<<(image->get_ptr()).use_count()<<endl;
 	return image;
 }
 
