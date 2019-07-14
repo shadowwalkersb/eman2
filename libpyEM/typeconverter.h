@@ -102,13 +102,27 @@ namespace EMAN {
 		/** Get an EMData image's pixel data as a numeric numpy array.
 		 * The array and EMData image share the same memory block.
 		 */
-		static np::ndarray em2numpy(const EMData *const image);
+		static np::ndarray em2numpy(EMData *const image);
 
 		/** Create an EMData image from a numeric numpy array.
 		 * returned EMData object will take the ownership of the numpy array data.
 		 * Note: the array size is (nz,ny,nx) corresponding to image (nx,ny,nz).
 		 */
 		static EMData* numpy2em(np::ndarray& array);
+		
+//		EMNumPy(EMData &e) : em(e), arr(em2numpy(e)) {}
+		
+		EMNumPy(np::ndarray &a) : em(*numpy2em(a)), arr(a) {}
+//		EMNumPy(){}
+    
+    EMData & getEM() {return em;}
+    
+        
+
+    private:
+//        shared_ptr<float[]> data;
+        EMData em;
+        np::ndarray arr;
 	};
 
 	template <class T>

@@ -44,7 +44,7 @@ namespace np = boost::python::numpy;
 
 using namespace EMAN;
 
-np::ndarray EMNumPy::em2numpy(const EMData *const image)
+np::ndarray EMNumPy::em2numpy(EMData *const image)
 {
 	float * data = image->get_data();
 	int nx = image->get_xsize();
