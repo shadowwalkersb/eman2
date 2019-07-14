@@ -108,7 +108,7 @@ namespace EMAN {
 		 * returned EMData object will take the ownership of the numpy array data.
 		 * Note: the array size is (nz,ny,nx) corresponding to image (nx,ny,nz).
 		 */
-		static EMData* numpy2em(np::ndarray& array);
+		static EMData* numpy2em(const np::ndarray& array);
 	};
 
 	template <class T>
