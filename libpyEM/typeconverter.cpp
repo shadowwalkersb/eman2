@@ -66,7 +66,7 @@ np::ndarray EMNumPy::em2numpy(const EMData *const image)
 	return make_numeric_array(data, dims);
 }
 
-EMData* EMNumPy::numpy2em(const np::ndarray& array)
+EMData* EMNumPy::numpy2em(np::ndarray& array)
 {
 	int ndim = array.get_nd();
 
