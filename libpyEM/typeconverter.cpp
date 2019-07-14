@@ -101,7 +101,7 @@ EMData* EMNumPy::numpy2em(np::ndarray& array)
 	
 	if(string(python::extract<char const *>(python::str(array.get_dtype()))) == "float32") {
 		float *array_data = reinterpret_cast<float *>(array.get_data());
-		image = new EMData((float*)array_data, nx, ny, nz,Dict(),1);
+		image = new EMData((float*)array_data, nx, ny, nz);
 	}
 	else {
 	    cout<<"dtype: "<<string(python::extract<char const *>(python::str(array.get_dtype())))<<endl;

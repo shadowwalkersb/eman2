@@ -225,7 +225,7 @@ EMData::EMData(int nx, int ny, int nz, bool is_real) :
 }
 
 
-EMData::EMData(float* data, const int x, const int y, const int z, const Dict& attr_dict, int dd) :
+EMData::EMData(float* data, const int x, const int y, const int z, const Dict& attr_dict) :
 #ifdef EMAN2_USING_CUDA
 		cudarwdata(0), cudarodata(0), num_bytes(0), nextlistitem(0), prevlistitem(0), roneedsupdate(0), cudadirtybit(0),
 #endif //EMAN2_USING_CUDA
@@ -242,7 +242,6 @@ EMData::EMData(float* data, const int x, const int y, const int z, const Dict& a
 	attr_dict["apix_z"] = 1.0f;
 
 	EMData::totalalloc++;
-	EMData::totalalloc += dd;
 #ifdef MEMDEBUG2
 	printf("EMDATA+  %4d    %p\n",EMData::totalalloc,this);
 #endif
