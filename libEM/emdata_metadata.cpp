@@ -1253,6 +1253,11 @@ void EMData::set_data_pickle(std::string vf)
 
 }
 
+int EMData::get_supp_pickle() const
+{
+	return 0;
+}
+
 float EMData::get_amplitude_thres(float thres)
 {
 

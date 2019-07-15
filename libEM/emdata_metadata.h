@@ -960,6 +960,9 @@ std::string get_data_pickle() const;
 //void set_data_pickle(const vector<float>& vf);
 void set_data_pickle(std::string vf);
 
+//we don't actually pickle supp, just a place holder to set supp to NULL
+int get_supp_pickle() const;
+
 vector<Vec3i> mask_contig_region(const float& val, const Vec3i& seed);
 
 /** return the FFT amplitude which is greater than thres %
