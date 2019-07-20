@@ -61,6 +61,7 @@ using std::ostream;
 using std::pair;
 
 #include <boost/shared_ptr.hpp>
+using boost::shared_ptr;
 
 namespace EMAN
 {
@@ -825,7 +826,7 @@ namespace EMAN
 		/** to store all image header info */
 		mutable Dict attr_dict;
 		/** image real data */
-		mutable boost::shared_ptr<float[]> rdata;
+		mutable shared_ptr<float[]> rdata;
 		/** supplementary data array */
 		float *supp;
 
