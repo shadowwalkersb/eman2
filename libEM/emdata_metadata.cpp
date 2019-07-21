@@ -1316,7 +1316,7 @@ void EMData::set_data_pickle(std::string vf)
 //	if (rdata) printf("rdata exists\n");
 //	rdata = (float *)malloc(nx*ny*nz*sizeof(float));
 //	std::copy(vf.begin(), vf.end(), rdata);
-	EMUtil::em_memcpy(get_data(),vf.data(),(size_t)nx*ny*nz*sizeof(float));
+	std::copy(vf.data(), vf.data() + (size_t)nx*ny*nz, get_data());
 
 }
 
