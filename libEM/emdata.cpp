@@ -145,11 +145,11 @@ EMData::EMData(const EMData& that) :
 	ENTERFUNC;
 	
 	float* data = that.rdata;
-	size_t num_bytes = (size_t)nx*ny*nz*sizeof(float);
-	if (data && num_bytes != 0)
+	size_t num_elements = nx*ny*nz;
+	if (data && num_elements != 0)
 	{
-		rdata = (float*)EMUtil::em_malloc(num_bytes);
-		EMUtil::em_memcpy(rdata, data, num_bytes);
+		rdata = new float[num_elements];
+		EMUtil::em_memcpy(rdata, data, num_elements*sizeof(float));
 	}
 #ifdef EMAN2_USING_CUDA
 	if (EMData::usecuda == 1 && num_bytes != 0 && that.cudarwdata != 0) {
@@ -1015,8 +1015,7 @@ void EMData::rotate_x(int dx)
 	}
 
 
-	size_t row_size = nx * sizeof(float);
-	float *tmp = (float*)EMUtil::em_malloc(row_size);
+	float *tmp = new float[nx];
 	float * data = get_data();
 
 	for (int y = 0; y < ny; y++) {
@@ -1024,7 +1023,7 @@ void EMData::rotate_x(int dx)
 		for (int x = 0; x < nx; x++) {
 			tmp[x] = data[y_nx + (x + dx) % nx];
 		}
-		EMUtil::em_memcpy(&data[y_nx], tmp, row_size);
+		EMUtil::em_memcpy(&data[y_nx], tmp, nx*sizeof(float));
 	}
 
 	update();

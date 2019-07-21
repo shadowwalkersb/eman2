@@ -856,7 +856,8 @@ void EMData::set_size(int x, int y, int z, bool noalloc)
 
 	int old_nx = nx;
 
-	size_t size = (size_t)x*y*z*sizeof(float);
+	size_t num_elements = x*y*z;
+	size_t size = num_elements*sizeof(float);
 	
 	if (noalloc) {
 		nx = x;
@@ -871,7 +872,7 @@ void EMData::set_size(int x, int y, int z, bool noalloc)
 		rdata = (float*)EMUtil::em_realloc(rdata,size);
 	} else {
 		// Just pass on this for a while....see what happens
-		rdata = (float*)EMUtil::em_malloc(size);
+		rdata = new float[num_elements];
 	}
 // 	rdata = static_cast < float *>(realloc(rdata, size));
 	if ( rdata == 0 )
