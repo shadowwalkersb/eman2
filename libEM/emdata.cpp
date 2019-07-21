@@ -497,7 +497,6 @@ void EMData::clip_inplace(const Region & area,const float& fill_value)
 	// Set the extra bottom z slices to the fill_value
 	if (  z0 < 0 )
 	{
-		//EMUtil::em_memset(rdata, 0, (-z0)*new_sec_size*sizeof(float));
 		size_t inc = (-z0)*new_sec_size;
 		std::fill(rdata,rdata+inc,fill_value);
 	}
@@ -506,7 +505,6 @@ void EMData::clip_inplace(const Region & area,const float& fill_value)
 	if (  civ.new_z_top > 0 )
 	{
 		float* begin_pointer = rdata + (new_nz-civ.new_z_top)*new_sec_size;
-		//EMUtil::em_memset(begin_pointer, 0, (civ.new_z_top)*new_sec_size*sizeof(float));
 		float* end_pointer = begin_pointer+(civ.new_z_top)*new_sec_size;
 		std::fill(begin_pointer,end_pointer,fill_value);
 	}
@@ -518,7 +516,6 @@ void EMData::clip_inplace(const Region & area,const float& fill_value)
 		if ( y0 < 0 )
 		{
 			float* begin_pointer = rdata + i*new_sec_size;
-			//EMUtil::em_memset(begin_pointer, 0, (-y0)*new_nx*sizeof(float));
 			float* end_pointer = begin_pointer+(-y0)*new_nx;
 			std::fill(begin_pointer,end_pointer,fill_value);
 		}
@@ -527,7 +524,6 @@ void EMData::clip_inplace(const Region & area,const float& fill_value)
 		if ( civ.new_y_back > 0 )
 		{
 			float* begin_pointer = rdata + i*new_sec_size + (new_ny-civ.new_y_back)*new_nx;
-			//EMUtil::em_memset(begin_pointer, 0, (civ.new_y_back)*new_nx*sizeof(float));
 			float* end_pointer = begin_pointer+(civ.new_y_back)*new_nx;
 			std::fill(begin_pointer,end_pointer,fill_value);
 		}
@@ -539,7 +535,6 @@ void EMData::clip_inplace(const Region & area,const float& fill_value)
 			if ( x0 < 0 )
 			{
 				float* begin_pointer = rdata + i*new_sec_size + j*new_nx;
-				//EMUtil::em_memset(begin_pointer, 0, (-x0)*sizeof(float));
 				float* end_pointer = begin_pointer+(-x0);
 				std::fill(begin_pointer,end_pointer,fill_value);
 			}
@@ -548,7 +543,6 @@ void EMData::clip_inplace(const Region & area,const float& fill_value)
 			if ( civ.new_x_right > 0 )
 			{
 				float* begin_pointer = rdata + i*new_sec_size + j*new_nx + (new_nx - civ.new_x_right);
-				//EMUtil::em_memset(begin_pointer, 0, (civ.new_x_right)*sizeof(float));
 				float* end_pointer = begin_pointer+(civ.new_x_right);
 				std::fill(begin_pointer,end_pointer,fill_value);
 			}
@@ -1010,194 +1004,6 @@ void EMData::rotate_translate(float az, float alt, float phi, float dx, float dy
 	t.set_trans(pdx, pdy, pdz);
 	rotate_translate(t);
 }
-
-//void EMData::rotate_translate(const Transform3D & RA)
-//{
-//	cout << "Deprecation warning in EMData::rotate_translate. Please consider using EMData::transform() instead " << endl;
-//	ENTERFUNC;
-//
-//#if EMDATA_EMAN2_DEBUG
-//	std::cout << "start rotate_translate..." << std::endl;
-//#endif
-//
-//	float scale       = RA.get_scale();
-// 	Vec3f dcenter     = RA.get_center();
-//	Vec3f translation = RA.get_posttrans();
-//	Dict rotation      = RA.get_rotation(Transform3D::EMAN);
-////	Transform3D mx = RA;
-//	Transform3D RAInv = RA.inverse(); // We're rotating the coordinate system, not the data
-//// 	RAInv.printme();
-//#if EMDATA_EMAN2_DEBUG
-//	vector<string> keys = rotation.keys();
-//	vector<string>::const_iterator it;
-//	for(it=keys.begin(); it!=keys.end(); ++it) {
-////		std::cout << *it << " : " << rotation[*it] << std::endl;
-//		std::cout << *it << " : " << (float)rotation.get(*it) << std::endl;
-//	}
-//#endif
-//	float inv_scale = 1.0f;
-//
-//	if (scale != 0) {
-//		inv_scale = 1.0f / scale;
-//	}
-//
-//	float *src_data = 0;
-//	float *des_data = 0;
-//
-//	src_data = get_data();
-//	des_data = (float *) EMUtil::em_malloc(nx * ny * nz * sizeof(float));
-//
-//	if (nz == 1) {
-//		float x2c =  nx / 2 - dcenter[0] + RAInv[0][3];
-//		float y2c =  ny / 2 - dcenter[1] + RAInv[1][3];
-//		float y   = -ny / 2 + dcenter[1]; // changed 0 to 1 in dcenter and below
-//		for (int j = 0; j < ny; j++, y += 1.0f) {
-//			float x = -nx / 2 + dcenter[0];
-//			for (int i = 0; i < nx; i++, x += 1.0f) {
-//				float x2 = RAInv[0][0]*x + RAInv[0][1]*y + x2c;
-//				float y2 = RAInv[1][0]*x + RAInv[1][1]*y + y2c;
-//
-//				if (x2 < 0 || x2 >= nx || y2 < 0 || y2 >= ny ) {
-//					des_data[i + j * nx] = 0; // It may be tempting to set this value to the
-//					// mean but in fact this is not a good thing to do. Talk to S.Ludtke about it.
-//				}
-//				else {
-//					int ii = Util::fast_floor(x2);
-//					int jj = Util::fast_floor(y2);
-//					int k0 = ii + jj * nx;
-//					int k1 = k0 + 1;
-//					int k2 = k0 + nx;
-//					int k3 = k0 + nx + 1;
-//
-//					if (ii == nx - 1) {
-//						k1--;
-//						k3--;
-//					}
-//					if (jj == ny - 1) {
-//						k2 -= nx;
-//						k3 -= nx;
-//					}
-//
-//					float t = x2 - ii;
-//					float u = y2 - jj;
-//
-//					des_data[i + j * nx] = Util::bilinear_interpolate(src_data[k0],src_data[k1], src_data[k2], src_data[k3],t,u); // This is essentially basic interpolation
-//				}
-//			}
-//		}
-//	}
-//	else {
-//#if EMDATA_EMAN2_DEBUG
-//		std::cout << "This is the 3D case." << std::endl    ;
-//#endif
-//
-//		Transform3D mx = RA;
-//		mx.set_scale(inv_scale);
-//
-//#if EMDATA_EMAN2_DEBUG
-////		std::cout << v4[0] << " " << v4[1]<< " " << v4[2]<< " "
-////			<< dcenter2[0]<< " "<< dcenter2[1]<< " "<< dcenter2[2] << std::endl;
-//#endif
-//
-//		int nxy = nx * ny;
-//		int l = 0;
-//
-//		float x2c =  nx / 2 - dcenter[0] + RAInv[0][3];;
-//		float y2c =  ny / 2 - dcenter[1] + RAInv[1][3];;
-//		float z2c =  nz / 2 - dcenter[2] + RAInv[2][3];;
-//
-//		float z   = -nz / 2 + dcenter[2]; //
-//
-//		size_t ii, k0, k1, k2, k3, k4, k5, k6, k7;
-//		for (int k = 0; k < nz; k++, z += 1.0f) {
-//			float y   = -ny / 2 + dcenter[1]; //
-//			for (int j = 0; j < ny; j++,   y += 1.0f) {
-//				float x = -nx / 2 + dcenter[0];
-//				for (int i = 0; i < nx; i++, l++ ,  x += 1.0f) {
-//					float x2 = RAInv[0][0] * x + RAInv[0][1] * y + RAInv[0][2] * z + x2c;
-//					float y2 = RAInv[1][0] * x + RAInv[1][1] * y + RAInv[1][2] * z + y2c;
-//					float z2 = RAInv[2][0] * x + RAInv[2][1] * y + RAInv[2][2] * z + z2c;
-//
-//
-//					if (x2 < 0 || y2 < 0 || z2 < 0 ||
-//						x2 >= nx  || y2 >= ny  || z2>= nz ) {
-//						des_data[l] = 0;
-//					}
-//					else {
-//						int ix = Util::fast_floor(x2);
-//						int iy = Util::fast_floor(y2);
-//						int iz = Util::fast_floor(z2);
-//						float tuvx = x2-ix;
-//						float tuvy = y2-iy;
-//						float tuvz = z2-iz;
-//						ii = ix + iy * nx + iz * nxy;
-//
-//						k0 = ii;
-//						k1 = k0 + 1;
-//						k2 = k0 + nx;
-//						k3 = k0 + nx+1;
-//						k4 = k0 + nxy;
-//						k5 = k1 + nxy;
-//						k6 = k2 + nxy;
-//						k7 = k3 + nxy;
-//
-//						if (ix == nx - 1) {
-//							k1--;
-//							k3--;
-//							k5--;
-//							k7--;
-//						}
-//						if (iy == ny - 1) {
-//							k2 -= nx;
-//							k3 -= nx;
-//							k6 -= nx;
-//							k7 -= nx;
-//						}
-//						if (iz == nz - 1) {
-//							k4 -= nxy;
-//							k5 -= nxy;
-//							k6 -= nxy;
-//							k7 -= nxy;
-//						}
-//
-//						des_data[l] = Util::trilinear_interpolate(src_data[k0],
-//							  src_data[k1],
-//							  src_data[k2],
-//							  src_data[k3],
-//							  src_data[k4],
-//							  src_data[k5],
-//							  src_data[k6],
-//							  src_data[k7],
-//							  tuvx, tuvy, tuvz);
-//#if EMDATA_EMAN2_DEBUG
-//						printf(" ix=%d \t iy=%d \t iz=%d \t value=%f \n", ix ,iy, iz, des_data[l] );
-//						std::cout << src_data[ii] << std::endl;
-//#endif
-//					}
-//				}
-//			}
-//		}
-//	}
-//
-//	if( rdata )
-//	{
-//		EMUtil::em_free(rdata);
-//		rdata = 0;
-//	}
-//	rdata = des_data;
-//
-//	scale_pixel(inv_scale);
-//
-//	attr_dict["origin_x"] = (float) attr_dict["origin_x"] * inv_scale;
-//	attr_dict["origin_y"] = (float) attr_dict["origin_y"] * inv_scale;
-//	attr_dict["origin_z"] = (float) attr_dict["origin_z"] * inv_scale;
-//
-//	update();
-//	all_translation += translation;
-//	EXITFUNC;
-//}
-
-
 
 
 void EMData::rotate_x(int dx)
