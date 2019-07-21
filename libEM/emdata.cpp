@@ -167,7 +167,7 @@ EMData::EMData(const EMData& that) :
 	printf("EMDATA+  %4d    %p\n",EMData::totalalloc,this);
 #endif
 
-	ENTERFUNC;
+	EXITFUNC;
 }
 
 EMData& EMData::operator=(const EMData& that)
