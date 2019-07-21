@@ -857,7 +857,6 @@ void EMData::set_size(int x, int y, int z, bool noalloc)
 	int old_nx = nx;
 
 	size_t num_elements = x*y*z;
-	size_t size = num_elements*sizeof(float);
 	
 	if (noalloc) {
 		nx = x;
@@ -868,18 +867,17 @@ void EMData::set_size(int x, int y, int z, bool noalloc)
 		return;
 	}
 	
-	if (rdata != 0) {
-		rdata = (float*)EMUtil::em_realloc(rdata,size);
-	} else {
-		// Just pass on this for a while....see what happens
-		rdata = new float[num_elements];
+	if(rdata) {
+		delete [] rdata;
 	}
-// 	rdata = static_cast < float *>(realloc(rdata, size));
-	if ( rdata == 0 )
+	
+	rdata = new float[num_elements];
+
+	if ( !rdata)
 	{
 		stringstream ss;
 		string gigs;
-		ss << (float) size/1000000000.0;
+		ss << (float) num_elements/1000000000.0;
 		ss >> gigs;
 		string message = "Cannot allocate " + gigs + " GB - not enough memory.";
 		throw BadAllocException(message);

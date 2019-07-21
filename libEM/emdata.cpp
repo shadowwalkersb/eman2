@@ -180,8 +180,8 @@ EMData& EMData::operator=(const EMData& that)
 
 		// Only copy the rdata if it exists, we could be in a scenario where only the header has been read
 		float* data = that.rdata;
-		size_t num_bytes = that.nx*that.ny*that.nz*sizeof(float);
-		if (data && num_bytes != 0)
+		size_t num_elements = that.nx*that.ny*that.nz;
+		if (data && num_elements != 0)
 		{
 			nx = 1; // This prevents a memset in set_size
 			set_size(that.nx,that.ny,that.nz);
