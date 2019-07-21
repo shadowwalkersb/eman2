@@ -907,7 +907,7 @@ void EMData::set_size(int x, int y, int z, bool noalloc)
 		std::fill(get_data(), get_data() + num_elements, 0);
 
 	if (supp) {
-		EMUtil::em_free(supp);
+		free(supp);
 		supp = 0;
 	}
 

@@ -57,7 +57,7 @@ void EMData::free_memory()
 	}
 
 	if (supp) {
-		EMUtil::em_free(supp);
+		free(supp);
 		supp = 0;
 	}
 

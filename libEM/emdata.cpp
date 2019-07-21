@@ -821,7 +821,7 @@ float *EMData::setup4slice(bool redo)
 
 	if (supp) {
 		if (redo) {
-			EMUtil::em_free(supp);
+			free(supp);
 			supp = 0;
 		}
 		else {
