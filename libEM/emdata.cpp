@@ -834,7 +834,7 @@ float *EMData::setup4slice(bool redo)
 	const int SUPP_ROW_OFFSET = 4;
 	const int supp_size = SUPP_ROW_SIZE + SUPP_ROW_OFFSET;
 
-	supp = (float *) EMUtil::em_calloc(supp_size * ny * nz, sizeof(float));
+	supp = (float *) calloc(supp_size * ny * nz, sizeof(float));
 	int nxy = nx * ny;
 	int supp_xy = supp_size * ny;
 	float * data = get_data();
