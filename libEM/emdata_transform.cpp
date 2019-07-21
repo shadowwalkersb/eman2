@@ -1832,7 +1832,7 @@ void EMData::insert_clip(const EMData * const block, const IntPoint &origin) {
 	
 	for (int i = z0; i < z1; i++) {
 		for (int j = y0; j < y1; j++) {
-			std::copy(src, src + clipped_row_size/sizeof(float), dst);
+			EMUtil::em_memcpy(dst, src, clipped_row_size);
 			src += nx1;
 			dst += nx;
 		}

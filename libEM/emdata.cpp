@@ -145,11 +145,11 @@ EMData::EMData(const EMData& that) :
 	ENTERFUNC;
 	
 	float* data = that.rdata;
-	size_t num_elements = nx*ny*nz;
-	if (data && num_elements != 0)
+	size_t num_bytes = (size_t)nx*ny*nz*sizeof(float);
+	if (data && num_bytes != 0)
 	{
-		rdata = new float[num_elements];
-		std::copy(data, data + num_elements, rdata);
+		rdata = (float*)EMUtil::em_malloc(num_bytes);
+		EMUtil::em_memcpy(rdata, data, num_bytes);
 	}
 #ifdef EMAN2_USING_CUDA
 	if (EMData::usecuda == 1 && num_bytes != 0 && that.cudarwdata != 0) {
@@ -180,12 +180,12 @@ EMData& EMData::operator=(const EMData& that)
 
 		// Only copy the rdata if it exists, we could be in a scenario where only the header has been read
 		float* data = that.rdata;
-		size_t num_elements = that.nx*that.ny*that.nz;
-		if (data && num_elements != 0)
+		size_t num_bytes = that.nx*that.ny*that.nz*sizeof(float);
+		if (data && num_bytes != 0)
 		{
 			nx = 1; // This prevents a memset in set_size
 			set_size(that.nx,that.ny,that.nz);
-			std::copy(data, data + num_bytes/sizeof(float), rdata);
+			EMUtil::em_memcpy(rdata, data, num_bytes);
 		}
 
 		flags = that.flags;
@@ -389,7 +389,7 @@ void EMData::clip_inplace(const Region & area,const float& fill_value)
 		set_size(new_nx, new_ny, new_nz);
 
 		// Set pixel memory to zero - the client should expect to see nothing
-		std::fill(rdata, rdata + new_nx*new_ny*new_nz, 0);
+		EMUtil::em_memset(rdata, 0, (size_t)new_nx*new_ny*new_nz);
 
 		return;
 	}
@@ -483,7 +483,7 @@ void EMData::clip_inplace(const Region & area,const float& fill_value)
 			Assert( dst_inc < new_size && src_inc < prev_size && dst_inc >= 0 && src_inc >= 0 );
 
 			// Perform the memory copy
-			std::copy(local_src, local_src + clipped_row_size/sizeof(float), local_dst);
+			EMUtil::em_memcpy(local_dst, local_src, clipped_row_size);
 		}
 	}
 
@@ -705,7 +705,7 @@ EMData *EMData::get_top_half() const
 	half->set_size(nx, ny, nz / 2);
 
 	float *half_data = half->get_data();
-	std::copy(half_data, half_data + (size_t)nx * (size_t)ny * (size_t)nz / 2lu, &(get_data()[(size_t)nz / 2 * (size_t)nx * (size_t)ny]));
+	EMUtil::em_memcpy(half_data, &(get_data()[(size_t)nz / 2 * (size_t)nx * (size_t)ny]), sizeof(float) * (size_t)nx * (size_t)ny * (size_t)nz / 2lu);
 
 	float apix_z = attr_dict["apix_z"];
 	float origin_z = attr_dict["origin_z"];
@@ -1015,7 +1015,8 @@ void EMData::rotate_x(int dx)
 	}
 
 
-	float *tmp = new float[nx];
+	size_t row_size = nx * sizeof(float);
+	float *tmp = (float*)EMUtil::em_malloc(row_size);
 	float * data = get_data();
 
 	for (int y = 0; y < ny; y++) {

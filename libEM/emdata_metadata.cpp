@@ -856,7 +856,7 @@ void EMData::set_size(int x, int y, int z, bool noalloc)
 
 	int old_nx = nx;
 
-	size_t num_elements = x*y*z;
+	size_t size = (size_t)x*y*z*sizeof(float);
 	
 	if (noalloc) {
 		nx = x;
@@ -867,17 +867,18 @@ void EMData::set_size(int x, int y, int z, bool noalloc)
 		return;
 	}
 	
-	if(rdata) {
-		delete [] rdata;
+	if (rdata != 0) {
+		rdata = (float*)EMUtil::em_realloc(rdata,size);
+	} else {
+		// Just pass on this for a while....see what happens
+		rdata = (float*)EMUtil::em_malloc(size);
 	}
-	
-	rdata = new float[num_elements];
-
-	if ( !rdata)
+// 	rdata = static_cast < float *>(realloc(rdata, size));
+	if ( rdata == 0 )
 	{
 		stringstream ss;
 		string gigs;
-		ss << (float) num_elements/1000000000.0;
+		ss << (float) size/1000000000.0;
 		ss >> gigs;
 		string message = "Cannot allocate " + gigs + " GB - not enough memory.";
 		throw BadAllocException(message);
@@ -903,8 +904,9 @@ void EMData::set_size(int x, int y, int z, bool noalloc)
 #endif
 // EMAN2_USING_CUDA
 
-	if (old_nx == 0)
-		std::fill(get_data(), get_data() + num_elements, 0);
+	if (old_nx == 0) {
+		EMUtil::em_memset(get_data(),0,size);
+	}
 
 	if (supp) {
 		free(supp);
@@ -1314,7 +1316,7 @@ void EMData::set_data_pickle(std::string vf)
 //	if (rdata) printf("rdata exists\n");
 //	rdata = (float *)malloc(nx*ny*nz*sizeof(float));
 //	std::copy(vf.begin(), vf.end(), rdata);
-	std::copy(vf.data(), vf.data() + (size_t)nx*ny*nz, get_data());
+	EMUtil::em_memcpy(get_data(),vf.data(),(size_t)nx*ny*nz*sizeof(float));
 
 }
 

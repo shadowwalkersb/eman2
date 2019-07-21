@@ -184,7 +184,7 @@ void EMData::read_binedimage(const string & filename, int img_index, int binfact
 				if (binfactor > 1) tempdata->process_inplace("math.meanshrink",Dict("n",binfactor));
 				size_t offset = nx*ny*k/binfactor;
 				//add slice to total
-				std::copy(tempdata->get_data(), tempdata->get_data() + sizeofslice, get_data()+offset);
+				EMUtil::em_memcpy(get_data()+offset,tempdata->get_data(),sizeofslice);
 				delete binregion;
 			}
 

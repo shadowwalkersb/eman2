@@ -978,7 +978,7 @@ int HdfIO2::read_data_8bit(unsigned char *data, int image_index, const Region *a
 
  			for (int i = 0; i<nz1; ++i) {
  				for (int j = 0; j<ny1; ++j) {
- 					std::copy(src, src + clipped_row_size/sizeof(float), dst);
+ 					EMUtil::em_memcpy(dst, src, clipped_row_size);
 
  					src += nx1;
  					dst += (int)(area->get_width());
@@ -1224,7 +1224,7 @@ int HdfIO2::read_data(float *data, int image_index, const Region *area, bool)
 
  			for (int i = 0; i<nz1; ++i) {
  				for (int j = 0; j<ny1; ++j) {
- 					std::copy(src, src + clipped_row_size/sizeof(float), dst);
+ 					EMUtil::em_memcpy(dst, src, clipped_row_size);
 
  					src += nx1;
  					dst += (int)(area->get_width());
