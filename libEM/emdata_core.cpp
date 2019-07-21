@@ -51,11 +51,6 @@ using std::endl;
 void EMData::free_memory()
 {
 	ENTERFUNC;
-	if (rdata) {
-		delete [] rdata;
-		rdata = 0;
-	}
-
 	if (supp) {
 		EMUtil::em_free(supp);
 		supp = 0;

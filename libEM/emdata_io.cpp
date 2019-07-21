@@ -109,11 +109,6 @@ void EMData::read_image(const string & filename, int img_index, bool nodata,
 					update();
 				}
 			}
-			else {
-				if (rdata!=0) delete [] rdata;
-				rdata=0;
-			}
-
 		}
 	}
     
