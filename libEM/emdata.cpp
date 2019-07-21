@@ -389,7 +389,7 @@ void EMData::clip_inplace(const Region & area,const float& fill_value)
 		set_size(new_nx, new_ny, new_nz);
 
 		// Set pixel memory to zero - the client should expect to see nothing
-		EMUtil::em_memset(rdata, 0, (size_t)new_nx*new_ny*new_nz);
+		std::fill(rdata, rdata + new_nx*new_ny*new_nz, 0);
 
 		return;
 	}

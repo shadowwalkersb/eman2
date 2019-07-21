@@ -906,7 +906,7 @@ void EMData::set_size(int x, int y, int z, bool noalloc)
 // EMAN2_USING_CUDA
 
 	if (old_nx == 0)
-		EMUtil::em_memset(get_data(),0,size);
+		std::fill(get_data(), get_data() + num_elements, 0);
 
 	if (supp) {
 		EMUtil::em_free(supp);
