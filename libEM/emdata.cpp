@@ -74,7 +74,7 @@ EMData::EMData() :
 #ifdef FFT_CACHING
 	fftcache(0),
 #endif //FFT_CACHING
-		attr_dict(), rdata(0), supp(0), flags(0), changecount(0), nx(0), ny(0), nz(0), nxy(0), nxyz(0), xoff(0), yoff(0),
+		attr_dict(), rdata(), supp(0), flags(0), changecount(0), nx(0), ny(0), nz(0), nxy(0), nxyz(0), xoff(0), yoff(0),
 		zoff(0), all_translation(),	path(""), pathnum(0), rot_fp(0)
 
 {
@@ -105,7 +105,7 @@ EMData::EMData(const string& filename, int image_index) :
 #ifdef FFT_CACHING
 	fftcache(0),
 #endif //FFT_CACHING
-		attr_dict(), rdata(0), supp(0), flags(0), changecount(0), nx(0), ny(0), nz(0), nxy(0), nxyz(0), xoff(0), yoff(0), zoff(0),
+		attr_dict(), rdata(), supp(0), flags(0), changecount(0), nx(0), ny(0), nz(0), nxy(0), nxyz(0), xoff(0), yoff(0), zoff(0),
 		all_translation(),	path(filename), pathnum(image_index), rot_fp(0)
 {
 	ENTERFUNC;
@@ -138,7 +138,7 @@ EMData::EMData(const EMData& that) :
 #ifdef FFT_CACHING
 	fftcache(0),
 #endif //FFT_CACHING
-		attr_dict(that.attr_dict), rdata(0), supp(0), flags(that.flags), changecount(that.changecount), nx(that.nx), ny(that.ny), nz(that.nz),
+		attr_dict(that.attr_dict), rdata(), supp(0), flags(that.flags), changecount(that.changecount), nx(that.nx), ny(that.ny), nz(that.nz),
 		nxy(that.nx*that.ny), nxyz((size_t)that.nx*that.ny*that.nz), xoff(that.xoff), yoff(that.yoff), zoff(that.zoff),all_translation(that.all_translation),	path(that.path),
 		pathnum(that.pathnum), rot_fp(0)
 {
@@ -225,7 +225,7 @@ EMData::EMData(int nx, int ny, int nz, bool is_real) :
 #ifdef FFT_CACHING
 	fftcache(0),
 #endif //FFT_CACHING
-		attr_dict(), rdata(0), supp(0), flags(0), changecount(0), nx(0), ny(0), nz(0), nxy(0), nxyz(0), xoff(0), yoff(0), zoff(0),
+		attr_dict(), rdata(), supp(0), flags(0), changecount(0), nx(0), ny(0), nz(0), nxy(0), nxyz(0), xoff(0), yoff(0), zoff(0),
 		all_translation(),	path(""), pathnum(0), rot_fp(0)
 {
 	ENTERFUNC;
