@@ -3331,23 +3331,23 @@ EMData * EMData::calc_fast_sigma_image( EMData* mask)
 
 //  The following code looks strange - does anybody know it?  Please let me know, pawel.a.penczek@uth.tmc.edu  04/09/06.
 // This is just an implementation of "Roseman's" fast normalized cross-correlation (Ultramicroscopy, 2003). But the contents of this function have changed dramatically since you wrote that comment (d.woolford).
-EMData *EMData::calc_flcf(EMData * with)
+EMData *EMData::calc_flcf(EMData * rhs)
 {
 	ENTERFUNC;
 	EMData *this_copy=this;
 	this_copy=copy();
 
-	int mnx = with->get_xsize(); int mny = with->get_ysize(); int mnz = with->get_zsize();
+	int mnx = rhs->get_xsize(); int mny = rhs->get_ysize(); int mnz = rhs->get_zsize();
 	int nxc = nx+mnx; int nyc = ny+mny; int nzc = nz+mnz;
 
 	// Ones is a circular/spherical mask, consisting of 1s.
 	EMData* ones = new EMData(mnx,mny,mnz);
 	ones->process_inplace("testimage.circlesphere");
 
-	// Get a copy of with, we will eventually resize it
-	EMData* with_resized = with->copy();
-	with_resized->process_inplace("normalize");
-	with_resized->mult(*ones);
+	// Get a copy of rhs, we will eventually resize it
+	EMData* rhs_resized = rhs->copy();
+	rhs_resized->process_inplace("normalize");
+	rhs_resized->mult(*ones);
 
 	EMData* s = calc_fast_sigma_image(ones);// Get the local sigma image
 
@@ -3355,7 +3355,7 @@ EMData *EMData::calc_flcf(EMData * with)
 	if (ny == 1) r1 = Region((mnx-nxc)/2,nxc);
 	else if (nz == 1) r1 = Region((mnx-nxc)/2, (mny-nyc)/2,nxc,nyc);
 	else r1 = Region((mnx-nxc)/2, (mny-nyc)/2,(mnz-nzc)/2,nxc,nyc,nzc);
-	with_resized->clip_inplace(r1,0.0);
+	rhs_resized->clip_inplace(r1,0.0);
 
 	Region r2;
 	if (ny == 1) r2 = Region((nx-nxc)/2,nxc);
@@ -3363,7 +3363,7 @@ EMData *EMData::calc_flcf(EMData * with)
 	else r2 = Region((nx-nxc)/2, (ny-nyc)/2,(nz-nzc)/2,nxc,nyc,nzc);
 	this_copy->clip_inplace(r2,0.0);
 
-	EMData* corr = this_copy->calc_ccf(with_resized); // the ccf results should have same size as sigma
+	EMData* corr = this_copy->calc_ccf(rhs_resized); // the ccf results should have same size as sigma
 
 	corr->process_inplace("xform.phaseorigin.tocenter");
 	Region r3;
@@ -3374,7 +3374,7 @@ EMData *EMData::calc_flcf(EMData * with)
 
 	corr->div(*s);
 
-	delete with_resized; delete ones; delete this_copy; delete s;
+	delete rhs_resized; delete ones; delete this_copy; delete s;
 	EXITFUNC;
 	return corr;
 }

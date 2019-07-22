@@ -636,12 +636,12 @@ namespace EMAN
 		 * so the calling function need not do this beforehand.
 		 * Works in 1,2 and 3D.
 		 *
-		 * @param with The image used to calculate cross correlation (the template)
+		 * @param rhs The image used to calculate cross correlation (the template)
 		 * @return the local normalized cross correlation image - the phase origin is at the corner of the image
 		 * @author David Woolford
 		 * @date April 2008
 		 */
-		EMData *calc_flcf(EMData * with);
+		EMData *calc_flcf(EMData * rhs);
 
 		/** Calculates the local standard deviation (sigma) image using the given
 		 * mask image. The mask image is typically much smaller than this image,

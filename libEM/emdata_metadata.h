@@ -75,6 +75,7 @@ inline float *get_data() const
 	return rdata;
 }
 #else
+private:
 inline float *get_data() const { return rdata.get(); }
 #endif
 
@@ -82,7 +83,7 @@ inline float *get_data() const { return rdata.get(); }
  * @return The image pixel density data.
  */
 inline const float * get_const_data() const { return get_data(); }
-
+public:
 /**  Set the data explicitly
 * data pointer must be allocated using malloc!
 * @param data a pointer to the pixel data which is stored in memory. Takes possession
