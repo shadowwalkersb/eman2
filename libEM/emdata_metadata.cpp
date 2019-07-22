@@ -868,12 +868,8 @@ void EMData::set_size(int x, int y, int z, bool noalloc)
 		return;
 	}
 	
-	if (rdata != 0) {
-		rdata = (float*)EMUtil::em_realloc(rdata,size);
-	} else {
 		// Just pass on this for a while....see what happens
-		rdata = new float[num_elements];
-	}
+		rdata.reset(new float[num_elements]);
 // 	rdata = static_cast < float *>(realloc(rdata, size));
 	if ( rdata == 0 )
 	{

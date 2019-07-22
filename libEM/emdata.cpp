@@ -144,11 +144,11 @@ EMData::EMData(const EMData& that) :
 {
 	ENTERFUNC;
 	
-	float* data = that.rdata;
+	float* data = that.rdata.get();
 	size_t num_elements = nx*ny*nz;
 	if (data && num_elements != 0)
 	{
-		rdata = new float[num_elements];
+		rdata.reset(new float[num_elements]);
 		std::copy(data, data + num_elements, rdata.get());
 	}
 #ifdef EMAN2_USING_CUDA
@@ -179,7 +179,7 @@ EMData& EMData::operator=(const EMData& that)
 		free_memory(); // Free memory sets nx,ny and nz to 0
 
 		// Only copy the rdata if it exists, we could be in a scenario where only the header has been read
-		float* data = that.rdata;
+		float* data = that.rdata.get();
 		size_t num_bytes = that.nx*that.ny*that.nz*sizeof(float);
 		if (data && num_bytes != 0)
 		{
