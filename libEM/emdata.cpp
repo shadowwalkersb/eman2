@@ -145,8 +145,9 @@ EMData::EMData(const EMData& that) :
 	ENTERFUNC;
 	
 	float* data = that.rdata.get();
-	size_t num_elements = nx*ny*nz;
-	if (data && num_elements != 0)
+	rdata = that.rdata;
+	size_t num_bytes = (size_t)nx*ny*nz*sizeof(float);
+	if (data && num_bytes != 0)
 	{
 		rdata.reset(new float[num_elements]);
 		std::copy(data, data + num_elements, rdata.get());
