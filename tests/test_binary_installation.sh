@@ -16,9 +16,3 @@ case $# in
     print_usage
        ;;
 esac
-
-source ${installation_loc}/bin/activate root
-
-conda info -a
-conda list
-conda list --explicit
