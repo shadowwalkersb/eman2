@@ -319,6 +319,7 @@ pipeline {
       }
       environment {
         PARENT_STAGE_NAME = "${STAGE_NAME}"
+        BUILD_TYPE        = getBuildStabilityType()
         INSTALLER_EXT     = getInstallerExt()
       }
       
