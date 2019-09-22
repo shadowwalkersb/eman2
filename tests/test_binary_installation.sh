@@ -17,8 +17,6 @@ case $# in
        ;;
 esac
 
-rm -rf ${installation_loc}
-
 bash "${installer_file}" -bp ${installation_loc}
 
 source ${installation_loc}/bin/activate root
