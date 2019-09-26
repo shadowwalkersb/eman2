@@ -255,7 +255,7 @@ pipeline {
     stage('build-local') {
       when {
         not { expression { isBinaryBuild() } }
-        expression { isUnix() }
+        expression { false }
       }
       
       steps {
@@ -265,6 +265,7 @@ pipeline {
     }
     
     stage('build-recipe') {
+      when { expression { false } }
       steps {
         notifyGitHub('PENDING')
         sh 'bash ci_support/build_recipe.sh'
@@ -272,7 +273,7 @@ pipeline {
     }
     
     stage('package') {
-      when { expression { isBinaryBuild() } }
+      when { expression { false } }
       environment { PARENT_STAGE_NAME = "${STAGE_NAME}" }
       
       parallel {
@@ -283,7 +284,7 @@ pipeline {
     }
     
     stage('test-package') {
-      when { expression { isBinaryBuild() } }
+      when { expression { false } }
       environment {
         PARENT_STAGE_NAME = "${STAGE_NAME}"
         INSTALLER_EXT     = getInstallerExt()
@@ -297,7 +298,7 @@ pipeline {
     }
     
     stage('deploy') {
-      when { expression { isBinaryBuild() } }
+      when { expression { false } }
       environment { PARENT_STAGE_NAME = "${STAGE_NAME}" }
 
       parallel {
