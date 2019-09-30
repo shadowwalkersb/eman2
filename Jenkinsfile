@@ -359,6 +359,7 @@ pipeline {
           steps {
             catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
                 testDeployedPackage(STAGE_NAME)
+                notifyGitHub('SUCCESS')
             }
           }
         }
@@ -368,6 +369,7 @@ pipeline {
           steps {
             catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
                 testDeployedPackage(STAGE_NAME)
+                notifyGitHub('SUCCESS')
             }
           }
         }
