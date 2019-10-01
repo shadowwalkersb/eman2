@@ -12,7 +12,7 @@ jobs:
       - checkout
       - run: source ci_support/setup_conda.sh
       - save_cache:
-          key: mini-eman-deps-14.2-3
+          key: mini-eman-deps-14.2-4
           paths:
             - ~/miniconda2
 
