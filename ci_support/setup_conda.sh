@@ -14,7 +14,7 @@ source ${HOME}/miniconda2/bin/activate root
 conda config --set show_channel_urls true
 
 conda install conda=4.6.14 conda-build=3.17.8 cmake=${CMAKE_VERSION} -c defaults --yes
-conda install eman-deps=14.2 cmake=3.14 conda=4.6.14 conda-build=3.17.8 -c cryoem/label/dev -c cryoem -c defaults -c conda-forge --yes
+conda install eman-deps=15.0 cmake=${CMAKE_VERSION} conda=4.6.14 conda-build=3.17.8 -c cryoem/label/dev -c cryoem -c defaults -c conda-forge --yes
 
 conda config --set auto_update_conda False
 

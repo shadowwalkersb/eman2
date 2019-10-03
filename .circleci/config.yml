@@ -5,14 +5,14 @@ jobs:
     docker:
       - image: circleci/buildpack-deps:16.04
     environment:
-      CMAKE_VERSION: 3.9
+      CMAKE_VERSION: 3.14
       BOOST_VERSION: 1.64
     steps:
       - run: sudo apt-get update && sudo apt-get install freeglut3-dev
       - checkout
       - run: source ci_support/setup_conda.sh
       - save_cache:
-          key: mini-eman-deps-14.2-4
+          key: mini-eman-deps-15.0-0
           paths:
             - ~/miniconda2
 
