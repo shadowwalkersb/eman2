@@ -140,12 +140,9 @@ def getHomeDir() {
 }
 
 def run_conda_command() {
-    sh "conda env remove -n eman-deps-14.0-boost-${STAGE_NAME[0]+STAGE_NAME[2..3]} --yes"
-    sh "conda env remove -n eman-deps-14.2-boost-${STAGE_NAME} --yes"
-    sh "conda env remove -n eman-deps-14.3-boost-${STAGE_NAME} --yes"
-    sh "conda env remove -n eman-deps-14.4-boost-${STAGE_NAME} --yes"
-    sh "conda env remove -n eman-deps-15.2-boost-${STAGE_NAME} --yes"
-    sh "conda env remove -n eman-deps-15.7-boost-${STAGE_NAME} --yes"
+    sh "conda create -n eman-deps-16.0-boost-${STAGE_NAME} eman-deps=16.0 boost=${STAGE_NAME} cmake=3.14 -c cryoem -c defaults -c conda-forge --yes"
+    sh "conda list -n eman-deps-16.0-boost-${STAGE_NAME}"
+    sh "conda list --explicit -n eman-deps-16.0-boost-${STAGE_NAME}"
 }
 
 pipeline {

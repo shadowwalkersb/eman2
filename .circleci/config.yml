@@ -1,23 +1,93 @@
 version: 2
 
 jobs:
-  setup_cache:
+  boost=1.64:
     docker:
       - image: circleci/buildpack-deps:16.04
-    environment:
-      CMAKE_VERSION: 3.14
-      BOOST_VERSION: 1.64
     steps:
       - run: sudo apt-get update && sudo apt-get install freeglut3-dev
       - checkout
       - run: source ci_support/setup_conda.sh
       - save_cache:
-          key: mini-eman-deps-15.0-0
+          key: mini-eman-deps-16.0-{{ .Environment.CIRCLE_JOB }}-0
           paths:
             - ~/miniconda2
 
+  boost=1.65:
+    docker:
+      - image: circleci/buildpack-deps:16.04
+    steps:
+      - checkout
+      - run: source ci_support/setup_conda.sh
+      - save_cache:
+          key: mini-eman-deps-16.0-{{ .Environment.CIRCLE_JOB }}-0
+          paths:
+            - ~/miniconda2
+
+  boost=1.66:
+    docker:
+      - image: circleci/buildpack-deps:16.04
+    steps:
+      - checkout
+      - run: source ci_support/setup_conda.sh
+      - save_cache:
+          key: mini-eman-deps-16.0-{{ .Environment.CIRCLE_JOB }}-0
+          paths:
+            - ~/miniconda2
+
+  boost=1.67:
+    docker:
+      - image: circleci/buildpack-deps:16.04
+    steps:
+      - checkout
+      - run: source ci_support/setup_conda.sh
+      - save_cache:
+          key: mini-eman-deps-16.0-{{ .Environment.CIRCLE_JOB }}-0
+          paths:
+            - ~/miniconda2
+
+  boost=1.68:
+    docker:
+      - image: circleci/buildpack-deps:16.04
+    steps:
+      - checkout
+      - run: source ci_support/setup_conda.sh
+      - save_cache:
+          key: mini-eman-deps-16.0-{{ .Environment.CIRCLE_JOB }}-0
+          paths:
+            - ~/miniconda2
+
+  boost=1.69:
+    docker:
+      - image: circleci/buildpack-deps:16.04
+    steps:
+      - checkout
+      - run: source ci_support/setup_conda.sh
+      - save_cache:
+          key: mini-eman-deps-16.0-{{ .Environment.CIRCLE_JOB }}-0
+          paths:
+            - ~/miniconda2
+
+  boost=1.70:
+    docker:
+      - image: circleci/buildpack-deps:16.04
+    steps:
+      - checkout
+      - run: source ci_support/setup_conda.sh
+      - save_cache:
+          key: mini-eman-deps-16.0-{{ .Environment.CIRCLE_JOB }}-0
+          paths:
+            - ~/miniconda2
+
+
 workflows:
   version: 2
-  setup_cache:
+  setup_cache_boost:
     jobs:
-      - setup_cache
+      - boost=1.64
+      - boost=1.65
+      - boost=1.66
+      - boost=1.67
+      - boost=1.68
+      - boost=1.69
+      - boost=1.70
