@@ -208,13 +208,7 @@ def testDeployedPackage(size_type) {
     def file_name = getDeployFileName(size_type)
     def download_dir = "${HOME_DIR}/workspace/jenkins-continuous-download/"
 
-    fileOperations([fileDownloadOperation(url: 'https://cryoem.bcm.edu/cryoem/static/software/' + stability_type + "/" + file_name,
-                                          targetLocation: download_dir,
-                                          targetFileName: file_name,
-                                          userName: '',
-                                          password: ''
-                                          )])
-    
+    sh "cd " + download_dir + " && curl -C - -L -O https://cryoem.bcm.edu/cryoem/static/software/" + dir + "/" + file_name
     testPackage(download_dir + file_name, download_dir + size_type)
 }
 
