@@ -203,6 +203,8 @@ def deployPackage(size_type='') {
 def testDeployedPackage(size_type) {
     stability_type = getBuildStabilityType()
 
+    sh "mkdir -v -p ${HOME_DIR}/workspace/jenkins-url-download/"
+
     def file_name = getDeployFileName(size_type)
     def download_dir = "${HOME_DIR}/workspace/jenkins-continuous-download/"
 
