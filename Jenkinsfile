@@ -18,7 +18,7 @@ def getOSName() {
 }
 
 def getJobType() {
-    def causes = "${currentBuild.getBuildCauses()}"
+    def causes = "${currentBuild.rawBuild.getCauses()}"
     def job_type = "UNKNOWN"
     
     println("causes: " + causes)
