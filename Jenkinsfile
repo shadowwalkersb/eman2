@@ -21,10 +21,14 @@ def getJobType() {
     def causes = "${currentBuild.getBuildCauses()}"
     def job_type = "UNKNOWN"
     
+    println("causes: " + causes)
+
     if(causes ==~ /.*TimerTrigger.*/)    { job_type = "cron" }
     if(causes ==~ /.*GitHubPushCause.*/) { job_type = "push" }
     if(causes ==~ /.*UserIdCause.*/)     { job_type = "manual" }
     if(causes ==~ /.*ReplayCause.*/)     { job_type = "manual" }
+    
+    println("job_type: " + job_type)
     
     return job_type
 }
