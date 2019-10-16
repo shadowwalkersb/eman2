@@ -318,7 +318,7 @@ pipeline {
         stage('mini') {
           steps {
             catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
-                sh 'true'
+                sh 'false'
             }
           }
         }
@@ -327,7 +327,7 @@ pipeline {
           when { expression { AGENT_OS_NAME != 'linux' } }
           steps {
             catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
-                sh 'true'
+                sh 'false'
             }
           }
         }
