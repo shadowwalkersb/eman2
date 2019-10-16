@@ -18,7 +18,7 @@ def getOSName() {
 }
 
 def getJobType() {
-    def causes = "${currentBuild.rawBuild.getCauses()}"
+    def causes = "${currentBuild.getBuildCauses()}"
     def job_type = "UNKNOWN"
     
     if(causes ==~ /.*TimerTrigger.*/)    { job_type = "cron" }
