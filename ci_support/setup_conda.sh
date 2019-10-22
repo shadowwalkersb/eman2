@@ -4,13 +4,13 @@ set -xe
 
 # Download and install Miniconda
 export MINICONDA_URL="https://repo.continuum.io/miniconda"
-export MINICONDA_FILE="Miniconda2-4.6.14-Linux-x86_64.sh"
+export MINICONDA_FILE="Miniconda3-4.6.14-Linux-x86_64.sh"
 
 curl -L -O "${MINICONDA_URL}/${MINICONDA_FILE}"
 bash $MINICONDA_FILE -b
 
 # Configure conda
-source ${HOME}/miniconda2/bin/activate root
+source ${HOME}/miniconda3/bin/activate root
 conda config --set show_channel_urls true
 
 conda config --set auto_update_conda False
