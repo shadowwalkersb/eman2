@@ -7,11 +7,12 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          keys: mini-eman-deps-15.2-boost-1.64
+          keys: mini-eman-deps-15.2-boost-1.64-build-1
       - run:
           command: |
             source ${HOME}/miniconda3/bin/activate base
-            conda update eman-deps -c cryoem/label/dev -c cryoem -c defaults -c conda-forge --yes
+            conda remove zstd --yes
+            conda list
             conda clean --all --yes
       - save_cache:
           key: mini-eman-deps-18.0-{{ .Environment.CIRCLE_JOB }}-0
@@ -24,11 +25,12 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          keys: mini-eman-deps-15.2-boost-1.65
+          keys: mini-eman-deps-15.2-boost-1.65-build-1
       - run:
           command: |
             source ${HOME}/miniconda3/bin/activate base
-            conda update eman-deps -c cryoem/label/dev -c cryoem -c defaults -c conda-forge --yes
+            conda remove zstd --yes
+            conda list
             conda clean --all --yes
       - save_cache:
           key: mini-eman-deps-18.0-{{ .Environment.CIRCLE_JOB }}-0
@@ -41,11 +43,12 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          keys: mini-eman-deps-15.2-boost-1.66
+          keys: mini-eman-deps-15.2-boost-1.66-build-1
       - run:
           command: |
             source ${HOME}/miniconda3/bin/activate base
-            conda update eman-deps -c cryoem/label/dev -c cryoem -c defaults -c conda-forge --yes
+            conda remove zstd --yes
+            conda list
             conda clean --all --yes
       - save_cache:
           key: mini-eman-deps-18.0-{{ .Environment.CIRCLE_JOB }}-0
@@ -58,11 +61,12 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          keys: mini-eman-deps-15.2-boost-1.67
+          keys: mini-eman-deps-15.2-boost-1.67-build-1
       - run:
           command: |
             source ${HOME}/miniconda3/bin/activate base
-            conda update eman-deps -c cryoem/label/dev -c cryoem -c defaults -c conda-forge --yes
+            conda remove zstd --yes
+            conda list
             conda clean --all --yes
       - save_cache:
           key: mini-eman-deps-18.0-{{ .Environment.CIRCLE_JOB }}-0
@@ -75,11 +79,12 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          keys: mini-eman-deps-15.2-boost-1.68
+          keys: mini-eman-deps-15.2-boost-1.68-build-1
       - run:
           command: |
             source ${HOME}/miniconda3/bin/activate base
-            conda update eman-deps -c cryoem/label/dev -c cryoem -c defaults -c conda-forge --yes
+            conda remove zstd --yes
+            conda list
             conda clean --all --yes
       - save_cache:
           key: mini-eman-deps-18.0-{{ .Environment.CIRCLE_JOB }}-0
@@ -92,11 +97,12 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          keys: mini-eman-deps-15.2-boost-1.69
+          keys: mini-eman-deps-15.2-boost-1.69-build-1
       - run:
           command: |
             source ${HOME}/miniconda3/bin/activate base
-            conda update eman-deps -c cryoem/label/dev -c cryoem -c defaults -c conda-forge --yes
+            conda remove zstd --yes
+            conda list
             conda clean --all --yes
       - save_cache:
           key: mini-eman-deps-18.0-{{ .Environment.CIRCLE_JOB }}-0
@@ -109,11 +115,12 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          keys: mini-eman-deps-15.2-boost-1.70
+          keys: mini-eman-deps-15.2-boost-1.70-build-1
       - run:
           command: |
             source ${HOME}/miniconda3/bin/activate base
-            conda update eman-deps -c cryoem/label/dev -c cryoem -c defaults -c conda-forge --yes
+            conda remove zstd --yes
+            conda list
             conda clean --all --yes
       - save_cache:
           key: mini-eman-deps-18.0-{{ .Environment.CIRCLE_JOB }}-0
