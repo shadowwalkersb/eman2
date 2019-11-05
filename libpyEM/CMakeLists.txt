@@ -11,12 +11,14 @@ function(ADD_PYSTE_LIB libname)
 			PROPERTIES
 			PREFIX lib
 			SUFFIX ${suffix}
-			LINK_LIBRARIES "EM2;Boost::python36"
+			LINK_LIBRARIES "EM2;Boost::python36;GSL::gslcblas"
 			)
 	
 	install(TARGETS ${libname} DESTINATION ${SP_DIR})
 endfunction()
 
+include_directories(${Boost_INCLUDE_DIRS})
+include_directories(${PYTHON_INCLUDE_DIRS})
 ADD_PYSTE_LIB(pyAligner2)
 ADD_PYSTE_LIB(pyAverager2)
 ADD_PYSTE_LIB(pyCmp2)

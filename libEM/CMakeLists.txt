@@ -85,7 +85,7 @@ if(WIN32)
 	target_compile_definitions(EM2 PUBLIC _CRT_SECURE_NO_WARNINGS _SCL_SECURE_NO_WARNINGS)
 endif()
 
-target_link_libraries(EM2 HDF5::HDF5 GSL::gsl GSL::gslcblas)
+target_link_libraries(EM2 HDF5::HDF5 GSL::gsl GSL::gslcblas -flat_namespace)
 
 install(TARGETS EM2
 		DESTINATION ${SP_DIR}
