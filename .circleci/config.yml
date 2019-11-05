@@ -5,9 +5,14 @@ jobs:
     docker:
       - image: circleci/buildpack-deps:16.04
     steps:
-      - run: sudo apt-get update && sudo apt-get install freeglut3-dev
       - checkout
-      - run: source ci_support/setup_conda.sh
+      - restore_cache:
+          keys: mini-eman-deps-15.2-boost-1.64
+      - run:
+          command: |
+            source ${HOME}/miniconda3/bin/activate base
+            conda update eman-deps -c cryoem/label/dev -c cryoem -c defaults -c conda-forge --yes
+            conda clean --all --yes
       - save_cache:
           key: mini-eman-deps-18.0-{{ .Environment.CIRCLE_JOB }}-0
           paths:
@@ -18,7 +23,13 @@ jobs:
       - image: circleci/buildpack-deps:16.04
     steps:
       - checkout
-      - run: source ci_support/setup_conda.sh
+      - restore_cache:
+          keys: mini-eman-deps-15.2-boost-1.65
+      - run:
+          command: |
+            source ${HOME}/miniconda3/bin/activate base
+            conda update eman-deps -c cryoem/label/dev -c cryoem -c defaults -c conda-forge --yes
+            conda clean --all --yes
       - save_cache:
           key: mini-eman-deps-18.0-{{ .Environment.CIRCLE_JOB }}-0
           paths:
@@ -29,7 +40,13 @@ jobs:
       - image: circleci/buildpack-deps:16.04
     steps:
       - checkout
-      - run: source ci_support/setup_conda.sh
+      - restore_cache:
+          keys: mini-eman-deps-15.2-boost-1.66
+      - run:
+          command: |
+            source ${HOME}/miniconda3/bin/activate base
+            conda update eman-deps -c cryoem/label/dev -c cryoem -c defaults -c conda-forge --yes
+            conda clean --all --yes
       - save_cache:
           key: mini-eman-deps-18.0-{{ .Environment.CIRCLE_JOB }}-0
           paths:
@@ -40,7 +57,13 @@ jobs:
       - image: circleci/buildpack-deps:16.04
     steps:
       - checkout
-      - run: source ci_support/setup_conda.sh
+      - restore_cache:
+          keys: mini-eman-deps-15.2-boost-1.67
+      - run:
+          command: |
+            source ${HOME}/miniconda3/bin/activate base
+            conda update eman-deps -c cryoem/label/dev -c cryoem -c defaults -c conda-forge --yes
+            conda clean --all --yes
       - save_cache:
           key: mini-eman-deps-18.0-{{ .Environment.CIRCLE_JOB }}-0
           paths:
@@ -51,7 +74,13 @@ jobs:
       - image: circleci/buildpack-deps:16.04
     steps:
       - checkout
-      - run: source ci_support/setup_conda.sh
+      - restore_cache:
+          keys: mini-eman-deps-15.2-boost-1.68
+      - run:
+          command: |
+            source ${HOME}/miniconda3/bin/activate base
+            conda update eman-deps -c cryoem/label/dev -c cryoem -c defaults -c conda-forge --yes
+            conda clean --all --yes
       - save_cache:
           key: mini-eman-deps-18.0-{{ .Environment.CIRCLE_JOB }}-0
           paths:
@@ -62,7 +91,13 @@ jobs:
       - image: circleci/buildpack-deps:16.04
     steps:
       - checkout
-      - run: source ci_support/setup_conda.sh
+      - restore_cache:
+          keys: mini-eman-deps-15.2-boost-1.69
+      - run:
+          command: |
+            source ${HOME}/miniconda3/bin/activate base
+            conda update eman-deps -c cryoem/label/dev -c cryoem -c defaults -c conda-forge --yes
+            conda clean --all --yes
       - save_cache:
           key: mini-eman-deps-18.0-{{ .Environment.CIRCLE_JOB }}-0
           paths:
@@ -73,7 +108,13 @@ jobs:
       - image: circleci/buildpack-deps:16.04
     steps:
       - checkout
-      - run: source ci_support/setup_conda.sh
+      - restore_cache:
+          keys: mini-eman-deps-15.2-boost-1.70
+      - run:
+          command: |
+            source ${HOME}/miniconda3/bin/activate base
+            conda update eman-deps -c cryoem/label/dev -c cryoem -c defaults -c conda-forge --yes
+            conda clean --all --yes
       - save_cache:
           key: mini-eman-deps-18.0-{{ .Environment.CIRCLE_JOB }}-0
           paths:
