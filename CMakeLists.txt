@@ -72,7 +72,7 @@ cmake_print_variables(CMAKE_PREFIX_PATH)
 
 include(cmake/find_all.cmake)
 
-set(CMAKE_INSTALL_RPATH "${SP_DIR};${EMAN_PREFIX_LIB}")
+set(CMAKE_INSTALL_RPATH "${Python_SITELIB};${EMAN_PREFIX_LIB}")
 
 OPTION(ENABLE_AUTODOC "enable latex/doxygen document generation and etc. " OFF)
 

@@ -14,7 +14,7 @@ function(ADD_PYSTE_LIB libname)
 			LINK_LIBRARIES "EM2;Boost::python"
 			)
 	
-	install(TARGETS ${libname} DESTINATION ${SP_DIR})
+	install(TARGETS ${libname} DESTINATION ${Python_SITELIB})
 endfunction()
 
 ADD_PYSTE_LIB(pyAligner2)
@@ -60,7 +60,7 @@ endif()
 
 file(GLOB empythonlibs "${CMAKE_CURRENT_SOURCE_DIR}/*.py")
 install(FILES ${empythonlibs}
-		DESTINATION ${SP_DIR}
+		DESTINATION ${Python_SITELIB}
 		COMPONENT PythonFiles
 		)
 
