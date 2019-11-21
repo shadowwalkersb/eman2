@@ -13,7 +13,3 @@ set_target_properties(Boost::python
 					  INTERFACE_LINK_LIBRARIES Python::Python
 					  INTERFACE_INCLUDE_DIRECTORIES $<$<AND:$<CXX_COMPILER_ID:GNU>,$<BOOL:$ENV{CONDA_BUILD}>>:$ENV{BUILD_PREFIX}/x86_64-conda_cos6-linux-gnu/include/c++/7.3.0/>
 					  )
-
-IF(CMAKE_SYSTEM MATCHES "IRIX.*")
-    INCLUDE_DIRECTORIES(${Boost_INCLUDE_DIR}/boost/compatibility/cpp_c_headers)
-ENDIF()
