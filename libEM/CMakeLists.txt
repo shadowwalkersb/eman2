@@ -37,7 +37,6 @@ target_sources(EM2 PRIVATE
 			   emdata_metadata.cpp
 			   emdata_transform.cpp
 			   pifio.cpp
-			   v4l2io.cpp
 			   vtkio.cpp
 			   spiderio.cpp
 			   sspiderio.cpp

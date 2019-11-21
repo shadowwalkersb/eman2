@@ -77,8 +77,4 @@
 #include "situsio.h"
 #include "serio.h"
 
-#ifdef ENABLE_V4L2
-	#include "v4l2io.h"
-#endif
-
 #endif	//eman__ioioio_h__

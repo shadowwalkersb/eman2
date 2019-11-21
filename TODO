@@ -11,7 +11,6 @@ add_definitions:
    WARNING_FLAGS_OFF
    DMEMDEBUG
    DMEMDEBUG2
-   -DBOUNDS_CHECKING -DENABLE_V4L2
    ENABLE_BOUNDS_CHECKING
    DNOMINMAX
    DIMAGEIO_CACHE
@@ -29,12 +28,7 @@ _FLAGS:
 
 
 
-IRIX
 AIX
-OSF1-V
-
-ENABLE_V4L2
-
 
 
 # for 64-bit large file support
