@@ -1,10 +1,16 @@
 function(ADD_PYSTE_LIB libname)
-	add_library(${libname} MODULE lib${libname}.cpp)
+	add_library(${libname} SHARED lib${libname}.cpp)
 	
+	if(WIN32)
+		set(suffix .pyd)
+	else()
+		set(suffix .so)
+	endif()
+
 	set_target_properties(${libname}
 			PROPERTIES
 			PREFIX lib
-			SUFFIX $<WIN32:.pyd>
+			SUFFIX ${suffix}
 			LINK_LIBRARIES "EM2;Boost::python"
 			)
 	
