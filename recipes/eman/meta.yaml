@@ -28,12 +28,28 @@ requirements:
         - cmake 3.14.*
         - {{ compiler('cxx') }}
         - {{ cdt('mesa-libgl-devel') }}      # [linux]
+        - {{ cdt('libxi-devel') }}           # [linux]
+        - {{ cdt('xorg-x11-proto-devel') }}  # [linux]
+        - {{ cdt('libx11-devel') }}          # [linux]
+        - {{ cdt('libxcb') }}                # [linux]
+        - {{ cdt('libXfixes') }}             # [linux]
+        - {{ cdt('libxfixes-devel') }}       # [linux]
+        - {{ cdt('libXxf86vm') }}            # [linux]
+        - {{ cdt('libxext-devel') }}         # [linux]
+        - {{ cdt('libxrender-devel') }}      # [linux]
+        - {{ cdt('mesa-dri-drivers') }}      # [linux]
+        - {{ cdt('libselinux') }}            # [linux]
+        - {{ cdt('libXdamage') }}            # [linux]
+        - {{ cdt('libXau') }}                # [linux]
+        - {{ cdt('libxau-devel') }}          # [linux]
 
     host:
         {% for req in reqs_host %}
         - {{ req }}
         {% endfor %}
         - libglu      # [linux]
+        - xorg-libx11   # [linux]
+        - xorg-libxext  # [linux]
     
 test:
   requires:
