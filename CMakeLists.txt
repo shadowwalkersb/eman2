@@ -67,7 +67,9 @@ endif()
 set(EMAN_PREFIX_INC      ${EMAN_PREFIX}/include)
 set(EMAN_PREFIX_LIB      ${EMAN_PREFIX}/lib)
 set(CMAKE_INSTALL_PREFIX ${EMAN_PREFIX} CACHE PATH "installation prefix" FORCE)
-set(CMAKE_PREFIX_PATH    ${EMAN_PREFIX} ${EMAN_PREFIX}/..)
+set(CMAKE_PREFIX_PATH    ${EMAN_PREFIX} ${EMAN_PREFIX}/.. $ENV{PREFIX} $ENV{BUILD_PREFIX}/$ENV{HOST}/sysroot)
+set(CMAKE_FIND_ROOT_PATH $ENV{PREFIX} $ENV{BUILD_PREFIX}/$ENV{HOST}/sysroot)
+
 cmake_print_variables(CMAKE_PREFIX_PATH)
 
 include(cmake/find_all.cmake)
