@@ -3435,7 +3435,7 @@ class TestEMData(unittest.TestCase):
         
         
         e.set_attr('author', 'Grant Tang')
-        mydb = open('mydb', 'w')
+        mydb = open('mydb', 'wb')
         pickle.dump(e, mydb)
         mydb.close()
         
