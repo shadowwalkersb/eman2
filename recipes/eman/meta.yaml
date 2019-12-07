@@ -26,6 +26,8 @@ requirements:
         - zlib
         - libglu                          # [linux]
         - zstd    >=1.4
+        - future
+        - configparser
     
 test:
   requires:
