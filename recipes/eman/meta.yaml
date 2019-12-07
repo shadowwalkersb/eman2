@@ -13,7 +13,7 @@ requirements:
 
     host:
         - python    3.6.*
-        - boost     1.66.*
+        - boost     1.64.*
         - fftw-mpi
         - numpy     1.13.*
         - ftgl
@@ -30,7 +30,7 @@ test:
   requires:
     - openmpi                             # [not win]
     - eman-deps     18.0.*
-    - boost         1.66.*
+    - boost         1.64.*
   
   source_files:
     - examples/mpi_test.py
