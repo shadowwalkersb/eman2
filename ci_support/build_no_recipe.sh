@@ -17,6 +17,7 @@ if [ ! -z ${CIRCLECI} ];then
     conda activate eman-deps-18.0
 fi
 
+conda install "zstd>=1.4" -c conda-forge -y
 python -m compileall -q .
 
 # Build and install eman2

@@ -25,6 +25,7 @@ requirements:
         - libpng    1.6.36
         - zlib
         - libglu                          # [linux]
+        - zstd    >=1.4
     
 test:
   requires:
