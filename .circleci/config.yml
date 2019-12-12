@@ -6,14 +6,14 @@ jobs:
       - image: cryoem/eman-deps:18-boost166-circleci18
     steps:
       - checkout
-      - run: bash ci_support/build_no_recipe.sh
+      - run: echo 'Skipping...'
 
   build_recipe:
     docker:
       - image: cryoem/eman-deps:18-boost166-circleci18
     steps:
       - checkout
-      - run: bash ci_support/build_recipe.sh
+      - run: echo 'Skipping...'
 
 workflows:
   version: 2
