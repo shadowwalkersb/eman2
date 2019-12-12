@@ -9,7 +9,7 @@ if errorlevel 1 exit 1
 set CL=/MP
 
 cmake --version
-cmake "%SRC_DIR%" -G "NMake Makefiles" ^
+cmake "%SRC_DIR%" -G "%CMAKE_GENERATOR_APPVEYOR%" ^
                     -DCMAKE_BUILD_TYPE=Release    ^
                     -DENABLE_WARNINGS=OFF ^
                     -DCMAKE_VERBOSE_MAKEFILE=ON ^
