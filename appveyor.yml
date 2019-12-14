@@ -1,4 +1,4 @@
-image: Visual Studio 2017
+image: Visual Studio 2015
 
 environment:
   TARGET_ARCH: x64
@@ -7,7 +7,6 @@ environment:
 
   matrix:
   - CMAKE_GENERATOR_APPVEYOR: Visual Studio 14 2015 Win64
-  - CMAKE_GENERATOR_APPVEYOR: Visual Studio 15 2017 Win64
   - CMAKE_GENERATOR_APPVEYOR: NMake Makefiles
 
 platform:
