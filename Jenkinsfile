@@ -261,6 +261,7 @@ pipeline {
     INSTALLERS_DIR = convertToNativePath("${HOME_DIR}/workspace/jenkins-eman-installers")
 
     CI_BUILD       = sh(script: "! git log -1 | grep '.*\\[ci build\\].*'",       returnStatus: true)
+    CMAKE_GENERATOR_APPVEYOR = "Visual Studio 14 2015 Win64"
   }
   
   stages {
