@@ -112,7 +112,7 @@ def askFileExists() :
 	else : return "cancel"
 
 
-class EMFileType(object) :
+class EMFileType:
 	"""This is a base class for handling interaction with files of different types. It includes a number of execution methods common to
 	several different subclasses"""
 
@@ -1524,7 +1524,7 @@ EMFileType.extbyft = {
 EMFileType.alltocheck = (EMPlotFileType, EMPDBFileType, EMTextFileType)
 
 
-class EMDirEntry(object) :
+class EMDirEntry:
 	"""Represents a directory entry in the filesystem"""
 
 	# list of lambda functions to extract column values for sorting

@@ -17015,7 +17015,7 @@ def incvar(prefix, nfile, nprj, output, fl, fh, radccc, writelp, writestack):
 	all_var.write_image( output, 0 )
 """
 
-class file_set(object) :
+class file_set:
 
 	def __init__( self, files ):
 		nfile = len(files)
