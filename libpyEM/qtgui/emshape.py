@@ -31,7 +31,6 @@
 #
 
 from past.utils import old_div
-from builtins import object
 import OpenGL
 OpenGL.ERROR_CHECKING = False
 from OpenGL import GL,GLUT

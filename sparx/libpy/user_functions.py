@@ -36,7 +36,6 @@
 #   from appropriate application, in this case "sxali2d_c.py ...  --function=wei_func
 # 
 
-from builtins import object
 from global_def import *
 from EMAN2_cppwrap import *
 

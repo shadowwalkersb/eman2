@@ -1567,7 +1567,6 @@ def build_user_function(module_name=None,function_name=None,path_name=None):
 
 
 
-from builtins import object
 from sp_global_def import *
 from EMAN2_cppwrap import *
 

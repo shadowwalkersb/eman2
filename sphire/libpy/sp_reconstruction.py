@@ -3755,6 +3755,5 @@ def rec3D_two_chunks_MPI(data, snr = 1.0, symmetry = "c1", mask3D = None, fsc_cu
 
 	return model_blank(nx,nx,nx),None
 
-from builtins import object
 from sp_global_def import *
 

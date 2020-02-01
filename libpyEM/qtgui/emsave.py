@@ -30,7 +30,6 @@
 #
 #
 
-from builtins import object
 from PyQt5 import QtGui, QtWidgets,QtCore
 from EMAN2 import EMData, file_exists, gimme_image_dimensions3D,get_image_directory,EMUtil,base_name,gm_time_string
 from EMAN2db import db_check_dict, db_remove_dict

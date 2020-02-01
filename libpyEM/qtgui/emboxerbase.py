@@ -32,7 +32,6 @@
 
 
 from past.utils import old_div
-from builtins import object
 '''
 This is a a really basic version of boxer that can be copied and used as the basis of developing something more advanced
 Design is meant to be granular and logical, i.e. easy to add to.

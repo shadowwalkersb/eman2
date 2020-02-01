@@ -2442,7 +2442,6 @@ class symclass(object):
 		else:
 			return self.angles
 
-from builtins import object
 import sp_global_def
 from sp_global_def import *
 from past.utils import old_div

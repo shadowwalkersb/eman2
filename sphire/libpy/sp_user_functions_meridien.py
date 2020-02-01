@@ -508,8 +508,6 @@ def ai_filament( Tracker, fff, anger, shifter, do_local, chout = False):
 
 	return keepgoing
 
-from builtins import object
-
 import numpy
 import sp_global_def
 import sp_morphology

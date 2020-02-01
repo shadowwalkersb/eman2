@@ -33,7 +33,6 @@
 #
 
 from past.utils import old_div
-from builtins import object
 from EMAN2 import *
 import os, math
 from EMAN2jsondb import JSTask,jsonclasses

@@ -30,7 +30,6 @@
 #
 
 from past.utils import old_div
-from builtins import object
 from EMAN2 import file_exists,EMData,E2init,E2progress,E2end,EMANVERSION,check_eman2_type_string,numbered_bdb,Transform,EMUtil,launch_childprocess,EMArgumentParser
 import EMAN2
 from EMAN2db import EMTask,db_open_dict

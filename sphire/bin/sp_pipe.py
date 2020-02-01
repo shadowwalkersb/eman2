@@ -36,7 +36,6 @@
 # Imports
 # ========================================================================================
 # Python Standard Libraries
-from builtins import object
 import sys
 import os
 import argparse

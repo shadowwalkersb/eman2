@@ -9710,7 +9710,6 @@ standard_library.install_aliases()
 # python natives
 import os
 from pickle    import dumps, loads
-from builtins  import object
 from functools import reduce
 from struct    import pack, unpack
 

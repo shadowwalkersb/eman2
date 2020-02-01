@@ -31,7 +31,6 @@
 #
 
 
-from builtins import object
 from PyQt5 import QtCore, QtWidgets
 from .emsprworkflow import *
 from .emform import *

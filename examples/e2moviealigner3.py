@@ -2,7 +2,6 @@
 # Author: James Michael Bell, jmbell@bcm.edu, 10/18/2015
 
 from past.utils import old_div
-from builtins import object
 from EMAN2 import *
 import numpy as np
 from IPython import embed

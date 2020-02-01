@@ -1,5 +1,4 @@
 
-from builtins import object
 #
 # Author: Pawel A.Penczek 05/27/2009 (Pawel.A.Penczek@uth.tmc.edu)
 # Please do not copy or modify this file without written consent of the author.

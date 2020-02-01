@@ -39,7 +39,6 @@
 #
 
 
-from builtins import object
 from EMAN2 import *
 from sp_sparx import *
 from sp_logger import Logger, BaseLogger_Files

@@ -30,7 +30,6 @@
 #
 
 from past.utils import old_div
-from builtins import object
 from EMAN2 import *
 import time
 import datetime

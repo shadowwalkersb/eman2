@@ -123,8 +123,6 @@ class SimpleLogger( object ):
 			sxprint( *args, filename=self.filename, **kwargs )
 		else:
 			sxprint( *args, **kwargs )
-from builtins import object
-
 import time
 
 import sys

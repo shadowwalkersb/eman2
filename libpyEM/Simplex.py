@@ -23,7 +23,6 @@
 # Modified (debugged?) 7/16/2004 Michele Vallisneri (vallis@vallis.org)
 
 from past.utils import old_div
-from builtins import object
 """ Simplex - a regression method for arbitrary nonlinear function minimization
 
 Simplex minimizes an arbitrary nonlinear function of N variables by the

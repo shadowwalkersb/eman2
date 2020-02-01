@@ -31,7 +31,6 @@
 
 from future import standard_library
 standard_library.install_aliases()
-from builtins import object
 from global_def import *
 
 def avgvar(data, mode='a', interp='quadratic', i1=0, i2=0, use_odd=True, use_even=True):

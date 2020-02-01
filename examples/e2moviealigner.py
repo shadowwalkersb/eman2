@@ -30,7 +30,6 @@
 #
 
 from past.utils import old_div
-from builtins import object
 from EMAN2 import *
 from Simplex import Simplex
 #from Anneal import BaseAnnealer

@@ -36,7 +36,6 @@
 # 2. http://blake.bcm.edu/emanwiki/EMAN2/Symmetry
 
 from past.utils import old_div
-from builtins import object
 import sys, math, os, random
 from EMAN2 import *
 from EMAN2jsondb import JSTask,jsonclasses

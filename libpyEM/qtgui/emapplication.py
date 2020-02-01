@@ -30,7 +30,6 @@
 #
 #
 
-from builtins import object
 from PyQt5 import QtGui, QtWidgets, QtCore, QtOpenGL
 import sys
 from .emimageutil import EMParentWin

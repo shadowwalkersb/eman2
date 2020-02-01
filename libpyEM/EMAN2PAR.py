@@ -35,7 +35,6 @@
 from past.utils import old_div
 from future import standard_library
 standard_library.install_aliases()
-from builtins import object
 
 import sys, os, getpass, socket, subprocess, threading, time,select,shutil, traceback, random,_thread, queue
 from pickle import dumps,loads,dump,load

@@ -41,7 +41,6 @@ import os
 import subprocess
 import sys
 import collections
-from builtins import object
 try:
     from PyQt4.Qt import *
     from PyQt4 import QtGui

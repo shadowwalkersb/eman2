@@ -33,7 +33,6 @@
 # displaydemo.py  09/18/2009  Steven Ludtke
 
 
-from builtins import object
 from EMAN2 import *
 from math import *
 from eman2_gui.emapplication import EMApp

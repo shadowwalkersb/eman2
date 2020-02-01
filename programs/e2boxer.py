@@ -34,7 +34,6 @@
 from past.utils import old_div
 from future import standard_library
 standard_library.install_aliases()
-from builtins import object
 from EMAN2 import *
 from EMAN2jsondb import *
 import numpy as np

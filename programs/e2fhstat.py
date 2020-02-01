@@ -29,7 +29,6 @@
 #
 #
 
-from builtins import object
 from EMAN2 import *
 from eman2_gui.emfoldhunterstat import *
 from eman2_gui.emapplication import get_application

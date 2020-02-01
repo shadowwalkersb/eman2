@@ -32,7 +32,6 @@
 
 
 from past.utils import old_div
-from builtins import object
 from EMAN2 import *
 from eman2_gui.emplot2d import EMPlot2DWidget
 from eman2_gui.emapplication import EMApp

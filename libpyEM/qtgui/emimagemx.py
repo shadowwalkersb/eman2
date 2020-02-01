@@ -30,7 +30,6 @@
 #
 #
 
-from builtins import object
 from PyQt5 import QtCore, QtGui, QtWidgets, QtOpenGL
 from PyQt5.QtCore import Qt
 import OpenGL

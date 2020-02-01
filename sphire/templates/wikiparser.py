@@ -41,8 +41,6 @@ import copy
 import sp_global_def
 import os
 import sxgui_template
-from builtins import object
-
 # ========================================================================================
 class SXsubcmd_config(object):
 	def __init__(self, label = "", short_info = None, token_edit_list = [], mpi_support = None, is_modeless = False, subset_config=""):

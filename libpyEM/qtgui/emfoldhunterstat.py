@@ -31,7 +31,6 @@
 
 
 from past.utils import old_div
-from builtins import object
 import sys
 from random import *
 import random
