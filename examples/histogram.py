@@ -2,7 +2,6 @@
 # specify the filename and column number with an optional number of bins, column number 0 indexed
 # Note that outliers are filtered out (>sigma*4 twice)
 from past.utils import old_div
-from builtins import range
 from EMAN2 import *
 from numpy import *
 from sys import argv,exit

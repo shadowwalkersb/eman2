@@ -1,5 +1,4 @@
 
-from builtins import range
 from EMAN2 import *
 import time
 import random

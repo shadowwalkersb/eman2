@@ -3,7 +3,6 @@
 #### 2017-03
 
 from past.utils import old_div
-from builtins import range
 import numpy as np
 import math
 import os

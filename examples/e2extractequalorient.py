@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 # This program will extract an ~equal number of particles over all orientations. 
 
-from builtins import range
 from EMAN2 import *
 from sys import argv
 import sys

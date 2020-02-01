@@ -31,7 +31,6 @@
 #
 
 from past.utils import old_div
-from builtins import range
 from builtins import object
 from PyQt5 import QtGui, QtWidgets,QtCore
 from PyQt5.QtCore import Qt

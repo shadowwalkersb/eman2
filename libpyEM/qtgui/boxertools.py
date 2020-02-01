@@ -31,7 +31,6 @@
 #
 
 from past.utils import old_div
-from builtins import range
 from builtins import object
 from time import time
 from math import ceil

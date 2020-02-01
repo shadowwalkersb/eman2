@@ -41,7 +41,6 @@
 
 #  VERSION 2  09/25/2014
 
-from builtins import range
 from   EMAN2 import *
 from   sp_sparx import *
 import os

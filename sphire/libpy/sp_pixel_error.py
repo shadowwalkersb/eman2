@@ -1769,5 +1769,4 @@ def max_3D_pixel_errorA(t1, t2, r):
 '''
 
 
-from builtins import range
 from sp_global_def import *

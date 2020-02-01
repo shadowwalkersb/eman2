@@ -1,4 +1,3 @@
-from builtins import range
 from EMAN2 import *
 from time import time
 

@@ -34,7 +34,6 @@
 # data for benchmarking purposes.
 
 from past.utils import old_div
-from builtins import range
 from EMAN2 import *
 from math import *
 from random import *

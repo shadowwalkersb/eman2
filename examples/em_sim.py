@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 # Muyuan Chen 2017-08
 from past.utils import old_div
-from builtins import range
 import numpy as np
 
 import OpenGL

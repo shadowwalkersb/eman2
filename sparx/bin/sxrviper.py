@@ -32,7 +32,6 @@
 #
 from future import standard_library
 standard_library.install_aliases()
-from builtins import range
 import global_def
 from global_def import *
 from mpi import MPI_SUM, mpi_reduce, mpi_init, mpi_finalize, MPI_COMM_WORLD, mpi_comm_rank, mpi_comm_size, mpi_barrier, \

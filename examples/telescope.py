@@ -30,7 +30,6 @@
 #
 #
 
-from builtins import range
 from EMAN2 import *
 from eman2_gui.emimage import *
 import time

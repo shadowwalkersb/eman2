@@ -30,7 +30,6 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston MA 02111-1307 USA
 from past.utils import old_div
-from builtins import range
 from sys import argv
 import os
 from EMAN2 import *

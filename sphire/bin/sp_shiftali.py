@@ -41,7 +41,6 @@
 
 # clean up the code, make documentation
 
-from builtins import range
 import os
 import sys
 from   time import time	

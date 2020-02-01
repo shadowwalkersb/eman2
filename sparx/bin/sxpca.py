@@ -31,7 +31,6 @@
 #
 #
 
-from builtins import range
 import global_def
 from global_def import *
 from optparse import OptionParser

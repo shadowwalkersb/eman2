@@ -30,7 +30,6 @@ Author: Jesus Galaz-Montoya - 2017, Last update: 12/Sep/2017
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  2111-1307 USA
 '''
 from past.utils import old_div
-from builtins import range
 import matplotlib
 matplotlib.use('Agg',warn=False)
 

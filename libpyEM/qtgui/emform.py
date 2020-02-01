@@ -31,7 +31,6 @@
 
 
 from past.utils import old_div
-from builtins import range
 from builtins import object
 from .emdatastorage import ParamDef
 from PyQt5 import QtGui, QtWidgets,QtCore

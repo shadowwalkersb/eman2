@@ -40,7 +40,6 @@
 
 from future import standard_library
 standard_library.install_aliases()
-from builtins import range
 import sp_global_def
 from sp_global_def import sxprint, ERROR, SPARXVERSION
 from sp_global_def import *

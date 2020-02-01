@@ -34,7 +34,6 @@
 ### Program for classifying raw 2d or 3d data by kmeans
 
 from past.utils import old_div
-from builtins import range
 import os
 import sys
 import random

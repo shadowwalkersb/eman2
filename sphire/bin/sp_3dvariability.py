@@ -37,7 +37,6 @@
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
 #
 #
-from builtins import range
 from EMAN2 import *
 from sp_sparx import *
 from sp_global_def import SPARX_MPI_TAG_UNIVERSAL

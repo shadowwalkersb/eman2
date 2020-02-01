@@ -33,7 +33,6 @@
 #
 #
 
-from builtins import range
 from EMAN2 import *
 
 from copy import deepcopy

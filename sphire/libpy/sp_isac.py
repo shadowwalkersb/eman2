@@ -1620,7 +1620,6 @@ for i in xrange(len(d)):
 	else:
 		print ' Group  ',i,'  skipped'
 """
-from builtins import range
 from sp_global_def import SPARX_MPI_TAG_UNIVERSAL
 from sp_global_def import *
 

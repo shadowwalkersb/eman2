@@ -30,7 +30,6 @@
 #
 #
 
-from builtins import range
 from math import *
 import time
 import os

@@ -29,7 +29,6 @@
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
 #
 
-from builtins import range
 from global_def import *
 
 # Comment by Zhengfan Yang on 06/11/10

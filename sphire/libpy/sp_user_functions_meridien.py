@@ -508,7 +508,6 @@ def ai_filament( Tracker, fff, anger, shifter, do_local, chout = False):
 
 	return keepgoing
 
-from builtins import range
 from builtins import object
 
 import numpy

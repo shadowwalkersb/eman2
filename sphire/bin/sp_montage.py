@@ -40,7 +40,6 @@
 #
 
 
-from builtins import range
 import os
 import sp_global_def
 from sp_global_def import sxprint, ERROR

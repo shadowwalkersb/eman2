@@ -34,7 +34,6 @@
 # This program computes a similarity matrix between two sets of images
 
 from past.utils import old_div
-from builtins import range
 from EMAN2 import *
 from math import *
 import os

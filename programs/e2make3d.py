@@ -34,7 +34,6 @@
 # initial version of make3d
 
 from past.utils import old_div
-from builtins import range
 from EMAN2 import *
 from EMAN2db import db_open_dict
 from copy import deepcopy

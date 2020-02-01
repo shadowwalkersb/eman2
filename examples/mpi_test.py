@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-from builtins import range
 from sys import argv,stdout
 from EMAN2 import *
 from mpi import *

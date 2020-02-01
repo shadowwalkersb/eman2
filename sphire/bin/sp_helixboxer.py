@@ -39,7 +39,6 @@
 #
 #
 
-from builtins import range
 from EMAN2 import get_image_directory, Transform, Region, EMANVERSION, EMData, E2init, E2end, EMArgumentParser
 from EMAN2db import db_open_dict, db_check_dict, db_close_dict
 from math import *

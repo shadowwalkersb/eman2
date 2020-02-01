@@ -32,7 +32,6 @@
 #
 
 
-from builtins import range
 import numpy
 from numpy import linalg as LA
 from numpy import array, dot

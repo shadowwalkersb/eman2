@@ -3,7 +3,6 @@
 from past.utils import old_div
 from future import standard_library
 standard_library.install_aliases()
-from builtins import range
 import numpy as np
 from EMAN2 import *
 from EMAN2_utils import cmponetomany

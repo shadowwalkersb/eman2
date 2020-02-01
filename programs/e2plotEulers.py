@@ -30,7 +30,6 @@
 #
 #
 
-from builtins import range
 from EMAN2 import *
 from eman2_gui.emplot2d import EMPolarPlot2DWidget,colortypes
 from eman2_gui.emapplication import EMApp

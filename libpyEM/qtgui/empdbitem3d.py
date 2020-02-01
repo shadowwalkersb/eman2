@@ -31,7 +31,6 @@
 #
 
 from past.utils import old_div
-from builtins import range
 from EMAN2 import *
 from .emglobjects import get_default_gl_colors
 from .emitem3d import EMItem3D, EMItem3DInspector, drawBoundingBox

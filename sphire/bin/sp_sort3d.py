@@ -43,7 +43,6 @@
 #  New version.
 #  
 
-from builtins import range
 import os
 import sys
 import types

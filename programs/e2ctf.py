@@ -34,7 +34,6 @@
 # This is a program for determining CTF parameters and (optionally) phase flipping images
 
 from past.utils import old_div
-from builtins import range
 from builtins import object
 from EMAN2 import *
 from EMAN2db import db_open_dict, db_close_dict, db_check_dict, db_list_dicts

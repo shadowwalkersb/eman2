@@ -30,7 +30,6 @@
 #
 #
 
-from builtins import range
 import pprint
 from EMAN2 import *
 from EMAN2db import db_open_dict

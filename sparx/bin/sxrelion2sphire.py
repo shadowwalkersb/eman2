@@ -46,7 +46,6 @@
 # 
 # ========================================================================================
 
-from builtins import range
 from past.builtins import cmp
 from EMAN2 import *
 from sparx import *

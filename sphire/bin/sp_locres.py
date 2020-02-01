@@ -38,7 +38,6 @@
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
 #
 #
-from builtins import range
 import EMAN2_cppwrap
 import sp_filter
 import sp_fundamentals

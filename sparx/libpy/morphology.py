@@ -30,7 +30,6 @@
 #
 import numpy
 
-from builtins import range
 from global_def import *
 import global_def
 import scipy.ndimage.morphology as snm

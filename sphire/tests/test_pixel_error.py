@@ -30,7 +30,6 @@
 #
 #
 
-from builtins import range
 import unittest
 from optparse import OptionParser
 from EMAN2 import *

@@ -31,7 +31,6 @@
 #
 
 from past.utils import old_div
-from builtins import range
 import EMAN2
 from EMAN2 import *
 import unittest

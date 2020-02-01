@@ -30,7 +30,6 @@
 #
 #
 from past.utils import old_div
-from builtins import range
 from EMAN2 import *
 from PyQt5 import QtCore, QtGui, QtWidgets, QtOpenGL
 from eman2_gui.emapplication import EMApp

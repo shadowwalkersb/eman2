@@ -30,7 +30,6 @@
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston MA 02111-1307 USA
 #
 #
-from builtins import range
 from EMAN2 import get_image_directory, dump_processors_list
 from PyQt5 import QtCore, QtGui, QtWidgets
 from .emrctstrategy import Strategy2IMGMan, Strategy2IMGPair

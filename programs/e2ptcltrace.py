@@ -34,7 +34,6 @@
 # This program will follow particles through refinement and assess how self consistent particle orientation assignments are
 
 
-from builtins import range
 from EMAN2 import *
 from math import *
 import os

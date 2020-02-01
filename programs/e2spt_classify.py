@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 # Muyuan Chen 2016-10
 
-from builtins import range
 from EMAN2 import *
 import numpy as np
 from shutil import copyfile

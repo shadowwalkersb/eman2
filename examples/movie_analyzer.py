@@ -2,7 +2,6 @@
 # Author: Michael Bell 09/2016
 
 from past.utils import old_div
-from builtins import range
 import os
 
 if os.getenv("DISPLAY") == None:

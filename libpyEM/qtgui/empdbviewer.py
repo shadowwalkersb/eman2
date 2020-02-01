@@ -30,7 +30,6 @@
 #
 
 from past.utils import old_div
-from builtins import range
 from builtins import object
 from EMAN2 import PDBReader, get_image_directory
 from libpyGLUtils2 import *

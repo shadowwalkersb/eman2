@@ -1193,6 +1193,5 @@ def generate_templates(volft, kb, x_half_size, y_half_size, psi_half_size, proje
 	return all_templates
 
 
-from builtins import range
 from sp_global_def import *
 

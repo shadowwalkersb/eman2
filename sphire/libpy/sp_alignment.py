@@ -6230,5 +6230,4 @@ def XXali2d_single_iter(data, numr, wr, cs, tavg, cnx, cny, \
 '''
 
 
-from builtins import range
 from sp_global_def import *

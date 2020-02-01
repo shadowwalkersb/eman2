@@ -36,7 +36,6 @@
 # makebigfromseq.py <infile> <sizexsize> <dot threshold> <darkref> <lightref> <1st image shift>
 
 from past.utils import old_div
-from builtins import range
 from EMAN2 import *
 import sys
 from math import *

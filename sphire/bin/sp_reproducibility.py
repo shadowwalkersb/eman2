@@ -38,7 +38,6 @@
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
 #
 #
-from builtins import range
 import os
 import sp_global_def
 from sp_global_def import sxprint

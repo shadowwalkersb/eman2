@@ -1,6 +1,5 @@
 """some utility functions for playing with movie-mode sequences"""
 from past.utils import old_div
-from builtins import range
 import EMAN2
 from math import sqrt
 

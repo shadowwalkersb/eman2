@@ -31,7 +31,6 @@
 #
 
 from past.utils import old_div
-from builtins import range
 import os
 import sys
 import math

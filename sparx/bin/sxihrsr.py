@@ -32,7 +32,6 @@
 #
 
 
-from builtins import range
 def main():
 	import os
 	import sys

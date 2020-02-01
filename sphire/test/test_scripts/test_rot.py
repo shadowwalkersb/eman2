@@ -1,5 +1,4 @@
 #! /usr/bin/env python
-from builtins import range
 from sparx import *
 from EMAN2 import *
 e=test_image()

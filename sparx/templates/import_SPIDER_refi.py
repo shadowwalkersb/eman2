@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 # it is likely that the above line would have to be changed depending on python location
 
-from builtins import range
 from EMAN2 import *
 from sparx import *
 

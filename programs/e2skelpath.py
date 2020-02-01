@@ -33,7 +33,6 @@
 # e2skelpath.py  09/01/2006  Steven Ludtke, Matt Baker
 
 from past.utils import old_div
-from builtins import range
 from EMAN2 import *
 from math import *
 import time

@@ -51,7 +51,6 @@
 #  04/18/2017 - Introduce symclass to handle angles in a unified manner
 #  01/21/2018 - Rationalize the code, particularly restart
 #  07/21/2018 - Full size reconstruction after delta change
-from builtins import range
 """
 There are four ways to run the program:
 

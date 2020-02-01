@@ -6967,7 +6967,6 @@ def Xdefocusgett_vpp22(qse, roo, nx, voltage=300.0, Pixel_size=1.0, Cs=2.0, f_st
 
 import numpy
 
-from builtins import range
 from sp_global_def import *
 import sp_global_def
 import scipy.ndimage.morphology as snm

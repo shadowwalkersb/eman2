@@ -30,7 +30,6 @@
 #
 #
 
-from builtins import range
 from EMAN2 import *
 import math
 from copy import deepcopy

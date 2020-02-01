@@ -25876,7 +25876,6 @@ def mref_ali3d_EQ_Kmeans_circular(ref_list, outdir, particle_list_file, Tracker)
 		
 ######
  
-from builtins import range
 from builtins import object
 
 from sp_global_def import *

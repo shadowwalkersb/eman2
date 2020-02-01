@@ -36,7 +36,6 @@
 #
 #
 
-from builtins import range
 import	sp_global_def
 from sp_global_def import ERROR  # sxprint,
 from	sp_global_def 	import *

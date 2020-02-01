@@ -34,7 +34,6 @@
 
 from future import standard_library
 standard_library.install_aliases()
-from builtins import range
 from EMAN2 import *
 from math import *
 import os

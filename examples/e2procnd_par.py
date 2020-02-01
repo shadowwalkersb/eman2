@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 # Muyuan Chen 2016-05
 from past.utils import old_div
-from builtins import range
 from EMAN2 import *
 
 def main():

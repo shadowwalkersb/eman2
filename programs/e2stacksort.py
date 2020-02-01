@@ -34,7 +34,6 @@
 # This program will sort a stack of images based on some similarity criterion
 
 
-from builtins import range
 from EMAN2 import *
 from math import *
 import os

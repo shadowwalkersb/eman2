@@ -30,7 +30,6 @@
 #
 #
 
-from builtins import range
 from builtins import object
 import OpenGL
 OpenGL.ERROR_CHECKING = False

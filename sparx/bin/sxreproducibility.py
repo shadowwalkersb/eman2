@@ -30,7 +30,6 @@
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
 #
 #
-from builtins import range
 import os
 import global_def
 from   global_def     import *

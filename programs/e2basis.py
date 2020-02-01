@@ -30,7 +30,6 @@
 #
 # e2basis.py  01/21/2008  Steven Ludtke
 
-from builtins import range
 from EMAN2 import *
 from math import *
 import time

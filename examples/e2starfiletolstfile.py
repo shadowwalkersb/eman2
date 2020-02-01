@@ -10,7 +10,6 @@
 
 # This script will convert a relion star file to an eman2 lst file, looking specifically for the particle number in the image and the image name
 
-from builtins import range
 from EMAN2 import *
 import sys
 import os

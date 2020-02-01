@@ -36,7 +36,6 @@
 from past.utils import old_div
 from future import standard_library
 standard_library.install_aliases()
-from builtins import range
 from math import *
 import time
 import os

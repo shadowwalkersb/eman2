@@ -1,5 +1,4 @@
 
-from builtins import range
 import unittest
 from optparse import OptionParser
 

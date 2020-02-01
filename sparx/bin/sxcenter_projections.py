@@ -31,7 +31,6 @@
 #
 
 
-from builtins import range
 from builtins import object
 from EMAN2 import *
 from sparx import *

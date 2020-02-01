@@ -33,7 +33,6 @@
 #
 # todo: lp, hp, tlp vs apix
 from past.utils import old_div
-from builtins import range
 from EMAN2 import *
 from optparse import OptionParser
 import sys

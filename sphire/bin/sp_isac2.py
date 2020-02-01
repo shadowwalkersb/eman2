@@ -42,8 +42,6 @@ Place, Suite 330, Boston, MA  02111-1307 USA
 # compatibility
 from future import standard_library
 standard_library.install_aliases()
-from builtins import range
-
 # system
 import os
 import sys

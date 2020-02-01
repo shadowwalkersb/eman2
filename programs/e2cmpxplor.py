@@ -30,7 +30,6 @@
 #
 #
 
-from builtins import range
 from eman2_gui.emapplication import EMApp, get_application
 from eman2_gui.emimage3dsym import EM3DSymModel,EMSymInspector
 import os,sys

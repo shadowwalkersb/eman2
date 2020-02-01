@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 # Muyuan Chen 2017-03
 from past.utils import old_div
-from builtins import range
 import numpy as np
 from EMAN2 import *
 import json

@@ -2,7 +2,6 @@
 ### This program computes the maximum radial distribution plot and characterizes it
 
 from past.utils import old_div
-from builtins import range
 from EMAN2 import *
 from sys import argv
 

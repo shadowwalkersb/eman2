@@ -30,7 +30,6 @@
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  2111-1307 USA
 #
 #
-from builtins import range
 import os, re
 from EMAN2 import *
 import numpy as np

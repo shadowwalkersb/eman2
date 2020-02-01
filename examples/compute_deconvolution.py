@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 # Uses EMAN2/NumPy to compute a real-space deconvolution matrix for use in non-Cartesian coordinates
 
-from builtins import range
 from EMAN2 import *
 import numpy as np
 

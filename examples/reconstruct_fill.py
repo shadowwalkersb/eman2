@@ -2,7 +2,6 @@
 # this program will generate various numbers of projections and then test completeness in Fourier space during reconstruction with a specified reconstructor
 
 from past.utils import old_div
-from builtins import range
 from EMAN2 import *
 
 from sys import argv

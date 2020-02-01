@@ -36,7 +36,6 @@
 
 
 from past.utils import old_div
-from builtins import range
 from EMAN2 import *
 from EMAN2_utils import numpy2pdb
 import numpy as np

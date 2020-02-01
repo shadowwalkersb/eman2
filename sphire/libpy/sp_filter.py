@@ -909,6 +909,5 @@ def filterlocal(ui, vi, m, falloff, myid, main_node, number_of_proc):
 	reduce_EMData_to_root(filteredvol, myid, main_node, MPI_COMM_WORLD)
 	return filteredvol
 
-from builtins import range
 from sp_global_def import *
 

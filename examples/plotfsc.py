@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 from past.utils import old_div
-from builtins import range
 import matplotlib
 matplotlib.use("AGG")
 import matplotlib.pyplot as plt

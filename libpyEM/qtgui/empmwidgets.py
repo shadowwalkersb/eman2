@@ -36,7 +36,6 @@
 # In addition, you'll need to add a line in the class PMGUIWidget (e2projectmanager) to instantiate the widget based on the value of 'guitype'
 
 from past.utils import old_div
-from builtins import range
 from EMAN2db import db_check_dict
 import sys, math, weakref
 from PyQt5 import QtCore, QtGui, QtWidgets

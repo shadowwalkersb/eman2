@@ -30,7 +30,6 @@
 #
 #
 
-from builtins import range
 from EMAN2 import *
 from EMAN2db import *
 import unittest,os,sys

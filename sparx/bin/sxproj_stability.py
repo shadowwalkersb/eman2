@@ -32,7 +32,6 @@
 #
 
 
-from builtins import range
 '''
 In this program, there are two ways of testing the stability of the projection.
 

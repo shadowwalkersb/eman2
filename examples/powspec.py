@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 
 from past.utils import old_div
-from builtins import range
 from EMAN2 import *
 import sys
 

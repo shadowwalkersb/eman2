@@ -41,7 +41,6 @@ import os
 import subprocess
 import sys
 import collections
-from builtins import range
 from builtins import object
 try:
     from PyQt4.Qt import *

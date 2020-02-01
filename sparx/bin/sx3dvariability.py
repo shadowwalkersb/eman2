@@ -32,7 +32,6 @@
 #
 #
 #
-from builtins import range
 from EMAN2 import *
 from sparx import *
 from global_def import SPARX_MPI_TAG_UNIVERSAL

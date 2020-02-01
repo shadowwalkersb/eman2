@@ -33,7 +33,6 @@
 # $Id: e2proc2dmulti.py
 
 from past.utils import old_div
-from builtins import range
 from EMAN2db import db_list_dicts
 from EMAN2 import *
 import sys

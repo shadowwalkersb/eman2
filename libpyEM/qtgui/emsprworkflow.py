@@ -31,7 +31,6 @@
 #
 
 from past.utils import old_div
-from builtins import range
 from builtins import object
 from .emform import EMFormWidget,EMParamTable,EMTableFormWidget
 from .emdatastorage import ParamDef

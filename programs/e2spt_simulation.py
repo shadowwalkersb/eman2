@@ -30,7 +30,6 @@ Author: Jesus Galaz-Montoya - 2011, Last update: 16/Apr/2019
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  2111-1307 USA
 '''
 from past.utils import old_div
-from builtins import range
 from EMAN2 import *
 from EMAN2_utils import *
 import shutil

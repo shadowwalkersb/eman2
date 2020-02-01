@@ -30,7 +30,6 @@
 #
 #
 
-from builtins import range
 import EMAN2
 from EMAN2 import *
 import unittest

@@ -30,7 +30,6 @@
 #
 
 from past.utils import old_div
-from builtins import range
 from EMAN2 import *
 import sys
 import os.path

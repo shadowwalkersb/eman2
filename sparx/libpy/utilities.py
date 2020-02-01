@@ -31,7 +31,6 @@
 
 from future import standard_library
 standard_library.install_aliases()
-from builtins import range
 from builtins import object
 from global_def import *
 from functools import reduce

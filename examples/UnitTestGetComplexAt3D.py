@@ -4,7 +4,6 @@
 ######################################
 
 from past.utils import old_div
-from builtins import range
 N=4;  # This is the size of the original image
 ti = EMData(N,N,N);
 ti.to_zero();

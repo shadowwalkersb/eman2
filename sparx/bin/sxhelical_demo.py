@@ -33,7 +33,6 @@
 
 # clean up the code, make documentation
 
-from builtins import range
 import os
 import global_def
 from   global_def     import *

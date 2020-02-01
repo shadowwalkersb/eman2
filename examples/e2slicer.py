@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 from past.utils import old_div
-from builtins import range
 '''
 ====================
 Author: Jesus Galaz-Montoya - 02/March/2013, Last update: 07/Nov/2017

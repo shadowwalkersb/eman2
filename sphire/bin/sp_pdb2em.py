@@ -49,7 +49,6 @@
 
 
 
-from builtins import range
 from EMAN2 import *
 from sp_sparx import *
 from optparse import OptionParser

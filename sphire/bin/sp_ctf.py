@@ -42,7 +42,6 @@
 # e2ctf.py  10/29/2008 Steven Ludtke
 # This is a program for determining CTF parameters
 
-from builtins import range
 from builtins import object
 import sp_global_def
 from sp_global_def import sxprint, ERROR

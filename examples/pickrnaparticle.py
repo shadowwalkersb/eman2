@@ -2,7 +2,6 @@
 # Muyuan Chen 2015-03-24
 # pick rna particles
 from past.utils import old_div
-from builtins import range
 from EMAN2 import *
 import json
 

@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 # Muyuan Chen 2017-10
 from past.utils import old_div
-from builtins import range
 import os
 os.environ["CUDA_VISIBLE_DEVICES"]="0"
 import tensorflow as tf

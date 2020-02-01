@@ -43,8 +43,6 @@
 #
 #
 
-from builtins import range
-
 """
 There are two ways to run the program:
 

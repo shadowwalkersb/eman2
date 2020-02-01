@@ -79,7 +79,6 @@
 
 # For internal use:
 
-from builtins import range
 def pat_match (string, pattern, str_len, pat_len) :
 	# Constants:
 

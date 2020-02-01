@@ -33,7 +33,6 @@
 #
 #
 
-from builtins import range
 import os, sys
 from optparse import OptionParser, SUPPRESS_HELP
 from copy import copy, deepcopy
