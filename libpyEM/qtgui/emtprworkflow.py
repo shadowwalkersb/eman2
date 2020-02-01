@@ -342,7 +342,7 @@ class EMTomoBootStapChoosePtclsTask(EMBaseTomoChooseFilteredPtclsTask):
 		
 		self.write_db_entries(params)
 
-class EMTomoAlignParams(object):
+class EMTomoAlignParams:
 	'''
 	A class that get parameters commonly used by alignment based programs
 	'''

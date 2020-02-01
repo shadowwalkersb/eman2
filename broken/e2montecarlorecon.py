@@ -151,7 +151,7 @@ def main():
 	E2end(logid)
 
 # Strategy pattern, allows other algoithms to be plugged in
-class Refine(object):
+class Refine:
 	def __init__(self, name):
 		self.name = name
 	def refinerecon(self, calist, blist, reconstructor):

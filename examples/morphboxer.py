@@ -297,7 +297,7 @@ class MorphBoxingTool(EMBoxingTool):
 		self.target().move_box(box_num, dx, dy)
 
 
-class MorphBoxingPanel(object):
+class MorphBoxingPanel:
 	
 	def __init__(self,target):
 		self.target = weakref.ref(target)
@@ -322,7 +322,7 @@ class MorphBoxingPanel(object):
 		self.target().clear_all()
 
 
-class ErasingPanel(object): # copied for ideas for the morph panel
+class ErasingPanel: # copied for ideas for the morph panel
 
 	def __init__(self,target,erase_radius=128):
 		self.busy = True

@@ -75,7 +75,7 @@ def main():
 	app.exec_()
 
 # Use strategy pattern here. Any new stategy needs to inherit this
-class Strategy(object):
+class Strategy:
 	def __init__(self, jobdir, options):
 		self.jobdir = jobdir
 		self.options = options

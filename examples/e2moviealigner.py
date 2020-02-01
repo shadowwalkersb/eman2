@@ -160,7 +160,7 @@ def main():
 
 	E2end(pid)
 
-class MovieModeAligner(object):
+class MovieModeAligner:
 
 	"""
 	MovieModeAligner: Class to hold information for optimized alignment of DDD cameras.
@@ -675,7 +675,7 @@ class MovieModeAligner(object):
 		##return self.aligner.get_last_energy() 
 		#return self.aligner.get_lowest_energy()
 
-class font(object):
+class font:
 	PURPLE = '\033[95m'
 	CYAN = '\033[96m'
 	DARKCYAN = '\033[36m'

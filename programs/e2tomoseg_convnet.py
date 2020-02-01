@@ -295,7 +295,7 @@ def load_particles(ptcls,labelshrink,ncopy=5, rng=None):
 	return data, label, shape, ntrain
 
 
-class StackedConvNet_tf(object):
+class StackedConvNet_tf:
 		
 	def __init__(self, kernels, imgsz=64, batchsz=10, meanout=False):
 		

@@ -49,7 +49,7 @@ from weakref import WeakKeyDictionary
 import weakref
 
 
-class Orientations(object):
+class Orientations:
 	def __init__(self):
 		self.prop = 5.0
 		self.sym = "c1"
@@ -69,7 +69,7 @@ class Orientations(object):
 		self.sym = str(val)
 		self.sym_object= Symmetries.get(self.sym)
 
-class ColumnGraphics(object):
+class ColumnGraphics:
 	def __init__(self):
 		self.small_column_color = "dark grey"
 		self.tall_column_color = "white"
@@ -122,7 +122,7 @@ class ColumnGraphics(object):
 	def load_basic_gl_color(self):
 		self.mixed_color.load_color_2()
 	
-class MixedColor(object):
+class MixedColor:
 	def __init__(self,color1,color2):
 		self.color1 = color1 # the color of the smallest column, for example
 		self.color2 = color2 # the color of the largest column, for example
@@ -171,7 +171,7 @@ class MixedColor(object):
 		glMaterial(GL_FRONT,GL_SHININESS,self.h2)
 	
 
-class EulerData(object):
+class EulerData:
 	'''
 	A mixin for the EM3DSymModel - takes care of everything that needs to occur
 	if you have supplied a list of EMData objects - the EMData's must have the
@@ -1266,7 +1266,7 @@ class EMSymViewerWidget(EMGLWidget, EMGLProjectionViewMatrices):
 		self.updateGL()
 
 
-class SparseSymChoicesWidgets(object):
+class SparseSymChoicesWidgets:
 	'''
 	An encapsulation of the most basic of symmetry inspector widgets
 	Used by both EMSymChoiceDialog and EMSymInspector

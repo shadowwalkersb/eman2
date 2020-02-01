@@ -68,7 +68,7 @@ DCMAXTHREADS=7
 
 
 
-class EMTaskCustomer(object):
+class EMTaskCustomer:
 	"""This will communicate with the specified task server on behalf of an application needing to
 	have tasks completed"""
 	def __init__(self,target,module=""):
@@ -193,7 +193,7 @@ class EMTaskCustomer(object):
 
 
 
-class EMMpiTaskHandler(object):
+class EMMpiTaskHandler:
 	"""MPI based task handler. This exists as a thread in the customer and handles communications with the actual
 	MPI program, which this handler spawns. We do not subclass the EMTaskHandler because we are using our own
 	file caching naming scheme here, since the MPI task is not persistent across jobs. If this handler dies,
@@ -341,7 +341,7 @@ class EMMpiTaskHandler(object):
 #######################
 #  Here we define the classes for MPI parallelism
 
-class EMMpiClient(object):
+class EMMpiClient:
 	"""MPI communications are a bit complicated. An instance of EMMpiTaskHandler is created by the
 	customer. This object spawns the actual MPI job by executing mpirun. This MPI job as implemented
 	in e2parallel.py will make use of the run() method of EMMpiClient for its main loop. MPI rank 0
@@ -655,7 +655,7 @@ class EMMpiClient(object):
 
 #######################
 # Here we define the classes for local threaded parallelism
-class EMSharedMemoryLocalTaskHandler(object):
+class EMSharedMemoryLocalTaskHandler:
 	"""Local threaded Taskserver. This runs as a thread in the 'Customer' and executes tasks. Not a
 	subclass of EMTaskHandler for efficient local processing and to avoid data name translation."""
 	lock=threading.Lock()
@@ -749,7 +749,7 @@ class EMSharedMemoryLocalTaskHandler(object):
 
 
 # Here we define the classes for local threaded parallelism
-class EMLocalTaskHandler(object):
+class EMLocalTaskHandler:
 	"""Local threaded Taskserver. This runs as a thread in the 'Customer' and executes tasks. Not a
 	subclass of EMTaskHandler for efficient local processing and to avoid data name translation."""
 	lock=threading.Lock()

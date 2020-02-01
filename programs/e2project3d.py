@@ -48,7 +48,7 @@ MIRROR_DEBUG = True
 NO_MIRROR = False
 
 
-class EMParallelProject3D(object):
+class EMParallelProject3D:
 	def __init__(self,options,fsp,sym,start,modeln=0,logger=None):
 		'''
 		@param options the options produced by (options, args) = parser.parse_args()

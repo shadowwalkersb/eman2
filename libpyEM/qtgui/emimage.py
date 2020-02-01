@@ -65,7 +65,7 @@ def image_update():
 		except: pass
 	
 	
-class EMImageWidget(object):
+class EMImageWidget:
 	"""This is basically a factory class that will return an instance of the appropriate EMImage* class """
 	def __new__(cls,data=None,old=None,app=None,force_2d=False,force_plot=False,filename="",replace=True):
 		"""This will create a new EMImage* object depending on the type of 'data'. If
@@ -142,7 +142,7 @@ class EMImageWidget(object):
 			raise Exception("data must be a single EMData object or a list of EMData objects")
 
 
-class EMWidgetFromFile(object):
+class EMWidgetFromFile:
 	"""This is basically a factory class that will return an instance of the appropriate EMDisplay class,
 	using only a file name as input. Can force plot and force 2d display, also.
 	

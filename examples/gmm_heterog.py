@@ -441,7 +441,7 @@ def write_3d(ballrec,options):
 	
 
 	
-class BallsReconstruction(object):
+class BallsReconstruction:
 	
 	def __init__(self, model):
 		

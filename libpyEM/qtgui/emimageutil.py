@@ -43,7 +43,7 @@ import copy
 import sys
 import math
 
-class EMTransformPanel(object):
+class EMTransformPanel:
 	def __init__(self,target,parent):
 		self.target = weakref.ref(target)
 		self.parent = weakref.ref(parent)
@@ -580,7 +580,7 @@ class ImgHistogram(QtWidgets.QWidget):
 		self.mpressed = False
 		pass
 		
-class EMMetaDataTable(object):
+class EMMetaDataTable:
 	"""This is basically a factory class that will return an instance of QtWidget
 	"""
 	def __new__(cls,parent,metadata):

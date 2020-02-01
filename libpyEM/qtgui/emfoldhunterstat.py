@@ -40,7 +40,7 @@ from numpy import *
 import time
 
 
-class E2FoldHunterStat(object):
+class E2FoldHunterStat:
 	
 	def __init__(self): pass
 

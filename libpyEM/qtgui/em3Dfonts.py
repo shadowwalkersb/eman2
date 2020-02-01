@@ -51,7 +51,7 @@ from .emglobjects import EM3DModel, Camera2,EMViewportDepthTools, get_default_gl
 from .emlights import *
 
 
-class DynamicFonts(object):
+class DynamicFonts:
 	def __init__(self):
 		self.font_renderer = get_3d_font_renderer()
 

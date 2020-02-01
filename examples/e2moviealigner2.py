@@ -84,7 +84,7 @@ def main():
 	
 	E2end(pid)
 
-class MovieAligner(object):
+class MovieAligner:
 	
 	def __init__(self, options, fname):
 		self.path = fname
@@ -481,7 +481,7 @@ class MovieAligner(object):
 # 		tmin = bool(np.all(x >= self.xmin))
 # 		return tmax and tmin
 
-class CallBack(object):
+class CallBack:
 	
 	def __init__(self, aligner, options):
 		self.aligner = aligner

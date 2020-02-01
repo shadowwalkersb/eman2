@@ -189,7 +189,7 @@ def write_pdbs(filename, paths, points=None, bfactors=None, tree=None):
 
 
 
-class PathWalker(object):
+class PathWalker:
 
 	def __init__(self, filename=None, outfile=None, start=None, end=None, edgefile=None, edges=None, dmin=2.0, dmax=5.0, average=3.78, atomtype='CA', chain=None, noise=0, solver=False, json=True, overwrite=False, mrcfile=None,  mrcweight=1000, mapthresh=0, subunit=1):
 
@@ -909,7 +909,7 @@ class PathWalker(object):
 	
 	
 
-class CaRMSD(object):
+class CaRMSD:
 	def __init__(self, pdb1, pdb2, atomtype=None, outfile=None, overwrite=False, *args, **kwargs):
 		self.atomtype = atomtype
 		self.overwrite = overwrite

@@ -163,7 +163,7 @@ def getalldata(stack, myid, nproc):
 
 
 
-class ali3d_options(object):
+class ali3d_options:
 	ir     = 1
 	rs     = 1
 	ou     = -1

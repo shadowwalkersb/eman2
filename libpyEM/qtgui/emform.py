@@ -43,7 +43,7 @@ import weakref
 import warnings
 import time
 
-class EMButtonDialog(object):
+class EMButtonDialog:
 	'''
 	A base class for adding a dialog to the form
 	Call add_to_layout to add the button to some layout.
@@ -601,7 +601,7 @@ class EMFileTable(QtWidgets.QTableWidget):
 	def sendupdate(self):
 		self.updateform.emit()
 		
-	class EMColumnData(object):
+	class EMColumnData:
 		'''
 		This class defines what's required to add column data to the EMFileTable
 		'''
@@ -611,7 +611,7 @@ class EMFileTable(QtWidgets.QTableWidget):
 			self.tooltip = tooltip # The helpful tooltip
 			self.lt_function = lt_function # less than function - if specified is used as the operator< and sophisticates the sorting behavior
 			
-	class EMButtonData(object):
+	class EMButtonData:
 		'''
 		This class defines what's required to add button data to the EMFileTable
 		'''
@@ -883,7 +883,7 @@ class EM2DStackExamineTable(EM2DStackTable):
 	def module_closed(self,module_instance):
 		self.display_module = None
 
-class EMBrowseEventHandler(object):
+class EMBrowseEventHandler:
 	'''
 	Base class for browse event handlers - came into existence because there are many different ways of handler the results
 	of the browsing operation.
@@ -1344,7 +1344,7 @@ class EMFormWidget(QtWidgets.QWidget):
 		self.display_file.emit(filename)
 
 
-class IncorpStrategy(object):
+class IncorpStrategy:
 	def __init__(self): pass
 	def __call__(self,strategy,layout,target=None):
 		num_choices = None
@@ -1352,7 +1352,7 @@ class IncorpStrategy(object):
 		layout.addWidget(strategy)
 		if target != None: target.output_writers.append(strategy)
 		
-class IncorpButtonDialog(object):
+class IncorpButtonDialog:
 	def __init__(self): pass
 	def __call__(self,buttondialog,layout,target):
 		buttondialog.set_target(target)
@@ -1360,7 +1360,7 @@ class IncorpButtonDialog(object):
 		target.event_handlers.append(buttondialog)    
 		
 
-class IncorpFileTable(object):
+class IncorpFileTable:
 	def __init__(self): pass
 	def __call__(self,paramtable,layout,target=None):
 		num_choices = None
@@ -1387,7 +1387,7 @@ class IncorpFileTable(object):
 		layout.addWidget(groupbox,10)
 		if target != None: target.output_writers.append(EMFileTableWriter(paramtable.name,paramtable,str))
 
-class IncorpParamTable(object):
+class IncorpParamTable:
 	def __init__(self): pass
 	def __call__(self,paramtable,layout,target):
 	
@@ -1447,24 +1447,24 @@ class IncorpParamTable(object):
 		
 		target.name_widget_map[paramtable.name] = groupbox
 		
-class IncorpStringList(object):
+class IncorpStringList:
 	def __init__(self): pass
 	def __call__(self,param,layout,target):
 		target.incorporate_list(param,layout,target,str)
 
-class IncorpFloatList(object):
+class IncorpFloatList:
 	def __init__(self): pass
 	def __call__(self,param,layout,target):
 		target.incorporate_list(param,layout,target,float)
 
-class IncorpIntList(object):
+class IncorpIntList:
 	def __init__(self): pass
 	def __call__(self,param,layout,target):
 		target.incorporate_list(param,layout,target,int)
 
 
 
-class IncorpBool(object):
+class IncorpBool:
 	def __init__(self): pass
 	def __call__(self,param,layout,target):
 		hbl=QtWidgets.QHBoxLayout()
@@ -1481,7 +1481,7 @@ class IncorpBool(object):
 		if hasattr(param,"dependents"):
 			target.event_handlers.append(BoolDependentsEventHandler(target,check_box,param.dependents,hasattr(param,"invert_logic") and param.invert_logic))    
 
-class IncorpString(object):
+class IncorpString:
 	def __init__(self): pass
 	def __call__(self,param,layout,target):
 		if param.choices != None and len(param.choices) > 1:
@@ -1500,7 +1500,7 @@ class IncorpString(object):
 			target.output_writers.append(StringParamWriter(param.name,line_edit))
 			target.name_widget_map[param.name] =  [line_edit,label]
 	
-class IncorpFloat(object):
+class IncorpFloat:
 	def __init__(self): pass
 	def __call__(self,param,layout,target):
 		if param.choices != None and len(param.choices) > 1:
@@ -1521,7 +1521,7 @@ class IncorpFloat(object):
 			target.output_writers.append(FloatParamWriter(param.name,line_edit))
 			target.name_widget_map[param.name] = [line_edit,label]
 	
-class IncorpInt(object):
+class IncorpInt:
 	def __init__(self): pass
 	def __call__(self,param,layout,target):
 		if param.choices != None and len(param.choices) > 1:
@@ -1543,7 +1543,7 @@ class IncorpInt(object):
 			target.output_writers.append(IntParamWriter(param.name,line_edit))
 			target.name_widget_map[param.name] = [line_edit,label]
 	
-class IncorpText(object):
+class IncorpText:
 	def __init__(self): pass
 	def __call__(self,param,layout,target):
 #			hbl=QtWidgets.QHBoxLayout()
@@ -1567,7 +1567,7 @@ class IncorpText(object):
 		target.output_writers.append(TextParamWriter(param.name,text_edit))	
 		#target.name_widget_map[param.name] = groupbox
 	
-class IncorpUrl(object):
+class IncorpUrl:
 	def __init__(self): pass
 	def __call__(self,param,layout,target):
 		vbl=QtWidgets.QVBoxLayout()
@@ -1607,7 +1607,7 @@ class IncorpUrl(object):
 		target.output_writers.append(UrlParamWriter(param.name,text_edit))
 		target.name_widget_map[param.name] = groupbox
 
-class IncorpDict(object):
+class IncorpDict:
 	def __init__(self): pass
 	def __call__(self,param,layout,target):
 		'''
@@ -1655,7 +1655,7 @@ class IncorpDict(object):
 		
 		target.name_widget_map[param.name] = groupbox
 
-class IncorpChoice(object):
+class IncorpChoice:
 	def __init__(self): pass
 	def __call__(self,param,layout,target):
 	
@@ -1675,7 +1675,7 @@ class IncorpChoice(object):
 		
 		target.name_widget_map[param.name] = [groupbox,buttons]
 
-class EMParamTableWriter(object):
+class EMParamTableWriter:
 	def __init__(self,param_name,table_widget,type_of):
 		self.param_name = param_name
 		self.table_widget = table_widget
@@ -1685,7 +1685,7 @@ class EMParamTableWriter(object):
 		sel = [self.type_of(item.text()) for item in self.table_widget.selectedItems()]
 		dict[self.param_name] = sel
 		
-class EMFileTableWriter(object):
+class EMFileTableWriter:
 	def __init__(self,param_name,table_widget,type_of=str):
 		self.param_name = param_name
 		self.table_widget = table_widget
@@ -1695,7 +1695,7 @@ class EMFileTableWriter(object):
 		sel = [self.table_widget.convert_text(self.type_of(item.text())) for item in self.table_widget.selectedItems()]
 		dict[self.param_name] = sel
 
-class BoolParamWriter(object):
+class BoolParamWriter:
 	def __init__(self,param_name,check_box):
 		self.param_name = param_name
 		self.check_box = check_box
@@ -1703,7 +1703,7 @@ class BoolParamWriter(object):
 	def write_data(self,dict):
 		dict[self.param_name] = bool(self.check_box.isChecked())
 
-class FloatChoiceParamWriter(object):
+class FloatChoiceParamWriter:
 	def __init__(self,param_name,combo):
 		self.param_name = param_name
 		self.combo = combo
@@ -1714,7 +1714,7 @@ class FloatChoiceParamWriter(object):
 			dict[self.param_name] = float(text)
 		# else the key is not written to the dictionary!
 
-class IntChoiceParamWriter(object):
+class IntChoiceParamWriter:
 	def __init__(self,param_name,combo):
 		self.param_name = param_name
 		self.combo = combo
@@ -1725,7 +1725,7 @@ class IntChoiceParamWriter(object):
 			dict[self.param_name] = int(text)
 		# else the key is not written to the dictionary!
 
-class StringChoiceParamWriter(object):
+class StringChoiceParamWriter:
 	def __init__(self,param_name,combo):
 		self.param_name = param_name
 		self.combo = combo
@@ -1734,7 +1734,7 @@ class StringChoiceParamWriter(object):
 		dict[self.param_name] = str(self.combo.currentText())
 
 
-class ListWidgetParamWriter(object):
+class ListWidgetParamWriter:
 	def __init__(self,param_name,list_widget,type_of):
 		self.param_name = param_name
 		self.list_widget = list_widget
@@ -1747,7 +1747,7 @@ class ListWidgetParamWriter(object):
 			
 		dict[self.param_name] = choices
 
-class StringParamWriter(object):
+class StringParamWriter:
 	def __init__(self,param_name,line_edit):
 		self.param_name = param_name
 		self.line_edit = line_edit
@@ -1756,7 +1756,7 @@ class StringParamWriter(object):
 		dict[self.param_name] = str(self.line_edit.text())
 
 
-class FloatParamWriter(object):
+class FloatParamWriter:
 	def __init__(self,param_name,line_edit):
 		self.param_name = param_name
 		self.line_edit = line_edit
@@ -1767,7 +1767,7 @@ class FloatParamWriter(object):
 			dict[self.param_name] = float(text)
 		# else the key is not written to the dictionary!
 
-class IntParamWriter(object):
+class IntParamWriter:
 	def __init__(self,param_name,line_edit):
 		self.param_name = param_name
 		self.line_edit = line_edit
@@ -1777,7 +1777,7 @@ class IntParamWriter(object):
 		if len(text) != 0:
 			dict[self.param_name] = int(text)
 		# else the key is not written to the dictionary!
-class TextParamWriter(object):
+class TextParamWriter:
 	def __init__(self,param_name,text_edit):
 		self.param_name = param_name
 		self.text_edit = text_edit
@@ -1785,7 +1785,7 @@ class TextParamWriter(object):
 	def write_data(self,dict):
 		dict[self.param_name] = str(self.text_edit.toPlainText())
 		
-class UrlParamWriter(object):
+class UrlParamWriter:
 	def __init__(self,param_name,text_edit):
 		self.param_name = param_name
 		self.text_edit = text_edit
@@ -1803,7 +1803,7 @@ class UrlParamWriter(object):
 			strings.pop(i)
 		dict[self.param_name] = strings
 
-class DictParamWriter(object):
+class DictParamWriter:
 	def __init__(self,param,combo1,combo2):
 		self.param = param
 		self.combo1 = combo1
@@ -1839,7 +1839,7 @@ class DictParamWriter(object):
 		dict[key1] = value1
 		dict[key2] = value2
 		
-class ChoiceParamWriter(object):
+class ChoiceParamWriter:
 	def __init__(self,param_name,list_radio_buttons,correct_type):
 		self.param_name = param_name
 		self.list_radio_buttons = list_radio_buttons
@@ -1851,7 +1851,7 @@ class ChoiceParamWriter(object):
 				choice = self.correct_type(str(button.text()))
 		dict[self.param_name] = choice
 
-class EMParamTableEventHandler(object):
+class EMParamTableEventHandler:
 	'''
 	handles events for param tables, atm this is only the double click event, which can
 	be used to trigger image display, for example
@@ -1933,7 +1933,7 @@ class UrlEventHandler(EMBrowseEventHandler):
 		#self.target().update_texture()# in the desktop the texture would have to be updated
 		self.text_edit.clear()
 		
-class DictEventHandler(object):
+class DictEventHandler:
 	'''
 	Dictionaries are presented as two combo boxes - when the first combo box changes the values in the second box are updated (according to what is in the dictionary)
 	'''
@@ -1955,7 +1955,7 @@ class DictEventHandler(object):
 		for v in values:
 			self.combo2.addItem(str(v))
 			
-class BoolDependentsEventHandler(object):
+class BoolDependentsEventHandler:
 	'''
 	This event handler works on the assumption that a boolean type is always a checkbox.
 	If the boolean types also has the "dependents" attribute, then toggling the checkbox will enable/disable the dependent widgets

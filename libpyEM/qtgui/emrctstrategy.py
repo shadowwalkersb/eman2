@@ -33,7 +33,7 @@
 from past.utils import old_div
 import numpy, math
 
-class Strategy(object):
+class Strategy:
 	''' This is a base class for the strategy to use for pick event handling'''
 	def __init__ (self, mediator):
 		self.mediator = mediator

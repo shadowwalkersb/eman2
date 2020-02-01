@@ -82,7 +82,7 @@ def opt_rectangular_subdivision(x,y,n):
 
 
 
-class EMParallelSimMX(object):
+class EMParallelSimMX:
 	def __init__(self,options,args,logger=None):
 		'''
 		@param options the options produced by (options, args) = parser.parse_args()

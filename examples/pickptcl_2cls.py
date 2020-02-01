@@ -40,7 +40,7 @@ def run(cmd):
 #####################
 ## Convolutional Neural Network boxer
 ##########
-class boxerConvNet(object):
+class boxerConvNet:
 	
 	
 	#### import dependencies here. try not to break the whole program..

@@ -36,13 +36,13 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
 #
-class BaseLogger_Print(object):
+class BaseLogger_Print:
 
 	def logLine(self, prefix, line, *args, **kwargs):
 		sp_global_def.sxprint(line)
 
 
-class BaseLogger_Files(object):
+class BaseLogger_Files:
 
 	def logLine(self, prefix, line, file_name, do_print):
 		if do_print:
@@ -56,7 +56,7 @@ class BaseLogger_Files(object):
 		fstr.close()
 
 
-class Logger(object):
+class Logger:
 	
 	base_logger = None
 	prefix = ""

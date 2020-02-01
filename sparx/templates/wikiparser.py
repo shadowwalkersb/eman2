@@ -9,7 +9,7 @@ import global_def
 import os
 import sxgui_template
 # ========================================================================================
-class SXsubcmd_config(object):
+class SXsubcmd_config:
 	def __init__(self, label = "", short_info = None, token_edit_list = [], mpi_support = None, is_modeless = False, subset_config=""):
 		# ><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><
 		# class variables
@@ -22,7 +22,7 @@ class SXsubcmd_config(object):
 		# ><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><
 
 # ========================================================================================
-class SXcmd_config(object):
+class SXcmd_config:
 	def __init__(self, wiki, format, category, role, is_submittable = True, exclude_list = [], subconfig = None):
 		# ><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><
 		# class variables
@@ -38,7 +38,7 @@ class SXcmd_config(object):
 
 # ========================================================================================
 # Helper class used only in construct_token_list_from_*() functions
-class SXkeyword_map(object):
+class SXkeyword_map:
 	def __init__(self, priority, token_type):
 		if priority >= 100: global_def.ERROR("Priority should be lower than 100", "%s in %s" % (__name__, os.path.basename(__file__)))
 		# ><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><

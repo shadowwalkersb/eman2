@@ -287,7 +287,7 @@ def load_particles(ptcl_file):
 	
 
 	
-class GaussianModel(object):
+class GaussianModel:
 	
 	def __init__(self, model, freq_bound=[300,10]):
 		

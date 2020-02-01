@@ -55,7 +55,7 @@ def initCircle():
 
 def shidentity(x,y) : return x,y
 
-class EMShape(object):
+class EMShape:
 	
 	"""This class represents a geometric shape which can be used to annotate
 	the various data display widgets in EMAN2. The 'scr' shapes are in screen

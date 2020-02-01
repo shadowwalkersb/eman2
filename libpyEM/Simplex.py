@@ -40,7 +40,7 @@ import math
 import copy
 import sys
 
-class Simplex(object):
+class Simplex:
     def __init__(self, testfunc, guess, increments, kR = -1, kE = 2, kC = 0.5, data=None):
         """Initializes the simplex.
         INPUTS

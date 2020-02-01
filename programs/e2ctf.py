@@ -2270,13 +2270,13 @@ try:
 	from eman2_gui.valslider import ValSlider,CheckBox
 except:
 	print("Warning: PyQt5 must be installed to use the --gui option")
-	class dummy(object):
+	class dummy:
 		pass
-	class QWidget(object):
+	class QWidget:
 		"A dummy class for use when Qt not installed"
 		def __init__(self,parent):
 			print("Qt4 has not been loaded")
-	class QListWidget(object):
+	class QListWidget:
 		"A dummy class"
 		def __init__(self,parent):
 			print("Qt4 has not been loaded")

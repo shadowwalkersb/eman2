@@ -49,7 +49,7 @@ from .valslider import ValSlider, CheckBox
 import weakref # for EMLightsInspector
 
 
-class EMLightsDrawer(object):
+class EMLightsDrawer:
 	'''
 	Base class, works with EMLightsInspectorBase
 	'''
@@ -731,7 +731,7 @@ class EMLights(EMLightsDrawer,EM3DModel):
 			EM3DModel.mouseReleaseEvent(self, event)
 
 
-class EMLightsInspectorBase(object):
+class EMLightsInspectorBase:
 	'''
 	Inherit from this if you want its functionality
 	'''

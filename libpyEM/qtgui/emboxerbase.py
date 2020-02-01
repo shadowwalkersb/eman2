@@ -156,7 +156,7 @@ def get_idd_image_entry(image_name,key,db_title="e2boxercache/",dfl=None):
 	try: return db[key]
 	except : return dfl
 
-class ThumbsEventHandler(object):
+class ThumbsEventHandler:
 	'''
 
 	'''
@@ -191,7 +191,7 @@ class ThumbsEventHandler(object):
 	def set_mouse_mode(self,name):
 		pass
 
-class ScaledExclusionImage(object):
+class ScaledExclusionImage:
 	database_name = "boxer_exclusion_image" # named it this to avoid conflicting with ExclusionImage
 	def __init__(self,image_name):
 		self.image_name = image_name
@@ -264,7 +264,7 @@ class ScaledExclusionImage(object):
 ScaledExclusionImageCache = Cache(ScaledExclusionImage)
 
 
-class EMBox(object):
+class EMBox:
 	'''
 	A basic encapsulation of a box - it has a central coordinate, a type attribute which can be
 	customized for specific boxes, and a score attribute, which could be useful to a particular
@@ -360,7 +360,7 @@ class EMBox(object):
 		else: return False
 
 
-class EMBoxingTool(object):
+class EMBoxingTool:
 	'''
 	This class defines the interface necessary for integration of a custom tool, such as an automatic boxer,
 	into EMBoxerModule.
@@ -547,7 +547,7 @@ class EMUnknownBoxType(Exception):
 	def __init__(self,type):
 		self.type = type
 
-class ErasingPanel(object):
+class ErasingPanel:
 	def __init__(self,target,erase_radius=128):
 		self.busy = True
 		self.erase_radius = erase_radius
@@ -599,7 +599,7 @@ class ErasingPanel(object):
 		if self.busy: return
 		self.target().toggle_unerase(val)
 
-class ManualBoxingPanel(object):
+class ManualBoxingPanel:
 	def __init__(self,target):
 		self.target = weakref.ref(target)
 		self.widget = None
@@ -728,7 +728,7 @@ class EraseTool(EMBoxingTool):
 		box = self.target().get_box(box_num)
 		raise EMUnknownBoxType(box.type) # this causes the mouse mode to be changed
 
-class ManualBoxingTool(object):
+class ManualBoxingTool:
 	'''
 	A class that knows how to add, move and remove reference and non reference boxes
 	'''
@@ -894,7 +894,7 @@ class ManualBoxingTool(object):
 		self.target().move_box(box_num, dx, dy)
 	# !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
 
-class BoxEventsHandler(object):
+class BoxEventsHandler:
 	def __init__(self, target):
 		self.target = weakref.ref(target)
 		self.box_to_tool_dict = {} # this help automatic changing from one mouse tool to another when a user selects a box of a certain type
@@ -1140,7 +1140,7 @@ class ParticlesWindowEventHandler(BoxEventsHandler):
 		'''
 		self.target().particles_window_closed()
 
-class EMThumbsTools(object):
+class EMThumbsTools:
 
 	def gen_thumbs(image_names=[],shrink=None):
 		'''
@@ -1207,7 +1207,7 @@ class EMThumbsTools(object):
 
 
 
-class EMBoxList(object):
+class EMBoxList:
 	'''
 	A list of boxes
 	'''
@@ -1515,7 +1515,7 @@ class EMBoxList(object):
 		f.close()
 
 
-class EMBoxerModuleVitals(object):
+class EMBoxerModuleVitals:
 	'''
 	If you want to run autoboxing without the gui, then the SwarmBoxer still needs
 	mediator functionality

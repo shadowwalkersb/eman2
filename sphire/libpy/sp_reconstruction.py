@@ -1987,7 +1987,7 @@ def recons3d_nn_SSNR_MPI(myid, prjlist, mask2D, ring_width=1, npad =1, sign=1, s
 		return [outlist, vol_ssnr]
 
 
-class memory_store(object):
+class memory_store:
 	def __init__(self, npad):
 		self.m_npad = npad
 		self.m_imgs = []

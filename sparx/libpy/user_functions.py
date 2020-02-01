@@ -1444,7 +1444,7 @@ def do_volume_mrk05(ref_data):
 # Note: this is a workaround to provide backwards compatibility and to avoid rewriting all functions
 #    using user_functions. this can be removed when it is no longer necessary....
 
-class factory_class(object):
+class factory_class:
 
 	def __init__(self):
 		self.contents = {}

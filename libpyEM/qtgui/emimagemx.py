@@ -60,7 +60,7 @@ import weakref
 from .emapplication import EMProgressDialog
 
 
-class EMMatrixPanel(object):
+class EMMatrixPanel:
 	'''
 	A class for managing the parameters of displaying a matrix panel
 	'''
@@ -1997,7 +1997,7 @@ class EMImageMXWidget(EMGLWidget, EMGLProjectionViewMatrices):
 		self.scroll_bar.draw()
 		glPopMatrix()
 
-class EMGLScrollBar(object):
+class EMGLScrollBar:
 	def __init__(self,target):
 		self.min = 0
 		self.max = 0
@@ -2588,7 +2588,7 @@ class EMImageInspectorMX(QtWidgets.QWidget):
 		self.update_brightness_contrast()
 
 
-class EMMXDeletionManager(object):
+class EMMXDeletionManager:
 	'''
 	This class handles everything to do with Deleting particles
 	'''
@@ -2702,7 +2702,7 @@ class EMMXSetsPanel(QtWidgets.QWidget):
 
 
 
-class EMMXDataCache(object):
+class EMMXDataCache:
 	'''
 	Base class for EMMXDataCaches
 	'''
@@ -2798,14 +2798,14 @@ class EMMXDataCache(object):
 		'''
 		raise NotImplementedException
 
-class ApplyTransform(object):
+class ApplyTransform:
 	def __init__(self,transform):
 		self.transform = transform
 
 	def __call__(self,emdata):
 		emdata.transform(self.transform)
 
-class ApplyAttribute(object):
+class ApplyAttribute:
 	def __init__(self,attribute,value):
 		self.attribute = attribute
 		self.value = value
@@ -2813,7 +2813,7 @@ class ApplyAttribute(object):
 	def __call__(self,emdata):
 		emdata.set_attr(self.attribute,self.value)
 
-class ApplyProcessor(object):
+class ApplyProcessor:
 	def __init__(self,processor="",processor_args={}):
 		self.processor = processor
 		self.processor_args = processor_args

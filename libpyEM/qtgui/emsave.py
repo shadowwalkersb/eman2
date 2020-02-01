@@ -36,7 +36,7 @@ from EMAN2db import db_check_dict, db_remove_dict
 import os
 # For example usage see http://blake.bcm.edu/emanwiki/EMAN2ImageFormats#SavingEMDatafromPython
 
-class EMFileTypeValidator(object):
+class EMFileTypeValidator:
 	'''
 	A basic validator class - checks to make sure the file name is valid using the file type
 	'''
@@ -64,7 +64,7 @@ class EMFileTypeValidator(object):
 		return 1
 	
 
-class EMCoordFileValidator(object):
+class EMCoordFileValidator:
 	'''
 	checks to make sure the file name supplied is readable as a box database, in the traditional EMAN1 sense 
 	'''
@@ -128,7 +128,7 @@ def save_data(item_object):
 	
 	return saver.get_file_name()
 
-class LightEMDataSave(object):
+class LightEMDataSave:
 	'''
 	Used for file io - never reads the image until you actually call write_image, so if the user hits cancel
 	they will not experience any time lags due to file reading (which would have then been in vain)
@@ -151,7 +151,7 @@ class LightEMDataSave(object):
 		a.read_image(self.file_name,self.idx,True)
 		return a.get_attr_dict()
 	
-class EMFileSaver(object):
+class EMFileSaver:
 	'''
 	Base class for file savers. This function is tightly linked to the save_data function in this
 	file.
@@ -267,7 +267,7 @@ class EMSingleImageSaveDialog(EMFileSaver):
 		'''
 		return self.file_name_used
 
-class EMSaveImageValidator(object):
+class EMSaveImageValidator:
 	'''
 	A validator class - checks to make sure the file name is valid
 	and stores an overwrite flag. Will trigger a Qt message saying the file name is invalid.
@@ -613,7 +613,7 @@ class EMFileExistsDialog(QtWidgets.QDialog):
 		QtWidgets.QDialog.exec_(self)
 		return self.__result
 	
-class EMTmpFileHandle(object):
+class EMTmpFileHandle:
 	'''
 	A factory for getting a EMTmpFileHandle
 	In the original design the type (e.g. hdf, img) of the file_name is critically important,
@@ -634,7 +634,7 @@ class EMTmpFileHandle(object):
 		else: return EMGeneralTmpFileHandle(file_name)
 		# okay lots of tests, now return the right one
 
-class EMTmpFileHandleBase(object):
+class EMTmpFileHandleBase:
 	'''
 	This class originally added to deal with issues that arise when users overwrite data on disk
 	using file saving dialogs. You want to write to a temporary file, and when writing is finished,

@@ -58,20 +58,20 @@ EMAN2DB = "EMAN2DB"
 
 MDS = "%" # metadata separator
 
-class EMActionDelegate(object):
+class EMActionDelegate:
 	'''
 	interface for action delegates - they are notified when the widget owning them is closed
 	'''
 	def closeEvent(self,event): pass
 	
-class EMItemAction(object):
+class EMItemAction:
 	'''
 	interface for single item actions
 	'''
 	
 	def item_action(self,item,target): raise NotImplementedException
 	
-class EMMultiItemAction(object):
+class EMMultiItemAction:
 	'''
 	interface for multiple item actions
 	'''
@@ -1078,7 +1078,7 @@ class EMListWidget(QtWidgets.QListWidget):
 	def get_delegate(self): return self.delegate
 	def set_delegate(self,delegate): self.delegate = delegate
 
-class EMBrowseDelegate(object):
+class EMBrowseDelegate:
 	'''
 	Base class for objects that can read urls and return lists of ListWidgetItems
 	to the EMSelector
@@ -1549,7 +1549,7 @@ class EMDataHeaderItem(EMListItem):
 	def get_url(self):
 		return self.url +MDS+str(self.key)
 
-class EMStack2DCapableMixin(object):
+class EMStack2DCapableMixin:
 	'''
 	a 2D stack capable item is something that knows how to supply
 	data to the EMImageMX set_data function.

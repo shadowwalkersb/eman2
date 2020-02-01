@@ -36,7 +36,7 @@ from eman2_gui.empdbvaltool import EMPDBValWidget
 from eman2_gui.emplot3d import *
 import os
 
-class E2ValidateMed(object):
+class E2ValidateMed:
 	
 	def __init__(self):
 		self.em_val = None #will become the empdbvaltool module

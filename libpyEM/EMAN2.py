@@ -919,7 +919,7 @@ def browse():
 	else:
 		os.system("e2display.py")
 
-class EMImage(object):
+class EMImage:
 	"""This is basically a factory class that will return an instance of the appropriate EMImage* class """
 	def __new__(cls,data=None,old=None,parent=1):
 		"""This will create a new EMImage* object depending on the type of 'data'. If
@@ -1873,7 +1873,7 @@ def get_3d_font_renderer():
 		#print "Unable to import EMFTGL. The FTGL library may not be installed. Text on 3D and some 2D viewers may not work."
 		return None
 
-class EMAbstractFactory(object):
+class EMAbstractFactory:
 	'''
 	see http://blake.bcm.edu/emanwiki/Eman2FactoriesInPython
 	'''
@@ -1889,7 +1889,7 @@ class EMAbstractFactory(object):
 		"""unregister a constructor"""
 		delattr(self, methodName)
 
-class EMFunctor(object):
+class EMFunctor:
 	'''
 	Taken from http://code.activestate.com/recipes/86900/
 	'''
@@ -2014,7 +2014,7 @@ def initializeCUDAdevice():
 	except:
 		pass
 
-class LSXFile(object):
+class LSXFile:
 	"""This class will manage writing entries to LSX files, which are text files with a defined record length for
 rapid access. Each line contains an image number, a filename, and an optional comment, referencing a particle
 in another actual image file. Files MUST use the Unix /n convention, not the Windows (/r/n) convention.

@@ -273,7 +273,7 @@ class ResolutionOverviewPlot(QDialog):
 
 
 
-class TrackerFileReader(object):
+class TrackerFileReader:
 
     def __init__(self):
         pass

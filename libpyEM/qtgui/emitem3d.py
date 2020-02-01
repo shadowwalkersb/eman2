@@ -41,7 +41,7 @@ import weakref
 import math
 import numpy
 
-class EMVertexBuffers(object):
+class EMVertexBuffers:
 	""" Class to hold vertex buffers """
 	vbuffers = []
 	numbuffers = 2

@@ -493,7 +493,7 @@ def gen_classify_target(img_size,sigma=10):
 	
 	return shared_x
 
-class StackedConvNet(object):
+class StackedConvNet:
 	
 	def __init__(self,rng,image_shape,nkernel,ksize):
 		
@@ -601,7 +601,7 @@ class StackedConvNet(object):
 		self.outsize=int(input_shape[2])
 		
 		
-class LeNetConvPoolLayer(object):
+class LeNetConvPoolLayer:
 
 	def __init__(self, rng, filter_shape, image_shape, poolsize=(2, 2), xin=None):
 		

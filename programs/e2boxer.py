@@ -43,7 +43,7 @@ import os,sys
 
 apix=0
 
-class nothing(object):
+class nothing:
 	def __init__(self,x=None,y=None,z=None,q=None):
 		return
 

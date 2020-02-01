@@ -229,7 +229,7 @@ def load_particles(ptcls,shrink=3,mask=12):
 ###########################################################
 
 
-class dA(object):
+class dA:
 	"""Denoising Auto-Encoder class (dA)
 
 	A denoising autoencoders tries to reconstruct the input from a corrupted
@@ -430,7 +430,7 @@ class dA(object):
 		return z
 
 # start-snippet-1
-class HiddenLayer(object):
+class HiddenLayer:
 	def __init__(self, rng, input, n_in, n_out, W=None, b=None,
 				 activation=T.tanh):
 		"""
@@ -503,7 +503,7 @@ class HiddenLayer(object):
 		self.params = [self.W, self.b]
 
 # start-snippet-1
-class SdA(object):
+class SdA:
 	"""Stacked denoising auto-encoder class (SdA)
 
 	A stacked denoising autoencoder model is obtained by stacking several
@@ -723,7 +723,7 @@ class SdA(object):
 	
 		
 
-class LogisticRegression(object):
+class LogisticRegression:
 	"""Multi-class Logistic Regression Class
 
 	The logistic regression is fully described by a weight matrix :math:`W`

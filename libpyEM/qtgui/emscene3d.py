@@ -1729,7 +1729,7 @@ class EMScene3D(EMItem3D, EMGLWidget):
 		
 	# Maybe add methods to control the lights
 
-class EMLight(object):
+class EMLight:
 	def __init__(self, light):
 		"""
 		@type light: GL_LIGHTX, where 0 =< X <= 8
@@ -1871,7 +1871,7 @@ class EMLight(object):
 		self.setAmbient(self.colorambient[0], self.colorambient[1], self.colorambient[2], self.colorambient[3])
 		self.setGlobalAmbient(self.colorglobalambient[0], self.colorglobalambient[1], self.colorglobalambient[2], self.colorglobalambient[3])
 		
-class EMCamera(object):
+class EMCamera:
 	"""Implementation of the camera"""
 	def __init__(self, near, far, usingortho=True, fovy=60.0, boundingbox=50.0, screenfraction=0.5):
 		"""

@@ -48,7 +48,7 @@ def main():
 
 	em_app.execute()
 
-class TestControl(object):
+class TestControl:
 	def __init__(self,app):
 		# the single image display widget
 		self.im2d = EMImage2DWidget(application=app)

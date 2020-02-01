@@ -91,14 +91,14 @@ tpr_probes_dict = "global.tpr_probes_dict"
 tpr_ptcl_ave_dict = "global.tpr_ptcl_ave_dict"
 tpr_ptcls_ali_dict = "global.tpr_ptcls_ali_dict"
 
-class EmptyObject(object):
+class EmptyObject:
 	'''
 	This just because I need an object I can assign attributes to, and object() doesn't seem to work
 	'''
 	def __init__(self):
 		pass
 
-class WorkFlowTask(object):
+class WorkFlowTask:
 	display_file = QtCore.pyqtSignal()
 	task_idle = QtCore.pyqtSignal()
 	process_started = QtCore.pyqtSignal()
@@ -437,7 +437,7 @@ class WorkFlowTask(object):
 		
 #		cmps.append("None") I think this is necessary
 		
-class EMProjectDataDict(object):
+class EMProjectDataDict:
 	''' This class encapsulate the common routines used to get, add to and remove data dictionaries from the database.
 	These data dictionaries are used for storing almost all types of data in the workflow, and are persistently located
 	on disk using Berkeley DBs. The keys of these dictionaries are unique identifiers, such as the full name of a
@@ -779,7 +779,7 @@ Note that the data cannot be filtered unless it is imported."
 		table.add_column_data(EMFileTable.EMColumnData("Dimensions",EMRawDataReportTask.get_image_dimensions,"The dimensions of the file on disk"))
 		return table,n
 	
-	class ProjectAddRawDataButton(object):
+	class ProjectAddRawDataButton:
 		def __init__(self,table_widget,context_menu_data):
 			self.table_widget = weakref.ref(table_widget)
 			self.context_menu_data = context_menu_data
@@ -789,7 +789,7 @@ Note that the data cannot be filtered unless it is imported."
 			self.context_menu_data.context_menu["Add"]([],self.table_widget())
 			
 
-	class ProjectListContextMenu(object):
+	class ProjectListContextMenu:
 		def __init__(self,project_list=spr_raw_data_dict,remove_only=False,using_file_tags=False):
 			self.project_list = project_list
 			self.validator = AddFilesToProjectValidator(self.project_list)
@@ -801,7 +801,7 @@ Note that the data cannot be filtered unless it is imported."
 			return list(self.context_menu.items())
 		
 		
-		class RemoveFilesFromProject(object):
+		class RemoveFilesFromProject:
 			def __init__(self,project_list,using_file_tags=False):
 				self.project_list = project_list
 				self.using_file_tags = using_file_tags
@@ -839,7 +839,7 @@ Note that the data cannot be filtered unless it is imported."
 					
 				data_dict.remove_names(db_full_names)
 				
-		class AddFilesToProject(object):
+		class AddFilesToProject:
 			def __init__(self,project_list):
 				self.project_list = project_list
 				
@@ -863,7 +863,7 @@ Note that the data cannot be filtered unless it is imported."
 				table_widget.add_entries(list_of_names)
 				data_dict.add_names(list_of_names)
 		
-		class AddFilesToProjectViaContext(object):
+		class AddFilesToProjectViaContext:
 			task_idle = QtCore.pyqtSignal()
 
 			def __init__(self,project_list):
@@ -936,7 +936,7 @@ Note that the data cannot be filtered unless it is imported."
 		
 
 		
-class AddFilesToProjectValidator(object):
+class AddFilesToProjectValidator:
 	def __init__(self,project_list=spr_raw_data_dict):
 		self.project_list = project_list
 	def validate_file_name(self,list_of_names):
@@ -1004,7 +1004,7 @@ class ParticleWorkFlowTask(WorkFlowTask):
 		return table, len(ptcl_list)
 
 	
-	class AddDataButton(object):
+	class AddDataButton:
 		def __init__(self,table_widget,context_menu_data):
 			self.table_widget = weakref.ref(table_widget)
 			self.context_menu_data = context_menu_data
@@ -1014,7 +1014,7 @@ class ParticleWorkFlowTask(WorkFlowTask):
 			self.context_menu_data.context_menu["Add"]([],self.table_widget())
 			
 
-	class DataContextMenu(object):
+	class DataContextMenu:
 		def __init__(self,validator=None):
 			
 			self.validator = validator
@@ -1026,7 +1026,7 @@ class ParticleWorkFlowTask(WorkFlowTask):
 			return list(self.context_menu.items())
 		
 		
-	class RemoveDataFromTable(object):
+	class RemoveDataFromTable:
 		def __call__(self,names,table_widget):
 			if len(names) == 0: return # nothing happened
 		
@@ -1042,7 +1042,7 @@ class ParticleWorkFlowTask(WorkFlowTask):
 			for idx in indices:
 				table_widget.removeRow(idx)
 				
-	class AddDataToTable(object):
+	class AddDataToTable:
 		def __init__(self,validator=None):
 			self.validator = validator
 			
@@ -1087,7 +1087,7 @@ class ParticleWorkFlowTask(WorkFlowTask):
 	
 	get_quality_score = staticmethod(get_quality_score)
 	
-class CTFColumns(object):
+class CTFColumns:
 	'''
 	Basically some functions with a cache - the cache is to avoid
 	re-reading stuff from disk multiple times
@@ -1294,7 +1294,7 @@ class E2CTFWorkFlowTask(EMParticleReportTask):
 #		table.add_column_data(EMFileTable.EMColumnData("Wiener filt dims",self.other_column_data.wien_filt_dim,"The dimensions of the Wiener filtered particles"))
 		return table, n
 	
-	class MoreCTFColumns(object):
+	class MoreCTFColumns:
 		'''
 		Basically some functions with a cache - the cache is to avoid
 		re-reading stuff from disk multiple times
@@ -1569,7 +1569,7 @@ class E2CTFOutputTaskGeneral(E2CTFOutputTask):
 		self.form = None
 		self.task_idle.emit()
 	
-class EMPartSetOptions(object):
+class EMPartSetOptions:
 	def __init__(self,data_dict_name,bdb_only=False):
 		self.data_dict_name  = data_dict_name
 		self.bdb_only = bdb_only # restricts returned options the image sets that exist only in the database

@@ -384,7 +384,7 @@ def makeSsaAverage( options, scores, resultsdict, it ):
 
 
 # Use strategy pattern here. Any new stategy needs to inherit this
-class Strategy(object):
+class Strategy:
 	def __init__(self, volume, sym, steps, comp, etc):
 		self.volume = volume
 		self.sym = sym

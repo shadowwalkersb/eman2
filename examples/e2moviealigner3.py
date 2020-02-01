@@ -217,7 +217,7 @@ def ccf_ordinate(f1,f2,i,fname): # Li (2012)
 	print2line("\t\t\t({},{})".format(x,y))
 	return x,y,ccf
 
-class PairwiseCoherence(object):
+class PairwiseCoherence:
 	
 	def __init__(self,fname,frames,ips,bs=512):
 		self.fname = fname
@@ -286,7 +286,7 @@ class PairwiseCoherence(object):
 		best_cps.do_ift().write_image('{}_best_coherent_pws.hdf'.format(self.fname[:-4]),-1)
 		return x,y,pwcc,best_cps
 
-class DirectDetectorUtil(object):
+class DirectDetectorUtil:
 	
 	@classmethod
 	def correct_frames(cls,options,fname,outfile=None):

@@ -363,7 +363,7 @@ def scp_client():
 			recv_bdb(stdin,path)
 			continue
 		
-class scp_proxy(object):
+class scp_proxy:
 	def __init__(self,userhost,verbose=0):
 		"""Opens a connection to the remote host and establishes the remote client. userhost should be of the form "user@host"""
 		self.verbose=verbose

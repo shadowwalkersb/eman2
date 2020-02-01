@@ -1373,7 +1373,7 @@ def parse_spider_fname(mystr, *fieldvals):
 		else:
 			# no '@' at all
 			return mystr
-	class Fieldloc(object):
+	class Fieldloc:
 		"Helper class to store description of a field"
 		def __init__(self, begin, end):
 			self.begin = begin
@@ -4926,7 +4926,7 @@ while it.goToNext():
 
 """
 # ================ Iterator for list of images
-class iterImagesList(object):
+class iterImagesList:
 	images = []
 	imagesIndexes = []
 	position = -1
@@ -4956,7 +4956,7 @@ class iterImagesList(object):
 		return (self.position >= 0)
 
 # ================ Iterator for stack of images
-class iterImagesStack(object):
+class iterImagesStack:
 	stackName = ""
 	currentImage = None
 	imagesIndexes = []

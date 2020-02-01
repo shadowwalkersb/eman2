@@ -41,7 +41,7 @@ from libpyGLUtils2 import *
 #try: from PyQt5 import QtWebEngineWidgets
 #except: pass
 
-class ModuleEventsManager(object): 
+class ModuleEventsManager: 
 	'''
 	Coordinates events of the various modules.
 	To begin with this is only the close event, then I added the idle event
@@ -212,7 +212,7 @@ class EMGLWidget(QtOpenGL.QGLWidget):
 		else:
 			QtOpenGL.QGLWidget.updateGL(self)
 
-class EMInstance(object):
+class EMInstance:
 	'''
 	Holds a reference to an instance, supports a static interface
 	'''
@@ -372,7 +372,7 @@ class EMProgressDialog(QtWidgets.QProgressDialog):
 def error(msg,title="Almost"):
 	EMErrorMessageDisplay.run(msg,title)
 	
-class EMErrorMessageDisplay(object):
+class EMErrorMessageDisplay:
 	'''
 	Has a static error display function which is very useful
 	'''

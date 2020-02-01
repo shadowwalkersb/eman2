@@ -119,7 +119,7 @@ def example_tsp_problem():
     for city in state:
         print(("\t"+city))
 
-class SimpleAnnealer(object):
+class SimpleAnnealer:
 
     """
     Multi-dimensional Simulated Annealing Optimization

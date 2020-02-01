@@ -1698,7 +1698,7 @@ def recmat_np(mat):
 	return  np.degrees(np.mod(phi,pi2)),np.degrees(np.mod(theta,pi2)),np.degrees(np.mod(psi,pi2))
 """
 
-class symclass(object):
+class symclass:
 	import numpy as np
 	def __init__(self, sym):
 		"""

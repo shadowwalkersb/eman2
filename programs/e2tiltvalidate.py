@@ -252,7 +252,7 @@ def main():
 	
 	E2end(logid)
 
-class ComputeTilts(object):
+class ComputeTilts:
 	def __init__(self, options):
 		self.options = options
 		self.symmeties = Symmetries.get(self.options.sym)
@@ -442,9 +442,9 @@ def display_validation_plots(path, radcut, planethres, plotdatalabels=False, col
 		from eman2_gui.valslider import ValSlider
 		from eman2_gui.emplot2d import EMPolarPlot2DWidget
 	except:
-		class dummy(object):
+		class dummy:
 			pass
-		class QWidget(object):
+		class QWidget:
 			"A dummy class for use when Qt not installed"
 			def __init__(self,parent):
 				print("Qt4 has not been loaded")

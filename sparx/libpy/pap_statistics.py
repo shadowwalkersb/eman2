@@ -6125,7 +6125,7 @@ THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 '''
 import sys
-class Munkres(object):
+class Munkres:
     """
 Calculate the Munkres solution to the classical assignment problem.
 See the module documentation for usage.
@@ -7492,7 +7492,7 @@ def py_cluster_genmatrix(list, combinfunc, symmetric=False, diagonal=None):
       row_index += 1
    return matrix
 
-class py_Cluster(object):
+class py_Cluster:
    """
    A collection of items. This is internally used to detect clustered items in
    the data so we could distinguish other collection types (lists, dicts, ...)
@@ -7665,7 +7665,7 @@ class py_Cluster(object):
       else:
          return [[left], [right]]
 
-class py_cluster_BaseClusterMethod(object):
+class py_cluster_BaseClusterMethod:
    """
    The base class of all clustering methods.
    """
@@ -9189,7 +9189,7 @@ def noise_corrected_PW(pw, lo_limit, hi_limit, abs_limit):
 	return freq2, pw_n2, a2, b2
 
 
-class def_variancer(object):
+class def_variancer:
 	def __init__(self, nx, ny, nz):
 		from utilities import model_blank
 		self.nimg = 0
@@ -9261,7 +9261,7 @@ class def_variancer(object):
 		return self.sum1/self.nimg
 
 
-class inc_variancer(object):
+class inc_variancer:
 	def __init__(self, nx, ny, nz):
 		import numpy
 		self.nx = nx
@@ -9557,7 +9557,7 @@ def cluster_equalsize(d, m):
 	return  groupping,cent,disp
 
 
-class pcanalyzer(object):
+class pcanalyzer:
 	def __init__(self, mask, nvec=3, incore=False, MPI=False, scratch=None):
 		import os
 		self.mask = mask.copy()
@@ -9850,7 +9850,7 @@ class pcanalyzer(object):
 
 
 
-class pcanalyzebck(object):
+class pcanalyzebck:
 	def __init__(self, mask, nvec, dataw, list_of_particles, dm, variance, fl, aa, MPI=False ):
 		import os
 		self.mask = mask.copy()

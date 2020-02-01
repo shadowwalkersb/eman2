@@ -1490,7 +1490,7 @@ def mulmat(m1, m2, tolistconv=True):
 def rotate_params(params, transf, tolistconv=True):
 	return symclass.rotate_params(params=params, transf=transf, tolistconv=tolistconv)
 
-class symclass(object):
+class symclass:
 	def __init__(self, sym):
 		"""
 		  sym: cn, dn, oct, tet, icos

@@ -1903,7 +1903,7 @@ class TestSymClassReduceAngleSets(unittest.TestCase):
         # self.assertTrue(numpy.array_equal(numpy.array(results), numpy.array(expected_results)))
 
 
-class symclass(object):
+class symclass:
     pass  # IMPORTIMPORTIMPORT import numpy as np
 
     def __init__(self, sym):

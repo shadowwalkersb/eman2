@@ -844,9 +844,9 @@ try:
 	from eman2_gui.valslider import ValSlider
 except:
 	sxprint("Warning: PyQt4 must be installed to use the --gui option")
-	class dummy(object):
+	class dummy:
 		pass
-	class QWidget(object):
+	class QWidget:
 		"A dummy class for use when Qt not installed"
 		def __init__(self,parent):
 			sxprint("Qt4 has not been loaded")

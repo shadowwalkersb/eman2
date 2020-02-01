@@ -76,7 +76,7 @@ except AttributeError:
     def _translate(context, text, disambig):
         return QApplication.translate(context, text, disambig)
 
-class Ui_MSMainWidget(object):
+class Ui_MSMainWidget:
     def setupUi(self, MSMainWidget):
         widget = QWidget(self)
         MSMainWidget.setCentralWidget(widget)

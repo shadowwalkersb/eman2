@@ -36,7 +36,7 @@ from PyQt5 import QtCore
 from math import sin,acos
 from EMAN2 import Vec3f, Transform
 
-class Animator(object):
+class Animator:
 	'''
 	Register Animatables with this class
 	'''
@@ -91,7 +91,7 @@ class Animator(object):
 		
 	def animation_done_event(self,animated): raise NotImplementedError("Inheriting classes should define this function")
 
-class Animatable(object):
+class Animatable:
 	cache_dts = None
 	def __init__(self):
 		self.time = 0		# time indicates the current time used for the basis of animation.
