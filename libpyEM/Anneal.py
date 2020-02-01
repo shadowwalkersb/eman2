@@ -40,7 +40,6 @@ import copy
 import pickle
 import abc
 import numpy as np
-from future.utils import with_metaclass
 
 def main():
 
@@ -183,7 +182,7 @@ class SimpleAnnealer:
         T = 2*max(list(map(lambda E,E0=E0: abs(E-E0),Es)))
         return T
 
-class BaseAnnealer(with_metaclass(abc.ABCMeta, object)):
+class BaseAnnealer(metaclass=abc.ABCMeta, object):
 
     # This software is maintained by perrygeo and is available at:
     #     https://github.com/perrygeo/simanneal/blob/master/simanneal/anneal.py
