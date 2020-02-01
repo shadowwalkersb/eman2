@@ -60,7 +60,7 @@ def drawBoundingBox(width, height, depth):
 	GLUtil.glDrawBoundingBox(width, height, depth)
 	GL.glPopAttrib()
 	
-class EMItem3D(object): #inherit object for new-style class (new-stype classes required for super() and Python properties)
+class EMItem3D:
 	"""
 	The base class for nodes in our scene graph, which is used in our 3D scene viewer.
 	In our case, the scene graph is a tree data structure.
