@@ -97,7 +97,7 @@ The simple logger does the same as the default logger above. It is simpler
 though, easier to use, and more flexible. It is not clear whether replacing the
 original logger is safe to do though so, for now, we keep both.
 """
-class SimpleLogger( object ):
+class SimpleLogger:
 	"""
 	Simple class to log lines during execution. Makes use of sxprint to add
 	timestamps and caller information to each line.

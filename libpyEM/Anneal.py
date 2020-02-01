@@ -182,7 +182,7 @@ class SimpleAnnealer:
         T = 2*max(list(map(lambda E,E0=E0: abs(E-E0),Es)))
         return T
 
-class BaseAnnealer(metaclass=abc.ABCMeta, object):
+class BaseAnnealer(metaclass=abc.ABCMeta):
 
     # This software is maintained by perrygeo and is available at:
     #     https://github.com/perrygeo/simanneal/blob/master/simanneal/anneal.py
