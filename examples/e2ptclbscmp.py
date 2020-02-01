@@ -30,8 +30,6 @@
 #
 #
 
-from future import standard_library
-standard_library.install_aliases()
 from math import *
 import os
 import sys

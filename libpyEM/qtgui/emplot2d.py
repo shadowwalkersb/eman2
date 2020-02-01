@@ -31,8 +31,6 @@
 #
 
 from past.utils import old_div
-from future import standard_library
-standard_library.install_aliases()
 ploticon = [
     '15 14 2 1',
     'b c #000055',

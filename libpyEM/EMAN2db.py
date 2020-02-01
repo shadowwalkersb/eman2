@@ -30,8 +30,6 @@
 #
 #
 
-from future import standard_library
-standard_library.install_aliases()
 import atexit
 import weakref
 from pickle import loads,dumps

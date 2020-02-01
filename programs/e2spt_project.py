@@ -1,8 +1,6 @@
 #!/usr/bin/env python
 # average selected subset of particles
 
-from future import standard_library
-standard_library.install_aliases()
 from EMAN2 import *
 import time
 import os

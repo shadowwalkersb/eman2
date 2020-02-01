@@ -30,8 +30,6 @@
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  2111-1307 USA
 
 from past.utils import old_div
-from future import standard_library
-standard_library.install_aliases()
 import EMAN2
 from EMAN2 import *
 import collections

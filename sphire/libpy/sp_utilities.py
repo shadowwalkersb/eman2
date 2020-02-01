@@ -9704,8 +9704,6 @@ def insert_image(smallimg, largeimage, xoffset, yoffset):
 #------------------------------------------------[ import ]
 
 # compatibility
-from future import standard_library
-standard_library.install_aliases()
 
 # python natives
 import os

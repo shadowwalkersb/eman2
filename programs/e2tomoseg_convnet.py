@@ -1,8 +1,6 @@
 #!/usr/bin/env python
 # Muyuan July 2015
 from past.utils import old_div
-from future import standard_library
-standard_library.install_aliases()
 import sys
 import random
 import numpy as np

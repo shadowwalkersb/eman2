@@ -33,8 +33,6 @@
 # This file contains functions related to running jobs in parallel in EMAN2
 
 from past.utils import old_div
-from future import standard_library
-standard_library.install_aliases()
 
 import sys, os, getpass, socket, subprocess, threading, time,select,shutil, traceback, random,_thread, queue
 from pickle import dumps,loads,dump,load

@@ -32,8 +32,6 @@
 
 
 from past.utils import old_div
-from future import standard_library
-standard_library.install_aliases()
 from EMAN2 import *
 import time
 import os

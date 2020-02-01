@@ -34,8 +34,6 @@
 # This program allows manipulation and querying of the local database
 
 from past.utils import old_div
-from future import standard_library
-standard_library.install_aliases()
 from math import *
 import time
 import os

@@ -31,8 +31,6 @@
 #
 
 from past.utils import old_div
-from future import standard_library
-standard_library.install_aliases()
 import sys
 from math import *
 from sys import exit

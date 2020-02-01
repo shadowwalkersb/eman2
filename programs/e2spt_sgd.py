@@ -1,8 +1,6 @@
 #!/usr/bin/env python
 # Muyuan Chen 2017-04
 from past.utils import old_div
-from future import standard_library
-standard_library.install_aliases()
 from EMAN2 import *
 import sys
 import numpy as np

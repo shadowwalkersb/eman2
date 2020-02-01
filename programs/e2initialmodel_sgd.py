@@ -1,8 +1,6 @@
 #!/usr/bin/env python
 # Muyuan Chen 2017-03
 from past.utils import old_div
-from future import standard_library
-standard_library.install_aliases()
 import numpy as np
 from EMAN2 import *
 from EMAN2_utils import cmponetomany

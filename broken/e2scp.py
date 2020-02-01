@@ -30,8 +30,6 @@
 #
 #
 
-from future import standard_library
-standard_library.install_aliases()
 from EMAN2 import *
 from EMAN2db import db_open_dict, db_list_dicts
 from math import *

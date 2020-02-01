@@ -1,8 +1,6 @@
 #!/usr/bin/env python
 # Muyuan Chen 2019-06
 from past.utils import old_div
-from future import standard_library
-standard_library.install_aliases()
 from EMAN2 import *
 import numpy as np
 from scipy.optimize import minimize

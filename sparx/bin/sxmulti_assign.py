@@ -31,8 +31,6 @@
 #
 #
 
-from future import standard_library
-standard_library.install_aliases()
 import os
 import global_def
 from   global_def import *
