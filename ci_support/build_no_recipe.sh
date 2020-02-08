@@ -41,7 +41,11 @@ mkdir -p $build_dir
 cd $build_dir
 
 cmake --version
-cmake ${src_dir} -DENABLE_WARNINGS=OFF -DENABLE_OPTIMIZE_MACHINE=ON
+if [[ ${HOST} =~ .*linux.* ]]; then
+    cmake ${src_dir} -DCMAKE_TOOLCHAIN_FILE="${src_dir}/recipes/eman/cross-linux.cmake" -DENABLE_OPTIMIZE_MACHINE=ON
+else
+    cmake ${src_dir} -DENABLE_OPTIMIZE_MACHINE=ON
+fi
 make -j${CPU_COUNT}
 make install
 
