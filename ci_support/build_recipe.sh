@@ -10,10 +10,7 @@ if [ -n "${TRAVIS}" ];then
     source ci_support/setup_conda.sh
 fi
 
-if [ -n "${CIRCLECI}" ];then
-    . $HOME/miniconda/etc/profile.d/conda.sh
-    conda activate eman
-fi
+source "${MYDIR}/circleci.sh"
 
 if [ -n "$JENKINS_HOME" ];then
     export CPU_COUNT=4
