@@ -15,20 +15,16 @@ fi
 
 source "${MYDIR}/circleci.sh"
 
-if [ -n "$JENKINS_HOME" ];then
-    CPU_COUNT=4
-else
-    CPU_COUNT=2
-fi
+python -m compileall -q .
+
+# Build and install eman2
+rm -vf ${CONDA_PREFIX}/bin/e2*.py
 
 conda info -a
 conda list
 conda list --explicit
 
-python -m compileall -q .
-
-# Build and install eman2
-rm -vf ${CONDA_PREFIX}/bin/e2*.py
+source "${MYDIR}/jenkinsci.sh"
 
 build_dir="../build_eman"
 src_dir=${PWD}
