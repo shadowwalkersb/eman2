@@ -10,9 +10,20 @@ if [ -n "${TRAVIS}" ];then
     source ci_support/setup_conda.sh
 fi
 
-source "${MYDIR}/circleci.sh"
-source "${MYDIR}/jenkinsci.sh"
-bash "${MYDIR}/conda.sh"
+if [ -n "${CIRCLECI}" ];then
+    . $HOME/miniconda/etc/profile.d/conda.sh
+    conda activate eman
+fi
+
+if [ -n "$JENKINS_HOME" ];then
+    CPU_COUNT=4
+else
+    CPU_COUNT=2
+fi
+
+conda info -a
+conda list
+conda list --explicit
 
 python -m compileall -q .
 
