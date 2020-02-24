@@ -3,7 +3,6 @@
 set -xe
 
 MYDIR="$(cd "$(dirname "$0")"; pwd -P)"
-recipe_dir="recipe"
 
 source ${MYDIR}/set_env_vars.sh
 
@@ -16,8 +15,6 @@ if [ -n "${CIRCLECI}" ];then
     conda activate eman
 fi
 
-python -m compileall -q .
-
 if [ -n "$JENKINS_HOME" ];then
     export CPU_COUNT=4
 else
@@ -27,7 +24,10 @@ fi
 conda info -a
 conda list
 conda list --explicit
-conda render ${recipe_dir}
+
+python -m compileall -q .
+
+conda render recipes/eman
 conda build purge-all
 
 conda build ${recipe_dir} -c cryoem -c defaults -c conda-forge
