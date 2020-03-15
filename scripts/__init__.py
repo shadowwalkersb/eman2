@@ -37,6 +37,7 @@ def iter_py_files_debug():
 def iter_py_files():
 	for p in (p for p in cur.glob('**/*.py') if \
 			  not str(p).startswith('sparx') \
+			  and not str(p).startswith('sphire') \
 			  and not str(p).startswith('scripts') \
 			  and p.parent != pathlib.Path(__file__).parent):
 		yield p
