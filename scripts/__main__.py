@@ -112,7 +112,7 @@ def count_old_div():
 			print("{}: {}".format(f, count))
 			matches = [(i,k) for i,k in enumerate(file.lines) if search_str in k]
 			for i,k in matches:
-				if not "from" in k:
+				if "from" in k:
 					print("   {}: {}".format(i, k))
 
 # fix_module_names()
