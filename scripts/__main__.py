@@ -160,7 +160,11 @@ func_list_and_commit_messages = [[
 for f_m in func_list_and_commit_messages[0]:
 	funcs_float.append(f_m[0])
 	fix_old_div(op_bool_any, '/', f_m[1])
+	
+	count_old_div()
 
 for f_m in func_list_and_commit_messages[1]:
 	funcs_int.append(f_m[0])
 	fix_old_div(op_bool_all, '//', f_m[1])
+
+	count_old_div()
