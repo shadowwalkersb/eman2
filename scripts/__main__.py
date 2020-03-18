@@ -110,6 +110,10 @@ def count_old_div():
 		count = file.file_context.count(search_str)
 		if count == 1:
 			print("{}: {}".format(f, count))
+			matches = [(i,k) for i,k in enumerate(file.lines) if search_str in k]
+			for i,k in matches:
+				if not "from" in k:
+					print("   {}: {}".format(i, k))
 
 # fix_module_names()
 # update_imports()
