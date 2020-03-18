@@ -102,6 +102,15 @@ def fix_old_div(func, op_sym, commit_message):
 				
 	git_commit(commit_message)
 
+def count_old_div():
+	search_str = "old_div"
+	# for f in iter_py_files_debug():
+	for f in iter_py_files():
+		file = File(f)
+		count = file.file_context.count(search_str)
+		if count == 1:
+			print("{}: {}".format(f, count))
+
 # fix_module_names()
 # update_imports()
 # fix_imports_pyqt4_to_pyqt5()
