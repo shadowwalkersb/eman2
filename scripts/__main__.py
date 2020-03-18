@@ -114,6 +114,10 @@ def count_old_div():
 			for i,k in matches:
 				if "from" in k:
 					print("   {}: {}".format(i, k))
+					del file.lines[i]
+		file.writelines(f)
+
+	git_commit("cleanup unused imports old_div")
 
 # fix_module_names()
 # update_imports()
