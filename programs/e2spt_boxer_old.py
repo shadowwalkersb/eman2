@@ -909,7 +909,7 @@ class EMTomoBoxer(QtWidgets.QMainWindow):
 		box=self.boxes[n]
 		if box[5] not in self.sets_visible:
 			return False
-		bs=old_div(self.get_boxsize(box[5]),2)
+		bs=self.get_boxsize(box[5])//2
 		rr=(x>=0)*((box[0]-x)**2) + (y>=0)*((box[1]-y) **2) + (z>=0)*((box[2]-z)**2)
 		return rr<=bs**2
 
@@ -1003,7 +1003,7 @@ class EMTomoBoxer(QtWidgets.QMainWindow):
 			box=self.boxes[n]
 		except IndexError:
 			return
-		bs2=old_div(self.get_boxsize(box[5]),2)
+		bs2=self.get_boxsize(box[5])//2
 
 		#if self.curbox!=n :
 			#self.xzview.scroll_to(None,box[2])

@@ -109,7 +109,7 @@ def main():
 		cumulfft["is_intensity"]=0				# These 2 steps are done so the 2-D display of the FFT looks better. Things would still work properly in 1-D without it
 
 		fftbg=cumulfft.process("math.nonconvex")
-		fft1d=cumulfft.calc_radial_dist(old_div(cumulfft.get_ysize(),2),0.0,1.0,1)	# note that this handles the ri2inten averages properly
+		fft1d=cumulfft.calc_radial_dist(cumulfft.get_ysize()//2,0.0,1.0,1)	# note that this handles the ri2inten averages properly
 
 		if options.nobgsub or noctfflag:
 			s=np.arange(0,ds*len(fft1d),ds)

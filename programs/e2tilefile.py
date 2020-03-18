@@ -151,7 +151,7 @@ def build_tiles(img,tilefile,tilesize,options=[]):
 	# This will produce 2 power spectrum images in the tile file
 	# with scale factors -1 and -2
 	if "pspec" in options :
-		nx,ny=old_div(img.get_xsize(),512),old_div(img.get_ysize(),512)
+		nx,ny=img.get_xsize()//512,img.get_ysize()//512
 		a=EMData()
 		a.set_size(512,512)
 		if (ny>2 and nx>2) :

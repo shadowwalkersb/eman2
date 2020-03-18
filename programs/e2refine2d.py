@@ -128,7 +128,7 @@ def main():
 	if options.maxshift<0 :
 		tmp=EMData()
 		tmp.read_image(options.input,0)
-		options.maxshift=old_div(tmp.get_xsize(),3)
+		options.maxshift=tmp.get_xsize()//3
 
 	if options.parallel :
 		parstr="--parallel="+options.parallel

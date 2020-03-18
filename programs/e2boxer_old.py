@@ -406,7 +406,7 @@ def gen_rot_ave_template(image_name,ref_boxes,shrink,box_size,iter=4):
 	ave.process_inplace("xform.centeracf")
 	ave.process_inplace("math.rotationalaverage")
 	ave.process_inplace("normalize.edgemean")
-	ave.process_inplace("mask.sharp",{'outer_radius':old_div(ave.get_xsize(),2)})
+	ave.process_inplace("mask.sharp",{'outer_radius':ave.get_xsize()//2})
 	averages.append(ave)
 	averages[-1].set_attr("creation_time_stamp", gm_time_string())
 	for n in range(0,iter):
@@ -424,7 +424,7 @@ def gen_rot_ave_template(image_name,ref_boxes,shrink,box_size,iter=4):
 		ave.process_inplace("normalize.edgemean")
 
 		# edge normalize here SL before
-		ave.process_inplace("mask.sharp",{'outer_radius':old_div(ave.get_xsize(),2)})
+		ave.process_inplace("mask.sharp",{'outer_radius':ave.get_xsize()//2})
 		averages.append(ave)
 		averages[-1].set_attr("creation_time_stamp", gm_time_string())
 
@@ -1558,7 +1558,7 @@ class SwarmBoxer(object):
 		elif self.pick_mode == SwarmBoxer.SELECTIVE: mode = 1
 		elif self.pick_mode == SwarmBoxer.MORESELECTIVE: mode = 2
 
-		searchradius = old_div(self.templates[-1].get_xsize(),2)
+		searchradius = self.templates[-1].get_xsize()//2
 		correlation = FLCFImageCache.get_image(image_name,mediator)
 		# print "Correlation img is %s"%correlation
 
@@ -1744,7 +1744,7 @@ class SwarmBoxer(object):
 		r = Region(xc,yc,box_size,box_size)
 		particle = image.get_clip(r)
 		ccf  = particle.calc_ccf(template)
-		trans = ccf.calc_max_location_wrap(old_div(particle.get_xsize(),2),old_div(particle.get_ysize(),2),0)
+		trans = ccf.calc_max_location_wrap(particle.get_xsize()//2,particle.get_ysize()//2,0)
 		dx = trans[0]
 		dy = trans[1]
 		return dx,dy

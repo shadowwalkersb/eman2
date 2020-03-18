@@ -1679,7 +1679,7 @@ def fitdefocus( ffta, angle, apix, options, nsubmicros, currentsubmicro, defocus
 
 	
 	fftbg = ffta.process("math.nonconvex")
-	fft1d = ffta.calc_radial_dist(old_div(ffta.get_ysize(),2),0.0,1.0,1)	# note that this handles the ri2inten averages properly
+	fft1d = ffta.calc_radial_dist(ffta.get_ysize()//2,0.0,1.0,1)	# note that this handles the ri2inten averages properly
 	
 	#print "fft1d is", fft1d, type(fft1d)
 	

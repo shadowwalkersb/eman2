@@ -284,7 +284,7 @@ class MorphBoxingTool(EMBoxingTool):
 		r = Region(xc,yc,box_size,box_size)
 		particle = image.get_clip(r)
 		ccf  = particle.calc_ccf(template)
-		trans = ccf.calc_max_location_wrap(old_div(particle.get_xsize(),2),old_div(particle.get_ysize(),2),0)
+		trans = ccf.calc_max_location_wrap(particle.get_xsize()//2,particle.get_ysize()//2,0)
 		dx = trans[0]
 		dy = trans[1]
 		return dx,dy

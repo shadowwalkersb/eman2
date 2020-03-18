@@ -244,7 +244,7 @@ class MissingWedgeViewer(QtWidgets.QWidget):
 		#self.addData(vfft,"wedge")
 		#self.addData(wedge,"wedegy")
 		
-		wedge.process_inplace('xform',{'transform':Transform({'type':'eman','tx':old_div(wedge.get_xsize(),2), 'ty':old_div(wedge.get_ysize(),2),'tz':old_div(wedge.get_zsize(),2)})})
+		wedge.process_inplace('xform',{'transform':Transform({'type':'eman','tx':wedge.get_xsize()//2, 'ty':wedge.get_ysize()//2,'tz':wedge.get_zsize()//2})})
 		w2 = wedge.process('xform.mirror',{'axis':'x'}) + wedge
 		wholewedge = w2.process('xform.mirror',{'axis':'y'}) + w2
 		self.wedgedata = self.addData(wholewedge,"Computed Wedge", [0.0625,0.8555,0.9453])

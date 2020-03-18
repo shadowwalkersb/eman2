@@ -848,10 +848,10 @@ class GUIEvalImage(QtWidgets.QWidget):
 #			self.fft.mult(1.0/(nbx*parms[0]**2))
 
 		self.fftbg=self.fft.process("math.nonconvex")
-		self.fft1d=self.fft.calc_radial_dist(old_div(self.fft.get_ysize(),2),0.0,1.0,1)	# note that this handles the ri2inten averages properly
+		self.fft1d=self.fft.calc_radial_dist(self.fft.get_ysize()//2,0.0,1.0,1)	# note that this handles the ri2inten averages properly
 		if self.plotmode==2 or self.plotmode==3:
-			self.fft1dang=array(self.fft.calc_radial_dist(old_div(self.fft.get_ysize(),2),0.0,1.0,4,self.sang45.getValue()*.017453292,1))	# This form generates 4 sequential power spectra representing angular ranges
-			self.fft1dang=self.fft1dang.reshape((4,old_div(self.fft.get_ysize(),2)))
+			self.fft1dang=array(self.fft.calc_radial_dist(self.fft.get_ysize()//2,0.0,1.0,4,self.sang45.getValue()*.017453292,1))	# This form generates 4 sequential power spectra representing angular ranges
+			self.fft1dang=self.fft1dang.reshape((4,self.fft.get_ysize()//2))
 		else:
 			self.fft1dang=None
 

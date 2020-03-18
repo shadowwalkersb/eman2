@@ -164,7 +164,7 @@ def main():
 		for i in range(nimg):
 			a=EMData()
 			a.read_image(args[0],i)
-			b=a.get_clip(Region(rgnp[0]+old_div(a.get_xsize(),2)-old_div(rgnp[2],2),rgnp[1]+old_div(a.get_ysize(),2)-old_div(rgnp[2],2),rgnp[2],rgnp[2]))
+			b=a.get_clip(Region(rgnp[0]+a.get_xsize()//2-old_div(rgnp[2],2),rgnp[1]+a.get_ysize()//2-old_div(rgnp[2],2),rgnp[2],rgnp[2]))
 			b.write_image(args[1],i)
 	else:
 		# copy the file with possible format conversion
@@ -250,14 +250,14 @@ def main():
 			ccf.process_inplace("normalize")		# peaks relative to 1 std-dev
 			ccf.process_inplace("mask.onlypeaks",{"npeaks":0})
 			ccf.process_inplace("mask.sharp",{"outer_radius":options.maxshift})
-			if options.nozero : ccf.set_value_at(old_div(ccf.get_xsize(),2),old_div(ccf.get_ysize(),2),0,0)
+			if options.nozero : ccf.set_value_at(ccf.get_xsize()//2,ccf.get_ysize()//2,0,0)
 
 			if i[1] in range(72,77) : ccf.write_image("dbug.hed",-1)
 			maxloc=ccf.calc_max_location()
-			maxloc=(maxloc[0]-old_div(im1.get_xsize(),2),maxloc[1]-old_div(im1.get_ysize(),2))
+			maxloc=(maxloc[0]-im1.get_xsize()//2,maxloc[1]-im1.get_ysize()//2)
 			print(maxloc)
 			
-			out=im2.get_clip(Region(cen[0]-maxloc[0]-old_div(rgnp[2],2)+old_div(im2.get_xsize(),2),cen[1]-maxloc[1]-old_div(rgnp[2],2)+old_div(im2.get_ysize(),2),rgnp[2],rgnp[2]))
+			out=im2.get_clip(Region(cen[0]-maxloc[0]-old_div(rgnp[2],2)+im2.get_xsize()//2,cen[1]-maxloc[1]-old_div(rgnp[2],2)+im2.get_ysize()//2,rgnp[2],rgnp[2]))
 			cen=(cen[0]-maxloc[0],cen[1]-maxloc[1])
 			out.write_image(args[1],i[1])
 			print("%d.\t%d\t%d"%(i[1],cen[0],cen[1]))
@@ -321,7 +321,7 @@ def main():
 			a.read_image(args[1],i)
 			a.process_inplace("mask.dampedzeroedgefill")
 			a.process_inplace("normalize")
-			a.process_inplace("mask.gaussian",{"outer_radius":old_div(a.get_xsize(),4)})
+			a.process_inplace("mask.gaussian",{"outer_radius":a.get_xsize()//4})
 			b=a.do_fft()
 			b.process_inplace("complex.normpixels")
 			sum+=b
@@ -332,8 +332,8 @@ def main():
 		for angi in range(-90*4,90*4+1):
 				ang=angi*pi/(180.0*4.0)
 				v=0
-				for r in range(old_div(a.get_xsize(),64),old_div(a.get_xsize(),2)):
-						v+=sum.get_value_at(2*int(r*cos(ang)),old_div(a.get_ysize(),2)+int(r*sin(ang)))
+				for r in range(a.get_xsize()//64,a.get_xsize()//2):
+						v+=sum.get_value_at(2*int(r*cos(ang)),a.get_ysize()//2+int(r*sin(ang)))
 				curve.append((v,ang*180.0/pi))
 		tiltaxis=max(curve)
 	
