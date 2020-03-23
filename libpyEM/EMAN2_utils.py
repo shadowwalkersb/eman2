@@ -100,9 +100,9 @@ def dist_line_point(A, B, P):
 	""" segment line AB, point P, where each one is an array([x, y]) """
 	if all(A == P) or all(B == P):
 		return 0
-	if np.arccos(np.dot(old_div((P - A), numpy.linalg.norm(P - A)), old_div((B - A), numpy.linalg.norm(B - A)))) > old_div(np.pi, 2):
+	if np.arccos(np.dot(old_div((P - A), numpy.linalg.norm(P - A)), old_div((B - A), numpy.linalg.norm(B - A)))) > np.pi / 2:
 		return numpy.linalg.norm(P - A)
-	if np.arccos(np.dot(old_div((P - B), numpy.linalg.norm(P - B)), old_div((A - B), numpy.linalg.norm(A - B)))) > old_div(np.pi, 2):
+	if np.arccos(np.dot(old_div((P - B), numpy.linalg.norm(P - B)), old_div((A - B), numpy.linalg.norm(A - B)))) > np.pi / 2:
 		return numpy.linalg.norm(P - B)
 	return old_div(numpy.linalg.norm(np.cross((P-A), (P-B))), numpy.linalg.norm(A - B))
 
@@ -171,7 +171,7 @@ def make_missing_wedge(img, wedge=60):
 	ft=get_fft(img)
 	ind=np.indices(ft.shape)-old_div(len(ft),2)
 	tanx=np.arctan2(ind[2], ind[0])
-	tanx=abs(abs(tanx)-old_div(np.pi,2))< (old_div(wedge,2))/180.*np.pi
+	tanx=abs(abs(tanx)-np.pi/2)< (old_div(wedge,2))/180.*np.pi
 	img2=get_img(ft*tanx)
 	
 	return img2

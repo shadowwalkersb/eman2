@@ -46,7 +46,7 @@ def run(cmd):
 	launch_childprocess(cmd)
 
 def get_circle(p,r):
-	t=np.arange(0, np.pi*2, old_div(np.pi,10))
+	t=np.arange(0, np.pi*2, np.pi/10)
 	pts=r*np.vstack([np.cos(t), np.sin(t)]).T
 	pts+=p
 	return pts

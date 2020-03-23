@@ -325,7 +325,7 @@ class GaussianModel(object):
 		ang=orient_input
 		azp=ang[:,0]+np.pi
 		altp=np.pi-ang[:,1]
-		phip=np.pi-ang[:,2]-old_div(np.pi,2)
+		phip=np.pi-ang[:,2]-np.pi/2
 
 		matrix=tf.stack([(tf.cos(phip)*tf.cos(azp) - tf.cos(altp)*tf.sin(azp)*tf.sin(phip)),
 		(tf.cos(phip)*tf.sin(azp) + tf.cos(altp)*tf.cos(azp)*tf.sin(phip)),
