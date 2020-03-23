@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 # Simple script to extract the same pixel from a stack of images. Normally this would be used, eg, with aligned particles from a class-average to look at the distribution of values contributing to the average
 
-from past.utils import old_div
 from builtins import range
 from EMAN2 import *
 

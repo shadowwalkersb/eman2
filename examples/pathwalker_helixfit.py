@@ -2,7 +2,6 @@
 # -*- coding: utf-8 -*-
 # Fit helixes using pathwalker results
 
-from past.utils import old_div
 from builtins import range
 import EMAN2
 from EMAN2 import *

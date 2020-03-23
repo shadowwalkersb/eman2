@@ -2,7 +2,6 @@
 # This computes the local energy surface for 2-D alignment of a particle vs a class-average
 
 
-from past.utils import old_div
 from builtins import range
 from EMAN2 import *
 from sys import argv,exit,stdout
