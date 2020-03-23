@@ -144,7 +144,7 @@ func_list_and_commit_messages = [[
 	# [is_math_const,  	"math const"],
 	# [is_np_const,    	"np const"],
 	# [is_math_func,   	"math func"],
-	[is_np_func,     	"np func"],
+	# [is_np_func,     	"np func"],
 	# [is_bin_op_float,  	"recursive float"],
 	],
 	[
