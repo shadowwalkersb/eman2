@@ -148,11 +148,11 @@ func_list_and_commit_messages = [[
 	# [is_bin_op_float,  	"recursive float"],
 	],
 	[
-	[is_num_int,     	"int literal"],
-	[is_func_int,    	"int func"],
-	[is_func_len,    	"len func"],
-	[is_func_size,    	"size func"],
-	[is_const_size,    	"size const"],
+	# [is_num_int,     	"int literal"],
+	# [is_func_int,    	"int func"],
+	# [is_func_len,    	"len func"],
+	# [is_func_size,    	"size func"],
+	# [is_const_size,    	"size const"],
 	# [is_bin_op_int,  	"recursive int"],
 	]
 ]
