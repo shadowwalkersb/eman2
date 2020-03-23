@@ -988,7 +988,7 @@ def templategen( options ):
 		if options.boxsize:
 			boxsize = options.boxsize
 		
-		radius = old_div(int(boxsize),4) 
+		radius = int(boxsize)//4 
 		
 		cmd = "cd " + options.path + " && e2spt_classaverage.py --path=genref --input=../" + options.ptclstack + " --npeakstorefine=4 -v 0 --mask=mask.sharp:outer_radius=-2 --lowpass=filter.lowpass.gauss:cutoff_freq=.0333 --lowpassfine=filter.lowpass.gauss:cutoff_freq=.05 --search " + str( radius ) + " --radius " + str( radius ) + " --precision=2 --parallel" + options.parllel + " --savesteps --saveali --normproc=normalize.edgemean"
 		if options.verbose:
@@ -1070,11 +1070,11 @@ def gencylinder( options ):
 	mask = EMData( box, box, box)
 	mask.to_one()
 	
-	radius = old_div(int(box),2)
+	radius = int(box)//2
 	if 'radius' in params:
 		radius = int(params['radius'])
 		
-	height = old_div(int(box),2)	
+	height = int(box)//2	
 	if 'height' in params:
 		height = int(params['height'])
 	

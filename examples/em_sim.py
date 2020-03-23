@@ -249,7 +249,7 @@ class Microscope(QtOpenGL.QGLWidget):
 				
 				if (fv<-3 and fv>-4): ### aperture
 					ap=fv+4
-					clip=old_div(int((1-ap)*sz),2)
+					clip=int((1-ap)*sz)//2
 					msk=self.gauss_edge(sz, cl=(1-ap)/2.)
 					proj_ps=proj.copy()*msk
 					shapes.append(EMShape(("rect",.5, .5, 1, 0, vz-2, clip, vz+2, 2)))
@@ -443,7 +443,7 @@ class Microscope(QtOpenGL.QGLWidget):
 			if f<0: ### aperture
 				proj_ps=proj.copy()
 				ap=lens_gl[il][1]+4
-				clip=old_div(int((1-ap)*sz),2)
+				clip=int((1-ap)*sz)//2
 				proj_ps *= (xap*xap+yap*yap<clip**2)
 			else: ### lens
 				ps=old_div(rr,(f*2))*(2*np.pi/wavelen)  ### phase shift

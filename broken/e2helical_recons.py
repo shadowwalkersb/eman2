@@ -120,7 +120,7 @@ def main():
       '''
       avg_vol=EMData(nx,nx,nx) # initialize the averaged volume for 9 subunits
       mean_std=0.0 # intialize mean squared deviation
-      for k in range(old_div(int (nx-dz),2), old_div(int (nx+dz),2)): # k ranged from lower plane to upper plane ---> width of central volume
+      for k in range(int (nx-dz)//2, int (nx+dz)//2): # k ranged from lower plane to upper plane ---> width of central volume
         for i in range(nx):
           for j in range(nx):
             if new_volume.get(i,j,k)!=0.0: # the voxel should not be 0.0
