@@ -37,7 +37,7 @@ def main():
 		if options.prepend: options.output = options.prepend + "_" + options.output
 		if options.append: options.output = options.output.split('.')[0] + "_" + options.append + ".box"
 		
-	bs = int(old_div(options.boxsize,2))
+	bs = int(options.boxsize//2)
 	
 	logger = E2init(sys.argv)
 	

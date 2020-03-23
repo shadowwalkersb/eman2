@@ -1881,7 +1881,7 @@ class Boxable(object):
 					image.mult(-1)
 				
 				# These attributes are hopefully generic and easily digestible
-				image.set_attr("ptcl_source_coord", [int(box.xcorner+old_div(box.xsize,2)),int(box.ycorner+old_div(box.ysize,2))])
+				image.set_attr("ptcl_source_coord", [int(box.xcorner+box.xsize//2),int(box.ycorner+box.ysize//2)])
 				image.set_attr("ptcl_source_image", self.get_image_name())
 
 				image.write_image(image_name,-1)
@@ -2054,7 +2054,7 @@ class Boxable(object):
 	def get_footprint_shrink(self):
 		if self.fpshrink == -1:
 			shrink = 1
-			tn = old_div(self.box_size,2)
+			tn = self.box_size//2
 			while ( tn >= 32 ):
 				tn /= 2
 				shrink *= 2
@@ -2193,10 +2193,10 @@ class Boxable(object):
 		
 	def add_exclusion_particle(self,box):
 		
-		xx = box.xcorner+old_div(box.xsize,2)-1
-		yy = box.ycorner+old_div(box.ysize,2)-1
+		xx = box.xcorner+box.xsize//2-1
+		yy = box.ycorner+box.ysize//2-1
 		
-		self.add_exclusion_area(None,xx,yy,old_div(box.xsize,2))
+		self.add_exclusion_area(None,xx,yy,box.xsize//2)
 	
 	def add_exclusion_area(self,UNUSEDtype,x,y,radius,flag=ERASE):
 		'''
@@ -3013,7 +3013,7 @@ class PawelAutoBoxer(AutoBoxer):
 		return old_div(self.pixel_input,self.pixel_output)
 	
 	def get_template_radius(self):
-		return int(old_div(old_div(self.box_size,2),self.get_subsample_rate()))
+		return int(old_div(self.box_size//2,self.get_subsample_rate()))
 	
 	def get_template_object(self):
 		raise Exception
@@ -3213,11 +3213,11 @@ class PawelAutoBoxer(AutoBoxer):
 		#print self.gauss_width, self.box_size
 		
 		ccf = filt_gaussl( img, old_div(self.gauss_width,self.box_size) )
-		peaks = ccf.peak_ccf( old_div(self.box_size,2)-1)
+		peaks = ccf.peak_ccf( self.box_size//2-1)
 		npeak = len(peaks)//3
 		#print npeak, " boxes picked"
 
-		boxhalf = old_div(self.box_size,2)
+		boxhalf = self.box_size//2
 		boxsize = self.box_size
 		boxes = []
 		trimboxes = []
@@ -3977,7 +3977,7 @@ class SwarmAutoBoxer(AutoBoxer):
 			y = b[1]
 			xx = int(x*scale)
 			yy = int(y*scale)
-			box = Box(xx-old_div(self.box_size,2),yy-old_div(self.box_size,2),self.box_size,self.box_size,0)
+			box = Box(xx-self.box_size//2,yy-self.box_size//2,self.box_size,self.box_size,0)
 			box.set_image_name(boxable.get_image_name())
 			box.set_correlation_score(correlation.get(x,y))
 			box.corx = b[0]
@@ -4159,8 +4159,8 @@ class SwarmAutoBoxer(AutoBoxer):
 
 		for box in boxes:
 			# xx and yy are the centers of the image, but in real image coordinates
-			xx = box.xcorner + old_div(box.xsize,2)
-			yy = box.ycorner + old_div(box.ysize,2)
+			xx = box.xcorner + box.xsize//2
+			yy = box.ycorner + box.ysize//2
 			# shrink them to the small correlation image coordinates
 			xx /= self.get_subsample_rate()
 			yy /= self.get_subsample_rate()

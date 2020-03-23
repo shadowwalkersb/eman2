@@ -169,7 +169,7 @@ class RCTprocessor(object):
 				output = output.replace(".box","") + "_" + tiltbox_list.db['boxes_rct'][0][2] + ".box"
 				boxfile = open(output, 'w')
 				for i,box in enumerate(tiltbox_list.boxlist):
-					boxfile.write("%d\t%d\t%d\t%d\t-1\n" % (int(box.x - old_div(self.options.boxsize,2)),int(box.y - old_div(self.options.boxsize,2)),self.options.boxsize,self.options.boxsize))
+					boxfile.write("%d\t%d\t%d\t%d\t-1\n" % (int(box.x - self.options.boxsize//2),int(box.y - self.options.boxsize//2),self.options.boxsize,self.options.boxsize))
 				boxfile.close()
 		print("Done writing box files!")
 

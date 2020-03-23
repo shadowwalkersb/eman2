@@ -284,7 +284,7 @@ def generate_masks(options,img):
 		img.process_inplace("normalize")
 
 		fourierpixels = old_div(img['nx'],2)
-		cutoffpixels = fourierpixels - old_div(options.goldsize,2)
+		cutoffpixels = fourierpixels - options.goldsize//2
 		msk = img.process("filter.highpass.gauss",{"cutoff_pixels":cutoffpixels})
 
 		apix = img['apix_x']
@@ -323,7 +323,7 @@ def local_noise(options,img):
 			n.to_zero()
 			n.process_inplace("math.addnoise",{"noise":r["sigma_nonzero"]})
 			fourierpixels = old_div(n["nx"],2)
-			cutoffpixels = fourierpixels - old_div(options.goldsize,2)
+			cutoffpixels = fourierpixels - options.goldsize//2
 			n.process_inplace("filter.highpass.gauss",{"cutoff_pixels":cutoffpixels})
 
 			if options.lowpass != 1.0:
@@ -360,7 +360,7 @@ def local_noise(options,img):
 				n.process_inplace("math.addnoise",{"noise":r["sigma_nonzero"]})
 				#n.process_inplace("filter.highpass.gauss",{"cutoff_abs":0.01})
 				fourierpixels = old_div(n['nx'],2)
-				cutoffpixels = fourierpixels - old_div(options.goldsize,2)
+				cutoffpixels = fourierpixels - options.goldsize//2
 				n.process_inplace("filter.highpass.gauss",{"cutoff_pixels":cutoffpixels})
 				try:
 					n *= old_div(r["sigma_nonzero"],n["sigma_nonzero"])
