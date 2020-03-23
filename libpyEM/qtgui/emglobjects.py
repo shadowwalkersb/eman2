@@ -2077,8 +2077,8 @@ class EM3DModel(QtCore.QObject):
 #		try:
 		[rx,ry] = self.get_gl_widget().get_render_dims_at_depth(self.cam.cam_z)
 
-		xscale = old_div(rx,float(self.gl_widget.width()))
-		yscale = old_div(ry,float(self.gl_widget.height()))
+		xscale = rx/float(self.gl_widget.width())
+		yscale = ry/float(self.gl_widget.height())
 		
 		return [xscale,yscale]
 	def keyPressEvent(self,event):
@@ -2306,7 +2306,7 @@ class EM3DGLWidget(EMGLWidget, EMGLProjectionViewMatrices):
 		glViewport(0,0,width,height)
 		
 		# maintain the aspect ratio of the window we have
-		self.aspect = old_div(float(width),float(height))
+		self.aspect = float(width)/float(height)
 		
 		glMatrixMode(GL_PROJECTION)
 		glLoadIdentity()

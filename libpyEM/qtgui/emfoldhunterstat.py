@@ -169,9 +169,9 @@ class E2FoldHunterStat(object):
 			elif (itemS == "HETATM"):
 				continue
 			elif (itemS == "ATOM"):
-				tempX=int(((old_div((float(item[30:38].strip())),apix_x))+(xMax*.5))+.5)
-				tempY=int(((old_div((float(item[38:46].strip())),apix_y))+(yMax*.5))+.5)
-				tempZ=int(((old_div((float(item[46:54].strip())),apix_z))+(zMax*.5))+.5)	
+				tempX=int((((float(item[30:38].strip()))/apix_x)+(xMax*.5))+.5)
+				tempY=int((((float(item[38:46].strip()))/apix_y)+(yMax*.5))+.5)
+				tempZ=int((((float(item[46:54].strip()))/apix_z)+(zMax*.5))+.5)	
 				tempValue = target.get(tempX, tempY, tempZ)
 				pixelValues.append(tempValue)
 				atomCount=atomCount+1
@@ -216,9 +216,9 @@ class E2FoldHunterStat(object):
 
 
 			for m in range(0, atomCount): 
-				tempX_t=int(((old_div(float(points[(p)]),apix_x))+(xMax*.5))+.5)
-				tempY_t=int(((old_div(float(points[(p+1)]),apix_y))+(yMax*.5))+.5)
-				tempZ_t=int(((old_div(float(points[(p+2)]),apix_z))+(zMax*.5))+.5)
+				tempX_t=int(((float(points[(p)])/apix_x)+(xMax*.5))+.5)
+				tempY_t=int(((float(points[(p+1)])/apix_y)+(yMax*.5))+.5)
+				tempZ_t=int(((float(points[(p+2)])/apix_z)+(zMax*.5))+.5)
 				if (tempX_t>=xMax): tempX_t = xMax-1	
 				if (tempY_t>=yMax): tempY_t = yMax-1
 				if (tempZ_t>=zMax): tempZ_t = zMax-1
@@ -265,7 +265,7 @@ class E2FoldHunterStat(object):
 			elif (MRC_volume==0): 
 				excludePercent = 1.0
 				print("Try choosing a different (smaller) isosurface threshold value. ")
-			else: excludePercent = (old_div(float(remainder_volume),MRC_volume))
+			else: excludePercent = (float(remainder_volume)/MRC_volume)
 			volumePercent = 1-excludePercent
 			#####################################
 

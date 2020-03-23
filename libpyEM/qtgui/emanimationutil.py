@@ -116,7 +116,7 @@ class Animatable(object):
 				Animatable.cache_dts.append(val)
 			elif linear_approach:
 				#  Linear
-				Animatable.cache_dts.append(old_div(float(i),(self.n-1)))
+				Animatable.cache_dts.append(float(i)/(self.n-1))
 			else:
 				# sine approach
 				Animatable.cache_dts.append(sin(float(i)/(self.n-1)*pi/2))

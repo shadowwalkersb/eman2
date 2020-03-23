@@ -1908,7 +1908,7 @@ class EMCamera(object):
 		if height: self.height = height
 		if not (hasattr(self, "height") and hasattr(self, "width")):
 			return
-		self.aspectratio = old_div(float(self.height),float(self.width))
+		self.aspectratio = float(self.height)/float(self.width)
 		if self.usingortho:
 			# this deals with maxviewport better than the previous solution
 			# the whole pseudofov concept is really messed up. Needs a complete rethink
@@ -2059,13 +2059,13 @@ class EMCamera(object):
 		"""
 		Return the scaling necessary to insert move from the viewport to the actual viewport. Need this b/c of the crazy scaling scheme
 		"""
-		return old_div(float(self.getWidth()),float(self.getWidth() + 2*self.getPseudoFovyWidth()))
+		return float(self.getWidth())/float(self.getWidth() + 2*self.getPseudoFovyWidth())
 		
 	def getViewPortHeightScaling(self):
 		"""
 		Return the scaling necessary to insert move from the viewport to the actual viewport. Need this b/c of the crazy scaling scheme
 		"""
-		return old_div(float(self.getHeight()),float(self.getHeight() + 2*self.getPseudoFovyHeight()))
+		return float(self.getHeight())/float(self.getHeight() + 2*self.getPseudoFovyHeight())
 		
 	def getHeight(self):
 		""" Get the viewport height """

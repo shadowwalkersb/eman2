@@ -1898,7 +1898,7 @@ class EMParamTableEventHandler(object):
 		#print self.table_widget.getContentsMargins()
 		
 		if cumulative_width < self.table_widget.width():
-			scale = old_div(float(self.table_widget.width()),cumulative_width)
+			scale = float(self.table_widget.width())/cumulative_width
 			for i in range(cols):
 				w = self.table_widget.columnWidth(i)
 				self.table_widget.setColumnWidth(i,w*scale)

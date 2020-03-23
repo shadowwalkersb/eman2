@@ -1009,7 +1009,7 @@ class EMLightControls(QtOpenGL.QGLWidget):
 		glViewport(0,0,width,height)
 		glMatrixMode(GL_PROJECTION)
 		glLoadIdentity()
-		GLU.gluPerspective(60.0, (old_div(float(width),float(height))), 1.0, 100.0)
+		GLU.gluPerspective(60.0, (float(width)/float(height)), 1.0, 100.0)
 		glMatrixMode(GL_MODELVIEW)
 		glLoadIdentity()
 		glTranslate(0,0,-10.0)
@@ -1164,7 +1164,7 @@ class CameraControls(QtOpenGL.QGLWidget):
 		glEnable(GL_TEXTURE_2D)
 		glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_REPLACE)
 		glBindTexture(GL_TEXTURE_2D, self.texture)
-		aspectratio = old_div(float(self.scenegraph().camera.getHeight()),float(self.scenegraph().camera.getWidth()))
+		aspectratio = float(self.scenegraph().camera.getHeight())/float(self.scenegraph().camera.getWidth())
 
 		glBegin(GL_QUADS)
 		glTexCoord2f(0.0,0.0)

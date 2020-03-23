@@ -230,17 +230,17 @@ class ScaledExclusionImage(object):
 			oldysize = int(old_div(ny,old_shrink))
 			r = Region( old_div((oldxsize-xsize),2), old_div((oldysize-ysize),2),xsize,ysize )
 			#print "clipping to",(oldxsize-xsize)/2, (oldysize-ysize)/2,xsize,ysize
-			scale = old_div(float(xsize),float(oldxsize))
+			scale = float(xsize)/float(oldxsize)
 
 			# the order in which you clip and scale is dependent on whether or not scale is > 1
 			if scale > 1:
 				# if it's greater than one than clip (enlarge the image) first
 				self.image.clip_inplace(r)
 				# then scale the pixels
-				self.image.scale(old_div(float(xsize),float(oldxsize)))
+				self.image.scale(float(xsize)/float(oldxsize))
 			else:
 				# if it's less than one scale first so that we retain the maximum amount of the pixel information
-				self.image.scale(old_div(float(xsize),float(oldxsize)))
+				self.image.scale(float(xsize)/float(oldxsize))
 				self.image.clip_inplace(r)
 
 			self.image.set_attr("shrink",int(shrink))
@@ -1548,7 +1548,7 @@ class EMBoxerModuleVitals(object):
 		'''
 
 		'''
-		return int(math.ceil(old_div(float(self.box_size),float(TEMPLATE_MIN))))
+		return int(math.ceil(float(self.box_size)/float(TEMPLATE_MIN)))
 
 	def get_box_type(self, box_number):
 		'''

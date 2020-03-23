@@ -406,7 +406,7 @@ class BaseAnnealer(with_metaclass(abc.ABCMeta, object)):
                         improves += 1
                     prevState = self.copy_state(self.state)
                     prevEnergy = E
-            return E, old_div(float(accepts), steps), old_div(float(improves), steps)
+            return E, float(accepts) / steps, float(improves) / steps
 
         step = 0
         self.start = time.time()

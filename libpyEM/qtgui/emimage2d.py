@@ -518,8 +518,8 @@ class EMImage2DWidget(EMGLWidget):
 		if data[0] == 0 or data[1] == 0:
 			self.scale=1.0
 			return
-		scalew = old_div(float(w),data[0])
-		scaleh = old_div(float(h),data[1])
+		scalew = float(w)/data[0]
+		scaleh = float(h)/data[1]
 		if scaleh < scalew:
 			self.scale = scaleh
 		else: self.scale = scalew

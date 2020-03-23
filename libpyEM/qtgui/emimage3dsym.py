@@ -1248,7 +1248,7 @@ class EMSymViewerWidget(EMGLWidget, EMGLProjectionViewMatrices):
 		glViewport(0,0,self.width(),self.height())
 		
 		# maintain the aspect ratio of the window we have
-		self.aspect = old_div(float(self.width()),float(self.height()))
+		self.aspect = float(self.width())/float(self.height())
 		
 		glMatrixMode(GL_PROJECTION)
 		glLoadIdentity()

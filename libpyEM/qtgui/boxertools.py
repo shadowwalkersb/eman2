@@ -718,17 +718,17 @@ class ExclusionImage(object):
 			oldysize = self.get_ysize()
 			r = Region( old_div((oldxsize-xsize),2), old_div((oldysize-ysize),2),xsize,ysize )
 			#print "clipping to",(oldxsize-xsize)/2, (oldysize-ysize)/2,xsize,ysize
-			scale = old_div(float(xsize),float(oldxsize))
+			scale = float(xsize)/float(oldxsize)
 			
 			# the order in which you clip and scale is dependent on whether or not scale is > 1
 			if scale > 1:
 				# if it's greater than one than clip (enlarge the image) first
 				self.image.clip_inplace(r)
 				# then scale the pixels
-				self.image.scale(old_div(float(xsize),float(oldxsize)))
+				self.image.scale(float(xsize)/float(oldxsize))
 			else:
 				# if it's less than one scale first so that we retain the maximum amount of the pixel information
-				self.image.scale(old_div(float(xsize),float(oldxsize)))
+				self.image.scale(float(xsize)/float(oldxsize))
 				self.image.clip_inplace(r)
 			
 			#set_idd_key_entry(self.image_name,"exclusion_image",self.image) # not sure if this is necessary
@@ -3787,7 +3787,7 @@ class SwarmAutoBoxer(AutoBoxer):
 			return -1
 			
 		if self.shrink == -1 or force:	
-			self.shrink = ceil(old_div(float(self.box_size),float(self.templatedimmin)))
+			self.shrink = ceil(float(self.box_size)/float(self.templatedimmin))
 			
 		return self.shrink
 		
@@ -4000,7 +4000,7 @@ class SwarmAutoBoxer(AutoBoxer):
 		oldx = template.get_xsize()
 		oldy = template.get_ysize()
 		
-		scale = old_div(float(newx),float(oldx))
+		scale = float(newx)/float(oldx)
 		new_center = [newx/2.0,newy/2.0]
 		scale_center = [scale*oldx/2.0,scale*oldy/2.0]
 

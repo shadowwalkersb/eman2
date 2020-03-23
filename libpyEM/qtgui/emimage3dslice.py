@@ -243,7 +243,7 @@ class EM3DSliceModel(EM3DModel):
 		
 		[t,alt,phi] = self.get_eman_transform(v)
 			
-		nn = old_div(float(self.slice),float(n))
+		nn = float(self.slice)/float(n)
 		trans = (nn-0.5)*v
 		t.set_trans(n*trans)
 	

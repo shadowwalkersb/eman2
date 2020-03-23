@@ -238,7 +238,7 @@ class WorkFlowTask(object):
 		'''
 		project_db = db_open_dict("bdb:project")
 		ncpu = project_db.get("global.num_cpus",dfl=num_cpus())
-		cf = old_div(float(len(options.filenames)),float(ncpu)) # common factor
+		cf = float(len(options.filenames))/float(ncpu) # common factor
 		
 		files = []
 		for n in range(ncpu):

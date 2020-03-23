@@ -271,14 +271,14 @@ class EMImage3DWidget(EMGLWidget, EMLightsDrawer, EMGLProjectionViewMatrices):
 		
 		if self.yheight == None: self.yheight = self.height()
 		
-		self.aspect = old_div(float(self.width()),float(self.height()))
+		self.aspect = float(self.width())/float(self.height())
 		self.xwidth = self.aspect*self.yheight
 		if self.xwidth == 0 or self.yheight == 0: return # probably startup
 		
 		glOrtho(-self.xwidth/2.0,self.xwidth/2.0,-self.yheight/2.0,self.yheight/2.0,self.startz,self.endz)
 		glMatrixMode(GL_MODELVIEW)
 	def load_perspective(self):
-		self.aspect = old_div(float(self.width()),float(self.height()))
+		self.aspect = float(self.width())/float(self.height())
 		
 		glMatrixMode(GL_PROJECTION)
 		glLoadIdentity()
@@ -418,8 +418,8 @@ class EMImage3DWidget(EMGLWidget, EMLightsDrawer, EMGLProjectionViewMatrices):
 			self.last_window_width = width
 			self.last_window_height = height
 		else:
-			height_scale = old_div(height,float(self.last_window_height))
-			width_scale = old_div(width,float(self.last_window_width))
+			height_scale = height/float(self.last_window_height)
+			width_scale = width/float(self.last_window_width)
 			
 			if height_scale < width_scale: width_scale = height_scale
 			#print width_scale, "is the factor"
