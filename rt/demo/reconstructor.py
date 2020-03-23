@@ -30,7 +30,6 @@
 #
 #
 
-from past.utils import old_div
 from EMAN2 import *
 import math
 
