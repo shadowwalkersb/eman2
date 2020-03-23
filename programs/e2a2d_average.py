@@ -95,7 +95,7 @@ def main():
 	for i,t in enumerate(sorted(sortangs,key=lambda x:x[0])):
 		if options.verbose==1 and time.time()-t1>1:
 			t1=time.time()
-			frac=old_div(i,float(N))
+			frac=i/float(N)
 			try:
 				remain=int(old_div((time.time()-t0),frac)-(time.time()-t0))	# est remaining time in sec
 				print("{:6d}/{:-6d}   time remaining: {}:{:02d}     \r".format(i,N,remain//60,remain%60))

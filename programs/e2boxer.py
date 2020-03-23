@@ -249,7 +249,7 @@ def main():
 
 	if options.ptclsize*1.5>boxsize :
 		print("WARNING: Strongly recommend using a box size 1.5 - 2.0x the maximum dimension of the particle! This may be pushed to ~1.25x in some cases, but results may be suboptimal.")
-		print("Your box size is {:1.2f}x the particle size. Recommend a size of at least {:d}".format(old_div(boxsize,float(options.ptclsize)),good_size(int(options.ptclsize*1.5))))
+		print("Your box size is {:1.2f}x the particle size. Recommend a size of at least {:d}".format(boxsize/float(options.ptclsize),good_size(int(options.ptclsize*1.5))))
 		
 		
 	logid=E2init(sys.argv,options.ppid)
@@ -597,7 +597,7 @@ class boxerLocal(QtCore.QObject):
 		nx=goodrefs[0]["nx"]
 		downsample=8.0/apix			# we downsample to 10 A/pix
 		nxdown=good_size(int(old_div(nx,downsample)))
-		downsample=old_div(float(nx),float(nxdown))
+		downsample=float(nx)/float(nxdown)
 		microdown=micrograph.process("normalize.edgemean").process("math.fft.resample",{"n":downsample})
 		print("downsample by ",downsample)
 		
@@ -834,7 +834,7 @@ class boxerConvNet(QtCore.QObject):
 
 		nref_target=500
 		bxsz=ref0[0]["nx"]
-		shrinkfac=old_div(float(bxsz),float(sz))
+		shrinkfac=float(bxsz)/float(sz)
 
 		data=[] ### particles in flattened numpy array
 		lbs=[]  ### labels in flattened numpy array
@@ -1122,7 +1122,7 @@ class boxerConvNet(QtCore.QObject):
 		nnet_savename_classify="nnet_classify.hdf"
 		bxsz=goodrefs[0]["nx"]
 		sz=64
-		shrinkfac=old_div(float(bxsz),float(sz))
+		shrinkfac=float(bxsz)/float(sz)
 		
 		if os.path.isfile(nnet_savename)==False:
 			print("Cannot find saved network, retrain from scratch...")
@@ -1163,7 +1163,7 @@ class boxerConvNet(QtCore.QObject):
 		
 		bxsz=goodrefs[0]["nx"]
 		sz=64
-		shrinkfac=old_div(float(bxsz),float(sz))
+		shrinkfac=float(bxsz)/float(sz)
 		
 		## need the micrograph size to pad the kernels
 		fsp=filenames[0].split()[1]
@@ -1607,7 +1607,7 @@ class GUIBoxer(QtWidgets.QWidget):
 				print("Reference is {box3} x {box3} x {box3} at {apix3:1.2f} A/pix, particles are {box2} x {box2} at {apix2:1.2f} A/pix. Scaling by {scale:1.3f}".format(box3=xsize3d,box2=xsize,apix3=apix3,apix2=apix1,scale=scale))
 			except:
 				print("A/pix unknown, assuming scale same as relative box size")
-				scale=old_div(float(xsize),xsize3d)
+				scale=float(xsize)/xsize3d
 				
 			vol.process_inplace("xform.scale",{"clip":xsize,"scale":scale})
 		
@@ -1648,7 +1648,7 @@ class GUIBoxer(QtWidgets.QWidget):
 				print("Reference is {box3} x {box3} x {box3} at {apix3:1.2f} A/pix, particles are {box2} x {box2} at {apix2:1.2f} A/pix. Scaling by {scale:1.3f}".format(box3=xsize2,box2=xsize,apix3=apix2,apix2=apix1,scale=scale))
 			except:
 				print("A/pix unknown, assuming scale same as relative box size")
-				scale=old_div(float(xsize),xsize2)
+				scale=float(xsize)/xsize2
 			
 		for r in refs:
 			r.process_inplace("normalize.circlemean")

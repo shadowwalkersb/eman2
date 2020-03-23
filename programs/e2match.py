@@ -273,7 +273,7 @@ def main():
 			scaleup = 0
 			scaledown = 0
 	
-			scalefactor = old_div(float( targetApix ),float(img2processApix))
+			scalefactor = float( targetApix )/float(img2processApix)
 	
 			
 			if float(scalefactor) < 1.0:
@@ -342,7 +342,7 @@ def preciseshrink( options, img2processEd, targetApix, targetBox ):
 	if options.verbose:
 		print("\n(e2match)(preciseshrink) I've read the apix of the particles in img2process, which is", img2processApix)
 
-	meanshrinkfactor = old_div(float( targetApix ),float(img2processApix))
+	meanshrinkfactor = float( targetApix )/float(img2processApix)
 	#meanshrinkfactor_int = int(round(meanshrinkfactor))
 
 	meanshrinkfactor_int = int(round(meanshrinkfactor))
@@ -379,7 +379,7 @@ def preciseshrink( options, img2processEd, targetApix, targetBox ):
 	scaleup = 0
 	scaledown = 0
 	
-	scalefactor = old_div(float( targetApix ),float(img2processApix))
+	scalefactor = float( targetApix )/float(img2processApix)
 	
 	
 	if float(scalefactor) < 1.0:
@@ -519,7 +519,7 @@ def refpostprocessing( options, img2processEd ):
 			resfac = 1.0/float(options.sharpfiltres)
 			npixels = int(round(float( ref_box * ref_apix * res_fac )))
 
-			actual_res = old_div(float(ref_box * ref_apix), npixels)
+			actual_res = float(ref_box * ref_apix) / npixels
 	
 			if options.verbose:
 				print("The sharp lowpass filter will be actually applied at this resolution", actual_res)

@@ -3354,7 +3354,7 @@ def alignment( fixedimage, image, label, options, xformslabel, iter, transform, 
 	
 		if int(options.shrink) > 1:
 			#options["align"][1]["inixform"].set_trans( options["align"][1]["inixform"].get_trans()/float(options["shrinkfine"]) )
-			options.align[1]["transform"].set_trans( old_div(options.align[1]["transform"].get_trans(),float(options.shrinkfine)) )
+			options.align[1]["transform"].set_trans( options.align[1]["transform"].get_trans()/float(options.shrinkfine) )
 	
 	elif options.randomizewedge:
 		rand_orient = OrientGens.get("rand",{"n":1,"phitoo":1})		#Fetches the orientation generator
@@ -3433,7 +3433,7 @@ def alignment( fixedimage, image, label, options, xformslabel, iter, transform, 
 			# Scale translation
 			scaletrans=1.0
 			if options.falign and options.falign != None and options.falign != 'None' and options.falign != 'none' and options.shrinkfine:
-				scaletrans = old_div(options.shrink,float(options.shrinkfine))
+				scaletrans = options.shrink/float(options.shrinkfine)
 			elif options.shrink and not options.falign:
 				scaletrans=float(options.shrink)
 			

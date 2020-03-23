@@ -215,7 +215,7 @@ for db in dblist:
 		db_set=EMData("sets/" +db,0,True)
 		if db_set.get_attr_dict().__contains__('ctf') and (EMUtil.get_image_count("sets/"+db) == num_images):
 			ctf_value=True
-			amplitude_contrast = old_div(float(db_set['ctf'].to_dict()['ampcont']), 10)				
+			amplitude_contrast = float(db_set['ctf'].to_dict()['ampcont']) / 10				
 			#defocus = db_set['ctf'].to_dict()['defocus']*1000
 			break
 print("CTF information being pulled from: " + db)
@@ -394,7 +394,7 @@ for option1 in optionList:
 		grey = 1
 	elif option1 == "randomizemodel":
 		if float(options.randomizemodel) != 0:
-			s1 = "e2proc3d.py " + E2RLN + "/3DRefMap.mrc " + E2RLN + "/3DRefMap.mrc --process=filter.lowpass.randomphase:apix=" + str(apix) + ":cutoff_freq=" + str(old_div(1,float(options.randomizemodel)))
+			s1 = "e2proc3d.py " + E2RLN + "/3DRefMap.mrc " + E2RLN + "/3DRefMap.mrc --process=filter.lowpass.randomphase:apix=" + str(apix) + ":cutoff_freq=" + str(1/float(options.randomizemodel))
 			call(s1,shell=True)
 	elif option1 == "pad":
 		s = s + " --pad " + str(options.pad)

@@ -249,7 +249,7 @@ def main():
 			if options.verbose and 100 in curstat :
 				print("%d/%d tasks remain"%(len(taskids),len(alltaskids)))
 			if 100 in curstat :
-				E2progress(logger,1.0-(old_div(float(len(taskids)),len(alltaskids))))
+				E2progress(logger,1.0-(float(len(taskids))/len(alltaskids)))
 
 			time.sleep(3)
 
@@ -653,7 +653,7 @@ def class_average(images,ref=None,focused=None,niter=1,normproc=("normalize.edge
 		# Now align and average
 		avgr=Averagers.get(averager[0], averager[1])
 		for i in range(nimg):
-			if callback!=None and nimg%10==9 : callback(int((it+old_div(i,float(nimg)))*100/(niter+2.0)))
+			if callback!=None and nimg%10==9 : callback(int((it+i/float(nimg))*100/(niter+2.0)))
 			ptcl=get_image(images,i,normproc)					# get the particle to align
 			ali=align_one(ptcl,ref,prefilt,align,aligncmp,ralign,raligncmp,focused)  # align to reference
 			sim=ali.cmp(scmp[0],ref,scmp[1])			# compare similarity to reference (may use a different cmp() than the aligner)

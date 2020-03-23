@@ -476,7 +476,7 @@ def main():
 					ncls = options.nref
 
 					#for j in range( options.nref ):
-					reffiles *= int( math.ceil( old_div(float(options.nref), float(len(reffiles) )) ) )
+					reffiles *= int( math.ceil( float(options.nref) / float(len(reffiles) ) ) )
 					reffiles = reffiles[:options.nrefs]
 				
 		

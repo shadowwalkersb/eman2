@@ -153,7 +153,7 @@ class EMParallelProject3D(object):
 							print("There was a problem with the task of id",tid)
 
 						if self.logger != None:
-							E2progress(self.logger,1.0-old_div(len(tids),float(num_tasks)))
+							E2progress(self.logger,1.0-len(tids)/float(num_tasks))
 							if self.options.verbose>0:
 								print("%d/%d\r"%(num_tasks-len(tids),num_tasks))
 								sys.stdout.flush()

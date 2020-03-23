@@ -336,7 +336,7 @@ in the refinement directory. You can use Info with the browser or just read the 
 				scale=old_div(img3["apix_x"],apix)
 			except:
 				print("A/pix unknown, assuming scale same as relative box size")
-				scale=old_div(float(xsize),xsize3d)
+				scale=float(xsize)/xsize3d
 			if scale>1 : cmd="e2proc3d.py {path}/threed_00_{i:02d}.hdf {path}/threed_00_{i:02d}.hdf --clip={cl},{cl},{cl} --scale={sca:1.4f}".format(path=options.path,i=i+1,cl=xsize,sca=scale)
 			else :       cmd="e2proc3d.py {path}/threed_00_{i:02d}.hdf {path}/threed_00_{i:02d}.hdf --scale={sca:1.4f} --clip={cl},{cl},{cl}".format(path=options.path,i=i+1,cl=xsize,sca=scale)
 			run(cmd)

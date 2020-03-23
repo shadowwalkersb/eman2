@@ -314,9 +314,9 @@ e2classifyligand.py sets/myset_even.lst refine_01/classmx_04_even.hdf refine_01/
 		if options.ref1 and options.ref2 :
 			if options.badgroup:
 				# These aren't very efficient, but shouldn't matter much
-				avgq=  old_div(sum([statall[i][2][0] for i in statall]),float(len(statall)))
-				avgqsq=sqrt(old_div(sum([statall[i][2][0]**2 for i in statall]),float(len(statall)))-avgq**2)
-				avgcsq=sqrt(old_div(sum([statall[i][1]**2 for i in statall]),float(len(statall))))
+				avgq=  sum([statall[i][2][0] for i in statall])/float(len(statall))
+				avgqsq=sqrt(sum([statall[i][2][0]**2 for i in statall])/float(len(statall))-avgq**2)
+				avgcsq=sqrt(sum([statall[i][1]**2 for i in statall])/float(len(statall)))
 				for i in statall:
 					# we consider a particle 'bad' if it's mean quality with both refs is greater than the mean+sigma/2
 					# or if the quality difference between images is within 1/4 sigma of zero

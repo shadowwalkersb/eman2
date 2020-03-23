@@ -813,10 +813,10 @@ def calcWeight( angle, it, options ):
 	#if float(angle) < float(lowmostangle) or float(angle) > float(upmostangle):
 	if math.fabs( angle ) == 90.0:
 		complement = 1.0 - math.fabs( math.cos( math.radians(89.99) ) )
-		weight = math.fabs( (it+1) * math.cos( math.radians(89.99) ) / float(options.iter) ) + ( old_div(float(it),float(options.iter))) * complement
+		weight = math.fabs( (it+1) * math.cos( math.radians(89.99) ) / float(options.iter) ) + ( float(it)/float(options.iter)) * complement
 	else:
 		complement = 1.0 - math.fabs( math.cos( math.radians(angle) ) )
-		weight = math.fabs( (it+1) * math.cos( math.radians(angle) ) / float(options.iter) ) + (old_div(float(it),float(options.iter))) * complement 
+		weight = math.fabs( (it+1) * math.cos( math.radians(angle) ) / float(options.iter) ) + (float(it)/float(options.iter)) * complement 
 
 	print("Something was weighed?!!!!") #??
 	

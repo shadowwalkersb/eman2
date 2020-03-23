@@ -311,7 +311,7 @@ not need to specify any of the following other than the ones already listed abov
 					print("Reference is {box3} x {box3} x {box3} at {apix3:1.2f} A/pix, particles are {box2} x {box2} at {apix2:1.2f} A/pix. Scaling by {scale:1.3f}".format(box3=img3["nx"],box2=img1["nx"],apix3=img3["apix_x"],apix2=img1["apix_x"],scale=scale))
 				except:
 					print("A/pix unknown, assuming scale same as relative box size")
-					scale=old_div(float(xsize),xsize3d)
+					scale=float(xsize)/xsize3d
 				if scale>1 : cmd="e2proc3d.py %s %s/scaled_model.hdf --clip=%d,%d,%d --scale=%1.5f"%(options.model,options.path,xsize,xsize,xsize,scale)
 				else :       cmd="e2proc3d.py %s %s/scaled_model.hdf --scale=%1.5f --clip=%d,%d,%d"%(options.model,options.path,scale,xsize,xsize,xsize)
 				run(cmd)

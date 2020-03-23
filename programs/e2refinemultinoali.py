@@ -388,7 +388,7 @@ def main():
 					clso=np.argmin(corr,1)
 					cls=clso%len(models)
 					clsm=clso//len(models)
-					print(eo,[old_div(float(sum(cls==k)),float(npt)) for k in models])
+					print(eo,[float(sum(cls==k))/float(npt) for k in models])
 					for i in range(npt):
 						v=cmxcls[0,i]
 						if options.breaksym:

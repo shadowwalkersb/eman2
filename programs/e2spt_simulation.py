@@ -795,7 +795,7 @@ def genangles( options ):
 		alt = lower_bound
 		upper_bound = options.tiltrange
 		nslices = options.nslices
-		tiltstep = round(old_div(( float(upper_bound) - float(lower_bound) ), float(nslices - 1)),2)	
+		tiltstep = round(( float(upper_bound) - float(lower_bound) ) / float(nslices - 1),2)	
 	
 		lines = []
 	
@@ -867,7 +867,7 @@ class SubtomoSimTask(JSTask):
 		upper_bound = options.tiltrange
 	
 		nslices = options.nslices
-		tiltstep = round(old_div(( float(upper_bound) - float(lower_bound) ), float(nslices - 1)),2)	
+		tiltstep = round(( float(upper_bound) - float(lower_bound) ) / float(nslices - 1),2)	
 	
 		#extraslices = 0
 		#if options.fillwedge:

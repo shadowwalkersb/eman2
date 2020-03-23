@@ -765,7 +765,7 @@ def allvsall(options,preproc):
 		
 		if k == 0:
 			if options.clusters and int(options.clusters) > 1:
-				numPerSet = round( old_div(float(nptcls),float(options.clusters)) )					#Cluster the particles in sets with an even number of particles
+				numPerSet = round( float(nptcls)/float(options.clusters) )					#Cluster the particles in sets with an even number of particles
 				
 				for cn in range(options.clusters):
 					clusters.update({ cn:set([]) })

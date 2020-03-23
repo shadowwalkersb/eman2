@@ -247,7 +247,7 @@ for option1 in optionList:
         IFLAG = str(options.mode)
     elif option1 == "randomizemodel":
         if float(options.randomizemodel) != 0.0:
-            s1 = "e2proc3d.py " + E2FA + "/3DMapInOut.mrc " + E2FA + "/3DMapInOut.mrc --process=filter.lowpass.randomphase:apix=" + str(apix_shift) + ":cutoff_freq=" + str(old_div(1,float(options.randomizemodel)))
+            s1 = "e2proc3d.py " + E2FA + "/3DMapInOut.mrc " + E2FA + "/3DMapInOut.mrc --process=filter.lowpass.randomphase:apix=" + str(apix_shift) + ":cutoff_freq=" + str(1/float(options.randomizemodel))
             call(s1, shell=True)
 
 OUTFILE2 = E2FA + "/card.txt"          # Cards required by FA

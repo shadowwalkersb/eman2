@@ -194,7 +194,7 @@ def main():
 		if options.verbose and 100 in curstat :
 			print("%d/%d tasks remain"%(len(taskids),len(alltaskids)))
 		if 100 in curstat :
-			E2progress(logger,1.0-(old_div(float(len(taskids)),len(alltaskids))))
+			E2progress(logger,1.0-(float(len(taskids))/len(alltaskids)))
 
 	if options.verbose : print("Completed all tasks\nGrouping consistent averages")
 

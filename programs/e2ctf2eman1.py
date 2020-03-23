@@ -394,7 +394,7 @@ def getdefocus( f, e1ctf, ptclps, parm_min, parm_max ) :
 		smkernel = [ ]
 		smksize = int( len( ps ) / 100. ) + 1
 		for i in range( -1 * smksize, smksize + 1 ) :
-			smkernel.append( exp( -1. * ( old_div(float( i ), float( smksize )) ) ** 2. ) )
+			smkernel.append( exp( -1. * ( float( i ) / float( smksize ) ) ** 2. ) )
 		smps = smooth( ps, smkernel )
 		ipm = min( int( 0.01 / ds ), len( ps ) )
 		sig = [ ]
@@ -407,7 +407,7 @@ def getdefocus( f, e1ctf, ptclps, parm_min, parm_max ) :
 	smkernel = [ ]
 	smksize = int( len( ptclps ) / 100. ) + 1
 	for i in range( -1 * smksize, smksize + 1 ) :
-		smkernel.append( exp( -1. * ( old_div(float( i ), float( smksize )) ) ** 2. ) )
+		smkernel.append( exp( -1. * ( float( i ) / float( smksize ) ) ** 2. ) )
 	ptclsmps = smooth( ptclps, smkernel )
 	ipm = min( int( 0.01 / ds ), len( ptclps ) )
 	sig = [ ]

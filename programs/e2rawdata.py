@@ -86,7 +86,7 @@ def main():
 	if options.threads==1:
 		for i,arg in enumerate(args):
 			importfn(i,arg,options)
-			E2progress(logid,(old_div(i,float(len(args)))))
+			E2progress(logid,(i/float(len(args))))
 
 		E2end(logid)
 		sys.exit(0)

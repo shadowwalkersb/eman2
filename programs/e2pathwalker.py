@@ -668,10 +668,10 @@ class PathWalker(object):
 			r2.append(j)
 		
 		rmax = max(r2)
-		score_fragment = old_div(float(rmax), float(len(r2)))
+		score_fragment = float(rmax) / float(len(r2))
 
 		correctbonds = len(path)-len(breaks)
-		score_path = old_div(float(correctbonds), len(path))
+		score_path = float(correctbonds) / len(path)
 
 		print("\nPath quality statistics:")
 		print("\tNoise: %s"%self.noise)

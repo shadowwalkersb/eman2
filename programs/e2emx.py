@@ -236,10 +236,10 @@ for option1 in optionList:
 						print("Unknown tag: " + particle_attrib)
 				for item2 in item:
 					if item2.tag == "defocusU":
-						temp_dict['defocusU'] = old_div(float(item2.text), 1000) # in nm
+						temp_dict['defocusU'] = float(item2.text) / 1000 # in nm
 						foundU = True
 					elif item2.tag == "defocusV":
-						temp_dict['defocusV'] = old_div(float(item2.text),1000) # in nm
+						temp_dict['defocusV'] = float(item2.text)/1000 # in nm
 						foundV = True
 					elif item2.tag == "defocusUAngle":
 						temp_dict['defocusUAngle'] = item2.text # in degrees (0->180)

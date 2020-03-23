@@ -75,7 +75,7 @@ This program will look in an spt_XX folder at particle_parms_xx.json and show a 
 		for n,i in enumerate(angs.keys()):
 			if options.verbose==1 and time.time()-t1>1:
 				t1=time.time()
-				frac=old_div(n,float(N))
+				frac=n/float(N)
 				try:
 					remain=int(old_div((time.time()-t0),frac)-(time.time()-t0))	# est remaining time in sec
 					print("{:6d}/{:-6d}   time remaining: {}:{:02d}     \r".format(n,N,remain//60,remain%60), end=' ')
@@ -114,7 +114,7 @@ This program will look in an spt_XX folder at particle_parms_xx.json and show a 
 		for n,i in enumerate(angs.keys()):
 			if options.verbose==1 and time.time()-t1>1:
 				t1=time.time()
-				frac=old_div(n,float(N))
+				frac=n/float(N)
 				try:
 					remain=int(old_div((time.time()-t0),frac)-(time.time()-t0))	# est remaining time in sec
 					print("{:6d}/{:-6d}   time remaining: {}:{:02d}     \r".format(n,N,remain//60,remain%60), end=' ')
@@ -171,8 +171,8 @@ This program will look in an spt_XX folder at particle_parms_xx.json and show a 
 	if options.verbose:
 		lz=len(col[col<0])
 		gz=len(col[col>0])
-		print("%1.2f (%d) less than zero"%(old_div(float(lz),(lz+gz)),lz))
-		print("%1.2f (%d) less than zero"%(old_div(float(gz),(lz+gz)),gz))
+		print("%1.2f (%d) less than zero"%(float(lz)/(lz+gz),lz))
+		print("%1.2f (%d) less than zero"%(float(gz)/(lz+gz),gz))
 
 	his=histogram(col,options.bins)
 

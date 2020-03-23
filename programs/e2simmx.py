@@ -71,7 +71,7 @@ def opt_rectangular_subdivision(x,y,n):
 			if ysub>y or ysub<1 : continue		# can't have more subdivisions than rows
 
 			# the ceil() makes us overestimate cases uneven division, but that breaks the tie in a good way
-			cost=(ceil(old_div(float(x),xsub))+ceil(old_div(float(y),ysub)))*xsub*ysub
+			cost=(ceil(float(x)/xsub)+ceil(float(y)/ysub))*xsub*ysub
 			candidates.append((cost,(xsub,ysub)))
 
 		if len(candidates)==0:  return (x,y)		# should only happen if we have more processors than similarity matrix pixels
@@ -288,7 +288,7 @@ class EMParallelSimMX(object):
 							self.etc.rerun_task(tid)
 							continue
 						if self.logger != None:
-							E2progress(self.logger,1.0-old_div(len(self.tids),float(len(blocks))))
+							E2progress(self.logger,1.0-len(self.tids)/float(len(blocks)))
 							if self.options.verbose>0:
 								print("%d/%d\r"%(len(self.tids),len(blocks)))
 								sys.stdout.flush()
@@ -460,7 +460,7 @@ class EMSimTaskDC(JSTask):
 		data = {}
 		cbli=0
 		for ref_idx,ref in list(refs.items()):
-			if not progress_callback(int(100*(cbi+old_div(cbli,float(len(refs))))/cbn)) : break
+			if not progress_callback(int(100*(cbi+cbli/float(len(refs)))/cbn)) : break
 			cbli+=1
 			if partial!=None :
 				for i in partial:
@@ -799,7 +799,7 @@ def main():
 #		else:
 #			rimg = rimages[r]
 
-		E2progress(E2n,old_div(float(r-rrange[0]),(rrange[1]-rrange[0])))
+		E2progress(E2n,float(r-rrange[0])/(rrange[1]-rrange[0]))
 		shrink = options.shrink
 		if options.verbose>1 : print("%d. "%r, end=' ')
 		row=cmponetomany(cimgs,rimg,options.align,options.aligncmp,options.cmp, options.ralign, options.raligncmp,options.shrink,mask,subset,options.prefilt,options.verbose)
@@ -885,7 +885,7 @@ def check(options,verbose):
 
 		newsize=int(old_div(ysize,options.shrink))
 		if newsize!=good_size(newsize) :
-			options.shrink=old_div(ysize,float(good_size(newsize)+.1))
+			options.shrink=ysize/float(good_size(newsize)+.1)
 			print("Shrink adjusted to {:1.3f} to produce a good size".format(options.shrink))
 
 

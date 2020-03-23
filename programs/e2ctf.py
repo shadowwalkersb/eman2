@@ -236,7 +236,7 @@ NOTE: This program should be run from the project directory, not from within the
 	# This is where threading occurs, we call ourselves recursively here if we have --threads
 	if nthreads>1 and not options.gui and not options.computesf:
 		print("Fitting in parallel with ",nthreads," threads")
-		chunksize=int(ceil(old_div(float(len(args)),nthreads)))
+		chunksize=int(ceil(float(len(args))/nthreads))
 #		print " ".join(sys.argv+["--chunk={},{}".format(chunksize,0)])
 		threads=[threading.Thread(target=os.system,args=[" ".join(sys.argv+["--chunk={},{}".format(chunksize,i)])]) for i in range(nthreads)]
 		for t in threads: t.start()
@@ -456,7 +456,7 @@ def write_e2ctf_output(options):
 
 			process_stack(filename,phaseout,phasehpout,phasesmout,wienerout,phaseprocout,options.extrapad,not options.nonorm,options.oversamp,ctf,snrfilt=options.snrfilt,invert=options.invert,storeparm=options.storeparm,source_image=options.source_image,zero_ok=options.zerook,verbose=options.verbose)
 
-			if logid : E2progress(logid,old_div(float(i+1),len(options.filenames)))
+			if logid : E2progress(logid,float(i+1)/len(options.filenames))
 
 def compute_envelope(img_sets,smax=.06):
 		"""This computes the intensity of the background subtracted power spectrum around each CTF maximum for
@@ -653,7 +653,7 @@ def pspec_and_ctf_fit(options,debug=False):
 		js_parms["ctf_bg2d"]=img_sets[-1][5]
 		js_parms.close()
 
-		if logid : E2progress(logid,old_div(float(i+1),len(options.filenames)))
+		if logid : E2progress(logid,float(i+1)/len(options.filenames))
 
 	project_db = js_open_dict("info/project.json")
 	try: project_db.update({ "global.microscope_voltage":options.voltage, "global.microscope_cs":options.cs, "global.apix":apix })
@@ -722,7 +722,7 @@ def refine_and_smoothsnr(options,strfact,debug=False):
 		ctf.snr=ctf.compute_1d(len(s)*2,ds,Ctf.CtfType.CTF_SNR_SMOOTH,strfact)
 		js_parms["ctf"]=[ctf]+orig[1:4]
 
-		if logid : E2progress(logid,old_div(float(i+1),len(options.filenames)))
+		if logid : E2progress(logid,float(i+1)/len(options.filenames))
 
 	if skipped>0 : print("Warning: %d files skipped"%skipped)
 	if len(olddf)>0 : print("Mean defocus adjustment : %1.4f um"%(old_div((sum([fabs(olddf[ii]-newdf[ii]) for ii in range(len(olddf))])),len(olddf))))
@@ -2903,7 +2903,7 @@ class GUIctf(QtWidgets.QWidget):
 		except: ptcl="?"
 		try:
 			ctf=self.data[val][1]
-			ssnr="%1.4f"%(old_div(sum(ctf.snr),float(len(ctf.snr))))
+			ssnr="%1.4f"%(sum(ctf.snr)/float(len(ctf.snr)))
 		except:
 			ssnr="?"
 		try: apix=self.data[val][1].apix

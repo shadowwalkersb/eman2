@@ -417,7 +417,7 @@ def calciterations(outsize):
 
 
 def scaleiterations(outsize,upperlimit,it2base,it3base):
-	sizefactor = old_div(float(outsize),float(upperlimit))
+	sizefactor = float(outsize)/float(upperlimit)
 	it2 = int(ceil(it2base * sizefactor))
 	it3 = int(ceil(it3base * sizefactor))
 

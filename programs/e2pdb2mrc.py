@@ -444,7 +444,7 @@ def pdb_2_mrc(file_name,apix=1.0,res=2.8,het=False,box=None,chains=None,model=No
 	outmap=EMData()
 	outmap.set_size(outbox[0],outbox[1],outbox[2])
 	outmap.to_zero()
-	for i in range(len(aavg)): aavg[i] = old_div(aavg[i],float(natm))
+	for i in range(len(aavg)): aavg[i] = aavg[i]/float(natm)
 	# fill in the atom gaussians
 	xt = old_div(outbox[0],2) - old_div((amax[0]-amin[0]),(2*apix))
 	yt = old_div(outbox[1],2) - old_div((amax[1]-amin[1]),(2*apix))

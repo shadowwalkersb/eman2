@@ -120,7 +120,7 @@ def getPoints(dejavufile, apix,originX,originY,originZ):
 	for line in open(dejavufile,"r").readlines():
 		result = pattern.search(line)
 		if result:
-			coord=[int(originX+(old_div(float(result.group('x1')),apix))), int(originY+(old_div(float(result.group('y1')),apix))), int(originZ+(old_div(float(result.group('z1')),apix))), int(originX+(old_div(float(result.group('x2')),apix))), int(originY+(old_div(float(result.group('y2')),apix))), int(originZ+(old_div(float(result.group('z2')),apix)))]
+			coord=[int(originX+(float(result.group('x1'))/apix)), int(originY+(float(result.group('y1'))/apix)), int(originZ+(float(result.group('z1'))/apix)), int(originX+(float(result.group('x2'))/apix)), int(originY+(float(result.group('y2'))/apix)), int(originZ+(float(result.group('z2'))/apix))]
 			endpoints.append(coord)
 	return(endpoints)
 	

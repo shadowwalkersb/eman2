@@ -724,7 +724,7 @@ def process_movie(options,fsp,dark,gain,first,flast,step,idx):
 		cen=old_div(options.optbox,2) #csum2[(0,1)]["nx"]/2
 		for i in range(n-1):
 			for j in range(i+1,n):
-				val=csum2[(i,j)].sget_value_at_interp(int(cen+locs[j*2]-locs[i*2]),int(cen+locs[j*2+1]-locs[i*2+1]))*sqrt(old_div(float(n-fabs(i-j)),n))
+				val=csum2[(i,j)].sget_value_at_interp(int(cen+locs[j*2]-locs[i*2]),int(cen+locs[j*2+1]-locs[i*2+1]))*sqrt(float(n-fabs(i-j))/n)
 				quals[i]+=val
 				quals[j]+=val
 
@@ -1160,7 +1160,7 @@ def qual(locs,ccfs):
 	n=old_div(len(locs),2)
 	for i in range(n-1):
 		for j in range(i+1,n):
-			penalty = sqrt(old_div(float(n-fabs(i-j)),n))**2 # This is a recognition that we will tend to get better correlation with near neighbors in the sequence
+			penalty = sqrt(float(n-fabs(i-j))/n)**2 # This is a recognition that we will tend to get better correlation with near neighbors in the sequence
 			locx = int(cen+locs[j*2]-locs[i*2])
 			locy = int(cen+locs[j*2+1]-locs[i*2+1])
 			nrg-=ccfs[(i,j)].sget_value_at_interp(locx,locy)*penalty

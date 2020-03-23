@@ -78,7 +78,7 @@ def compares(vec,empty):
 	global cmp_probe,cmp_target,sfac
 	
 	t = Transform()
-	t.set_pre_trans((old_div(vec[3],float(sfac))+old_div(tdim2[0],2),old_div(vec[4],float(sfac))+old_div(tdim2[1],2),old_div(vec[5],float(sfac))+old_div(tdim2[2],2)))
+	t.set_pre_trans((vec[3]/float(sfac)+old_div(tdim2[0],2),vec[4]/float(sfac)+old_div(tdim2[1],2),vec[5]/float(sfac)+old_div(tdim2[2],2)))
 	#t.set_trans((vec[3]/float(sfac)+tdim2[0]/2,vec[4]/float(sfac)+tdim2[1]/2,vec[5]/float(sfac)+tdim2[2]/2))
 	t.set_rotation({'type':'eman', 'az':vec[0], 'alt':vec[1], 'phi':vec[2]})
 	#t.set_trans((0,0,0))

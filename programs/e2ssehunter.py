@@ -168,9 +168,9 @@ def read_pseudoatoms(pdb_filepath):
 	file=open(atoms, "r")
 	for line in file:
 		if str(line[0:6].strip())=="ATOM":
-			TempX=old_div((float(line[30:38].strip())),apix)
-			TempY=old_div((float(line[38:46].strip())),apix)
-			TempZ=old_div((float(line[46:54].strip())),apix)
+			TempX=(float(line[30:38].strip()))/apix
+			TempY=(float(line[38:46].strip()))/apix
+			TempZ=(float(line[46:54].strip()))/apix
 			patom=[TempX,TempY,TempZ]
 			patoms.append(patom)
 			atomNumber.append(int(line[6:11].strip()))
@@ -589,7 +589,7 @@ def skeleton_scores(pseudoatoms, vol, threshold, helix_size, sheet_size, skeleto
 		if count == 0:
 			score = 0
 		else:
-			score = old_div(float(curve_score - surface_score), count)
+			score = float(curve_score - surface_score) / count
 		skeletonScores.append( score )
 		
 		#Normalization

@@ -272,7 +272,7 @@ def gauss_cmd_line_autobox(args,options,logid):
 			gboxer.auto_ctf(arg,ctf_params)
 		if do_autobox:
 			gboxer.auto_box_cmdline(arg,boxsize=boxsize)
-		E2progress(logid,old_div(float(i+1),len(args)))
+		E2progress(logid,float(i+1)/len(args))
 	return err
 
 def autobox(args,options,logid):
@@ -284,7 +284,7 @@ def autobox(args,options,logid):
 		boxer_vitals.current_idx=0
 		boxer.target = weakref.ref(boxer_vitals)
 		boxer.auto_box(arg, False, True, True)
-		E2progress(logid,old_div(float(i+1),len(args)))
+		E2progress(logid,float(i+1)/len(args))
 
 def write_output(args,options,logid, database="e2boxercache"):
 	params = {}
@@ -1471,7 +1471,7 @@ class SwarmBoxer(object):
 		'''
 		Get the subsample rate advised by the SwarmBoxer, as based on self.particle_diameter and SWARM_TEMPLATE_MIN
 		'''
-		return int(math.ceil(old_div(float(self.particle_diameter),float(SWARM_TEMPLATE_MIN))))
+		return int(math.ceil(float(self.particle_diameter)/float(SWARM_TEMPLATE_MIN)))
 
 	def auto_box_clicked(self):
 		'''
@@ -1527,7 +1527,7 @@ class SwarmBoxer(object):
 			# the amount by which the exclusion is shrunken does not match the amount by which the SwarmBoxer shrinks - so we have to scale
 			# to do: test this
 			#print "shrink changed does this work?",shrink,exclusion_shrink,self.particle_diameter, SWARM_TEMPLATE_MIN,TEMPLATE_MIN
-			rescale = old_div(float(exclusion_shrink),shrink)
+			rescale = float(exclusion_shrink)/shrink
 			oldx = exclusion_image.get_xsize()
 			oldy = exclusion_image.get_ysize()
 			newx = correlation_image.get_xsize()
@@ -3288,7 +3288,7 @@ class CTFInspectorWidget(QtWidgets.QWidget):
 
 			# print "range: ",self.i_start," - ",self.i_stop
 
-			stepw = old_div(float(w-2*wborder), float(sizew))
+			stepw = float(w-2*wborder) / float(sizew)
 
 
 
@@ -3299,7 +3299,7 @@ class CTFInspectorWidget(QtWidgets.QWidget):
 
 
 			sizeh = float(sizeh)
-			steph = old_div(float(h-2*hborder), float(sizeh))
+			steph = float(h-2*hborder) / float(sizeh)
 
 			from utilities import read_text_file
 			ctfdata2 = read_text_file("procpw.txt",3)

@@ -213,7 +213,7 @@ def read_helix(filename,sx,sy,sz,ax,ay,az):
 			cn=int(atline[22:30].strip())
 			if cn>=atomid[0] and cn<=atomid[1]:
 				if atline[13:15]=="CA":
-					pos = (old_div(float(atline[30:38].strip()),ax)+old_div(sx,2), old_div(float(atline[38:46].strip()),ay)+old_div(sy,2), old_div(float(atline[46:54].strip()),az)+old_div(sz,2))#,nhlx)
+					pos = (float(atline[30:38].strip())/ax+old_div(sx,2), float(atline[38:46].strip())/ay+old_div(sy,2), float(atline[46:54].strip())/az+old_div(sz,2))#,nhlx)
 					points.append( pos)
 		nhlx+=1
 	

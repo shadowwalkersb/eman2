@@ -742,14 +742,14 @@ def fscplotter(fscs,options,apix=0.0,tag='',clearplot=False):
 			fsc0p143resolution1label=''
 
 			if fsc0p5pixel and apix and boxsize:
-				fsc0p5resolution1 = old_div((float(apix) * float(boxsize)), float(fsc0p5pixel))
+				fsc0p5resolution1 = (float(apix) * float(boxsize)) / float(fsc0p5pixel)
 				fsc0p5resolution1label = "%.1f" % ( fsc0p5resolution1 )
 			else:
 				print("Method 1 for resolution calculation failed (there was a division by zero somewhere, or you forgot to provide --boxsize or --apix)")
 
 
 			if fsc0p143pixel and apix and boxsize:
-				fsc0p143resolution1 = old_div((float(apix) * float(boxsize)), float(fsc0p143pixel))
+				fsc0p143resolution1 = (float(apix) * float(boxsize)) / float(fsc0p143pixel)
 				fsc0p143resolution1label = "%.1f" % ( fsc0p143resolution1 )
 
 			elif not fsc0p5pixel:

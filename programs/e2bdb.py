@@ -457,7 +457,7 @@ e2bdb.py <database> --dump    Gives a mechanism to dump all of the metadata in a
 			# Nicely formatted 'ls' style display
 			cols=int(floor(80.0/(maxname+3)))
 			width=old_div(80,cols)
-			rows=int(ceil(old_div(float(len(dbs)),cols)))
+			rows=int(ceil(float(len(dbs))/cols))
 			
 			fmt="%%-%ds"%width
 			for r in range(rows):
