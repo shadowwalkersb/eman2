@@ -119,7 +119,7 @@ def mode(vals):
 	try:
 		if cnt[-1][0]==cnt[-2][0] :
 			vals.sort()
-			return vals[old_div(len(vals),2)]
+			return vals[len(vals)//2]
 	except:
 		pass
 		
@@ -215,7 +215,7 @@ def main():
 			
 			vec3=[(hypot(x[1],x[2]),x[0],x[1],x[2],x[3],x[4]) for x in vec2]
 			vec3.sort()					# sort in order of distance from center
-			vec4=vec3[:old_div(len(vec3),2)]		# take the 1/2 closest to the center
+			vec4=vec3[:len(vec3)//2]		# take the 1/2 closest to the center
 	#		vec4=vec3
 	#		for x in vec4: print x
 			

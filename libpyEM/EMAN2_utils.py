@@ -169,7 +169,7 @@ def make_missing_wedge(img, wedge=60):
 
 	#img=img.transpose(0,1,2)
 	ft=get_fft(img)
-	ind=np.indices(ft.shape)-old_div(len(ft),2)
+	ind=np.indices(ft.shape)-len(ft)//2
 	tanx=np.arctan2(ind[2], ind[0])
 	tanx=abs(abs(tanx)-np.pi/2)< (old_div(wedge,2))/180.*np.pi
 	img2=get_img(ft*tanx)

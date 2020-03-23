@@ -72,7 +72,7 @@ for d in dirs:
 			# compute FSC and overwrite original results
 			apix=a["apix_x"]
 			fsc = a.calc_fourier_shell_correlation(b)
-			third = old_div(len(fsc),3)
+			third = len(fsc)//3
 			xaxis = fsc[0:third]
 			fsc = fsc[third:2*third]
 			saxis = [old_div(x,apix) for x in xaxis]
@@ -124,7 +124,7 @@ for d in dirs:
 		#print "compute"
 		apix=a["apix_x"]
 		fsc = a.calc_fourier_shell_correlation(b)
-		third = old_div(len(fsc),3)
+		third = len(fsc)//3
 		xaxis = fsc[0:third]
 		fsc = fsc[third:2*third]
 #		error = fsc[2*third:]

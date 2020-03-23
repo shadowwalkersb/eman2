@@ -1012,8 +1012,8 @@ def correlation_peak_model(x_y, xo, yo, sigma, amp):
 def fixedbg_peak_model(x_y, sigma, amp):
 	x, y = x_y
 	if sigma <= 0: return np.ones_like(x)*np.inf
-	xo = float(old_div(len(x),2))
-	yo = float(old_div(len(y),2))
+	xo = float(len(x)//2)
+	yo = float(len(y)//2)
 	g = amp*np.exp(-(((x-xo)**2)+((y-yo)**2))/(2.*sigma**2))
 	return g.ravel()
 
@@ -1157,7 +1157,7 @@ def qual(locs,ccfs):
 	an (x0,y0,x1,y1,...)  shift array. Smaller numbers are better since that's what the simplex does"""
 	nrg=0.0
 	cen=old_div(ccfs[(0,1)]["nx"],2)
-	n=old_div(len(locs),2)
+	n=len(locs)//2
 	for i in range(n-1):
 		for j in range(i+1,n):
 			penalty = sqrt(float(n-fabs(i-j))/n)**2 # This is a recognition that we will tend to get better correlation with near neighbors in the sequence

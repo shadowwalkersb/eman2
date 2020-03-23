@@ -374,7 +374,7 @@ def main():
 				if options.symcopy:
 					for i in range(npt):
 						c=np.asarray(corr[i])
-						cls=np.argmin(c.reshape(old_div(len(corr[i]),len(models)),len(models)),1)
+						cls=np.argmin(c.reshape(len(corr[i])//len(models),len(models)),1)
 						#### the class it belongs to
 						v=cmxcls[0,i] 
 						#### index of the class of each asym-unit

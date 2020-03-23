@@ -771,7 +771,7 @@ lc is the cursor selection point in plot coords"""
 			try:
 				cmts = comments[p].split(";")
 
-				for i in range(old_div(len(cmts),2)):
+				for i in range(len(cmts)//2):
 					imn = int(cmts[2*i])
 					imf = cmts[2*i+1]
 					# The first image window will display the first 2 images when available

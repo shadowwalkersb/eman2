@@ -200,7 +200,7 @@ def main():
 				# Particle vs projection FSC
 				fsc = ptcl.calc_fourier_shell_correlation(projc)
 	
-				third = old_div(len(fsc),3)
+				third = len(fsc)//3
 				fsc=array(fsc[third:third*2])
 				for k in range(nbands): # sum the fsc into 5 range values
 					s = old_div(sum(fsc[rings[k]:rings[k+1]]),(rings[k+1]-rings[k]))

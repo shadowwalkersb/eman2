@@ -1553,7 +1553,7 @@ def plotter(xaxis,yaxis,options,name,maxX,maxY,invert=1,sort=1):
 	
 	matplotlib.pyplot.xticks( xaxis )
 	
-	stepsize = old_div(len(xaxis),10)
+	stepsize = len(xaxis)//10
 	
 	start, end = ax.get_xlim()
 

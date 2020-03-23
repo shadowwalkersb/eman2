@@ -65,7 +65,7 @@ def split_fft(img,i,box,step,out):
 
 def calcfsc(map1,map2):
 	fsc=map1.calc_fourier_shell_correlation(map2)
-	third=old_div(len(fsc),3)
+	third=len(fsc)//3
 	xaxis=fsc[0:third]
 	fsc=fsc[third:2*third]
 
@@ -179,7 +179,7 @@ def qual(locs,ccfs):
 
 	nrg=0.0
 	cen=old_div(ccfs[(0,1)]["nx"],2)
-	n=old_div(len(locs),2)
+	n=len(locs)//2
 	for i in range(n-1):
 		for j in range(i+1,n):
 #			nrg-=ccfs[(i,j)].sget_value_at_interp(int(cen+locs[j*2]-locs[i*2]),int(cen+locs[j*2+1]-locs[i*2+1]))

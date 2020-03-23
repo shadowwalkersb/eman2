@@ -176,7 +176,7 @@ def main():
 			sys.exit(1)
 		frames_hictrst = load_frames(fname,first,last,step)
 		write_frames(frames_hictrst,hcname)
-		middle = int(old_div(len(frames_hictrst),2))
+		middle = int(len(frames_hictrst)//2)
 
 		hictrst_avg = average_frames(frames_hictrst)
 		hictrst_avg.write_image("{}/hictrst_avg_noali.hdf".format(bdir))

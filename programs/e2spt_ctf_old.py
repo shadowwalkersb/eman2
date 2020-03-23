@@ -2202,7 +2202,7 @@ def sptctffit( options, apix, imagefilenames, angles, icethickness ):
 					defocuscalc = globaldefocus
 					middef = imgdefocuses[0]
 					if len(imgdefocuses) > 2:
-						middef = imgdefocuses[old_div(len(imgdefocuses),2)]
+						middef = imgdefocuses[len(imgdefocuses)//2]
 						defocuscalc = (globaldefocus+middef)/2.0
 					
 					

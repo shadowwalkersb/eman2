@@ -417,7 +417,7 @@ class TrackerControl(QtWidgets.QWidget):
 		av=av.get_clip(Region(old_div(-(pad-boxsize),2),old_div(-(pad-boxsize),2),pad,pad))
 		
 		for i,p in enumerate(stack) : 
-			p["alt"]=(i-old_div(len(stack),2))*angstep
+			p["alt"]=(i-len(stack)//2)*angstep
 		
 		# Determine a good angular step for filling Fourier space
 		fullsamp=360.0/(boxsize*pi)
@@ -518,7 +518,7 @@ class TrackerControl(QtWidgets.QWidget):
 		boxsize=stack[0]["nx"]
 		pad=good_size(int(boxsize*1.5))
 		
-		for i,p in enumerate(stack) : p["xform.projection"]=Transform({"type":"eman","alt":(i-old_div(len(stack),2))*angstep,"az":-taxis,"phi":taxis})
+		for i,p in enumerate(stack) : p["xform.projection"]=Transform({"type":"eman","alt":(i-len(stack)//2)*angstep,"az":-taxis,"phi":taxis})
 		
 		recon=Reconstructors.get("fourier", {"sym":"c1","size":(pad,pad,pad),"mode":reconmodes[mode],"verbose":True})
 		if initmodel!=None : recon.setup(initmodel,.01)
@@ -550,7 +550,7 @@ class TrackerControl(QtWidgets.QWidget):
 		if initmodel!=None : recon.setup(initmodel,.01)
 		else : recon.setup()
 
-		thr=0.7*(scores[old_div(len(scores),2)][0]+scores[old_div(len(scores),2)-1][0]+scores[old_div(len(scores),2)+1][0])/3;		# this is rather arbitrary
+		thr=0.7*(scores[len(scores)//2][0]+scores[len(scores)//2-1][0]+scores[len(scores)//2+1][0])/3;		# this is rather arbitrary
 		# First pass to assess qualities and normalizations
 		for i,p in enumerate(stack):
 			if scores[i][0]<thr : 
@@ -619,7 +619,7 @@ class TrackerControl(QtWidgets.QWidget):
 
 		stack=self.get_boxed_stack()
 		for i,p in enumerate(stack) : 
-			ort=Transform({"type":"eman","alt":(i-old_div(len(stack),2))*angstep,"az":-taxis,"phi":taxis})		# is this right ?
+			ort=Transform({"type":"eman","alt":(i-len(stack)//2)*angstep,"az":-taxis,"phi":taxis})		# is this right ?
 			curshape=self.tiltshapes[i].getShape()
 			
 			# Read the reference at the user specified size, then pad it a bit

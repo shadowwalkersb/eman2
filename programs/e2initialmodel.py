@@ -236,7 +236,7 @@ class InitMdlTask(JSTask):
 			bslst.reverse()
 			aptcls=[]
 #			for i in range(len(ptcls)*3/4):		# We used to include 3/4 of the particles
-			for i in range(old_div(len(ptcls)*7,8)):
+			for i in range(len(ptcls)*7//8):
 				n=ptcls[bslst[i][1]]["match_n"]
 				quals.append(ptcls[bslst[i][1]]["match_qual"])
 				aptcls.append(ptcls[bslst[i][1]].align("rotate_translate_flip",projs[n][0],{},"ccc",{}))

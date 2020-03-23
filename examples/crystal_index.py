@@ -370,9 +370,9 @@ def generate_lattice(nx,apix,max_radius,a,b,c,alpha,beta,gamma):
 	bstars = np.arange(0,const+bstar,bstar,dtype=np.float)
 	cstars = np.arange(0,const+cstar,cstar,dtype=np.float)
 
-	astars -= astars[old_div(len(astars),2)] # center about origin
-	bstars -= bstars[old_div(len(bstars),2)]
-	cstars -= cstars[old_div(len(cstars),2)]
+	astars -= astars[len(astars)//2] # center about origin
+	bstars -= bstars[len(bstars)//2]
+	cstars -= cstars[len(cstars)//2]
 
 	h_inds = old_div(astars, astar)
 	k_inds = old_div(bstars, bstar)

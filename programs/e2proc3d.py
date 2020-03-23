@@ -440,7 +440,7 @@ def main():
 			elif option1 == "calcfsc" :
 				datafsc=EMData(options.calcfsc)
 				fsc = data.calc_fourier_shell_correlation(datafsc)
-				third = old_div(len(fsc),3)
+				third = len(fsc)//3
 				xaxis = fsc[0:third]
 				fsc = fsc[third:2*third]
 				saxis = [old_div(x,apix) for x in xaxis]

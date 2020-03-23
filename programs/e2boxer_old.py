@@ -2762,7 +2762,7 @@ class GaussBoxer(object):
 		del small_img
 		peaks = ccf.peak_ccf( old_div(boxsize,2)-1)
 		del ccf
-		npeak = old_div(len(peaks),3)
+		npeak = len(peaks)//3
 		print("npeak: ", npeak)
 		boxes = []
 		ccfs = [] # ccfs are used to set threshold_low adn threshold_high after the particles have been picked. see set_data in CcfHistogram in sxboxer and set_params_of_gui in pawelautoboxer in boxertools.py
@@ -3020,7 +3020,7 @@ class GaussBoxer(object):
 		del small_img
 		peaks = ccf.peak_ccf( old_div(boxsize,2)-1)
 		del ccf
-		npeak = old_div(len(peaks),3)
+		npeak = len(peaks)//3
 		print("npeak: ", npeak)
 		boxes = []
 		for i in range(npeak):

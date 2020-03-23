@@ -3214,7 +3214,7 @@ class PawelAutoBoxer(AutoBoxer):
 		
 		ccf = filt_gaussl( img, old_div(self.gauss_width,self.box_size) )
 		peaks = ccf.peak_ccf( old_div(self.box_size,2)-1)
-		npeak = old_div(len(peaks),3)
+		npeak = len(peaks)//3
 		#print npeak, " boxes picked"
 
 		boxhalf = old_div(self.box_size,2)

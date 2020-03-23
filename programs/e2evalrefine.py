@@ -108,7 +108,7 @@ def pqual(n,ptclincls,jsd,includeproj,verbose):
 				# Particle vs projection FSC
 				fsc = ptcl.calc_fourier_shell_correlation(projc)
 
-				third = old_div(len(fsc),3)
+				third = len(fsc)//3
 				fsc=array(fsc[third:third*2])
 #					snr=fsc/(1.0-fsc)
 				result[(truenum,it)]=[old_div(sum(fsc[rings[k]:rings[k+1]]),(rings[k+1]-rings[k])) for k in range(4)]+[alt,az,n,defocus,ptcl["data_source"],ptcl["data_n"]]		# sum the fsc into 5 range values
@@ -322,7 +322,7 @@ def main():
 
 						# Particle vs projection FSC
 						fsc = ptcl.calc_fourier_shell_correlation(projc)
-						third = old_div(len(fsc),3)
+						third = len(fsc)//3
 						fsc=array(fsc[third:third*2])
 						try: esum+= sum(fsc[ring[0]:ring[1]])
 						except:
@@ -374,7 +374,7 @@ def main():
 
 						# Particle vs projection FSC
 						fsc = ptcl.calc_fourier_shell_correlation(projc)
-						third = old_div(len(fsc),3)
+						third = len(fsc)//3
 						fsc=array(fsc[third:third*2])
 						esum+= sum(fsc[ring[0]:ring[1]])
 
@@ -629,7 +629,7 @@ def main():
 				
 				fsc = cl.calc_fourier_shell_correlation(pr)
 
-				third = old_div(len(fsc),3)
+				third = len(fsc)//3
 				fsc=array(fsc[third:third*2])
 				#sums=[sum(fsc[rings[k]:rings[k+1]])/(rings[k+1]-rings[k]) for k in xrange(4)]		# sum the fsc into 5 range values
 				#fout.write("{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t# {};{};{};{}\n".format(sums[0],sums[1],sums[2],sums[3],cl["ptcl_repr"],alt,az,phi,sums[0]/(1.0001-sums[0])/(cl["ptcl_repr"]+0.01),sums[1]/(1.0001-sums[1])/(cl["ptcl_repr"]+0.01),sums[2]/(1.0001-sums[2])/(cl["ptcl_repr"]+0.01),i,classes[eo],i,projections[eo]))
@@ -639,7 +639,7 @@ def main():
 				if options.evalclassdetail and eo==0:
 					out=open("cfsc{:04d}.txt".format(i),"w")
 					fsc=cl.calc_fourier_shell_correlation(pr)
-					third=old_div(len(fsc),3)
+					third=len(fsc)//3
 					ssnr=[fsc[third+1]]*5+fsc[third+1:third*2]+[fsc[third*2-1]]*4		# we extend the list by replication to make the running average more natural
 #					print(len(ssnr),third)
 					npnt=[fsc[third*2+1]]*5+fsc[third*2+1:third*3]+[fsc[-1]]*4	# number of points in each average

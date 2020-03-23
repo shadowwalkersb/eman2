@@ -171,7 +171,7 @@ class EM3DFontModel(EMLightsDrawer,EM3DModel,DynamicFonts):
 			spfac.append(spfac_i)
 		if ifevalref%2!=0:
 			spfac.remove(0)
-			while i<old_div(len(spfac),2):
+			while i<len(spfac)//2:
 				i = i+1
 				spfac[i-1]=spfac[i-1]+0.5
 			while (i<len(spfac)):

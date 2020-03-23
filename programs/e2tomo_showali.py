@@ -98,7 +98,7 @@ class Boxes(EMShape):
 		glPointSize(5)
 		glEnableClientState(GL_VERTEX_ARRAY)
 		glVertexPointerf([ps[i] for i in range(0,len(ps),2)])
-		glDrawArrays(GL_POINTS, 0, old_div(len(ps),2))
+		glDrawArrays(GL_POINTS, 0, len(ps)//2)
 
 		return
 

@@ -543,7 +543,7 @@ def fixnegbg(bg_1d,im_1d,ds):
 
 	# Find the worst negative peak
 	ratio=1.0
-	for i in range(start,old_div(len(bg_1d),2)):
+	for i in range(start,len(bg_1d)//2):
 		if (im_1d[i]+im_1d[i+1]+im_1d[i-1])/(bg_1d[i]+bg_1d[i+1]+bg_1d[i-1])<ratio :
 			ratio=(im_1d[i]+im_1d[i+1]+im_1d[i-1])/(bg_1d[i]+bg_1d[i+1]+bg_1d[i-1])
 

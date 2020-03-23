@@ -699,7 +699,7 @@ Based on your requested resolution and box-size, modified by --speed, I will use
 
 		# so we now have an average FSC curve between map 1 and each of the others (we should probably do all vs all, but don't)
 		fm/=(options.nmodels-1.0)
-		third = old_div(len(fm),3)
+		third = len(fm)//3
 		xaxis = fm[0:third]
 		fsc = fm[third:2*third]
 		saxis = [old_div(x,apix) for x in xaxis]

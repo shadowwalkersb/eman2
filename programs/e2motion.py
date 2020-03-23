@@ -487,7 +487,7 @@ class EMMotion(QtWidgets.QMainWindow):
 		self.ptclmean=m
 		self.ptclsigma=s
 		
-		self.wvsnum.setRange(1,old_div(len(self.particles),10))
+		self.wvsnum.setRange(1,len(self.particles)//10)
 				
 		self.newThresh()
 

@@ -2104,9 +2104,9 @@ def get_small_example_form_params():
 
 def get_example_table_form_params():
 	params = get_example_form_params()
-	p1 = params[0:old_div(len(params),3)]
-	p2 = params[old_div(len(params),3):old_div(2*len(params),3)]
-	p3 = params[old_div(2*len(params),3):]
+	p1 = params[0:len(params)//3]
+	p2 = params[len(params)//3:2*len(params)//3]
+	p3 = params[2*len(params)//3:]
 	
 	par =[]
 	par.append(["Input", p1])

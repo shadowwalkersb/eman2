@@ -268,7 +268,7 @@ class EMSimmxExplorer(EM3DSymModel):
 
 				frc=projection.calc_fourier_shell_correlation(particle)
 				frcm=projection.calc_fourier_shell_correlation(particle_masked)
-				nf=old_div(len(frc),3)
+				nf=len(frc)//3
 				self.frc_display.set_data(([old_div(i,apix) for i in frc[:nf]],frc[nf:nf*2]),"frc")
 				self.frc_display.set_data(([old_div(i,apix) for i in frcm[:nf]],frcm[nf:nf*2]),"frcm")
 

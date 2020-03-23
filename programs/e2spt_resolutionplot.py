@@ -359,7 +359,7 @@ def fscaverager(options,curves,outname):
 def calcfsc(v1,v2,fscfilename,options):
 
 	fsc = v1.calc_fourier_shell_correlation(v2)
-	third = old_div(len(fsc),3)
+	third = len(fsc)//3
 	xaxis = fsc[0:third]
 	fsc = fsc[third:2*third]
 	apix=v1['apix_x']

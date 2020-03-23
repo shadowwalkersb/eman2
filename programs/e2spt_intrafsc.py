@@ -165,7 +165,7 @@ def fscOddVsEven( options, filename, odd, even ):
 	apix = odd['apix_x']
 	
 	fsc = odd.calc_fourier_shell_correlation( even )
-	third = old_div(len( fsc ),3)
+	third = len( fsc )//3
 	xaxis = fsc[0:third]
 	fsc = fsc[ third:2*third ]
 	saxis = [ old_div(x,apix) for x in xaxis ]

@@ -193,7 +193,7 @@ def main():
 	if options.verbose : print("Best map: ",used[0])
 	
 	# we add in 1/3 more of the best matching volumes
-	for n in range(old_div(len(allbest),3)):
+	for n in range(len(allbest)//3):
 		# Find the best match to the current sum and add it in
 		best=(1.0,None)
 		for i in range(len(allbest)):

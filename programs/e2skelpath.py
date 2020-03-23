@@ -74,9 +74,9 @@ def main():
 	mappoints=[getNearest(i[:3],3,skeleton) for i in dejavupoints]
 	mappoints+=[getNearest(i[3:],3,skeleton) for i in dejavupoints]	
 
-	for i in range(old_div(len(mappoints),2)):
-		print("Helix %d:  "%(i), mappoints[i+old_div(len(mappoints),2)], mappoints[i])
-		erasePairs(skeleton,mappoints[i+old_div(len(mappoints),2)],((mappoints[i],()),),i+2)		
+	for i in range(len(mappoints)//2):
+		print("Helix %d:  "%(i), mappoints[i+len(mappoints)//2], mappoints[i])
+		erasePairs(skeleton,mappoints[i+len(mappoints)//2],((mappoints[i],()),),i+2)		
 		
 		"""startpoint=mappoints[i+len(mappoints)/2]
 		endpoint=mappoints[i]
@@ -224,7 +224,7 @@ def erasePairs(skeleton,target,seeds,n):
 def findPath(skeleton,mappoints,seeds,it,pairs,n):
 	# Iterate over all current trace edge points
 	newseeds=[]
-	mp2=old_div(len(mappoints),2)
+	mp2=len(mappoints)//2
 	for s,p in seeds:
 		# search nearest neighbors to continue trace
 

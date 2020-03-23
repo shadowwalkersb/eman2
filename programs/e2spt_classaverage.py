@@ -2156,7 +2156,7 @@ def calcFsc( options, img1, img2, fscfile ):
 	#	img2fsc.write_image(options.path +'/vol4fsc2.hdf',0)
 		
 	fsc = img1fsc.calc_fourier_shell_correlation( img2fsc )
-	third = old_div(len( fsc ),3)
+	third = len( fsc )//3
 	xaxis = fsc[0:third]
 	fsc = fsc[third:2*third]
 	saxis = [old_div(x,apix) for x in xaxis]

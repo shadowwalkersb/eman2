@@ -1004,7 +1004,7 @@ class boxerConvNet(QtCore.QObject):
 		pks=final.peak_ccf(old_div(sz,4))
 		
 		if nnet_classify==None:
-			tstout=np.ones(old_div(len(pks),3)+1)
+			tstout=np.ones(len(pks)//3+1)
 		else:
 			coord=np.array(pks).reshape((-1,3))
 			#data=[]

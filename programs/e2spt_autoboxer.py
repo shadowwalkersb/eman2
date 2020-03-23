@@ -1550,7 +1550,7 @@ def rmsdpruner( datar, options ):
 	data = list(datar)     #list of lists with per particle info [ [score1,x1,y1,z1], [score2,x2,y2,z2],...,[scoren,xn,yn,zn] ]
 	print("\nin rmsdpruner data length is", len(data))
     #perform all-vs-all comparisons with two nested loops
-	numcomp = old_div((len(data)*(len(data)-1)),2)
+	numcomp = (len(data)*(len(data)-1))//2
 	print("which will require %d comparisons\n" %(numcomp))
 	cn=0
 	ntoremove = 0
