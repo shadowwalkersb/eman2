@@ -1978,7 +1978,7 @@ class EMCamera(object):
 		Changes projection matrix to perspective
 		"""
 		self.fovy = fovy
-		self.perspective_z = old_div(-(old_div(boundingbox*2,screenfraction)),(2*math.tan(math.radians(old_div(self.fovy,2)))))  + boundingbox
+		self.perspective_z = -(old_div(boundingbox*2,screenfraction))/(2*math.tan(math.radians(old_div(self.fovy,2))))  + boundingbox
 		self.usingortho = False
 		
 	def useOrtho(self, zclip):
