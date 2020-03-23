@@ -288,7 +288,9 @@ funcs_float = [
 ]
 
 def is_bin_op_float(node):
-	if not isinstance(node, ast.BinOp):
+	if isinstance(node, ast.BinOp):
+		return is_bin_op_float(node.left) or is_bin_op_float(node.right)
+	else:
 		return any(f(node) for f in funcs_float)
 
 funcs_int = [
