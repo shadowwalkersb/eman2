@@ -139,8 +139,8 @@ from functools import partial
 
 
 func_list_and_commit_messages = [[
-	[is_num_float,   	"float literal"],
-	# [is_func_float,  	"float func"],
+	# [is_num_float,   	"float literal"],
+	[is_func_float,  	"float func"],
 	# [is_math_const,  	"math const"],
 	# [is_np_const,    	"np const"],
 	# [is_math_func,   	"math func"],
