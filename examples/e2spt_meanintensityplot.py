@@ -177,7 +177,7 @@ def main():
 		n1 = len( intensities1 )
 		n2 = len( intensities2 )
 		
-		zscore = old_div(( means[0]-means[1] ), np.sqrt( old_div((stds[0]*stds[0]),n1) + old_div((stds[1]*stds[1]),n2) ))
+		zscore = ( means[0]-means[1] ) / np.sqrt( old_div((stds[0]*stds[0]),n1) + old_div((stds[1]*stds[1]),n2) )
 		
 		g = open(options.path + '/MIboth_INFO.txt','w')
 		zscoreline = 'zscore=' + str(zscore)+' for ' + datafile1 + ' vs ' + datafile2 + ' \n'

@@ -310,7 +310,7 @@ class Microscope(QtOpenGL.QGLWidget):
 				rawplot=[r0, raw0]
 			
 			#rawplot=[np.arange(sz)-sz/2, raw0]
-			self.pltwindow.set_data([np.arange(sz)-old_div(sz,2), old_div(abs(a0),np.max(abs(a0)))], "scatter", linetype=0)
+			self.pltwindow.set_data([np.arange(sz)-old_div(sz,2), abs(a0)/np.max(abs(a0))], "scatter", linetype=0)
 			self.pltwindow.set_data(rawplot, "raw", linetype=0)
 			#self.pltwindow.set_data([np.arange(sz)-sz/2, abs(alldata[1][0,:])], "parallel", linetype=0)
 			#self.pltwindow.set_data([np.arange(sz)-sz/2, 

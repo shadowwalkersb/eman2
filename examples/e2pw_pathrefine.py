@@ -120,7 +120,7 @@ def interp_points(pts, npt=50, pmin=0., pmax=1.):
 	pos=np.append(0,np.cumsum(np.linalg.norm(np.diff(pts, axis=0), axis=1)))
 	fun_ax=interp1d(pos, pts.T, fill_value='extrapolate')
 	mx=np.max(pos)
-	rg=old_div(np.arange(npt,dtype=float),(npt-1))*(pmax-pmin)*mx + pmin*mx
+	rg=np.arange(npt,dtype=float)/(npt-1)*(pmax-pmin)*mx + pmin*mx
 	ax=fun_ax(rg).T
 	return ax
 

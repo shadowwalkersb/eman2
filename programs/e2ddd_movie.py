@@ -1057,7 +1057,7 @@ def neighbormean_origin(a): # replace origin pixel with mean of surrounding pixe
 def find_com(ccf): # faster alternative to gaussian fitting...less robust in theory.
 	thresh = (np.ones(ccf.shape) * np.mean(ccf))+2.5*np.std(ccf)
 	m = np.greater(ccf,thresh) * 1.0
-	m = old_div(m, np.sum(m))
+	m = m / np.sum(m)
 	# marginal distributions
 	dx = np.sum(m, 1)
 	dy = np.sum(m, 0)

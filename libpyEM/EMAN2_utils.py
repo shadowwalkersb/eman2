@@ -74,9 +74,9 @@ def numpy2pdb(data,fname,occ=[],bfac=[],chainid=[], model=0, residue=[]):
 
 def norm_vec(vec):
 	if len(vec.shape)==1:
-		return old_div(vec,np.sqrt(np.sum(vec**2)))
+		return vec/np.sqrt(np.sum(vec**2))
 	else:
-		return (old_div(vec.T,np.sqrt(np.sum(vec**2,axis=1)))).T
+		return (vec.T/np.sqrt(np.sum(vec**2,axis=1))).T
 	
 	
 def get_fft(img):
@@ -90,7 +90,7 @@ def interp_points(pts, npt=50, pmin=0., pmax=1.):
     pos=np.append(0,np.cumsum(np.linalg.norm(np.diff(pts, axis=0), axis=1)))
     fun_ax=interp1d(pos, pts.T, fill_value='extrapolate')
     mx=np.max(pos)
-    rg=old_div(np.arange(npt,dtype=float),(npt-1))*(pmax-pmin)*mx + pmin*mx
+    rg=np.arange(npt,dtype=float)/(npt-1)*(pmax-pmin)*mx + pmin*mx
     ax=fun_ax(rg).T
     return ax
 
@@ -126,7 +126,7 @@ def line2line_angle(a0, a1, b0, b1):
 	a=a1-a0
 	b=b1-b0
 	c=b0-a0
-	lang=old_div(np.dot(a,b),(norm(a)*norm(b)))
+	lang=np.dot(a,b)/(norm(a)*norm(b))
 	return lang
 
 	

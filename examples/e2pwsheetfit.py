@@ -129,7 +129,7 @@ def main():
 			q2=pts[j+1,:]
 			l1=p2-p1
 			l2=q2-q1
-			ang[i,j]=abs(old_div(np.dot(l1,l2),(np.linalg.norm(l1)*np.linalg.norm(l2))))
+			ang[i,j]=abs(np.dot(l1,l2)/(np.linalg.norm(l1)*np.linalg.norm(l2)))
 	
 	#calculate score based on the angle between neighbor bonds
 	score=np.zeros(na,float)

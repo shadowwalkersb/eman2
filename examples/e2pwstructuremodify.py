@@ -152,7 +152,7 @@ def calc_score(ncent,i,mrc,wd=1,wm=8,wa=2,ww=0,bl=0):
 	
 	da=[(x[0]-x[1]) for x in zip(posi, posb)]
 	db=[(x[0]-x[1]) for x in zip(posi, posf)]
-	ang=old_div(np.dot(da,db),(distance(posb,posi)*distance(posf,posi)))	# angle
+	ang=np.dot(da,db)/(distance(posb,posi)*distance(posf,posi))	# angle
 	mrcp=get_density(mrc,posi,posb,posf)# density at atom
 	dista=abs(distance(posb,posi)-bl)
 	distb=abs(distance(posi,posf)-bl)
@@ -233,7 +233,7 @@ def main():
 	ncent=np.empty((naa,3),float)
 	
 	for i in range(naa):
-		ncent[i,:]=old_div(points[i],np.array([apix_x,apix_y,apix_z]))#+np.array([SX/2,SY/2,SZ/2])
+		ncent[i,:]=points[i]/np.array([apix_x,apix_y,apix_z])#+np.array([SX/2,SY/2,SZ/2])
 	thresh=.3
 	neark=5
 	noiset=1000

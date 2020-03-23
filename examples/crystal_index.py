@@ -330,7 +330,7 @@ def twoD_Gaussian(x_y, xo, yo, amplitude, sigma_x, sigma_y, theta, offset=0.0):
 	xo = float(xo)
 	yo = float(yo)
 	a = old_div((np.cos(theta)**2),(2*sigma_x**2)) + old_div((np.sin(theta)**2),(2*sigma_y**2))
-	b = old_div(-(np.sin(2*theta)),(4*sigma_x**2)) + old_div((np.sin(2*theta)),(4*sigma_y**2))
+	b = old_div(-(np.sin(2*theta)),(4*sigma_x**2)) + (np.sin(2*theta))/(4*sigma_y**2)
 	c = old_div((np.sin(theta)**2),(2*sigma_x**2)) + old_div((np.cos(theta)**2),(2*sigma_y**2))
 	g = offset + amplitude*np.exp( - (a*((x-xo)**2) + 2*b*(x-xo)*(y-yo) + c*((y-yo)**2)))
 	return g.ravel()
@@ -414,7 +414,7 @@ def compare(exper,data,min_dist,w1,w2):
 		else: dist.append(m)
 		cdist[i,:] = np.inf
 		cdist[:,j] = np.inf
-	proximity = old_div(np.sum(dist),len(dist))
+	proximity = np.sum(dist)/len(dist)
 	tree_exper = scipy.spatial.cKDTree(exper[:,:2])
 	tree_data = scipy.spatial.cKDTree(data[:,:2])
 	pairs = tree_exper.query_ball_tree(tree_data,r=min_dist)

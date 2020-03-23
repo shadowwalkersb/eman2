@@ -372,14 +372,14 @@ def calc_grad(ballrec, options, data, orient):
 	#### variance of gradient
 	nmm=np.mean(gd_all,axis=0)**2
 	var=np.asmatrix(np.sum(nmm.reshape(npballs.shape),axis=1)).T
-	var=old_div(var,np.max(var))*100
+	var=var/np.max(var)*100
 	tosave=np.hstack([npballs, var])
 	varsave=os.path.join(options.path,"grad_amp.pdb")
 	print("Gradient amplitude per Gaussian is saved to {}.".format(varsave))
 	numpy2pdb(tosave, varsave)
 	nmm=np.std(gd_all,axis=0)
 	var=np.asmatrix(np.sum(nmm.reshape(npballs.shape),axis=1)).T
-	var=old_div(var,np.max(var))*100
+	var=var/np.max(var)*100
 	tosave=np.hstack([npballs, var])
 	varsave=os.path.join(options.path,"grad_std.pdb")
 	numpy2pdb(tosave, varsave)

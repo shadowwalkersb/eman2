@@ -196,7 +196,7 @@ def tf_build_cnn(kernels, imgsz=64, batchsz=10, meanout=False):
 	
 	convnet = type('convnet', (), {})() ### an empty object
 	nlayer=len(kernels)
-	outsz=(old_div(imgsz,np.prod([k[2] for k in kernels])))
+	outsz=(imgsz/np.prod([k[2] for k in kernels]))
 	tf_data = tf.placeholder(tf.float32, shape=[None, imgsz*imgsz], name="tfdata")
 	if meanout:
 		tf_label = tf.placeholder(tf.float32, shape=[None], name="tflabel")
