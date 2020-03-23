@@ -322,8 +322,8 @@ class EMBootStrappedAverages(object):
 				image_2_weight = 1
 				if image_2.has_attr("total_inc"): image_2_weight = image_2["total_inc"]
 				total_weight = image_1_weight+image_2_weight
-				image_1.mult(old_div(float(image_1_weight),total_weight))
-				image_2.mult(old_div(float(image_2_weight),total_weight))
+				image_1.mult(float(image_1_weight)/total_weight)
+				image_2.mult(float(image_2_weight)/total_weight)
 				
 				d = {}
 				d["type"] = "eman"
@@ -714,13 +714,13 @@ class EMTomoAlignTask(object):
 		progress = 0.0
 		max_progress = 3
 		progress += 1.0
-		progress_callback(int(100*(old_div(progress,float(max_progress)))))
+		progress_callback(int(100*(progress/float(max_progress))))
 
 		solns = probe.xform_align_nbest(self.align_data[0],target,self.align_data[1],self.nsoln,self.align_cmp_data[0],self.align_cmp_data[1])
 		#ali = probe.align(self.align_data[0],target,self.align_data[1],self.align_cmp_data[0],self.align_cmp_data[1])
 		
 		progress += 1.0
-		progress_callback(int(100*(old_div(progress,float(max_progress)))))
+		progress_callback(int(100*(progress/float(max_progress))))
 		if self.ralign_data != None:
 			for s in solns:
 				self.ralign_data[1]["xform.align3d"] = s["xform.align3d"]
@@ -738,7 +738,7 @@ class EMTomoAlignTask(object):
 			probe.cuda_unlock()
 		
 		progress += 1.0
-		progress_callback(int(100*(old_div(progress,float(max_progress)))))
+		progress_callback(int(100*(progress/float(max_progress))))
 	
 		results = {}
 		results["cmp"] = solns[0]["score"]

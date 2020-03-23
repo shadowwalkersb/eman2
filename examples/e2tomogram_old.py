@@ -55,8 +55,8 @@ of the center. maxrange allows calculating a limited distance from the center"""
 									# allow, but we actually allow 2x this
 	nx=int(old_div((sx-2*bigpad),box))*2-1	# this insures that we have a box at the origin
 	ny=int(old_div((sy-2*bigpad),box))*2-1
-	dx=old_div((sx-padbox),float(nx-1))
-	dy=old_div((sy-padbox),float(ny-1))
+	dx=(sx-padbox)/float(nx-1)
+	dy=(sy-padbox)/float(ny-1)
 	ret={}
 	for y in range(ny):
 		for x in range(nx):

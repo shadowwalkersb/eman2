@@ -213,8 +213,8 @@ def main():
 	if not options.stopflip:
 		print("Flip detection accuracy", float(options.num-flip_errors)/options.num*100,"%")
 	if options.ralign:
-		print("Mean refine az error",old_div(refine_az_error,float(options.num-flip_errors)))
-		print("Mean refine dx error",old_div(refine_dx_error,float(options.num-flip_errors)))
-		print("Mean refine dy error",old_div(refine_dy_error,float(options.num-flip_errors)))
+		print("Mean refine az error",refine_az_error/float(options.num-flip_errors))
+		print("Mean refine dx error",refine_dx_error/float(options.num-flip_errors))
+		print("Mean refine dy error",refine_dy_error/float(options.num-flip_errors))
 if __name__ == "__main__":
     main()

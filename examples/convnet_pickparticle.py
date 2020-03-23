@@ -223,7 +223,7 @@ def main():
 				e.div(float(mid_std))
 				e=e.get_clip(Region(old_div((convnet.outsize-shape[0]),2),old_div((convnet.outsize-shape[0]),2),shape[0],shape[0]))
 				#print float(shape[0])/float(convnet.outsize)
-				e.scale(old_div(float(shape[0]+8),float(convnet.outsize)))
+				e.scale(float(shape[0]+8)/float(convnet.outsize))
 				e["label"]=float(lb[t])
 				e.write_image(fname,-1)
 
@@ -366,8 +366,8 @@ def box_particles(convnet,options):
 		e = EMNumPy.numpy2em(img.astype("float32"))
 		e.process_inplace("normalize")
 		newshp=convnet.outsize
-		e.scale(old_div(float(newshp),float(shape)))
-		ori_shape=[i*(old_div(float(newshp),float(shape))) for i in ori_shape]
+		e.scale(float(newshp)/float(shape))
+		ori_shape=[i*(float(newshp)/float(shape)) for i in ori_shape]
 		e=e.get_clip(Region(old_div((shape-newshp),2),old_div((shape-newshp),2),newshp,newshp))
 		e=e.get_clip(Region(old_div((e["nx"]-ori_shape[0]),2),old_div((e["ny"]-ori_shape[1]),2),ori_shape[0],ori_shape[1]))
 		if not isfolder: e.write_image("testresult.hdf",-1)
@@ -407,7 +407,7 @@ def box_particles(convnet,options):
 		#print pks
 		
 		box=[]
-		scale=(old_div(float(shape),float(newshp)))*options.shrink
+		scale=(float(shape)/float(newshp))*options.shrink
 		for i in range(0,len(pks),3):
 			#print i//3,pks[i]
 			if pks[i]<options.boxptcl_minscore:

@@ -170,7 +170,7 @@ and make sure the unaligned average looks reasonable.
 		
 		if options.shrink==0:
 			tm=EMData(tomoname,0,True)
-			shrinkz=old_div(float(tm["nz"]),e["nz"])
+			shrinkz=float(tm["nz"])/e["nz"]
 			shrinkxy=old_div(tm["nx"],e["nx"])
 			print("Shrink by {} in x-y plane, and shrink {} in z axis".format(shrinkxy, shrinkz))
 		else:

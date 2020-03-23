@@ -247,7 +247,7 @@ def normintensities( intensitiesR, minval=0, maxval=0 ):
 	intensitiesNormalizedMax = []
 	i=0
 	for x in range(len(intensitiesNormalizedMin)):
-		intenNormMax = old_div(float(intensitiesNormalizedMin[x]), imax)
+		intenNormMax = float(intensitiesNormalizedMin[x]) / imax
 		#print "for intenNorm %d value is %f" %(i,intenNormMax)
 		intensitiesNormalizedMax.append( intenNormMax )
 		i+=1

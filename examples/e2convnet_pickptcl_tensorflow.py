@@ -59,7 +59,7 @@ def load_ptcls(ref0, ref1, sz=64, makegaussian=True):
 
 	nref_target=500
 	bxsz=ref0[0]["nx"]
-	shrinkfac=old_div(float(bxsz),float(sz))
+	shrinkfac=float(bxsz)/float(sz)
 
 	data=[] ### particles in flattened numpy array
 	lbs=[]  ### labels in flattened numpy array

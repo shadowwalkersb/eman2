@@ -296,7 +296,7 @@ def build_projection_operator( angles, l_x, n_dir=None, l_det=None, subpix=1, of
 	X *= 1./subpix
 	Y *= 1./subpix
 	Xbig, Ybig = _generate_center_coordinates(l_det)
-	Xbig *= old_div((l_x - 2*offset), float(l_det))
+	Xbig *= (l_x - 2*offset) / float(l_det)
 	orig = Xbig.min()
 	labels = None
 	if subpix > 1:
@@ -312,7 +312,7 @@ def build_projection_operator( angles, l_x, n_dir=None, l_det=None, subpix=1, of
 		# rotate data pixels centers
 		Xrot = np.cos(angle*np.pi/180.) * X - np.sin(angle*np.pi/180.) * Y
 		# compute linear interpolation weights
-		inds, dat_inds, w = _weights_fast(Xrot, dx=old_div((l_x - 2*offset),float(l_det)), orig=orig, labels=labels)
+		inds, dat_inds, w = _weights_fast(Xrot, dx=(l_x - 2*offset)/float(l_det), orig=orig, labels=labels)
 		# crop projections outside the detector
 		mask = np.logical_and(inds >= 0, inds < l_det)
 		weights.append(w[mask])

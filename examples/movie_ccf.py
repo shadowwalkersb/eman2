@@ -184,7 +184,7 @@ def qual(locs,ccfs):
 		for j in range(i+1,n):
 #			nrg-=ccfs[(i,j)].sget_value_at_interp(int(cen+locs[j*2]-locs[i*2]),int(cen+locs[j*2+1]-locs[i*2+1]))
 			# This is a recognition that we will tend to get better correlation with near neighbors in the sequence
-			nrg-=ccfs[(i,j)].sget_value_at_interp(int(cen+locs[j*2]-locs[i*2]),int(cen+locs[j*2+1]-locs[i*2+1]))*sqrt(old_div(float(n-fabs(i-j)),n))
+			nrg-=ccfs[(i,j)].sget_value_at_interp(int(cen+locs[j*2]-locs[i*2]),int(cen+locs[j*2+1]-locs[i*2+1]))*sqrt(float(n-fabs(i-j))/n)
 
 #	print nrg
 	return nrg
@@ -215,7 +215,7 @@ quals=[0]*n			# quality of each frame based on its correlation peak summed over 
 cen=old_div(csum2[(0,1)]["nx"],2)
 for i in range(n-1):
 	for j in range(i+1,n):
-		val=csum2[(i,j)].sget_value_at_interp(int(cen+locs[j*2]-locs[i*2]),int(cen+locs[j*2+1]-locs[i*2+1]))*sqrt(old_div(float(n-fabs(i-j)),n))
+		val=csum2[(i,j)].sget_value_at_interp(int(cen+locs[j*2]-locs[i*2]),int(cen+locs[j*2+1]-locs[i*2+1]))*sqrt(float(n-fabs(i-j))/n)
 		quals[i]+=val
 		quals[j]+=val
 

@@ -72,7 +72,7 @@ class boxerConvNet(object):
 		nnet_savename="nnet_pickptcls_2cls.hdf"
 		bxsz=refs0[0]["nx"]
 		sz=64
-		shrinkfac=old_div(float(bxsz),float(sz))
+		shrinkfac=float(bxsz)/float(sz)
 		
 		print("Importing dependencies...")
 		if not hasattr(boxerConvNet,'import_done'):
@@ -211,7 +211,7 @@ class boxerConvNet(object):
 		
 		nnet_savename="nnet_pickptcls_2cls.hdf"
 		sz=64
-		shrinkfac=old_div(float(bxsz),float(sz))
+		shrinkfac=float(bxsz)/float(sz)
 		
 		if os.path.isfile(nnet_savename)==False:
 			print("Cannot find saved network, exit...")
@@ -372,7 +372,7 @@ class boxerConvNet(object):
 		nnet_savename="nnet_pickptcls_2cls.hdf"
 		#bxsz=goodrefs[0]["nx"]
 		sz=64
-		shrinkfac=old_div(float(bxsz),float(sz))
+		shrinkfac=float(bxsz)/float(sz)
 		
 		## need the micrograph size to pad the kernels
 		fsp=filenames[0]#.split()[1]

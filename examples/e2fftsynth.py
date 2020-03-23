@@ -295,7 +295,7 @@ class GUIFourierSynth(QtWidgets.QWidget):
 		oversamp=int(self.voversamp.getValue())
 		samples=int(cell*ncells*oversamp)
 		
-		self.xvals=[old_div(xn,float(oversamp)) for xn in range(samples)]
+		self.xvals=[xn/float(oversamp) for xn in range(samples)]
 		self.total.set_size(samples)
 		self.total.to_zero()
 		for i in range(nsin+1):
@@ -303,7 +303,7 @@ class GUIFourierSynth(QtWidgets.QWidget):
 			if i==0: 
 				self.curves[i].to_one()
 				if self.wpha[0].getValue()>180.0 : self.curves[i].mult(-1.0)
-			else: self.curves[i].process_inplace("testimage.sinewave",{"wavelength":old_div(cell*oversamp,float(i)),"phase":self.wpha[i].getValue()*pi/180.0})
+			else: self.curves[i].process_inplace("testimage.sinewave",{"wavelength":cell*oversamp/float(i),"phase":self.wpha[i].getValue()*pi/180.0})
 			self.curves[i].mult(self.wamp[i].getValue())
 			
 			self.total.add(self.curves[i])

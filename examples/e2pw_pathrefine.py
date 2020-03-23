@@ -233,7 +233,7 @@ def calc_shortest_path(path, pts, dst, d0, pval, gap=5, gdsz=1.5, ngray=5., grp=
 		#a=(dd<=np.maximum(dd0[j1], dd1[j0])) * (dd>0)
 		a=(dd==np.min(dd[dd>0]))
 		
-		mult=(old_div(float(gap),realgap))
+		mult=(float(gap)/realgap)
 		shrtpath[a]+=old_div(mult,gap)
 		
 		dd0[dd0>dd0[j1]]=-1
@@ -563,7 +563,7 @@ def main():
 	ppw=pw[inv]
 	
 	if inv>0: print("Chain is reversed.", end=' ')
-	print("Match score is {}".format(old_div(ppw[0][2],float(len(path)))))
+	print("Match score is {}".format(ppw[0][2]/float(len(path))))
 
 	l=[[],[]]
 	for k in [0,1]:

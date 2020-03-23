@@ -50,7 +50,7 @@ def classify_on(fname):
 	e0=EMData(fname,0)
 	bxsz=e0["nx"]
 	sz=64
-	shrinkfac=old_div(float(bxsz),float(sz))
+	shrinkfac=float(bxsz)/float(sz)
 	convnet=load_model(nnet_savename)
 	
 	nbatch=n//tstsz+1
@@ -121,7 +121,7 @@ def do_training(args=None):
 	nnet_savename="nnet_classify.hdf"
 	bxsz=goodrefs[0]["nx"]
 	sz=64
-	shrinkfac=old_div(float(bxsz),float(sz))
+	shrinkfac=float(bxsz)/float(sz)
 	
 	print("Setting up model ...")
 	rng = np.random.RandomState(123)
