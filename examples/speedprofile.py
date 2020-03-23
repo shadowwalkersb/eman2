@@ -49,7 +49,7 @@ def init(SIZE=96,NTT=100):
 		data[i].transform(Transform({"type":"2d","alpha":random.uniform(0,360.0),"tx":random.uniform(-5.0,5.0),"ty":random.uniform(-5.0,5.0)}))
 		data[i].add(test_image(1,size=(SIZE,SIZE)))
 		data[i].process_inplace('normalize.circlemean')
-		data[i].process_inplace('mask.sharp', {'outer_radius':old_div(data[i].get_xsize(),2)})
+		data[i].process_inplace('mask.sharp', {'outer_radius':data[i].get_xsize()//2})
 
 	return data
 

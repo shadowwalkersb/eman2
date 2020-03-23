@@ -360,13 +360,13 @@ class Box(object):
 				# WONT WORK there is no self.autoboxer
 				image = self.get_small_box_image(self.autoboxer.get_template_radius(),self.autoboxer.get_subsample_rate())
 				ali = image.calc_center_of_mass()
-				dx = -int((ali[0]+0.5-old_div(image.get_xsize(),2)))*extrasomething.get_subsample_rate()
-				dy = -int((ali[1]+0.5-old_div(image.get_ysize(),2)))*extrasomething.get_subsample_rate()
+				dx = -int((ali[0]+0.5-image.get_xsize()//2))*extrasomething.get_subsample_rate()
+				dy = -int((ali[1]+0.5-image.get_ysize()//2))*extrasomething.get_subsample_rate()
 			else:
 				image = self.get_box_image()
 				ali = image.calc_center_of_mass()
-				dx = -int((ali[0]+0.5-old_div(image.get_xsize(),2)))
-				dy = -int((ali[1]+0.5-old_div(image.get_ysize(),2)))
+				dx = -int((ali[0]+0.5-image.get_xsize()//2))
+				dy = -int((ali[1]+0.5-image.get_ysize()//2))
 
 		elif method == Box.CENTERACF:
 			if low_res == True:
@@ -393,7 +393,7 @@ class Box(object):
 			
 			#sig = image.calc_fast_sigma_image(None)
 			#ccf.div(sig)
-			trans = ccf.calc_max_location_wrap(old_div(image.get_xsize(),2),old_div(image.get_ysize(),2),old_div(image.get_zsize(),2))
+			trans = ccf.calc_max_location_wrap(image.get_xsize()//2,image.get_ysize()//2,image.get_zsize()//2)
 			dx = trans[0]
 			dy = trans[1]
 			
@@ -2626,7 +2626,7 @@ class SwarmTemplate(Template):
 		ave.process_inplace("xform.centeracf")
 		ave.process_inplace("math.rotationalaverage")
 		ave.process_inplace("normalize")
-		ave.process_inplace("mask.sharp",{'outer_radius':old_div(ave.get_xsize(),2)})
+		ave.process_inplace("mask.sharp",{'outer_radius':ave.get_xsize()//2})
 		
 		#for image in images_copy:
 		#	image.write_image("aligned_refs.img",-1)
@@ -2674,7 +2674,7 @@ class SwarmTemplate(Template):
 			ave.process_inplace("normalize")
 			
 			# edge normalize here SL before
-			ave.process_inplace("mask.sharp",{'outer_radius':old_div(ave.get_xsize(),2)})
+			ave.process_inplace("mask.sharp",{'outer_radius':ave.get_xsize()//2})
 			# or normalize and no mask
 			#ave.write_image("running_ave.hdf",-1)
 		

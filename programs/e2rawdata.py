@@ -171,7 +171,7 @@ def importfn(i,arg,options):
 		ffta["is_intensity"]=0				# These 2 steps are done so the 2-D display of the FFT looks better. Things would still work properly in 1-D without it
 
 		fftbg=ffta.process("math.nonconvex")
-		fft1d=ffta.calc_radial_dist(old_div(ffta.get_ysize(),2),0.0,1.0,1)	# note that this handles the ri2inten averages properly
+		fft1d=ffta.calc_radial_dist(ffta.get_ysize()//2,0.0,1.0,1)	# note that this handles the ri2inten averages properly
 
 		# Compute 1-D curve and background
 		bg_1d=e2ctf.low_bg_curve(fft1d,ds)

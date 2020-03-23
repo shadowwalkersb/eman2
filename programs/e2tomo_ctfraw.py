@@ -361,7 +361,7 @@ def fit_defocus(options,img_file,fft_avg,voltage,cs,ampcont,phaseplate,apix,targ
 	
 	fft_bg = fft_avg.process("math.nonconvex")
 
-	fft_avg_1d = fft_avg.calc_radial_dist(old_div(fft_avg.get_ysize(),2),0.0,1.0,1)	# note that this handles the ri2inten averages properly
+	fft_avg_1d = fft_avg.calc_radial_dist(fft_avg.get_ysize()//2,0.0,1.0,1)	# note that this handles the ri2inten averages properly
 	
 	#print("\n(e2tomo_ctfraw)(fit_defocus) fft_avg_1d={}".format(fft_avg_1d))
 

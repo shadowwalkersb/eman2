@@ -1135,8 +1135,8 @@ def powspec_with_bg(stackfile,source_image=None,radius=0,edgenorm=True,oversamp=
 	av2["ptcl_repr"]=nn
 
 	# These now should represent the FG+BG and BG curves
-	av1_1d=av1.calc_radial_dist(old_div(av1.get_ysize(),2),0.0,1.0,1)
-	av2_1d=av2.calc_radial_dist(old_div(av2.get_ysize(),2),0.0,1.0,1)
+	av1_1d=av1.calc_radial_dist(av1.get_ysize()//2,0.0,1.0,1)
+	av2_1d=av2.calc_radial_dist(av2.get_ysize()//2,0.0,1.0,1)
 
 	# in this mode we box out "particles" from the original micrograph to get the smoothest curve for defocus fitting
 	# must not be use for (for example) structure factor
@@ -1265,7 +1265,7 @@ Rather than returning a single tuple, returns a list of nclasses tuples.
 			av1.set_complex(True)
 			av1.to_zero()
 
-		av_1d=imf.calc_radial_dist(old_div(av1.get_ysize(),2),0.0,1.0,1)
+		av_1d=imf.calc_radial_dist(av1.get_ysize()//2,0.0,1.0,1)
 		av_1d_n.append(av_1d)
 		av1+=imf
 
@@ -1291,8 +1291,8 @@ Rather than returning a single tuple, returns a list of nclasses tuples.
 	av2["is_intensity"]=1
 	av2["ptcl_repr"]=nn
 
-	av1_1d=av1.calc_radial_dist(old_div(av1.get_ysize(),2),0.0,1.0,1)
-	av2_1d=av2.calc_radial_dist(old_div(av2.get_ysize(),2),0.0,1.0,1)
+	av1_1d=av1.calc_radial_dist(av1.get_ysize()//2,0.0,1.0,1)
+	av2_1d=av2.calc_radial_dist(av2.get_ysize()//2,0.0,1.0,1)
 
 	n0=int(0.05/ds)		# N at 20 A. We ignore low resolution information due to interference of structure factor
 	bg=EMData(len(av2_1d)-n0,1,1)

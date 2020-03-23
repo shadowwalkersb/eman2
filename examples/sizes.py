@@ -24,7 +24,7 @@ for i in range(n):
 	im.process_inplace("filter.lowpass.gauss",{"cutoff_abs":.1})
 
 	# Compute radial distribution
-	d=im.calc_radial_dist(old_div(im.get_xsize(),2),0,1,0)
+	d=im.calc_radial_dist(im.get_xsize()//2,0,1,0)
 	d=[ta*tb for ta,tb in enumerate(d)]		# additionalradial weight
 
 
@@ -71,7 +71,7 @@ plt.savefig("%s.peakval.png"%argv[1][:-4])
 
 # This plots a histogram of the sizes
 plt.cla()
-h=plt.hist(peaks,bins=old_div(im.get_xsize(),2),range=(0,old_div(im.get_xsize(),2)))
+h=plt.hist(peaks,bins=im.get_xsize()//2,range=(0,im.get_xsize()//2))
 avg=old_div(sum(peaks),len(peaks))
 plt.text(2,max(h[0])-5,"Mean size = %1.1f pixels"%avg)
 plt.xlabel("Radius in pixels")

@@ -101,7 +101,7 @@ improved with time."""
 		noise.mult(.2)
 		data[i].add(noise)
 		data[i].process_inplace('normalize.circlemean')
-		data[i].process_inplace('mask.sharp', {'outer_radius':old_div(data[i].get_xsize(),2)})
+		data[i].process_inplace('mask.sharp', {'outer_radius':data[i].get_xsize()//2})
 
 #		 if i < 5 :
 #			 data[i].write_image('speed.hed', i, EMUtil.ImageType.IMAGE_IMAGIC)

@@ -167,12 +167,12 @@ class EM3DSliceModel(EM3DModel):
 		hist = self.data.calc_hist(256,0,1.0,self.bright,self.contrast)
 		self.inspector.set_hist(hist,0,1.0) 
 		
-		self.slice = old_div(data.get_zsize(),2)
-		self.zslice = old_div(data.get_zsize(),2)-1
+		self.slice = data.get_zsize()//2
+		self.zslice = data.get_zsize()//2-1
 		if self.zslice < 0: self.zslice = 0
-		self.yslice = old_div(data.get_ysize(),2)-1
+		self.yslice = data.get_ysize()//2-1
 		if self.yslice < 0: self.yslice = 0
-		self.xslice = old_div(data.get_xsize(),2)-1
+		self.xslice = data.get_xsize()//2-1
 		if self.xslice < 0: self.xslice = 0
 		self.trackslice = self.xslice
 		self.axis = 'z'

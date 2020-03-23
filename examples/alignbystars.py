@@ -57,7 +57,7 @@ def findstars(img,scale=1.0):
 		
 		# find the center of mass of each peak
 		cg=c.cog()[:3]
-		ret.append(((i.x+cg[0]-old_div(img.get_xsize(),2))*scale,(i.y+cg[1]-old_div(img.get_ysize(),2))*scale,i.value,cg[2]))	# x,y,peak,rad
+		ret.append(((i.x+cg[0]-img.get_xsize()//2)*scale,(i.y+cg[1]-img.get_ysize()//2)*scale,i.value,cg[2]))	# x,y,peak,rad
 	
 	return ret
 
@@ -100,7 +100,7 @@ def showstars(img,pa):
 	w=EMImage(img)
 #	w.setWindowTitle("EMImage (%s)"%f)
 	for i in range(len(pa)):
-		v=["circle",.2,1.,.2,pa[i][0]+old_div(img.get_xsize(),2),pa[i][1]+old_div(img.get_ysize(),2),5.0,1.0]
+		v=["circle",.2,1.,.2,pa[i][0]+img.get_xsize()//2,pa[i][1]+img.get_ysize()//2,5.0,1.0]
 		w.add_shape(i,v)
 	w.show()
 	wins.append(w)

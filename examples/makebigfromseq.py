@@ -65,8 +65,8 @@ def transalign(i1,i2,m1,m2):
 	c1/=c2
 	l=list(c1.calc_max_location())
 	v=c1.get_value_at(l[0],l[1],0)
-	l[0]=old_div(i1.get_xsize(),2)-l[0]
-	l[1]=old_div(i1.get_ysize(),2)-l[1]
+	l[0]=i1.get_xsize()//2-l[0]
+	l[1]=i1.get_ysize()//2-l[1]
 #	print l,v
 	
 	i=i1.copy()

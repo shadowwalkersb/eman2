@@ -630,7 +630,7 @@ class TomoSegSliceViewer(QtWidgets.QMainWindow):
 			y2 = round(helixbox[4]*cshrink)
 			z2 = round(helixbox[5]*cshrink)
 	
-			bs=old_div(self.boxsize(),2)
+			bs=self.boxsize()//2
 			# Get the extended vector based on boxsize
 			a = Vec3f((x2-x1), (y2-y1), (z2-z1))	# Find the a, the long vector
 			tcs = self.get_box_coord_system([x1,y1,z1,x2,y2,z2])							# Get the local coord system
@@ -855,9 +855,9 @@ class TomoSegSliceViewer(QtWidgets.QMainWindow):
 	def inside_box(self,n,x=-1,y=-1,z=-1):
 		"""Checks to see if a point in image coordinates is inside box number n. If any value is negative, it will not be checked."""
 		box=self.boxes[n]
-		if x>=0 and (x<box[0]-old_div(self.boxsize(),2) or x>box[0]+old_div(self.boxsize(),2)) : return False
-		if y>=0 and (y<box[1]-old_div(self.boxsize(),2) or y>box[1]+old_div(self.boxsize(),2)) : return False
-		if z>=0 and (z<box[2]-old_div(self.boxsize(),2) or z>box[2]+old_div(self.boxsize(),2)) : return False
+		if x>=0 and (x<box[0]-self.boxsize()//2 or x>box[0]+self.boxsize()//2) : return False
+		if y>=0 and (y<box[1]-self.boxsize()//2 or y>box[1]+self.boxsize()//2) : return False
+		if z>=0 and (z<box[2]-self.boxsize()//2 or z>box[2]+self.boxsize()//2) : return False
 		return True
 
 	def do_deletion(self, n, delimgs=True):
@@ -1017,7 +1017,7 @@ class TomoSegSliceViewer(QtWidgets.QMainWindow):
 			box=self.boxes[n]
 		except IndexError:
 			return
-		bs2=old_div(self.boxsize(),2)
+		bs2=self.boxsize()//2
 
 		#if self.curbox!=n :
 			#self.xzview.scroll_to(None,box[2])

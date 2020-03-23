@@ -96,7 +96,7 @@ def main():
 	maski=mask.copy()
 	maski*=-1.0
 	maski+=1.0
-	maski.process_inplace("mask.gaussian",{"outer_radius":old_div(mask.get_xsize(),6),"inner_radius":old_div(mask.get_xsize(),3)})
+	maski.process_inplace("mask.gaussian",{"outer_radius":mask.get_xsize()//6,"inner_radius":mask.get_xsize()//3})
 	maski.write_image("msk2.mrc",0)
 
 	noise=data.copy()
@@ -109,9 +109,9 @@ def main():
 	noisef=noise.do_fft()
 
 	print("compute power 1")
-	datapow=dataf.calc_radial_dist(old_div(dataf.get_ysize(),2)-1,1,1,1)
+	datapow=dataf.calc_radial_dist(dataf.get_ysize()//2-1,1,1,1)
 	print("compute power 2")
-	noisepow=noisef.calc_radial_dist(old_div(noisef.get_ysize(),2)-1,1,1,1)
+	noisepow=noisef.calc_radial_dist(noisef.get_ysize()//2-1,1,1,1)
 
 	x=list(range(1,len(datapow)+1))
 	if options.apix>0:
