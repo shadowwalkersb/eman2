@@ -217,7 +217,7 @@ for option1 in optionList:
 						print("Unknown tag: " + item2.tag)
 				micro_dict[micrograph_filename] = temp_dict
 				ctf=EMAN2Ctf()
-				ctf.from_dict({"defocus":old_div((float(defocus1)+float(defocus2)),2000),"dfang":float(defocus_angle),"dfdiff":old_div(abs(float(defocus1)-float(defocus2)),1000),"voltage":float(voltage),"cs":float(cs),"ampcont":float(ampcont),"apix":float(apix_x)})
+				ctf.from_dict({"defocus":(float(defocus1)+float(defocus2))/2000,"dfang":float(defocus_angle),"dfdiff":old_div(abs(float(defocus1)-float(defocus2)),1000),"voltage":float(voltage),"cs":float(cs),"ampcont":float(ampcont),"apix":float(apix_x)})
 				jdb = js_open_dict(info_name(micrograph_filename))
 				jdb['ctf_frame']=[512,ctf,(256,256),tuple(),5,1]
 				jdb.setval("ctf_frame",jdb['ctf_frame'],deferupdate=True)
@@ -315,7 +315,7 @@ for option1 in optionList:
 				else:
 					apix_x=micro_dict[particle_micrograph_filename]['apix_x']
 				ctf=EMAN2Ctf()
-				ctf.from_dict({"defocus":old_div((float(defocus1)+float(defocus2)),2000),"dfang":float(defocus_angle),"dfdiff":old_div(abs(float(defocus1)-float(defocus2)),1000),"voltage":float(voltage),"cs":float(cs),"ampcont":float(ampcont),"apix":float(apix_x)})
+				ctf.from_dict({"defocus":(float(defocus1)+float(defocus2))/2000,"dfang":float(defocus_angle),"dfdiff":old_div(abs(float(defocus1)-float(defocus2)),1000),"voltage":float(voltage),"cs":float(cs),"ampcont":float(ampcont),"apix":float(apix_x)})
 				jdb = js_open_dict(info_name(particle_micrograph_filename))
 				jdb['ctf']=[512,ctf,(256,256),tuple(),5,1]
 				jdb.setval("ctf",jdb['ctf'],deferupdate=True)
