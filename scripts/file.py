@@ -26,7 +26,7 @@ class File:
 
 	def _iter_lines(self):
 		for i in range(len(self.lines)):
-			line = self.lines[i]
+			line = self.lines[i].partition('#')[0]
 
 			# # Skip lines containing only strings wrapped in " " or ' '
 			# sre_string=re.search(r'^[ \t]*("|\')(?!"|\').+(\1)[ \t]*$', line)
@@ -50,7 +50,7 @@ class File:
 			if not line.strip() or is_comment_line(line):
 				continue
 
-			yield i, self.lines[i]
+			yield i, line
 
 	def fix_margins(self):
 		self.file_context = re.sub(r'\.setMargin\((.*)\)', 

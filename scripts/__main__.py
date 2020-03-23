@@ -119,6 +119,42 @@ def count_old_div():
 
 	git_commit("cleanup unused imports old_div")
 
+def parse_import_modules(s):
+	modules = s.partition('import')
+	
+	return [ss.strip() for ss in re.split(r',\s*', modules[2]) if ss.strip() != '*']
+
+def is_import_line():
+	sre = re.compile(r'from\s+\w+\s+import')
+	# for f in iter_py_files_debug():
+	for f in iter_py_files():
+		file = File(f)
+		# modules = defaultdict(int)
+		modules =  []
+		for i, line in file._iter_lines():
+			line = line.strip()
+			if sre.match(line):
+				# print("{}: {}".format(i, line))
+				ms = parse_import_modules(line)
+		# 		if ms:
+		# 			print(ms)
+		# 			for m in ms:
+		# 				modules[m]
+		# 
+		# print("{}: {}".format(f, modules))
+				if ms:
+					# print(ms)
+					modules.extend(ms)
+		
+		for m in modules:
+			count = file.file_context.count(m)
+			if count == 1:
+				# print("{}: {}: {}".format(f, m, count))
+				print('{}: {}'.format(f, m))
+		# file.writelines(f)
+
+	# git_commit("cleanup unused imports old_div")
+
 # fix_module_names()
 # update_imports()
 # fix_imports_pyqt4_to_pyqt5()
@@ -163,8 +199,10 @@ for f_m in func_list_and_commit_messages[0]:
 	
 	count_old_div()
 
-for f_m in func_list_and_commit_messages[1]:
-	funcs_int.append(f_m[0])
-	fix_old_div(op_bool_all, '//', f_m[1])
+# for f_m in func_list_and_commit_messages[1]:
+# 	funcs_int.append(f_m[0])
+# 	fix_old_div(op_bool_all, '//', f_m[1])
+# 
+# 	count_old_div()
 
-	count_old_div()
+is_import_line()
