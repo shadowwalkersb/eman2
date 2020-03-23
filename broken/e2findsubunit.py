@@ -33,7 +33,6 @@
 # This program will find the highest density point, then build a high density path until
 # one putative subunit is filled.
 
-from past.utils import old_div
 from builtins import range
 from EMAN2 import *
 from math import *
