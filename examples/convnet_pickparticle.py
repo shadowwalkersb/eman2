@@ -215,7 +215,7 @@ def main():
 					e.write_image(fname,-1)
 				
 				img=mid[t].reshape(convnet.outsize,convnet.outsize)
-				df=old_div((np.mean(img)-mid_mean),mid_std)
+				df=(np.mean(img)-mid_mean)/mid_std
 				#print lb[t],df,df*lb[t]
 				#print img
 				e = EMNumPy.numpy2em(img.astype("float32"))

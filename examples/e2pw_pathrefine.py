@@ -180,7 +180,7 @@ def calc_shortest_path(path, pts, dst, d0, pval, gap=5, gdsz=1.5, ngray=5., grp=
 			continue
 		pv=pval[did]
 		minp=np.min(pv)-.01
-		thr=np.arange(minp, np.max(pv), old_div((np.max(pv)-minp),ngray))[::-1]
+		thr=np.arange(minp, np.max(pv), (np.max(pv)-minp)/ngray)[::-1]
 
 		dd0=np.zeros(len(pts))-1
 		dd1=np.zeros(len(pts))-1
@@ -226,7 +226,7 @@ def calc_shortest_path(path, pts, dst, d0, pval, gap=5, gdsz=1.5, ngray=5., grp=
 			continue
 
 		dd-=np.min(dd[dd>0])
-		dd=1-old_div(dd,(np.max(dd)+1))
+		dd=1-dd/(np.max(dd)+1)
 		dd=np.max(dd)-dd+1
 		dd[did]=-1
 		

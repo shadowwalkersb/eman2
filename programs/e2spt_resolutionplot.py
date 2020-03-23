@@ -403,7 +403,7 @@ def sigmoidfit(x,values):
 
 	def sigmoid(p,x):
 		x0,y0,c,k=p
-		y = old_div(c, (1 + np.exp(-k*(x-x0)))) + y0
+		y = c / (1 + np.exp(-k*(x-x0))) + y0
 		return y
 
 	def residuals(p,x,y):

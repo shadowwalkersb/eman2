@@ -64,7 +64,7 @@ def calc_all_scr(curve, allctf, zeros, bxsz):
 
 #### function to get back the index of the allctf array from a defocus value..
 def get_ctf_index(x, defmin, defstep):
-	return np.array(old_div((np.round(x,2)-defmin),defstep), dtype=int)
+	return np.array((np.round(x,2)-defmin)/defstep, dtype=int)
 
 #### calculate the defocus value for one tilt 
 def calc_defocus_onetlt(args):
