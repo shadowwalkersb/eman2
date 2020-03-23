@@ -869,7 +869,7 @@ class PathWalker(object):
 				dp=1
 			if dp<-1:
 				dp=-1
-			CaCaCa=math.acos(dp)*(old_div(180,math.pi))
+			CaCaCa=math.acos(dp)*(180/math.pi)
 			#print index+1, CaCaCa, 
 
 		
@@ -892,7 +892,7 @@ class PathWalker(object):
 			if dpxps<-1:
 				dpxps=-1
 
-			CaCaCaCa=math.acos(dpxps)*(old_div(180,math.pi))
+			CaCaCaCa=math.acos(dpxps)*(180/math.pi)
 			# print CaCaCa, CaCaCaCa
 			out.append((CaCaCa, CaCaCaCa))
 			index=index+1

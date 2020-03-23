@@ -234,7 +234,7 @@ class SA(Refine):
 				az = blist[canum][0].get_rotation("eman")["az"] + daz				# theta (az)
 				currentalt = blist[canum][0].get_rotation("eman")["alt"]			# get the current alt angle
 				v = old_div((math.cos(currentalt) + 1),2) + dalt						# back convert to uniform variate and add the perturbation
-				v =  old_div(math.acos(math.cos(v*math.pi)),math.pi)					# this ensures that v E [-1, 1] and wraps around if v goes outside its range
+				v =  math.acos(math.cos(v*math.pi))/math.pi					# this ensures that v E [-1, 1] and wraps around if v goes outside its range
 				alt = math.degrees(math.acos(2*v - 1))						# Finally compute phi (alt)
 				phi = blist[canum][0].get_rotation("eman")["phi"] + dphi			# kappa (phi)
 				#az = Util.get_frand(0,360) 					# theta

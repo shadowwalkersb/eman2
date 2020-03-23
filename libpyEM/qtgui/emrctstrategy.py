@@ -235,7 +235,7 @@ class Strategy2IMGPair(Strategy):
 			try:
 				gamma = math.asin(sin_gamma)
 			except:
-				gamma = old_div(math.pi,2)
+				gamma = math.pi/2
 				
 			self.dgamma = math.degrees(gamma) 
 			#print rotA

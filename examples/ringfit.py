@@ -130,7 +130,7 @@ def process_image(imgname,imgprefix):
 		numofbp=21	# Maximum number of points (+1 for showing circle in chimera)
 		nowbp=5		# Start number
 		stepsz=500	# Interval of print status & check stablization
-		plen=old_div((nowbp*math.sin(old_div(math.pi,nowbp))),(math.pi))	# Penalty factor of length for representing a circle using polygon
+		plen=(nowbp*math.sin(math.pi/nowbp))/(math.pi)	# Penalty factor of length for representing a circle using polygon
 		
 		#totlen=2*336*3.3*plen # total length
 		totlen=336*3.3*plen # total length
@@ -184,7 +184,7 @@ def process_image(imgname,imgprefix):
 					pa.sim_add_point_double()	# Put one additional point on each edge
 					nowbp=nowbp*2
 					print(nowbp)
-					plen=old_div((nowbp*math.sin(old_div(math.pi,nowbp))),(math.pi))	# Recalculate the length penalty
+					plen=(nowbp*math.sin(math.pi/nowbp))/(math.pi)	# Recalculate the length penalty
 					totlen=336*3.3*plen
 					#totlen=2*336*3.3*plen
 					pa.sim_set_pot_parms(old_div(totlen,nowbp), .5, 100, 35.9*pi/180.0, 0.0, 800.0,m,old_div(totlen,nowbp)*.6,10000)
