@@ -462,19 +462,19 @@ def display_validation_plots(path, radcut, planethres, plotdatalabels=False, col
 		radval = normval*2*math.pi
 		if radval < 2*math.pi/3:
 			B = 0.0
-			R = 0.33*(1 + old_div(math.cos(radval),math.cos(math.pi/3 - radval)))
+			R = 0.33*(1 + math.cos(radval)/math.cos(math.pi/3 - radval))
 			G = 1.0 - R
 			return "#%02x%02x%02x"%(255*R,255*G,255*B)
 		if radval > 2*math.pi/3 and radval < 4*math.pi/3:
 			hue = radval- 2*math.pi/3
 			R = 0.0
-			G = 0.33*(1 + old_div(math.cos(hue),math.cos(math.pi/3 - hue)))
+			G = 0.33*(1 + math.cos(hue)/math.cos(math.pi/3 - hue))
 			B = 1.0 - G
 			return "#%02x%02x%02x"%(255*R,255*G,255*B)
 		if radval > 4*math.pi/3:
 			hue = radval- 4*math.pi/3
 			G = 0
-			B = 0.33*(1 + old_div(math.cos(hue),math.cos(math.pi/3 - hue)))
+			B = 0.33*(1 + math.cos(hue)/math.cos(math.pi/3 - hue))
 			R = 1.0 - B
 			return "#%02x%02x%02x"%(255*R,255*G,255*B)
 	

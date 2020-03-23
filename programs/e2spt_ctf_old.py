@@ -2099,7 +2099,7 @@ def sptctffit( options, apix, imagefilenames, angles, icethickness ):
 					if icethickness and options.coords:
 						icethicknessm = icethickness * img['apix_x']/10000
 					
-						defocuswiggley = math.fabs( old_div(icethicknessm, math.cos( math.radians(angle) )))
+						defocuswiggley = math.fabs( icethicknessm / math.cos( math.radians(angle) ))
 						if defocuserror:
 							defocuswiggley += defocuserror
 						

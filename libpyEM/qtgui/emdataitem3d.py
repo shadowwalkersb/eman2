@@ -382,7 +382,7 @@ class EMSliceItem3D(EMItem3D):
 		nz = data["nz"]
 		interior_diagonal = math.sqrt(nx**2+ny**2+nz**2) #A square with sides this big could hold any slice from the volume
 		#The interior diagonal is usually too big, and OpenGL textures work best with powers of 2 so let's get the next smaller power of 2
-		diag = 2**(int(math.floor( old_div(math.log(interior_diagonal),math.log(2)) ))) #next smaller power of 2
+		diag = 2**(int(math.floor( math.log(interior_diagonal)/math.log(2) ))) #next smaller power of 2
 		diag2 = old_div(diag,2)
 
 		glPushAttrib( GL_ALL_ATTRIB_BITS )
