@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 # align all particles to reference and store alignment results
 
-from past.utils import old_div
 from future import standard_library
 standard_library.install_aliases()
 from builtins import range

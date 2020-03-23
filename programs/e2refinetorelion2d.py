@@ -8,7 +8,6 @@
 # the terms of the GPL/BSD license permit us to redistribute it.
 #
 #import block
-from past.utils import old_div
 from builtins import range
 from EMAN2 import *
 from EMAN2db import db_open_dict
