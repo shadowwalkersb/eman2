@@ -221,6 +221,14 @@ def getHomeDir() {
     else          return "${HOME}"
 }
 
+def run_no_recipe() {
+    if("${AGENT_OS_NAME}" != 'linux')
+        env_name = 'eman-deps-19.0'
+    else
+        env_name = 'eman-deps-19.0-comp'
+    
+    sh 'source $(conda info --root)/bin/activate ' + env_name + ' && env | sort && bash ci_support/build_no_recipe.sh'
+}
 // For debugging purposes
 def isSkipStage() {
     return 0
@@ -288,7 +296,7 @@ pipeline {
       
       steps {
         notifyGitHub('PENDING')
-        sh 'source $(conda info --root)/bin/activate eman-deps-${EMAN_DEPS_VERSION} && env | sort && bash ci_support/build_no_recipe.sh'
+        run_no_recipe()
       }
     }
     
