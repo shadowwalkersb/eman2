@@ -210,15 +210,11 @@ namespace EMAN {
 	{
 		static PyObject* convert(boost::multi_array_ref<T, NumDims> const & marray)
 		{
-			vector<int> dims;
 			const size_t * shape = marray.shape();
-			int ndim = marray.num_dimensions();
-			for (int i = ndim-1; i >= 0; i--) {
-				dims.push_back(shape[i]);
-			}
+			vector<int> dims(shape, shape + marray.num_dimensions());
+			reverse(dims.begin(), dims.end());
 
-			T * data = (T*)marray.data();
-			np::ndarray numarray = make_numeric_array(data, dims);
+			np::ndarray numarray = make_numeric_array((T*)marray.data(), dims);
 
 			return python::incref(numarray.ptr());
 		}

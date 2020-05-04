@@ -51,17 +51,12 @@ np::ndarray EMNumPy::em2numpy(const EMData *const image)
 	int ny = image->get_ysize();
 	int nz = image->get_zsize();
 
-	vector<int> dims;
+	vector<int> dims {nx};
 
-	if (nz > 1) {
-		dims.push_back(nz);
-	}
+	if (ny > 1) dims.push_back(ny);
+	if (nz > 1) dims.push_back(nz);
 
-	if (ny > 1) {
-		dims.push_back(ny);
-	}
-
-	dims.push_back(nx);
+	reverse(dims.begin(), dims.end());
 
 	return make_numeric_array(data, dims);
 }
