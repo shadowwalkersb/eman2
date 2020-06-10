@@ -1,4 +1,6 @@
 /*
+ * Author: tunay.durmaz@bcm.edu, 08/15/2020
+ * Copyright (c) 2020- Baylor College of Medicine
  *
  * This software is issued under a joint BSD/GNU license. You may use the
  * source code in this file under either license. However, note that the
