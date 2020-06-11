@@ -67,9 +67,8 @@ void TiffIO::init()
 {
 	ENTERFUNC;
 
-	if (initialized) {
+	if (initialized)
 		return;
-	}
 
 	initialized = true;
 
@@ -77,20 +76,17 @@ void TiffIO::init()
 
 	FILE * tmp_in = sfopen(filename, rw_mode, & is_new_file, true);
 
-	if (! tmp_in) {
+	if (! tmp_in)
 		throw ImageReadException(filename, "open TIFF");
-	}
 
 	if (! is_new_file) {
 		char buf[64];
 
-		if (fread(buf, sizeof(buf), 1, tmp_in) != 1) {
+		if (fread(buf, sizeof(buf), 1, tmp_in) != 1)
 			throw ImageReadException(filename, "first block");
-		}
 
-		if (!is_valid(&buf)) {
+		if (!is_valid(&buf))
 			throw ImageReadException(filename, "invalid TIFF");
-		}
 
         is_big_endian = (buf[0] == TIFF_BIG_ENDIAN);
 	}
@@ -103,9 +99,8 @@ void TiffIO::init()
 	if (rw_mode == ImageIO::READ_ONLY) {
 		tiff_file = TIFFOpen(filename.c_str(), "r");
 
-		if (! tiff_file) {
+		if (! tiff_file)
 			throw ImageReadException(filename, "open TIFF");
-		}
 
 		TIFFGetField(tiff_file, TIFFTAG_BITSPERSAMPLE, &bitspersample);
 
@@ -122,9 +117,8 @@ void TiffIO::init()
 	else {
 		tiff_file = TIFFOpen(filename.c_str(), "w");
 
-		if (! tiff_file) {
+		if (! tiff_file)
 			throw ImageReadException(filename, "open TIFF");
-		}
 	}
 
 	if (tiff_file) {
@@ -143,16 +137,15 @@ bool TiffIO::is_valid(const void *first_block)
 	ENTERFUNC;
 	bool result = false;
 
-	if (! first_block) {
+	if (! first_block)
 		result = false;
-	}
 	else {
 		const char *data = static_cast < const char *>(first_block);
 
-		if ((data[0] == data[1]) && (data[0] == TIFF_LITTLE_ENDIAN ||
-			  data[1] == TIFF_BIG_ENDIAN)) {
+		if (data[0] == data[1] 
+		    && (data[0] == TIFF_LITTLE_ENDIAN || data[1] == TIFF_BIG_ENDIAN)
+		   )
 			result = true;
-		}
 	}
 
 	EXITFUNC;
@@ -172,9 +165,8 @@ int TiffIO::read_header(Dict & dict, int image_index, const Region * area, bool)
 
 	init();
 
-	if (image_index == -1) {
+	if (image_index == -1)
 		image_index = 0;
-	}
 
 	TIFFSetDirectory(tiff_file, image_index);
 
@@ -215,15 +207,12 @@ int TiffIO::read_header(Dict & dict, int image_index, const Region * area, bool)
 	dict["minimum"] = min;
 	dict["maximum"] = max;
 
-	if (bitspersample == CHAR_BIT) {
+	if (bitspersample == CHAR_BIT)
 		dict["datatype"] = EMUtil::EM_UCHAR;
-	}
-	else if (bitspersample == sizeof(unsigned short) * CHAR_BIT) {
+	else if (bitspersample == sizeof(unsigned short) * CHAR_BIT)
 		dict["datatype"] = EMUtil::EM_USHORT;
-	}
-	else if (bitspersample == sizeof(float) * CHAR_BIT) {
+	else if (bitspersample == sizeof(float) * CHAR_BIT)
 		dict["datatype"] = EMUtil::EM_FLOAT;
-	}
 
 	dict["TIFF.bitspersample"] = bitspersample;
 	dict["TIFF.resolution_x"] = resolution_x;
@@ -352,15 +341,12 @@ int TiffIO::read_data(float *rdata, int image_index, const Region * area, bool)
 				int y_end = nrows;
 
 				if (area) {
-					if (total_rows >= y0 && total_rows < y0 + nrows) {
+					if (total_rows >= y0 && total_rows < y0 + nrows)
 						y_start = nrows - (total_rows - y0);
-					}
-					else if (total_rows >= (y0 + ylen) && total_rows < (y0 + ylen + nrows)) {
+					else if (total_rows >= (y0 + ylen) && total_rows < (y0 + ylen + nrows))
 						y_end = y0 + ylen - total_rows + nrows;
-					}
-					else if (total_rows >= (y0 + ylen + nrows)) {
+					else if (total_rows >= (y0 + ylen + nrows))
 						break;
-					}
 				}
 
 				for (int l = y_start; l < y_end; l++) {
@@ -425,9 +411,8 @@ int TiffIO::write_header(const Dict & dict, int image_index, const Region *,
 
 	image_index = 0;
 
-	if (image_index == -1) {
+	if (image_index == -1)
 		image_index = 0;
-	}
 
 //	TIFFSetDirectory(tiff_file, image_index);
 
@@ -444,15 +429,12 @@ int TiffIO::write_header(const Dict & dict, int image_index, const Region *,
 
 //	EMUtil::EMDataType datatype = (EMUtil::EMDataType) (int) dict["datatype"];
 
-	if (datatype == EMUtil::EM_UCHAR) {
+	if (datatype == EMUtil::EM_UCHAR)
 		bitspersample = CHAR_BIT;
-	}
-	else if (datatype == EMUtil::EM_USHORT) {
+	else if (datatype == EMUtil::EM_USHORT)
 		bitspersample = CHAR_BIT * sizeof(short);
-	}
-	else if (datatype == EMUtil::EM_FLOAT) {
+	else if (datatype == EMUtil::EM_FLOAT)
 		bitspersample = CHAR_BIT * sizeof(float);
-	}
 	else {
 		LOGWARN("Don't support data type '%s' in TIFF. Convert to '%s'.",
 				EMUtil::get_datatype_string(datatype),
@@ -502,16 +484,13 @@ int TiffIO::write_data(float * data, int image_index, const Region *,
 				src_idx = i*nx+j;
 				dst_idx = nx*(ny-1) - (i*nx) +j;
 
-				if (data[src_idx] < rendermin){
+				if (data[src_idx] < rendermin)
 					cdata[dst_idx] = 0;
-				}
-				else if (data[src_idx] > rendermax) {
+				else if (data[src_idx] > rendermax)
 					cdata[dst_idx] = UCHAR_MAX;
-				}
-				else {
+				else
 					cdata[dst_idx] = (unsigned char)((data[src_idx] - rendermin) /
 								(rendermax - rendermin) * UCHAR_MAX);
-				}
 			}
 		}
 
@@ -531,16 +510,13 @@ int TiffIO::write_data(float * data, int image_index, const Region *,
 				src_idx = i*nx+j;
 				dst_idx = nx*(ny-1) - (i*nx) +j;
 
-				if (data[src_idx] < rendermin){
+				if (data[src_idx] < rendermin)
 					sdata[dst_idx] = 0;
-				}
-				else if (data[src_idx] > rendermax) {
+				else if (data[src_idx] > rendermax)
 					sdata[dst_idx] = USHRT_MAX;
-				}
-				else {
+				else
 					sdata[dst_idx] = (unsigned short)((data[src_idx] - rendermin) /
 								(rendermax - rendermin) * USHRT_MAX);
-				}
 			}
 		}
 

@@ -57,21 +57,17 @@ void EmIO::init()
 {
 	ENTERFUNC;
 
-	if (initialized) {
+	if (initialized)
 		return;
-	}
-
 
 	initialized = true;
 	file = sfopen(filename, rw_mode, &is_new_file);
 
 	if (!is_new_file) {
-		if (fread(&emh, sizeof(EMHeader), 1, file) != 1) {
+		if (fread(&emh, sizeof(EMHeader), 1, file) != 1)
 			throw ImageReadException(filename, "EM header");
-		}
-		if (!is_valid(&emh)) {
+		if (!is_valid(&emh))
 			throw ImageReadException(filename, "invalid EM image");
-		}
 
 		is_big_endian = ByteOrder::is_data_big_endian(&emh.nz);
 		become_host_endian(&emh.nx);
@@ -80,14 +76,12 @@ void EmIO::init()
 
 		mode = (DataType) emh.data_type;
 
-		if (mode == EM_EM_DOUBLE) {
+		if (mode == EM_EM_DOUBLE)
 			throw ImageReadException(filename, "DOUBLE data type not supported for EM image");
-		}
 
 		mode_size = get_mode_size(emh.data_type);
-		if (is_complex_mode()) {
+		if (is_complex_mode())
 			emh.nx *= 2;
-		}
 	}
 	EXITFUNC;
 }
@@ -96,9 +90,8 @@ bool EmIO::is_valid(const void *first_block, off_t file_size)
 {
 	ENTERFUNC;
 
-	if (!first_block) {
+	if (!first_block)
 		return false;
-	}
 
 	const char *data = static_cast < const char *>(first_block);
 	char machine = data[0];
@@ -125,13 +118,11 @@ bool EmIO::is_valid(const void *first_block, off_t file_size)
 		(nx > 1 && nx < max_dim) && (ny > 0 && ny < max_dim) && (nz > 0 && nz < max_dim)) {
 		if (file_size > 0) {
 			off_t file_size1 = (off_t)nx * (off_t)ny * (off_t)nz * (off_t)get_mode_size(data_type) + (off_t)sizeof(EMHeader);
-			if (file_size == file_size1) {
+			if (file_size == file_size1)
 				return true;
-			}
 		}
-		else {
+		else
 			return true;
-		}
 	}
 
 	return false;
@@ -141,13 +132,11 @@ int EmIO::read_header(Dict & dict, int image_index, const Region * area, bool)
 {
 	ENTERFUNC;
 	//single image format, index can only be zero
-	if(image_index == -1) {
+	if(image_index == -1)
 		image_index = 0;
-	}
 
-	if(image_index != 0) {
+	if(image_index != 0)
 		throw ImageReadException(filename, "no stack allowed for MRC image. For take 2D slice out of 3D image, read the 3D image first, then use get_clip().");
-	}
 
 	init();
 	check_region(area, IntSize(emh.nx, emh.ny, emh.nz),false,false);
@@ -167,12 +156,10 @@ int EmIO::write_header(const Dict & dict, int image_index, const Region* area,
 {
 	ENTERFUNC;
 	//single image format, index can only be zero
-	if(image_index == -1) {
+	if(image_index == -1)
 		image_index = 0;
-	}
-	if(image_index != 0) {
+	if(image_index != 0)
 		throw ImageWriteException(filename, "EM file does not support stack.");
-	}
 	check_write_access(rw_mode, image_index, 1);
 	if (area) {
 		check_region(area, FloatSize(emh.nx, emh.ny, emh.nz), is_new_file);
@@ -187,9 +174,8 @@ int EmIO::write_header(const Dict & dict, int image_index, const Region* area,
 	emh.data_type = EM_EM_FLOAT;
 
 	rewind(file);
-	if (fwrite(&emh, sizeof(EMHeader), 1, file) != 1) {
+	if (fwrite(&emh, sizeof(EMHeader), 1, file) != 1)
 		throw ImageWriteException(filename, "EM Header");
-	}
 
 	EXITFUNC;
 	return 0;
@@ -215,34 +201,26 @@ int EmIO::read_data(float *data, int image_index, const Region * area, bool)
 
 	int total_sz = xlen * ylen * zlen;
 
-	if (mode_size == sizeof(short)) {
+	if (mode_size == sizeof(short))
 		become_host_endian((short *) cdata, total_sz);
-	}
-	else if (mode_size == sizeof(int)) {
+	else if (mode_size == sizeof(int))
 		become_host_endian((int *) cdata, total_sz);
-	}
-	else if (mode_size == sizeof(double)) {
+	else if (mode_size == sizeof(double))
 		throw ImageReadException(filename, "double type image is not supported");
-	}
 
 	for (int k = total_sz - 1; k >= 0; k--) {
 		float curr_data = 0;
 
-		if (mode == EM_EM_CHAR) {
+		if (mode == EM_EM_CHAR)
 			curr_data = static_cast < float >(cdata[k]);
-		}
-		else if (mode == EM_EM_SHORT) {
+		else if (mode == EM_EM_SHORT)
 			curr_data = static_cast < float >(((short *) cdata)[k]);
-		}
-		else if (mode == EM_EM_INT) {
+		else if (mode == EM_EM_INT)
 			curr_data = static_cast < float >(((int *) cdata)[k]);
-		}
-		else if (mode == EM_EM_FLOAT || mode == EM_EM_COMPLEX) {
+		else if (mode == EM_EM_FLOAT || mode == EM_EM_COMPLEX)
 			curr_data = ((float *) cdata)[k];
-		}
-		else if (mode_size == sizeof(double)) {
+		else if (mode_size == sizeof(double))
 			throw ImageReadException(filename, "double type image is not supported");
-		}
 
 		data[k] = curr_data;
 	}
@@ -286,9 +264,8 @@ void EmIO::flush()
 bool EmIO::is_complex_mode()
 {
 	init();
-	if (emh.data_type == EM_EM_COMPLEX) {
+	if (emh.data_type == EM_EM_COMPLEX)
 		return true;
-	}
 	return false;
 }
 
