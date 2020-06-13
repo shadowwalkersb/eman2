@@ -644,11 +644,10 @@ void EMUtil::close_imageio(const string & filename, const ImageIO * io)
 {
     //printf("EMUtil::close_imageio\n");
     #ifdef IMAGEIO_CACHE
-    if (GlobalCache::instance()->contains(filename)) {
+    if (GlobalCache::instance()->contains(filename))
         GlobalCache::instance()->close_imageio(filename);
-    } else {
+    else
         delete io;
-    }
     #else
     delete io;
     #endif
@@ -918,10 +917,9 @@ void EMUtil::process_region_io(void *vdata, FILE * file,
 			dx0 *= -1;
 			xlen = xlen + fx0; // because there are less reads
 			fx0 = 0;
-		} else {
+		} else
 			dx0 = 0;
 			//fx0 *= -1;
-		}
 
 		if (fy0 < 0) {
 			dy0 *= -1;
@@ -939,10 +937,9 @@ void EMUtil::process_region_io(void *vdata, FILE * file,
 			dz0 *= -1;
 			zlen = zlen + fz0; // because there are less reads
 			fz0 = 0;
-		} else {
+		} else
 			dz0 = 0;
 			//fz0 *= -1;
-		}
 
 		if ((fx0 + xlen)> nx) xlen = nx-fx0;
 		if ((fy0 + ylen)> ny) ylen = ny-fy0;
@@ -1386,10 +1383,9 @@ void EMUtil::jump_lines(FILE * file, int nlines)
 	if (nlines > 0) {
 		char line[MAXPATHLEN];
 
-		for (int l = 0; l < nlines; l++) {
+		for (int l = 0; l < nlines; l++)
 			if (!fgets(line, sizeof(line), file))
 				Assert("read xplor file failed");
-		}
 	}
 }
 
@@ -1507,10 +1503,9 @@ void EMUtil::process_lines_io(FILE * file, int rw_mode,
 	if (nitems > 0) {
 		int nlines = nitems / nitems_per_line;
 
-		for (int i = 0; i < nlines; i++) {
+		for (int i = 0; i < nlines; i++)
 			EMUtil::process_numbers_io(file, rw_mode, nitems_per_line, mode_size, 0,
 									   nitems_per_line-1, data, p_i, outformat);
-		}
 	}
 }
 
