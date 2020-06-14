@@ -505,9 +505,8 @@ ImageIO *EMUtil::get_imageio(const string & filename, int rw,
 
    #ifdef IMAGEIO_CACHE
    imageio = GlobalCache::instance()->get_imageio(filename, rw);
-   if (imageio) {
+   if (imageio)
     	return imageio;
-   }
    #endif
 
 	ImageIO::IOMode rw_mode = static_cast<ImageIO::IOMode>(rw);
