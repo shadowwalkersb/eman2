@@ -212,25 +212,19 @@ void EMData::_write_image(ImageIO *imageio, int img_index,
 //		}
 		LOGVAR("header write %d",img_index);
 
-		switch(filestoragetype) {
-		case EMUtil::EM_UINT:
-			attr_dict["datatype"] = (int)EMUtil::EM_UINT;
-			break;
-		case EMUtil::EM_USHORT:
-			attr_dict["datatype"] = (int)EMUtil::EM_USHORT;
-			break;
-		case EMUtil::EM_SHORT:
-			attr_dict["datatype"] = (int)EMUtil::EM_SHORT;
-			break;
-		case EMUtil::EM_CHAR:
-			attr_dict["datatype"] = (int)EMUtil::EM_CHAR;
-			break;
-		case EMUtil::EM_UCHAR:
-			attr_dict["datatype"] = (int)EMUtil::EM_UCHAR;
-			break;
-		default:
+        set<EMUtil::EMDataType> types{
+            EMUtil::EM_UINT,
+            EMUtil::EM_USHORT,
+            EMUtil::EM_SHORT,
+            EMUtil::EM_CHAR,
+            EMUtil::EM_UCHAR
+        };
+
+        auto it = types.find(filestoragetype);
+        if(it != types.end())
+            attr_dict["datatype"] = (int)(*it);
+		else
 			attr_dict["datatype"] = (int)EMUtil::EM_FLOAT;;	//default float
-		}
 
 		int err = imageio->write_header(attr_dict, img_index, region, filestoragetype,
 										use_host_endian);
