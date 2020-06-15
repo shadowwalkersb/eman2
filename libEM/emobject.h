@@ -524,9 +524,8 @@ namespace EMAN
 		 */
 		EMObject get(const string & key) const
 		{
-			if( has_key(key) ) {
+			if( has_key(key) )
 				return dict[key];
-			}
 			else {
 				LOGERR("No such key exist in this Dict");
 				throw NotExistingObjectException("EMObject", "Nonexisting key (" + key + ") in Dict");
@@ -566,9 +565,8 @@ namespace EMAN
 		template <typename type>
 		type set_default(const string & key, type val)
 		{
-			if (!has_key(key)) {
+			if (!has_key(key))
 				dict[key] = val;
-			}
 			return dict[key];
 		}
 
@@ -770,9 +768,8 @@ namespace EMAN
 		typename map < string, InstanceType >::iterator fi =
 			my_instance->my_dict.find(name);
 
-		if (fi == my_instance->my_dict.end()) {
+		if (fi == my_instance->my_dict.end())
 			my_instance->my_dict[name] = &ClassType::NEW;
-		}
 	}
 
 	template <class T>
@@ -819,9 +816,8 @@ namespace EMAN
 			const vector<string> valid_keys = i->get_param_types().keys();
 			for(auto it=para_keys.begin(); it!=para_keys.end(); ++it) {
 // 				std::cout << "the iterator  is " << *it << std::endl; // PRB May 19th
-				if( find(valid_keys.begin(), valid_keys.end(), *it) == valid_keys.end() ) {
+				if( find(valid_keys.begin(), valid_keys.end(), *it) == valid_keys.end() )
 					throw InvalidParameterException(*it);
-				}
 			}
 
 			i->set_params(params);
@@ -934,9 +930,7 @@ namespace EMAN
 			for (auto it = new_params.begin(); it != new_params.end(); ++it )
 			{
 				if ( !permissable_params.find_type(it->first) )
-				{
 					throw InvalidParameterException(it->first);
-				}
 				params[it->first] = it->second;
 			}
 		}
