@@ -437,8 +437,8 @@ int TiffIO::write_header(const Dict & dict, int image_index, const Region *,
 		bitspersample = CHAR_BIT * sizeof(float);
 	else {
 		LOGWARN("Don't support data type '%s' in TIFF. Convert to '%s'.",
-				EMUtil::get_datatype_string(datatype),
-				EMUtil::get_datatype_string(EMUtil::EM_USHORT));
+				EMUtil::get_datatype_string(datatype).c_str(),
+				EMUtil::get_datatype_string(EMUtil::EM_USHORT).c_str());
 		bitspersample = CHAR_BIT * sizeof(short);
 	}
 

@@ -213,8 +213,8 @@ int PngIO::write_header(const Dict & dict, int image_index, const Region*,
 	else {
 		if (datatype != EMUtil::EM_USHORT) {
 			LOGWARN("Don't support data type '%s' in PNG. Convert to '%s'.",
-					EMUtil::get_datatype_string(datatype),
-					EMUtil::get_datatype_string(EMUtil::EM_USHORT));
+					EMUtil::get_datatype_string(datatype).c_str(),
+					EMUtil::get_datatype_string(EMUtil::EM_USHORT).c_str());
 		}
 		depth_type = PNG_SHORT_DEPTH;
 		bit_depth = sizeof(unsigned short) * CHAR_BIT;

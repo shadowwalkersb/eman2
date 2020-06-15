@@ -746,7 +746,7 @@ string EMUtil::get_imagetype_name(ImageType t)
 	return "unknown";
 }
 
-const char *EMUtil::get_datatype_string(EMDataType type)
+string EMUtil::get_datatype_string(EMDataType type)
 {
 	switch (type) {
 	case EM_CHAR:

@@ -189,7 +189,7 @@ namespace EMAN
 		 * @param type the EMDataType
 		 * @return a name for that data type
 		 * */
-		static const char *get_datatype_string(EMDataType type);
+		static string get_datatype_string(EMDataType type);
 
 		/** Get a region's dimensions.
 		 * @param area The region area.
