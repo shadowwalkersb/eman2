@@ -652,7 +652,7 @@ void EMUtil::close_imageio(const string & filename, const ImageIO * io)
     #endif
 }
 
-const char *EMUtil::get_imagetype_name(ImageType t)
+string EMUtil::get_imagetype_name(ImageType t)
 {
 	switch (t) {
 	case IMAGE_V4L:

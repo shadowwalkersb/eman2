@@ -47,7 +47,7 @@ int write_image(EMData* em, const char* infile, char* outfile,
 				int r_image_index, EMUtil::ImageType image_type,
 				int w_image_index = 0)
 {
-    const char* imgext = EMUtil::get_imagetype_name(image_type);
+    const string imgext = EMUtil::get_imagetype_name(image_type);
     bool is_new_file = false;
     int err = 0;
     
