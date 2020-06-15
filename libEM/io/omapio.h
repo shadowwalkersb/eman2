@@ -55,7 +55,7 @@ namespace EMAN
 
 		DEFINE_IMAGEIO_FUNC;
 
-		static bool is_valid(const void *first_block, off_t file_size = 0);
+		static bool is_valid(const void *first_block);
 
 	private:
 		/**The data in the header is composed of 256 short integers.*/

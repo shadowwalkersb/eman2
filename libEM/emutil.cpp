@@ -333,7 +333,7 @@ EMUtil::ImageType EMUtil::fast_get_image_type(const string & filename,
 			return IMAGE_DF3;
 		break;
 	case IMAGE_OMAP:
-		if (OmapIO::is_valid(first_block, file_size))
+		if (OmapIO::is_valid(first_block))
 			return IMAGE_OMAP;
 		break;
 	case IMAGE_SITUS:
@@ -446,7 +446,7 @@ EMUtil::ImageType EMUtil::get_image_type(const string & in_filename)
 		image_type = IMAGE_FITS;
 	else if (EmIO::is_valid(first_block, file_size))
 		image_type = IMAGE_EM;
-	else if(OmapIO::is_valid(first_block, file_size))
+	else if(OmapIO::is_valid(first_block))
 		image_type = IMAGE_OMAP;
 	else if(SitusIO::is_valid(first_block))
 		image_type = IMAGE_SITUS;

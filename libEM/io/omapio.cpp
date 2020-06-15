@@ -233,7 +233,7 @@ int OmapIO::write_data(float*, int, EMAN::Region const*, EMAN::EMUtil::EMDataTyp
 	return 0;
 }
 
-bool OmapIO::is_valid(const void *first_block, off_t file_size)
+bool OmapIO::is_valid(const void *first_block)
 {
 	ENTERFUNC;
 
