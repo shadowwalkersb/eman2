@@ -1740,7 +1740,7 @@ int MrcIO::transpose(float *data, int xlen, int ylen, int zlen) const
 			}
 		}
 
-		std::copy(tmp.begin(), tmp.end(), data+z*xlen*ylen);
+		std::copy(begin(tmp), end(tmp), data+z*xlen*ylen);
 	}
 
 	return 0;
