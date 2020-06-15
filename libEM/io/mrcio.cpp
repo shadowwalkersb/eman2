@@ -69,20 +69,17 @@ void MrcIO::init()
 {
 	ENTERFUNC;
 
-	if (initialized) {
+	if (initialized)
 		return;
-	}
 
 	setbuf (stdout, NULL);
 
 	IOMode rwmode;
 
-	if (rw_mode == WRITE_ONLY) {
+	if (rw_mode == WRITE_ONLY)
 		rwmode = READ_WRITE;
-	}
-	else {
+	else
 		rwmode = rw_mode;
-	}
 
 	int error_type;
 	struct stat status;
@@ -98,71 +95,59 @@ void MrcIO::init()
 	string ext = Util::get_filename_ext(filename);
 
 	if (ext != "") {
-		if (ext == "raw"   ||  ext == "RAW") {
+		if (ext == "raw"   ||  ext == "RAW")
 			isFEI = true;
-		}
 
-		if (ext == "mrcs"  ||  ext == "MRCS") {
+		if (ext == "mrcs"  ||  ext == "MRCS")
 			is_stack = true;
-		}
 	}
 
 	if (! is_new_file) {
-		if (fread(&mrch, sizeof(MrcHeader), 1, file) != 1) {
+		if (fread(&mrch, sizeof(MrcHeader), 1, file) != 1)
 			throw ImageReadException(filename, "MRC header");
-		}
 
 		bool do_swap, have_err;
 
 		check_swap((const int *) (& mrch), filename.c_str(), true,
 					   do_swap, have_err);
 
-		if (have_err  ||  ! is_valid(&mrch)) {
+		if (have_err  ||  ! is_valid(&mrch))
 			throw ImageReadException(filename, "invalid MRC");
-		}
 
 		if (do_swap) {
 			swap_header(mrch);
 
 			is_big_endian = ! ByteOrder::is_host_big_endian();
 		}
-		else {
+		else
 			is_big_endian =   ByteOrder::is_host_big_endian();
-		}
 
 		int max_labels = Util::get_min(mrch.nlabels, (int) MRC_NUM_LABELS);
 
-		for (int ilabel = 0; ilabel < max_labels; ilabel++) {
+		for (int ilabel = 0; ilabel < max_labels; ilabel++)
 			Util::replace_non_ascii(mrch.labels[ilabel], MRC_LABEL_SIZE);
-		}
 
 		// become_host_endian((int *) &mrch, NUM_4BYTES_PRE_MAP);
 		// become_host_endian((int *) &mrch.machinestamp, NUM_4BYTES_AFTER_MAP);
 		mode_size = get_mode_size(mrch.mode);
 
-		if (is_complex_mode()) {
+		if (is_complex_mode())
 			is_ri = 1;
-		}
 
-		if (mrch.nxstart != 0 || mrch.nystart != 0 || mrch.nzstart != 0) {
+		if (mrch.nxstart != 0 || mrch.nystart != 0 || mrch.nzstart != 0)
 			LOGWARN("nx/ny/nz start not zero");
-		}
 
-		if (is_complex_mode()) {
+		if (is_complex_mode())
 			mrch.nx *= 2;
-		}
 
-		if (mrch.xlen == 0) {
+		if (mrch.xlen == 0)
 			mrch.xlen = 1.0;
-		}
 
-		if (mrch.ylen == 0) {
+		if (mrch.ylen == 0)
 			mrch.ylen = 1.0;
-		}
 
-		if (mrch.zlen == 0) {
+		if (mrch.zlen == 0)
 			mrch.zlen = 1.0;
-		}
 
 		if (mrch.nlabels > 0) {
 			if (string(mrch.labels[0],3) == "Fei") {
@@ -170,9 +155,8 @@ void MrcIO::init()
 			}
 		}
 
-		if (mrch.mapc == 2 && mrch.mapr == 1) {
+		if (mrch.mapc == 2 && mrch.mapr == 1)
 			is_transpose = true;
-		}
 
 		if (is_stack) {
 			stack_size = mrch.nz;
@@ -183,12 +167,10 @@ void MrcIO::init()
 		// with 2 4-bit values packed into each 8-bit byte:
 		float ny_to_nx_ratio;
 
-		if (mrch.nx > 0) {
+		if (mrch.nx > 0)
 			ny_to_nx_ratio = (float) mrch.ny / (float) mrch.nx;
-		}
-		else {
+		else
 			ny_to_nx_ratio = 1.0;
-		}
 
 		bool have_packed_label    = (mrch.nlabels > 0  &&
 			  strstr(mrch.labels[0],   "4 bits packed") != NULL);
@@ -211,9 +193,8 @@ void MrcIO::init()
 		if (is_8_bit_packed) {
 			mrch.mode = MRC_UHEX;
 
-			if (! use_given_dimensions) {
+			if (! use_given_dimensions)
 				mrch.nx = mrch.nx * 2;
-			}
 		}
 	}
 
@@ -272,12 +253,10 @@ void MrcIO::check_swap(const int * data, const char * filnam, bool show_errors,
 
 	have_err = false;
 
-	if (mach == actual_stamp) {
+	if (mach == actual_stamp)
 		do_swap = false;
-	}
-	else if (machw == actual_stamp) {
+	else if (machw == actual_stamp)
 		do_swap = true;
-	}
 	else {
 		if (mrcmode == 0) {
 			if (1 <= mapr  &&  mapr <= 3  &&
@@ -294,12 +273,10 @@ void MrcIO::check_swap(const int * data, const char * filnam, bool show_errors,
 				double ave_xyz  = ((double) nx  + (double) ny  + (double) nz)  / 3.0;
 				double ave_xyzw = ((double) nxw + (double) nyw + (double) nzw) / 3.0;
 
-				if      (nx  > 0  &&  ny  > 0  &&  nz  > 0  &&  ave_xyz  <= max_dim) {
+				if (nx  > 0  &&  ny  > 0  &&  nz  > 0  &&  ave_xyz  <= max_dim)
 					do_swap = false;
-				}
-				else if (nxw > 0  &&  nyw > 0  &&  nzw > 0  &&  ave_xyzw <= max_dim) {
+				else if (nxw > 0  &&  nyw > 0  &&  nzw > 0  &&  ave_xyzw <= max_dim)
 					do_swap = true;
-				}
 				else {
 					have_err = true;
 					do_swap  = false;
@@ -308,12 +285,10 @@ void MrcIO::check_swap(const int * data, const char * filnam, bool show_errors,
 			}
 		}
 		else {
-			if (mrcmode > 0  &&  mrcmode < 128) {
+			if (mrcmode > 0  &&  mrcmode < 128)
 				do_swap = false;
-			}
-			else if (modew > 0  &&  modew < 128) {
+			else if (modew > 0  &&  modew < 128)
 				do_swap = true;
-			}
 			else {
 				have_err = true;
 				do_swap  = false;
@@ -323,9 +298,8 @@ void MrcIO::check_swap(const int * data, const char * filnam, bool show_errors,
 	}
 
 	if (debug  ||  (have_err  &&  show_errors)) {
-		if (filnam) {
+		if (filnam)
 			printf ("file name = '%s'.\n", filnam);
-		}
 
 		printf ("stamp: mach, file, swapd = %8.0x %8.0x %8.0x\n",
 				  actual_stamp, mach, machw);
@@ -343,9 +317,8 @@ bool MrcIO::is_valid(const void * first_block, off_t file_size)
 {
 	ENTERFUNC;
 
-	if (! first_block) { // Null pointer - no data
+	if (! first_block) // Null pointer - no data
 		return false;
-	}
 
 	const int * data = (const int *) first_block;
 
@@ -361,9 +334,8 @@ bool MrcIO::is_valid(const void * first_block, off_t file_size)
 
 	check_swap(data, NULL, false, do_swap, have_err);
 
-	if (have_err) {
+	if (have_err)
 		return false;
-	}
 
 	if (do_swap) {
 		ByteOrder::swap_bytes(&nx);
@@ -373,9 +345,8 @@ bool MrcIO::is_valid(const void * first_block, off_t file_size)
 		ByteOrder::swap_bytes(&nsymbt);
 	}
 
-	if (mrcmode == MRC_SHORT_COMPLEX || mrcmode == MRC_FLOAT_COMPLEX) {
+	if (mrcmode == MRC_SHORT_COMPLEX || mrcmode == MRC_FLOAT_COMPLEX)
 		nx *= 2;
-	}
 
 	if ((mrcmode >= MRC_UCHAR &&
 		(mrcmode < MRC_UNKNOWN || mrcmode == MRC_UHEX)) &&
@@ -389,9 +360,8 @@ bool MrcIO::is_valid(const void * first_block, off_t file_size)
 				(off_t)get_mode_size(mrcmode) +
 				(off_t)sizeof(MrcHeader) + nsymbt;
 
-			if (file_size == file_size1) {
+			if (file_size == file_size1)
 				return true;
-			}
 
 //			return false;
 
@@ -399,9 +369,8 @@ bool MrcIO::is_valid(const void * first_block, off_t file_size)
 
 			LOGWARN("image size check fails, still try to read it...");
 		}
-		else {
+		else
 			return true;
-		}
 
 //#endif // SPIDERMRC
 
@@ -417,27 +386,23 @@ int MrcIO::read_header(Dict & dict, int image_index, const Region * area, bool i
 {
 	init();
 
-	if (isFEI) {
+	if (isFEI)
 		return read_fei_header(dict, image_index, area, is_3d);
-	}
-	else {
+	else
 		return read_mrc_header(dict, image_index, area, is_3d);
-	}
 }
 
 int MrcIO::read_mrc_header(Dict & dict, int image_index, const Region * area, bool)
 {
 	ENTERFUNC;
 
-	if (image_index < 0) {
+	if (image_index < 0)
 		image_index = 0;
-	}
 
-	if (image_index != 0  &&  ! is_stack) {
+	if (image_index != 0  &&  ! is_stack)
 		throw ImageReadException(filename,
 			"no stack allowed for MRC image. For take 2D slice out of 3D image, "
 			"read the 3D image first, then use get_clip().");
-	}
 
 	check_region(area, FloatSize(mrch.nx, mrch.ny, mrch.nz), is_new_file, false);
 
@@ -488,37 +453,29 @@ int MrcIO::read_mrc_header(Dict & dict, int image_index, const Region * area, bo
 	float apy = mrch.ylen / mrch.my;
 	float apz = mrch.zlen / mrch.mz;
 
-	if (apx > 1000 || apx < 0.01) {
+	if (apx > 1000 || apx < 0.01)
 		dict["apix_x"] = 1.0f;
-	}
-	else {
+	else
 		dict["apix_x"] = apx;
-	}
 
-	if (apy > 1000 || apy < 0.01) {
+	if (apy > 1000 || apy < 0.01)
 		dict["apix_y"] = 1.0f;
-	}
-	else {
+	else
 		dict["apix_y"] = apy;
-	}
 
-	if (apz > 1000 || apz < 0.01) {
+	if (apz > 1000 || apz < 0.01)
 		dict["apix_z"] = 1.0f;
-	}
-	else {
+	else
 		dict["apix_z"] = apz;
-	}
 
 	if (area) {
 		dict["origin_x"] = mrch.xorigin + mrch.xlen * area->origin[0];
 		dict["origin_y"] = mrch.yorigin + mrch.xlen * area->origin[1];
 
-		if (area->get_ndim() == 3 && mrch.nz > 1) {
+		if (area->get_ndim() == 3 && mrch.nz > 1)
 			dict["origin_z"] = mrch.zorigin + mrch.xlen * area->origin[2];
-		}
-		else {
+		else
 			dict["origin_z"] = mrch.zorigin;
-		}
 	}
 	else {
 		dict["origin_x"] = mrch.xorigin;
@@ -575,9 +532,8 @@ int MrcIO::read_fei_header(Dict & dict, int image_index, const Region * area, bo
 {
 	ENTERFUNC;
 
-	if(image_index < 0) {
+	if(image_index < 0)
 		image_index = 0;
-	}
 
 	init();
 
@@ -672,9 +628,8 @@ int MrcIO::read_fei_header(Dict & dict, int image_index, const Region * area, bo
 
 	portable_fseek(file, sizeof(FeiMrcHeader)+sizeof(FeiMrcExtHeader)*image_index, SEEK_SET);
 
-	if (fread(&feiexth, sizeof(FeiMrcExtHeader), 1, file) != 1) {
+	if (fread(&feiexth, sizeof(FeiMrcExtHeader), 1, file) != 1)
 		throw ImageReadException(filename, "FEI MRC extended header");
-	}
 
 	dict["FEIMRC.a_tilt"] = feiexth.a_tilt;
 	dict["FEIMRC.b_tilt"] = feiexth.b_tilt;
@@ -717,19 +672,16 @@ int MrcIO::write_header(const Dict & dict, int image_index, const Region* area,
 
 	bool append = (image_index == -1);
 
-	if (image_index == -1) {
+	if (image_index == -1)
 		image_index = 0;
-	}
 
-	if (image_index != 0  &&  ! is_stack) {
+	if (image_index != 0  &&  ! is_stack)
 		throw ImageWriteException(filename, "MRC file does not support stack.");
-	}
 
 	int max_images = 0;
 
-	if (! is_stack) {
+	if (! is_stack)
 		max_images = 1;
-	}
 
 	check_write_access(rw_mode, image_index, max_images);
 
@@ -753,9 +705,8 @@ int MrcIO::write_header(const Dict & dict, int image_index, const Region* area,
 	bool opposite_endian = false;
 
 	if (! is_new_file) {
-		if (is_big_endian != ByteOrder::is_host_big_endian()) {
+		if (is_big_endian != ByteOrder::is_host_big_endian())
 			opposite_endian = true;
-		}
 
 		portable_fseek(file, 0, SEEK_SET);
 	}
@@ -798,17 +749,14 @@ int MrcIO::write_header(const Dict & dict, int image_index, const Region* area,
 		mrch.xorigin = (float)dict["origin_x"];
 		mrch.yorigin = (float)dict["origin_y"];
 
-		if (is_new_file) {
+		if (is_new_file)
 			mrch.zorigin = (float)dict["origin_z"];
-		}
-		else {
+		else
 			mrch.zorigin = (float) dict["origin_z"] - (float) dict["apix_z"] * image_index;
-		}
 	}
 
-	if (dict.has_key("MRC.nlabels")) {
+	if (dict.has_key("MRC.nlabels"))
 		mrch.nlabels = dict["MRC.nlabels"];
-	}
 
 	char label[32];
 
@@ -833,12 +781,10 @@ int MrcIO::write_header(const Dict & dict, int image_index, const Region* area,
 
 	mrch.mode = new_mode;
 
-	if (is_complex_mode()) {
+	if (is_complex_mode())
 		mrch.nx = nx / 2;
-	}
-	else {
+	else
 		mrch.nx = nx;
-	}
 
 	mrch.ny = ny;
 
@@ -855,17 +801,15 @@ int MrcIO::write_header(const Dict & dict, int image_index, const Region* area,
 			stack_size++;
 			image_index = stack_size - 1;
 		}
-		else if (image_index >= stack_size) {
+		else if (image_index >= stack_size)
 			stack_size = image_index + 1;
-		}
 
 		nz = stack_size;
 		mrch.nz = nz;
 	}
 	else {
-		if (is_new_file) {
+		if (is_new_file)
 			mrch.nz = nz;
-		}
 		else if (append) {
 			nz++;
 			mrch.nz = nz;
@@ -874,9 +818,8 @@ int MrcIO::write_header(const Dict & dict, int image_index, const Region* area,
 			nz = image_index + 1;
 			mrch.nz = nz;
 		}
-		else {
+		else
 			mrch.nz = nz;
-		}
 
 		stack_size = 1;
 	}
@@ -914,46 +857,37 @@ int MrcIO::write_header(const Dict & dict, int image_index, const Region* area,
 	mrch.ylen = mrch.my * (float) dict["apix_y"];
 	mrch.zlen = mrch.mz * (float) dict["apix_z"];
 
-	if (dict.has_key("MRC.nxstart")) {
+	if (dict.has_key("MRC.nxstart"))
 		mrch.nxstart = dict["MRC.nxstart"];
-	}
-	else {
+	else
 		mrch.nxstart = -nx / 2;
-	}
 
-	if (dict.has_key("MRC.nystart")) {
+	if (dict.has_key("MRC.nystart"))
 		mrch.nystart = dict["MRC.nystart"];
-	}
-	else {
+	else
 		mrch.nystart = -ny / 2;
-	}
 
-	if (dict.has_key("MRC.nzstart")) {
+	if (dict.has_key("MRC.nzstart"))
 		mrch.nzstart = dict["MRC.nzstart"];
-	}
-	else {
+	else
 		mrch.nzstart = -nz / 2;
-	}
 
 	strncpy(mrch.map, "MAP ", 4);
 	mrch.machinestamp = generate_machine_stamp();
 
 	MrcHeader mrch2 = mrch;
 
-	if (opposite_endian || !use_host_endian) {
+	if (opposite_endian || !use_host_endian)
 		swap_header(mrch2);
-	}
 
-	if (fwrite(&mrch2, sizeof(MrcHeader), 1, file) != 1) {
+	if (fwrite(&mrch2, sizeof(MrcHeader), 1, file) != 1)
 		throw ImageWriteException(filename, "MRC header");
-	}
 
 	mode_size = get_mode_size(mrch.mode);
 	is_new_file = false;
 
-	if (is_stack  &&  ! got_one_image) {
+	if (is_stack  &&  ! got_one_image)
 		mrch.nz = 1;
-	}
 
 	EMUtil::getRenderLimits(dict, rendermin, rendermax, renderbits);
 
@@ -975,15 +909,13 @@ int MrcIO::read_data(float *rdata, int image_index, const Region * area, bool)
 {
 	ENTERFUNC;
 
-	if (! (isFEI || is_stack)) {
+	if (! (isFEI || is_stack))
 		// single image format, index can only be zero
 		image_index = 0;
-	}
 
-	if (is_transpose && area != 0) {
+	if (is_transpose && area != 0)
 		printf("Warning: This image dimension is in (y,x,z), "
 				"region I/O not supported, return the whole image instead.");
-	}
 
 	check_read_access(image_index, rdata);
 
@@ -1019,14 +951,12 @@ int MrcIO::read_data(float *rdata, int image_index, const Region * area, bool)
 
 		size_t modesize;
 
-		if (mrch.mode == MRC_UHEX) {
+		if (mrch.mode == MRC_UHEX)
 			// Have MRC packed 8 bit format with 2 4-bit values in each 8-bit byte,
 			// so the mode size is effectively half a byte, signalled by this value:
 			modesize = 11111111;
-		}
-		else {
+		else
 			modesize = mode_size;
-		}
 
 		EMUtil::process_region_io(cdata, file, READ_ONLY,
 								  image_index, modesize,
@@ -1040,12 +970,10 @@ int MrcIO::read_data(float *rdata, int image_index, const Region * area, bool)
 	if (mrch.mode != MRC_UCHAR  &&  mrch.mode != MRC_CHAR  &&
 	    mrch.mode != MRC_UHEX) {
 
-		if (mode_size == sizeof(short)) {
+		if (mode_size == sizeof(short))
 			become_host_endian < short >(sdata, size);
-		}
-		else if (mode_size == sizeof(float)) {
+		else if (mode_size == sizeof(float))
 			become_host_endian < float >(rdata, size);
-		}
 	}
 
 	if (mrch.mode == MRC_UHEX) {
@@ -1089,14 +1017,12 @@ int MrcIO::read_data(float *rdata, int image_index, const Region * area, bool)
 		}
 	}
 
-	if (is_transpose) {
+	if (is_transpose)
 		transpose(rdata, xlen, ylen, zlen);
-	}
 
 	if (is_complex_mode()) {
-		if (! is_ri) {
+		if (! is_ri)
 			Util::ap2ri(rdata, size);
-		}
 
 		Util::flip_complex_phase(rdata, size);
 		Util::rotate_phase_origin(rdata, xlen, ylen, zlen);
@@ -1114,9 +1040,8 @@ int MrcIO::write_data(float *data, int image_index, const Region* area,
 
 	bool append = (image_index == -1);
 
-	if (is_stack  &&  append) {
+	if (is_stack  &&  append)
 		image_index = stack_size - 1;
-	}
 
 	int max_images = 0;
 
@@ -1143,9 +1068,8 @@ int MrcIO::write_data(float *data, int image_index, const Region* area,
 
 	bool got_one_image = (nz > 1);
 
-	if (is_stack  &&  ! got_one_image) {
+	if (is_stack  &&  ! got_one_image)
 		nz = 1;
-	}
 
 	size_t size = (size_t)nx * ny * nz;
 
@@ -1165,12 +1089,10 @@ int MrcIO::write_data(float *data, int image_index, const Region* area,
 
 	if ((is_big_endian != ByteOrder::is_host_big_endian()) || ! use_host_endian) {
 		if (mrch.mode != MRC_UCHAR  &&  mrch.mode != MRC_CHAR) {
-			if (mode_size == sizeof(short)) {
+			if (mode_size == sizeof(short))
 				ByteOrder::swap_bytes((short*) data, size);
-			}
-			else if (mode_size == sizeof(float)) {
+			else if (mode_size == sizeof(float))
 				ByteOrder::swap_bytes((float*) data, size);
-			}
 		}
 	}
 
@@ -1192,9 +1114,8 @@ int MrcIO::write_data(float *data, int image_index, const Region* area,
 	short          *  sdata  = NULL;
 	unsigned short *  usdata = NULL;
 
-	if (is_stack  &&  ! got_one_image) {
+	if (is_stack  &&  ! got_one_image)
 		mrch.nz = stack_size;
-	}
 
 	bool dont_rescale;
 
@@ -1204,15 +1125,12 @@ int MrcIO::write_data(float *data, int image_index, const Region* area,
 		dont_rescale = (rmin == 0.0  &&  rmax == UCHAR_MAX);
 
 		for (size_t i = 0; i < size; ++i) {
-			if (data[i] <= rmin) {
+			if (data[i] <= rmin)
 				cdata[i] = 0;
-			}
-			else if (data[i] >= rmax){
+			else if (data[i] >= rmax)
 				cdata[i] = UCHAR_MAX;
-			}
-			else if (dont_rescale) {
+			else if (dont_rescale)
 				cdata[i] = (unsigned char) data[i];
-			}
 			else {
 				cdata[i] = (unsigned char)((data[i] - rmin) /
 								(rmax - rmin) *
@@ -1230,15 +1148,12 @@ int MrcIO::write_data(float *data, int image_index, const Region* area,
 		dont_rescale = (rmin == SCHAR_MIN  &&  rmax == SCHAR_MAX);
 
 		for (size_t i = 0; i < size; ++i) {
-			if (data[i] <= rmin) {
+			if (data[i] <= rmin)
 				scdata[i] = SCHAR_MIN;
-			}
-			else if (data[i] >= rmax){
+			else if (data[i] >= rmax)
 				scdata[i] = SCHAR_MAX;
-			}
-			else if (dont_rescale) {
+			else if (dont_rescale)
 				scdata[i] = (signed char) data[i];
-			}
 			else {
 				scdata[i] = (signed char)((data[i] - rmin) /
 								(rmax - rmin) *
@@ -1256,15 +1171,12 @@ int MrcIO::write_data(float *data, int image_index, const Region* area,
 		dont_rescale = (rmin == SHRT_MIN  &&  rmax == SHRT_MAX);
 
 		for (size_t i = 0; i < size; ++i) {
-			if (data[i] <= rmin) {
+			if (data[i] <= rmin)
 				sdata[i] = SHRT_MIN;
-			}
-			else if (data[i] >= rmax) {
+			else if (data[i] >= rmax)
 				sdata[i] = SHRT_MAX;
-			}
-			else if (dont_rescale) {
+			else if (dont_rescale)
 				sdata[i] = (short) data[i];
-			}
 			else {
 				sdata[i] = (short)(((data[i] - rmin) /
 								(rmax - rmin)) *
@@ -1282,15 +1194,12 @@ int MrcIO::write_data(float *data, int image_index, const Region* area,
 		dont_rescale = (rmin == 0.0  &&  rmax == USHRT_MAX);
 
 		for (size_t i = 0; i < size; ++i) {
-			if (data[i] <= rmin) {
+			if (data[i] <= rmin)
 				usdata[i] = 0;
-			}
-			else if (data[i] >= rmax) {
+			else if (data[i] >= rmax)
 				usdata[i] = USHRT_MAX;
-			}
-			else if (dont_rescale) {
+			else if (dont_rescale)
 				usdata[i] = (unsigned short) data[i];
-			}
 			else {
 				usdata[i] = (unsigned short)((data[i] - rmin) /
 								(rmax - rmin) *
@@ -1303,9 +1212,8 @@ int MrcIO::write_data(float *data, int image_index, const Region* area,
 		update_stats(ptr_data, size);
 	}
 
-	if (is_stack  &&  ! got_one_image) {
+	if (is_stack  &&  ! got_one_image)
 		mrch.nz = 1;
-	}
 
 	// New way to write data which includes region writing.
 	// If it is tested to be OK, remove the old code in the
@@ -1428,25 +1336,20 @@ void MrcIO::update_stats(void * data, size_t size)
 		min    = (float) USHRT_MAX;
 		usdata = (unsigned short *) data;
 	}
-	else {
+	else
 		throw InvalidCallException("This function is used to write 8bit/16bit mrc file only.");
-	}
 
 	sum = 0.0;
 
 	for (size_t i = 0; i < size; i++) {
-		if (use_uchar) {
+		if (use_uchar)
 			v = (float) (cdata[i]);
-		}
-		else if (use_schar) {
+		else if (use_schar)
 			v = (float) (scdata[i]);
-		}
-		else if (use_short) {
+		else if (use_short)
 			v = (float) (sdata[i]);
-		}
-		else {
+		else
 			v = (float) (usdata[i]);
-		}
 
 		if (v < min) min = v;
 		if (v > max) max = v;
@@ -1454,43 +1357,34 @@ void MrcIO::update_stats(void * data, size_t size)
 		sum = sum + v;
 	}
 
-	if (size > 0) {
+	if (size > 0)
 		mean = sum / (double) size;
-	}
-	else {
+	else
 		mean = 0.0;
-	}
 
 	square_sum = 0.0;
 
 	for (size_t i = 0; i < size; i++) {
-		if (use_uchar) {
+		if (use_uchar)
 			v = (float) (cdata[i]);
-		}
-		else if (use_schar) {
+		else if (use_schar)
 			v = (float) (scdata[i]);
-		}
-		else if (use_short) {
+		else if (use_short)
 			v = (float) (sdata[i]);
-		}
-		else {
+		else
 			v = (float) (usdata[i]);
-		}
 
 		vv = v - mean;
 
 		square_sum = square_sum  +  vv * vv;
 	}
 
-	if (size > 1) {
+	if (size > 1)
 		sigma = std::sqrt(square_sum / (double) (size-1));
-	}
-	else {
+	else
 		sigma = 0.0;
-	}
 
 	/* change mrch.amin / amax / amean / rms here */
-
 	mrch.amin  = min;
 	mrch.amax  = max;
 	mrch.amean = (float) mean;
@@ -1515,9 +1409,8 @@ void MrcIO::update_stats(void * data, size_t size)
 
 	portable_fseek(file, 0, SEEK_SET);
 	
-	if (fwrite(& mrch, sizeof(MrcHeader), 1, file) != 1) {
+	if (fwrite(& mrch, sizeof(MrcHeader), 1, file) != 1)
 		throw ImageWriteException(filename, "Error writing MRC header to update statistics.");
-	}
 	
 	portable_fseek(file, sizeof(MrcHeader), SEEK_SET);
 }
@@ -1526,9 +1419,8 @@ bool MrcIO::is_complex_mode()
 {
 	init();
 
-	if (mrch.mode == MRC_SHORT_COMPLEX || mrch.mode == MRC_FLOAT_COMPLEX) {
+	if (mrch.mode == MRC_SHORT_COMPLEX || mrch.mode == MRC_FLOAT_COMPLEX)
 		return true;
-	}
 
 	return false;
 }
@@ -1542,9 +1434,8 @@ int MrcIO::read_ctf(Ctf & ctf, int)
 	size_t n = strlen(CTF_MAGIC);
 	int err = 1;
 
-	if (strncmp(mrch.labels[0], CTF_MAGIC, n) == 0) {
+	if (strncmp(mrch.labels[0], CTF_MAGIC, n) == 0)
 		err = ctf.from_string(string(&mrch.labels[0][n]));
-	}
 
 	EXITFUNC;
 
@@ -1565,9 +1456,8 @@ void MrcIO::write_ctf(const Ctf & ctf, int)
 
 	rewind(file);
 
-	if (fwrite(&mrch, sizeof(MrcHeader), 1, file) != 1) {
+	if (fwrite(&mrch, sizeof(MrcHeader), 1, file) != 1)
 		throw ImageWriteException(filename, "write CTF info to header failed");
-	}
 
 	EXITFUNC;
 }
@@ -1651,21 +1541,17 @@ int MrcIO::to_mrcmode(int e, int is_complex)
 
 		break;
 	case EMUtil::EM_USHORT:
-		if (is_complex) {
+		if (is_complex)
 			m = MRC_SHORT_COMPLEX;
-		}
-		else {
+		else
 			m = MRC_USHORT;
-		}
 
 		break;
 	case EMUtil::EM_SHORT:
-		if (is_complex) {
+		if (is_complex)
 			m = MRC_SHORT_COMPLEX;
-		}
-		else {
+		else
 			m = MRC_SHORT;
-		}
 
 		break;
 	case EMUtil::EM_SHORT_COMPLEX:
@@ -1676,12 +1562,10 @@ int MrcIO::to_mrcmode(int e, int is_complex)
 	case EMUtil::EM_INT:
 	case EMUtil::EM_UINT:
 	case EMUtil::EM_FLOAT:
-		if (is_complex) {
+		if (is_complex)
 			m = MRC_FLOAT_COMPLEX;
-		}
-		else {
+		else
 			m = MRC_FLOAT;
-		}
 
 		break;
 	case EMUtil::EM_FLOAT_COMPLEX:
