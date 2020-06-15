@@ -570,6 +570,13 @@ ImageIO *EMUtil::get_imageio(const string & filename, int rw,
    #endif
 
 	ImageIO::IOMode rw_mode = static_cast < ImageIO::IOMode > (rw);
+    cout<<"image_type: "
+        <<image_type
+        <<endl;
+
+    cout<<"filename: "
+        <<filename
+        <<endl;
 
 	if (image_type == IMAGE_UNKNOWN) {
 		image_type = get_image_type(filename);

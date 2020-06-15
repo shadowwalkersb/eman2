@@ -83,16 +83,25 @@ void EMData::_read_image(ImageIO *imageio, int img_index, bool nodata,
 					set_size(nx,ny,nz);
 					to_zero(); // This could be avoided in favor of setting only the regions that were not read to to zero... but tedious
 				} // else the dimensions of the file being read match those of this
-				else
+				else {
+					cout<<"HERE"<<endl;
+					cout<<"nx= "<<nx<<endl
+						<<"ny= "<<ny<<endl
+						<<"nz= "<<nz<<endl;
 					set_size(nx, ny, nz);
+					cout<<"HERE 1111"<<endl;
+				}
 
 				// If GPU features are enabled there is  danger that rdata will
 				// not be allocated, but set_size takes care of this, so this
 				// should be safe.
+				cout<<"Before read_data"<<endl;
 				int err = imageio->read_data(get_data(), img_index, region, is_3d);
-				if (err)
-					throw ImageReadException(imageio->get_filename(), "imageio read data failed");
-				else
+				cout<<"After read_data"<<endl;
+				if (err) {
+					throw ImageReadException(filename, "imageio read data failed");
+				}
+				else {
 					update();
 			}
 			else {
