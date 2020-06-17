@@ -744,9 +744,8 @@ namespace EMAN
 	template <class T>
 	void Factory<T>::init()
 	{
-		if (!my_instance) {
+		if (!my_instance)
 			my_instance = new Factory<T>();
-		}
 	}
 
 	template <class T> 
@@ -831,9 +830,8 @@ namespace EMAN
 	vector<string> Factory<T>::get_list() {
 		init();
 		vector<string> result;
-		for (auto p = my_instance->my_dict.begin(); p != my_instance->my_dict.end(); p++) {
+		for (auto p = my_instance->my_dict.begin(); p != my_instance->my_dict.end(); p++)
 			result.push_back(p->first);
-		}
 
 		return result;
 	}
