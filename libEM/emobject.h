@@ -764,10 +764,8 @@ namespace EMAN
 		init();
 
 		string name = ClassType::NAME;
-		typename map < string, InstanceType >::iterator fi =
-			my_instance->my_dict.find(name);
 
-		if (fi == my_instance->my_dict.end())
+		if (my_instance->my_dict.find(name) == my_instance->my_dict.end())
 			my_instance->my_dict[name] = &ClassType::NEW;
 	}
 
@@ -775,17 +773,14 @@ namespace EMAN
 	T* Factory<T>::get(const string & instancename)
 	{
 		init();
-		typename map < string, InstanceType >::iterator fi =
-			my_instance->my_dict.find(instancename);
-		if (fi != my_instance->my_dict.end()) {
-			return my_instance->my_dict[instancename] ();
+		if (my_instance->my_dict.find(instancename) != my_instance->my_dict.end()) {
+            return my_instance->my_dict[instancename] ();
 		}
 
 		string lower = instancename;
 		for (unsigned int i=0; i<lower.length(); i++) lower[i]=tolower(lower[i]);
 
-		fi = my_instance->my_dict.find(lower);
-		if (fi != my_instance->my_dict.end()) {
+		if (my_instance->my_dict.find(lower) != my_instance->my_dict.end()) {
 			return my_instance->my_dict[lower] ();
 		}
 
