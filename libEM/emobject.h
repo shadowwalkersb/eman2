@@ -797,8 +797,7 @@ namespace EMAN
 	{
 		init();
 
-		typename map<string, InstanceType>::iterator fi =
-			my_instance->my_dict.find(instancename);
+		auto fi = my_instance->my_dict.find(instancename);
 
 		string lower = instancename;
 		if (fi == my_instance->my_dict.end()) {
