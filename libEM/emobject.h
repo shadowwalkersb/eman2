@@ -314,8 +314,8 @@ namespace EMAN
 			{
 				vector<string> result;
 
-				for (auto p = type_dict.begin(); p != type_dict.end(); p++)
-					result.push_back(p->first);
+				for (const auto & p : type_dict)
+					result.push_back(p.first);
 
 				return result;
 			}
@@ -474,8 +474,8 @@ namespace EMAN
 		{
 			vector<string> result;
 
-			for (auto p = dict.begin(); p != dict.end(); p++)
-				result.push_back(p->first);
+			for (auto & p : dict)
+				result.push_back(p.first);
 
 			return result;
 		}
@@ -486,8 +486,8 @@ namespace EMAN
 		{
 			vector<EMObject> result;
 
-			for (auto p = dict.begin(); p != dict.end(); p++)
-				result.push_back(p->second);
+			for (auto & p : dict)
+				result.push_back(p.second);
 
 			return result;
 		}
@@ -574,9 +574,9 @@ namespace EMAN
 		{
 			Dict ret(*this);
 
-			for (auto it = excluded_keys.begin(); it != excluded_keys.end(); ++it )
-				if (ret.has_key(*it))
-				    ret.erase(*it);
+			for (const auto & excluded_key : excluded_keys)
+				if (ret.has_key(excluded_key))
+				    ret.erase(excluded_key);
 
 			return ret;
 		}
@@ -807,10 +807,10 @@ namespace EMAN
 			const vector<string> para_keys = params.keys();
 //			std::cout << "the number of keys is " << para_keys.size() << std::endl; // PRB May 19th
 			const vector<string> valid_keys = i->get_param_types().keys();
-			for(auto it=para_keys.begin(); it!=para_keys.end(); ++it) {
+			for(const auto & para_key : para_keys) {
 // 				std::cout << "the iterator  is " << *it << std::endl; // PRB May 19th
-				if( find(valid_keys.begin(), valid_keys.end(), *it) == valid_keys.end() )
-					throw InvalidParameterException(*it);
+				if( find(valid_keys.begin(), valid_keys.end(), para_key) == valid_keys.end() )
+					throw InvalidParameterException(para_key);
 			}
 
 			i->set_params(params);
@@ -849,8 +849,8 @@ namespace EMAN
 		vector<string> item_names = Factory<T>::get_list();
 		map<string, vector<string> >	factory_list;
 
-		for(auto p = item_names.begin(); p !=item_names.end(); ++p) {
-			T* item = Factory<T>::get(*p);
+		for(auto & item_name : item_names) {
+			T* item = Factory<T>::get(item_name);
 
 			string name = item->get_name();
 
