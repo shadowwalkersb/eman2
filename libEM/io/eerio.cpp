@@ -35,10 +35,12 @@ using namespace EMAN;
 
 EerIO::EerIO(const string & fname, IOMode rw)
 {
+	tiff_file = TIFFOpen(fname.c_str(), "r");
 }
 
 EerIO::~EerIO()
 {
+	TIFFClose(tiff_file);
 }
 
 void EerIO::init()
