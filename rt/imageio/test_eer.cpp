@@ -206,3 +206,17 @@ int main()
 
 	return 0;
 }
+
+//#define BOOST_TEST_MODULE My Test
+//#include <boost/test/included/unit_test.hpp>
+//
+//BOOST_AUTO_TEST_CASE(first_test)
+//{
+//Dict d;
+//d["a"] = 1;
+//d["b"] = 2;
+//d["cc"] = 3;
+//
+//	bool f2 = d.has_key("c");
+//	BOOST_TEST(f2 == true);
+//}
