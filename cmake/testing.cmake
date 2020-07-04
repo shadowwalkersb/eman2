@@ -43,17 +43,6 @@ add_custom_target(test-verbose-broken
 		COMMAND ${NOSETESTS_EXECUTABLE} -v -m "^test_*" -a broken ${CMAKE_SOURCE_DIR}/rt/pyem/*
 		)
 
-if(NOT WIN32)
-	add_custom_target(test-progs
-					  COMMAND ${CMAKE_CTEST_COMMAND} -V -C Release -R progs
-					  DEPENDS PythonFiles
-					  )
-	
-	add_test(NAME progs
-			 COMMAND bash ${CMAKE_SOURCE_DIR}/tests/run_prog_tests.sh
-			 )
-endif()
-
 add_test(NAME py-compile
 		COMMAND ${PYTHON_EXECUTABLE} -m compileall -q -x .git ${CMAKE_SOURCE_DIR}
 		)
