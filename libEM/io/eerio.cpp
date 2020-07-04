@@ -92,6 +92,7 @@ bool EerIO::is_image_big_endian()
 int EerIO::read_header(Dict & dict, int image_index, const Region * area, bool is_3d)
 {
 	TIFFSetDirectory(tiff_file, 0);
+	TIFFPrintDirectory(tiff_file, stdout);
 	TIFFGetField(tiff_file, TIFFTAG_COMPRESSION, &compression);
 
 	char *metadata_c = nullptr;
