@@ -72,6 +72,8 @@ void test_eer_get_bits() {
 	assert(is22.get_bits(2) == 2);
 //	cout<<is2<<endl;
 	assert(is22.get_bits(6) == 42);
+	assert(is22.get_bits(3) == 1);
+
 	uint64_t AB[] = {a,b};
 	EerStream<uint64_t> is3(AB);
 
