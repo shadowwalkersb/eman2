@@ -55,8 +55,8 @@ EerStream<uint64_t> is3(AB);
 
 void test_eer_get_bits() {
 	uint64_t mm = ~0;
-	uint64_t nn = ~0-1;
-	uint64_t bb = 1<<1 | 1<<3 | 1<<5 | 1<<7;
+	uint64_t nn = ~0 - 1;
+	uint64_t bb = 1 << 1 | 1 << 3 | 1 << 5 | 1 << 7;
 //    WORD bb = 0b10101010;
 //	WORD b[] = {mm, nn, bb};
 
@@ -75,9 +75,9 @@ void test_eer_get_bits() {
 	EerStream<uint64_t> is2(reinterpret_cast<uint64_t *>(ab));
 	uint8_t a = 0b10101010;
 	uint8_t b = 0b10011001;
-	uint8_t ab[] = {a,b};
+	uint8_t ab[] = {a, b};
 
-	EerStream<uint64_t> is2(reinterpret_cast<uint64_t*>(ab));
+	EerStream<uint64_t> is2(reinterpret_cast<uint64_t *>(ab));
 	assert(is2.get_bits(2) == 2);
 //	cout<<is2<<endl;
 	assert(is2.get_bits(6) == 42);
@@ -195,15 +195,11 @@ void test_eer_rle_counter() {
 }
 
 void test_eer_real_pos() {
-	BitStream<uint8_t> is66(ab5);
-	SubPix<4, uint8_t> sub_pix;
-	RleCounter<7, uint8_t> rle66;
-	cout<<"\n\nis66"<<endl;
-	cout<<is66;
+	EerStream<uint8_t> is66(ab5);
+	SubPix<uint8_t> sub_pix;
+	RLE<7, uint8_t> rle66;
 	is66>>sub_pix;
-	cout<<sub_pix<<endl;
-	cout<<decode(sub_pix)<<endl;
-	assert(decode(sub_pix) == Pos(0,0));
+	assert(sub_pix == Pos(0,0));
 	is66>>rle66>>sub_pix;
 	cout<<is66<<endl;
 	cout<<rle66<<endl;
@@ -213,63 +209,6 @@ void test_eer_real_pos() {
 	is66>>rle66>>sub_pix;
 	assert(decode(sub_pix) == Pos(1,0));
 
-	BitStream<uint8_t> is7(ab5);
-//	auto pos = is7.real_pos();
-//	cout<<pos<<endl;
-//	assert(pos == Pos(169, 2));
-	assert(is7.real_pos() == Pos(169, 2));
-//	pos = is7.real_pos();
-//	cout<<pos<<endl;
-	assert(is7.real_pos() == Pos(661, 3));
-}
-
-uint8_t a5 = 0b10101010;
-uint8_t b5 = 0b11011001;
-uint8_t c5 = 0b10011111;
-uint8_t d5 = 0b10011001;
-uint8_t ab5[] = {a5,b5,c5,d5};
-
-void test_eer_rle() {
-	EerStream<uint64_t> is4(AB);
-
-	assert(is4.read_rle() == 42);
-
-	EerStream<uint8_t> is5(ab5);
-	EerStream<uint8_t> is55(ab5);
-	RLE<7, uint8_t> rle;
-
-	is55>>rle;
-	assert(rle.count == 42);
-
-	is55>>rle;
-	assert(rle.count == 0b110011 + 42);
-
-	is55>>rle;
-	assert(rle.count == 0b1001100 + (1<<7) - 1 + 0b110011 + 42);
-
-	assert(is5.read_rle() == 42);
-	assert(is5.read_rle() == 0b110011 + 42);
-	assert(is5.read_rle() == 0b1001100 + (1<<7) - 1 + 0b110011 + 42);
-}
-
-void test_eer_sub_pos() {
-	EerStream<uint8_t> is6(ab5);
-	assert(is6.read_sub_pos() == Pos(0,0));
-	is6.read_rle();
-	assert(is6.read_sub_pos() == Pos(1,0));
-}
-	uint64_t AB[] = {a,b};
-	EerStream<uint64_t> is3(AB);
-
-void test_eer_real_pos() {
-	EerStream<uint8_t> is66(ab5);
-	SubPix<uint8_t> sub_pix;
-	RLE<7, uint8_t> rle66;
-	is66>>sub_pix;
-	assert(sub_pix == Pos(0,0));
-	is66>>rle66>>sub_pix;
-	assert(sub_pix == Pos(1,0));
-
 	EerStream<uint8_t> is7(ab5);
 //	auto pos = is7.real_pos();
 //	cout<<pos<<endl;
@@ -278,6 +217,24 @@ void test_eer_real_pos() {
 //	pos = is7.real_pos();
 //	cout<<pos<<endl;
 	assert(is7.real_pos() == Pos(661, 3));
+}
+
+void test_eer_rle() {
+	EerStream<uint64_t> is4(AB);
+
+	assert(is4.read_rle() == 42);
+
+	uint8_t a5 = 0b10101010;
+	uint8_t b5 = 0b11011001;
+	uint8_t c5 = 0b10011111;
+	uint8_t d5 = 0b10011001;
+	uint8_t ab5[] = {a5,b5,c5,d5};
+
+	EerStream<uint8_t> is5(ab5);
+
+	assert(is5.read_rle() == 42);
+	assert(is5.read_rle() == 0b110011);
+	assert(is5.read_rle() == 0b1001100 + (1<<7) - 1);
 }
 
 int main()
