@@ -100,11 +100,7 @@ namespace EMAN
 		Pos read_sub_pos() {
 			int sub_pix = get_bits(2*num_sub_pix_bits);
 
-			Pos pos;
-			pos.x = (sub_pix  & 3) ^ 2;
-			pos.y = (sub_pix >> 2) ^ 2;
-
-			return pos;
+			return Pos((sub_pix  & 3) ^ 2, (sub_pix >> 2) ^ 2);
 		}
 
 		Pos real_pos() {
