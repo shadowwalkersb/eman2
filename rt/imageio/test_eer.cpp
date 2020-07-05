@@ -42,14 +42,14 @@ using namespace EMAN;
 
 void test_eer_get_bits() {
 	uint64_t mm = ~0;
-	uint64_t nn = ~0-1;
-	uint64_t bb = 1<<1 | 1<<3 | 1<<5 | 1<<7;
+	uint64_t nn = ~0 - 1;
+	uint64_t bb = 1 << 1 | 1 << 3 | 1 << 5 | 1 << 7;
 //    WORD bb = 0b10101010;
 //	WORD b[] = {mm, nn, bb};
 
 	EerStream<uint64_t> is(&mm);
 	assert(is.get_bits(3) == 7);
-	assert(is.get_bits(9) == (1<<9)-1);
+	assert(is.get_bits(9) == (1 << 9) - 1);
 	assert(is.get_bits(1) == 1);
 
 	EerStream<uint64_t> is1(&bb);
@@ -61,9 +61,9 @@ void test_eer_get_bits() {
 
 	uint8_t a = 0b10101010;
 	uint8_t b = 0b10011001;
-	uint8_t ab[] = {a,b};
+	uint8_t ab[] = {a, b};
 
-	EerStream<uint64_t> is2(reinterpret_cast<uint64_t*>(ab));
+	EerStream<uint64_t> is2(reinterpret_cast<uint64_t *>(ab));
 	assert(is2.get_bits(2) == 2);
 //	cout<<is2<<endl;
 	assert(is2.get_bits(6) == 42);
@@ -74,7 +74,7 @@ void test_eer_get_bits() {
 	assert(is22.get_bits(6) == 42);
 	assert(is22.get_bits(3) == 1);
 
-	uint64_t AB[] = {a,b};
+	uint64_t AB[] = {a, b};
 	EerStream<uint64_t> is3(AB);
 
 	is5 >> rle;
@@ -209,6 +209,24 @@ void test_eer_real_pos() {
 	assert(is7.real_pos() == Pos(661, 3));
 }
 
+void test_eer_rle() {
+	EerStream<uint64_t> is4(AB);
+
+	assert(is4.read_rle() == 42);
+
+	uint8_t a5 = 0b10101010;
+	uint8_t b5 = 0b11011001;
+	uint8_t c5 = 0b10011111;
+	uint8_t d5 = 0b10011001;
+	uint8_t ab5[] = {a5,b5,c5,d5};
+
+	EerStream<uint8_t> is5(ab5);
+
+	assert(is5.read_rle() == 42);
+	assert(is5.read_rle() == 0b110011);
+	assert(is5.read_rle() == 0b1001100 + (1<<7) - 1);
+}
+
 int main()
 {
 	test_bit_stream();
@@ -219,6 +237,7 @@ int main()
 	test_eer_real_pos();
 
 	test_eer_get_bits();
+	test_eer_rle();
 
 	return 0;
 }
