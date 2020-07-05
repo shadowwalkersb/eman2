@@ -212,22 +212,29 @@ void test_eer_real_pos() {
 	assert(is7.real_pos() == Pos(661, 3));
 }
 
+uint8_t a5 = 0b10101010;
+uint8_t b5 = 0b11011001;
+uint8_t c5 = 0b10011111;
+uint8_t d5 = 0b10011001;
+uint8_t ab5[] = {a5,b5,c5,d5};
+
 void test_eer_rle() {
 	EerStream<uint64_t> is4(AB);
 
 	assert(is4.read_rle() == 42);
-
-	uint8_t a5 = 0b10101010;
-	uint8_t b5 = 0b11011001;
-	uint8_t c5 = 0b10011111;
-	uint8_t d5 = 0b10011001;
-	uint8_t ab5[] = {a5,b5,c5,d5};
 
 	EerStream<uint8_t> is5(ab5);
 
 	assert(is5.read_rle() == 42);
 	assert(is5.read_rle() == 0b110011);
 	assert(is5.read_rle() == 0b1001100 + (1<<7) - 1);
+}
+
+void test_eer_sub_pos() {
+	EerStream<uint8_t> is6(ab5);
+	assert(is6.read_sub_pos() == Pos(0,0));
+	is6.read_rle();
+	assert(is6.read_sub_pos() == Pos(1,0));
 }
 
 int main()
@@ -241,6 +248,7 @@ int main()
 
 	test_eer_get_bits();
 	test_eer_rle();
+	test_eer_sub_pos();
 
 	return 0;
 }
