@@ -41,6 +41,20 @@ namespace EMAN
 {
 	const unsigned int num_rle_bits = 7;
 
+	struct Pos {
+		Pos(int xx, int yy) : x(xx), y(yy) {}
+		int x, y;
+
+		bool operator==(const Pos &p) {
+			return x == p.x && y == p.y;
+		}
+
+		friend std::ostream& operator<<(std::ostream &out, const Pos &obj) {
+			return out<<obj.x
+					<<" "<<obj.y;
+		}
+	};
+
 	template <class T>
 	class BitStream {
 	public:
