@@ -54,12 +54,6 @@ uint64_t AB[] = {a, b};
 EerStream<uint64_t> is3(AB);
 
 void test_eer_get_bits() {
-	uint64_t mm = ~0;
-	uint64_t nn = ~0 - 1;
-	uint64_t bb = 1 << 1 | 1 << 3 | 1 << 5 | 1 << 7;
-//    WORD bb = 0b10101010;
-//	WORD b[] = {mm, nn, bb};
-
 	EerStream<uint64_t> is(&mm);
 	assert(is.get_bits(3) == 7);
 	assert(is.get_bits(9) == (1 << 9) - 1);
@@ -71,11 +65,6 @@ void test_eer_get_bits() {
 	assert(is1.get_bits(3) == 5);
 
 //	cout<<is1<<endl;
-
-	EerStream<uint64_t> is2(reinterpret_cast<uint64_t *>(ab));
-	uint8_t a = 0b10101010;
-	uint8_t b = 0b10011001;
-	uint8_t ab[] = {a, b};
 
 	EerStream<uint64_t> is2(reinterpret_cast<uint64_t *>(ab));
 	assert(is2.get_bits(2) == 2);
@@ -217,6 +206,10 @@ void test_eer_real_pos() {
 //	pos = is7.real_pos();
 //	cout<<pos<<endl;
 	assert(is7.real_pos() == Pos(661, 3));
+
+	assert(is3.get_bits(20) == a);
+	assert(is3.get_bits(43) == 0);
+	assert(is3.get_bits(20) == 0b100110010);
 }
 
 void test_eer_rle() {
@@ -248,10 +241,6 @@ int main()
 
 	test_eer_get_bits();
 	test_eer_rle();
-	test_eer_sub_pos();
-	test_eer_real_pos();
-
-	test_eer_get_bits();
 
 	return 0;
 }
