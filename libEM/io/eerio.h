@@ -87,19 +87,24 @@ namespace EMAN
 
 		unsigned int read_rle() {
 			static const unsigned int max_val = (1<<num_rle_bits) - 1;
+			unsigned int count = 0;
 			unsigned int val;
 			do {
 				val = get_bits(num_rle_bits);
-				num_electrons += val;
+				count += val;
 			} while(val == max_val);
 
-			return num_electrons;
+			return count;
 		}
 
 		Pos read_sub_pos() {
 			int sub_pix = get_bits(2*num_sub_pix_bits);
 
-			return Pos((sub_pix  & 3) ^ 2, (sub_pix >> 2) ^ 2);
+			Pos pos;
+			pos.x = (sub_pix  & 3) ^ 2;
+			pos.y = (sub_pix >> 2) ^ 2;
+
+			return pos;
 		}
 
 		Pos real_pos() {
