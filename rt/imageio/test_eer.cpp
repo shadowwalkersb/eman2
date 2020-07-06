@@ -239,7 +239,12 @@ void test_eer_sub_pos() {
 
 void test_eer_real_pos() {
 	EerStream<uint8_t> is7(ab5);
+//	auto pos = is7.real_pos();
+//	cout<<pos<<endl;
+//	assert(pos == Pos(169, 2));
 	assert(is7.real_pos() == Pos(169, 2));
+//	pos = is7.real_pos();
+//	cout<<pos<<endl;
 	assert(is7.real_pos() == Pos(493, 3));
 }
 
