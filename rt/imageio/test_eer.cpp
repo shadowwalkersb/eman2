@@ -226,8 +226,8 @@ void test_eer_rle() {
 	EerStream<uint8_t> is5(ab5);
 
 	assert(is5.read_rle() == 42);
-	assert(is5.read_rle() == 0b110011);
-	assert(is5.read_rle() == 0b1001100 + (1<<7) - 1);
+	assert(is5.read_rle() == 0b110011 + 42);
+	assert(is5.read_rle() == 0b1001100 + (1<<7) - 1 + 0b110011 + 42);
 }
 
 void test_eer_sub_pos() {
@@ -245,7 +245,7 @@ void test_eer_real_pos() {
 	assert(is7.real_pos() == Pos(169, 2));
 //	pos = is7.real_pos();
 //	cout<<pos<<endl;
-	assert(is7.real_pos() == Pos(493, 3));
+	assert(is7.real_pos() == Pos(661, 3));
 }
 
 int main()
