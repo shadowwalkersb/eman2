@@ -237,6 +237,12 @@ void test_eer_sub_pos() {
 	assert(is6.read_sub_pos() == Pos(1,0));
 }
 
+void test_eer_real_pos() {
+	EerStream<uint8_t> is7(ab5);
+	assert(is7.real_pos() == Pos(169, 2));
+	assert(is7.real_pos() == Pos(493, 3));
+}
+
 int main()
 {
 	test_bit_stream();
@@ -249,6 +255,7 @@ int main()
 	test_eer_get_bits();
 	test_eer_rle();
 	test_eer_sub_pos();
+	test_eer_real_pos();
 
 	return 0;
 }
