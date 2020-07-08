@@ -120,6 +120,10 @@ int EerIO::write_header(const Dict & dict, int image_index, const Region* area,
 int EerIO::read_data(float *rdata, int image_index, const Region * area, bool)
 {
 	ENTERFUNC;
+	auto cc = get_coords(image_index);
+	for(auto &c : cc) {
+		rdata[c.x + c.y*4096] += 1;
+	}
 
 	EXITFUNC;
 
