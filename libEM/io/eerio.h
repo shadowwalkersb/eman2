@@ -86,14 +86,11 @@ namespace EMAN
 
 		unsigned int read_rle() {
 			static const unsigned int max_val = (1<<num_rle_bits) - 1;
-			unsigned int count = 0;
 			unsigned int val;
 			do {
 				val = get_bits(num_rle_bits);
-				count += val;
+				num_electrons += val;
 			} while(val == max_val);
-
-			num_electrons += count;
 
 			return num_electrons;
 		}
