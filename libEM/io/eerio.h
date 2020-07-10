@@ -135,6 +135,7 @@ namespace EMAN
 	using EerRleCounter = Rle       <7, EerWord>;
 	using EerSubPix     = SubPix    <4, EerWord>;
 
+	cout<<"IN: "<<sub_pix<<" "<<std::bitset<4>(sub_pix)<<endl;
 
 		std::vector<Pos> coords;
 	class EerIO : public ImageIO

@@ -99,6 +99,11 @@ void test_eer_sub_pix() {
 
 	is6 >> sub_pix;
 	assert(sub_pix == 10);
+	cout<<is66<<endl;
+	cout<<"sub_pix: "<<sub_pix<<endl;
+	cout<<is66<<endl;
+	cout<<"sub_pix: "<<sub_pix<<endl;
+	cout<<is66<<endl;
 
 	is6 >> rle6 >> sub_pix;
 	assert(sub_pix == 11);
