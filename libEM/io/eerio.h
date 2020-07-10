@@ -240,30 +240,32 @@ namespace EMAN
 		}
 	};
 
-	template<class T>
+	template<unsigned short T, class U>
 	struct RLE {
-		RLE() : count(0) {}
+		RLE() : num_rle_bits(T), max_val((1<<num_rle_bits) - 1), count(0)
+				{}
 
+		const unsigned short num_rle_bits;
+		const unsigned int max_val;
 		unsigned int count;
 
-		friend EerStream<T>& operator>>(EerStream<T> &out, RLE<T> &obj) {
-			static const unsigned int max_val = (1<<num_rle_bits) - 1;
+		friend EerStream<U>& operator>>(EerStream<U> &out, RLE<T,U> &obj) {
 			unsigned int val;
 			do {
-				val = out.get_bits(num_rle_bits);
+				val = out.get_bits(obj.num_rle_bits);
 				obj.count += val;
-			} while(val == max_val);
+			} while(val == obj.max_val);
 
 			return out;
 		}
 	};
 
-	template<class T>
+	template<class U>
 	struct SubPix : public Pos {
 		SubPix() =default;
 		SubPix(int x, int y) : Pos(x, y) {}
 
-		friend EerStream<T>& operator>>(EerStream<T> &out, SubPix<T> &obj) {
+		friend EerStream<U>& operator>>(EerStream<U> &out, SubPix<U> &obj) {
 			int sub_pix = out.get_bits(2*num_sub_pix_bits);
 
 			obj.x = (sub_pix  & 3) ^ 2;
