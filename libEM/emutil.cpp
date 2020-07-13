@@ -1522,8 +1522,8 @@ vector<EMObject> EMUtil::get_all_attributes(const string & file_name, const stri
 
 	auto vpImg = EMData::read_images(file_name, vector<int>(), true);
 
-	for (auto & iter : vpImg)
-		v.push_back(iter->get_attr_default(attr_name));
+	for (auto &it : vpImg)
+		v.push_back((it)->get_attr_default(attr_name));
 
 	return v;
 }
