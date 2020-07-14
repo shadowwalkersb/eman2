@@ -3017,9 +3017,9 @@ void circumfnn( EMData* win , int npad)
 	int KP = iz/2+1;
 
 	//  sinc functions tabulated for fall-off
-	float* sincx = new float[IP+1];
-	float* sincy = new float[JP+1];
-	float* sincz = new float[KP+1];
+	vector<float> sincx(IP+1);
+	vector<float> sincy(JP+1);
+	vector<float> sincz(KP+1);
 
 	sincx[0] = 1.0f;
 	sincy[0] = 1.0f;
@@ -3042,10 +3042,6 @@ void circumfnn( EMData* win , int npad)
 			for (int i = 1; i <= ix; ++i)  tw(i,j,k) /= (sincx[abs(i-IP)]*cdf);
 		}
 	}
-
-	delete[] sincx;
-	delete[] sincy;
-	delete[] sincz;
 
 	float  TNR = 0.0f;
 	size_t m = 0;
@@ -3093,9 +3089,9 @@ void circumftrl( EMData* win , int npad)
 	int KP = iz/2+1;
 
 	//  sinc functions tabulated for fall-off
-	float* sincx = new float[IP+1];
-	float* sincy = new float[JP+1];
-	float* sincz = new float[KP+1];
+	vector<float> sincx(IP+1);
+	vector<float> sincy(JP+1);
+	vector<float> sincz(KP+1);
 
 	sincx[0] = 1.0f;
 	sincy[0] = 1.0f;
@@ -3118,10 +3114,6 @@ void circumftrl( EMData* win , int npad)
 			for (int i = 1; i <= ix; ++i)  tw(i,j,k) /= (sincx[abs(i-IP)]*cdf);
 		}
 	}
-
-	delete[] sincx;
-	delete[] sincy;
-	delete[] sincz;
 
 	float  TNR = 0.0f;
 	size_t m = 0;
@@ -3703,9 +3695,9 @@ void circumfnn_rect( EMData* win , int npad)
 	int KP = iz/2+1;
 	
 	//  sinc functions tabulated for fall-off
-	float* sincx = new float[IP+1];
-	float* sincy = new float[JP+1];
-	float* sincz = new float[KP+1];
+	vector<float> sincx(IP+1);
+	vector<float> sincy(JP+1);
+	vector<float> sincz(KP+1);
 
 	sincx[0] = 1.0f;
 	sincy[0] = 1.0f;
@@ -3725,11 +3717,6 @@ void circumfnn_rect( EMData* win , int npad)
 		}
 	}
 
-	delete[] sincx;
-	delete[] sincy;
-	delete[] sincz;
-	
-	
 	
 	float dxx = 1.0f/float(0.25*ix*ix);
 	float dyy = 1.0f/float(0.25*iy*iy);
@@ -4046,10 +4033,10 @@ EMData* nnSSNR_Reconstructor::finish(bool)
 
 	SSNR->set_size(inc+1,4,1);
 
-	float *nom    = new float[inc+1];
-	float *denom  = new float[inc+1];
-	int  *nn     = new int[inc+1];
-	int  *ka     = new int[inc+1];
+	vector<float> nom(inc+1);
+	vector<float> denom(inc+1);
+	vector<int>   nn(inc+1);
+	vector<int>   ka(inc+1);
 	float wght = 1.0f;
 	for (int i = 0; i <= inc; i++) {
 		nom[i] = 0.0f;
@@ -4149,11 +4136,6 @@ EMData* nnSSNR_Reconstructor::finish(bool)
 		(*SSNR)(i,3,0) = static_cast<float>(ka[i]);
 	}
 	vol_ssnr->update();
-	
-	delete[] nom;
-	delete[] denom;
-	delete[] nn;
-	delete[] ka;
 
 	return 0;
 }
@@ -6165,10 +6147,10 @@ EMData* nnSSNR_ctfReconstructor::finish(bool)
 	vol_ssnr->set_ri(true);
 	vol_ssnr->set_fftpad(false);
 	//#
-	float *nom    = new float[inc+1];
-	float *denom  = new float[inc+1];
-	int  *ka     = new int[inc+1];
-	int  *nn     = new int[inc+1];
+	vector<float> nom(inc+1);
+	vector<float> denom(inc+1);
+	vector<int>   ka(inc+1);
+	vector<int>   nn(inc+1);
 	float wght = 1.f;
 	for (int i = 0; i <= inc; i++) {
 		nom[i]   = 0.0f;
@@ -6261,11 +6243,6 @@ EMData* nnSSNR_ctfReconstructor::finish(bool)
 		(*SSNR)(i,3,0) = static_cast<float>(ka[i]);
 	}
 	vol_ssnr->update();
-
-	delete[] nom;
-	delete[] denom;
-	delete[] nn;
-	delete[] ka;
 
 	return 0;
 }
