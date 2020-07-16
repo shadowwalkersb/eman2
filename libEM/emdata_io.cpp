@@ -396,6 +396,8 @@ void EMData::print_image(const string str, ostream& out) {
 	}
 }
 
+#include <chrono>
+
 vector < shared_ptr<EMData> > EMData::read_images(const string & filename, vector < int >img_indices,
 									   bool header_only)
 {
@@ -413,6 +415,7 @@ vector < shared_ptr<EMData> > EMData::read_images(const string & filename, vecto
 	size_t n = (num_img == 0 ? total_img : num_img);
 
 	vector< shared_ptr<EMData> > v;
+	auto start = std::chrono::steady_clock::now();
 	for (size_t j = 0; j < n; j++) {
 		shared_ptr<EMData> d(new EMData());
 		size_t k = (num_img == 0 ? j : img_indices[j]);
@@ -429,6 +432,9 @@ vector < shared_ptr<EMData> > EMData::read_images(const string & filename, vecto
 		else
 			throw ImageReadException(filename, "imageio read data failed");
 	}
+	auto end = std::chrono::steady_clock::now();
+	std::chrono::duration<double> elapsed_seconds = end-start;
+	std::cout << "elapsed time: " << elapsed_seconds.count() << "s\n";
 
 	EXITFUNC;
 	return v;
