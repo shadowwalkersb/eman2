@@ -2,7 +2,7 @@ from EMAN2 import *
 
 im = EMData()
 
-num=10000
+num=100000
 input_file = "test_images_{}.mrcs".format(num)
 
 #for i in range(num):
