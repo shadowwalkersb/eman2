@@ -2,15 +2,16 @@ from EMAN2 import *
 
 im = EMData()
 
-num=100000
+num=10000
+input_file = "test_images_{}.mrcs".format(num)
 
 #for i in range(num):
-#    test_image(i%10).write_image("test_images_{}.hdf".format(num), -1)
+#    test_image(i%10).write_image(input_file, -1)
 
-im.read_images("test_images_{}.hdf".format(num))
+im.read_images(input_file)
 
 print(im.get_ndim())
-print(EMUtil.get_image_count("test_images_{}.hdf".format(num)))
+print(EMUtil.get_image_count(input_file))
 
 '''
 (eman-deps-22) firefly:test-eman shadow_walker$ time python make_images.py
