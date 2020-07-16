@@ -47,3 +47,25 @@ real	1m26.778s
 user	0m58.540s
 sys	0m20.678s
 '''
+
+
+
+'''
+mrcs:
+(eman-deps-22) firefly:test-eman shadow_walker$ time python make_images.py
+elapsed time: 44.3191s
+1
+100000
+
+real	0m47.249s
+user	0m6.475s
+sys	0m12.722s
+(eman-deps-22) firefly:test-eman shadow_walker$ time python make_images.py
+elapsed time: 23.5299s
+1
+100000
+
+real	0m25.668s
+user	0m5.245s
+sys	0m6.728s
+'''
