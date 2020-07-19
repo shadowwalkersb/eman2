@@ -69,39 +69,32 @@ void PngIO::init()
 	bool is_new_file = false;
 	file = sfopen(filename, rw_mode, &is_new_file, true);
 
-	if (!is_new_file) {
+	if (!is_new_file)
 		png_ptr = png_create_read_struct(PNG_LIBPNG_VER_STRING, 0, 0, 0);
-	}
-	else {
+	else
 		png_ptr = png_create_write_struct(PNG_LIBPNG_VER_STRING, 0, 0, 0);
-	}
 
-	if (!png_ptr) {
+	if (!png_ptr)
 		throw ImageReadException(filename, "cannot initialize libpng data structure");
-	}
 
 	info_ptr = png_create_info_struct(png_ptr);
-	if (!info_ptr) {
+	if (!info_ptr)
 		throw ImageReadException(filename, "cannot create png info data structure");
-	}
 
 	end_info = png_create_info_struct(png_ptr);
-	if (!end_info) {
+	if (!end_info)
 		throw ImageReadException(filename, "cannot create png end info structure");
-	}
 
-	if (setjmp (png_jmpbuf (png_ptr))) {
+	if (setjmp (png_jmpbuf (png_ptr)))
 		throw ImageReadException(filename, "an error occurs within png");
-	}
 
 	png_init_io(png_ptr, file);
 
 	if (!is_new_file) {
 		unsigned char header[PNG_BYTES_TO_CHECK];
 		fread(header, sizeof(unsigned char), PNG_BYTES_TO_CHECK, file);
-		if (!is_valid(header)) {
+		if (!is_valid(header))
 			throw ImageReadException(filename, "invalid PNG format");
-		}
 
 		png_set_sig_bytes(png_ptr, PNG_BYTES_TO_CHECK);
 
@@ -112,16 +105,13 @@ void PngIO::init()
 		int bit_depth = png_get_bit_depth(png_ptr, info_ptr);
 		int color_type = png_get_color_type(png_ptr, info_ptr);
 
-		if (nx == 0 || ny == 0) {
+		if (nx == 0 || ny == 0)
 			throw ImageReadException(filename, "PNG file size = 0");
-		}
 
-		if (bit_depth == CHAR_BIT) {
+		if (bit_depth == CHAR_BIT)
 			depth_type = PNG_CHAR_DEPTH;
-		}
-		else if (bit_depth == CHAR_BIT * sizeof(short)) {
+		else if (bit_depth == CHAR_BIT * sizeof(short))
 			depth_type = PNG_SHORT_DEPTH;
-		}
 		else {
 			depth_type = PNG_INVALID_DEPTH;
 			char desc[256];
@@ -131,15 +121,13 @@ void PngIO::init()
 
 		png_set_packing(png_ptr);
 
-		if ((color_type == PNG_COLOR_TYPE_GRAY) && (bit_depth < CHAR_BIT)) {
+		if ((color_type == PNG_COLOR_TYPE_GRAY) && (bit_depth < CHAR_BIT))
 			png_set_expand(png_ptr);
-		}
 
 		number_passes = png_set_interlace_handling(png_ptr);
 
-		if (bit_depth > CHAR_BIT) {
+		if (bit_depth > CHAR_BIT)
 			png_set_swap(png_ptr);
-		}
 
 		png_read_update_info(png_ptr, info_ptr);
 	}
@@ -151,14 +139,10 @@ bool PngIO::is_valid(const void *first_block)
 	ENTERFUNC;
 	bool result = false;
 
-	if (!first_block) {
+	if (!first_block)
 		result = false;
-	}
-	else {
-		if (png_sig_cmp((png_byte *) first_block, (png_size_t) 0, PNG_BYTES_TO_CHECK) == 0) {
-			result = true;
-		}
-	}
+	else if (png_sig_cmp((png_byte *) first_block, (png_size_t) 0, PNG_BYTES_TO_CHECK) == 0)
+		result = true;
 	EXITFUNC;
 	return result;
 }
@@ -168,14 +152,12 @@ int PngIO::read_header(Dict & dict, int image_index, const Region * area, bool)
 	ENTERFUNC;
 
 	// single image format, index can only be zero
-	if (image_index == -1) {
+	if (image_index == -1)
 		image_index = 0;
-	}
 
-	if (image_index != 0) {
+	if (image_index != 0)
 		throw ImageReadException(filename,
 		"no stack allowed for MRC image. For take 2D slice out of 3D image, read the 3D image first, then use get_clip().");
-	}
 
 	init();
 
@@ -190,15 +172,12 @@ int PngIO::read_header(Dict & dict, int image_index, const Region * area, bool)
 	dict["ny"] = ylen;
 	dict["nz"] = 1;
 
-	if (depth_type == PNG_CHAR_DEPTH) {
+	if (depth_type == PNG_CHAR_DEPTH)
 		dict["datatype"] = EMUtil::EM_UCHAR;
-	}
-	else if (depth_type == PNG_SHORT_DEPTH) {
+	else if (depth_type == PNG_SHORT_DEPTH)
 		dict["datatype"] = EMUtil::EM_USHORT;
-	}
-	else {
+	else
 		throw ImageReadException(filename, "unsupported PNG bit depth");
-	}
 
 	EXITFUNC;
 	return 0;
@@ -210,12 +189,10 @@ int PngIO::write_header(const Dict & dict, int image_index, const Region*,
 	ENTERFUNC;
 
 	//single image format, index can only be zero
-	if(image_index == -1) {
+	if(image_index == -1)
 		image_index = 0;
-	}
-	if(image_index != 0) {
+	if(image_index != 0)
 		throw ImageWriteException(filename, "PNG file does not support stack.");
-	}
 	check_write_access(rw_mode, image_index);
 
 	nx = (png_uint_32) (int) dict["nx"];
@@ -248,9 +225,8 @@ int PngIO::write_header(const Dict & dict, int image_index, const Region*,
 
 	png_write_info(png_ptr, info_ptr);
 
-	if (depth_type == PNG_SHORT_DEPTH) {
+	if (depth_type == PNG_SHORT_DEPTH)
 		png_set_swap(png_ptr);
-	}
 
 	EMUtil::getRenderLimits(dict, rendermin, rendermax, renderbits);
 
@@ -298,9 +274,8 @@ int PngIO::read_data(float *data, int image_index, const Region * area, bool)
 
 	int k = 0;
 	for (int i = y0; i < y0 + ylen; i++) {
-		for (int pass = 0; pass < number_passes; pass++) {
+		for (int pass = 0; pass < number_passes; pass++)
 			png_read_rows(png_ptr, (png_byte **) & cdata, 0, 1);
-		}
 
 		if (depth_type == PNG_CHAR_DEPTH) {
 			if (clrmlt>1){
@@ -312,10 +287,8 @@ int PngIO::read_data(float *data, int image_index, const Region * area, bool)
 				}
 			}
 			else{
-				for (int x = x0; x < x0 + xlen; x++) {
+				for (int x = x0; x < x0 + xlen; x++, k++)
 					data[k] = static_cast < float >(cdata[x]);
-					k++;
-				}
 			}
 		}
 		else if (depth_type == PNG_SHORT_DEPTH) {
@@ -329,10 +302,8 @@ int PngIO::read_data(float *data, int image_index, const Region * area, bool)
 				}
 			}
 			else{
-				for (int x = x0; x < x0 + xlen; x++) {
+				for (int x = x0; x < x0 + xlen; x++, k++)
 					data[k] = static_cast < float >(sdata[x]);
-					k++;
-				}
 			}
 		}
 	}
@@ -376,16 +347,13 @@ int PngIO::write_data(float *data, int image_index, const Region*,
 
 		for (int y = (int)ny-1; y >= 0; y--) {
 			for (int x = 0; x < (int)nx; x++) {
-				if(data[y * nx + x] <= rendermin){
+				if(data[y * nx + x] <= rendermin)
 					cdata[x] = 0;
-				}
-				else if(data[y * nx + x] >= rendermax) {
+				else if(data[y * nx + x] >= rendermax)
 					cdata[x] = UCHAR_MAX;
-				}
-				else {
+				else
 					cdata[x] = (unsigned char)((data[y * nx + x] - rendermin) /
 								(rendermax - rendermin) * 256);
-				}
 			}
 			png_write_row(png_ptr, (png_byte *) cdata);
 		}
@@ -401,16 +369,13 @@ int PngIO::write_data(float *data, int image_index, const Region*,
 
 		for (int y = (int)ny-1; y >= 0 ; y--) {
 			for (int x = 0; x < (int)nx; x++) {
-				if(data[y * nx + x] <= rendermin){
+				if(data[y * nx + x] <= rendermin)
 					sdata[x] = 0;
-				}
-				else if(data[y * nx + x] >= rendermax) {
+				else if(data[y * nx + x] >= rendermax)
 					sdata[x] = USHRT_MAX;
-				}
-				else {
+				else
 					sdata[x] = (unsigned short)((data[y * nx + x] - rendermin) /
 								(rendermax - rendermin) * 65536);
-				}
 			}
 
 			png_write_row(png_ptr, (png_byte *) sdata);

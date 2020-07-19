@@ -59,9 +59,8 @@ void ImageIO::check_region(const Region * area, const FloatSize & max_size,
 						   bool is_new_file,bool inbounds_only)
 {
 	if (area) {
-		if (is_new_file) {
+		if (is_new_file)
 			throw ImageReadException("", "file must exist before accessing its region");
-		}
 		int img_ndim = max_size.get_ndim();
 		int area_ndim = area->get_ndim();
 
