@@ -96,39 +96,34 @@ void ImageIO::check_read_access(int image_index)
 	init();
 
 	int nimg = get_nimg();
-	if (image_index < 0 || image_index >= nimg) {
+	if (image_index < 0 || image_index >= nimg)
 		throw OutofRangeException(0, nimg-1, image_index, "image index");
-	}
 }
 
 void ImageIO::check_read_access(int image_index, const float *data)
 {
 	check_read_access(image_index);
-	if (!data) {
+	if (!data)
 		throw NullPointerException("image data is NULL");
-	}
 }
 
 void ImageIO::check_write_access(IOMode iomode, int image_index, int max_nimg)
 {
 	init();
 
-	if (iomode == READ_ONLY) {
+	if (iomode == READ_ONLY)
 		throw ImageWriteException("", "File is not opened to write");
-	}
 
-	if ((image_index < -1) || (max_nimg > 0 && image_index >= max_nimg)) {
+	if ((image_index < -1) || (max_nimg > 0 && image_index >= max_nimg))
 		throw OutofRangeException(-1, max_nimg - 1, image_index, "image index");
-	}
 }
 
 void ImageIO::check_write_access(IOMode iomode, int image_index,
 								 int max_nimg, const float *data)
 {
 	check_write_access(iomode, image_index, max_nimg);
-	if (!data) {
+	if (!data)
 		throw NullPointerException("image data is NULL");
-	}
 }
 
 FILE *ImageIO::sfopen(const string & filename, IOMode mode,
