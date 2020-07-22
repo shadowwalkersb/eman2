@@ -281,5 +281,7 @@ int main()
 	test_eer_sub_pos();
 	test_eer_real_pos();
 
+	test_eer_get_bits();
+
 	return 0;
 }
