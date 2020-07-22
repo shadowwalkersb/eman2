@@ -40,47 +40,36 @@ using namespace EMAN;
 
 #include "io/eerio.h"
 
-void test_bit_stream() {
-	uint64_t a1 = ~0;
+void test_eer_get_bits() {
+	WORD mm = ~0;
+	WORD nn = ~0-1;
+	WORD bb = 1<<1 | 1<<3 | 1<<5 | 1<<7;
+//    WORD bb = 0b10101010;
+//	WORD b[] = {mm, nn, bb};
 
-	BitStream<uint64_t> is1(&a1);
-	assert(is1.get_bits(3) == 7);
-	assert(is1.get_bits(9) == (1 << 9) - 1);
-	assert(is1.get_bits(1) == 1);
+	EerStream is(&mm);
+	assert(is.get_bits(3) == 7);
+	assert(is.get_bits(9) == (1<<9)-1);
+	assert(is.get_bits(1) == 1);
 
-	uint64_t a2 = 1<<1 | 1<<3 | 1<<5 | 1<<7;
-	BitStream<uint64_t> is2(&a2);
+	EerStream is1(&bb);
+	assert(is1.get_bits(2) == 2);
+	assert(is1.get_bits(3) == 2);
+	assert(is1.get_bits(3) == 5);
 
+//	cout<<is1<<endl;
+
+	uint8_t a = 0b10101010;
+	uint8_t b = 0b10011001;
+	uint8_t ab[] = {a,b};
+
+	EerStream is2(reinterpret_cast<WORD*>(ab));
 	assert(is2.get_bits(2) == 2);
-	assert(is2.get_bits(3) == 2);
-	assert(is2.get_bits(3) == 5);
+//	cout<<is2<<endl;
+	assert(is2.get_bits(6) == 42);
 
-	uint8_t a3 = 0b10101010;
-	uint8_t b3 = 0b10011001;
-	uint8_t ab3[] = {a3, b3};
-
-	BitStream<uint64_t> is3(reinterpret_cast<uint64_t *>(ab3));
-	assert(is3.get_bits(2) == 2);
-	assert(is3.get_bits(6) == 42);
-	assert(is3.get_bits(3) == 1);
-
-	uint64_t ab4[] = {a3, b3};
-	BitStream<uint64_t> is4(ab4);
-
-	assert(is4.get_bits(20) == a3);
-	assert(is4.get_bits(43) == 0);
-	assert(is4.get_bits(20) == 0b100110010);
-}
-
-uint8_t a5 = 0b10101010;
-uint8_t b5 = 0b11011001;
-uint8_t c5 = 0b10011111;
-uint8_t d5 = 0b10011001;
-uint8_t ab5[] = {a5, b5, c5, d5};
-
-void test_bit_reader() {
-	EerStream is5(reinterpret_cast<EerWord *>(ab5));
-	EerRleCounter rle;
+	WORD AB[] = {a,b};
+	EerStream is3(AB);
 
 	is5 >> rle;
 	assert(rle == 42);
@@ -222,6 +211,8 @@ int main()
 	test_eer_rle();
 	test_eer_rle_counter();
 	test_eer_real_pos();
+
+	test_eer_get_bits();
 
 	return 0;
 }
