@@ -802,7 +802,6 @@ void EMUtil::get_region_dims(const Region * area, int nx, int *area_x,
 			else
 				*area_z = 1;
 		}
-
 	}
 }
 
