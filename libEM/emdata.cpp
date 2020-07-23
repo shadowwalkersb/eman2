@@ -3855,11 +3855,11 @@ void EMData::common_lines_real(EMData * image1, EMData * image2,
 	EMData *image1_copy = image1->copy();
 	EMData *image2_copy = image2->copy();
 
-	float *im1 = new float[steps2 * image_ny];
-	float *im2 = new float[steps2 * image_ny];
+	vector<float> im1(steps2 * image_ny);
+	vector<float> im2(steps2 * image_ny);
 
 	EMData *images[] = { image1_copy, image2_copy };
-	float *ims[] = { im1, im2 };
+	float *ims[] = { im1.data(), im2.data() };
 
 	for (int m = 0; m < 2; m++) {
 		float *im = ims[m];
@@ -3940,18 +3940,6 @@ void EMData::common_lines_real(EMData * image1, EMData * image2,
 	{
 		delete image2_copy;
 		image2_copy = 0;
-	}
-
-	if( im1 )
-	{
-		delete[]im1;
-		im1 = 0;
-	}
-
-	if( im2 )
-	{
-		delete[]im2;
-		im2 = 0;
 	}
 	EXITFUNC;
 }
