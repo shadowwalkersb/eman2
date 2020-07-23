@@ -247,19 +247,17 @@ void EMData::_write_image(ImageIO *imageio, int img_index,
 						refn = pathnum;
 
 					const string comment(attr_dict["LST.comment"]);
-					char *lstdata = new char[1024];
-					sprintf(lstdata, "%d\t%s", refn, reffile.c_str());
+					string lstdata;
+					lstdata.reserve(1024);
+					std::ostringstream ss;
+					ss<<refn<<"\t"<<reffile;
+					lstdata = ss.str();
 					if(!comment.empty())
-						sprintf(lstdata+strlen(lstdata), "\t%s\n", comment.c_str());
+						ss<<"\t"<<comment.c_str()<<"\n";
 					else
-						strcat(lstdata, "\n");
-					err = imageio->write_data((float*)lstdata, img_index,
+						lstdata += "\n";
+					err = imageio->write_data((float*)lstdata.c_str(), img_index,
 											  region, filestoragetype, use_host_endian);
-					if( lstdata )
-					{
-						delete [] lstdata;
-						lstdata = 0;
-					}
 				}
 				if (imgtype == EMUtil::IMAGE_LSTFAST) {
 					string reffile(attr_dict["LST.reffile"]);
