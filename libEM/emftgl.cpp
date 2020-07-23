@@ -88,7 +88,7 @@ EMFTGL::EMFTGLManager::EMFTGLManager() : font_instances() { }
 
 EMFTGL::EMFTGLManager::~EMFTGLManager() {
 	
-	for (vector<EMFTGLFontInstance*>::iterator it = font_instances.begin(); it != font_instances.end(); ++it ) {
+	for (auto it = font_instances.begin(); it != font_instances.end(); ++it ) {
 		delete (*it);
 		*it = 0;
 	}

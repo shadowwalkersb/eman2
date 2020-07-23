@@ -568,13 +568,13 @@ else{
 
 void MarchingCubes::clear_min_max_vals()
 {
-	for (vector<EMData*>::iterator it = minvals.begin(); it != minvals.end(); ++it)
+	for (auto it = minvals.begin(); it != minvals.end(); ++it)
 	{
 		if ( (*it) != 0 ) delete *it;
 	}
 	minvals.clear();
 
-	for (vector<EMData*>::iterator it = maxvals.begin(); it != maxvals.end(); ++it)
+	for (auto it = maxvals.begin(); it != maxvals.end(); ++it)
 	{
 		if ( (*it) != 0 ) delete *it;
 	}

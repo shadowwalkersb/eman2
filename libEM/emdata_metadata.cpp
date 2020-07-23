@@ -1096,16 +1096,15 @@ EMObject EMData::get_attr(const string & key) const
 	{
 		if ( is_complex() ) throw ImageFormatException("Error - can not calculate the median of a complex image");
 		size_t n = size;
-		float* tmp = new float[n];
+		vector<float> tmp(n);
 		float* d = get_data();
 		if (tmp == 0 ) throw BadAllocException("Error - could not create deep copy of image data");
 //		for(size_t i=0; i < n; ++i) tmp[i] = d[i]; // should just be a memcpy
-		std::copy(d, d+n, tmp);
-		qsort(tmp, n, sizeof(float), &greaterthan);
+		std::copy(d, d+n, begin(tmp));
+		qsort(tmp.data(), n, sizeof(float), &greaterthan);
 		float median;
 		if (n%2==1) median = tmp[n/2];
 		else median = (tmp[n/2-1]+tmp[n/2])/2.0f;
-		delete [] tmp;
 		return median;
 	}
 	else if (key == "nonzero_median")
