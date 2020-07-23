@@ -3809,15 +3809,12 @@ void EMData::common_lines(EMData * image1, EMData * image2,
 	if (horizontal) {
 		vector<float> tmp_array(ny);
 		for (int i = 1; i < nx; i++) {
-			for (int j = 0; j < ny; j++) {
+			for (int j = 0; j < ny; j++)
 				tmp_array[j] = get_value_at(i, j);
-			}
-			for (int j = 0; j < ny; j++) {
+			for (int j = 0; j < ny; j++)
 				set_value_at(i, j, 0, tmp_array[(j + i) % ny]);
-			}
 		}
 	}
-
 
 	image1->update();
 	image2->update();
