@@ -419,7 +419,7 @@ namespace EMAN
 
 	class ImageSort {
 	public:
-		ImageSort(int n);
+		explicit ImageSort(int n);
 
 		void sort();
 
