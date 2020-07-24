@@ -57,7 +57,7 @@ int write_image(EMData* em, const char* infile, char* outfile,
 		strcpy(outfile, infile);
 		const char* ext = strrchr(infile, '.');
 		outfile[strlen(infile) - strlen(ext)] = '\0';
-		sprintf(outfile, "%s_%d.%s", outfile, r_image_index, imgext);
+		sprintf(outfile, "%s_%d.%s", outfile, r_image_index, imgext.c_str());
     }
 
     //em->dump_data(outfile);
@@ -456,66 +456,27 @@ void usage()
 
 int main(int argc, char* argv[])
 {
-    if (argc == 1) {
-		usage();
-		exit(1);
-    }
-
     Util::set_log_level(argc, argv);
 			     
     const char* imageformat = argv[argc-1];
 
     printf("Testing '%s' imageio\n\n", imageformat);
     
-    if (strcmp(imageformat, "dm3") == 0) {
 		test_dm3();
-    }
-    else if (strcmp(imageformat, "tiff") == 0) {
 		test_tiff();
-    }
-    else if (strcmp(imageformat, "hdf") == 0) {
 		test_hdf();
-    }
-    else if (strcmp(imageformat, "pif") == 0) {
 		test_pif();
-    }
-    else if (strcmp(imageformat, "mrc") == 0) {
 		test_mrc();
-    }
-    else if (strcmp(imageformat, "spider") == 0) {
 		test_spider();
-    }
-    else if (strcmp(imageformat, "pgm") == 0) {
 		test_pgm();
-    }
-    else if (strcmp(imageformat, "lst") == 0) {
 		test_lst();
-    }
-    else if (strcmp(imageformat, "icos") == 0) {
 		test_icos();
-    }
-    else if (strcmp(imageformat, "png") == 0) {
 		test_png();
-    }
-    else if (strcmp(imageformat, "sal") == 0) {
 		test_sal();
-    }
-    else if (strcmp(imageformat, "amira") == 0) {
 		pass_test("tablet.mrc", 0, 0, false, 0, EMUtil::IMAGE_AMIRA);
-    }
-    else if (strcmp(imageformat, "gatan2") == 0) {
 		pass_test("gatan2.dm2");
-    }
-    else if (strcmp(imageformat, "imagic") == 0) {
 		test_imagic();
-    }
-    else if (strcmp(imageformat, "perf") == 0) {
 		test_performance();
-    }
-    else {
-		usage();
-		exit(1);
-    }
     
     printf("Total # Tests: %d. Failed # Tests: %d\n", total_ntests, fail_ntests);
     
