@@ -60,6 +60,8 @@ std::vector<Pos> EerIO::get_coords(int i) const {
 }
 EerIO::EerIO(const string & fname, IOMode rw)
 {
+	cout<<"EerIO ctor"<<endl;
+
 	tiff_file = TIFFOpen(fname.c_str(), "r");
 
 	for(num_dirs=0; TIFFReadDirectory(tiff_file); num_dirs++)
@@ -68,6 +70,8 @@ EerIO::EerIO(const string & fname, IOMode rw)
 
 EerIO::~EerIO()
 {
+	cout<<"EerIO dtor"<<endl;
+
 	TIFFClose(tiff_file);
 }
 
@@ -91,6 +95,8 @@ bool EerIO::is_image_big_endian()
 
 int EerIO::read_header(Dict & dict, int image_index, const Region * area, bool is_3d)
 {
+	cout<<"read_header"<<endl;
+
 	TIFFSetDirectory(tiff_file, 0);
 	TIFFPrintDirectory(tiff_file, stdout);
 	TIFFGetField(tiff_file, TIFFTAG_COMPRESSION, &compression);
