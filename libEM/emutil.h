@@ -411,12 +411,15 @@ namespace EMAN
 		int index;
 		float score;
 		ImageScore(int i=0, float s=0) : index(i), score(s) {}
+
+		friend bool operator<(const ImageScore &lhs, const ImageScore &rhs) {
+			return lhs.score < rhs.score;
+		}
 	};
 
 	class ImageSort {
 	public:
 		ImageSort(int n);
-		~ImageSort();
 
 		void sort();
 
@@ -426,8 +429,7 @@ namespace EMAN
 
 		int size() const;
 	private:
-		ImageScore* image_scores;
-		int n;
+		vector<ImageScore> image_scores;
 	};
 }
 

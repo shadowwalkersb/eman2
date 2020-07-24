@@ -1199,39 +1199,14 @@ bool EMUtil::is_same_ctf(const EMData * image1, const EMData * image2)
 	return false;
 }
 
-static int imgscore_cmp(const void *imgscore1, const void *imgscore2)
-{
-	Assert(imgscore1 != 0);
-	Assert(imgscore2 != 0);
-
-	float c = ((ImageScore *)imgscore1)->score - ((ImageScore *)imgscore2)->score;
-
-	if (c<0)
-		return 1;
-	else if (c>0)
-		return -1;
-
-	return 0;
-}
-
 ImageSort::ImageSort(int nn)
+	:image_scores(nn)
 {
-	Assert(nn > 0);
-	n = nn;
-	image_scores = new ImageScore[n];
-}
-
-ImageSort::~ImageSort()
-{
-	if (image_scores) {
-		delete [] image_scores;
-		image_scores = NULL;
-	}
 }
 
 void ImageSort::sort()
 {
-	qsort(image_scores, n, sizeof(ImageScore), imgscore_cmp);
+	std::sort(begin(image_scores), end(image_scores));
 }
 
 void ImageSort::set(int i, float score)
@@ -1254,7 +1229,7 @@ float ImageSort::get_score(int i) const
 
 int ImageSort::size() const
 {
-	return n;
+	return image_scores.size();
 }
 
 void EMUtil::process_ascii_region_io(float *data, FILE * file, int rw_mode,
