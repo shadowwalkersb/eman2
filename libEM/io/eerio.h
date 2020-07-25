@@ -242,8 +242,6 @@ namespace EMAN
 
 	template<unsigned short T, class U>
 	struct RLE {
-		RLE() {}
-
 		const unsigned short num_rle_bits = T;
 		const unsigned int max_val = (1<<num_rle_bits) - 1;
 		unsigned int count = 0;
