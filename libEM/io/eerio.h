@@ -244,19 +244,19 @@ namespace EMAN
 	class RLE {
 	public:
 		operator auto () {
-			return count;
+			return val;
 		}
 	private:
 		const unsigned short num_bits = T;
 		const unsigned int max_val = (1 << num_bits) - 1;
-		unsigned int count = 0;
+		unsigned int val = 0;
 
 		friend EerStream<U>& operator>>(EerStream<U> &out, RLE<T,U> &obj) {
-			decltype(count) val;
+			decltype(val) count;
 			do {
-				val = out.get_bits(obj.num_bits);
-				obj.count += val;
-			} while(val == obj.max_val);
+				count = out.get_bits(obj.num_bits);
+				obj.val += count;
+			} while(count == obj.max_val);
 
 			return out;
 		}
