@@ -242,12 +242,11 @@ namespace EMAN
 
 	template<unsigned short T, class U>
 	struct RLE {
-		RLE() : num_rle_bits(T), max_val((1<<num_rle_bits) - 1), count(0)
-				{}
+		RLE() {}
 
-		const unsigned short num_rle_bits;
-		const unsigned int max_val;
-		unsigned int count;
+		const unsigned short num_rle_bits = T;
+		const unsigned int max_val = (1<<num_rle_bits) - 1;
+		unsigned int count = 0;
 
 		friend EerStream<U>& operator>>(EerStream<U> &out, RLE<T,U> &obj) {
 			unsigned int val;
