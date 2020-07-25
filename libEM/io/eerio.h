@@ -262,20 +262,9 @@ namespace EMAN
 		}
 	};
 
-	template<class U>
-	struct SubPix : public Pos {
-		SubPix() =default;
-		SubPix(int x, int y) : Pos(x, y) {}
+	template<unsigned short T, class U>
+	using SubPix = RLE<T, false, U>;
 
-		friend EerStream<U>& operator>>(EerStream<U> &out, SubPix<U> &obj) {
-			int sub_pix = out.get_bits(2*num_sub_pix_bits);
-
-			obj.x = (sub_pix  & 3) ^ 2;
-			obj.y = (sub_pix >> 2) ^ 2;
-
-			return out;
-		}
-	};
 
 	class EerIO : public ImageIO
 	{
