@@ -186,7 +186,7 @@ void test_eer_rle_counter() {
 void test_eer_real_pos() {
 	EerStream<uint8_t> is66(ab5);
 	SubPix<uint8_t> sub_pix;
-	RLE<7, uint8_t> rle66;
+	RLE<7, true, uint8_t> rle66;
 	is66>>sub_pix;
 	assert(sub_pix == Pos(0,0));
 	is66>>rle66>>sub_pix;
@@ -225,7 +225,7 @@ void test_eer_rle() {
 
 	EerStream<uint8_t> is5(ab5);
 	EerStream<uint8_t> is55(ab5);
-	RLE<7, uint8_t> rle;
+	RLE<7, true, uint8_t> rle;
 
 	is55>>rle;
 	assert(rle == 42);

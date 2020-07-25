@@ -240,7 +240,7 @@ namespace EMAN
 		}
 	};
 
-	template<unsigned short T, class U>
+	template<unsigned short T, bool RLE_OVERFLOW, class U>
 	class RLE {
 	public:
 		operator auto () {
@@ -251,12 +251,12 @@ namespace EMAN
 		const unsigned int max_val = (1 << num_bits) - 1;
 		unsigned int val = 0;
 
-		friend EerStream<U>& operator>>(EerStream<U> &out, RLE<T,U> &obj) {
+		friend EerStream<U>& operator>>(EerStream<U> &out, RLE<T,RLE_OVERFLOW, U> &obj) {
 			decltype(val) count;
 			do {
 				count = out.get_bits(obj.num_bits);
 				obj.val += count;
-			} while(count == obj.max_val);
+			} while(RLE_OVERFLOW && count == obj.max_val);
 
 			return out;
 		}
