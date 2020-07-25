@@ -247,7 +247,7 @@ namespace EMAN
 		unsigned int count = 0;
 
 		friend EerStream<U>& operator>>(EerStream<U> &out, RLE<T,U> &obj) {
-			unsigned int val;
+			decltype(count) val;
 			do {
 				val = out.get_bits(obj.num_bits);
 				obj.count += val;
