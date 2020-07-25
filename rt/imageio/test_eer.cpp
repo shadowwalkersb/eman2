@@ -225,7 +225,7 @@ void test_eer_rle() {
 
 	EerStream<uint8_t> is5(ab5);
 	EerStream<uint8_t> is55(ab5);
-	RLE<7, true, uint8_t> rle;
+	RleCounter<7, uint8_t> rle;
 
 	is55>>rle;
 	assert(rle == 42);

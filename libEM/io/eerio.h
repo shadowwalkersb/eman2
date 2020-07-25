@@ -263,6 +263,9 @@ namespace EMAN
 	};
 
 	template<unsigned short T, class U>
+	using RleCounter = RLE<T, true, U>;
+
+	template<unsigned short T, class U>
 	using SubPix = RLE<T, false, U>;
 
 	inline Pos decode(SubPix<4, uint8_t> sub_pix) {
