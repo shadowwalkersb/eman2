@@ -253,9 +253,9 @@ void test_eer_real_pos() {
 	SubPix<uint8_t> sub_pix;
 	RLE<7, uint8_t> rle66;
 	is66>>sub_pix;
-	assert(sub_pix == Pos(0,0));
+	assert(decode(sub_pix) == Pos(0,0));
 	is66>>rle66>>sub_pix;
-	assert(sub_pix == Pos(1,0));
+	assert(decode(sub_pix) == Pos(1,0));
 
 	EerStream<uint8_t> is7(ab5);
 //	auto pos = is7.real_pos();
