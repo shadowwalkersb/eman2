@@ -252,6 +252,7 @@ namespace EMAN
 		unsigned int val = 0;
 
 		friend EerStream<U>& operator>>(EerStream<U> &out, RLE<T,RLE_OVERFLOW, U> &obj) {
+			obj.val = 0;
 			decltype(val) count;
 			do {
 				count = out.get_bits(obj.num_bits);
