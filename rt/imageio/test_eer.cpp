@@ -252,11 +252,15 @@ void test_eer_real_pos() {
 	EerStream<uint8_t> is66(ab5);
 	SubPix<uint8_t> sub_pix;
 	RLE<7, uint8_t> rle66;
+	cout<<"\n\nis66"<<endl;
+	cout<<is66;
 	is66>>sub_pix;
 	cout<<sub_pix<<endl;
 	cout<<decode(sub_pix)<<endl;
 	assert(decode(sub_pix) == Pos(0,0));
 	is66>>rle66>>sub_pix;
+	cout<<is66<<endl;
+	cout<<rle66<<endl;
 	cout<<sub_pix<<endl;
 	cout<<decode(sub_pix)<<endl;
 	assert(decode(sub_pix) == Pos(1,0));

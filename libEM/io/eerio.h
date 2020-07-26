@@ -255,8 +255,12 @@ namespace EMAN
 			obj.val = 0;
 			decltype(val) count;
 			do {
+				cout<<"Reading bits: "<<obj.num_bits<<endl;
+				cout<<out<<endl;
 				count = out.get_bits(obj.num_bits);
 				obj.val += count;
+				cout<<"count: "<<count<<endl;
+				cout<<"obj.val: "<<obj.val<<endl;
 			} while(RLE_OVERFLOW && count == obj.max_val);
 
 			return out;
