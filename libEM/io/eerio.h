@@ -93,7 +93,9 @@ namespace EMAN
 				count += val;
 			} while(val == max_val);
 
-			return count;
+			num_electrons += count;
+
+			return num_electrons;
 		}
 
 		Pos read_sub_pos() {
@@ -117,6 +119,7 @@ namespace EMAN
 		T cur;
 		const size_t max_num_bits = 8*sizeof(T);
 		size_t bit_counter        = max_num_bits;
+		size_t num_electrons      = 0;
 
 		friend std::ostream &operator<<(std::ostream &out, const BitStream &obj) {
 			return out<<"cur: "<<std::bitset<8*sizeof(T)>(obj.cur)
