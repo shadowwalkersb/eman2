@@ -31,8 +31,51 @@
 #ifndef eman__eerio_h__
 #define eman__eerio_h__ 1
 
+#include "imageio.h"
+
+
 namespace EMAN
 {
+	template <class T>
+	class BitStream {
+	public:
+		BitStream(T *buf)
+		: buffer(buf), cur(*buffer)
+		{}
+
+		T get_bits(int N) {
+			auto result = cur & ((1 << N) - 1);
+
+			if(N < bit_counter) {
+				cur        >>= N;
+				bit_counter -= N;
+			}
+			else {
+				auto remaining_bits = N - bit_counter;
+
+				cur = *(++buffer);
+				result |= ((cur & ((1 << remaining_bits) - 1)) << bit_counter);
+
+				cur >>= remaining_bits;
+				bit_counter = max_num_bits - remaining_bits;
+			}
+
+			return result;
+		}
+
+	private:
+		T *buffer;
+		T cur;
+		const size_t max_num_bits = 8*sizeof(T);
+		size_t bit_counter        = max_num_bits;
+
+		friend std::ostream &operator<<(std::ostream &out, const BitStream &obj) {
+			return out<<"cur: "<<std::bitset<8*sizeof(T)>(obj.cur)
+						<<endl
+						<<"bit_counter: "<<obj.bit_counter<<endl
+						<<"max_num_bits: "<<obj.max_num_bits<<endl;
+		}
+	};
 }
 
 #endif	//eman__eerio_h__
