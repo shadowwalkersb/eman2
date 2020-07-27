@@ -60,7 +60,7 @@ namespace EMAN
 	template <class T>
 	class BitStream {
 	public:
-		BitStream(T *buf)
+		BitStream(const vector<unsigned char> &buf)
 		: buffer(buf), cur(*buffer)
 		{}
 
