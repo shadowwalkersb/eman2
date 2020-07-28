@@ -193,7 +193,7 @@ void test_eer_real_pos() {
 	assert(is7.real_pos() == Pos(169, 2));
 //	pos = is7.real_pos();
 //	cout<<pos<<endl;
-	assert(is7.real_pos() == Pos(493, 3));
+	assert(is7.real_pos() == Pos(661, 3));
 }
 
 int main()
