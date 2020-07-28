@@ -53,6 +53,7 @@ namespace EMAN
 		friend std::ostream& operator<<(std::ostream &out, const Pos &obj) {
 			return out<<obj.x
 					<<" "<<obj.y;
+//					<<endl;
 		}
 	};
 
