@@ -39,6 +39,8 @@
 
 namespace EMAN
 {
+	const unsigned int num_rle_bits = 7;
+
 	template <class T>
 	class BitStream {
 	public:
@@ -64,6 +66,18 @@ namespace EMAN
 			}
 
 			return result;
+		}
+
+		unsigned int read_rle() {
+			static const unsigned int max_val = (1<<num_rle_bits) - 1;
+			unsigned int count = 0;
+			unsigned int val;
+			do {
+				val = get_bits(num_rle_bits);
+				count += val;
+			} while(val == max_val);
+
+			return count;
 		}
 
 	private:
