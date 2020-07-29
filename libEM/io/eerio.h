@@ -76,6 +76,30 @@ namespace EMAN
 						<<"max_num_bits: "<<obj.max_num_bits<<endl;
 		}
 	};
+
+	template<unsigned int T, bool BIT_OVERFLOW, class U>
+	class BitReader {
+	public:
+		operator auto () {
+			return val;
+		}
+
+	private:
+		const decltype(T) num_bits = T;
+		const decltype(T) max_val = (1 << num_bits) - 1;
+		uintmax_t val = 0;
+
+		friend BitStream<U>& operator>>(BitStream<U> &in, BitReader<T, BIT_OVERFLOW, U> &obj) {
+			decltype(val) count;
+			obj.val = 0;
+			do {
+				count = in.get_bits(obj.num_bits);
+				obj.val += count;
+			} while(BIT_OVERFLOW && count == obj.max_val);
+
+			return in;
+		}
+	};
 }
 
 #endif	//eman__eerio_h__

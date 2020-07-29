@@ -72,9 +72,30 @@ void test_bit_stream() {
 	assert(is4.get_bits(20) == 0b100110010);
 }
 
+void test_bit_reader() {
+	uint8_t a5 = 0b10101010;
+	uint8_t b5 = 0b11011001;
+	uint8_t c5 = 0b10011111;
+	uint8_t d5 = 0b10011001;
+	uint8_t ab5[] = {a5, b5, c5, d5};
+
+	BitStream<uint8_t> is5(ab5);
+	BitReader<7, true, uint8_t> rle;
+
+	is5 >> rle;
+	assert(rle == 42);
+
+	is5 >> rle;
+	assert(rle == 0b110011);
+
+	is5 >> rle;
+	assert(rle == 0b1001100 + (1<<7) - 1);
+}
+
 int main()
 {
 	test_bit_stream();
+	test_bit_reader();
 
 	return 0;
 }
