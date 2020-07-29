@@ -40,6 +40,7 @@
 namespace EMAN
 {
 	const unsigned int num_rle_bits = 7;
+	const unsigned int num_sub_pix_bits = 2;
 
 	struct Pos {
 		Pos(int xx, int yy) : x(xx), y(yy) {}
@@ -92,6 +93,12 @@ namespace EMAN
 			} while(val == max_val);
 
 			return count;
+		}
+
+		Pos read_sub_pos() {
+			int sub_pix = get_bits(2*num_sub_pix_bits);
+
+			return Pos((sub_pix  & 3) ^ 2, (sub_pix >> 2) ^ 2);
 		}
 
 	private:
