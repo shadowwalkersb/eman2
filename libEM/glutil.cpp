@@ -1047,9 +1047,12 @@ unsigned long GLUtil::get_isosurface_dl(MarchingCubes* mc,
 
 	if (tex_id != 0) {
 		// Normalize the coordinates to be on the interval 0,1
-		mc->pp.mult3(1.0f/(float) mc->_emdata->get_xsize(),
-			 1.0f/(float)mc->_emdata->get_ysize(),
-			 1.0f/(float)mc->_emdata->get_zsize());
+		for(unsigned int i = 0; (i + 2) < mc->pp.size(); i += 3 ){
+			mc->pp[i]   *= 1.0f/(float) mc->_emdata->get_xsize();
+			mc->pp[i+1] *= 1.0f/(float) mc->_emdata->get_ysize();
+			mc->pp[i+2] *= 1.0f/(float) mc->_emdata->get_zsize();
+		}
+
 		glEnableClientState(GL_TEXTURE_COORD_ARRAY);
 		glDisableClientState(GL_NORMAL_ARRAY);
 		glTexCoordPointer(3, GL_FLOAT, 0, mc->pp.data());
