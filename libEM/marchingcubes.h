@@ -454,53 +454,6 @@ namespace EMAN
 		
 		bool needtobind;	// A dirty bit to signal when the the MC algorithm or color has chaged and hence a need to update GPU buffers
 	};
-
-	/** A work in progress by David Woolford
-	*/
-	class U3DWriter{
-	public:
-		typedef unsigned int U32;
-		typedef long unsigned int U64;
-		typedef double F64;
-		typedef float F32;
-		typedef short int I16;
-		typedef short unsigned int U16;
-		typedef unsigned char U8;
-
-
-		U3DWriter();
-		~U3DWriter();
-
-		int write(const string& filename);
-
-		ostream& write(ostream&);
-
-	private:
-		unsigned int size_of_in_bytes();
-
-		void test_type_sizes();
-
-		ostream& write_header(ostream&);
-		ostream& write_clod_mesh_generator_node(ostream& os);
-
-
-		template<typename type>
-		ostream& write(ostream& os, const type& T) {
-			os.write( (const char*)(&T), sizeof(type) );
-			return os;
-		}
-
-		U32 DIFFUSE_COLOR_COUNT;
-		U32 SPECULAR_COLOR_COUNT;
-
-
-		CustomVector<F32> pp;
-		CustomVector<F32> nn;
-		CustomVector<unsigned int> ff;
-	};
-
-	// Template specialization. Have to be careful when dealing with strings
-	template<> ostream& U3DWriter::write(ostream& os, const string& );
 }
 
 #endif
