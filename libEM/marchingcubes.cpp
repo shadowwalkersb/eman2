@@ -530,23 +530,17 @@ float* ColorRGBGenerator::getRGBColor(int x, int y, int z)
 MarchingCubes::MarchingCubes()
 	: _isodl(0), needtobind(1)
 {
-
-if ((int(glGetString(GL_VERSION)[0])-48)>2){
+if ((int(glGetString(GL_VERSION)[0])-48)>2)
 	rgbgenerator = ColorRGBGenerator();
-}
-
 }
 
 MarchingCubes::MarchingCubes(EMData * em)
 	: _isodl(0)
 {
-if ((int(glGetString(GL_VERSION)[0])-48)>2){
+if ((int(glGetString(GL_VERSION)[0])-48)>2)
 	rgbgenerator = ColorRGBGenerator();
 
-	set_data(em);}
-else{
-	set_data(em);
-	}
+set_data(em);
 }
 
 
@@ -807,9 +801,7 @@ float MarchingCubes::get_offset(float fValue1, float fValue2, float fValueDesire
 
 int MarchingCubes::get_edge_num(int x, int y, int z, int edge) {
 	// edge direction is right, down, back (x, y, z)
-	unsigned int index = 0;
-	index = (x << 22) | (y << 12) | (z << 2) | edge;
-	return index;
+	return (x << 22) | (y << 12) | (z << 2) | edge;
 }
 
 void MarchingCubes::color_vertices()
