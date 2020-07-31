@@ -724,56 +724,48 @@ void MarchingCubes::draw_cube(const int x, const int y, const int z, const int c
 		}
 		else {
 			e = _emdata;
-			for(int i=0; i<8; ++i )	{
+			for(int i=0; i<8; ++i )
 					draw_cube(2*x+a2fVertexOffset[i][0],2*y+a2fVertexOffset[i][1],2*z+a2fVertexOffset[i][2],cur_level-1);
-			}
 		}
 
 		if ( x == (minvals[cur_level]->get_xsize()-1) ) {
 			if ( e->get_xsize() > 2*x ){
-				for(int i=0; i<4; ++i )	{
+				for(int i=0; i<4; ++i )
 					draw_cube(2*x+a2fPosXOffset[i][0],2*y+a2fPosXOffset[i][1],2*z+a2fPosXOffset[i][2],cur_level-1);
-				}
 			}
 			if ( y == (minvals[cur_level]->get_ysize()-1) ) {
 				if ( e->get_ysize() > 2*y ) {
-					for(int i=0; i<2; ++i )	{
+					for(int i=0; i<2; ++i )
 						draw_cube(2*x+a2fPosXPosYOffset[i][0],2*y+a2fPosXPosYOffset[i][1],2*z+a2fPosXPosYOffset[i][2],cur_level-1);
-					}
 				}
 				if (  z == (minvals[cur_level]->get_zsize()-1) ){
-					if ( e->get_zsize() > 2*z ) {
+					if ( e->get_zsize() > 2*z )
 						draw_cube(2*x+2,2*y+2,2*z+2,cur_level-1);
-					}
 				}
 			}
 			if ( z == (minvals[cur_level]->get_zsize()-1) ) {
 				if ( e->get_zsize() > 2*z ) {
-					for(int i=0; i<2; ++i )	{
+					for(int i=0; i<2; ++i )
 						draw_cube(2*x+a2fPosXPosZOffset[i][0],2*y+a2fPosXPosZOffset[i][1],2*z+a2fPosXPosZOffset[i][2],cur_level-1);
-					}
 				}
 			}
 		}
 		if ( y == (minvals[cur_level]->get_ysize()-1) ) {
 			if ( e->get_ysize() > 2*y ) {
-				for(int i=0; i<4; ++i )	{
+				for(int i=0; i<4; ++i )
 					draw_cube(2*x+a2fPosYOffset[i][0],2*y+a2fPosYOffset[i][1],2*z+a2fPosYOffset[i][2],cur_level-1);
-				}
 			}
 			if ( z == (minvals[cur_level]->get_ysize()-1) ) {
 				if ( e->get_zsize() > 2*z ) {
-					for(int i=0; i<2; ++i )	{
+					for(int i=0; i<2; ++i )
 						draw_cube(2*x+a2fPosYPosZOffset[i][0],2*y+a2fPosYPosZOffset[i][1],2*z+a2fPosYPosZOffset[i][2],cur_level-1);
-					}
 				}
 			}
 		}
 		if ( z == (minvals[cur_level]->get_zsize()-1) ) {
 			if ( e->get_zsize() > 2*z ) {
-				for(int i=0; i<4; ++i )	{
+				for(int i=0; i<4; ++i )
 					draw_cube(2*x+a2fPosZOffset[i][0],2*y+a2fPosZOffset[i][1],2*z+a2fPosZOffset[i][2],cur_level-1);
-				}
 			}
 		}
 
@@ -793,9 +785,7 @@ float MarchingCubes::get_offset(float fValue1, float fValue2, float fValueDesire
         float fDelta = fValue2 - fValue1;
 
         if(fDelta == 0.0f)
-        {
                 return 0.5f;
-        }
         return (fValueDesired - fValue1)/fDelta;
 }
 
