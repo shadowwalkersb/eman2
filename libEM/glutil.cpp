@@ -1052,20 +1052,20 @@ unsigned long GLUtil::get_isosurface_dl(MarchingCubes* mc,
 			 1.0f/(float)mc->_emdata->get_zsize());
 		glEnableClientState(GL_TEXTURE_COORD_ARRAY);
 		glDisableClientState(GL_NORMAL_ARRAY);
-		glTexCoordPointer(3, GL_FLOAT, 0, mc->pp.get_data());
+		glTexCoordPointer(3, GL_FLOAT, 0, mc->pp.data());
 	}
 	else {
 		glEnableClientState(GL_NORMAL_ARRAY);
 		glDisableClientState(GL_TEXTURE_COORD_ARRAY);
-		glNormalPointer(GL_FLOAT, 0,  mc->nn.get_data());
+		glNormalPointer(GL_FLOAT, 0,  mc->nn.data());
 	}
 
 	glEnableClientState(GL_VERTEX_ARRAY);
-	glVertexPointer(3, GL_FLOAT, 0,  mc->pp.get_data());
+	glVertexPointer(3, GL_FLOAT, 0,  mc->pp.data());
 
 	if (mc->getRGBmode()) {
 		glEnableClientState(GL_COLOR_ARRAY);
-		glColorPointer(3, GL_FLOAT, 0,  mc->cc.get_data());
+		glColorPointer(3, GL_FLOAT, 0,  mc->cc.data());
 	}
 
 	mc->_isodl = glGenLists(1);
@@ -1093,7 +1093,7 @@ unsigned long GLUtil::get_isosurface_dl(MarchingCubes* mc,
 	bool drawRange = true;
 
 	if (drawRange == false) {
-		glDrawElements(GL_TRIANGLES,mc->ff.size(),GL_UNSIGNED_INT, mc->ff.get_data());
+		glDrawElements(GL_TRIANGLES,mc->ff.size(),GL_UNSIGNED_INT, mc->ff.data());
 	} else {
 		for(unsigned int i = 0; i < mc->ff.size(); i+=maxf)
 		{
@@ -1192,7 +1192,7 @@ void GLUtil::render_using_VBOs(MarchingCubes* mc, unsigned int tex_id,
 	glBindBuffer(GL_ARRAY_BUFFER, mc->buffer[2]);
 
 	if (mc->needtobind) {
-		glBufferData(GL_ARRAY_BUFFER, 4*mc->nn.size(), mc->nn.get_data(),
+		glBufferData(GL_ARRAY_BUFFER, 4*mc->nn.size(), mc->nn.data(),
 				 GL_STATIC_DRAW);
 	}
 
@@ -1202,7 +1202,7 @@ void GLUtil::render_using_VBOs(MarchingCubes* mc, unsigned int tex_id,
 	glBindBuffer(GL_ARRAY_BUFFER, mc->buffer[0]);
 
 	if (mc->needtobind) {
-		glBufferData(GL_ARRAY_BUFFER, 4*mc->pp.size(), mc->pp.get_data(),
+		glBufferData(GL_ARRAY_BUFFER, 4*mc->pp.size(), mc->pp.data(),
 				 GL_STATIC_DRAW);
 	}
 
@@ -1215,7 +1215,7 @@ void GLUtil::render_using_VBOs(MarchingCubes* mc, unsigned int tex_id,
 		glBindBuffer(GL_ARRAY_BUFFER, mc->buffer[3]);
 
 		if (mc->needtobind) {
-			glBufferData(GL_ARRAY_BUFFER, 4*mc->cc.size(), mc->cc.get_data(),
+			glBufferData(GL_ARRAY_BUFFER, 4*mc->cc.size(), mc->cc.data(),
 				 GL_STATIC_DRAW);
 		}
 
@@ -1226,7 +1226,7 @@ void GLUtil::render_using_VBOs(MarchingCubes* mc, unsigned int tex_id,
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, mc->buffer[1]);
 
 	if (mc->needtobind) {
-		glBufferData(GL_ELEMENT_ARRAY_BUFFER, 4*mc->ff.size(), mc->ff.get_data(),
+		glBufferData(GL_ELEMENT_ARRAY_BUFFER, 4*mc->ff.size(), mc->ff.data(),
 				 GL_STATIC_DRAW);
 	}
 

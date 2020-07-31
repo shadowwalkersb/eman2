@@ -615,18 +615,18 @@ Dict MarchingCubes::get_isosurface()
 {
 	calculate_surface();
 	Dict d;
-	d.put("points", (float*)pp.get_data());
+	d.put("points", (float*)pp.data());
 	for (unsigned int i = 0; i < ff.size(); ++i ) ff[i] /= 3;
-	d.put("faces", (unsigned int*)ff.get_data());
-	d.put("normals", (float*)nn.get_data());
+	d.put("faces", (unsigned int*)ff.data());
+	d.put("normals", (float*)nn.data());
 	d.put("size", (unsigned int)ff.size());
 	return d;
 }
 
 void MarchingCubes::surface_face_z()
 {
-	float* f = pp.get_data();
-	float* n = nn.get_data();
+	float* f = pp.data();
+	float* n = nn.data();
 	for (unsigned int i = 0; i < pp.size(); i += 3 ) {
 		if (f[i+2] == 0.5) continue;
 		Vec3f z(0,0,1.0);
