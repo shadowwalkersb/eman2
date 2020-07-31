@@ -42,8 +42,8 @@
 
 #include "marchingcubes.h"
 
-#include <time.h>
-#include <math.h>
+#include <ctime>
+#include <cmath>
 
 using namespace EMAN;
 #include "transform.h"
