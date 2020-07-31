@@ -193,36 +193,22 @@ namespace EMAN
 	public:
 		/** Construct a point at the origin location.
 		 */
-		IntPoint()
-		{
-			data[0] = 0;
-			data[1] = 0;
-			data[2] = 0;
-			ndim = 0;
-		}
+		IntPoint() =default;
 		
 		/** Construct a 1D point.
 		 * @param xx The x coordinate value.
 		 */
 		explicit IntPoint(int xx)
-		{
-			data[0] = xx;
-			data[1] = 0;
-			data[2] = 0;
-			ndim = 1;
-		}
+		: data{xx}
+		{}
 		
 		/** Construct a 2D point.
 		 * @param xx The x coordinate value.
 		 * @param yy The y coordinate value.
 		 */
 		IntPoint(int xx, int yy)
-		{
-			data[0] = xx;
-			data[1] = yy;
-			data[2] = 0;
-			ndim = 2;
-		}
+		: data{xx, yy}
+		{}
 		
 		/** Construct a 3D point.
 		 * @param xx The x coordinate value.
@@ -230,19 +216,15 @@ namespace EMAN
 		 * @param zz The z coordinate value.
 		 */
 		IntPoint(int xx, int yy, int zz)
-		{
-			data[0] = xx;
-			data[1] = yy;
-			data[2] = zz;
-			ndim = 3;
-		}
+		: data{xx, yy, zz}
+		{}
 
 		/** Get the dimension of the point, 1D/2D/3D.
 		 * @return The dimension of the point.
 		 */
 		int get_ndim() const
 		{
-			return ndim;
+			return data.size();
 		}
 		
 		/** Get the ith direction's coordinate. Used as a rvalue.
@@ -264,8 +246,7 @@ namespace EMAN
 		}
 		
 	private:
-		int data[3];
-		int ndim;
+		vector<int> data;
 	};
 	
 	IntPoint operator -( const IntPoint& p);
