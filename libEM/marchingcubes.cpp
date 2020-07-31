@@ -663,11 +663,10 @@ void MarchingCubes::set_data(EMData* data)
 }
 
 void MarchingCubes::set_surface_value(const float value) {
-
-	if(_surf_value == value) return;
+	if(_surf_value == value)
+		return;
 
 	_surf_value = value;
-
 }
 
 void MarchingCubes::calculate_surface() {
@@ -687,7 +686,8 @@ void MarchingCubes::calculate_surface() {
 
 	float min = minvals[minvals.size()-1]->get_value_at(0,0,0);
 	float max = maxvals[minvals.size()-1]->get_value_at(0,0,0);
-	if ( min < _surf_value &&  max > _surf_value) draw_cube(0,0,0,minvals.size()-1);
+	if ( min < _surf_value &&  max > _surf_value)
+		draw_cube(0,0,0,minvals.size()-1);
 
 #if MARCHING_CUBES_DEBUG
 	int time1 = clock();
@@ -876,7 +876,8 @@ void MarchingCubes::marching_cube(int fX, int fY, int fZ, int cur_level)
 	iEdgeFlags = aiCubeEdgeFlags[iFlagIndex];
 
 	//If the cube is entirely inside or outside of the surface, then there will be no intersections
-	if(iEdgeFlags == 0) return;
+	if(iEdgeFlags == 0)
+		return;
 
 	//Find the point of intersection of the surface with each edge
 	//Then find the normal to the surface at those points
