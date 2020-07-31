@@ -533,14 +533,6 @@ MarchingCubes::MarchingCubes()
 
 if ((int(glGetString(GL_VERSION)[0])-48)>2){
 	rgbgenerator = ColorRGBGenerator();
-
-// #ifdef _WIN32
-// 	typedef void (APIENTRYP PFNGLGENBUFFERSPROC) (GLsizei n, GLuint *buffers);
-// 	PFNGLGENBUFFERSPROC glGenBuffers;
-// 	glGenBuffers = (PFNGLGENBUFFERSPROC) wglGetProcAddress("glGenBuffers");
-// #endif	//_WIN32
-//
-// 	glGenBuffers(4, buffer);
 }
 
 }
@@ -551,13 +543,6 @@ MarchingCubes::MarchingCubes(EMData * em)
 if ((int(glGetString(GL_VERSION)[0])-48)>2){
 	rgbgenerator = ColorRGBGenerator();
 
-// #ifdef _WIN32
-// 	typedef void (APIENTRYP PFNGLGENBUFFERSPROC) (GLsizei n, GLuint *buffers);
-// 	PFNGLGENBUFFERSPROC glGenBuffers;
-// 	glGenBuffers = (PFNGLGENBUFFERSPROC) wglGetProcAddress("glGenBuffers");
-// #endif	//_WIN32
-//
-// 	glGenBuffers(4, buffer);
 	set_data(em);}
 else{
 	set_data(em);
@@ -624,16 +609,6 @@ bool MarchingCubes::calculate_min_max_vals()
 
 MarchingCubes::~MarchingCubes() {
 	clear_min_max_vals();
-
-if ((int(glGetString(GL_VERSION)[0])-48)>2){
-// #ifdef _WIN32
-// 	typedef void (APIENTRYP PFNGLDELETEBUFFERSPROC) (GLsizei n, const GLuint *buffers);
-// 	PFNGLDELETEBUFFERSPROC glDeleteBuffers;
-// 	glDeleteBuffers = (PFNGLDELETEBUFFERSPROC) wglGetProcAddress("glDeleteBuffers");
-// #endif	//_WIN32
-//
-// 	glDeleteBuffers(4, buffer);
-}
 }
 
 Dict MarchingCubes::get_isosurface()
@@ -953,13 +928,6 @@ void MarchingCubes::marching_cube(int fX, int fY, int fZ, int cur_level)
 
 		for(iCorner = 0; iCorner < 3; iCorner++)
 		{
-			// Without vertex normalization
-// 			iVertex = a2iTriangleConnectionTable[iFlagIndex][3*iTriangle+iCorner];
-// 			int ss = pp.elem();
-// 			pp.push_back_3(&pts[iCorner][0]);
-// 			nn.push_back_3(&n[0]);
-// 			ff.push_back(ss);
-
 //			With vertex normalization
 			iVertex = a2iTriangleConnectionTable[iFlagIndex][3*iTriangle+iCorner];
 			map<int,int>::iterator it = point_map.find(pointIndex[iVertex]);
