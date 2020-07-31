@@ -280,36 +280,22 @@ namespace EMAN
 
 		/** Construct a point at the origin location.
 		 */
-		FloatPoint()
-		{
-			data[0] = 0;
-			data[1] = 0;
-			data[2] = 0;
-			ndim = 0;
-		}
+		FloatPoint() =default;
 		
 		/** Construct a 1D point.
 		 * @param xx The x coordinate value.
 		 */
 		explicit FloatPoint(float xx)
-		{
-			data[0] = xx;
-			data[1] = 0;
-			data[2] = 0;
-			ndim = 1;
-		}
+		: data{xx}
+		{}
 
 		/** Construct a 2D point.
 		 * @param xx The x coordinate value.
 		 * @param yy The y coordinate value.
 		 */
 		FloatPoint(float xx, float yy)
-		{
-			data[0] = xx;
-			data[1] = yy;
-			data[2] = 0;
-			ndim = 2;
-		}
+		: data{xx, yy}
+		{}
 		
 		/** Construct a 3D point.
 		 * @param xx The x coordinate value.
@@ -317,35 +303,23 @@ namespace EMAN
 		 * @param zz The z coordinate value.
 		 */
 		FloatPoint(float xx, float yy, float zz)
-		{
-			data[0] = xx;
-			data[1] = yy;
-			data[2] = zz;
-			ndim = 3;
-		}
+		: data{xx, yy, zz}
+		{}
 		
 		/** Construct a 1D point.
 		 * @param xx The x coordinate value.
 		 */
 		explicit FloatPoint(int xx)
-		{
-			data[0] = (float)xx;
-			data[1] = 0;
-			data[2] = 0;
-			ndim = 1;
-		}
+		: data{(float)xx}
+		{}
 		
 		/** Construct a 2D point.
 		 * @param xx The x coordinate value.
 		 * @param yy The y coordinate value.
 		 */
 		FloatPoint(int xx, int yy)
-		{
-			data[0] = (float)xx;
-			data[1] = (float)yy;
-			data[2] = 0;
-			ndim = 2;
-		}
+		: data{(float)xx, (float)yy}
+		{}
 		
 		/** Construct a 3D point.
 		 * @param xx The x coordinate value.
@@ -353,35 +327,23 @@ namespace EMAN
 		 * @param zz The z coordinate value.
 		 */
 		FloatPoint(int xx, int yy, int zz)
-		{
-			data[0] = (float)xx;
-			data[1] = (float)yy;
-			data[2] = (float)zz;
-			ndim = 3;
-		}
+		: data{(float)xx, (float)yy, (float)zz}
+		{}
 			
 		/** Construct a 1D point.
 		 * @param xx The x coordinate value.
 		 */
 		explicit FloatPoint(double xx)
-		{
-			data[0] = (float)xx;
-			data[1] = 0;
-			data[2] = 0;
-			ndim = 1;
-		}
+		: data{(float)xx}
+		{}
 		
 		/** Construct a 2D point.
 		 * @param xx The x coordinate value.
 		 * @param yy The y coordinate value.
 		 */
 		FloatPoint(double xx, double yy)
-		{
-			data[0] = (float)xx;
-			data[1] = (float)yy;
-			data[2] = 0;
-			ndim = 2;
-		}
+		: data{(float)xx, (float)yy}
+		{}
 		
 		/** Construct a 3D point.
 		 * @param xx The x coordinate value.
@@ -389,27 +351,15 @@ namespace EMAN
 		 * @param zz The z coordinate value.
 		 */
 		FloatPoint(double xx, double yy, double zz)
-		{
-			data[0] = (float)xx;
-			data[1] = (float)yy;
-			data[2] = (float)zz;
-			ndim = 3;
-		}
-
-		FloatPoint(const FloatPoint & fp)
-		{
-			data[0] = fp.data[0];
-			data[1] = fp.data[1];
-			data[2] = fp.data[2];
-			ndim = fp.ndim;
-		}
+		: data{(float)xx, (float)yy, (float)zz}
+		{}
 		
 		/** Get the dimension of the point, 1D/2D/3D.
 		 * @return The dimension of the point.
 		 */
 		int get_ndim() const
 		{
-			return ndim;
+			return data.size();
 		}
 
 		/** Get the ith direction's coordinate. Used as a rvalue.
@@ -431,20 +381,18 @@ namespace EMAN
 		}
 		
 		inline operator vector<float>() const {
-			vector<float> t(data,data+3);
-			return t;
+			return data;
 		}
 		
 		operator IntPoint () const { return IntPoint((int)data[0],(int)data[1],(int)data[2]); }
 		
 		inline FloatPoint& operator=(const vector<float>& v) {
-			copy(v.begin(),v.end(),data);
+			data = v;
 			return *this;
 		}
 		
 	private:
-		float data[3];
-		int ndim;
+		vector<float> data;
 	};
 
 	/** Pixel describes a 3D pixel's coordinates and its intensity value. 
