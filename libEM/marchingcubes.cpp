@@ -619,7 +619,7 @@ Dict MarchingCubes::get_isosurface()
 	for (unsigned int i = 0; i < ff.size(); ++i ) ff[i] /= 3;
 	d.put("faces", (unsigned int*)ff.get_data());
 	d.put("normals", (float*)nn.get_data());
-	d.put("size", ff.size());
+	d.put("size", (unsigned int)ff.size());
 	return d;
 }
 
