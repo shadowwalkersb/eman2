@@ -616,10 +616,10 @@ Dict MarchingCubes::get_isosurface()
 	calculate_surface();
 	Dict d;
 	d.put("points", (float*)pp.get_data());
-	for (unsigned int i = 0; i < ff.elem(); ++i ) ff[i] /= 3;
+	for (unsigned int i = 0; i < ff.size(); ++i ) ff[i] /= 3;
 	d.put("faces", (unsigned int*)ff.get_data());
 	d.put("normals", (float*)nn.get_data());
-	d.put("size", ff.elem());
+	d.put("size", ff.size());
 	return d;
 }
 
@@ -627,7 +627,7 @@ void MarchingCubes::surface_face_z()
 {
 	float* f = pp.get_data();
 	float* n = nn.get_data();
-	for (unsigned int i = 0; i < pp.elem(); i += 3 ) {
+	for (unsigned int i = 0; i < pp.size(); i += 3 ) {
 		if (f[i+2] == 0.5) continue;
 		Vec3f z(0,0,1.0);
 		Vec3f axis(-n[i+1],n[i],0);
@@ -647,7 +647,7 @@ void MarchingCubes::surface_face_z()
 		f[i+2] = 0.5;
 	}
 
-	for (unsigned int i = 0; i < nn.elem(); i += 3 ) {
+	for (unsigned int i = 0; i < nn.size(); i += 3 ) {
 		n[i] = 0;
 		n[i+1] = 0;
 		n[i+2] = 1;
@@ -817,7 +817,7 @@ void MarchingCubes::color_vertices()
 	cc.clear();
 	int scaling = pow(2,drawing_level + 1);		// Needed to account for sampling rate
 	//Color vertices. We don't need to rerun marching cubes on color vertices, so this method improves effciency
-	for(unsigned int i = 0; i < vv.elem(); i+=3){
+	for(unsigned int i = 0; i < vv.size(); i+=3){
 		float* color = rgbgenerator.getRGBColor(scaling*vv[i], scaling*vv[i+1], scaling*vv[i+2]);
 		cc.push_back_3(color);
 	}
@@ -933,7 +933,7 @@ void MarchingCubes::marching_cube(int fX, int fY, int fZ, int cur_level)
 			map<int,int>::iterator it = point_map.find(pointIndex[iVertex]);
 			if ( it == point_map.end() ){
 				vv.push_back_3(&vox[0]);
-				int ss = pp.elem();
+				int ss = pp.size();
 				pp.push_back_3(&pts[iCorner][0]);
 				nn.push_back_3(&n[0]);
 				ff.push_back(ss);

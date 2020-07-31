@@ -1018,8 +1018,8 @@ unsigned long GLUtil::get_isosurface_dl(MarchingCubes* mc,
 	if (mc->getRGBmode()) mc->color_vertices();
 
 #if MARCHING_CUBES_DEBUG
-	cout << "There are " << ff.elem()/3 << " faces and " << pp.elem() <<
-		 " points and " << nn.elem() << " normals to render in generate dl" << endl;
+	cout << "There are " << ff.size()/3 << " faces and " << pp.size() <<
+		 " points and " << nn.size() << " normals to render in generate dl" << endl;
 #endif
 
 	int maxf;
@@ -1038,7 +1038,7 @@ unsigned long GLUtil::get_isosurface_dl(MarchingCubes* mc,
 #endif
 
 	if (recontour) {
-		for (unsigned int i = 0; i < mc->ff.elem(); ++i) mc->ff[i] /= 3;
+		for (unsigned int i = 0; i < mc->ff.size(); ++i) mc->ff[i] /= 3;
 	}
 
 	if (maxf % 3 != 0) {
@@ -1093,12 +1093,12 @@ unsigned long GLUtil::get_isosurface_dl(MarchingCubes* mc,
 	bool drawRange = true;
 
 	if (drawRange == false) {
-		glDrawElements(GL_TRIANGLES,mc->ff.elem(),GL_UNSIGNED_INT, mc->ff.get_data());
+		glDrawElements(GL_TRIANGLES,mc->ff.size(),GL_UNSIGNED_INT, mc->ff.get_data());
 	} else {
-		for(unsigned int i = 0; i < mc->ff.elem(); i+=maxf)
+		for(unsigned int i = 0; i < mc->ff.size(); i+=maxf)
 		{
-			if ((i+maxf) > mc->ff.elem())
-				glDrawElements(GL_TRIANGLES, mc->ff.elem()-i, GL_UNSIGNED_INT, &(mc->ff[i]));
+			if ((i+maxf) > mc->ff.size())
+				glDrawElements(GL_TRIANGLES, mc->ff.size()-i, GL_UNSIGNED_INT, &(mc->ff[i]));
 			else
 				glDrawElements(GL_TRIANGLES, maxf, GL_UNSIGNED_INT, &(mc->ff[i]));
 
@@ -1130,7 +1130,7 @@ void GLUtil::contour_isosurface(MarchingCubes* mc)
 	mc->calculate_surface();
 
 	// What does this do???
-	for (unsigned int i = 0; i < mc->ff.elem(); ++i ) mc->ff[i] /= 3;
+	for (unsigned int i = 0; i < mc->ff.size(); ++i ) mc->ff[i] /= 3;
 
 	// Need to rebind data (to the GPU)
 	mc->needtobind = true;
@@ -1192,7 +1192,7 @@ void GLUtil::render_using_VBOs(MarchingCubes* mc, unsigned int tex_id,
 	glBindBuffer(GL_ARRAY_BUFFER, mc->buffer[2]);
 
 	if (mc->needtobind) {
-		glBufferData(GL_ARRAY_BUFFER, 4*mc->nn.elem(), mc->nn.get_data(),
+		glBufferData(GL_ARRAY_BUFFER, 4*mc->nn.size(), mc->nn.get_data(),
 				 GL_STATIC_DRAW);
 	}
 
@@ -1202,7 +1202,7 @@ void GLUtil::render_using_VBOs(MarchingCubes* mc, unsigned int tex_id,
 	glBindBuffer(GL_ARRAY_BUFFER, mc->buffer[0]);
 
 	if (mc->needtobind) {
-		glBufferData(GL_ARRAY_BUFFER, 4*mc->pp.elem(), mc->pp.get_data(),
+		glBufferData(GL_ARRAY_BUFFER, 4*mc->pp.size(), mc->pp.get_data(),
 				 GL_STATIC_DRAW);
 	}
 
@@ -1215,7 +1215,7 @@ void GLUtil::render_using_VBOs(MarchingCubes* mc, unsigned int tex_id,
 		glBindBuffer(GL_ARRAY_BUFFER, mc->buffer[3]);
 
 		if (mc->needtobind) {
-			glBufferData(GL_ARRAY_BUFFER, 4*mc->cc.elem(), mc->cc.get_data(),
+			glBufferData(GL_ARRAY_BUFFER, 4*mc->cc.size(), mc->cc.get_data(),
 				 GL_STATIC_DRAW);
 		}
 
@@ -1226,7 +1226,7 @@ void GLUtil::render_using_VBOs(MarchingCubes* mc, unsigned int tex_id,
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, mc->buffer[1]);
 
 	if (mc->needtobind) {
-		glBufferData(GL_ELEMENT_ARRAY_BUFFER, 4*mc->ff.elem(), mc->ff.get_data(),
+		glBufferData(GL_ELEMENT_ARRAY_BUFFER, 4*mc->ff.size(), mc->ff.get_data(),
 				 GL_STATIC_DRAW);
 	}
 
@@ -1238,7 +1238,7 @@ void GLUtil::render_using_VBOs(MarchingCubes* mc, unsigned int tex_id,
 	}
 
 	// finally draw the elemenets
-	glDrawElements(GL_TRIANGLES, mc->ff.elem(), GL_UNSIGNED_INT, 0);
+	glDrawElements(GL_TRIANGLES, mc->ff.size(), GL_UNSIGNED_INT, 0);
 
 	// No longer need to bind data to the GPU
 
