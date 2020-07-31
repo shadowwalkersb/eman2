@@ -55,11 +55,8 @@ namespace EMAN
 		 * @param zz The z direction size. Default is 0.
 		 */
 		explicit IntSize(int xx=0, int yy=0, int zz=0)
-		{
-			data[0] = xx;
-			data[1] = yy;
-			data[2] = zz;
-		}
+		: data{xx, yy, zz}
+		{}
 		
 		
 		/** Get its dimension, 1D, 2D, or 3D.
@@ -95,7 +92,7 @@ namespace EMAN
 		}
 		
 	private:
-		int data[3];
+		vector<int> data;
 	};
 
 	/** FloatSize is used to describe a 1D, 2D or 3D rectangular size
@@ -111,11 +108,8 @@ namespace EMAN
 		 * @param zz The z direction size. Default is 0.
 		 */
 		explicit FloatSize(float xx=0, float yy=0, float zz=0)
-		{
-			data[0] = xx;
-			data[1] = yy;
-			data[2] = zz;
-		}
+		: data{xx, yy, zz}
+		{}
 
 		/** Construct a FloatSize object.
 		 * @param xx The x direction size. Default is 0.
@@ -123,11 +117,8 @@ namespace EMAN
 		 * @param zz The z direction size. Default is 0.
 		 */
 		FloatSize(int xx, int yy=0, int zz=0)
-		{
-			data[0] = (float)xx;
-			data[1] = (float)yy;
-			data[2] = (float)zz;
-		}
+		: data{(float)xx, (float)yy, (float)zz}
+		{}
 
 		/** Construct a FloatSize object.
 		 * @param xx The x direction size. Default is 0.
@@ -135,11 +126,8 @@ namespace EMAN
 		 * @param zz The z direction size. Default is 0.
 		 */
 		FloatSize(double xx, double yy=0, double zz=0)
-		{
-			data[0] = (float)xx;
-			data[1] = (float)yy;
-			data[2] = (float)zz;
-		}
+		: data{(float)xx, (float)yy, (float)zz}
+		{}
 
 		/** Get its dimension, 1D, 2D, or 3D.
 		 * @return The dimension.
@@ -179,12 +167,11 @@ namespace EMAN
 		}
 		
 		inline operator vector<float>() const {
-			vector<float> t(data,data+3);
-			return t;
+			return data;
 		}
 
 	private:
-		float data[3];
+		vector<float> data;
 	};
 	
 	/** IntPoint defines an integer-coordinate point in a 1D/2D/3D space.
