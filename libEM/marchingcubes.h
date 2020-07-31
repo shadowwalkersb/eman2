@@ -57,131 +57,6 @@ using std::ostream;
 
 namespace EMAN
 {
-	/** CustomVector has some trivial optimizations of the STL vector.
-	* It has get_data() functionality, which gives direct access to
-	* the underlying data, which is necessary for handing OpenGL vertex and normal
-	* arrays - the native STL vector does not give straightforward access to the data
-	* pointers. This class also has a push_back_3 function which does a memcpy
-	* of 3 elements - this can be used instead of 3 push_back function calls. Although it wasn't
-	* rigorously tested it should save some time by virtue of less function calls. Although the
-	* savings may be trivial, I just haven't tested it.
-	*
-	* This class was not written for general use because- it is designed specifically for
-	* use in conjunction with the MarchingCubes class only.
-	* @author David Woolford
-	*/
-	template<typename type>
-	class CustomVector
-	{
-		public:
-			/** Constructor
-			* @param starting_size the starting size of the underlying data
-			*/
-			explicit CustomVector(unsigned int starting_size=1024) : data(0), size(0), elements(0)
-			{
-				resize(starting_size);
-			}
-
-			~CustomVector()
-			{
-				if(data) {free(data); data=0;}
-			}
-
-			/** Clear
-			* clears all data and resizes
-			* @param starting_size the starting size of the underlying data
-			*/
-			inline void clear(unsigned int starting_size=1024)
-			{
-				if (data) {free(data); data = 0;}
-				size = 0;
-				elements = 0;
-				resize(starting_size);
-			}
-
-			/** Resize
-			* Resize the data pointer using realloc
-			* In general you want to resize to a larger size...
-			* @param n the new size of the underlying data
-			*
-			*/
-			inline void resize(const unsigned int n)
-			{
-				data = (type*)realloc(data, n*sizeof(type));
-
-				for(unsigned int i = size; i < n; ++i) data[i] = 0;
-				size = n;
-			}
-
-			/** Push back a value
-			* Potentially resizes
-			* @param t the value to push back
-			*/
-			inline void push_back(const type& t)
-			{
-				if ( elements == size ) resize(2*size);
-				data[elements] = t;
-				++elements;
-			}
-
-			/** Push back 3 values
-			 * Potentially resizes
-			 * @param p a pointer to 3 contiguous values
-			 */
-			inline void push_back_3(const type* const p)
-			{
-				if ( elements+2 >= size ) resize(2*size);
-				memcpy( &data[elements], p, 3*sizeof(type));
-				elements = elements + 3;
-			}
-
-			/** Multiply contiguous groups of 3 by different values
-			 */
-			inline void mult3(const type& v1, const type& v2, const type& v3)
-			{
-				for(unsigned int i = 0; (i + 2) < elements; i += 3 ){
-					data[i] *= v1;
-					data[i+1] *= v2;
-					data[i+2] *= v3;
-				}
-			}
-
-			/** The number of elements, is the same as STL::vector size()
-			* Should be called size() but oh well...
-			* This is the actual number of stored floating point numbers
-			* not the number of 'groups of 3'
-			* @return the number of elements stored by this object
-			*/
-			inline unsigned int elem() { return elements; }
-
-			/** Operator[] - provide convenient set functionality (note NOT get)
-			* @param idx the index to access for setting purposes
-			* potentially resizes
-			*/
-			inline type& operator[](const unsigned int idx)
-			{
-				unsigned int csize = size;
-				while (idx >= csize ) {
-					csize *= 2;
-				}
-				if ( csize != size ) resize(csize);
-				return data[idx];
-			}
-
-			/** get the underlying data as a pointer objects
-			* @return the data pointer
-			*/
-			inline type* get_data() { return data; }
-
-		private:
-			/// The data pointer
-			type* data;
-			/// The size of the associated memory block
-			unsigned int size;
-			/// The number of stored elements.
-			unsigned int elements;
-	};
-
 	/** Class to encapsulate an RGB color generator for marching cubes isosurface generator
 	For now you can only color by radius, but in the near future you will be able to color by map, etc
 	 **/
@@ -442,12 +317,12 @@ namespace EMAN
 		 */
 		void get_normal(Vector3 &normal, int fX, int fY, int fZ);
 
-		///.Custom vectors for storing points, normals and faces
-		CustomVector<float> pp;
-		CustomVector<float> cc;
-		CustomVector<int> vv;
-		CustomVector<float> nn;
-		CustomVector<unsigned int> ff;
+		// Vectors for storing points, normals and faces
+		vector<float> pp;
+		vector<float> cc;
+		vector<int> vv;
+		vector<float> nn;
+		vector<unsigned int> ff;
 		
 		/** Color by radius generator */
 		ColorRGBGenerator rgbgenerator;
