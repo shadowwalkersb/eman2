@@ -41,18 +41,18 @@ using namespace EMAN;
 #include "io/eerio.h"
 
 void test_eer_get_bits() {
-	WORD mm = ~0;
-	WORD nn = ~0-1;
-	WORD bb = 1<<1 | 1<<3 | 1<<5 | 1<<7;
+	uint64_t mm = ~0;
+	uint64_t nn = ~0-1;
+	uint64_t bb = 1<<1 | 1<<3 | 1<<5 | 1<<7;
 //    WORD bb = 0b10101010;
 //	WORD b[] = {mm, nn, bb};
 
-	EerStream is(&mm);
+	EerStream<uint64_t> is(&mm);
 	assert(is.get_bits(3) == 7);
 	assert(is.get_bits(9) == (1<<9)-1);
 	assert(is.get_bits(1) == 1);
 
-	EerStream is1(&bb);
+	EerStream<uint64_t> is1(&bb);
 	assert(is1.get_bits(2) == 2);
 	assert(is1.get_bits(3) == 2);
 	assert(is1.get_bits(3) == 5);
@@ -63,13 +63,13 @@ void test_eer_get_bits() {
 	uint8_t b = 0b10011001;
 	uint8_t ab[] = {a,b};
 
-	EerStream is2(reinterpret_cast<WORD*>(ab));
+	EerStream<uint64_t> is2(reinterpret_cast<uint64_t*>(ab));
 	assert(is2.get_bits(2) == 2);
 //	cout<<is2<<endl;
 	assert(is2.get_bits(6) == 42);
 
-	WORD AB[] = {a,b};
-	EerStream is3(AB);
+	uint64_t AB[] = {a,b};
+	EerStream<uint64_t> is3(AB);
 
 	is5 >> rle;
 	assert(rle == 42);
