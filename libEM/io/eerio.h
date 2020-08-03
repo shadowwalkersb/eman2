@@ -94,7 +94,9 @@ namespace EMAN
 				count += val;
 			} while(val == max_val);
 
-			return count;
+			num_electrons += count;
+
+			return num_electrons;
 		}
 
 		Pos read_sub_pos() {
@@ -200,7 +202,7 @@ namespace EMAN
 	class EerStream {
 	public:
 		EerStream(T *buf)
-				: buffer(buf), cur(*buffer), max_num_bits(8*sizeof(T)), bit_counter(max_num_bits)
+				: buffer(buf), cur(*buffer), max_num_bits(8*sizeof(T)), bit_counter(max_num_bits), num_electrons(0)
 		{}
 
 		WORD get_bits(int N) { //N can't be more than num_word_bits ???
@@ -227,6 +229,7 @@ namespace EMAN
 		WORD *buffer;
 		WORD cur;
 		size_t bit_counter;
+		size_t num_electrons;
 
 		friend std::ostream &operator<<(std::ostream &out, const EerStream &obj) {
 			return out
