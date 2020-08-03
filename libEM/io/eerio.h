@@ -240,6 +240,23 @@ namespace EMAN
 		}
 	};
 
+	template<class T>
+	struct RLE {
+		RLE() : count(0) {}
+
+		unsigned int count;
+
+		friend EerStream<T>& operator>>(EerStream<T> &out, RLE<T> &obj) {
+			static const unsigned int max_val = (1<<num_rle_bits) - 1;
+			unsigned int val;
+			do {
+				val = out.get_bits(num_rle_bits);
+				obj.count += val;
+			} while(val == max_val);
+
+			return out;
+		}
+	};
 
 	class EerIO : public ImageIO
 	{

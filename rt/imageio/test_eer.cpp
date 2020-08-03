@@ -224,6 +224,17 @@ void test_eer_rle() {
 	assert(is4.read_rle() == 42);
 
 	EerStream<uint8_t> is5(ab5);
+	EerStream<uint8_t> is55(ab5);
+	RLE<uint8_t> rle;
+
+	is55>>rle;
+	assert(rle.count == 42);
+
+	is55>>rle;
+	assert(rle.count == 0b110011 + 42);
+
+	is55>>rle;
+	assert(rle.count == 0b1001100 + (1<<7) - 1 + 0b110011 + 42);
 
 	assert(is5.read_rle() == 42);
 	assert(is5.read_rle() == 0b110011 + 42);
