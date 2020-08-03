@@ -234,9 +234,10 @@ namespace EMAN
 
 		friend std::ostream &operator<<(std::ostream &out, const EerStream &obj) {
 			return out
-					<<"cur: "<<obj.cur<<" "<<std::bitset<num_word_bits>(obj.cur)
-					<<endl
-					<<"bit_counter: "<<obj.bit_counter<<endl;
+						<<"cur: "<<std::bitset<8*sizeof(T)>(obj.cur)
+						<<endl
+						<<"bit_counter: "<<obj.bit_counter<<endl
+						<<"max_num_bits: "<<obj.max_num_bits<<endl;
 		}
 	};
 
