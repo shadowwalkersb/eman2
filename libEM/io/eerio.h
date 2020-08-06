@@ -182,6 +182,10 @@ namespace EMAN
 	using EerRleCounter = Rle       <7, EerWord>;
 	using EerSubPix     = SubPix    <4, EerWord>;
 
+	inline Pos decode(SubPix<4, uint8_t> sub_pix) {
+		return Pos((sub_pix  & 3) ^ 2, (sub_pix >> 2) ^ 2);
+	}
+	
 
 	class EerIO : public ImageIO
 	{
