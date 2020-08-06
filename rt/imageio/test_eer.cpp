@@ -200,6 +200,8 @@ void test_eer_real_pos() {
 	cout<<rle66<<endl;
 	cout<<sub_pix<<endl;
 	cout<<decode(sub_pix)<<endl;
+	assert(decode(sub_pix) == Pos(0,0));
+	is66>>rle66>>sub_pix;
 	assert(decode(sub_pix) == Pos(1,0));
 
 	BitStream<uint8_t> is7(ab5);
