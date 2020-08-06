@@ -50,6 +50,7 @@ namespace EMAN
 
 		T get_bits(int N) {
 			auto result = cur & ((1 << N) - 1);
+			cout<<"IN: "<<sub_pix<<" "<<std::bitset<4>(sub_pix)<<endl;
 
 			if(N < bit_counter) {
 				cur        >>= N;
@@ -144,7 +145,6 @@ namespace EMAN
 	using EerRleCounter = Rle       <7, EerWord>;
 	using EerSubPix     = SubPix    <4, EerWord>;
 
-	cout<<"IN: "<<sub_pix<<" "<<std::bitset<4>(sub_pix)<<endl;
 
 		std::vector<Pos> coords;
 
