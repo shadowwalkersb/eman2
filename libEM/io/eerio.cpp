@@ -35,12 +35,37 @@
 
 using namespace EMAN;
 
+
+EerFrame::EerFrame(TIFF *tiff)
+	: num_strips(TIFFNumberOfStrips(tiff))
+{
+	vector<unsigned int> strip_sizes(num_strips);
+	for(size_t i=0; i<num_strips; ++i) {
+		strip_sizes[i] = TIFFRawStripSize(tiff, i);
+	}
+
+	for(size_t i=0; i<num_strips; ++i) {
+		auto prev_size = data.size();
+		data.resize(prev_size + strip_sizes[i]);
+		TIFFReadRawStrip(tiff, i, data.data()+prev_size, strip_sizes[i]);
+	}
+}
+
+
 EerIO::EerIO(const string & fname, IOMode rw)
 {
 	tiff_file = TIFFOpen(fname.c_str(), "r");
 
 	for(num_dirs=0; TIFFReadDirectory(tiff_file); num_dirs++)
 		;
+
+	frames.resize(get_nimg());
+	
+	for(size_t i=0; i<get_nimg(); i++){
+		TIFFSetDirectory(tiff_file, i);
+
+		frames[i] = EerFrame(tiff_file);
+	}
 }
 
 EerIO::~EerIO()
