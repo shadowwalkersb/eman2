@@ -57,7 +57,7 @@ void EerIO::init()
 
 int EerIO::get_nimg()
 {
-	return num_dirs;
+	return 1;
 }
 
 bool EerIO::is_image_big_endian()
