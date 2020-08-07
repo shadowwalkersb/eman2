@@ -130,7 +130,7 @@ void EerIO::_read_meta_info() {
 
 int EerIO::get_nimg()
 {
-	return num_dirs;
+	return 10;
 }
 
 bool EerIO::is_image_big_endian()
