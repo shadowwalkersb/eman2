@@ -83,7 +83,7 @@ namespace EMAN
 
 	template<unsigned int T, bool BIT_OVERFLOW, class U>
 	class BitReader {
-	private:
+	protected:
 		const decltype(T) num_bits = T;
 		const decltype(T) max_val = (1 << num_bits) - 1;
 		uintmax_t val = 0;
