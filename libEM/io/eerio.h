@@ -84,7 +84,7 @@ namespace EMAN
 			return val;
 		}
 
-	private:
+	protected:
 		const decltype(T) num_bits = T;
 		const decltype(T) max_val = (1 << num_bits) - 1;
 		uintmax_t val = 0;
