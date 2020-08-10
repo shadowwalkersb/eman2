@@ -169,6 +169,11 @@ void test_eer_rle_counter() {
 	is1 >> rle1;
 	assert(rle1 == 1);
 
+	assert(rle1 == 1.);
+	assert(rle1 == 1.f);
+	assert(rle1 == (int)1);
+	assert(rle1 == (short)1);
+
 	is1 >> rle1;
 	assert(rle1 == 1);
 
