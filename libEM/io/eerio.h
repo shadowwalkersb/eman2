@@ -43,6 +43,7 @@ namespace EMAN
 	const unsigned int num_sub_pix_bits = 2;
 
 	struct Pos {
+		Pos() =default;
 		Pos(int xx, int yy) : x(xx), y(yy) {}
 		int x, y;
 
