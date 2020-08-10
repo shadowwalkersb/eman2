@@ -164,6 +164,24 @@ void test_eer_rle_counter() {
 
 	is1 >> rle1;
 	assert(rle1 == 1);
+
+	is1 >> rle1;
+	assert(rle1 == 1);
+
+	is1 >> rle1;
+	assert(rle1 == 1);
+
+	is1 >> rle1;
+	assert(rle1 == 1);
+
+	is1 >> rle1;
+	assert(rle1 == 1);
+
+	is1 >> rle1;
+	assert(rle1 == 1);
+
+	is1 >> rle1;
+	assert(rle1 == 1);
 }
 
 int main()
