@@ -133,6 +133,16 @@ void test_eer_rle() {
 		is4 >> rle4;
 		assert(rle4 == 0b1111);
 	}
+
+	BitStream<BuffWord> is3(&a);
+	BitReader<3, false, BuffWord> rle3;
+
+	is3>>rle3;
+	assert(rle3 == 0b111);
+	is3>>rle3;
+	assert(rle3 == 0b111);
+	is3>>rle3;
+	assert(rle3 == 0b11);
 }
 
 int main()
