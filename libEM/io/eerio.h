@@ -101,6 +101,17 @@ namespace EMAN
 		}
 	};
 
+
+	template<unsigned int T, bool BIT_OVERFLOW, class U>
+	class BitReaderCounter : public BitReader<T, BIT_OVERFLOW, U> {
+
+		friend BitStream<U>& operator>>(BitStream<U> &in, BitReaderCounter<T, BIT_OVERFLOW, U> &obj) {
+			in>>static_cast<BitReader<T, BIT_OVERFLOW, U>& >(obj);
+
+			return in;
+		}
+	};
+
 	template<unsigned int T, class U>
 	using Rle = BitReader<T, true, U>;
 
