@@ -79,15 +79,15 @@ namespace EMAN
 
 	template<unsigned int T, bool BIT_OVERFLOW, class U>
 	class BitReader {
-	public:
-		operator auto () {
-			return val;
-		}
-
 	protected:
 		const decltype(T) num_bits = T;
 		const decltype(T) max_val = (1 << num_bits) - 1;
 		uintmax_t val = 0;
+
+	public:
+		operator decltype(val) const () {
+			return val;
+		}
 
 		friend BitStream<U>& operator>>(BitStream<U> &in, BitReader<T, BIT_OVERFLOW, U> &obj) {
 			decltype(val) count;
