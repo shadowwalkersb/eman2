@@ -140,6 +140,7 @@ namespace EMAN
 		}
 
 		friend BitStream<U>& operator>>(BitStream<U> &in, BitReader<T, BIT_OVERFLOW, U> &obj) {
+			obj.val = 0;
 			decltype(val) count;
 			obj.val = 0;
 			do {
