@@ -107,7 +107,7 @@ namespace EMAN
 	template<unsigned int T, class U>
 	using SubPix = BitReader<T, false, U>;
 
-	using EerWord = uint8_t;
+	using EerWord = uint64_t;
 	using EerStream     = BitStream    <EerWord>;
 	using EerRleCounter = Rle       <7, EerWord>;
 	using EerSubPix     = SubPix    <4, EerWord>;
