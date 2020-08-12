@@ -185,6 +185,12 @@ void test_eer_rle_counter() {
 	assert(rle1 == 12);
 }
 
+void test_eer_real_pos() {
+	BitStream<uint8_t> is7(ab5);
+	assert(is7.real_pos() == Pos(169, 2));
+	assert(is7.real_pos() == Pos(493, 3));
+}
+
 int main()
 {
 	test_bit_stream();
@@ -192,6 +198,7 @@ int main()
 	test_eer_sub_pix();
 	test_eer_rle();
 	test_eer_rle_counter();
+	test_eer_real_pos();
 
 	return 0;
 }

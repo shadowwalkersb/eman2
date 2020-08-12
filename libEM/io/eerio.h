@@ -101,6 +101,16 @@ namespace EMAN
 			return Pos((sub_pix  & 3) ^ 2, (sub_pix >> 2) ^ 2);
 		}
 
+		Pos real_pos() {
+			int rle = read_rle();
+			Pos pos = read_sub_pos();
+
+			pos.x = ((rle & 4095) << num_sub_pix_bits) | pos.x;
+			pos.y = ((rle >> 12)  << num_sub_pix_bits) | pos.y;
+
+			return pos;
+		}
+
 	private:
 		T *buffer;
 		T cur;
