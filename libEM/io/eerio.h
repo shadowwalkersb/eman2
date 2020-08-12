@@ -135,10 +135,16 @@ namespace EMAN
 
 	template<unsigned int T, class U>
 	class RleCounter : public Rle <T, U> {
+	public:
+//		RleCounter(EerStream is);
+	private:
+		unsigned int count = 0;
 
 		friend BitStream<U>& operator>>(BitStream<U> &in, RleCounter<T, U> &obj) {
 			in>>static_cast<Rle<T,U>& >(obj);
 			
+//			obj.counter += obj + (obj>0?1:0);
+
 			return in;
 		}
 	};
