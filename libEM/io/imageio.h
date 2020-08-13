@@ -34,6 +34,7 @@
 
 #include "byteorder.h"
 #include "emutil.h"
+#include "geometry.h"
 
 using std::vector;
 using std::string;
@@ -41,8 +42,6 @@ using std::string;
 namespace EMAN
 {
 	class Region;
-	class FloatSize;
-	class IntSize;
 	class Ctf;
 
 	/** ImageIO classes are designed for reading/writing various

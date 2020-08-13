@@ -43,137 +43,6 @@ using std::vector;
 namespace EMAN
 {
 
-	/** IntSize is used to describe a 1D, 2D or 3D rectangular size in integers.
-     */
-	class IntSize
-	{
-	public:
-		
-		/** Construct an IntSize object.
-		 * @param xx The x direction size. Default is 0.
-		 * @param yy The y direction size. Default is 0.
-		 * @param zz The z direction size. Default is 0.
-		 */
-		explicit IntSize(int xx=0, int yy=0, int zz=0)
-		: data{xx, yy, zz}
-		{}
-		
-		
-		/** Get its dimension, 1D, 2D, or 3D.
-		 * @return The dimension.
-		 */
-		int get_ndim() const
-		{
-			if (data[2] > 1) {
-				return 3;
-			}
-			else if (data[1] > 1) {
-				return 2;
-			}
-			return 1;
-		}
-
-		/** Get the ith direction's size. Used as a rvalue.
-		 * @param i The ith direction, with 0 is x, 1 is y, 2 is z.
-		 * @return The ith direction's size. 
-		 */
-		int operator[] (int i) const
-		{
-			return data[i];
-		}
-
-		/** Get the ith direction's size. Used as a lvalue.
-		 * @param i The ith direction, with 0 is x, 1 is y, 2 is z.
-		 * @return The ith direction's size. 
-		 */
-		int & operator[] (int i) 
-		{
-			return data[i];
-		}
-		
-	private:
-		vector<int> data;
-	};
-
-	/** FloatSize is used to describe a 1D, 2D or 3D rectangular size
-		in floating numbers.
-     */
-	class FloatSize
-	{
-	public:
-		
-		/** Construct a FloatSize object.
-		 * @param xx The x direction size. Default is 0.
-		 * @param yy The y direction size. Default is 0.
-		 * @param zz The z direction size. Default is 0.
-		 */
-		explicit FloatSize(float xx=0, float yy=0, float zz=0)
-		: data{xx, yy, zz}
-		{}
-
-		/** Construct a FloatSize object.
-		 * @param xx The x direction size. Default is 0.
-		 * @param yy The y direction size. Default is 0.
-		 * @param zz The z direction size. Default is 0.
-		 */
-		FloatSize(int xx, int yy=0, int zz=0)
-		: data{(float)xx, (float)yy, (float)zz}
-		{}
-
-		/** Construct a FloatSize object.
-		 * @param xx The x direction size. Default is 0.
-		 * @param yy The y direction size. Default is 0.
-		 * @param zz The z direction size. Default is 0.
-		 */
-		FloatSize(double xx, double yy=0, double zz=0)
-		: data{(float)xx, (float)yy, (float)zz}
-		{}
-
-		/** Get its dimension, 1D, 2D, or 3D.
-		 * @return The dimension.
-		 */
-		int get_ndim() const
-		{
-			if (data[2] > 1) {
-				return 3;
-			}
-			else if (data[1] > 1) {
-				return 2;
-			}
-			else if (data[0] > 1) {
-				return 1;
-			}
-			else {
-				return 0;
-			}
-		}
-		
-		/** Get the ith direction's size. Used as a rvalue.
-		 * @param i The ith direction, with 0 is x, 1 is y, 2 is z.
-		 * @return The ith direction's size. 
-		 */
-		float operator[] (int i) const
-		{
-			return data[i];
-		}
-		
-		/** Get the ith direction's size. Used as a lvalue.
-		 * @param i The ith direction, with 0 is x, 1 is y, 2 is z.
-		 * @return The ith direction's size. 
-		 */
-		float & operator[] (int i) 
-		{
-			return data[i];
-		}
-		
-		inline operator vector<float>() const {
-			return data;
-		}
-
-	private:
-		vector<float> data;
-	};
-	
 	/** FloatPoint defines a float-coordinate point in a 1D/2D/3D space.
 	*/
 	template<class U>
@@ -252,6 +121,9 @@ namespace EMAN
 
 	using FloatPoint = Point<float>;
 	using IntPoint = Point<int>;
+
+	using FloatSize = FloatPoint;
+	using IntSize   = IntPoint;
 
 
 	inline IntPoint operator -( const IntPoint& p)
