@@ -249,44 +249,22 @@ namespace EMAN
 		/** Construct a point at the origin location.
 		 */
 		FloatPoint() =default;
-		
-		/** Construct a 1D point.
-		 * @param xx The x coordinate value.
-		 */
-		explicit FloatPoint(float xx)
-		: data{xx}
-		{}
 
-		/** Construct a 2D point.
-		 * @param xx The x coordinate value.
-		 * @param yy The y coordinate value.
-		 */
-		FloatPoint(float xx, float yy)
-		: data{xx, yy}
-		{}
-		
-		/** Construct a 3D point.
-		 * @param xx The x coordinate value.
-		 * @param yy The y coordinate value.
-		 * @param zz The z coordinate value.
-		 */
-		FloatPoint(float xx, float yy, float zz)
-		: data{xx, yy, zz}
-		{}
-		
 		/** Construct a 1D point.
 		 * @param xx The x coordinate value.
 		 */
-		explicit FloatPoint(int xx)
-		: data{(float)xx}
+		template<class T>
+		explicit FloatPoint(T xx)
+		: data{float(xx)}
 		{}
 		
 		/** Construct a 2D point.
 		 * @param xx The x coordinate value.
 		 * @param yy The y coordinate value.
 		 */
-		FloatPoint(int xx, int yy)
-		: data{(float)xx, (float)yy}
+		template<class T>
+		FloatPoint(T xx, T yy)
+		: data{float(xx), float(yy)}
 		{}
 		
 		/** Construct a 3D point.
@@ -294,32 +272,9 @@ namespace EMAN
 		 * @param yy The y coordinate value.
 		 * @param zz The z coordinate value.
 		 */
-		FloatPoint(int xx, int yy, int zz)
-		: data{(float)xx, (float)yy, (float)zz}
-		{}
-			
-		/** Construct a 1D point.
-		 * @param xx The x coordinate value.
-		 */
-		explicit FloatPoint(double xx)
-		: data{(float)xx}
-		{}
-		
-		/** Construct a 2D point.
-		 * @param xx The x coordinate value.
-		 * @param yy The y coordinate value.
-		 */
-		FloatPoint(double xx, double yy)
-		: data{(float)xx, (float)yy}
-		{}
-		
-		/** Construct a 3D point.
-		 * @param xx The x coordinate value.
-		 * @param yy The y coordinate value.
-		 * @param zz The z coordinate value.
-		 */
-		FloatPoint(double xx, double yy, double zz)
-		: data{(float)xx, (float)yy, (float)zz}
+		template<class T>
+		FloatPoint(T xx, T yy, T zz)
+		: data{float(xx), float(yy), float(zz)}
 		{}
 		
 		/** Get the dimension of the point, 1D/2D/3D.
