@@ -174,75 +174,9 @@ namespace EMAN
 		vector<float> data;
 	};
 	
-	/** IntPoint defines an integer-coordinate point in a 1D/2D/3D space.
-	 */
-	class IntPoint {
-	public:
-		/** Construct a point at the origin location.
-		 */
-		IntPoint() =default;
-		
-		/** Construct a 1D point.
-		 * @param xx The x coordinate value.
-		 */
-		explicit IntPoint(int xx)
-		: data{xx}
-		{}
-		
-		/** Construct a 2D point.
-		 * @param xx The x coordinate value.
-		 * @param yy The y coordinate value.
-		 */
-		IntPoint(int xx, int yy)
-		: data{xx, yy}
-		{}
-		
-		/** Construct a 3D point.
-		 * @param xx The x coordinate value.
-		 * @param yy The y coordinate value.
-		 * @param zz The z coordinate value.
-		 */
-		IntPoint(int xx, int yy, int zz)
-		: data{xx, yy, zz}
-		{}
-
-		/** Get the dimension of the point, 1D/2D/3D.
-		 * @return The dimension of the point.
-		 */
-		int get_ndim() const
-		{
-			return data.size();
-		}
-		
-		/** Get the ith direction's coordinate. Used as a rvalue.
-		 * @param i The ith direction, with 0 is x, 1 is y, 2 is z.
-		 * @return The ith direction's coordinate. 
-		 */
-		int operator[] (int i) const
-		{
-			return data[i];
-		}
-
-		/** Get the ith direction's coordinate. Used as a lvalue.
-		 * @param i The ith direction, with 0 is x, 1 is y, 2 is z.
-		 * @return The ith direction's coordinate. 
-		 */
-		int & operator[] (int i) 
-		{
-			return data[i];
-		}
-		
-	private:
-		vector<int> data;
-	};
-	
-	IntPoint operator -( const IntPoint& p);
-// 	{
-// 		return IntPoint(-p[0],-p[1],-p[2]);
-// 	}
-
 	/** FloatPoint defines a float-coordinate point in a 1D/2D/3D space.
 	*/
+	template<class U>
 	class Point {
 	public:
 
@@ -255,7 +189,7 @@ namespace EMAN
 		 */
 		template<class T>
 		explicit Point(T xx)
-		: data{float(xx)}
+		: data{U(xx)}
 		{}
 		
 		/** Construct a 2D point.
@@ -264,7 +198,7 @@ namespace EMAN
 		 */
 		template<class T>
 		Point(T xx, T yy)
-		: data{float(xx), float(yy)}
+		: data{U(xx), U(yy)}
 		{}
 		
 		/** Construct a 3D point.
@@ -274,7 +208,7 @@ namespace EMAN
 		 */
 		template<class T>
 		Point(T xx, T yy, T zz)
-		: data{float(xx), float(yy), float(zz)}
+		: data{U(xx), U(yy), U(zz)}
 		{}
 		
 		/** Get the dimension of the point, 1D/2D/3D.
@@ -289,7 +223,7 @@ namespace EMAN
 		 * @param i The ith direction, with 0 is x, 1 is y, 2 is z.
 		 * @return The ith direction's coordinate. 
 		 */
-		float operator[] (int i) const
+		U operator[] (int i) const
 		{
 			return data[i];
 		}
@@ -298,25 +232,33 @@ namespace EMAN
 		 * @param i The ith direction, with 0 is x, 1 is y, 2 is z.
 		 * @return The ith direction's coordinate. 
 		 */
-		float & operator[] (int i) 
+		U & operator[] (int i)
 		{
 			return data[i];
 		}
 		
-		inline operator vector<float>() const {
+		inline operator vector<U>() const {
 			return data;
 		}
 		
-		operator IntPoint () const { return IntPoint((int)data[0],(int)data[1],(int)data[2]); }
-		
-		inline Point& operator=(const vector<float>& v) {
+		inline Point& operator=(const vector<U>& v) {
 			data = v;
 			return *this;
 		}
 		
 	private:
-		vector<float> data;
+		vector<U> data;
 	};
+
+	using FloatPoint = Point<float>;
+	using IntPoint = Point<int>;
+
+
+	inline IntPoint operator -( const IntPoint& p)
+ 	{
+ 		return IntPoint(-p[0],-p[1],-p[2]);
+ 	}
+
 
 	/** Pixel describes a 3D pixel's coordinates and its intensity value. 
 	 */

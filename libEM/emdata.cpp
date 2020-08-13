@@ -656,7 +656,7 @@ EMData *EMData::get_clip(const Region & area, const float fill) const
 		z1 = 1;
 	}
 
-	result->insert_clip(this,-((IntPoint)area.origin));
+	result->insert_clip(this,-(IntPoint(area.origin[0], area.origin[1], area.origin[2])));
 
 	if( attr_dict.has_key("apix_x") && attr_dict.has_key("apix_y") &&
 		attr_dict.has_key("apix_z") )

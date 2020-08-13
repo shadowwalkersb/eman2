@@ -34,11 +34,6 @@
 
 using namespace EMAN;
 
-IntPoint EMAN::operator -( const IntPoint& p)
-{
-	return IntPoint(-p[0],-p[1],-p[2]);
-}
-
 bool EMAN::operator<(const Pixel& p1, const Pixel& p2)
 {
 	if (p1.value < p2.value) {
