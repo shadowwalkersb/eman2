@@ -243,18 +243,18 @@ namespace EMAN
 
 	/** FloatPoint defines a float-coordinate point in a 1D/2D/3D space.
 	*/
-	class FloatPoint {
+	class Point {
 	public:
 
 		/** Construct a point at the origin location.
 		 */
-		FloatPoint() =default;
+		Point() =default;
 
 		/** Construct a 1D point.
 		 * @param xx The x coordinate value.
 		 */
 		template<class T>
-		explicit FloatPoint(T xx)
+		explicit Point(T xx)
 		: data{float(xx)}
 		{}
 		
@@ -263,7 +263,7 @@ namespace EMAN
 		 * @param yy The y coordinate value.
 		 */
 		template<class T>
-		FloatPoint(T xx, T yy)
+		Point(T xx, T yy)
 		: data{float(xx), float(yy)}
 		{}
 		
@@ -273,7 +273,7 @@ namespace EMAN
 		 * @param zz The z coordinate value.
 		 */
 		template<class T>
-		FloatPoint(T xx, T yy, T zz)
+		Point(T xx, T yy, T zz)
 		: data{float(xx), float(yy), float(zz)}
 		{}
 		
@@ -309,7 +309,7 @@ namespace EMAN
 		
 		operator IntPoint () const { return IntPoint((int)data[0],(int)data[1],(int)data[2]); }
 		
-		inline FloatPoint& operator=(const vector<float>& v) {
+		inline Point& operator=(const vector<float>& v) {
 			data = v;
 			return *this;
 		}
