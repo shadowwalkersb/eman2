@@ -819,7 +819,7 @@ void MarchingCubes::color_vertices()
 	//Color vertices. We don't need to rerun marching cubes on color vertices, so this method improves effciency
 	for(unsigned int i = 0; i < vv.size(); i+=3){
 		float* color = rgbgenerator.getRGBColor(scaling*vv[i], scaling*vv[i+1], scaling*vv[i+2]);
-		cc.push_back_3(color);
+		cc.insert(end(cc), color, color+3);
 	}
 	rgbgenerator.setNeedToRecolor(false);
 }
@@ -932,10 +932,10 @@ void MarchingCubes::marching_cube(int fX, int fY, int fZ, int cur_level)
 			iVertex = a2iTriangleConnectionTable[iFlagIndex][3*iTriangle+iCorner];
 			map<int,int>::iterator it = point_map.find(pointIndex[iVertex]);
 			if ( it == point_map.end() ){
-				vv.push_back_3(&vox[0]);
+				vv.insert(end(vv), vox, vox+3);
 				int ss = pp.size();
-				pp.push_back_3(&pts[iCorner][0]);
-				nn.push_back_3(&n[0]);
+				pp.insert(end(pp), pts[iCorner], pts[iCorner]+3);
+				nn.insert(end(nn), n, n+3);
 				ff.push_back(ss);
 				point_map[pointIndex[iVertex]] = ss;
 			} else {
