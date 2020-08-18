@@ -408,7 +408,7 @@ EMUtil::ImageType EMUtil::get_image_type(const string & in_filename)
 
 	FILE *in = fopen(filename.c_str(), "rb");
 
-	if (! in) {
+	if (!in) {
 		throw FileAccessException(filename);
 	}
 
@@ -538,7 +538,7 @@ int EMUtil::get_image_count(const string & filename)
 		nimg = imageio->get_nimg();
 	}
 
-   EMUtil::close_imageio(filename, imageio);
+	EMUtil::close_imageio(filename, imageio);
 
 	imageio = NULL;
 
@@ -560,7 +560,7 @@ ImageIO *EMUtil::get_imageio(const string & filename, int rw,
 		   rw == ImageIO::WRITE_ONLY);
 
 	ImageIO *imageio = 0;
-   int persist = 0;
+	int persist = 0;
 
    #ifdef IMAGEIO_CACHE
    imageio = GlobalCache::instance()->get_imageio(filename, rw);
@@ -569,7 +569,7 @@ ImageIO *EMUtil::get_imageio(const string & filename, int rw,
    }
    #endif
 
-	ImageIO::IOMode rw_mode = static_cast < ImageIO::IOMode > (rw);
+	ImageIO::IOMode rw_mode = static_cast<ImageIO::IOMode>(rw);
 
 	if (image_type == IMAGE_UNKNOWN) {
 		image_type = get_image_type(filename);
@@ -1189,8 +1189,8 @@ void EMUtil::process_region_io(void *vdata, FILE * file,
 
 void EMUtil::dump_dict(const Dict & dict)
 {
-	vector < string > keys = dict.keys();
-	vector < EMObject > values = dict.values();
+	vector<string>     keys = dict.keys();
+	vector<EMObject> values = dict.values();
 
 	for (unsigned int i = 0; i < keys.size(); i++) {
 		EMObject obj = values[i];
@@ -1210,15 +1210,15 @@ void EMUtil::dump_dict(const Dict & dict)
 bool EMUtil::is_same_size(const EMData * const em1, const EMData * const em2)
 {
 	return em1->get_xsize() == em2->get_xsize() &&
-		em1->get_ysize() == em2->get_ysize() &&
-		em1->get_zsize() == em2->get_zsize();
+		   em1->get_ysize() == em2->get_ysize() &&
+		   em1->get_zsize() == em2->get_zsize();
 }
 
 bool EMUtil::is_complex_type(EMDataType datatype)
 {
-    return datatype == EM_SHORT_COMPLEX ||
-		datatype == EM_USHORT_COMPLEX ||
-		datatype == EM_FLOAT_COMPLEX;
+    return datatype == EM_SHORT_COMPLEX  ||
+		   datatype == EM_USHORT_COMPLEX ||
+		   datatype == EM_FLOAT_COMPLEX;
 }
 
 EMData *EMUtil::vertical_acf(const EMData * image, int maxdy)
@@ -1513,7 +1513,7 @@ void EMUtil::process_numbers_io(FILE * file, int rw_mode,
 		int nitems_in_line = (int) (strlen(line) / mode_size);
 		Assert(end <= nitems_in_line);
 		vector<float> d(nitems_in_line);
-		char * pline = line;
+		char *pline = line;
 
 		for (int i = 0; i < nitems_in_line; i++) {
 			sscanf(pline, "%f", &d[i]);
