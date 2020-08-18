@@ -1147,9 +1147,8 @@ void EMUtil::dump_dict(const Dict & dict)
 		if (! obj.is_null()) {
 			string val = obj.to_str();
 
-			if (keys[i] == "datatype") {
+			if (keys[i] == "datatype")
 				val = get_datatype_string((EMDataType) (int) obj);
-			}
 
 			fprintf(stdout, "%25s\t%s\n", keys[i].c_str(), val.c_str());
 		}
@@ -1172,18 +1171,16 @@ bool EMUtil::is_complex_type(EMDataType datatype)
 
 EMData *EMUtil::vertical_acf(const EMData * image, int maxdy)
 {
-	if (!image) {
+	if (!image)
 		throw NullPointerException("NULL Image");
-	}
 
 	EMData *ret = new EMData();
 
 	int nx = image->get_xsize();
 	int ny = image->get_ysize();
 
-	if (maxdy <= 1) {
+	if (maxdy <= 1)
 		maxdy = ny / 8;
-	}
 
 	ret->set_size(nx, maxdy, 1);
 
@@ -1194,9 +1191,8 @@ EMData *EMUtil::vertical_acf(const EMData * image, int maxdy)
 		for (int y = 0; y < maxdy; y++) {
 			float dot = 0;
 
-			for (int yy = maxdy; yy < ny - maxdy; yy++) {
+			for (int yy = maxdy; yy < ny - maxdy; yy++)
 				dot += data[x + (yy + y) * nx] * data[x + (yy - y) * nx];
-			}
 
 			ret_data[x + y * nx] = dot;
 		}
