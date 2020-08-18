@@ -240,7 +240,7 @@ EMUtil::ImageType EMUtil::fast_get_image_type(const string & filename,
 
 	string ext = Util::get_filename_ext(filename);
 
-	if (ext == "") {
+	if (ext.empty()) {
 		return IMAGE_UNKNOWN;
 	}
 
