@@ -131,6 +131,17 @@ namespace EMAN
 	using EerStream     = BitStream    <EerWord>;
 	using EerRleCounter = Rle       <7, EerWord>;
 	using EerSubPix     = SubPix    <4, EerWord>;
+
+
+	template<unsigned int T, class U>
+	class RleCounter : public Rle <T, U> {
+
+		friend BitStream<U>& operator>>(BitStream<U> &in, RleCounter<T, U> &obj) {
+			in>>static_cast<Rle<T,U>& >(obj);
+			
+			return in;
+		}
+	};
 }
 
 #endif	//eman__eerio_h__

@@ -160,7 +160,10 @@ void test_eer_rle_counter() {
 	BitStream<BuffWord> is1(&a);
 	BitReaderCounter<1, false, BuffWord> rle1;
 
+//	cout<<"is1: "<<is1<<endl;
 	is1 >> rle1;
+//	cout<<"rle1: "<<rle1<<endl;
+//	cout<<"is1: "<<is1<<endl;
 	assert(rle1 == 1);
 
 	is1 >> rle1;
