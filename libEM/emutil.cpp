@@ -862,12 +862,10 @@ double EMUtil::mode_size_product(size_t factor, size_t mode_size)
 
 	double product;
 
-	if (mode_size == mode_size_half) {
+	if (mode_size == mode_size_half)
 		product = factor * 0.5;
-	}
-	else {
+	else
 		product = factor * mode_size;
-	}
 
 	return product;
 }
@@ -956,9 +954,8 @@ void EMUtil::process_region_io(void *vdata, FILE * file,
 			ylen = ylen + fy0; // because there are less reads
 			fy0 = 0;
 		} else {
-			if (need_flip){
+			if (need_flip)
 				dy0*=-1;
-			}
 			else
 				dy0 = 0;
 			//fy0 *= -1;
@@ -1007,9 +1004,8 @@ void EMUtil::process_region_io(void *vdata, FILE * file,
 				error = true;
 			}
 
-			if (error) {
+			if (error)
 				return;
-			}
 		}
 	}
 
@@ -1069,26 +1065,22 @@ void EMUtil::process_region_io(void *vdata, FILE * file,
 
 	for (int k = dz0; k < (dz0+zlen); k++) {
 		// k is image/slice number, starting from 0
-		if (y_pre_gap > 0) {
+		if (y_pre_gap > 0)
 			portable_fseek(file, y_pre_gap, SEEK_CUR);
-		}
 
 		//long k2 = k * area_sec_size;
 		long k2 = k*memory_sec_size;
 
 		for (int j = dy0; j < (dy0+ylen); j++) {
 			if (pre_row > 0) {
-				if (imgtype == IMAGE_ICOS && rw_mode != ImageIO::READ_ONLY && !area) {
+				if (imgtype == IMAGE_ICOS && rw_mode != ImageIO::READ_ONLY && !area)
 					fwrite(nxlendata, floatsize, 1, file);
-				}
-				else {
+				else
 					portable_fseek(file, pre_row, SEEK_CUR);
-				}
 			}
 
-			if (x_pre_gap > 0) {
+			if (x_pre_gap > 0)
 				portable_fseek(file, x_pre_gap, SEEK_CUR);
-			}
 
 			int jj = j;
 
@@ -1097,9 +1089,8 @@ void EMUtil::process_region_io(void *vdata, FILE * file,
 
 				// region considerations add complications
 				// in the flipping scenario (imagic format)
-				if (dy0 > 0) {
+				if (dy0 > 0)
 					jj += dy0;
-				}
 			}
 
 			if (rw_mode == ImageIO::READ_ONLY) {
@@ -1129,23 +1120,19 @@ void EMUtil::process_region_io(void *vdata, FILE * file,
 				}
 			}
 
-			if (x_post_gap > 0) {
+			if (x_post_gap > 0)
 				portable_fseek(file, x_post_gap, SEEK_CUR);
-			}
 
 			if (post_row > 0) {
-				if (imgtype == IMAGE_ICOS && rw_mode != ImageIO::READ_ONLY && !area) {
+				if (imgtype == IMAGE_ICOS && rw_mode != ImageIO::READ_ONLY && !area)
 					fwrite(nxlendata, floatsize, 1, file);
-				}
-				else {
+				else
 					portable_fseek(file, post_row, SEEK_CUR);
-				}
 			}
 		}
 
-		if (y_post_gap > 0) {
+		if (y_post_gap > 0)
 			portable_fseek(file, y_post_gap, SEEK_CUR);
-		}
 	}
 }
 
