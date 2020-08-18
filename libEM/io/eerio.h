@@ -104,9 +104,18 @@ namespace EMAN
 
 	template<unsigned int T, bool BIT_OVERFLOW, class U>
 	class BitReaderCounter : public BitReader<T, BIT_OVERFLOW, U> {
+	private:
+		uintmax_t count = 0;
+
+	public:
+		operator decltype(count) const () {
+			return count;
+		}
 
 		friend BitStream<U>& operator>>(BitStream<U> &in, BitReaderCounter<T, BIT_OVERFLOW, U> &obj) {
 			in>>static_cast<BitReader<T, BIT_OVERFLOW, U>& >(obj);
+
+			obj.count += (static_cast<BitReader<T, BIT_OVERFLOW, U>>(obj) + (obj.count>0?1:0));
 
 			return in;
 		}

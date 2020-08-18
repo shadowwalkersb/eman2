@@ -149,7 +149,7 @@ void test_eer_rle_counter() {
 	typedef uint8_t BuffWord;
 	auto num_bits = sizeof(BuffWord) * 8;
 
-	BuffWord a = 0b11111111;
+	BuffWord a = 0b11001101;
 
 	BitStream<BuffWord> is1(&a);
 	BitReaderCounter<1, false, BuffWord> rle1;
@@ -158,30 +158,31 @@ void test_eer_rle_counter() {
 	assert(rle1 == 1);
 
 	is1 >> rle1;
-	assert(rle1 == 1);
+	cout<<rle1<<endl;
+	assert(rle1 == 2);
 
 	is1 >> rle1;
-	assert(rle1 == 1);
+	assert(rle1 == 4);
 
-	assert(rle1 == 1.);
-	assert(rle1 == 1.f);
-	assert(rle1 == (int)1);
-	assert(rle1 == (short)1);
-
-	is1 >> rle1;
-	assert(rle1 == 1);
+	assert(rle1 == 4.);
+	assert(rle1 == 4.f);
+	assert(rle1 == (int)4);
+	assert(rle1 == (short)4);
 
 	is1 >> rle1;
-	assert(rle1 == 1);
+	assert(rle1 == 6);
 
 	is1 >> rle1;
-	assert(rle1 == 1);
+	assert(rle1 == 7);
 
 	is1 >> rle1;
-	assert(rle1 == 1);
+	assert(rle1 == 8);
 
 	is1 >> rle1;
-	assert(rle1 == 1);
+	assert(rle1 == 10);
+
+	is1 >> rle1;
+	assert(rle1 == 12);
 }
 
 int main()
