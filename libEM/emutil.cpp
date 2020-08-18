@@ -206,9 +206,8 @@ EMUtil::ImageType EMUtil::get_image_ext_type(const string & file_ext)
 
 	ImageType result = IMAGE_UNKNOWN;
 
-	if (imagetypes.find(file_ext) != imagetypes.end()) {
+	if (imagetypes.find(file_ext) != imagetypes.end())
 		result = imagetypes[file_ext];
-	}
 
 	EXITFUNC;
 
@@ -238,141 +237,116 @@ EMUtil::ImageType EMUtil::fast_get_image_type(const string & filename,
 
 	string ext = Util::get_filename_ext(filename);
 
-	if (ext.empty()) {
+	if (ext.empty())
 		return IMAGE_UNKNOWN;
-	}
 
 	ImageType image_type = get_image_ext_type(ext);
 
 	switch (image_type) {
 	case IMAGE_MRC:
-		if (MrcIO::is_valid(first_block, file_size)) {
+		if (MrcIO::is_valid(first_block, file_size))
 			return IMAGE_MRC;
-		}
 		break;
     case IMAGE_EER:
 		return IMAGE_EER;
         break;
 	case IMAGE_DM3:
-		if (DM3IO::is_valid(first_block)) {
+		if (DM3IO::is_valid(first_block))
 			return IMAGE_DM3;
-		}
 		break;
 	case IMAGE_DM4:
-		if (DM4IO::is_valid(first_block)) {
+		if (DM4IO::is_valid(first_block))
 			return IMAGE_DM4;
-		}
 		break;
 #ifdef USE_HDF5
 	case IMAGE_HDF:
-		if (HdfIO2::is_valid(first_block)) {
+		if (HdfIO2::is_valid(first_block))
 			return IMAGE_HDF;
-		}
 		break;
 #endif
 	case IMAGE_LST:
-		if (LstIO::is_valid(first_block)) {
+		if (LstIO::is_valid(first_block))
 			return IMAGE_LST;
-		}
 		break;
 	case IMAGE_LSTFAST:
-		if (LstFastIO::is_valid(first_block)) {
+		if (LstFastIO::is_valid(first_block))
 			return IMAGE_LSTFAST;
-		}
 		break;
 #ifdef USE_TIFF
 	case IMAGE_TIFF:
-		if (TiffIO::is_valid(first_block)) {
+		if (TiffIO::is_valid(first_block))
 			return IMAGE_TIFF;
-		}
 		break;
 #endif
 	case IMAGE_SPIDER:
-		if (SpiderIO::is_valid(first_block)) {
+		if (SpiderIO::is_valid(first_block))
 			return IMAGE_SPIDER;
-		}
 		break;
 	case IMAGE_SINGLE_SPIDER:
-		if (SingleSpiderIO::is_valid(first_block)) {
+		if (SingleSpiderIO::is_valid(first_block))
 			return IMAGE_SINGLE_SPIDER;
-		}
 		break;
 	case IMAGE_PIF:
-		if (PifIO::is_valid(first_block)) {
+		if (PifIO::is_valid(first_block))
 			return IMAGE_PIF;
-		}
 		break;
 #ifdef USE_PNG
 	case IMAGE_PNG:
-		if (PngIO::is_valid(first_block)) {
+		if (PngIO::is_valid(first_block))
 			return IMAGE_PNG;
-		}
 		break;
 #endif
 	case IMAGE_VTK:
-		if (VtkIO::is_valid(first_block)) {
+		if (VtkIO::is_valid(first_block))
 			return IMAGE_VTK;
-		}
 		break;
 	case IMAGE_PGM:
-		if (PgmIO::is_valid(first_block)) {
+		if (PgmIO::is_valid(first_block))
 			return IMAGE_PGM;
-		}
 		break;
 	case IMAGE_ICOS:
-		if (IcosIO::is_valid(first_block)) {
+		if (IcosIO::is_valid(first_block))
 			return IMAGE_ICOS;
-		}
 		break;
 	case IMAGE_SAL:
-		if (SalIO::is_valid(first_block)) {
+		if (SalIO::is_valid(first_block))
 			return IMAGE_SAL;
-		}
 		break;
 	case IMAGE_AMIRA:
-		if (AmiraIO::is_valid(first_block)) {
+		if (AmiraIO::is_valid(first_block))
 			return IMAGE_AMIRA;
-		}
 		break;
 	case IMAGE_XPLOR:
-		if (XplorIO::is_valid(first_block)) {
+		if (XplorIO::is_valid(first_block))
 			return IMAGE_XPLOR;
-		}
 		break;
 	case IMAGE_GATAN2:
-		if (Gatan2IO::is_valid(first_block)) {
+		if (Gatan2IO::is_valid(first_block))
 			return IMAGE_GATAN2;
-		}
 		break;
 	case IMAGE_EM:
-		if (EmIO::is_valid(first_block, file_size)) {
+		if (EmIO::is_valid(first_block, file_size))
 			return IMAGE_EM;
-		}
 		break;
 	case IMAGE_DF3:
-		if (EmIO::is_valid(first_block, file_size)) {
+		if (EmIO::is_valid(first_block, file_size))
 			return IMAGE_DF3;
-		}
 		break;
 	case IMAGE_OMAP:
-		if (OmapIO::is_valid(first_block, file_size)) {
+		if (OmapIO::is_valid(first_block, file_size))
 			return IMAGE_OMAP;
-		}
 		break;
 	case IMAGE_SITUS:
-		if (SitusIO::is_valid(first_block)) {
+		if (SitusIO::is_valid(first_block))
 			return IMAGE_SITUS;
-		}
 		break;
 	case IMAGE_SER:
-		if (SerIO::is_valid(first_block)) {
+		if (SerIO::is_valid(first_block))
 			return IMAGE_SER;
-		}
 		break;
 	case IMAGE_IMAGIC:
-		if (ImagicIO::is_valid(first_block)) {
+		if (ImagicIO::is_valid(first_block))
 			return IMAGE_IMAGIC;
-		}
 		break;
 	default:
 		return IMAGE_UNKNOWN;
