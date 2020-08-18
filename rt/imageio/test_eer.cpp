@@ -164,6 +164,7 @@ void test_eer_rle_counter() {
 	assert(rle1 == 1);
 
 	is1 >> rle1;
+	cout<<rle1<<endl;
 	assert(rle1 == 2);
 
 	is1 >> rle1;

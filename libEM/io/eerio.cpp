@@ -73,6 +73,8 @@ VC EerFrame::coords() const {
 EerIO::EerIO(const string & fname, IOMode rw)
 :	ImageIO(fname, rw)
 {
+	cout<<"Opening file: "<<fname<<endl;
+	
 	tiff_file = TIFFOpen(fname.c_str(), "r");
 
 	for(num_dirs=0; TIFFReadDirectory(tiff_file); num_dirs++)
@@ -83,6 +85,8 @@ EerIO::EerIO(const string & fname, IOMode rw)
 	for(size_t i=0; i<get_nimg(); i++){
 		TIFFSetDirectory(tiff_file, i);
 
+		cout<<"Loading frame: "<<i<<" / "<<get_nimg()<<endl;
+		
 		frames[i] = EerFrame(tiff_file);
 	}
 }
