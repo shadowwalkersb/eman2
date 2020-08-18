@@ -154,7 +154,7 @@ void test_eer_rle_no_overflow() {
 void test_eer_rle_counter() {
 	typedef uint8_t BuffWord;
 
-	BuffWord a = 0b11111111;
+	BuffWord a = 0b11001101;
 
 	BitStream<BuffWord> is1(&a);
 	BitReader<1, false, BuffWord> rle1;
@@ -163,7 +163,7 @@ void test_eer_rle_counter() {
 	assert(rle1 == 1);
 
 	is1 >> rle1;
-	assert(rle1 == 1);
+	assert(rle1 == 0);
 
 	is1 >> rle1;
 	assert(rle1 == 1);
@@ -177,10 +177,10 @@ void test_eer_rle_counter() {
 	assert(rle1 == 1);
 
 	is1 >> rle1;
-	assert(rle1 == 1);
+	assert(rle1 == 0);
 
 	is1 >> rle1;
-	assert(rle1 == 1);
+	assert(rle1 == 0);
 
 	is1 >> rle1;
 	assert(rle1 == 1);
