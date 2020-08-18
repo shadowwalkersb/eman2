@@ -975,7 +975,8 @@ void EMUtil::process_region_io(void *vdata, FILE * file,
 		fy0 = origin[1]; dy0 = origin[1];
 
 		if (nz > 1 && area->get_ndim() > 2) {
-			fz0 = origin[2]; dz0 = origin[2];
+			fz0 = origin[2];
+			dz0 = origin[2];
 		}
 
 		if (need_flip) {
@@ -1018,7 +1019,8 @@ void EMUtil::process_region_io(void *vdata, FILE * file,
 		if ((fz0 + zlen)> nz && nz > 1) zlen = nz-fz0;
 
 		// This is fine - the region was entirely outside the image
-		if ( xlen <= 0 || ylen <= 0 || zlen <= 0 ) return;
+		if ( xlen <= 0 || ylen <= 0 || zlen <= 0 )
+			return;
 
 		if (mode_size == mode_size_half) {
 			// Have an area with 8 bit packed MRC format
@@ -1060,13 +1062,14 @@ void EMUtil::process_region_io(void *vdata, FILE * file,
 
 	Vec3i size;
 
-	if (area != 0) size = area->get_size();
-	else size = Vec3d(nx,ny,nz);
+	if (area != 0)
+		size = area->get_size();
+	else
+		size = Vec3d(nx,ny,nz);
 
 	//size_t area_sec_size = ylen    * mode_size_product(xlen,    mode_size);
 	size_t memory_sec_size = size[1] * mode_size_product(size[0], mode_size);
-	size_t img_row_size    = mode_size_product(nx,      mode_size) +
-									 pre_row + post_row;
+	size_t img_row_size    = mode_size_product(nx,      mode_size) + pre_row + post_row;
 	size_t area_row_size   = mode_size_product(xlen,    mode_size);
 	size_t memory_row_size = mode_size_product(size[0], mode_size);
 
@@ -1416,8 +1419,7 @@ void EMUtil::process_ascii_region_io(float *data, FILE * file, int rw_mode,
 			tail_nitems = (xlen - head_nitems) % nitems_per_line;
 
 			if ((gap_nitems + tail_nitems) > 0) {
-				head_nitems = nitems_per_line -
-					(gap_nitems + tail_nitems) % nitems_per_line;
+				head_nitems = nitems_per_line - (gap_nitems + tail_nitems) % nitems_per_line;
 			}
 			else {
 				head_nitems = 0;
@@ -1426,8 +1428,7 @@ void EMUtil::process_ascii_region_io(float *data, FILE * file, int rw_mode,
 			is_head_read = false;
 
 			if (tail_nitems > 0) {
-				if ((gap_nitems < (nitems_per_line-tail_nitems)) &&
-					(j != (ylen-1))) {
+				if ((gap_nitems < (nitems_per_line-tail_nitems)) && (j != (ylen-1))) {
 					EMUtil::exclude_numbers_io(file, rw_mode, nitems_per_line,
 											   mode_size, tail_nitems,
 											   tail_nitems+gap_nitems-1, data, &ti, outformat);
