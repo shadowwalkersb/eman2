@@ -1001,7 +1001,8 @@ void EMUtil::process_region_io(void *vdata, FILE * file,
 			if (need_flip){
 				dy0*=-1;
 			}
-			else dy0 = 0;
+			else
+				dy0 = 0;
 			//fy0 *= -1;
 		}
 
