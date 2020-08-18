@@ -502,9 +502,8 @@ int EMUtil::get_image_count(const string & filename)
 	ImageIO *imageio = get_imageio(filename, ImageIO::READ_ONLY);
 	//printf("%p\n",imageio);
 
-	if (imageio) {
+	if (imageio)
 		nimg = imageio->get_nimg();
-	}
 
 	EMUtil::close_imageio(filename, imageio);
 
@@ -539,15 +538,12 @@ ImageIO *EMUtil::get_imageio(const string & filename, int rw,
 
 	ImageIO::IOMode rw_mode = static_cast<ImageIO::IOMode>(rw);
 
-	if (image_type == IMAGE_UNKNOWN) {
+	if (image_type == IMAGE_UNKNOWN)
 		image_type = get_image_type(filename);
-	}
 
-	if (image_type == IMAGE_UNKNOWN) {
-		if(rw == ImageIO::WRITE_ONLY || rw == ImageIO::READ_WRITE) {
+	if (image_type == IMAGE_UNKNOWN)
+		if(rw == ImageIO::WRITE_ONLY || rw == ImageIO::READ_WRITE)
 			throw ImageFormatException("writing to this image format not supported.");
-		}
-	}
 
 	switch (image_type) {
 #ifdef ENABLE_V4L2
@@ -582,9 +578,8 @@ ImageIO *EMUtil::get_imageio(const string & filename, int rw,
 #ifdef USE_HDF5
 	case IMAGE_HDF:
         persist = 30;
-        if (rw_mode != ImageIO::READ_ONLY) {
+        if (rw_mode != ImageIO::READ_ONLY)
             persist = 3;
-        }
 		imageio = new HdfIO2(filename, rw_mode);
 		if (((HdfIO2 *)imageio)->init_test()==-1) {
 			delete imageio;
@@ -821,9 +816,8 @@ void EMUtil::get_region_dims(const Region * area, int nx, int *area_x,
 		*area_x = nx;
 		*area_y = ny;
 
-		if (area_z) {
+		if (area_z)
 			*area_z = nz;
-		}
 	}
 	else {
 		Vec3i size = area->get_size();
@@ -831,12 +825,10 @@ void EMUtil::get_region_dims(const Region * area, int nx, int *area_x,
 		*area_y = size[1];
 
 		if (area_z) {
-			if (area->get_ndim() > 2 && nz > 1) {
+			if (area->get_ndim() > 2 && nz > 1)
 				*area_z = size[2];
-			}
-			else {
+			else
 				*area_z = 1;
-			}
 		}
 
 	}
@@ -852,17 +844,15 @@ void EMUtil::get_region_origins(const Region * area, int *p_x0, int *p_y0, int *
 		*p_x0 = static_cast < int >(area->origin[0]);
 		*p_y0 = static_cast < int >(area->origin[1]);
 
-		if (p_z0 && nz > 1 && area->get_ndim() > 2) {
+		if (p_z0 && nz > 1 && area->get_ndim() > 2)
 			*p_z0 = static_cast < int >(area->origin[2]);
-		}
 	}
 	else {
 		*p_x0 = 0;
 		*p_y0 = 0;
 
-		if (p_z0) {
+		if (p_z0)
 			*p_z0 = nz > 1 ? 0 : image_index;
-		}
 	}
 }
 
