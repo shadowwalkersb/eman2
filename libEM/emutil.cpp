@@ -1271,7 +1271,7 @@ bool EMUtil::is_same_ctf(const EMData * image1, const EMData * image2)
 	Ctf *ctf1 = image1->get_ctf();
 	Ctf *ctf2 = image2->get_ctf();
 
-	if ((!ctf1 && !ctf2) && (image1->has_ctff() == false && image2->has_ctff() == false)) {
+	if ((!ctf1 && !ctf2) && (!image1->has_ctff() && !image2->has_ctff())) {
 		return true;
 	}
 
