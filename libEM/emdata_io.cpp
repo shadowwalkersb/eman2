@@ -447,9 +447,8 @@ ostream& operator<<(ostream& out, const EMData& obj) {
 					<< std::setiosflags(std::ios_base::scientific)
 					<< std::setw(12)
 					<< std::setprecision(5) << obj(ix,iy,iz) << "  ";
-				if (((iy+1) % 6) == 0) {
+				if (((iy+1) % 6) == 0)
 					out << std::endl << "   ";
-				}
 			}
 			out << std::endl;
 		}
