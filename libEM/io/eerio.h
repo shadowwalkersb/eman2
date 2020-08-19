@@ -268,7 +268,9 @@ namespace EMAN
 	template<unsigned short T, class U>
 	using SubPix = RLE<T, false, U>;
 
-	inline Pos decode(SubPix<4, uint8_t> sub_pix);
+	inline Pos decode(SubPix<4, uint8_t> sub_pix) {
+		return Pos((sub_pix  & 3) ^ 2, (sub_pix >> 2) ^ 2);
+	}
 
 	class EerIO : public ImageIO
 	{

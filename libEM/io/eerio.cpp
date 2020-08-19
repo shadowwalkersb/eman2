@@ -49,6 +49,10 @@ std::vector<Pos> get_coords() const {
 Pos decode(SubPix<2, uint8_t> sub_pix) {
 	return Pos((sub_pix  & 3) ^ 2, (sub_pix >> 2) ^ 2);
 }
+//Pos decode(SubPix<4, uint8_t> sub_pix) {
+//	return Pos((sub_pix  & 3) ^ 2, (sub_pix >> 2) ^ 2);
+//}
+
 EerIO::EerIO(const string & fname, IOMode rw)
 {
 	tiff_file = TIFFOpen(fname.c_str(), "r");
