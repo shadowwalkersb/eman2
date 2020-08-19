@@ -35,6 +35,8 @@
 #include "imageio.h"
 
 #include <tiffio.h>
+#include <fstream>
+
 
 
 namespace EMAN
@@ -65,6 +67,13 @@ namespace EMAN
 
 			return result;
 		}
+
+			if(rle>=4096*4096) {
+				cout<<"RLE: "<<rle<<endl;
+				cout<<rle-4096*4096<<endl;
+				throw std::runtime_error("Oops");
+			}
+//			cout<<std::bitset<7>(rle)<<endl;
 
 	private:
 		T *buffer;

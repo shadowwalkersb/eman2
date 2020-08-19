@@ -36,12 +36,21 @@
 using namespace EMAN;
 
 	EerStream<uint64_t> is(reinterpret_cast<uint64_t*>(data.data()));
+//			cout<<"data.size(): "<<data.size()<<" "<<data.size()*sizeof(unsigned char )/sizeof(uint64_t)<<endl;
+//			std::ofstream fdata("fdata.out");
+//			for(auto &d : data)
+//				fdata<<d<<endl;
+
 	Pos pos(0, 0);
 	unsigned count = 0;
+	std::ofstream fout("eer.out");
 	do {
 		pos = is.real_pos();
 		coords.push_back(pos);
-	} while (pos.x <4095 && pos.y < 4095 && ++count<100);
+		fout<<pos<<endl;
+//			} while (pos.x <4095 && pos.y < 4095 && ++count<strip_sizes.back());
+	} while (1 );
+//			} while (pos.x * pos.y < 4095*4095);
 std::vector<Pos> get_coords() const {
 	return coords;
 }
@@ -120,10 +129,18 @@ int EerIO::write_header(const Dict & dict, int image_index, const Region* area,
 int EerIO::read_data(float *rdata, int image_index, const Region * area, bool)
 {
 	ENTERFUNC;
+//	rdata = new float[4095*4095];
 	auto cc = get_coords(image_index);
+//	cout<<"Coords #: "<<cc.size()<<endl;
 	for(auto &c : cc) {
+//		cout<<c<<endl;
 		rdata[c.x + c.y*4096] += 1;
 	}
+//	for(int i=0;i<4095;i+=10){
+//		for(int j=0;j<4095;j+=10){
+//			rdata[i*4095 + j] = (4095/2 - i)+j;
+//		}
+//	}
 
 	EXITFUNC;
 
