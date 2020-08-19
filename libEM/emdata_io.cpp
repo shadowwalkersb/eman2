@@ -240,18 +240,18 @@ void EMData::_write_image(ImageIO *imageio, int img_index,
 			if (!header_only) {
 				
 				auto ll = [&](){
-						const char *reffile = attr_dict["LST.reffile"];
-						if (strcmp(reffile, "") == 0)
-							reffile = path.c_str();
+						string reffile = attr_dict["LST.reffile"].to_str();
+						if (reffile.empty())
+							reffile = path;
 						int refn = attr_dict["LST.refn"];
 						if (refn < 0)
 							refn = pathnum;
 
-						const char *comment = attr_dict["LST.comment"];
+						string comment = attr_dict["LST.comment"].to_str();
 						char *lstdata = new char[1024];
-						sprintf(lstdata, "%d\t%s", refn, reffile);
-						if(strcmp(comment, "") != 0)
-							sprintf(lstdata+strlen(lstdata), "\t%s\n", comment);
+						sprintf(lstdata, "%d\t%s", refn, reffile.c_str());
+						if(!comment.empty())
+							sprintf(lstdata+strlen(lstdata), "\t%s\n", comment.c_str());
 						else
 							strcat(lstdata, "\n");
 						err = imageio->write_data((float*)lstdata, img_index,
