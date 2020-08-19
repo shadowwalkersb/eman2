@@ -136,17 +136,7 @@ namespace EMAN
 	using EerSubPix     = SubPix    <4, EerWord>;
 
 
-	class EerFrame {
-	public:
-		EerFrame() =default;
-		EerFrame(TIFF *tiff);
-
-	private:
-		size_t num_strips;
-		std::vector<unsigned char> data;
-	};
-
-
+		std::vector<Pos> coords;
 	class EerIO : public ImageIO
 	{
 	public:
@@ -154,6 +144,7 @@ namespace EMAN
 		~EerIO();
 
 		int get_nimg();
+		std::vector<Pos> get_coords(int i) const;
 
 		DEFINE_IMAGEIO_FUNC;
 
@@ -163,8 +154,6 @@ namespace EMAN
 		uint16_t compression = 0;
 		string metadata;
 		size_t num_dirs = 0;
-		
-		vector<EerFrame> frames;
 	};
 }
 
