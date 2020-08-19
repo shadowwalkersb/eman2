@@ -481,7 +481,7 @@ int EMUtil::get_image_count(const string & filename)
 
 	EMUtil::close_imageio(filename, imageio);
 
-	imageio = NULL;
+	imageio = nullptr;
 
 	EXITFUNC;
 
@@ -500,7 +500,7 @@ ImageIO *EMUtil::get_imageio(const string & filename, int rw,
 		   rw == ImageIO::READ_WRITE ||
 		   rw == ImageIO::WRITE_ONLY);
 
-	ImageIO *imageio = 0;
+	ImageIO *imageio = nullptr;
 	int persist = 0;
 
    #ifdef IMAGEIO_CACHE
@@ -509,7 +509,7 @@ ImageIO *EMUtil::get_imageio(const string & filename, int rw,
     	return imageio;
    #endif
 
-	ImageIO::IOMode rw_mode = static_cast<ImageIO::IOMode>(rw);
+	auto rw_mode = static_cast<ImageIO::IOMode>(rw);
 
 	if (image_type == IMAGE_UNKNOWN)
 		image_type = get_image_type(filename);
@@ -857,7 +857,7 @@ void EMUtil::process_region_io(void *vdata, FILE * file,
 
 	const size_t mode_size_half = 11111111;
 
-	unsigned char * cdata = (unsigned char *)vdata;
+	auto * cdata = (unsigned char *)vdata;
 
 	int dx0 = 0; // data x0
 	int dy0 = 0; // data y0
@@ -883,7 +883,7 @@ void EMUtil::process_region_io(void *vdata, FILE * file,
 					(int) need_flip, (int) imgtype, pre_row, post_row);
 		printf ("xlen, ylen, zlen = %d %d %d\n", xlen, ylen, zlen);
 
-		if (area != NULL) {
+		if (area) {
 			printf ("x0, y0, z0, mx, my, mz, ndim = %g %g %g %g %g %g %d\n",
 						area->x_origin(),
 						area->y_origin(),
@@ -986,7 +986,7 @@ void EMUtil::process_region_io(void *vdata, FILE * file,
 
 	Vec3i size;
 
-	if (area != 0)
+	if (area)
 		size = area->get_size();
 	else
 		size = Vec3d(nx,ny,nz);
@@ -1189,9 +1189,9 @@ bool EMUtil::is_same_ctf(const EMData * image1, const EMData * image2)
 	if (ctf1 && ctf2) {
 		bool result = ctf1->equal(ctf2);
 		delete ctf1;
-		ctf1 = NULL;
+		ctf1 = nullptr;
 		delete ctf2;
-		ctf2 = NULL;
+		ctf2 = nullptr;
 
 		return result;
 	}
@@ -1522,8 +1522,8 @@ vector<EMObject> EMUtil::get_all_attributes(const string & file_name, const stri
 
 	auto vpImg = EMData::read_images(file_name, vector<int>(), true);
 
-	for (auto iter = vpImg.begin(); iter!=vpImg.end(); ++iter)
-		v.push_back((*iter)->get_attr_default(attr_name));
+	for (auto & iter : vpImg)
+		v.push_back(iter->get_attr_default(attr_name));
 
 	return v;
 }
@@ -1554,7 +1554,7 @@ void EMUtil::getRenderMinMax(float * data, const int nx, const int ny,
 
 	float         num_std_devs;
 
-	bool          debug = 0;
+	bool          debug = false;
 
 	if (debug) printf ("into RenderMinMax, rmin = %g, rmax = %g, rbits = %d\n", rendermin, rendermax, renderbits);
 	
@@ -1697,7 +1697,7 @@ EMObject EMUtil::read_hdf_attribute(const string & filename, const string & key,
 	if (image_type != IMAGE_HDF)
 		throw ImageFormatException("This function only applies to HDF5 file.");
 
-	HdfIO2* imageio = new HdfIO2(filename, ImageIO::READ_ONLY);
+	auto* imageio = new HdfIO2(filename, ImageIO::READ_ONLY);
 	imageio->init();
 
 	// Each image is in a group for later expansion. Open the group
@@ -1730,7 +1730,7 @@ int EMUtil::write_hdf_attribute(const string & filename, const string & key, EMO
 	if (image_type != IMAGE_HDF)
 		throw ImageFormatException("This function only applies to HDF5 file.");
 
-	HdfIO2* imageio = new HdfIO2(filename, ImageIO::WRITE_ONLY);
+	auto* imageio = new HdfIO2(filename, ImageIO::WRITE_ONLY);
 	imageio->init();
 
 	// Each image is in a group for later expansion. Open the group
@@ -1762,7 +1762,7 @@ int EMUtil::delete_hdf_attribute(const string & filename, const string & key, in
 	if (image_type != IMAGE_HDF)
 		throw ImageFormatException("This function only applies to HDF5 file.");
 
-	HdfIO2* imageio = new HdfIO2(filename, ImageIO::READ_WRITE);
+	auto* imageio = new HdfIO2(filename, ImageIO::READ_WRITE);
 	imageio->init();
 
 	// Each image is in a group for later expansion. Open the group
