@@ -1416,18 +1416,14 @@ void EMUtil::process_numbers_io(FILE * file, int rw_mode,
 			pline += (int)mode_size;
 		}
 
-		for (int i = start; i <= end; i++) {
+		for (int i = start; i <= end; i++, (*p_i)++)
 			data[*p_i] = d[i];
-			(*p_i)++;
-		}
 	}
 	else {
 		portable_fseek(file, mode_size * start, SEEK_CUR);
 
-		for (int i = start; i <= end; i++) {
+		for (int i = start; i <= end; i++, (*p_i)++)
 			fprintf(file, outformat, data[*p_i]);
-			(*p_i)++;
-		}
 
 		portable_fseek(file, mode_size * (nitems_per_line - end-1)+1, SEEK_CUR);
 	}
@@ -1464,28 +1460,20 @@ void EMUtil::exclude_numbers_io(FILE * file, int rw_mode,
 		}
 
 
-		for (int i = 0; i < start; i++) {
+		for (int i = 0; i < start; i++, (*p_i)++)
 			data[*p_i] = d[i];
-			(*p_i)++;
-		}
 
-		for (int i = end+1; i < nitems_in_line; i++) {
+		for (int i = end+1; i < nitems_in_line; i++, (*p_i)++)
 			data[*p_i] = d[i];
-			(*p_i)++;
-		}
 	}
 	else {
-		for (int i = 0; i < start; i++) {
+		for (int i = 0; i < start; i++, (*p_i)++)
 			fprintf(file, outformat, data[*p_i]);
-			(*p_i)++;
-		}
 
 		portable_fseek(file, (end-start+1) * mode_size, SEEK_CUR);
 
-		for (int i = end+1; i < nitems_per_line; i++) {
+		for (int i = end+1; i < nitems_per_line; i++, (*p_i)++)
 			fprintf(file, outformat, data[*p_i]);
-			(*p_i)++;
-		}
 		portable_fseek(file, 1, SEEK_CUR);
 	}
 }
