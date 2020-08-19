@@ -192,6 +192,50 @@ namespace EMAN
 	}
 	
 
+	typedef uint64_t WORD;
+
+	const unsigned int num_word_bits = 8*sizeof(WORD);
+
+	class EerStream {
+	public:
+		EerStream(WORD *buf)
+				: buffer(buf), cur(*buffer), bit_counter(num_word_bits)
+		{}
+
+		WORD get_bits(int N) { //N can't be more than num_word_bits ???
+			auto result = cur & ((1 << N) - 1);
+
+			if(N < bit_counter) {
+				cur        >>= N;
+				bit_counter -= N;
+			}
+			else {
+				auto remaining_bits = N - bit_counter;
+
+				cur = *(++buffer);
+				result |= ((cur & ((1 << remaining_bits) - 1)) << bit_counter);
+
+				cur >>= remaining_bits;
+				bit_counter = num_word_bits - remaining_bits;
+			}
+
+			return result;
+		}
+
+	private:
+		WORD *buffer;
+		WORD cur;
+		size_t bit_counter;
+
+		friend std::ostream &operator<<(std::ostream &out, const EerStream &obj) {
+			return out
+					<<"cur: "<<obj.cur<<" "<<std::bitset<num_word_bits>(obj.cur)
+					<<endl
+					<<"bit_counter: "<<obj.bit_counter<<endl;
+		}
+	};
+
+
 	class EerIO : public ImageIO
 	{
 	public:
