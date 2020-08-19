@@ -147,6 +147,8 @@ namespace EMAN
 	cout<<"IN: "<<sub_pix<<" "<<std::bitset<4>(sub_pix)<<endl;
 
 		std::vector<Pos> coords;
+
+//        static int count;
 	class EerIO : public ImageIO
 	{
 	public:

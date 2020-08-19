@@ -35,6 +35,12 @@
 
 using namespace EMAN;
 
+//            cout<<"EerFrame: "<<count<<endl;
+//            count++;
+	cout<<"num_strips: "<<num_strips<<endl;
+//                cout<<"Strip size: "<<i<<endl;
+		cout<<"Strip size: "<<strip_sizes[i]<<" read..."<<endl;
+//                auto strip_size = TIFFRawStripSize(tiff, i);
 	EerStream<uint64_t> is(reinterpret_cast<uint64_t*>(data.data()));
 //			cout<<"data.size(): "<<data.size()<<" "<<data.size()*sizeof(unsigned char )/sizeof(uint64_t)<<endl;
 //			std::ofstream fdata("fdata.out");
@@ -58,6 +64,7 @@ std::vector<Pos> get_coords() const {
 std::vector<Pos> EerIO::get_coords(int i) const {
 	return frames[i].get_coords();
 }
+//int EerFrame::count = 0;
 EerIO::EerIO(const string & fname, IOMode rw)
 {
 	cout<<"EerIO ctor"<<endl;
@@ -81,6 +88,18 @@ void EerIO::init()
 {
 	ENTERFUNC;
 	
+	int count = 0;
+	uint32* bc;
+	std::vector<unsigned char> eer_data;
+	TIFFGetField(tiff_file, TIFFTAG_STRIPBYTECOUNTS, &bc);
+	cout<<"bc: "<<bc[0]<<endl;
+	cout<<"sizeof(bc): "<<sizeof(bc)<<endl;
+	auto nbc = sizeof(bc) / sizeof(bc[0]);
+	cout << "num of bc: " << nbc << endl;
+	for(size_t i=0; i<nbc; ++i)
+		cout<<bc[i]<<"\t";
+	cout<<endl;
+
 	int count = 0;
 	uint32* bc;
 	std::vector<unsigned char> eer_data;
@@ -118,12 +137,14 @@ void EerIO::init()
 			TIFFReadRawStrip(tiff_file, i, eer_data.data()+prev_size, strip_size);
 //            TIFFReadRawStrip(tiff_file, i, eer_data, strip_size);
 		}
+		cout<<"eer_data.size: "<<eer_data.size();
 		cout<<endl;
 //        TIFFPrintDirectory(tiff_file, stdout);
 		count++;
 	}
 
 	cout<<"Num of dirs: "<<count<<endl;
+	cout<<"num_dirs: "<<num_dirs<<endl;
 //    cout<<"bc: "<<bc[0]<<endl;
 
 	EXITFUNC;
