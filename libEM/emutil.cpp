@@ -399,18 +399,15 @@ EMUtil::ImageType EMUtil::get_image_type(const string & in_filename)
 
 	string old_ext = Util::get_filename_ext(filename);
 
-	if (old_ext == ImagicIO::IMG_EXT) {
+	if (old_ext == ImagicIO::IMG_EXT)
 		filename = Util::change_filename_ext(filename, ImagicIO::HED_EXT);
-	}
-	else if (old_ext == "hdf") {
+	else if (old_ext == "hdf")
 		return IMAGE_HDF;
-	}
 
 	FILE *in = fopen(filename.c_str(), "rb");
 
-	if (!in) {
+	if (!in)
 		throw FileAccessException(filename);
-	}
 
 	char first_block[1024];
 	size_t n = fread(first_block, 1, 1024, in);
@@ -428,95 +425,68 @@ EMUtil::ImageType EMUtil::get_image_type(const string & in_filename)
 
 	ImageType image_type = fast_get_image_type(filename, first_block, file_size);
 
-	if (image_type != IMAGE_UNKNOWN) {
+	if (image_type != IMAGE_UNKNOWN)
 		return image_type;
-	}
 
-	if (SpiderIO::is_valid(first_block)) {
+	if (SpiderIO::is_valid(first_block))
 		image_type = IMAGE_SPIDER;
-	}
-	else if (SingleSpiderIO::is_valid(first_block)) {
+	else if (SingleSpiderIO::is_valid(first_block))
 		image_type = IMAGE_SINGLE_SPIDER;
-	}
-	else if (MrcIO::is_valid(first_block, file_size)) {
+	else if (MrcIO::is_valid(first_block, file_size))
 		image_type = IMAGE_MRC;
-	}
-	else if (DM3IO::is_valid(first_block)) {
+	else if (DM3IO::is_valid(first_block))
 		image_type = IMAGE_DM3;
-	}
-	else if (DM4IO::is_valid(first_block)) {
+	else if (DM4IO::is_valid(first_block))
 		image_type = IMAGE_DM4;
-	}
 #ifdef USE_HDF5
-	else if (HdfIO2::is_valid(first_block)) {
+	else if (HdfIO2::is_valid(first_block))
 		image_type = IMAGE_HDF;
-	}
 #endif
-	else if (LstIO::is_valid(first_block)) {
+	else if (LstIO::is_valid(first_block))
 		image_type = IMAGE_LST;
-	}
-	else if (LstFastIO::is_valid(first_block)) {
+	else if (LstFastIO::is_valid(first_block))
 		image_type = IMAGE_LSTFAST;
-	}
 #ifdef USE_TIFF
-	else if (TiffIO::is_valid(first_block)) {
+	else if (TiffIO::is_valid(first_block))
 		image_type = IMAGE_TIFF;
-	}
 #endif
-	else if (PifIO::is_valid(first_block)) {
+	else if (PifIO::is_valid(first_block))
 		image_type = IMAGE_PIF;
-	}
 #ifdef USE_PNG
-	else if (PngIO::is_valid(first_block)) {
+	else if (PngIO::is_valid(first_block))
 		image_type = IMAGE_PNG;
-	}
 #endif
-	else if (VtkIO::is_valid(first_block)) {
+	else if (VtkIO::is_valid(first_block))
 		image_type = IMAGE_VTK;
-	}
-	else if (PgmIO::is_valid(first_block)) {
+	else if (PgmIO::is_valid(first_block))
 		image_type = IMAGE_PGM;
-	}
-	else if (IcosIO::is_valid(first_block)) {
+	else if (IcosIO::is_valid(first_block))
 		image_type = IMAGE_ICOS;
-	}
-	else if (SalIO::is_valid(first_block)) {
+	else if (SalIO::is_valid(first_block))
 		image_type = IMAGE_SAL;
-	}
-	else if (AmiraIO::is_valid(first_block)) {
+	else if (AmiraIO::is_valid(first_block))
 		image_type = IMAGE_AMIRA;
-	}
-	else if (XplorIO::is_valid(first_block)) {
+	else if (XplorIO::is_valid(first_block))
 		image_type = IMAGE_XPLOR;
-	}
-	else if (Gatan2IO::is_valid(first_block)) {
+	else if (Gatan2IO::is_valid(first_block))
 		image_type = IMAGE_GATAN2;
-	}
-	else if (FitsIO::is_valid(first_block)) {
+	else if (FitsIO::is_valid(first_block))
 		image_type = IMAGE_FITS;
-	}
-	else if (EmIO::is_valid(first_block, file_size)) {
+	else if (EmIO::is_valid(first_block, file_size))
 		image_type = IMAGE_EM;
-	}
-	else if(OmapIO::is_valid(first_block, file_size)) {
+	else if(OmapIO::is_valid(first_block, file_size))
 		image_type = IMAGE_OMAP;
-	}
-	else if(SitusIO::is_valid(first_block)) {
+	else if(SitusIO::is_valid(first_block))
 		image_type = IMAGE_SITUS;
-	}
-	else if(SerIO::is_valid(first_block)) {
+	else if(SerIO::is_valid(first_block))
 		image_type = IMAGE_SER;
-	}
-	else if (ImagicIO::is_valid(first_block)) {
+	else if (ImagicIO::is_valid(first_block))
 		image_type = IMAGE_IMAGIC;
-	}
-	else if (Df3IO::is_valid(first_block)) {
+	else if (Df3IO::is_valid(first_block))
 		image_type = IMAGE_DF3;
-	}
-	else {
+	else
 		// LOGERR("I don't know this image's type: '%s'", filename.c_str());
 		throw ImageFormatException("invalid image type");
-	}
 
 	EXITFUNC;
 
