@@ -35,8 +35,29 @@
 
 using namespace EMAN;
 
+	cout<<"EerFrame 0"<<endl;
+	cout<<"EerFrame 1"<<endl;
+	cout<<"EerFrame 2"<<endl;
+
+	EerStream<uint64_t> is(reinterpret_cast<uint64_t*>(data.data()));
+	cout<<"EerFrame 3"<<endl;
+	Pos pos(0, 0);
+	unsigned count = 0;
+	do {
+		cout<<pos
+			<<" "<<coords.size()
+			<<endl;
+		pos = is.real_pos();
+		coords.push_back(pos);
+	} while (pos.x <4095 && pos.y < 4095 && ++count<100);
+	cout<<"EerFrame 4"<<endl;
+}
+
+std::vector<Pos> get_coords() const {
+	return coords;
 EerIO::EerIO(const string & fname, IOMode rw)
 {
+	cout<<"ctor"<<endl;
 	tiff_file = TIFFOpen(fname.c_str(), "r");
 
 	for(num_dirs=0; TIFFReadDirectory(tiff_file); num_dirs++)
@@ -51,23 +72,27 @@ EerIO::~EerIO()
 void EerIO::init()
 {
 	ENTERFUNC;
+	cout<<"init"<<endl;
 
 	EXITFUNC;
 }
 
 int EerIO::get_nimg()
 {
+	cout<<"get_nimg"<<endl;
 	return 1;
 }
 
 bool EerIO::is_image_big_endian()
 {
+	cout<<"is_image_big_endian"<<endl;
 	return is_big_endian;
 }
 
 
 int EerIO::read_header(Dict & dict, int image_index, const Region * area, bool is_3d)
 {
+	cout<<"read_header"<<endl;
 	TIFFSetDirectory(tiff_file, 0);
 	TIFFGetField(tiff_file, TIFFTAG_COMPRESSION, &compression);
 
@@ -106,6 +131,13 @@ int EerIO::write_header(const Dict & dict, int image_index, const Region* area,
 int EerIO::read_data(float *rdata, int image_index, const Region * area, bool)
 {
 	ENTERFUNC;
+
+cout<<"read_data"<<endl;
+	//	rdata = new float[4095*4095];
+//	for(auto &c : get_coords(100)) {
+//		rdata[c.x*4095 + c.y]= 2.f;
+//	}
+
 
 	EXITFUNC;
 

@@ -535,9 +535,10 @@ int EMUtil::get_image_count(const string & filename)
 	ImageIO *imageio = get_imageio(filename, ImageIO::READ_ONLY);
 	//printf("%p\n",imageio);
 
-	if (imageio) {
+	cout<<"EMUtil::get_image_count"<<endl;
+	if (imageio)
 		nimg = imageio->get_nimg();
-	}
+	cout<<"EMUtil::get_image_count 1"<<endl;
 
    EMUtil::close_imageio(filename, imageio);
 
