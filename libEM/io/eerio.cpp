@@ -66,6 +66,8 @@ EerIO::EerIO(const string & fname, IOMode rw)
 
 	for(num_dirs=0; TIFFReadDirectory(tiff_file); num_dirs++)
 		;
+	
+	init();
 }
 
 EerIO::~EerIO()
@@ -78,6 +80,51 @@ EerIO::~EerIO()
 void EerIO::init()
 {
 	ENTERFUNC;
+	
+	int count = 0;
+	uint32* bc;
+	std::vector<unsigned char> eer_data;
+	TIFFGetField(tiff_file, TIFFTAG_STRIPBYTECOUNTS, &bc);
+	cout<<"bc: "<<bc[0]<<endl;
+	cout<<"sizeof(bc): "<<sizeof(bc)<<endl;
+	auto nbc = sizeof(bc) / sizeof(bc[0]);
+	cout << "num of bc: " << nbc << endl;
+	for(size_t i=0; i<nbc; ++i)
+		cout<<bc[i]<<"\t";
+	cout<<endl;
+
+	while(TIFFReadDirectory(tiff_file)) {
+		uint16_t compression = 0;
+		TIFFGetField(tiff_file, TIFFTAG_COMPRESSION, &compression);
+		auto nStrips = TIFFNumberOfStrips(tiff_file);
+//        auto strip_size = TIFFRawStripSize(tiff_file, count);
+//        TIFFReadRawStrip(tiff_file, count, eer_data.data(), bc[0]);
+
+		cout<<"IFD: "<<count
+			<<"\t"<<TIFFCurrentDirectory(tiff_file)
+			<<"\t"<<TIFFLastDirectory(tiff_file)
+			<<"\t"<<nStrips
+//            <<"\t"<<strip_size
+			<<"\t";
+//            <<endl;
+//        unsigned char * eer_data;
+		std::vector<unsigned char> eer_data;
+		for(int i=0; i<nStrips; ++i) {
+//            std::vector<unsigned char> eer_data;
+			auto strip_size = TIFFRawStripSize(tiff_file, i);
+			auto prev_size = eer_data.size();
+			eer_data.resize(prev_size + strip_size);
+			cout<<strip_size<<"\t";
+			TIFFReadRawStrip(tiff_file, i, eer_data.data()+prev_size, strip_size);
+//            TIFFReadRawStrip(tiff_file, i, eer_data, strip_size);
+		}
+		cout<<endl;
+//        TIFFPrintDirectory(tiff_file, stdout);
+		count++;
+	}
+
+	cout<<"Num of dirs: "<<count<<endl;
+//    cout<<"bc: "<<bc[0]<<endl;
 
 	EXITFUNC;
 }
@@ -119,7 +166,24 @@ int EerIO::read_header(Dict & dict, int image_index, const Region * area, bool i
 
 	dict["nimg"] = int(get_nimg());
 
-	return 0;
+	cout<<"Final image:"<<endl;
+
+	TIFFSetDirectory(tiff_file, 0);
+	TIFFPrintDirectory(tiff_file, stdout);
+	TIFFGetField(tiff_file, TIFFTAG_IMAGEWIDTH, &nx);
+	TIFFGetField(tiff_file, TIFFTAG_IMAGELENGTH, &ny);
+	TIFFGetField(tiff_file, TIFFTAG_COMPRESSION, &compression);
+	cout<<endl;
+	uint16_t count = 0;
+	//    auto res = TIFFGetField(tiff_file, 65001, &meta);
+	auto res = TIFFGetField(tiff_file, 65001, &count, &meta_c);
+
+	cout<<"compres: "<<compression<<endl;
+	cout << "meta: " << meta << endl;
+	cout<<"Res= "<<res<<endl;
+	cout<<endl;
+
+	return 0;  // ???
 }
 
 
