@@ -35,7 +35,7 @@
 
 using namespace EMAN;
 
-	EerStream<uint64_t> is(reinterpret_cast<uint64_t*>(data.data()));
+	EerStream<uint64_t> is(data);
 	Pos pos(0, 0);
 	unsigned count = 0;
 	do {

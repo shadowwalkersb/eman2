@@ -199,8 +199,8 @@ namespace EMAN
 
 	class EerStream {
 	public:
-		EerStream(WORD *buf)
-				: buffer(buf), cur(*buffer), bit_counter(num_word_bits)
+		EerStream(const vector<unsigned char> &buf)
+				: buffer((T*)buf.data()), cur(*buffer), max_num_bits(8*sizeof(T)), bit_counter(max_num_bits), num_electrons(0)
 		{}
 
 		WORD get_bits(int N) { //N can't be more than num_word_bits ???
