@@ -99,14 +99,6 @@ namespace EMAN
 		static int MUTEX_LOCK(MUTEX *mutex);
 		static int MUTEX_UNLOCK(MUTEX *mutex);
 
-		/** tell whether a float value is a NaN
-		 * @param number float value
-		 */
-		static inline bool is_nan(const float number)
-		{
-			return std::isnan(number);
-		}
-
 		/** convert complex data array from Amplitude/Phase format
 		 * into Real/Imaginary format.
 		 * @param data complex data array.

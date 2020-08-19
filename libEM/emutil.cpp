@@ -1588,7 +1588,7 @@ void EMUtil::getRenderMinMax(float * data, const int nx, const int ny,
 	if (renderbits>16) renderbits=16;
 
 	if (rendermax <= rendermin ||
-		Util::is_nan(rendermin) || Util::is_nan(rendermax) ||
+		std::isnan(rendermin) || std::isnan(rendermax) ||
 		fabs(rendermin) > use_num_std_devs ||
 		fabs(rendermax) > use_num_std_devs) {
 		
@@ -1649,7 +1649,7 @@ void EMUtil::getRenderMinMax(float * data, const int nx, const int ny,
 		
 		if (debug) printf ("min, mean, max, s.d., nint, nzer, none = %g %g %g %g %d %d %d\n", min, m, max, s, nint, n0, n1);
 
-		if (s <= 0 || Util::is_nan(s)) s = 1.0; // this means all data values are the same
+		if (s <= 0 || std::isnan(s)) s = 1.0; // this means all data values are the same
 
 		// probably a mask, binary or smoothed, treat it the same
 		if (min==0 && max==1) {

@@ -189,7 +189,7 @@ int PgmIO::write_header(const Dict & dict, int image_index, const Region*,
 
 		// if we didn't get any good values from attributes, assign to 255 by default
 
-		if (maxval <= minval || Util::is_nan(minval) || Util::is_nan(maxval)) {
+		if (maxval <= minval || std::isnan(minval) || std::isnan(maxval)) {
 			maxval = 255;
 		}
 
