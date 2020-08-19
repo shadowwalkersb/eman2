@@ -359,14 +359,14 @@ namespace EMAN
 	 * be implemented by any subclass of ImageIO.
 	 */
 #define DEFINE_IMAGEIO_FUNC \
-		int read_header(Dict & dict, int image_index = 0, const Region* area = 0, bool is_3d = false); \
-		int write_header(const Dict & dict, int image_index = 0, const Region * area = 0, EMUtil::EMDataType filestoragetype = EMUtil::EM_FLOAT, bool use_host_endian = true); \
-		int read_data(float* data, int image_index = 0, const Region* area = 0, bool is_3d = false); \
-		int write_data(float* data, int image_index = 0, const Region * area = 0, EMUtil::EMDataType filestoragetype = EMUtil::EM_FLOAT, bool use_host_endian = true); \
-		void flush(); \
-		bool is_complex_mode(); \
-		bool is_image_big_endian(); \
-		void init()
+		int read_header(Dict & dict, int image_index = 0, const Region* area = 0, bool is_3d = false) override; \
+		int write_header(const Dict & dict, int image_index = 0, const Region * area = 0, EMUtil::EMDataType filestoragetype = EMUtil::EM_FLOAT, bool use_host_endian = true) override; \
+		int read_data(float* data, int image_index = 0, const Region* area = 0, bool is_3d = false) override; \
+		int write_data(float* data, int image_index = 0, const Region * area = 0, EMUtil::EMDataType filestoragetype = EMUtil::EM_FLOAT, bool use_host_endian = true) override; \
+		void flush() override; \
+		bool is_complex_mode() override; \
+		bool is_image_big_endian() override; \
+		void init() override
 
 }
 
