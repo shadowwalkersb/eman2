@@ -1205,20 +1205,17 @@ EMData *EMUtil::vertical_acf(const EMData * image, int maxdy)
 
 bool EMUtil::is_same_ctf(const EMData * image1, const EMData * image2)
 {
-	if (!image1) {
+	if (!image1)
 		throw NullPointerException("image1 is NULL");
-	}
 
-	if (!image2) {
+	if (!image2)
 		throw NullPointerException("image2 is NULL");
-	}
 
 	Ctf *ctf1 = image1->get_ctf();
 	Ctf *ctf2 = image2->get_ctf();
 
-	if (!((ctf1 || ctf2) || (image1->has_ctff() || image2->has_ctff()))) {
+	if (!((ctf1 || ctf2) || (image1->has_ctff() || image2->has_ctff())))
 		return true;
-	}
 
 	if (ctf1 && ctf2) {
 		bool result = ctf1->equal(ctf2);
@@ -1240,12 +1237,10 @@ static int imgscore_cmp(const void *imgscore1, const void *imgscore2)
 
 	float c = ((ImageScore *)imgscore1)->score - ((ImageScore *)imgscore2)->score;
 
-	if (c<0) {
+	if (c<0)
 		return 1;
-	}
-	else if (c>0) {
+	else if (c>0)
 		return -1;
-	}
 
 	return 0;
 }
@@ -1320,17 +1315,14 @@ void EMUtil::process_ascii_region_io(float *data, FILE * file, int rw_mode,
 	int nlines_per_sec = (nx *ny) / nitems_per_line;
 	int nitems_last_line = (nx * ny) % nitems_per_line;
 
-	if (nitems_last_line != 0) {
+	if (nitems_last_line != 0)
 		nlines_per_sec++;
-	}
 
-	if (has_index_line) {
+	if (has_index_line)
 		nlines_per_sec++;
-	}
 
-	if (z0 > 0) {
+	if (z0 > 0)
 		jump_lines(file, z0 * nlines_per_sec);
-	}
 
 	int nlines_pre_sec = (y0 * nx + x0) / nitems_per_line;
 	int gap_nitems = nx - xlen;
@@ -1360,12 +1352,10 @@ void EMUtil::process_ascii_region_io(float *data, FILE * file, int rw_mode,
 
 			tail_nitems = (xlen - head_nitems) % nitems_per_line;
 
-			if ((gap_nitems + tail_nitems) > 0) {
+			if ((gap_nitems + tail_nitems) > 0)
 				head_nitems = nitems_per_line - (gap_nitems + tail_nitems) % nitems_per_line;
-			}
-			else {
+			else
 				head_nitems = 0;
-			}
 
 			is_head_read = false;
 
@@ -1388,9 +1378,8 @@ void EMUtil::process_ascii_region_io(float *data, FILE * file, int rw_mode,
 				int gap_nlines = (gap_nitems - (nitems_per_line-tail_nitems)) /
 					nitems_per_line;
 
-				if (gap_nlines > 0 && j != (ylen-1)) {
+				if (gap_nlines > 0 && j != (ylen-1))
 					EMUtil::jump_lines(file, gap_nlines);
-				}
 			}
 		}
 
@@ -1404,19 +1393,16 @@ void EMUtil::jump_lines_by_items(FILE * file, int nitems, int nitems_per_line)
 	Assert(file);
 	Assert(nitems_per_line > 0);
 
-	if (nitems <= 0) {
+	if (nitems <= 0)
 		return;
-	}
 
 	int nlines = nitems / nitems_per_line;
 
-	if ((nitems % nitems_per_line) != 0) {
+	if ((nitems % nitems_per_line) != 0)
 		nlines++;
-	}
 
-	if (nlines > 0) {
+	if (nlines > 0)
 		jump_lines(file, nlines);
-	}
 }
 
 void EMUtil::jump_lines(FILE * file, int nlines)
@@ -1427,9 +1413,8 @@ void EMUtil::jump_lines(FILE * file, int nlines)
 		char line[MAXPATHLEN];
 
 		for (int l = 0; l < nlines; l++) {
-			if (!fgets(line, sizeof(line), file)) {
+			if (!fgets(line, sizeof(line), file))
 				Assert("read xplor file failed");
-			}
 		}
 	}
 }
@@ -1449,9 +1434,8 @@ void EMUtil::process_numbers_io(FILE * file, int rw_mode,
 	char line[MAXPATHLEN];
 
 	if (rw_mode == ImageIO::READ_ONLY) {
-		if (!fgets(line, sizeof(line), file)) {
+		if (!fgets(line, sizeof(line), file))
 			Assert("read xplor file failed");
-		}
 
 		int nitems_in_line = (int) (strlen(line) / mode_size);
 		Assert(end <= nitems_in_line);
@@ -1496,9 +1480,8 @@ void EMUtil::exclude_numbers_io(FILE * file, int rw_mode,
 
 	if (rw_mode == ImageIO::READ_ONLY) {
 
-		if (!fgets(line, sizeof(line), file)) {
+		if (!fgets(line, sizeof(line), file))
 			Assert("read xplor file failed");
-		}
 
 		int nitems_in_line =  (int) (strlen(line) / mode_size);
 		Assert(end <= nitems_in_line);
@@ -1781,9 +1764,8 @@ EMObject EMUtil::read_hdf_attribute(const string & filename, const string & key,
 {
 	ImageType image_type = get_image_type(filename);
 
-	if (image_type != IMAGE_HDF) {
+	if (image_type != IMAGE_HDF)
 		throw ImageFormatException("This function only applies to HDF5 file.");
-	}
 
 	HdfIO2* imageio = new HdfIO2(filename, ImageIO::READ_ONLY);
 	imageio->init();
@@ -1796,9 +1778,8 @@ EMObject EMUtil::read_hdf_attribute(const string & filename, const string & key,
 
 	hid_t igrp = H5Gopen(file, ipath);
 
-	if (igrp < 0) { // group not existed
+	if (igrp < 0) // group not existed
 		throw _NotExistingObjectException(string(ipath));
-	}
 
 	string s("EMAN.");
 	s += key;
@@ -1816,9 +1797,8 @@ int EMUtil::write_hdf_attribute(const string & filename, const string & key, EMO
 {
 	ImageType image_type = get_image_type(filename);
 
-	if (image_type != IMAGE_HDF) {
+	if (image_type != IMAGE_HDF)
 		throw ImageFormatException("This function only applies to HDF5 file.");
-	}
 
 	HdfIO2* imageio = new HdfIO2(filename, ImageIO::WRITE_ONLY);
 	imageio->init();
@@ -1832,9 +1812,8 @@ int EMUtil::write_hdf_attribute(const string & filename, const string & key, EMO
 
 	hid_t igrp = H5Gopen(file, ipath);
 
-	if (igrp<0) { // group not existed
+	if (igrp<0) // group not existed
 		throw _NotExistingObjectException(string(ipath));
-	}
 
 	string s("EMAN.");
 	s += key;
@@ -1850,9 +1829,8 @@ int EMUtil::delete_hdf_attribute(const string & filename, const string & key, in
 {
 	ImageType image_type = get_image_type(filename);
 
-	if (image_type != IMAGE_HDF) {
+	if (image_type != IMAGE_HDF)
 		throw ImageFormatException("This function only applies to HDF5 file.");
-	}
 
 	HdfIO2* imageio = new HdfIO2(filename, ImageIO::READ_WRITE);
 	imageio->init();
@@ -1866,9 +1844,8 @@ int EMUtil::delete_hdf_attribute(const string & filename, const string & key, in
 
 	hid_t igrp = H5Gopen(file,ipath);
 
-	if (igrp < 0) { // group not existed
+	if (igrp < 0) // group not existed
 		throw _NotExistingObjectException(string(ipath));
-	}
 
 	string s("EMAN.");
 	s += key;
