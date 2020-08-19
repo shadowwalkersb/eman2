@@ -238,49 +238,36 @@ void EMData::_write_image(ImageIO *imageio, int img_index,
 			throw ImageWriteException(imageio->get_filename(), "imageio write header failed");
 		else {
 			if (!header_only) {
-				if (imgtype == EMUtil::IMAGE_LST) {
-					string reffile(attr_dict["LST.reffile"]);
-					if (reffile.empty())
-						reffile = path;
-					int refn = attr_dict["LST.refn"];
-					if (refn < 0)
-						refn = pathnum;
+				
+				auto ll = [&](){
+						const char *reffile = attr_dict["LST.reffile"];
+						if (strcmp(reffile, "") == 0)
+							reffile = path.c_str();
+						int refn = attr_dict["LST.refn"];
+						if (refn < 0)
+							refn = pathnum;
 
-					const string comment(attr_dict["LST.comment"]);
-					string lstdata;
-					lstdata.reserve(1024);
-					std::ostringstream ss;
-					ss<<refn<<"\t"<<reffile;
-					lstdata = ss.str();
-					if(!comment.empty())
-						ss<<"\t"<<comment.c_str()<<"\n";
-					else
-						lstdata += "\n";
-					err = imageio->write_data((float*)lstdata.c_str(), img_index,
-											  region, filestoragetype, use_host_endian);
+						const char *comment = attr_dict["LST.comment"];
+						char *lstdata = new char[1024];
+						sprintf(lstdata, "%d\t%s", refn, reffile);
+						if(strcmp(comment, "") != 0)
+							sprintf(lstdata+strlen(lstdata), "\t%s\n", comment);
+						else
+							strcat(lstdata, "\n");
+						err = imageio->write_data((float*)lstdata, img_index,
+						region, filestoragetype, use_host_endian);
+						if( lstdata )
+						{
+							delete [] lstdata;
+							lstdata = 0;
+						}
+				};
+				
+				if (imgtype == EMUtil::IMAGE_LST) {
+					ll();
 				}
 				if (imgtype == EMUtil::IMAGE_LSTFAST) {
-					string reffile(attr_dict["LST.reffile"]);
-					if (reffile.empty())
-						reffile = path;
-					int refn = attr_dict["LST.refn"];
-					if (refn < 0)
-						refn = pathnum;
-
-					const string comment(attr_dict["LST.comment"]);
-					char *lstdata = new char[1024];
-					sprintf(lstdata, "%d\t%s", refn, reffile.c_str());
-					if(!comment.empty())
-						sprintf(lstdata+strlen(lstdata), "\t%s\n", comment.c_str());
-					else
-						strcat(lstdata, "\n");
-					err = imageio->write_data((float*)lstdata, img_index,
-											  region, filestoragetype, use_host_endian);
-					if( lstdata )
-					{
-						delete [] lstdata;
-						lstdata = 0;
-					}
+					ll();
 				}
 				else
 					err = imageio->write_data(get_data(), img_index, region, filestoragetype,
