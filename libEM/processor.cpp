@@ -2305,7 +2305,7 @@ void AreaProcessor::process_inplace(EMData * image)
 		matrix_size *= areasize;
 	}
 
-	float *matrix = new float[matrix_size];
+	vector<float> matrix(matrix_size);
 	kernel = new float[matrix_size];
 
 	size_t cpysize = areasize * sizeof(float);
@@ -2349,15 +2349,9 @@ void AreaProcessor::process_inplace(EMData * image)
 					}
 				}
 
-				process_pixel(&data[k], (float) x, (float) y, (float) z, matrix);
+				process_pixel(&data[k], (float) x, (float) y, (float) z, matrix.data());
 			}
 		}
-	}
-
-	if( matrix )
-	{
-		delete[]matrix;
-		matrix = 0;
 	}
 
 	if( kernel )
@@ -2727,7 +2721,7 @@ void MedianShrinkProcessor::accrue_median(EMData* to, const EMData* const from,c
 		z_shrink_factor = shrink_factor;
 	}
 
-	float *mbuf = new float[threed_shrink_factor];
+	vector<float> mbuf(threed_shrink_factor);
 
 
 	int nxy_old = nx_old * ny_old;
@@ -2781,12 +2775,6 @@ void MedianShrinkProcessor::accrue_median(EMData* to, const EMData* const from,c
 				rdata[i + cur_j] = mbuf[threed_shrink_factor / 2];
 			}
 		}
-	}
-
-	if( mbuf )
-	{
-		delete[]mbuf;
-		mbuf = 0;
 	}
 
 	to->scale_pixel((float)shrink_factor);
@@ -3400,7 +3388,7 @@ void GradientRemoverProcessor::process_inplace(EMData * image)
 
 	int nx = image->get_xsize();
 	int ny = image->get_ysize();
-	float *dy = new float[ny];
+	vector<float> dy(ny);
 	float m = 0;
 	float b = 0;
 	float sum_y = 0;
@@ -3414,7 +3402,7 @@ void GradientRemoverProcessor::process_inplace(EMData * image)
 
 	float mean_y = sum_y / ny;
 	float sum_x = 0;
-	Util::calc_least_square_fit(ny, 0, dy, &sum_x, &b, false);
+	Util::calc_least_square_fit(ny, 0, dy.data(), &sum_x, &b, false);
 
 	for (int j = 0; j < ny; j++) {
 		for (int i = 0; i < nx; i++) {
@@ -4063,8 +4051,8 @@ void BeamstopProcessor::process_inplace(EMData * image)
 
 	int mxr = (int) floor(sqrt(2.0f) * nx / 2);
 
-	float *mean_values = new float[mxr];
-	float *sigma_values = new float[mxr];
+	vector<float> mean_values(mxr);
+	vector<float> sigma_values(mxr);
 	double sum = 0;
 	int count = 0;
 	double square_sum = 0;
@@ -4143,18 +4131,6 @@ void BeamstopProcessor::process_inplace(EMData * image)
 			}
 			data[i + j * nx] = mean_values[r];
 		}
-	}
-
-	if( mean_values )
-	{
-		delete[]mean_values;
-		mean_values = 0;
-	}
-
-	if( sigma_values )
-	{
-		delete[]sigma_values;
-		sigma_values = 0;
 	}
 
 	image->update();

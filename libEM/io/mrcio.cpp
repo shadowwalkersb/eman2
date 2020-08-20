@@ -1731,7 +1731,7 @@ int MrcIO::get_nimg()
 
 int MrcIO::transpose(float *data, int xlen, int ylen, int zlen) const
 {
-	float * tmp = new float[xlen*ylen];
+	vector<float> tmp(xlen*ylen);
 
 	for(size_t z=0; z<(size_t)zlen; ++z) {
 		for(size_t y=0; y<(size_t)ylen; ++y) {
@@ -1740,10 +1740,8 @@ int MrcIO::transpose(float *data, int xlen, int ylen, int zlen) const
 			}
 		}
 
-		std::copy(tmp, tmp+xlen*ylen, data+z*xlen*ylen);
+		std::copy(tmp.begin(), tmp.end(), data+z*xlen*ylen);
 	}
-
-	delete [] tmp;
 
 	return 0;
 }

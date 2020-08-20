@@ -591,9 +591,9 @@ EMBytes GLUtil::render_amp8(EMData* emdata, int x0, int y0, int ixsize,
 		float mean = abs(rangemax-2)/2;
 		float standdv = abs(mean)/3;
 
-		gaussianpdf = new float[rangemax-2];
-		gaussiancdf = new float[rangemax-2];
-		gaussianlookup = new int[rangemax-2];
+		vector<float> gaussianpdf(rangemax-2);
+		vector<float> gaussiancdf(rangemax-2);
+		vector<int> gaussianlookup(rangemax-2);
 
 		for (int i=0; i<(rangemax-2); i++) {
 			gaussianpdf[i]=exp(-(i-mean)*(i-mean)/(2*standdv*standdv))/sqrt(standdv * standdv * 2 * M_PI);
