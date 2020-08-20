@@ -2452,13 +2452,8 @@ vector<float> EMData::calc_az_dist(int n, float a0, float da, float rmin, float 
 		throw ImageDimensionException("no 3D image");
 	}
 
-	float *yc = new float[n];
-
-	vector<float>	vd(n);
-	for (int i = 0; i < n; i++) {
-		vd[i]=0;
-		yc[i] = 0.00001f;
-	}
+	vector<float> yc(n, 0.00001f);
+	vector<float> vd(n, 0);
 
 	int isri=is_ri();
 	
@@ -2551,12 +2546,6 @@ vector<float> EMData::calc_az_dist(int n, float a0, float da, float rmin, float 
 	for (int i = 0; i < n; i++) {
 		if (vd[i]<0||yc[i]<0) printf("%d vd %f yc %f\n",i,vd[i],yc[i]);
 		vd[i] /= yc[i];
-	}
-
-	if( yc )
-	{
-		delete[]yc;
-		yc = 0;
 	}
 
 	return vd;
@@ -3633,8 +3622,8 @@ void EMData::common_lines(EMData * image1, EMData * image2,
 
 	int rmax = image2_ny / 4 - 1;
 	int array_size = steps * rmax * 2;
-	float *im1 = new float[array_size];
-	float *im2 = new float[array_size];
+	vector<float> im1(array_size);
+	vector<float> im2(array_size);
 	for (int i = 0; i < array_size; i++) {
 		im1[i] = 0;
 		im2[i] = 0;
@@ -3820,7 +3809,7 @@ void EMData::common_lines(EMData * image1, EMData * image2,
 	}
 
 	if (horizontal) {
-		float *tmp_array = new float[ny];
+		vector<float> tmp_array(ny);
 		for (int i = 1; i < nx; i++) {
 			for (int j = 0; j < ny; j++) {
 				tmp_array[j] = get_value_at(i, j);
@@ -3829,23 +3818,6 @@ void EMData::common_lines(EMData * image1, EMData * image2,
 				set_value_at(i, j, 0, tmp_array[(j + i) % ny]);
 			}
 		}
-		if( tmp_array )
-		{
-			delete[]tmp_array;
-			tmp_array = 0;
-		}
-	}
-
-	if( im1 )
-	{
-		delete[]im1;
-		im1 = 0;
-	}
-
-	if( im2 )
-	{
-		delete[] im2;
-		im2 = 0;
 	}
 
 
