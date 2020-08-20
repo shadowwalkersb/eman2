@@ -126,7 +126,7 @@ namespace EMAN
 	};
 
 	template<unsigned int T, class U>
-	using Rle = BitReader<T, true, U>;
+	using Rle = BitReaderCounter<T, true, U>;
 
 	template<unsigned int T, class U>
 	using SubPix = BitReader<T, false, U>;
