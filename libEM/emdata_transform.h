@@ -185,25 +185,6 @@ calc_radial_dist to avoid returning intensity squared.
 */
 void ri2inten();
 
-/**   This computes the rotational and translational bispectral
-        invariants of an image. The invariants are labelled by the Fourier
-    Harmonic label given by N.
-     fVec is the real input image
-      NK is the number of Fourier components one wishes to use in calculating this bispectrum
-   the output is a single 2D image whose x,y labels are lengths, corresponding to the two lengths of sides of
-         a triangle  */
-EMData*   bispecRotTransInvN(int N, int NK);
-
-
-
-/**   This computes the rotational and translational bispectral
-        invariants of an image.
-   the output is a single 3d Volume whose x,y labels are lengths, corresponding to the two lengths of sides of
-         a triangle
-         the z label is for the angle  */
-EMData*  bispecRotTransInvDirect(int type=0);
-
-
 /** Insert a clip into this image.
  * Very robust clip insertion code works in all way you might think possible
  * @param block An image block.
