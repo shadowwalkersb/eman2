@@ -153,6 +153,7 @@ void test_eer_rle_no_overflow() {
 
 void test_eer_rle_counter() {
 	typedef uint8_t BuffWord;
+	auto num_bits = sizeof(BuffWord) * 8;
 
 	BuffWord a = 0b11001101;
 
