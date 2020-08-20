@@ -151,12 +151,29 @@ void test_eer_rle_no_overflow() {
 	assert(rle3 == 0b11);
 }
 
+void test_eer_rle_counter() {
+	typedef uint8_t BuffWord;
+	auto num_bits = sizeof(BuffWord) * 8;
+
+	BuffWord a = 0b11111111;
+
+	BitStream<BuffWord> is1(&a);
+	BitReaderCounter<1, false, BuffWord> rle1;
+
+	is1 >> rle1;
+	assert(rle1 == 1);
+
+	is1 >> rle1;
+	assert(rle1 == 1);
+}
+
 int main()
 {
 	test_bit_stream();
 	test_bit_reader();
 	test_eer_sub_pix();
 	test_eer_rle_no_overflow();
+	test_eer_rle_counter();
 
 	return 0;
 }
