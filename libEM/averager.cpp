@@ -592,22 +592,22 @@ EMData * LocalWeightAverager::finish()
 	if (fourier<=1) {
 		EMData *stg1 = new EMData(nx,ny,nz);
 		
-		for (std::vector<EMData*>::iterator im = images.begin(); im!=images.end(); ++im) stg1->add(**im);
+		for (auto & image : images) stg1->add(*image);
 		stg1->process_inplace("normalize");
 		
 	//	std::vector<EMData*> weights;
-		for (std::vector<EMData*>::iterator im = images.begin(); im!=images.end(); ++im) {
-			EMData *imc=(*im)->copy();
+		for (auto & image : images) {
+			EMData *imc=image->copy();
 			imc->mult(*stg1);
 			imc->process_inplace("filter.lowpass.gauss",Dict("cutoff_freq",0.02f));
 			imc->process_inplace("threshold.belowtozero",Dict("minval",0.0f));
 	//		imc->process_inplace("math.sqrt");
 	//		imc->process_inplace("math.pow",Dict("pow",0.25));
-			(*im)->mult(*imc);
-			result->add(**im);
+			image->mult(*imc);
+			result->add(*image);
 			normimage->add(*imc);
 			delete imc;
-			delete *im;
+			delete image;
 		}
 		
 		if (dampnoise>0) {
