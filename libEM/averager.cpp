@@ -590,7 +590,7 @@ EMData * LocalWeightAverager::finish()
 	// This is the standard mode where local real-space correlation with the average is used to define a local weight (like a mask)
 	// applied to each image. If fourier>=2 then the same is done, but in "gaussian bands" in Fourier space
 	if (fourier<=1) {
-		EMData *stg1 = new EMData(nx,ny,nz);
+		auto stg1 = std::make_unique<EMData>(nx,ny,nz);
 		
 		for (auto & image : images) stg1->add(*image);
 		stg1->process_inplace("normalize");
@@ -634,11 +634,11 @@ EMData * LocalWeightAverager::finish()
 			std::vector<EMData*> filt;
 
 			EMData *stg1 = new EMData(nx,ny,nz);
-			for (std::vector<EMData*>::iterator im = images.begin(); im!=images.end(); ++im) {
-				EMData *f=(*im)->process("filter.bandpass.gauss",Dict("center",(float)cen,"sigma",sig));
+			for (auto & image : images) {
+				EMData *f=image->process("filter.bandpass.gauss",Dict("center",(float)cen,"sigma",sig));
 				filt.push_back(f);
 				stg1->add(*f);
-				if (r==fourier-1) delete *im;		// we don't actually need the unfiltered images again
+				if (r==fourier-1) delete image;		// we don't actually need the unfiltered images again
 			}
 			stg1->process_inplace("normalize");
 			stg1->process("filter.bandpass.gauss",Dict("center",(float)cen,"sigma",sig));
@@ -646,18 +646,18 @@ EMData * LocalWeightAverager::finish()
 			
 		//	std::vector<EMData*> weights;
 			int imn=1;
-			for (std::vector<EMData*>::iterator im = filt.begin(); im!=filt.end(); ++im) {
-				EMData *imc=(*im)->copy();
+			for (auto & im : filt) {
+				EMData *imc=im->copy();
 				imc->mult(*stg1);
 				imc->process_inplace("filter.lowpass.gauss",Dict("cutoff_freq",0.02f));
 				imc->process_inplace("threshold.belowtozero",Dict("minval",0.0f));
 //				imc->write_image("cmp.hdf",imn*fourier+r);
 		//		imc->process_inplace("math.sqrt");
 		//		imc->process_inplace("math.pow",Dict("pow",0.25));
-				(*im)->mult(*imc);
-				result->add(**im);
+				im->mult(*imc);
+				result->add(*im);
 				normimage->add(*imc);
-				delete *im;
+				delete im;
 				delete imc;
 				imn++;
 			}
@@ -679,11 +679,6 @@ EMData * LocalWeightAverager::finish()
 	
 }
 
-IterAverager::IterAverager()
-{
-
-}
-
 void IterAverager::add_image(EMData * image)
 {
 	if (!image) return;
@@ -693,7 +688,7 @@ void IterAverager::add_image(EMData * image)
 
 EMData *IterAverager::finish()
 {
-	if (images.size()==0) return NULL;
+	if (images.empty()) return nullptr;
 	
 	int nx = images.front()->get_xsize();
 	int ny = images.front()->get_ysize();
@@ -701,11 +696,11 @@ EMData *IterAverager::finish()
 	
 	if (nz!=1) throw ImageDimensionException("IterAverager is for 2-D images only");
 	
-	if (result) delete result;
+	delete result;
 	result=new EMData(nx-2,ny,nz,0);
 	result -> to_zero();
 	
-	EMData *tmp=new EMData(nx-2,ny,nz,0);
+	auto tmp = std::make_unique<EMData>(nx-2,ny,nz,0);
 	tmp -> to_zero();
 
 	for (int it=0; it<4; it++) {
@@ -713,20 +708,17 @@ EMData *IterAverager::finish()
 			for (int x=0; x<nx-2; x++) {
 				std::complex<double> nv=0;
 				// put the vector on the inside, then we can accumulate into a double easily
-				for (vector<EMData *>::iterator im=images.begin(); im<images.end(); im++) {
-					for (int yy=y-1; yy<=y+1; yy++) {
-						for (int xx=x-1; xx<=x+1; xx++) {
+				for (auto im=images.begin(); im<images.end(); im++)
+					for (int yy=y-1; yy<=y+1; yy++)
+						for (int xx=x-1; xx<=x+1; xx++)
 							nv+=(*im)->get_complex_at(xx,yy)+tmp->get_complex_at(x,y)-tmp->get_complex_at(xx,yy);
-						}
-					}
-				}
 				result->set_complex_at(x,y,std::complex<float>(nv/(9.0*images.size())));
 			}
 		}
 		// Swap the pointers
 		result->write_image("dbug.hdf",-1);
-		EMData *swp=tmp;
-		tmp=result;
+		auto swp=tmp.get();
+		tmp.reset(result);
 		result=swp;
 	}
 	
@@ -735,7 +727,6 @@ EMData *IterAverager::finish()
 	for (vector<EMData *>::iterator im=images.begin(); im<images.end(); im++) delete (*im);
 	images.clear();
 	result=tmp->do_ift();
-	delete tmp;
 	return result;
 }
 

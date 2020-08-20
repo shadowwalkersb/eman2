@@ -260,7 +260,7 @@ namespace EMAN
 	class IterAverager:public Averager
 	{
 	  public:
-		IterAverager();
+		IterAverager() =default;
 
 		void add_image( EMData * image);
 		EMData * finish();
