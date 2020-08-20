@@ -49,6 +49,9 @@ EerFrame::EerFrame(TIFF *tiff)
 		data.resize(prev_size + strip_sizes[i]);
 		TIFFReadRawStrip(tiff, i, data.data()+prev_size, strip_sizes[i]);
 	}
+	cout<<"data.size(): "<<data.size()
+		<<" sizeof: "<<sizeof(&data[0])
+		<<endl;
 
 	EerStream is(reinterpret_cast<EerWord *>(data.data()));
 	EerRle    rle;
@@ -63,7 +66,22 @@ EerFrame::EerFrame(TIFF *tiff)
 		int y = rle >> 12;
 
 		_coords.push_back(std::make_pair(x,y));
+		
+		cout<<"rle: "<<rle
+			<<" count: "<<count
+			<<" x y: "<<x
+			<<" "<<y
+			<<endl;
 	}
+	int x = count & 4095;
+	int y = count >> 12;
+	count += rle+1;
+	
+	cout<<"rle: "<<rle
+		<<" count: "<<count
+		<<" x y: "<<x
+		<<" "<<y
+		<<endl;
 }
 
 VC EerFrame::coords() const {
