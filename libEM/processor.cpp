@@ -13979,7 +13979,8 @@ EMData* CircularAverageBinarizeProcessor::process(const EMData* const image)  //
 	int z_size = image->get_zsize();
 
 	int ix,iy,iz,it,count,ic;
-	int *dx=new int[thr*8],*dy=new int[thr*8];
+	vector<int> dx(thr*8);
+	vector<int> dy(thr*8);
 	for (it=1; it<=thr; it++){
 		// calculate the indexes
 		count=0;
@@ -14023,8 +14024,6 @@ EMData* CircularAverageBinarizeProcessor::process(const EMData* const image)  //
 			}
 		}
 	}
-	delete[] dx;
-	delete[] dy;
 	return bwmap;
 
 
@@ -14564,8 +14563,8 @@ void GrowSkeletonProcessor::process_inplace(EMData * image){
 
 	float *data = image->get_data();
 	// the index of the boundary points of the box
-	int *xlist=new int[2*rad*4];
-	int *ylist=new int[2*rad*4];
+	vector<int> xlist(2*rad*4);
+	vector<int> ylist(2*rad*4);
 	int count=0;
 	for (int i=-rad; i<rad; i++){ xlist[count]=-rad; ylist[count]=i; count++;}
 	for (int i=-rad; i<rad; i++){ xlist[count]=i; ylist[count]=rad; count++;}
@@ -14623,10 +14622,6 @@ void GrowSkeletonProcessor::process_inplace(EMData * image){
 		}
 	}
 	image->update();
-
-	delete[] xlist;
-	delete[] ylist;
-
 }
 
 EMData* ManhattanDistanceProcessor::process(const EMData* const image)
