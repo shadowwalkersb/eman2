@@ -160,7 +160,7 @@ void EMData::read_binedimage(const string & filename, int img_index, int binfact
 			set_size(nx/binfactor, ny/binfactor, nz/binfactor);
 
 			//here is where we read in the binned data
-			EMData* tempdata = new EMData();
+			auto tempdata = std::make_unique<EMData>();
 			size_t sizeofslice = nx*ny*sizeof(float);
 
 			//zbin factor use 1 to speed binning(but don't benfit by averaging in Z)
@@ -185,7 +185,6 @@ void EMData::read_binedimage(const string & filename, int img_index, int binfact
 				delete binregion;
 			}
 
-			delete tempdata;
 			update();
 		}
 	}
