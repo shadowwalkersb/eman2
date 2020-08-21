@@ -190,7 +190,7 @@ void EMData::read_binedimage(const string & filename, int img_index, int binfact
 	}
 
     EMUtil::close_imageio(filename, imageio);
-	imageio = 0;
+	imageio = nullptr;
 	EXITFUNC;
 }
 

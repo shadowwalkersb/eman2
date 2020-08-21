@@ -190,11 +190,11 @@ void PointArray::set_points_array(double *p)
 }
 
 EMData *PointArray::distmx(int sortrows) {
-if (n==0) return NULL;
+if (n==0) return nullptr;
 
 unsigned int i,j;
 
-EMData *ret= new EMData(n,n,1);
+auto *ret= new EMData(n,n,1);
 ret->to_zero();
 
 for (i=0; i<n; i++) {
@@ -2423,7 +2423,7 @@ EMData *PointArray::pdb2mrc_by_summation(int map_size, float apix, float res, in
 	
 //	sort_by_axis(2);			// sort by Z-axis
 
-	EMData *map = new EMData();
+	auto *map = new EMData();
 	map->set_size(map_size, map_size, map_size);
 	map->to_zero();
 	float *pd = map->get_data();
@@ -2441,10 +2441,6 @@ EMData *PointArray::pdb2mrc_by_summation(int map_size, float apix, float res, in
 		double fval = points[4 * s + 3];
 		
 		//printf("\n bfactor=%f",bfactor[s]);
-		
-		
-		
-		
 		
 		if(addpdbbfactor==-1){
 			gauss_real_width = res/M_PI;	// in Angstrom, res is in Angstrom
@@ -2547,7 +2543,7 @@ EMData *PointArray::projection_by_summation(int image_size, float apix, float re
 	int gbox = int (max_table_x * gauss_real_width / apix);	// local box half size in pixels to consider for each point
 	if (gbox <= 0)
 		gbox = 1;
-	EMData *proj = new EMData();
+	auto *proj = new EMData();
 	proj->set_size(image_size, image_size, 1);
 	proj->to_zero();
 	float *pd = proj->get_data();

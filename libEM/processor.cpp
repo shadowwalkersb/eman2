@@ -784,7 +784,7 @@ EMData* MaskPackProcessor::process(const EMData *image) {
 
 	int n_nz=(int)mask->get_attr("square_sum");		// true only for a binary mask
 	
-	EMData *ret = 0;
+	EMData *ret = nullptr;
 	if (unpack) {
 		ret = new EMData(mask->get_xsize(),mask->get_ysize(),mask->get_zsize());
 		ret->to_zero();
@@ -2939,7 +2939,7 @@ EMData* MeanShrinkProcessor::process(const EMData *const image)
 
 		int shrunken_nx = (int(nx / 1.5)+1)/2*2;	// make sure the output size is even
 		int shrunken_ny = (int(ny / 1.5)+1)/2*2;
-		EMData* result = new EMData(shrunken_nx,shrunken_ny,1);
+		auto* result = new EMData(shrunken_nx,shrunken_ny,1);
 
 		accrue_mean_one_p_five(result,image);
 		result->update();
@@ -3158,7 +3158,7 @@ EMData* BooleanShrinkProcessor::process(const EMData *const image, Dict& params)
 	if (nx == 1 && ny == 1 && nz == 1 ) return image->copy();
 
 	LogicOp op;
-	EMData* return_image = new EMData();
+	auto* return_image = new EMData();
 
 	int shrinkx = shrink;
 	int shrinky = shrink;
@@ -5530,7 +5530,7 @@ EMData* TransposeProcessor::process(const EMData* const image) {
 	if (image->get_ndim() != 2) throw UnexpectedBehaviorException("Transpose processor only works with 2D images");
 	if (image->is_complex()) throw UnexpectedBehaviorException("Transpose processor only works with real images");
 
-	EMData* ret = new EMData(image->get_ysize(),image->get_xsize(),1); // transpose dimensions
+	auto* ret = new EMData(image->get_ysize(),image->get_xsize(),1); // transpose dimensions
 
 	for(int j = 0; j< image->get_ysize();++j) {
 		for(int i = 0; i< image->get_xsize();++i) {
@@ -5546,7 +5546,7 @@ void TransposeProcessor::process_inplace(EMData* image) {
 	if (image->get_ndim() != 2) throw UnexpectedBehaviorException("Transpose processor only works with 2D images");
 	if (image->is_complex()) throw UnexpectedBehaviorException("Transpose processor only works with real images");
 
-	float* data = (float*)malloc(image->get_ysize()*image->get_xsize()*sizeof(float));
+	auto* data = (float*)malloc(image->get_ysize()*image->get_xsize()*sizeof(float));
 
 	int nx = image->get_ysize(); // note tranpose
 	for(int j = 0; j< image->get_ysize();++j) {
@@ -6597,7 +6597,7 @@ void AutoMask2DProcessor::process_inplace(EMData * image)
 	int nx = image->get_xsize();
 	int ny = image->get_ysize();
 
-	EMData *amask = new EMData();
+	auto *amask = new EMData();
 	amask->set_size(nx, ny);
 
 	float *dat = image->get_data();
@@ -6613,7 +6613,7 @@ void AutoMask2DProcessor::process_inplace(EMData * image)
 		vector<Pixel> maxs=peaks->calc_n_highest_locations(nmaxseed);
 		delete peaks;
 
-		for (vector<Pixel>::iterator i=maxs.begin(); i<maxs.end(); i++) {
+		for (auto i=maxs.begin(); i<maxs.end(); i++) {
 			if ((*i).x==0 || (*i).y==0 ) continue;		// generally indicates a failed peak search, and regardless we don't really want edges
 			amask->set_value_at((*i).x,(*i).y,0,1.0);
 			if (verbose) printf("Seed at %d,%d,%d (%1.3f)\n",(*i).x,(*i).y,(*i).z,(*i).value);
@@ -6784,7 +6784,7 @@ EMData* CtfSimProcessor::process(const EMData * const image) {
 
 	// Add noise
 	if (noiseamp!=0 || noiseampwhite!=0) {
-		EMData *noise = new EMData(image->get_ysize(),image->get_ysize(),1);
+		auto *noise = new EMData(image->get_ysize(),image->get_ysize(),1);
 		noise->process_inplace("testimage.noise.gauss");
 		noise->do_fft_inplace();
 
@@ -8365,7 +8365,7 @@ void AutoMaskDustProcessor::process_inplace(EMData * imagein)
 			for (int xx = 0; xx < nx; xx++) {
 				if (image->get_value_at(xx,yy,zz)>threshold && mask->get_value_at(xx,yy,zz)==1.0) {
 					vector<Vec3i> pvec;
-					pvec.push_back(Vec3i(xx,yy,zz));
+					pvec.emplace_back(xx,yy,zz);
 					for (uint i=0; i<pvec.size(); i++) {
 						// Duplicates will occur the way the algorithm is constructed, so we eliminate them as we encounter them
 						if (mask->sget_value_at(pvec[i])==0.0f) {
@@ -8462,7 +8462,7 @@ void AutoMask3D2Processor::process_inplace(EMData * image)
 	int nz = image->get_zsize();
 	int nxy=nx*ny;
 
-	EMData *amask = new EMData();
+	auto amask = std::make_unique<EMData>();
 	amask->set_size(nx, ny, nz);
 
 	float *dat = image->get_data();
@@ -8474,7 +8474,7 @@ void AutoMask3D2Processor::process_inplace(EMData * image)
 	if (nmaxseed>0) {
 		vector<Pixel> maxs=image->calc_n_highest_locations(nmaxseed);
 
-		for (vector<Pixel>::iterator i=maxs.begin(); i<maxs.end(); i++) {
+		for (auto i=maxs.begin(); i<maxs.end(); i++) {
 			amask->set_value_at((*i).x,(*i).y,(*i).z,1.0);
 			if (verbose) printf("Seed at %d,%d,%d (%1.3f)\n",(*i).x,(*i).y,(*i).z,(*i).value);
 		}
@@ -8538,9 +8538,6 @@ void AutoMask3D2Processor::process_inplace(EMData * image)
 	//if (mask_output != "") {
 	//	amask->write_image(mask_output);
 	//}
-
-
-	delete amask;
 }
 
 void IterBinMaskProcessor::process_inplace(EMData * image)
@@ -8556,7 +8553,7 @@ void IterBinMaskProcessor::process_inplace(EMData * image)
 	int nx = image->get_xsize();
 	int ny = image->get_ysize();
 	int nz = image->get_zsize();
-	EMData *image2 = new EMData(nx,ny,nz);
+	auto image2 = std::make_unique<EMData>(nx,ny,nz);
 
 	// Got a compile warning complaining that these things were never used. Hope I didn't break anything - apologies if so (d.woolford)
 //	float *dat = image->get_data();
@@ -8606,7 +8603,6 @@ void IterBinMaskProcessor::process_inplace(EMData * image)
 	for (size_t i = 0; i < size; ++i) if (d[i]) d[i]=vec[(int)d[i]];
 
 	image->update();
-	delete image2;
 }
 
 EMData* DirectionalSumProcessor::process(const EMData* const image ) {
@@ -12432,7 +12428,7 @@ void XGradientProcessor::process_inplace( EMData* image )
 {
 	if (image->is_complex()) throw ImageFormatException("Cannot edge detect a complex image");
 
-	EMData* e = new EMData();
+	auto e = std::make_unique<EMData>();
 	int nx = image->get_xsize();
 	int ny = image->get_ysize();
 	int nz = image->get_zsize();
@@ -12489,8 +12485,6 @@ void XGradientProcessor::process_inplace( EMData* image )
 	conv_parms["with"] = e;
 	image->process_inplace("math.convolution", conv_parms);
 	image->process_inplace("xform.phaseorigin.tocenter");
-
-	delete e;
 }
 
 
@@ -12626,7 +12620,7 @@ void YGradientProcessor::process_inplace( EMData* image )
 {
 	if (image->is_complex()) throw ImageFormatException("Cannot edge detect a complex image");
 
-	EMData* e = new EMData();
+	auto* e = new EMData();
 	int nx = image->get_xsize();
 	int ny = image->get_ysize();
 	int nz = image->get_zsize();

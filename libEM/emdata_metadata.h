@@ -266,7 +266,7 @@ float get_edge_mean() const;
  * mask on 'this' image.
  * @return The circular edge mean.
  */
-float get_circle_mean();
+float get_circle_mean() const;
 
 
 /** Get ctf parameter of this image.

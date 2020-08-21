@@ -770,7 +770,7 @@ float EMData::get_edge_mean() const
 }
 
 
-float EMData::get_circle_mean()
+float EMData::get_circle_mean() const
 {
 	ENTERFUNC;
 
@@ -822,7 +822,7 @@ void EMData::set_ctf(Ctf * new_ctf)
 Ctf * EMData::get_ctf() const
 {
 	if(attr_dict.has_key("ctf")) {
-		EMAN1Ctf * ctf = new EMAN1Ctf();
+		auto * ctf = new EMAN1Ctf();
 		ctf->from_vector(attr_dict["ctf"]);
 
 		return dynamic_cast<Ctf *>(ctf);

@@ -1144,7 +1144,7 @@ EMData *EMUtil::vertical_acf(const EMData * image, int maxdy)
 	if (!image)
 		throw NullPointerException("NULL Image");
 
-	EMData *ret = new EMData();
+	auto *ret = new EMData();
 
 	int nx = image->get_xsize();
 	int ny = image->get_ysize();
