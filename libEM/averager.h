@@ -589,7 +589,7 @@ namespace EMAN
 		static const string NAME;
 		
 	  protected:
-		EMData *snrsum;   // contains the summed SNR for the average
+		EMData *snrsum{};   // contains the summed SNR for the average
 		int nimg;
 	};
 
@@ -628,7 +628,7 @@ namespace EMAN
 		static const string NAME;
 		
 	  protected:
-		EMData *snrsum;   // contains the summed SNR for the average
+		EMData *snrsum{};   // contains the summed SNR for the average
 		int nimg;
 	};
 

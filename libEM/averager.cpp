@@ -579,7 +579,7 @@ void LocalWeightAverager::add_image(EMData * image)
 
 EMData * LocalWeightAverager::finish()
 {
-	if (nimg==0) return NULL;
+	if (nimg==0) return nullptr;
 	
 	int nx = images.front()->get_xsize();
 	int ny = images.front()->get_ysize();
@@ -723,8 +723,8 @@ EMData *IterAverager::finish()
 	}
 	
 	delete result;
-	result=0;
-	for (vector<EMData *>::iterator im=images.begin(); im<images.end(); im++) delete (*im);
+	result=nullptr;
+	for (auto im=images.begin(); im<images.end(); ++im) delete (*im);
 	images.clear();
 	result=tmp->do_ift();
 	return result;
@@ -891,13 +891,11 @@ EMData *MinMaxAverager::finish()
 	
 	if (result && nimg >= 1) return result;
 
-	return NULL;
+	return nullptr;
 }
 
 MedianAverager::MedianAverager()
-{
-	
-}
+= default;
 
 void MedianAverager::add_image(EMData * image)
 {
@@ -915,8 +913,8 @@ void MedianAverager::add_image(EMData * image)
 
 EMData *MedianAverager::finish()
 {
-	if (imgs.size()==0) return 0;
-	EMData *ret=0;
+	if (imgs.empty()) return 0;
+	EMData *ret=nullptr;
 	
 	if (imgs.size()==1) {
 		ret=imgs[0];
@@ -976,7 +974,7 @@ EMData *MedianAverager::finish()
 		for (int y=0; y<ny; y++) {
 			for (int x=0; x<nx; x++) {
 				int i=0;
-				for (std::vector<EMData *>::iterator it = imgs.begin() ; it != imgs.end(); ++it,++i) {
+				for (auto it = imgs.begin() ; it != imgs.end(); ++it,++i) {
 					vals[i]=(*it)->get_value_at(x,y,z);
 				}
 					
@@ -989,7 +987,7 @@ EMData *MedianAverager::finish()
 	}
 
 	if (!imgs.empty()) {
-		for (std::vector<EMData *>::iterator it = imgs.begin() ; it != imgs.end(); ++it) if (*it) delete *it;
+		for (auto & img : imgs) if (img) delete img;
 		imgs.clear();
 	}
 
@@ -1006,11 +1004,8 @@ CtfCWautoAverager::CtfCWautoAverager()
 
 void CtfCWautoAverager::add_image(EMData * image)
 {
-	if (!image) {
+	if (!image)
 		return;
-	}
-
-
 
 	EMData *fft=image->do_fft();
 
@@ -1112,7 +1107,7 @@ EMData * CtfCWautoAverager::finish()
 	delete snrsum;
 	EMData *ret=result->do_ift();
 	delete result;
-	result=NULL;
+	result=nullptr;
 	return ret;
 }
 
@@ -1125,11 +1120,8 @@ CtfCAutoAverager::CtfCAutoAverager()
 
 void CtfCAutoAverager::add_image(EMData * image)
 {
-	if (!image) {
+	if (!image)
 		return;
-	}
-
-
 
 	EMData *fft=image->do_fft();
 
