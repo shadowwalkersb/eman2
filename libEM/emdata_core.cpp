@@ -90,7 +90,7 @@ EMData * EMData::copy() const
 {
 	ENTERFUNC;
 
-	EMData *ret = new EMData(*this);
+	auto *ret = new EMData(*this);
 
 	EXITFUNC;
 	return ret;
@@ -100,7 +100,7 @@ EMData * EMData::copy() const
 EMData *EMData::copy_head() const
 {
 	ENTERFUNC;
-	EMData *ret = new EMData();
+	auto *ret = new EMData();
 	ret->attr_dict = attr_dict;
 
 	ret->set_size(nx, ny, nz);
@@ -732,7 +732,7 @@ EMData *EMData::get_row(int row_index) const
 		throw ImageDimensionException("1D/2D image only");
 	}
 
-	EMData *ret = new EMData();
+	auto *ret = new EMData();
 	ret->set_size(nx, 1, 1);
 	memcpy(ret->get_data(), get_data() + nx * row_index, nx * sizeof(float));
 	ret->update();
@@ -767,7 +767,7 @@ EMData *EMData::get_col(int col_index) const
 		throw ImageDimensionException("2D image only");
 	}
 
-	EMData *ret = new EMData();
+	auto *ret = new EMData();
 	ret->set_size(ny, 1, 1);
 	float *dst = ret->get_data();
 	float *src = get_data();
@@ -1157,7 +1157,7 @@ EMData * EMData::real() const //real part has half of x dimension for a complex 
 {
 	ENTERFUNC;
 
-	EMData * e = new EMData();
+	auto * e = new EMData();
 
 	if( is_real() ) // a real image, return a copy of itself
 	{
@@ -1210,7 +1210,7 @@ EMData * EMData::imag() const
 {
 	ENTERFUNC;
 
-	EMData * e = new EMData();
+	auto * e = new EMData();
 
 	if( is_real() ) {	//a real image has no imaginary part, throw exception
 		throw InvalidCallException("No imaginary part for a real image, this function call require a complex image.");
@@ -1251,7 +1251,7 @@ EMData * EMData::absi() const//abs has half of x dimension for a complex image
 {
 	ENTERFUNC;
 
-	EMData * e = new EMData();
+	auto * e = new EMData();
 
 	if( is_real() ) // a real image
 	{
@@ -1318,7 +1318,7 @@ EMData * EMData::amplitude() const
 {
 	ENTERFUNC;
 
-	EMData * e = new EMData();
+	auto * e = new EMData();
 
 	if( is_real() ) {
 		throw InvalidCallException("No imaginary part for a real image, this function call require a complex image.");
@@ -1367,7 +1367,7 @@ EMData * EMData::phase() const
 {
 	ENTERFUNC;
 
-	EMData * e = new EMData();
+	auto * e = new EMData();
 
 	if( is_real() ) {
 		delete e;
@@ -1418,7 +1418,7 @@ EMData * EMData::real2complex(const float img) const
 		throw InvalidCallException("This function call only apply to real image");
 	}
 
-	EMData * e = new EMData();
+	auto * e = new EMData();
 	int nx = get_xsize();
 	int ny = get_ysize();
 	int nz = get_zsize();
