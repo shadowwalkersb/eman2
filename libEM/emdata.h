@@ -667,7 +667,7 @@ namespace EMAN
 		 * @exception NullPointerException If FFT resturns NULL image.
 		 * @return The result image.
 		 */
-		EMData *convolute(EMData * with);
+		EMData *convolute(EMData * with) const;
 
 #if 0
 		void create_ctf_map(CtfMapType type, XYData * sf = 0);
@@ -750,7 +750,7 @@ namespace EMAN
 		* @author John Flanagan
 		* @date Aug 2011
 		**/
-		EMData *extract_box(const Transform& cs, const Region& r);
+		EMData *extract_box(const Transform& cs, const Region& r) const;
 		
 		/** function for MarchingCubes, for 3D image display
 		 * @return the resolution

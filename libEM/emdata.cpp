@@ -712,7 +712,7 @@ EMData *EMData::get_top_half() const
 		throw ImageDimensionException("3D only");
 	}
 
-	EMData *half = new EMData();
+	auto *half = new EMData();
 	half->attr_dict = attr_dict;
 	half->set_size(nx, ny, nz / 2);
 
@@ -733,7 +733,7 @@ EMData *EMData::get_top_half() const
 EMData *EMData::get_rotated_clip(const Transform &xform,
 								 const IntSize &size, float)
 {
-	EMData *result = new EMData();
+	auto *result = new EMData();
 	result->set_size(size[0],size[1],size[2]);
 
 	if (nz==1) {
@@ -1422,7 +1422,7 @@ EMData *EMData::do_radon()
 		throw ImageFormatException("square image only");
 	}
 
-	EMData *result = new EMData();
+	auto *result = new EMData();
 	result->set_size(nx, ny, 1);
 	result->to_zero();
 	float *result_data = result->get_data();
@@ -1436,13 +1436,10 @@ EMData *EMData::do_radon()
 
 		float *copy_data = this_copy->get_data();
 
-		for (int y = 0; y < nx; y++) {
-			for (int x = 0; x < nx; x++) {
-				if (Util::square(x - nx / 2) + Util::square(y - nx / 2) <= nx * nx / 4) {
+		for (int y = 0; y < nx; y++)
+			for (int x = 0; x < nx; x++)
+				if (Util::square(x - nx / 2) + Util::square(y - nx / 2) <= nx * nx / 4)
 					result_data[i + y * nx] += copy_data[x + y * nx];
-				}
-			}
-		}
 
 		this_copy->update();
 	}
@@ -1750,7 +1747,7 @@ EMData *EMData::calc_ccfx( EMData * const with, int y0, int y1, bool no_sum, boo
 		EXITFUNC;
 		return new EMData(rslt);
 	} else {
-		EMData *cf = new EMData(nx,1,1);
+		auto *cf = new EMData(nx,1,1);
 		cf->to_zero();
 		float *c = cf->get_data();
 		for (int j = 0; j < height; j++) {
@@ -1989,7 +1986,7 @@ EMData *EMData::make_rotational_footprint_e1( bool unwrap)
 	//if (EMData::usecuda == 1) sml_clip.roneedsanupdate(); //If we didn't do this then unwrap would use data from the previous call of this function, happens b/c sml_clip is static
 #endif
 	EXITFUNC;
-	if ( unwrap == true)
+	if (unwrap)
 	{ // this if statement reflects a strict policy of caching in only one scenario see comments at beginning of function block
 
 		// Note that the if statement at the beginning of this function ensures that rot_fp is not zero, so there is no need
@@ -2001,7 +1998,8 @@ EMData *EMData::make_rotational_footprint_e1( bool unwrap)
 		rot_fp = result;
 		return new EMData(*rot_fp);
 	}
-	else return result;
+	else
+		return result;
 }
 
 EMData *EMData::make_footprint(int type)
@@ -2599,7 +2597,7 @@ EMData *EMData::unwrap(int r1, int r2, int xs, int dx, int dy, bool do360, bool 
 	}
 #endif
 
-	EMData *ret = new EMData();
+	auto *ret = new EMData();
 	ret->set_size(xs, r2 - r1, 1);
 	const float *const d = get_const_data();
 	float *dd = ret->get_data();
@@ -3487,7 +3485,7 @@ EMData *EMData::calc_flcf(EMData * with)
 	int nxc = nx+mnx; int nyc = ny+mny; int nzc = nz+mnz;
 
 	// Ones is a circular/spherical mask, consisting of 1s.
-	EMData* ones = new EMData(mnx,mny,mnz);
+	auto* ones = new EMData(mnx,mny,mnz);
 	ones->process_inplace("testimage.circlesphere");
 
 	// Get a copy of with, we will eventually resize it
@@ -3525,7 +3523,7 @@ EMData *EMData::calc_flcf(EMData * with)
 	return corr;
 }
 
-EMData *EMData::convolute(EMData * with)
+EMData *EMData::convolute(EMData * with) const
 {
 	ENTERFUNC;
 	
@@ -4242,11 +4240,11 @@ void EMData::uncut_slice(EMData * const map, const Transform& transform) const
 	EXITFUNC;
 }
 
-EMData *EMData::extract_box(const Transform& cs, const Region& r)
+EMData *EMData::extract_box(const Transform& cs, const Region& r) const
 {
 	vector<float> cs_matrix = cs.get_matrix();
 	
-	EMData* box = new EMData();
+	auto* box = new EMData();
 	box->set_size((r.get_width()-r.x_origin()), (r.get_height()-r.y_origin()), (r.get_depth()-r.z_origin()));
 	int box_nx = box->get_xsize();
 	int box_ny = box->get_ysize();
@@ -4312,7 +4310,7 @@ void EMData::save_byteorder_to_dict(ImageIO * imageio)
 
 EMData* EMData::compute_missingwedge(float wedgeangle, float start, float stop)
 {		
-	EMData* test = new EMData();
+	auto* test = new EMData();
 	test->set_size(nx,ny,nz);
 	
 	float ratio = tan((90.0f-wedgeangle)*M_PI/180.0f);
