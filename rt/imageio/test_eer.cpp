@@ -157,7 +157,7 @@ void test_eer_rle_counter() {
 	BuffWord a = 0b11001101;
 
 	BitStream<BuffWord> is1(&a);
-	BitReader<1, false, BuffWord> rle1;
+	BitReaderCounter<1, false, BuffWord> rle1;
 
 	is1 >> rle1;
 	assert(rle1 == 1);
