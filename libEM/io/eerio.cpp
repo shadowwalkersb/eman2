@@ -62,8 +62,8 @@ EerFrame::EerFrame(TIFF *tiff)
 
 	while (rle < N) {
 		is>>rle>>sub_pix;
-		int x = rle & 4095;
-		int y = rle >> 12;
+		int x = (((rle & 4095) << 2) | ((sub_pix & 3)  ^ 2));
+		int y = (((rle >> 12)  << 2) | ((sub_pix >> 2) ^ 2));
 
 		_coords.push_back(std::make_pair(x,y));
 		
