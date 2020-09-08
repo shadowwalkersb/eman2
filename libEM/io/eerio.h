@@ -127,8 +127,8 @@ namespace EMAN
 		VC coords() const;
 
 	private:
-		const unsigned int size_bits=12;
-		const unsigned int N;
+		unsigned int size_bits=12;
+		unsigned int N;
 		size_t num_strips;
 		std::vector<unsigned char> data;
 		VC _coords;
