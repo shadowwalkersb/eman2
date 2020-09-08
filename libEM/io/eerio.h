@@ -122,11 +122,13 @@ namespace EMAN
 	class EerFrame {
 	public:
 		EerFrame() =default;
-		EerFrame(TIFF *tiff);
+		EerFrame(TIFF *tiff, unsigned int bits=12); // 2^12 = 4096
 
 		VC coords() const;
 
 	private:
+		const unsigned int size_bits=12;
+		const unsigned int N;
 		size_t num_strips;
 		std::vector<unsigned char> data;
 		VC _coords;

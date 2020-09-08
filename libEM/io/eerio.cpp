@@ -36,8 +36,8 @@
 using namespace EMAN;
 
 
-EerFrame::EerFrame(TIFF *tiff)
-	: num_strips(TIFFNumberOfStrips(tiff))
+EerFrame::EerFrame(TIFF *tiff, unsigned int bits)
+	: size_bits(bits), N(1<<size_bits), num_strips(TIFFNumberOfStrips(tiff))
 {
 	vector<unsigned int> strip_sizes(num_strips);
 	for(size_t i=0; i<num_strips; ++i) {
@@ -55,12 +55,11 @@ EerFrame::EerFrame(TIFF *tiff)
 	EerSubPix sub_pix;
 
 	int count = 0;
-	int N = 4096*4096;
 
-	while (count<N) {
+	while (count<N*N) {
 		is>>rle>>sub_pix;
-		int x = count & 4095;
-		int y = count >> 12;
+		int x = count & (N - 1);
+		int y = count >> size_bits;
 
 		count += rle+1;
 		
@@ -85,7 +84,7 @@ EerIO::EerIO(const string & fname, IOMode rw)
 	for(size_t i=0; i<get_nimg(); i++){
 		TIFFSetDirectory(tiff_file, i);
 
-		frames[i] = EerFrame(tiff_file);
+		frames[i] = EerFrame(tiff_file,12);
 	}
 }
 
