@@ -142,46 +142,46 @@ def stopautoflush():
 
 # These are very widely used and hard to find, so some shortcuts
 # Image file types
-IMAGE_MRC = EMUtil.ImageType.IMAGE_MRC
-IMAGE_EER = EMUtil.ImageType.IMAGE_EER
-IMAGE_EER8K = EMUtil.ImageType.IMAGE_EER8K
-IMAGE_EER16K = EMUtil.ImageType.IMAGE_EER16K
-IMAGE_SPIDER = EMUtil.ImageType.IMAGE_SPIDER
+IMAGE_MRC           = EMUtil.ImageType.IMAGE_MRC
+IMAGE_EER           = EMUtil.ImageType.IMAGE_EER
+IMAGE_EER8K         = EMUtil.ImageType.IMAGE_EER8K
+IMAGE_EER16K        = EMUtil.ImageType.IMAGE_EER16K
+IMAGE_SPIDER        = EMUtil.ImageType.IMAGE_SPIDER
 IMAGE_SINGLE_SPIDER = EMUtil.ImageType.IMAGE_SINGLE_SPIDER
-IMAGE_IMAGIC = EMUtil.ImageType.IMAGE_IMAGIC
-IMAGE_HDF = EMUtil.ImageType.IMAGE_HDF
-IMAGE_DM3 = EMUtil.ImageType.IMAGE_DM3
-IMAGE_DM4 = EMUtil.ImageType.IMAGE_DM4
-IMAGE_TIFF = EMUtil.ImageType.IMAGE_TIFF
-IMAGE_PGM = EMUtil.ImageType.IMAGE_PGM
-IMAGE_LST = EMUtil.ImageType.IMAGE_LST
-IMAGE_PIF = EMUtil.ImageType.IMAGE_PIF
-IMAGE_VTK = EMUtil.ImageType.IMAGE_VTK
-IMAGE_PNG = EMUtil.ImageType.IMAGE_PNG
-IMAGE_SAL = EMUtil.ImageType.IMAGE_SAL
-IMAGE_ICOS = EMUtil.ImageType.IMAGE_ICOS
-IMAGE_EMIM = EMUtil.ImageType.IMAGE_EMIM
-IMAGE_GATAN2 = EMUtil.ImageType.IMAGE_GATAN2
-IMAGE_AMIRA = EMUtil.ImageType.IMAGE_AMIRA
-IMAGE_XPLOR = EMUtil.ImageType.IMAGE_XPLOR
-IMAGE_EM = EMUtil.ImageType.IMAGE_EM
-IMAGE_V4L = EMUtil.ImageType.IMAGE_V4L
-IMAGE_UNKNOWN = EMUtil.ImageType.IMAGE_UNKNOWN
+IMAGE_IMAGIC        = EMUtil.ImageType.IMAGE_IMAGIC
+IMAGE_HDF           = EMUtil.ImageType.IMAGE_HDF
+IMAGE_DM3           = EMUtil.ImageType.IMAGE_DM3
+IMAGE_DM4           = EMUtil.ImageType.IMAGE_DM4
+IMAGE_TIFF          = EMUtil.ImageType.IMAGE_TIFF
+IMAGE_PGM           = EMUtil.ImageType.IMAGE_PGM
+IMAGE_LST           = EMUtil.ImageType.IMAGE_LST
+IMAGE_PIF           = EMUtil.ImageType.IMAGE_PIF
+IMAGE_VTK           = EMUtil.ImageType.IMAGE_VTK
+IMAGE_PNG           = EMUtil.ImageType.IMAGE_PNG
+IMAGE_SAL           = EMUtil.ImageType.IMAGE_SAL
+IMAGE_ICOS          = EMUtil.ImageType.IMAGE_ICOS
+IMAGE_EMIM          = EMUtil.ImageType.IMAGE_EMIM
+IMAGE_GATAN2        = EMUtil.ImageType.IMAGE_GATAN2
+IMAGE_AMIRA         = EMUtil.ImageType.IMAGE_AMIRA
+IMAGE_XPLOR         = EMUtil.ImageType.IMAGE_XPLOR
+IMAGE_EM            = EMUtil.ImageType.IMAGE_EM
+IMAGE_V4L           = EMUtil.ImageType.IMAGE_V4L
+IMAGE_UNKNOWN       = EMUtil.ImageType.IMAGE_UNKNOWN
 
 # image data storage modes
-EM_UNKNOWN = EMUtil.EMDataType.EM_UNKNOWN
-EM_CHAR = EMUtil.EMDataType.EM_CHAR
-EM_UCHAR = EMUtil.EMDataType.EM_UCHAR
-EM_SHORT = EMUtil.EMDataType.EM_SHORT
-EM_USHORT = EMUtil.EMDataType.EM_USHORT
-EM_INT = EMUtil.EMDataType.EM_INT
-EM_UINT = EMUtil.EMDataType.EM_UINT
-EM_FLOAT = EMUtil.EMDataType.EM_FLOAT
-EM_DOUBLE = EMUtil.EMDataType.EM_DOUBLE
-EM_SHORT_COMPLEX = EMUtil.EMDataType.EM_SHORT_COMPLEX
+EM_UNKNOWN        = EMUtil.EMDataType.EM_UNKNOWN
+EM_CHAR           = EMUtil.EMDataType.EM_CHAR
+EM_UCHAR          = EMUtil.EMDataType.EM_UCHAR
+EM_SHORT          = EMUtil.EMDataType.EM_SHORT
+EM_USHORT         = EMUtil.EMDataType.EM_USHORT
+EM_INT            = EMUtil.EMDataType.EM_INT
+EM_UINT           = EMUtil.EMDataType.EM_UINT
+EM_FLOAT          = EMUtil.EMDataType.EM_FLOAT
+EM_DOUBLE         = EMUtil.EMDataType.EM_DOUBLE
+EM_SHORT_COMPLEX  = EMUtil.EMDataType.EM_SHORT_COMPLEX
 EM_USHORT_COMPLEX = EMUtil.EMDataType.EM_USHORT_COMPLEX
-EM_FLOAT_COMPLEX = EMUtil.EMDataType.EM_FLOAT_COMPLEX
-EM_COMPRESSED = EMUtil.EMDataType.EM_COMPRESSED
+EM_FLOAT_COMPLEX  = EMUtil.EMDataType.EM_FLOAT_COMPLEX
+EM_COMPRESSED     = EMUtil.EMDataType.EM_COMPRESSED
 
 
 # These map standard names for data types to internal representation, and provide a minimum and maximum value for each type
