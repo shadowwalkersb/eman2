@@ -157,7 +157,9 @@ namespace EMAN
 		pair<int, int> operator()(int count, int subPix) const override;
 	};
 
-	static Decoder dec;
+	static Decoder    dec4k;
+	static Decoder8k  dec8k;
+	static Decoder16k dec16k;
 
 
 	auto decode_eer_data(EerWord *data);
@@ -166,7 +168,7 @@ namespace EMAN
 	class EerIO : public ImageIO
 	{
 	public:
-		EerIO(const string & fname, IOMode rw_mode = READ_ONLY);
+		EerIO(const string & fname, IOMode rw_mode = READ_ONLY, Decoder &dec=dec4k);
 		~EerIO();
 
 		int get_nimg();

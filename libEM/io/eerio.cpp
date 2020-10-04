@@ -111,7 +111,7 @@ auto EMAN::decode_eer_data(EerWord *data) {
 	return coords;
 }
 
-EerIO::EerIO(const string & fname, IOMode rw)
+EerIO::EerIO(const string & fname, IOMode rw, Decoder &dec)
 :	ImageIO(fname, rw), decoder(dec)
 {
 	tiff_file = TIFFOpen(fname.c_str(), "r");

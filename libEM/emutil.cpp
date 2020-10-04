@@ -599,7 +599,13 @@ ImageIO *EMUtil::get_imageio(const string & filename, int rw,
 		imageio = new MrcIO(filename, rw_mode);
 		break;
 	case IMAGE_EER:
-		imageio = new EerIO(filename, rw_mode);
+		imageio = new EerIO(filename, rw_mode, dec4k);
+		break;
+	case IMAGE_EER8K:
+		imageio = new EerIO(filename, rw_mode, dec8k);
+		break;
+	case IMAGE_EER16K:
+		imageio = new EerIO(filename, rw_mode, dec16k);
 		break;
 	case IMAGE_IMAGIC:
 		imageio = new ImagicIO2(filename, rw_mode);
