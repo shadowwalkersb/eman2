@@ -190,6 +190,10 @@ int EerIO::read_header(Dict & dict, int image_index, const Region * area, bool i
 	dict["nx"] = decoder.rows;
 	dict["ny"] = decoder.cols;
 	dict["nz"] = 1;
+	
+	cout<<"decoder.rows: "<<decoder.rows
+			<<"\ndecoder.cols: "<<decoder.cols
+			<<endl;
 
 	return 0;
 }
@@ -204,14 +208,25 @@ int EerIO::write_header(const Dict & dict, int image_index, const Region* area,
 
 	return 0;
 }
+#include "util.h"
 
 int EerIO::read_data(float *rdata, int image_index, const Region * area, bool)
 {
 	ENTERFUNC;
 
-	auto coords = decode_eer_data((EerWord *) frames[image_index].data_(), decoder);
-	for(auto &c : coords)
+	auto coords = eer_decoder((EerWord*)frames[image_index].data_(), decoder);
+	cout<<"coords.size(): "<<coords.size()<<endl;
+	cout<<"sizeof(rdata): "<<sizeof(rdata)<<endl;
+
+	std::ofstream fout("coords_"+Util::int2str(image_index)+".txt");
+
+
+	for(auto &c : coords) {
+		fout << c.first << " " << c.second << endl;
+//		cout<<"c.first + c.second * decoder.rows: "<<c.first + c.second * decoder.rows<<endl;
+//		cout<<" "<<c.first <<" "<< c.second <<endl;
 		rdata[c.first + c.second * decoder.rows] += 1;
+	}
 
 	EXITFUNC;
 

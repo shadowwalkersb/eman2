@@ -36,6 +36,7 @@
 
 #include <tiffio.h>
 #include <bitset>
+#include <fstream>
 
 
 namespace EMAN
