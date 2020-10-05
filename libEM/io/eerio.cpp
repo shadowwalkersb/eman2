@@ -59,10 +59,16 @@ auto EerFrame::data_() const {
 	return data.data();
 }
 
+Decoder::Decoder(int r, int c)
+		: rows(r), cols(c)
+{}
+
 Decoder8k::Decoder8k()
+		: Decoder(2*EER_ROWS, 2*EER_COLS)
 {}
 
 Decoder16k::Decoder16k()
+		: Decoder(4*EER_ROWS, 4*EER_COLS)
 {}
 
 pair<int, int> Decoder::operator()(int count, int subPix) const {

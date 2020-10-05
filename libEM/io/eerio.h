@@ -138,10 +138,15 @@ namespace EMAN
 
 	struct Decoder {
 
+		Decoder() =default;
+
 		const int rows = EER_CAMERA_SIZE;
 		const int cols = EER_CAMERA_SIZE;
 
 		virtual pair<int, int> operator()(int count, int subPix) const;
+
+	protected:
+		Decoder(int r, int c);
 	};
 
 
