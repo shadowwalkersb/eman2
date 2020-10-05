@@ -447,7 +447,6 @@ def main():
 			nimg = EMUtil.get_image_count(infile)
 
 			# reads header only
-
 			isthreed = False
 			plane = options.plane
 			[tomo_nx, tomo_ny, tomo_nz] = gimme_image_dimensions3D(infile)
@@ -488,7 +487,6 @@ def main():
 			print("%d images, processing %d-%d stepping by %d"%(nimg,n0,n1,options.step[1]))
 
 		# Now we deal with inclusion/exclusion lists
-
 		if options.list or options.select :
 			imagelist = [0]*nimg
 
@@ -843,7 +841,7 @@ def main():
 						d.process_inplace("math.fft.resample",{"n":fshrink})
 
 					index_d[option1] += 1
-					
+
 				elif option1 == "headertransform":
 					xfmode = options.headertransform[index_d[option1]]
 					
