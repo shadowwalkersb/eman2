@@ -72,6 +72,7 @@ Decoder16k::Decoder16k()
 {}
 
 pair<int, int> Decoder::operator()(int count, int subPix) const {
+	cout<<"Decoder()"<<endl;
 	int x = count & (EER_CAMERA_SIZE - 1);
 	int y = count >> EER_CAMERA_SIZE_BITS;
 
@@ -79,6 +80,7 @@ pair<int, int> Decoder::operator()(int count, int subPix) const {
 }
 
 pair<int, int> Decoder8k::operator()(int count, int subPix) const {
+	cout<<"Decoder8()"<<endl;
 	int x = (count & (EER_ROWS - 1) << 1) | (subPix & 1);
 	int y = (count >> 12            << 1) | (subPix >> 1);
 
@@ -86,6 +88,7 @@ pair<int, int> Decoder8k::operator()(int count, int subPix) const {
 }
 
 pair<int, int> Decoder16k::operator()(int count, int subPix) const {
+	cout<<"Decoder16()"<<endl;
 	int x = (count & (EER_ROWS - 1) << 2) | (subPix & 2);
 	int y = (count >> 12            << 2) | (subPix >> 2);
 
