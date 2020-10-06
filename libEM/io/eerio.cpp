@@ -68,30 +68,6 @@ unsigned int Decoder::y(unsigned int count, unsigned int sub_pix) const {
 	return  count >> EER_CAMERA_SIZE_BITS;
 }
 
-unsigned int Decoder4k::x(unsigned int count, unsigned int sub_pix) const {
-	return Decoder::x(count, sub_pix);
-}
-
-unsigned int Decoder4k::y(unsigned int count, unsigned int sub_pix) const {
-	return Decoder::y(count, sub_pix);
-}
-
-unsigned int Decoder8k::x(unsigned int count, unsigned int sub_pix) const {
-	return (Decoder::x(count, sub_pix) << 1) | (sub_pix & 1);
-}
-
-unsigned int Decoder8k::y(unsigned int count, unsigned int sub_pix) const {
-	return (Decoder::y(count, sub_pix) << 1) | (sub_pix >> 1);
-}
-
-unsigned int Decoder4k::mult_() const {
-	return 0;
-}
-
-unsigned int Decoder8k::mult_() const {
-	return 1;
-}
-
 auto Decoder::operator()(unsigned int count, unsigned int sub_pix) const {
 	return std::make_pair(x(count, sub_pix), y(count, sub_pix));
 }

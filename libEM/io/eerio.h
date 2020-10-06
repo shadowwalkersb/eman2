@@ -152,29 +152,46 @@ namespace EMAN
 	};
 
 	
-	struct Decoder4k : public Decoder {
+	template <unsigned int I>
+	struct DecoderIk : public Decoder {
 		unsigned int mult_() const override;
 		
 		unsigned int x(unsigned int count, unsigned int sub_pix) const override;
 		unsigned int y(unsigned int count, unsigned int sub_pix) const override;
 	private:
-		unsigned int mult = 0;
+		unsigned int mult = I;
 	};
 
 
-	struct Decoder8k : public Decoder {
-		unsigned int mult_() const override;
+	template <>
+	inline unsigned int DecoderIk<0>::x(unsigned int count, unsigned int sub_pix) const {
+		return Decoder::x(count, sub_pix);
+	}
 
-		unsigned int x(unsigned int count, unsigned int sub_pix) const override;
-	private:
-		unsigned int mult = 1;
-		unsigned int y(unsigned int count, unsigned int sub_pix) const override;
-	};
-	
+	template <>
+	inline unsigned int DecoderIk<0>::y(unsigned int count, unsigned int sub_pix) const {
+		return Decoder::y(count, sub_pix);
+	}
+
+	template <unsigned int I>
+	unsigned int DecoderIk<I>::x(unsigned int count, unsigned int sub_pix) const {
+		return (Decoder::x(count, sub_pix) << I) | (sub_pix & I);
+	}
+
+	template <unsigned int I>
+	unsigned int DecoderIk<I>::y(unsigned int count, unsigned int sub_pix) const {
+		return (Decoder::y(count, sub_pix) << I) | (sub_pix >> I);
+	}
+
+	template <unsigned int I>
+	unsigned int DecoderIk<I>::mult_() const {
+		return I;
+	}
+
 	auto decode_eer_data(EerWord *data, Decoder &decoder);
 
-	static Decoder4k decoder4k;
-	static Decoder8k decoder8k;
+	static DecoderIk<0> decoder4k;
+	static DecoderIk<1> decoder8k;
 
 
 	class EerIO : public ImageIO
