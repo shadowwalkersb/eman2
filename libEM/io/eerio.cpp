@@ -69,22 +69,18 @@ unsigned int Decoder::y(unsigned int count, unsigned int sub_pix) const {
 }
 
 unsigned int Decoder4k::x(unsigned int count, unsigned int sub_pix) const {
-	cout<<"Decoder4k()::x"<<endl;
 	return Decoder::x(count, sub_pix);
 }
 
 unsigned int Decoder4k::y(unsigned int count, unsigned int sub_pix) const {
-	cout<<"Decoder4k()::y"<<endl;
 	return Decoder::y(count, sub_pix);
 }
 
 unsigned int Decoder8k::x(unsigned int count, unsigned int sub_pix) const {
-	cout<<"Decoder8k()::x"<<endl;
 	return (Decoder::x(count, sub_pix) << 1) | (sub_pix & 1);
 }
 
 unsigned int Decoder8k::y(unsigned int count, unsigned int sub_pix) const {
-	cout<<"Decoder8k()::y"<<endl;
 	return (Decoder::y(count, sub_pix) << 1) | (sub_pix >> 1);
 }
 
