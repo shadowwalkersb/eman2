@@ -152,10 +152,17 @@ namespace EMAN
 		unsigned int x(unsigned int count, unsigned int sub_pix) const override;
 		unsigned int y(unsigned int count, unsigned int sub_pix) const override;
 	};
+
+
+	struct Decoder8k : public Decoder {
+		unsigned int x(unsigned int count, unsigned int sub_pix) const override;
+		unsigned int y(unsigned int count, unsigned int sub_pix) const override;
+	};
 	
 	auto decode_eer_data(EerWord *data, Decoder &decoder);
 
 	static Decoder4k decoder4k;
+	static Decoder8k decoder8k;
 
 
 	class EerIO : public ImageIO

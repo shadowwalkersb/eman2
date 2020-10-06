@@ -591,7 +591,7 @@ ImageIO *EMUtil::get_imageio(const string & filename, int rw,
 		imageio = new MrcIO(filename, rw_mode);
 		break;
 	case IMAGE_EER:
-		imageio = new EerIO(filename, rw_mode);
+		imageio = new EerIO(filename, rw_mode, decoder8k);
 		break;
 	case IMAGE_IMAGIC:
 		imageio = new ImagicIO2(filename, rw_mode);
