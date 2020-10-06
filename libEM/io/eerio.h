@@ -192,6 +192,7 @@ namespace EMAN
 
 	static DecoderIk<0> decoder4k;
 	static DecoderIk<1> decoder8k;
+	static DecoderIk<2> decoder16k;
 
 
 	class EerIO : public ImageIO
