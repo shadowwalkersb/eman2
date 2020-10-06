@@ -143,19 +143,31 @@ namespace EMAN
 		virtual unsigned int x(unsigned int count, unsigned int sub_pix) const =0;
 		virtual unsigned int y(unsigned int count, unsigned int sub_pix) const =0;
 
+	private:
+//		unsigned int mult = 0;
+
 	public:
+		virtual unsigned int mult_() const =0;
 		auto operator()(unsigned int count, unsigned int sub_pix) const;
 	};
 
 	
 	struct Decoder4k : public Decoder {
+		unsigned int mult_() const override;
+		
 		unsigned int x(unsigned int count, unsigned int sub_pix) const override;
 		unsigned int y(unsigned int count, unsigned int sub_pix) const override;
+	private:
+		unsigned int mult = 0;
 	};
 
 
 	struct Decoder8k : public Decoder {
+		unsigned int mult_() const override;
+
 		unsigned int x(unsigned int count, unsigned int sub_pix) const override;
+	private:
+		unsigned int mult = 1;
 		unsigned int y(unsigned int count, unsigned int sub_pix) const override;
 	};
 	

@@ -84,6 +84,14 @@ unsigned int Decoder8k::y(unsigned int count, unsigned int sub_pix) const {
 	return (Decoder::y(count, sub_pix) << 1) | (sub_pix >> 1);
 }
 
+unsigned int Decoder4k::mult_() const {
+	return 0;
+}
+
+unsigned int Decoder8k::mult_() const {
+	return 1;
+}
+
 auto Decoder::operator()(unsigned int count, unsigned int sub_pix) const {
 	return std::make_pair(x(count, sub_pix), y(count, sub_pix));
 }
@@ -165,6 +173,7 @@ bool EerIO::is_image_big_endian()
 	return is_big_endian;
 }
 
+#include <cmath>
 
 int EerIO::read_header(Dict & dict, int image_index, const Region * area, bool is_3d)
 {
@@ -176,8 +185,9 @@ int EerIO::read_header(Dict & dict, int image_index, const Region * area, bool i
 	TIFFGetField(tiff_file, TIFFTAG_IMAGEWIDTH, &nx);
 	TIFFGetField(tiff_file, TIFFTAG_IMAGELENGTH, &ny);
 
-	dict["nx"] = EER_CAMERA_SIZE;
-	dict["ny"] = EER_CAMERA_SIZE;
+	cout<<" decoder.mult_(): "<<  decoder.mult_()<<endl;
+	dict["nx"] = EER_CAMERA_SIZE * pow(2, decoder.mult_());
+	dict["ny"] = EER_CAMERA_SIZE * pow(2, decoder.mult_());
 	dict["nz"] = 1;
 
 	return 0;
@@ -200,7 +210,7 @@ int EerIO::read_data(float *rdata, int image_index, const Region * area, bool)
 
 	auto coords = decode_eer_data((EerWord *) frames[image_index].data_(), decoder);
 	for(auto &c : coords)
-		rdata[c.first + c.second * EER_CAMERA_SIZE] += 1;
+		rdata[c.first + c.second * EER_CAMERA_SIZE * (int)pow(2, (int)decoder.mult_())] += 1;
 
 	EXITFUNC;
 
