@@ -148,6 +148,7 @@ namespace EMAN
 		const unsigned int EER_CAMERA_SIZE_BITS = 12;
 		const unsigned int EER_CAMERA_SIZE      = 1 << EER_CAMERA_SIZE_BITS; // 2^12 = 4096
 
+	public:
 		unsigned int x(unsigned int count, unsigned int sub_pix) const;
 		unsigned int y(unsigned int count, unsigned int sub_pix) const;
 
@@ -178,12 +179,12 @@ namespace EMAN
 
 	template <unsigned int I>
 	unsigned int DecoderIk<I>::x(unsigned int count, unsigned int sub_pix) const {
-		return  ((count & (EER_CAMERA_SIZE - 1)) << I) | (sub_pix & I);
+		return  (DecoderIk<0>().x(count, sub_pix) << I) | (sub_pix & I);
 	}
 
 	template <unsigned int I>
 	unsigned int DecoderIk<I>::y(unsigned int count, unsigned int sub_pix) const {
-		return ((count >> EER_CAMERA_SIZE_BITS) << I) | (sub_pix >> I);
+		return (DecoderIk<0>().y(count, sub_pix) << I) | (sub_pix >> I);
 	}
 
 	
