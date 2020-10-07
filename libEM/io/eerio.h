@@ -144,6 +144,19 @@ namespace EMAN
 		virtual pair<int, int> operator()(int count, int subPix) const;
 	};
 
+
+	struct Decoder8k : public Decoder {
+		Decoder8k();
+		
+		pair<int, int> operator()(int count, int subPix) const override;
+	};
+
+	struct Decoder16k : public Decoder {
+		Decoder16k();
+		
+		pair<int, int> operator()(int count, int subPix) const override;
+	};
+
 	static Decoder dec;
 
 

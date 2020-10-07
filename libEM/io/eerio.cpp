@@ -59,11 +59,31 @@ auto EerFrame::data_() const {
 	return data.data();
 }
 
+Decoder8k::Decoder8k()
+{}
+
+Decoder16k::Decoder16k()
+{}
+
 pair<int, int> Decoder::operator()(int count, int subPix) const {
 	int x = count & (EER_CAMERA_SIZE - 1);
 	int y = count >> EER_CAMERA_SIZE_BITS;
 
 	return std::make_pair(x, y);
+}
+
+pair<int, int> Decoder8k::operator()(int count, int subPix) const {
+	int x = (count & (EER_ROWS - 1) << 1) | (subPix & 1);
+	int y = (count >> 12            << 1) | (subPix >> 1);
+
+	return std::make_pair(x,y);
+}
+
+pair<int, int> Decoder16k::operator()(int count, int subPix) const {
+	int x = (count & (EER_ROWS - 1) << 2) | (subPix & 2);
+	int y = (count >> 12            << 2) | (subPix >> 2);
+
+	return std::make_pair(x,y);
 }
 
 typedef vector<pair<int, int>> COORDS;
