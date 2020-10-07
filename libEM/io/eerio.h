@@ -36,6 +36,7 @@
 
 #include <tiffio.h>
 #include <bitset>
+#include <cmath>
 
 
 namespace EMAN
@@ -132,25 +133,70 @@ namespace EMAN
 	};
 
 
-	class Decoder {
+	typedef pair<int, int> COORD;
+	typedef vector<COORD> COORDS;
+
+	struct Decoder {
+		virtual COORD operator()(unsigned int count, unsigned int sub_pix) const =0;
+		virtual unsigned int num_pix() const =0;
+	};
+
+	
+	template <unsigned int I>
+	struct DecoderIk : public Decoder {
+	private:
 		const unsigned int EER_CAMERA_SIZE_BITS = 12;
 		const unsigned int EER_CAMERA_SIZE      = 1 << EER_CAMERA_SIZE_BITS; // 2^12 = 4096
 
-		auto x(unsigned int count, unsigned int sub_pix) const;
-		auto y(unsigned int count, unsigned int sub_pix) const;
+		unsigned int x(unsigned int count, unsigned int sub_pix) const;
+		unsigned int y(unsigned int count, unsigned int sub_pix) const;
 
 	public:
-		auto operator()(unsigned int count, unsigned int sub_pix) const;
+		COORD operator()(unsigned int count, unsigned int sub_pix) const override;
+		unsigned int num_pix() const;
 	};
 
+	template<unsigned int I>
+	unsigned int DecoderIk<I>::num_pix() const {
+		return EER_CAMERA_SIZE * pow(2, I);
+	}
 
-	auto decode_eer_data(EerWord *data, Decoder decoder);
+	template<unsigned int I>
+	COORD DecoderIk<I>::operator()(unsigned int count, unsigned int sub_pix) const {
+		return std::make_pair(x(count, sub_pix), y(count, sub_pix));
+	}
+
+	template <>
+	inline unsigned int DecoderIk<0>::x(unsigned int count, unsigned int sub_pix) const {
+		return count & (EER_CAMERA_SIZE - 1);
+	}
+
+	template <>
+	inline unsigned int DecoderIk<0>::y(unsigned int count, unsigned int sub_pix) const {
+		return count >> EER_CAMERA_SIZE_BITS;
+	}
+
+	template <unsigned int I>
+	unsigned int DecoderIk<I>::x(unsigned int count, unsigned int sub_pix) const {
+		return  ((count & (EER_CAMERA_SIZE - 1)) << I) | (sub_pix & I);
+	}
+
+	template <unsigned int I>
+	unsigned int DecoderIk<I>::y(unsigned int count, unsigned int sub_pix) const {
+		return ((count >> EER_CAMERA_SIZE_BITS) << I) | (sub_pix >> I);
+	}
+
+	
+	auto decode_eer_data(EerWord *data, Decoder &decoder);
+
+	static DecoderIk<0> decoder4k;
+	static DecoderIk<1> decoder8k;
 
 
 	class EerIO : public ImageIO
 	{
 	public:
-		EerIO(const string & fname, IOMode rw_mode = READ_ONLY);
+		EerIO(const string & fname, IOMode rw_mode = READ_ONLY, Decoder &dec=decoder4k);
 		~EerIO();
 
 		int get_nimg();
@@ -169,6 +215,7 @@ namespace EMAN
 		size_t num_dirs = 0;
 		
 		vector<EerFrame> frames;
+		Decoder &decoder;
 	};
 }
 
