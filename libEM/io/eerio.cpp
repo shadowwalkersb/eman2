@@ -148,6 +148,7 @@ int EerIO::read_header(Dict & dict, int image_index, const Region * area, bool i
 	TIFFGetField(tiff_file, TIFFTAG_IMAGEWIDTH, &nx);
 	TIFFGetField(tiff_file, TIFFTAG_IMAGELENGTH, &ny);
 
+	cout<<" decoder.mult_(): "<<  decoder.num_pix()<<endl;
 	dict["nx"] = decoder.num_pix();
 	dict["ny"] = decoder.num_pix();
 	dict["nz"] = 1;
