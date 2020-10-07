@@ -144,7 +144,7 @@ namespace EMAN
 		virtual pair<int, int> operator()(int count, int subPix) const;
 	};
 
-	static Decoder decoder;
+	static Decoder dec;
 
 
 	auto decode_eer_data(EerWord *data);
@@ -172,6 +172,9 @@ namespace EMAN
 		size_t num_dirs = 0;
 		
 		vector<EerFrame> frames;
+
+	protected:
+		Decoder &decoder;
 	};
 }
 

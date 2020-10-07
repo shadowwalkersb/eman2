@@ -92,7 +92,7 @@ auto EMAN::decode_eer_data(EerWord *data) {
 }
 
 EerIO::EerIO(const string & fname, IOMode rw)
-:	ImageIO(fname, rw)
+:	ImageIO(fname, rw), decoder(dec)
 {
 	tiff_file = TIFFOpen(fname.c_str(), "r");
 
