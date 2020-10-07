@@ -132,7 +132,19 @@ namespace EMAN
 	};
 
 
-	auto decode_eer_data(EerWord *data);
+	class Decoder {
+		const unsigned int EER_CAMERA_SIZE_BITS = 12;
+		const unsigned int EER_CAMERA_SIZE      = 1 << EER_CAMERA_SIZE_BITS; // 2^12 = 4096
+
+		auto x(unsigned int count, unsigned int sub_pix) const;
+		auto y(unsigned int count, unsigned int sub_pix) const;
+
+	public:
+		auto operator()(unsigned int count, unsigned int sub_pix) const;
+	};
+
+
+	auto decode_eer_data(EerWord *data, Decoder decoder);
 
 
 	class EerIO : public ImageIO
