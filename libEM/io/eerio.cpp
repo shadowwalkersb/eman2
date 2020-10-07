@@ -59,6 +59,13 @@ auto EerFrame::data_() const {
 	return data.data();
 }
 
+pair<int, int> Decoder::operator()(int count, int subPix) const {
+	int x = count & (EER_CAMERA_SIZE - 1);
+	int y = count >> EER_CAMERA_SIZE_BITS;
+
+	return std::make_pair(x, y);
+}
+
 typedef vector<pair<int, int>> COORDS;
 
 const unsigned int EER_CAMERA_SIZE_BITS = 12;
@@ -75,10 +82,8 @@ auto EMAN::decode_eer_data(EerWord *data) {
 
 	while (count < EER_CAMERA_SIZE * EER_CAMERA_SIZE) {
 		is>>rle>>sub_pix;
-		int x = count & (EER_CAMERA_SIZE - 1);
-		int y = count >> EER_CAMERA_SIZE_BITS;
 		
-		coords.push_back(std::make_pair(x,y));
+		coords.push_back(decoder(count, sub_pix));
 
 		count += rle+1;
 	}
@@ -149,8 +154,8 @@ int EerIO::read_header(Dict & dict, int image_index, const Region * area, bool i
 	TIFFGetField(tiff_file, TIFFTAG_IMAGEWIDTH, &nx);
 	TIFFGetField(tiff_file, TIFFTAG_IMAGELENGTH, &ny);
 
-	dict["nx"] = EER_CAMERA_SIZE;
-	dict["ny"] = EER_CAMERA_SIZE;
+	dict["nx"] = decoder.rows;
+	dict["ny"] = decoder.cols;
 	dict["nz"] = 1;
 
 	return 0;
@@ -171,9 +176,9 @@ int EerIO::read_data(float *rdata, int image_index, const Region * area, bool)
 {
 	ENTERFUNC;
 
-	auto coords = decode_eer_data((EerWord *) frames[image_index].data_());
+	auto coords = decode_eer_data((EerWord *) frames[image_index].data_(), decoder);
 	for(auto &c : coords)
-		rdata[c.first + c.second * EER_CAMERA_SIZE] += 1;
+		rdata[c.first + c.second * decoder.rows] += 1;
 
 	EXITFUNC;
 

@@ -116,6 +116,10 @@ namespace EMAN
 	using EerRle    = Rle   <7, EerWord>;
 	using EerSubPix = SubPix<4, EerWord>;
 
+
+	const unsigned int EER_CAMERA_SIZE_BITS = 12;
+	const unsigned int EER_CAMERA_SIZE      = 1 << EER_CAMERA_SIZE_BITS; // 2^12 = 4096
+
 	
 	class EerFrame {
 	public:
@@ -130,6 +134,17 @@ namespace EMAN
 
 		void _load_data(TIFF *tiff);
 	};
+
+
+	struct Decoder {
+
+		const int rows = EER_CAMERA_SIZE;
+		const int cols = EER_CAMERA_SIZE;
+
+		virtual pair<int, int> operator()(int count, int subPix) const;
+	};
+
+	static Decoder decoder;
 
 
 	auto decode_eer_data(EerWord *data);
