@@ -167,13 +167,13 @@ namespace EMAN
 	static Decoder16k dec16k;
 
 
-	auto decode_eer_data(EerWord *data);
+	auto decode_eer_data(EerWord *data, const Decoder &decoder);
 
 
 	class EerIO : public ImageIO
 	{
 	public:
-		EerIO(const string & fname, IOMode rw_mode = READ_ONLY, Decoder &dec=dec4k);
+		EerIO(const string & fname, IOMode rw_mode = READ_ONLY, Decoder dec=Decoder());
 		~EerIO();
 
 		int get_nimg();
@@ -194,7 +194,7 @@ namespace EMAN
 		vector<EerFrame> frames;
 
 	protected:
-		Decoder &decoder;
+		Decoder decoder;
 	};
 }
 

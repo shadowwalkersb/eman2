@@ -97,7 +97,7 @@ typedef vector<pair<int, int>> COORDS;
 const unsigned int EER_CAMERA_SIZE_BITS = 12;
 const unsigned int EER_CAMERA_SIZE      = 1 << EER_CAMERA_SIZE_BITS; // 2^12 = 4096
 
-auto EMAN::decode_eer_data(EerWord *data) {
+auto EMAN::decode_eer_data(EerWord *data, const Decoder &decoder) {
 	EerStream is((data));
 	EerRle    rle;
 	EerSubPix sub_pix;
@@ -117,7 +117,7 @@ auto EMAN::decode_eer_data(EerWord *data) {
 	return coords;
 }
 
-EerIO::EerIO(const string & fname, IOMode rw, Decoder &dec)
+EerIO::EerIO(const string & fname, IOMode rw, Decoder dec)
 :	ImageIO(fname, rw), decoder(dec)
 {
 	tiff_file = TIFFOpen(fname.c_str(), "r");
