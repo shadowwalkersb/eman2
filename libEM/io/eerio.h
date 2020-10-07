@@ -132,25 +132,36 @@ namespace EMAN
 	};
 
 
+	typedef pair<int, int> COORD;
+	typedef vector<COORD> COORDS;
+
 	class Decoder {
 		const unsigned int EER_CAMERA_SIZE_BITS = 12;
 		const unsigned int EER_CAMERA_SIZE      = 1 << EER_CAMERA_SIZE_BITS; // 2^12 = 4096
 
-		auto x(unsigned int count, unsigned int sub_pix) const;
-		auto y(unsigned int count, unsigned int sub_pix) const;
+	protected:
+		virtual unsigned int x(unsigned int count, unsigned int sub_pix) const =0;
+		virtual unsigned int y(unsigned int count, unsigned int sub_pix) const =0;
 
 	public:
 		auto operator()(unsigned int count, unsigned int sub_pix) const;
 	};
 
+	
+	struct Decoder4k : public Decoder {
+		unsigned int x(unsigned int count, unsigned int sub_pix) const override;
+		unsigned int y(unsigned int count, unsigned int sub_pix) const override;
+	};
+	
+	auto decode_eer_data(EerWord *data, Decoder &decoder);
 
-	auto decode_eer_data(EerWord *data, Decoder decoder);
+	static Decoder4k decoder4k;
 
 
 	class EerIO : public ImageIO
 	{
 	public:
-		EerIO(const string & fname, IOMode rw_mode = READ_ONLY);
+		EerIO(const string & fname, IOMode rw_mode = READ_ONLY, Decoder &dec=decoder4k);
 		~EerIO();
 
 		int get_nimg();
@@ -169,6 +180,7 @@ namespace EMAN
 		size_t num_dirs = 0;
 		
 		vector<EerFrame> frames;
+		Decoder &decoder;
 	};
 }
 

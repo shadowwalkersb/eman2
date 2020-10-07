@@ -60,12 +60,20 @@ auto EerFrame::data_() const {
 }
 
 
-auto Decoder::x(unsigned int count, unsigned int sub_pix) const {
+unsigned int Decoder::x(unsigned int count, unsigned int sub_pix) const {
 	return count & (EER_CAMERA_SIZE - 1);
 }
 
-auto Decoder::y(unsigned int count, unsigned int sub_pix) const {
+unsigned int Decoder::y(unsigned int count, unsigned int sub_pix) const {
 	return  count >> EER_CAMERA_SIZE_BITS;
+}
+
+unsigned int Decoder4k::x(unsigned int count, unsigned int sub_pix) const {
+	return Decoder::x(count, sub_pix);
+}
+
+unsigned int Decoder4k::y(unsigned int count, unsigned int sub_pix) const {
+	return Decoder::y(count, sub_pix);
 }
 
 auto Decoder::operator()(unsigned int count, unsigned int sub_pix) const {
@@ -77,7 +85,7 @@ typedef vector<pair<int, int>> COORDS;
 const unsigned int EER_CAMERA_SIZE_BITS = 12;
 const unsigned int EER_CAMERA_SIZE      = 1 << EER_CAMERA_SIZE_BITS; // 2^12 = 4096
 
-auto EMAN::decode_eer_data(EerWord *data, Decoder decoder) {
+auto EMAN::decode_eer_data(EerWord *data, Decoder &decoder) {
 	EerStream is((data));
 	EerRle    rle;
 	EerSubPix sub_pix;
@@ -97,8 +105,8 @@ auto EMAN::decode_eer_data(EerWord *data, Decoder decoder) {
 	return coords;
 }
 
-EerIO::EerIO(const string & fname, IOMode rw)
-:	ImageIO(fname, rw)
+EerIO::EerIO(const string & fname, IOMode rw, Decoder &dec)
+:	ImageIO(fname, rw), decoder(dec)
 {
 	tiff_file = TIFFOpen(fname.c_str(), "r");
 
@@ -182,7 +190,7 @@ int EerIO::read_data(float *rdata, int image_index, const Region * area, bool)
 {
 	ENTERFUNC;
 
-	auto coords = decode_eer_data((EerWord *) frames[image_index].data_(), Decoder());
+	auto coords = decode_eer_data((EerWord *) frames[image_index].data_(), decoder);
 	for(auto &c : coords)
 		rdata[c.first + c.second * EER_CAMERA_SIZE] += 1;
 
