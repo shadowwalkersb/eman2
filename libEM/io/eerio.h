@@ -205,7 +205,7 @@ namespace EMAN
 		DEFINE_IMAGEIO_FUNC;
 
 	private:
-		void _read_meta_info();
+		void _read_meta_info(int i=0);
 
 		bool is_big_endian;
 		TIFF *tiff_file;

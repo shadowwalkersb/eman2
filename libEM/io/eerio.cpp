@@ -39,6 +39,7 @@ using namespace EMAN;
 EerFrame::EerFrame(TIFF *tiff)
 	: num_strips(TIFFNumberOfStrips(tiff))
 {
+//	cout<<"num_strips: "<<num_strips<<endl;
 	_load_data(tiff);
 }
 
@@ -129,8 +130,8 @@ void EerIO::init()
 	EXITFUNC;
 }
 
-void EerIO::_read_meta_info() {
-	TIFFSetDirectory(tiff_file, 0);
+void EerIO::_read_meta_info(int i) {
+	TIFFSetDirectory(tiff_file, i);
 	TIFFGetField(tiff_file, TIFFTAG_COMPRESSION, &compression);
 
 	char *metadata_c = nullptr;
@@ -138,6 +139,12 @@ void EerIO::_read_meta_info() {
 
 	TIFFGetField(tiff_file, 65001, &count, &metadata_c);
 	metadata = string(metadata_c, count);
+	
+	cout<<"i: "<<i
+		<<" compr: "<<compression
+		<<" metadata: "<<metadata
+		<<endl;
+	TIFFPrintDirectory(tiff_file, stdout);
 }
 
 int EerIO::get_nimg()
@@ -153,7 +160,9 @@ bool EerIO::is_image_big_endian()
 
 int EerIO::read_header(Dict & dict, int image_index, const Region * area, bool is_3d)
 {
-	TIFFSetDirectory(tiff_file, image_index);
+//	TIFFSetDirectory(tiff_file, image_index);
+	cout<<"read_header: "<<image_index<<endl;
+	_read_meta_info(image_index);
 
 	int nx = 0;
 	int ny = 0;
@@ -182,6 +191,7 @@ int EerIO::write_header(const Dict & dict, int image_index, const Region* area,
 int EerIO::read_data(float *rdata, int image_index, const Region * area, bool)
 {
 	ENTERFUNC;
+	cout<<"read_data: "<<image_index<<endl;
 
 	auto coords = decode_eer_data((EerWord *) frames[image_index].data(), decoder);
 	for(auto &c : coords)
