@@ -78,6 +78,10 @@ auto decode_eer_data(EerWord *data, Decoder &decoder) {
 
 		count += rle+1;
 	}
+	cout<<"Total # of elec: "<<count<<" - "
+		<<decoder.camera_size * decoder.camera_size
+		<<" = "<< count - decoder.camera_size * decoder.camera_size
+		<<endl;
 
 	return coords;
 }
