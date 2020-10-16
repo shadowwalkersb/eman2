@@ -59,30 +59,6 @@ auto EerFrame::data() const {
 	return _data.data();
 }
 
-auto Decoder::operator()(unsigned int count, unsigned int sub_pix) const {
-	return std::make_pair(x(count, sub_pix), y(count, sub_pix));
-}
-
-template<>
-unsigned int Decoder::pos<0>(unsigned int count) const {
-	return count & (camera_size - 1);
-}
-
-template<>
-unsigned int Decoder::pos<1>(unsigned int count) const {
-	return count >> camera_size_bits;
-}
-
-template<>
-unsigned int Decoder::sub_pos<0>(unsigned int sub_pix) const {
-	return (sub_pix & 3) ^ 2;
-}
-
-template<>
-unsigned int Decoder::sub_pos<1>(unsigned int sub_pix) const {
-	return (sub_pix >> 2) ^ 2;
-}
-
 typedef vector<pair<int, int>> COORDS;
 
 auto decode_eer_data(EerWord *data, Decoder &decoder) {

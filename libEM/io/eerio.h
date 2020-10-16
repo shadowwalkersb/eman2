@@ -132,56 +132,90 @@ namespace EMAN
 	};
 
 
+	struct CameraSide {
+		const unsigned int size_bits = 12;
+		const unsigned int size     = 1 << size_bits; // 2^12 = 4096
+		
+		CameraSide(unsigned int bits)
+		: size_bits(bits), size(1 << size_bits)
+		{}
+//		CameraSide(unsigned int size);
+
+		virtual unsigned int pos(unsigned int count) const =0;
+		virtual unsigned int sub_pos(unsigned int sub_pix) const=0;
+	};
+
+	
+	struct CameraX : public CameraSide {
+		using CameraSide::CameraSide;
+		unsigned int pos(unsigned int count) const override {
+			return count & (size - 1);
+		}
+		
+		unsigned int sub_pos(unsigned int sub_pix) const override {
+			return (sub_pix & 3) ^ 2;
+		}
+	};
+
+
+	struct CameraY : public CameraSide {
+		using CameraSide::CameraSide;
+		unsigned int pos(unsigned int count) const override {
+			return count >> size_bits;
+		}
+
+		unsigned int sub_pos(unsigned int sub_pix) const override {
+			return (sub_pix >> 2) ^ 2;
+		}
+	};
+
+
+	template <unsigned int I>
 	class Decoder {
 	public:
-		virtual unsigned int num_pix() const =0;
+		Decoder(unsigned int xbits, unsigned int ybits)
+		: _x(xbits), _y(ybits)
+		{}
+		unsigned int num_pix() const;
 		auto operator()(unsigned int count, unsigned int sub_pix) const;
-
-		const unsigned int camera_size_bits = 12;
-		const unsigned int camera_size     = 1 << camera_size_bits; // 2^12 = 4096
-
-	protected:
-		template<int I>
-		unsigned int pos(unsigned int count) const;
-		template<int I>
-		unsigned int sub_pos(unsigned int sub_pix) const;
 		
 	private:
-		virtual unsigned int x(unsigned int count, unsigned int sub_pix) const =0;
-		virtual unsigned int y(unsigned int count, unsigned int sub_pix) const =0;
+		unsigned int x(unsigned int count, unsigned int sub_pix) const;
+		unsigned int y(unsigned int count, unsigned int sub_pix) const;
+		
+		CameraX _x;
+		CameraY _y;
 	};
 	
 	
 	template <unsigned int I>
-	struct DecoderIx : public Decoder {
-		unsigned int num_pix() const override;
-		unsigned int x(unsigned int count, unsigned int sub_pix) const override;
-		unsigned int y(unsigned int count, unsigned int sub_pix) const override;
-	};
-
-	template <unsigned int I>
-	unsigned int DecoderIx<I>::num_pix() const {
+	unsigned int Decoder<I>::num_pix() const {
 //                    4096 *   1     //  4k 
 //                    4096 *   2     //  8k
 //                    4096 *   4     // 16k
-		return camera_size * (1 << I);
+		return _x.size * _y.size * (1 << 2*I);
 	}
 
 	template <unsigned int I>
-	inline unsigned int DecoderIx<I>::x(unsigned int count, unsigned int sub_pix) const {
+	auto Decoder<I>::operator()(unsigned int count, unsigned int sub_pix) const {
+		return std::make_pair(x(count, sub_pix), y(count, sub_pix));
+	}
+
+	template <unsigned int I>
+	inline unsigned int Decoder<I>::x(unsigned int count, unsigned int sub_pix) const {
 //		       count & ((1 << 12)   - 1)
-		return (pos<0>(count) << I) | (sub_pos<0>(sub_pix) >> (2 - I));
+		return (_x.pos(count) << I) | (_x.sub_pos(sub_pix) >> (2 - I));
 	}
 
 	template <unsigned int I>
-	inline unsigned int DecoderIx<I>::y(unsigned int count, unsigned int sub_pix) const {
+	inline unsigned int Decoder<I>::y(unsigned int count, unsigned int sub_pix) const {
 //                               (((count >> 12) << 1) | ((sub_pix >> 3) ^ 1))  //  8k
-		return (pos<1>(count) << I) | (sub_pos<1>(sub_pix) >> (2 - I));
+		return (_y.pos(count) << I) | (_y.sub_pos(sub_pix) >> (2 - I));
 	}
 
-	static DecoderIx<0> decoder0x;
-	static DecoderIx<1> decoder1x;
-	static DecoderIx<2> decoder2x;
+	static Decoder<0> decoder0x(12, 12);
+	static Decoder<1> decoder1x(12, 12);
+	static Decoder<2> decoder2x(12, 12);
 
 
 	class EerIO : public ImageIO
