@@ -63,6 +63,22 @@ auto Decoder::operator()(unsigned int count, unsigned int sub_pix) const {
 	return std::make_pair(x(count, sub_pix), y(count, sub_pix));
 }
 
+unsigned int Decoder::posx(unsigned int count) const {
+	return count & (camera_size - 1);
+}
+
+unsigned int Decoder::posy(unsigned int count) const {
+	return count >> camera_size_bits;
+}
+
+unsigned int Decoder::sub_posx(unsigned int sub_pix) const {
+	return (sub_pix & 3) ^ 2;
+}
+
+unsigned int Decoder::sub_posy(unsigned int sub_pix) const {
+	return (sub_pix >> 2) ^ 2;
+}
+
 typedef vector<pair<int, int>> COORDS;
 
 auto decode_eer_data(EerWord *data, Decoder &decoder) {

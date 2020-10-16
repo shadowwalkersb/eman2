@@ -140,6 +140,12 @@ namespace EMAN
 		const unsigned int camera_size_bits = 12;
 		const unsigned int camera_size     = 1 << camera_size_bits; // 2^12 = 4096
 
+	protected:
+		unsigned int posx(unsigned int count) const;
+		unsigned int posy(unsigned int count) const;
+		unsigned int sub_posx(unsigned int sub_pix) const;
+		unsigned int sub_posy(unsigned int sub_pix) const;
+		
 	private:
 		virtual unsigned int x(unsigned int count, unsigned int sub_pix) const =0;
 		virtual unsigned int y(unsigned int count, unsigned int sub_pix) const =0;
@@ -164,25 +170,25 @@ namespace EMAN
 	template <>
 	inline unsigned int DecoderIx<0>::x(unsigned int count, unsigned int sub_pix) const {
 //		       count & ((1 << 12)   - 1)
-		return count & (camera_size - 1);
+		return posx(count);
 	}
 
 	template <>
 	inline unsigned int DecoderIx<0>::y(unsigned int count, unsigned int sub_pix) const {
 //		       count >> 12
-		return count >> camera_size_bits;
+		return posy(count);
 	}
 
 	template <>
 	inline unsigned int DecoderIx<2>::x(unsigned int count, unsigned int sub_pix) const {
 //                               (((count & 4095) << 2) | ((sub_pix & 3) ^ 2))  // 16k
-		return  (DecoderIx<0>().x(count, sub_pix) << 2) | ((sub_pix & 3) ^ 2);
+		return  (posx(count) << 2) | sub_posx(sub_pix);
 	}
 
 	template <>
 	inline unsigned int DecoderIx<2>::y(unsigned int count, unsigned int sub_pix) const {
 //                               (((count >> 12) << 2) | ((sub_pix >> 2) ^ 2))  // 16k
-		return (DecoderIx<0>().y(count, sub_pix) << 2) | ((sub_pix >> 2) ^ 2);
+		return (posy(count) << 2) | sub_posy(sub_pix);
 	}
 
 	template <>
@@ -190,13 +196,13 @@ namespace EMAN
 //                               (((count & 4095) << 1) | (((sub_pix & 3) >> 1) ^ 1))  //  8k
 //                               (((count & 4095) << 1) | (((sub_pix & 2) >> 1) ^ 1))  //  8k
 //                               (((count & 4095) << 1) | (((sub_pix >> 1) & 1) ^ 1))  //  8k
-		return  (DecoderIx<0>().x(count, sub_pix) << 1) | (((sub_pix >> 1) & 1) ^ 1);
+		return  (posx(count) << 1) | (sub_posx(sub_pix) >> 1);
 	}
 
 	template <>
 	inline unsigned int DecoderIx<1>::y(unsigned int count, unsigned int sub_pix) const {
 //                               (((count >> 12) << 1) | ((sub_pix >> 3) ^ 1))  //  8k
-		return (DecoderIx<0>().y(count, sub_pix) << 1) | ((sub_pix >> 3) ^ 1);
+		return (posy(count) << 1) | (sub_posy(sub_pix) >> 1);
 	}
 
 	static DecoderIx<0> decoder0x;
