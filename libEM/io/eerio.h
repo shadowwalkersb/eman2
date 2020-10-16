@@ -167,42 +167,16 @@ namespace EMAN
 		return camera_size * (1 << I);
 	}
 
-	template <>
-	inline unsigned int DecoderIx<0>::x(unsigned int count, unsigned int sub_pix) const {
+	template <unsigned int I>
+	inline unsigned int DecoderIx<I>::x(unsigned int count, unsigned int sub_pix) const {
 //		       count & ((1 << 12)   - 1)
-		return posx(count);
+		return (posx(count) << I) | (sub_posx(sub_pix) >> (2 - I));
 	}
 
-	template <>
-	inline unsigned int DecoderIx<0>::y(unsigned int count, unsigned int sub_pix) const {
-//		       count >> 12
-		return posy(count);
-	}
-
-	template <>
-	inline unsigned int DecoderIx<2>::x(unsigned int count, unsigned int sub_pix) const {
-//                               (((count & 4095) << 2) | ((sub_pix & 3) ^ 2))  // 16k
-		return  (posx(count) << 2) | sub_posx(sub_pix);
-	}
-
-	template <>
-	inline unsigned int DecoderIx<2>::y(unsigned int count, unsigned int sub_pix) const {
-//                               (((count >> 12) << 2) | ((sub_pix >> 2) ^ 2))  // 16k
-		return (posy(count) << 2) | sub_posy(sub_pix);
-	}
-
-	template <>
-	inline unsigned int DecoderIx<1>::x(unsigned int count, unsigned int sub_pix) const {
-//                               (((count & 4095) << 1) | (((sub_pix & 3) >> 1) ^ 1))  //  8k
-//                               (((count & 4095) << 1) | (((sub_pix & 2) >> 1) ^ 1))  //  8k
-//                               (((count & 4095) << 1) | (((sub_pix >> 1) & 1) ^ 1))  //  8k
-		return  (posx(count) << 1) | (sub_posx(sub_pix) >> 1);
-	}
-
-	template <>
-	inline unsigned int DecoderIx<1>::y(unsigned int count, unsigned int sub_pix) const {
+	template <unsigned int I>
+	inline unsigned int DecoderIx<I>::y(unsigned int count, unsigned int sub_pix) const {
 //                               (((count >> 12) << 1) | ((sub_pix >> 3) ^ 1))  //  8k
-		return (posy(count) << 1) | (sub_posy(sub_pix) >> 1);
+		return (posy(count) << I) | (sub_posy(sub_pix) >> (2 - I));
 	}
 
 	static DecoderIx<0> decoder0x;
