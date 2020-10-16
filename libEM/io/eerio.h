@@ -180,8 +180,7 @@ namespace EMAN
 		auto operator()(unsigned int count, unsigned int sub_pix) const;
 		
 	private:
-		unsigned int x(unsigned int count, unsigned int sub_pix) const;
-		unsigned int y(unsigned int count, unsigned int sub_pix) const;
+		unsigned int pos(unsigned int count, unsigned int sub_pix, const CameraSide& cam) const;
 		
 		CameraX _x;
 		CameraY _y;
@@ -198,19 +197,13 @@ namespace EMAN
 
 	template <unsigned int I>
 	auto Decoder<I>::operator()(unsigned int count, unsigned int sub_pix) const {
-		return std::make_pair(x(count, sub_pix), y(count, sub_pix));
+		return std::make_pair(pos(count, sub_pix, _x), pos(count, sub_pix, _y));
 	}
 
 	template <unsigned int I>
-	inline unsigned int Decoder<I>::x(unsigned int count, unsigned int sub_pix) const {
+	inline unsigned int Decoder<I>::pos(unsigned int count, unsigned int sub_pix, const CameraSide& cam) const {
 //		       count & ((1 << 12)   - 1)
-		return (_x.pos(count) << I) | (_x.sub_pos(sub_pix) >> (2 - I));
-	}
-
-	template <unsigned int I>
-	inline unsigned int Decoder<I>::y(unsigned int count, unsigned int sub_pix) const {
-//                               (((count >> 12) << 1) | ((sub_pix >> 3) ^ 1))  //  8k
-		return (_y.pos(count) << I) | (_y.sub_pos(sub_pix) >> (2 - I));
+		return (cam.pos(count) << I) | (cam.sub_pos(sub_pix) >> (2 - I));
 	}
 
 	static Decoder<0> decoder0x(12, 12);
