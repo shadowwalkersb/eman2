@@ -141,10 +141,10 @@ namespace EMAN
 		const unsigned int camera_size     = 1 << camera_size_bits; // 2^12 = 4096
 
 	protected:
-		unsigned int posx(unsigned int count) const;
-		unsigned int posy(unsigned int count) const;
-		unsigned int sub_posx(unsigned int sub_pix) const;
-		unsigned int sub_posy(unsigned int sub_pix) const;
+		template<int I>
+		unsigned int pos(unsigned int count) const;
+		template<int I>
+		unsigned int sub_pos(unsigned int sub_pix) const;
 		
 	private:
 		virtual unsigned int x(unsigned int count, unsigned int sub_pix) const =0;
@@ -170,13 +170,13 @@ namespace EMAN
 	template <unsigned int I>
 	inline unsigned int DecoderIx<I>::x(unsigned int count, unsigned int sub_pix) const {
 //		       count & ((1 << 12)   - 1)
-		return (posx(count) << I) | (sub_posx(sub_pix) >> (2 - I));
+		return (pos<0>(count) << I) | (sub_pos<0>(sub_pix) >> (2 - I));
 	}
 
 	template <unsigned int I>
 	inline unsigned int DecoderIx<I>::y(unsigned int count, unsigned int sub_pix) const {
 //                               (((count >> 12) << 1) | ((sub_pix >> 3) ^ 1))  //  8k
-		return (posy(count) << I) | (sub_posy(sub_pix) >> (2 - I));
+		return (pos<1>(count) << I) | (sub_pos<1>(sub_pix) >> (2 - I));
 	}
 
 	static DecoderIx<0> decoder0x;
