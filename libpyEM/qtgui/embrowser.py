@@ -535,7 +535,7 @@ class EMFileType(object) :
 		data=[]
 		if ref!=None:
 			if mask!=None: ref.mult(mask)
-			hall=makeOrthoProj(ref,layers,highpass,lowpass)
+			hall=makeOrthoProj(ref,layers,?highpass,?lowpass)
 			data.append(hall)
 			
 		for i in range(img0,img1,imgstep):
@@ -551,7 +551,7 @@ class EMFileType(object) :
 			time.sleep(0.001)
 			get_application().processEvents()
 			
-			hall=makeOrthoProj(ptcl,layers,highpass,lowpass)
+			hall=makeOrthoProj(ptcl,layers,?highpass,?lowpass)
 			
 			for k in ["ptcl_repr","class_ptcl_idxs","class_ptlc_src","orig_file","orig_n","source_path","source_n"]:
 				try: hall[k]=ptcl[k]

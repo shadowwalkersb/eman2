@@ -336,7 +336,7 @@ class JSTaskQueue(object):
 
 	def todid(self,name):
 		"""Returns the did for a path, creating one if not already known"""
-		fmt=e2filemodtime(name)
+		fmt=?e2filemodtime(name)
 		try :
 			did=self.nametodid[name]			# get the existing did from the cache (modtime,int)
 			if fmt!=did[0]	:					# if the file has been changed, we need to assign a new did
@@ -358,7 +358,7 @@ class JSTaskQueue(object):
 		"""Adds a new task to the active queue, scheduling it for execution. If parentid is
 		specified, a doubly linked list is established. parentid MUST be the id of a task
 		currently in the active queue. parentid and wait_for may be set in the task instead"""
-		if not isinstance(task,EMTask) : raise Exception("Invalid Task")
+		if not isinstance(task,?EMTask) : raise Exception("Invalid Task")
 		#self.active["max"]+=1
 		#tid=self.active["max"]
 
@@ -449,7 +449,7 @@ class JSTaskQueue(object):
 		except:
 			print("Fatal error: Could not find task {} to rerun.".format(taskid))
 
-		if task.failcount==MAXTASKFAIL :
+		if task.failcount==?MAXTASKFAIL :
 			self.task_aborted(taskid)
 			return
 

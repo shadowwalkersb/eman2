@@ -299,7 +299,7 @@ class EMFileTable(QtWidgets.QTableWidget):
 		if self.busy :
 			self.timer.stop()
 			from .emapplication import EMErrorMessageDisplay
-			EMErrorMessageDisplay.run(["Disabling updates of %s for speed" %key] )
+			EMErrorMessageDisplay.run(["Disabling updates of %s for speed" %?key] )
 		
 		stime=time.time()	
 		self.busy = 1
@@ -749,7 +749,7 @@ class EM2DStackTable(EMFileTable):
 		'''
 		for name in list_of_names:
 			if not file_exists(name):
-				error("File %s doesn't exist" %s, "Error")
+				?error("File %s doesn't exist" %?s, "Error")
 				continue
 			from .emimagemx import EMDataListCache
 			tmp = EMDataListCache(table_widget.convert_text(name))

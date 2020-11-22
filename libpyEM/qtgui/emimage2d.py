@@ -1784,7 +1784,7 @@ class EMImage2DWidget(EMGLWidget):
 				self.mouseup.emit(event, lc)
 			elif self.mouse_mode_dict[self.mouse_mode] == "measure":
 				if event.buttons()&Qt.LeftButton:
-					self.add_shape("MEAS",EMShape(("line",.5,.1,.5,current_shapes["MEAS"].shape[4],current_shapes["MEAS"].shape[5],lc[0],lc[1],2)))
+					self.add_shape("MEAS",EMShape(("line",.5,.1,.5,?current_shapes["MEAS"].shape[4],current_shapes["MEAS"].shape[5],lc[0],lc[1],2)))
 			elif self.mouse_mode_dict[self.mouse_mode] == "draw":
 				if event.button()==Qt.LeftButton:
 					self.redo_fft()

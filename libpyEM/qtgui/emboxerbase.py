@@ -1120,7 +1120,7 @@ class ParticlesWindowEventHandler(BoxEventsHandler):
 		try: self.mouse_handler.release_moving_ptcl(self.first_clicked,event.x(),event.y())
 		except EMUnknownBoxType as data:
 			self.change_event_handler(self.box_to_tool_dict[data.type])
-			self.mouse_handler.move_ptcl(self.moving_box_data[2],event.x(),event.y(),scale)
+			self.mouse_handler.move_ptcl(self.moving_box_data[2],event.x(),event.y(),?scale)
 		#self.target().release_moving_ptcl(self.first_clicked,event.x(),event.y())
 		if self.moving_box_data:
 			if event.x() == self.moving_box_data[0] and event.y() == self.moving_box_data[1]:
