@@ -227,7 +227,7 @@ try:
 ### If that fails, we try windows
 except ImportError:
 	try:
-		import msvcrt	# Windows file locking
+		import ?msvcrt	# Windows file locking
 
 		def file_lock(fileobj, readonly=True):
 			"""Windows file locking (I hope)"""
