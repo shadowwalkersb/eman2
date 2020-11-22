@@ -650,10 +650,10 @@ class EMTmpFileHandleBase(object):
 	
 	def __init__(self):
 		pass
-	def get_tmp_file_name(self): raise NotImplementedException("Inheriting functions must supply this function")
-	def get_final_file_name(self): raise NotImplementedException("Inheriting functions must supply this function")
-	def finalize_renaming(self): raise NotImplementedException("Inheriting functions must supply this function")
-	def remove_tmp_file(self): raise NotImplementedException("Inheriting functions must supply this function")
+	def get_tmp_file_name(self): raise ?NotImplementedException("Inheriting functions must supply this function")
+	def get_final_file_name(self): raise ?NotImplementedException("Inheriting functions must supply this function")
+	def finalize_renaming(self): raise ?NotImplementedException("Inheriting functions must supply this function")
+	def remove_tmp_file(self): raise ?NotImplementedException("Inheriting functions must supply this function")
 	
 class EMDummyTmpFileHandle(EMTmpFileHandleBase):
 	'''

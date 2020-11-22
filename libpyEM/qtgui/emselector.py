@@ -71,14 +71,14 @@ class EMItemAction(object):
 	interface for single item actions
 	'''
 	
-	def item_action(self,item,target): raise NotImplementedException
+	def item_action(self,item,target): raise ??NotImplementedException
 	
 class EMMultiItemAction(object):
 	'''
 	interface for multiple item actions
 	'''
 	
-	def multi_item_action(self,items,target): raise NotImplementedException
+	def multi_item_action(self,items,target): raise ??NotImplementedException
 	
 class EMSaveItemAction(EMItemAction,EMMultiItemAction,EMActionDelegate):
 	
@@ -1092,14 +1092,14 @@ class EMBrowseDelegate(object):
 		Definitive way of testing whether or not the object handles the url
 		@param url a string, e.g. "/home/d.woolford/", "sludtke@10.10.10.10:~/test/"
 		'''
-		raise NotImplementedException("Inheriting classes must supply this functionality")
+		raise ?NotImplementedException("Inheriting classes must supply this functionality")
 	
 	def get_items(self,url):
 		'''
 		Get a list of EMListItems for display in the browser
 		@return a list of EMListItems
 		'''
-		raise NotImplementedException("Inheriting classes must supply this functionality")
+		raise ?NotImplementedException("Inheriting classes must supply this functionality")
 	
 	def get_data(self,full_path,idx=0):
 		'''
@@ -1107,7 +1107,7 @@ class EMBrowseDelegate(object):
 		Get a fully loaded EMData.
 		This is so the read routine is in a single location and makes the EMListItems generic
 		'''
-		raise NotImplementedException("Inheriting classes must supply this functionality")
+		raise ?NotImplementedException("Inheriting classes must supply this functionality")
 		
 	def get_metadata(self,full_path,idx=0):
 		'''
@@ -1115,7 +1115,7 @@ class EMBrowseDelegate(object):
 		Get the metadata, typically EMData header information. Must return a dict, or similar
 		This is so the read routine is in a single location and makes the EMListItems generic
 		'''
-		raise NotImplementedException("Inheriting classes must supply this functionality")
+		raise ?NotImplementedException("Inheriting classes must supply this functionality")
 	
 	def get_stack_data(self,full_path):
 		'''
@@ -1125,7 +1125,7 @@ class EMBrowseDelegate(object):
 		'''
 		#from emimagemx import EMLightWeightParticleCache
 		#return EMLightWeightParticleCache.from_file(full_path)
-		raise NotImplementedException("Inheriting classes must supply this functionality")
+		raise ?NotImplementedException("Inheriting classes must supply this functionality")
 	
 	def url_mod_time(self,url):
 		'''
@@ -1133,19 +1133,19 @@ class EMBrowseDelegate(object):
 		eg. return os.stat(url)[-2]
 		May return None to indicate the call is not valid/supported - this will mean the corresponding list widget will not be automatically updated
 		'''
-		raise NotImplementedException("Inheriting classes must supply this functionality")
+		raise ?NotImplementedException("Inheriting classes must supply this functionality")
 	
 	def parent_url(self,url):
 		'''
 		Get the parent url - for example, if the up arrow is hit
 		'''
-		raise NotImplementedException("Inheriting classes must supply this functionality")
+		raise ?NotImplementedException("Inheriting classes must supply this functionality")
 	
 	def delete_url(self,url):
 		'''
 		delete the url
 		'''
-		raise NotImplementedException("Inheriting classes must supply this functionality")
+		raise ?NotImplementedException("Inheriting classes must supply this functionality")
 	
 	def emdata_save_as_url(self,url):
 		'''
@@ -1558,7 +1558,7 @@ class EMStack2DCapableMixin(object):
 	It's a mixin
 	'''
 	def get_2d_stack(self):
-		raise NotImplementedException("Inheriting classes must supply this function")
+		raise ?NotImplementedException("Inheriting classes must supply this function")
 
 class EM2DStackItem(EMDataListItem,EMStack2DCapableMixin):
 	ICON = None

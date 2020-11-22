@@ -399,7 +399,7 @@ class EMBoxingTool(object):
 		@return hopefully a QtGui.QIcon, but you may also return None
 		called in EMBoxInspector
 		'''
-		raise NotImplementedException("Inheriting classes must supply this function")
+		raise ?NotImplementedException("Inheriting classes must supply this function")
 
 	def get_widget(self):
 		'''
@@ -408,7 +408,7 @@ class EMBoxingTool(object):
 		@return a QtWidgets.QWidget with your widgets in it
 		called in EMBoxInspector
 		'''
-		raise NotImplementedException("Inheriting classes must supply this function")
+		raise ?NotImplementedException("Inheriting classes must supply this function")
 
 	def unique_name(self):
 		'''
@@ -418,7 +418,7 @@ class EMBoxingTool(object):
 		@return a string
 		called at various locations
 		'''
-		raise  NotImplementedException("Inheriting classes must supply this function")
+		raise  ?NotImplementedException("Inheriting classes must supply this function")
 
 	def mouse_move(self,event):
 		''''
@@ -426,7 +426,7 @@ class EMBoxingTool(object):
 		How shall you respond to the mouse move event?
 		@param event a QtCore.QEvent
 		'''
-		raise  NotImplementedException("Inheriting classes must supply this function")
+		raise  ?NotImplementedException("Inheriting classes must supply this function")
 
 	def mouse_wheel(self,event):
 		'''
@@ -434,7 +434,7 @@ class EMBoxingTool(object):
 		How shall you respond to the mouse wheel event?
 		@param event a QtCore.QEvent
 		'''
-		raise  NotImplementedException("Inheriting classes must supply this function")
+		raise  ?NotImplementedException("Inheriting classes must supply this function")
 
 	def mouse_down(self,event) :
 		'''
@@ -442,7 +442,7 @@ class EMBoxingTool(object):
 		How shall you respond to the mouse down event?
 		@param event a QtCore.QEvent
 		'''
-		raise  NotImplementedException("Inheriting classes must supply this function")
+		raise  ?NotImplementedException("Inheriting classes must supply this function")
 
 
 	def mouse_drag(self,event) :
@@ -451,7 +451,7 @@ class EMBoxingTool(object):
 		How shall you respond to the mouse drag event?
 		@param event a QtCore.QEvent
 		'''
-		raise  NotImplementedException("Inheriting classes must supply this function")
+		raise  ?NotImplementedException("Inheriting classes must supply this function")
 
 
 	def mouse_up(self,event) :
@@ -460,7 +460,7 @@ class EMBoxingTool(object):
 		How shall you respond to the mouse up event?
 		@param event a QtCore.QEvent
 		'''
-		raise  NotImplementedException("Inheriting classes must supply this function")
+		raise  ?NotImplementedException("Inheriting classes must supply this function")
 
 
 	def key_press(self,event):
@@ -469,7 +469,7 @@ class EMBoxingTool(object):
 		How shall you respond to the key press event?
 		@param event a QtCore.QEvent
 		'''
-		raise NotImplementedException("Inheriting classes must supply this function")
+		raise ?NotImplementedException("Inheriting classes must supply this function")
 
 	def moving_ptcl_established(self,box_num,x,y):
 		'''
@@ -479,7 +479,7 @@ class EMBoxingTool(object):
 		@param x the x coordinate of the mouse
 		@param y the y coordinate of the mouse
 		'''
-		raise NotImplementedException("Inheriting classes must supply this function")
+		raise ?NotImplementedException("Inheriting classes must supply this function")
 
 	def move_ptcl(self,box_num,x,y,scale):
 		'''
@@ -490,7 +490,7 @@ class EMBoxingTool(object):
 		@param y the y coordinate of the mouse
 		@param scale the current scale of the particle viewer window, for imposing the correct amount of movement
 		'''
-		raise NotImplementedException("Inheriting classes must supply this function")
+		raise ?NotImplementedException("Inheriting classes must supply this function")
 
 	def release_moving_ptcl(self,box_num,x,y):
 		'''
@@ -500,7 +500,7 @@ class EMBoxingTool(object):
 		@param x the x coordinate of the mouse
 		@param y the y coordinate of the mouse
 		'''
-		raise NotImplementedException("Inheriting classes must supply this function")
+		raise ?NotImplementedException("Inheriting classes must supply this function")
 
 	def delete_ptcl(self,box_num):
 		'''
@@ -509,7 +509,7 @@ class EMBoxingTool(object):
 		to handle particle deletion.
 		@param box_num the box number (int)
 		'''
-		raise NotImplementedException("Inheriting classes must supply this function")
+		raise ?NotImplementedException("Inheriting classes must supply this function")
 
 	def get_unique_box_types(self):
 		'''

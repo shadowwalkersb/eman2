@@ -443,7 +443,7 @@ class Box(object):
 		have attempted to lay basic framework if in future we use a different autoboxer which
 		requires its own parameters
 		'''
-		if not isinstance(autoboxer,SwarmAutoBoxer): raise NotImplementedException("You autoboxer is not supported")
+		if not isinstance(autoboxer,SwarmAutoBoxer): raise ?NotImplementedException("You autoboxer is not supported")
 		
 		if self.isdummy:
 			return 0

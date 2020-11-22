@@ -68,7 +68,7 @@ class EMBaseTomoChooseFilteredPtclsTask(WorkFlowTask):
 		return params
 
 	def on_form_ok(self,params):
-		raise NotImplementedException("Inheriting classes must implement this function")
+		raise ?NotImplementedException("Inheriting classes must implement this function")
 
 class EMTomoChooseFilteredPtclsTask(EMBaseTomoChooseFilteredPtclsTask):
 	"""Choose the particle set you wish to filter. The available sets include the raw particles, and any filtered sets you have previously generated.""" 

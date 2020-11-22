@@ -2739,39 +2739,39 @@ class EMMXDataCache(object):
 		@ must return a value = 1 indicates the box is permanently gone, 0 indicates the class is happy to do nothing
 		and let the calling program display the deleted box differently
 		'''
-		raise NotImplementedException
+		raise ?NotImplementedException
 	def __getitem__(self,idx):
 		'''
 		operator[] must be supported
 		'''
-		raise NotImplementedException
+		raise ?NotImplementedException
 
 	def __len__(self,idx):
 		'''
 		must be able to get the length
 		'''
-		raise NotImplementedException
+		raise ?NotImplementedException
 
 	def get_xsize(self):
 		'''
 		must be able to get the xsize of the data
 		'''
-		raise NotImplementedException
+		raise ?NotImplementedException
 
 	def get_ysize(self):
 		'''
 		must be able to get the zsize of the data
 		'''
-		raise NotImplementedException
+		raise ?NotImplementedException
 
 	def get_zsize(self):
 		'''
 		must be able to get the zsize of the data
 		'''
-		raise NotImplementedException
+		raise ?NotImplementedException
 
 	def is_complex(self):
-		raise NotImplementedException
+		raise ?NotImplementedException
 
 	def get_attr(self,attr):
 		return self.get_image_header(0)[attr]
@@ -2781,21 +2781,21 @@ class EMMXDataCache(object):
 		Must be able to get the keys of in a typical EMData header, usually you just get the
 		header of first image, cache it, and return it whenever it is asked for
 		'''
-		raise NotImplementedException
+		raise ?NotImplementedException
 
 	def get_image_header(self,idx):
 		'''
 		Must be able to get the header of the image at the given index. Suggest reading only header
 		from disk if the image is not already in memory
 		'''
-		raise NotImplementedException
+		raise ?NotImplementedException
 	def on_idle(self):
 		'''
 		the EMImageMXWidget is at liberty to call this function when it becomes idle, etc.
 		This function is useful for miserly caching-strategies, i.e. you can load images that
 		are not already in memory
 		'''
-		raise NotImplementedException
+		raise ?NotImplementedException
 
 	# CONCRETE FUNCTIONALITY
 	def set_excluded_ptcls(self,excluded_list):
@@ -2813,14 +2813,14 @@ class EMMXDataCache(object):
 		'''
 		Asks whether the cache is of type 3D - so the inspector can have an x/y/z combo box
 		'''
-		raise NotImplementedException
+		raise ?NotImplementedException
 
 	def set_xyz(self,x_y_or_z):
 		'''
 		Must be supplied by 3d type caches
 		@param x_y_or_z a string
 		'''
-		raise NotImplementedException
+		raise ?NotImplementedException
 
 class ApplyTransform(object):
 	def __init__(self,transform):
