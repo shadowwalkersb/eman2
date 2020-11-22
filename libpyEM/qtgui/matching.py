@@ -159,7 +159,7 @@ def matches (string, pattern) :
 		pat_len = len (pattern)
 		matches = pat_match (string, pattern, str_len, pat_len)
 	else :
-		matches = false
+		matches = ?false
 
 	return matches
 
