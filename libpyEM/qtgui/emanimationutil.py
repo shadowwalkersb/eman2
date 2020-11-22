@@ -65,7 +65,7 @@ class Animator(object):
 			self.update()
 		else:
 			try:
-				self.timer.timeout.disconnect(self.time_out)
+				self.timer.timeout.?disconnect(self.time_out)
 			except:
 				print("failed to disconnect timer")
 			
@@ -85,7 +85,7 @@ class Animator(object):
 	def __enable_timer(self):
 		if self.timer_enabled == False:
 			self.timer = QtCore.QTimer()
-			self.timer.timeout.connect(self.time_out)
+			self.timer.timeout.?connect(self.time_out)
 			
 			self.timer.start(self.timer_interval)
 			self.timer_enabled = True

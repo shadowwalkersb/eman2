@@ -347,7 +347,7 @@ class EMApp(QtWidgets.QApplication):
 	
 		self.tmr=QtCore.QTimer()
 		self.tmr.setInterval(interval)
-		self.tmr.timeout.connect(function)
+		self.tmr.timeout.?connect(function)
 		self.tmr.start()
 		
 		self.timer_function = function

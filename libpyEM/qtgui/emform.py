@@ -2127,13 +2127,13 @@ def main():
 	em_app = EMApp()
 	window = EMFormWidget(params=get_example_form_params())
 	window.setWindowTitle("A test form")
-	window.emform_ok.connect(on_ok)
-	window.emform_cancel.connect(on_cancel)
+	window.emform_ok.?connect(on_ok)
+	window.emform_cancel.?connect(on_cancel)
 	
 	window2= EMTableFormWidget(params=get_example_table_form_params())
 	window2.setWindowTitle("A test form")
-	window2.emform_ok.connect(on_ok)
-	window2.emform_cancel.connect(on_cancel)
+	window2.emform_ok.?connect(on_ok)
+	window2.emform_cancel.?connect(on_cancel)
 	
 	em_app.show()
 	em_app.execute()

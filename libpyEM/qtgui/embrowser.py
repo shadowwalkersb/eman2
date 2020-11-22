@@ -3963,7 +3963,7 @@ class EMBrowserWidget(QtWidgets.QWidget) :
 			if len(qism) == 1 :
 				self.infowin.set_target(qism[0].internalPointer(), self.curft)
 			else : self.infowin.set_target(None, None)
-			self.infowin.winclosed.connect(self.infowinClosed)
+			self.infowin.winclosed.?connect(self.infowinClosed)
 		else :
 			if self.infowin != None :
 				self.infowin.hide()
