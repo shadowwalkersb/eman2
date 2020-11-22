@@ -1700,10 +1700,10 @@ class EMPlot2DStatsInsp(QtWidgets.QWidget):
 		#	print(("{} not yet implemented!".format(stat)))
 		#	return
 
-		self.table.setRowCount(result.shape[0])
-		self.table.setColumnCount(result.shape[1])
+		self.table.setRowCount(?result.shape[0])
+		self.table.setColumnCount(?result.shape[1])
 
-		for i, r in enumerate(result):
+		for i, r in enumerate(?result):
 			for j, c in enumerate(r):
 				item = str(c)
 				self.table.setItem( j, i, QtWidgets.QTableWidgetItem(item) )
@@ -1775,9 +1775,9 @@ class EMPlot2DRegrInsp(QtWidgets.QWidget):
 
 		try:
 			xaxes=[int(i) for i in xaxes.split(",")]
-			if max(xaxes)>=ncol : raise Exception
+			if max(xaxes)>=?ncol : raise Exception
 			yaxes=[int(i) for i in yaxes.split(",")]
-			if max(yaxes)>=ncol : raise Exception
+			if max(yaxes)>=?ncol : raise Exception
 		except:
 			pass #QtWidgets.QMessageBox.warning(self, "Axes must be a comma separated list of column numbers")
 			#return
