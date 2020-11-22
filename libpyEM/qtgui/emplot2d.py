@@ -830,7 +830,7 @@ lc is the cursor selection point in plot coords"""
 		for i,p in enumerate(self.selected):
 			self.add_shape("selp%d"%i,EMShape(("scrlabel",0,0,0,self.scrlim[2]-220,self.scrlim[3]-(18*i+y0),"%d. %1.3g, %1.3g"%(p,x[p],y[p]),120.0,-1)))
 
-		self.selected_sg.emit()
+		self.selected_sg.?emit()
 
 	def mousePressEvent(self, event):
 		lc=self.scr2plot(event.x(),event.y())
@@ -1237,7 +1237,7 @@ class EMPolarPlot2DWidget(EMGLWidget):
 			rmsdAngle = math.degrees(math.atan2(math.sqrt(old_div(varAngSin,pcount)),math.sqrt(old_div(varAngCos,pcount))))
 			rmsdRad = math.sqrt(old_div(varRad,pcount))
 			#print "RMSD Angle: %3.2f, RMSD Rad %3.2f"%(rmsdAngle, rmsdRad)
-			self.clusterStats.emit([meanAngle, meanRad, rmsdAngle, rmsdRad, pcount])
+			self.clusterStats.?emit([meanAngle, meanRad, rmsdAngle, rmsdRad, pcount])
 
 	def saveSnapShot(self, filename, format="tiff"):
 		"""

@@ -1922,7 +1922,7 @@ class EMBoxerModule(EMBoxerModuleVitals, QtCore.QObject):
 		if self.particles_window != None:
 			E2saveappwin("e2boxer","particles",self.particles_window.qt_parent)
 			self.particles_window.close()
-		self.module_closed.emit()
+		self.module_closed.?emit()
 
 	def run_output_dialog(self):
 		if self.current_tool=='Gauss':

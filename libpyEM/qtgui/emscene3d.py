@@ -997,7 +997,7 @@ class EMScene3D(EMItem3D, EMGLWidget):
 		# Process mouse events
 		if (event.buttons()&Qt.LeftButton and self.mousemode == "app"):
 			QtWidgets.qApp.setOverrideCursor(self.appcursor)
-			self.sgmousepress.emit(event.x(), event.y())
+			self.sgmousepress.?emit(event.x(), event.y())
 		if (event.buttons()&Qt.LeftButton and self.mousemode == "data"):
 			QtWidgets.qApp.setOverrideCursor(self.datacursor)
 			filename = QtWidgets.QFileDialog.getOpenFileName(self, 'Get file', os.getcwd())[0]
@@ -1118,7 +1118,7 @@ class EMScene3D(EMItem3D, EMGLWidget):
 		x = event.x()
 		y = event.y()
 		if (event.buttons()&Qt.LeftButton and self.mousemode == "app"):
-			self.sgmousemove.emit(event.x(), event.y())
+			self.sgmousemove.?emit(event.x(), event.y())
 		if (event.buttons()&Qt.LeftButton and self.mousemode == "line"):
 			self.newnode.setEndAndWidth(0.0, 0.0, 0.0, x - self.first_x, self.first_y - y, 0.0, 20.0)
 		if (event.buttons()&Qt.LeftButton and self.mousemode == "ruler"):
@@ -1161,7 +1161,7 @@ class EMScene3D(EMItem3D, EMGLWidget):
 		Qt event handler. Returns the cursor to arrow upon mouse button release
 		"""
 		if (event.buttons()&Qt.LeftButton and self.mousemode == "app"):
-			self.sgmouserelease.emit([event.x(), event.y()])
+			self.sgmouserelease.?emit([event.x(), event.y()])
 			
 		QtWidgets.qApp.setOverrideCursor(Qt.ArrowCursor)
 		# Select using the selection box
@@ -3013,9 +3013,9 @@ class EMQTreeWidget(QtWidgets.QTreeWidget):
 	def mousePressEvent(self, e):
 		QtWidgets.QTreeWidget.mousePressEvent(self, e)
 		if e.button()==Qt.RightButton:
-			self.visibleItem.emit(self.currentItem())
+			self.visibleItem.?emit(self.currentItem())
 		if e.button()==Qt.MidButton or (e.buttons()&Qt.LeftButton and e.modifiers()&Qt.AltModifier):
-			self.editItem.emit(self.currentItem())
+			self.editItem.?emit(self.currentItem())
 			
 			
 class EMQTreeWidgetItem(QtWidgets.QTreeWidgetItem):

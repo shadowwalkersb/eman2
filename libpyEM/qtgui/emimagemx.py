@@ -411,7 +411,7 @@ class EMImageMXWidget(EMGLWidget, EMGLProjectionViewMatrices):
 		self.force_display_update()
 		if update: self.updateGL()
 
-		self.setsChanged.emit()
+		self.setsChanged.?emit()
 
 	def save_set(self,name):
 		"""Saves the particles in a named set to a file"""
@@ -470,12 +470,12 @@ class EMImageMXWidget(EMGLWidget, EMGLProjectionViewMatrices):
 		self.force_display_update()
 		if update: self.updateGL()
 
-		self.setsChanged.emit()
+		self.setsChanged.?emit()
 
 	def clear_sets(self,update=True):
 		"""This doesn't erase sets, it just hides"""
 		self.sets_visible={}
-		self.setsChanged.emit()
+		self.setsChanged.?emit()
 		self.force_display_update()
 		if update: self.updateGL()
 
@@ -487,7 +487,7 @@ class EMImageMXWidget(EMGLWidget, EMGLProjectionViewMatrices):
 		except : self.sets_visible={}
 		if self.current_set==None : self.current_set=name
 
-		self.setsChanged.emit()
+		self.setsChanged.?emit()
 		self.force_display_update()
 		self.updateGL()
 
@@ -504,7 +504,7 @@ class EMImageMXWidget(EMGLWidget, EMGLProjectionViewMatrices):
 			except: self.sets={}
 		else: self.sets={}
 		self.sets_visible={}
-		self.setsChanged.emit()
+		self.setsChanged.?emit()
 
 	def commit_sets(self):
 		"""this will store all of the current sets in the appropriate _info.json file, if available"""
@@ -649,9 +649,9 @@ class EMImageMXWidget(EMGLWidget, EMGLProjectionViewMatrices):
 			if update_gl:
 				self.force_display_update()
 				self.updateGL()
-				if event != None: self.mx_boxdeleted.emit(event, [idx], False)
+				if event != None: self.mx_boxdeleted.?emit(event, [idx], False)
 		else:
-			self.mx_boxdeleted.emit(event, [idx], False)
+			self.mx_boxdeleted.?emit(event, [idx], False)
 
 
 	def get_box_image(self,idx):
@@ -1702,7 +1702,7 @@ class EMImageMXWidget(EMGLWidget, EMGLProjectionViewMatrices):
 #				print "select ",lc[0]
 				#print "setting selected"
 				self.set_selected([lc[0]],True)
-				self.mx_image_selected.emit(event, lc)
+				self.mx_image_selected.?emit(event, lc)
 			xians_stuff = False
 			if xians_stuff:
 				if lc[0] != None:
@@ -1724,18 +1724,18 @@ class EMImageMXWidget(EMGLWidget, EMGLProjectionViewMatrices):
 			lc=self.scr_to_img((event.x(),event.y()))
 			if lc:
 #				print "dselect ",lc[0]
-				self.mx_image_double.emit(event, lc)
+				self.mx_image_double.?emit(event, lc)
 
 	def __app_mode_mouse_move(self, event):
 		if event.buttons()&Qt.LeftButton:
-			self.mx_mousedrag.emit(event, self.get_scale())
+			self.mx_mousedrag.?emit(event, self.get_scale())
 
 	def __app_mode_mouse_up(self,event):
 		if self.downbutton==Qt.LeftButton:
 			lc=self.scr_to_img((event.x(),event.y()))
 			if lc!=None:
 
-				self.mx_mouseup.emit(event, lc)
+				self.mx_mouseup.?emit(event, lc)
 
 			# disabled by stevel 2/17/2011 for external application flexibility
 			#if  not event.modifiers()&Qt.ShiftModifier:

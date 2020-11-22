@@ -85,7 +85,7 @@ class EMTomoChooseFilteredPtclsTask(EMBaseTomoChooseFilteredPtclsTask):
 		choice = params["tomo_filt_choice"]
 		
 		task = EMTomoGenericReportTask(self.particles_map[self.particles_name_map[choice]])
-		self.replace_task.emit(task, "Filter Tomo Particles")
+		self.replace_task.?emit(task, "Filter Tomo Particles")
 		self.form.close()
 		self.form = None
 		
@@ -216,7 +216,7 @@ class E2TomoFilterParticlesTask(WorkFlowTask):
 			error("You have to supply a filter or a non zero rotation for any filtering to occur")
 			return
 		
-		self.task_idle.emit()
+		self.task_idle.?emit()
 		self.form.close()
 		self.form = None
 	
@@ -318,7 +318,7 @@ class EMTomoChooseFilteredPtclsForFiltTask(EMBaseTomoChooseFilteredPtclsTask):
 		choice = params["tomo_filt_choice"]
 		
 		task = self.task_type(self.particles_map[self.particles_name_map[choice]],self.name_map)
-		self.replace_task.emit(task, "Filter Tomo Particles")
+		self.replace_task.?emit(task, "Filter Tomo Particles")
 		self.form.close()
 		self.form = None
 		
@@ -338,7 +338,7 @@ class EMTomoBootStapChoosePtclsTask(EMBaseTomoChooseFilteredPtclsTask):
 			return
 		choice = params["tomo_filt_choice"]
 		task = EMTomoBootstrapTask(self.particles_map[self.particles_name_map[choice]],self.name_map)
-		self.replace_task.emit(task, "Filter Tomo Particles")
+		self.replace_task.?emit(task, "Filter Tomo Particles")
 		self.form.close()
 		self.form = None
 		
@@ -679,20 +679,20 @@ class E2TomoBoxerGuiTask(WorkFlowTask):
 	def on_form_close(self):
 		# this is to avoid a task_idle signal, which would be incorrect if e2boxer is running
 		if self.tomo_boxer_module == None:
-			self.task_idle.emit()
+			self.task_idle.?emit()
 		else: pass
 	
 	def on_boxer_closed(self): 
 		if self.tomo_boxer_module != None:
 			self.tomo_boxer_module = None
-			self.gui_exit.emit()
+			self.gui_exit.?emit()
 	
 	def on_boxer_idle(self):
 		'''
 		Presently this means boxer did stuff but never opened any guis, so it's safe just to emit the signal
 		'''
 		self.tomo_boxer_module = None
-		self.gui_exit.emit()
+		self.gui_exit.?emit()
 		
 	def on_form_cancel(self):
 		if self.report_task:
@@ -700,4 +700,4 @@ class E2TomoBoxerGuiTask(WorkFlowTask):
 		
 		self.form.close()
 		self.form = None
-		self.task_idle.emit()
+		self.task_idle.?emit()

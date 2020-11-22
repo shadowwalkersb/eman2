@@ -706,7 +706,7 @@ class EMImage2DWidget(EMGLWidget):
 		"""Set the display origin within the image"""
 		if self.origin==(x,y) : return
 		self.origin=(x,y)
-		if not quiet : self.origin_update.emit((x,y))
+		if not quiet : self.origin_update.?emit((x,y))
 		self.updateGL()
 
 	def get_origin(self) : return self.origin
@@ -742,7 +742,7 @@ class EMImage2DWidget(EMGLWidget):
 		try:
 			self.origin=(old_div(newscale,self.scale)*(old_div(self.width(),2.0)+self.origin[0])-old_div(self.width(),2.0),old_div(newscale,self.scale)*(old_div(self.height(),2.0)+self.origin[1])-old_div(self.height(),2.0))
 			self.scale=newscale
-			if not quiet : self.signal_set_scale.emit(newscale)
+			if not quiet : self.signal_set_scale.?emit(newscale)
 			self.updateGL()
 		except: pass
 
@@ -1678,7 +1678,7 @@ class EMImage2DWidget(EMGLWidget):
 		else:
 			if self.mouse_mode_dict[self.mouse_mode] == "emit":
 				lc=self.scr_to_img(event.x(),event.y())
-				self.mousedown.emit(event, lc)
+				self.mousedown.?emit(event, lc)
 			elif self.mouse_mode_dict[self.mouse_mode] == "probe":
 				if event.buttons()&Qt.LeftButton:
 					lc=self.scr_to_img(event.x(),event.y())
@@ -1715,9 +1715,9 @@ class EMImage2DWidget(EMGLWidget):
 			if self.mouse_mode_dict[self.mouse_mode] == "emit":
 				lc=self.scr_to_img(event.x(),event.y())
 				if event.buttons()&Qt.LeftButton:
-					self.mousedrag.emit(event, lc)
+					self.mousedrag.?emit(event, lc)
 				else:
-					self.mousemove.emit(event, lc)
+					self.mousemove.?emit(event, lc)
 			elif self.mouse_mode_dict[self.mouse_mode] == "probe":
 				if event.buttons()&Qt.LeftButton:
 					lc=self.scr_to_img(event.x(),event.y())
@@ -1781,7 +1781,7 @@ class EMImage2DWidget(EMGLWidget):
 		else:
 			if self.mouse_mode_dict[self.mouse_mode] == "emit":
 				lc=self.scr_to_img(event.x(),event.y())
-				self.mouseup.emit(event, lc)
+				self.mouseup.?emit(event, lc)
 			elif self.mouse_mode_dict[self.mouse_mode] == "measure":
 				if event.buttons()&Qt.LeftButton:
 					self.add_shape("MEAS",EMShape(("line",.5,.1,.5,?current_shapes["MEAS"].shape[4],current_shapes["MEAS"].shape[5],lc[0],lc[1],2)))
@@ -1793,7 +1793,7 @@ class EMImage2DWidget(EMGLWidget):
 
 	def wheelEvent(self, event):
 		if self.mouse_mode==0 and event.modifiers()&Qt.ShiftModifier:
-			self.mousewheel.emit(event)
+			self.mousewheel.?emit(event)
 			return
 		if event.angleDelta().y() > 0:
 			self.set_scale( self.scale * self.mag )
@@ -1830,7 +1830,7 @@ class EMImage2DWidget(EMGLWidget):
 				self.updateGL()
 #			else:
 #				self.__key_mvt_animation(0,self.height()*.1)
-			self.signal_increment_list_data.emit(1)
+			self.signal_increment_list_data.?emit(1)
 
 		elif event.key() == Qt.Key_Down:
 			if self.list_data != None:
@@ -1838,7 +1838,7 @@ class EMImage2DWidget(EMGLWidget):
 				self.updateGL()
 #			else:
 #				self.__key_mvt_animation(0,-self.height()*.1)
-			self.signal_increment_list_data.emit(-1)
+			self.signal_increment_list_data.?emit(-1)
 
 		elif event.key() == Qt.Key_Right:
 			self.__key_mvt_animation(self.width()*.1,0)
@@ -1866,7 +1866,7 @@ class EMImage2DWidget(EMGLWidget):
 		elif event.key()==Qt.Key_I:
 			self.show_inspector(1)
 		else:
-			self.keypress.emit(event)
+			self.keypress.?emit(event)
 
 
 

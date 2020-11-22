@@ -160,7 +160,7 @@ class EMGLWidget(QtOpenGL.QGLWidget):
 			self.inspector.close()
 		QtOpenGL.QGLWidget.closeEvent(self, event)
 		if self.myparent : self.qt_parent.close()
-		self.module_closed.emit() # this could be a useful signal, especially for something like the selector module, which can potentially show a lot of images but might want to close them all when it is closed
+		self.module_closed.?emit() # this could be a useful signal, especially for something like the selector module, which can potentially show a lot of images but might want to close them all when it is closed
 		event.accept()
 		
 	def display_web_help(self,url="http://blake.bcm.edu/emanwiki/e2display"):
@@ -188,7 +188,7 @@ class EMGLWidget(QtOpenGL.QGLWidget):
 		if self.disable_inspector: 
 			return
 		
-		self.inspector_shown.emit() # debug only
+		self.inspector_shown.?emit() # debug only
 		app = get_application()
 		if app == None:
 			print("can't show an inspector with having an associated application")

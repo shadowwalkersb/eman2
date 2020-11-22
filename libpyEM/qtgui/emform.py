@@ -601,7 +601,7 @@ class EMFileTable(QtWidgets.QTableWidget):
 			button.clicked[bool].connect(button_data.function)
 			button.clicked[bool].connect(self.sendupdate)
 	def sendupdate(self):
-		self.updateform.emit()
+		self.updateform.?emit()
 		
 	class EMColumnData(object):
 		'''
@@ -1137,7 +1137,7 @@ class EMFormWidget(QtWidgets.QWidget):
 		self.plot_icon = QtGui.QIcon(get_image_directory() + "/plot.png")
 	
 	def closeEvent(self, event):
-		self.emform_close.emit()
+		self.emform_close.?emit()
 		QtWidgets.QWidget.closeEvent(self, event)
 	
 	def incorporate_params(self,params,layout):
@@ -1332,7 +1332,7 @@ class EMFormWidget(QtWidgets.QWidget):
 	def ok_pressed(self,bool):
 		ret = {}
 		for output in self.output_writers: output.write_data(ret)
-		self.emform_ok.emit(ret)
+		self.emform_ok.?emit(ret)
 		
 	def cancel_pressed(self,bool):
 		self.emform_cancel.emit()
@@ -1343,7 +1343,7 @@ class EMFormWidget(QtWidgets.QWidget):
 
 
 	def display_file_func(self,filename):
-		self.display_file.emit(filename)
+		self.display_file.?emit(filename)
 
 
 class IncorpStrategy(object):

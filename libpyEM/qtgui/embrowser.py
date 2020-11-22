@@ -1476,7 +1476,7 @@ class EMImageFileType(EMFileType) :
 
 		event.accept()
 		# self.app().close_specific(self)
-		self.module_closed.emit()
+		self.module_closed.?emit()
 
 	@staticmethod
 	def name() :
@@ -3203,7 +3203,7 @@ class EMStackInfoPane(EMInfoPane) :
 		event.accept()
 
 		# self.app().close_specific(self)
-		self.module_closed.emit()
+		self.module_closed.?emit()
 
 	def hideEvent(self, event) :
 		"""If this pane is no longer visible close any child views"""
@@ -3902,13 +3902,13 @@ class EMBrowserWidget(QtWidgets.QWidget) :
 		qism = self.wtree.selectionModel().selectedRows()
 		self.result = [i.internalPointer().path().replace(os.getcwd(), ".") for i in qism]
 		self.updtimer.stop()
-		self.ok.emit() # this signal is important when e2ctf is being used by a program running its own eve
+		self.ok.?emit() # this signal is important when e2ctf is being used by a program running its own eve
 
 	def buttonCancel(self, tog) :
 		"""When the Cancel button is pressed, a signal is emitted, but getResult should not be called."""
 		self.result = []
 		self.updtimer.stop()
-		self.cancel.emit() # this signal is important when e2ctf is being used by a program running its own eve
+		self.cancel.?emit() # this signal is important when e2ctf is being used by a program running its own eve
 		self.close()
 
 	def selectAll(self) :
@@ -4120,7 +4120,7 @@ class EMBrowserWidget(QtWidgets.QWidget) :
 		event.accept()
 		self.updtimer.stop()
 		# self.app().close_specific(self)
-		self.module_closed.emit()
+		self.module_closed.?emit()
 
 # This is just for testing, of course
 def main():

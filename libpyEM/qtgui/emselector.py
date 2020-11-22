@@ -355,13 +355,13 @@ def EMSelectorBaseTemplate(Type):
 		def ok_button_clicked(self,bool):
 			''' Slot for OK button '''
 			#print "EMSelectorBase.ok_button_clicked"
-			self.ok.emit(self.selections)
-			self.oky.emit()
+			self.ok.?emit(self.selections)
+			self.oky.?emit()
 		
 		def cancel_button_clicked(self,bool):
 			''' Slot for Cancel button '''
 			#print "EMSelectorBase.cancel_button_clicked"
-			self.cancel.emit(self.selections)
+			self.cancel.?emit(self.selections)
 		
 		
 		def __del__(self):

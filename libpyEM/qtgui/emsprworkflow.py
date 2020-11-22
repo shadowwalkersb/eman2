@@ -132,7 +132,7 @@ class WorkFlowTask(object):
 	def get_params(self): raise NotImplementedError
 	
 	def on_display_file(self,filename):
-		self.display_file.emit(filename)
+		self.display_file.?emit(filename)
 		
 	def on_form_ok(self,params):
 		for k,v in list(params.items()):
@@ -142,13 +142,13 @@ class WorkFlowTask(object):
 		self.form.close()
 		self.form = None
 	
-		self.task_idle.emit()
+		self.task_idle.?emit()
 		
 	def on_form_cancel(self):
 		self.disconnect_form()
 		self.form.close()
 		self.form = None
-		self.task_idle.emit()
+		self.task_idle.?emit()
 	
 	def disconnect_form(self):
 		self.form.emform_ok.disconnect(self.on_form_ok)
@@ -167,7 +167,7 @@ class WorkFlowTask(object):
 	def close(self):
 		if self.form != None: 
 			self.form.close()
-		self.task_idle.emit()
+		self.task_idle.?emit()
         
 	def closeEvent(self,event):
 		self.close()
@@ -288,7 +288,7 @@ class WorkFlowTask(object):
 #			process = subprocess.Popen(args_adjusted,stdout=file,stderr=subprocess.STDOUT)
 			process = subprocess.Popen(cmdstr, shell=True)
 			print("started process",process.pid)
-			self.process_started.emit(process.pid)
+			self.process_started.?emit(process.pid)
 			
 		#db_close_dict("bdb:project")
 	
@@ -334,7 +334,7 @@ class WorkFlowTask(object):
 #		process = subprocess.Popen(args_adjusted,stdout=file,stderr=subprocess.STDOUT)
 		process = subprocess.Popen(cmdstr, shell=True)
 		print("started process",process.pid)
-		self.process_started.emit(process.pid)
+		self.process_started.?emit(process.pid)
 		
 		#db_close_dict("bdb:project")
 		
@@ -921,7 +921,7 @@ Note that the data cannot be filtered unless it is imported."
 		
 		self.form.close()
 		self.form = None
-		self.task_idle.emit()
+		self.task_idle.?emit()
 	
 	def recover_original_raw_data_list(self):
 		'''
@@ -1221,7 +1221,7 @@ class EMParticleReportTask(ParticleWorkFlowTask):
 		
 		self.form.close()
 		self.form = None
-		self.task_idle.emit()
+		self.task_idle.?emit()
 	
 	def recover_original_raw_data_list(self):
 		'''
@@ -1463,7 +1463,7 @@ class E2CTFOutputTask(E2CTFWorkFlowTask):
 			
 
 			self.form.close()
-			self.task_idle.emit()
+			self.task_idle.?emit()
 		else:
 			return
 		
@@ -1560,16 +1560,16 @@ class E2CTFOutputTaskGeneral(E2CTFOutputTask):
 			
 
 			self.form.close()
-			self.task_idle.emit()
+			self.task_idle.?emit()
 		else:
 			self.form.close()
-			self.task_idle.emit()
+			self.task_idle.?emit()
 			
 	def on_form_cancel(self):
 		
 		self.form.close()
 		self.form = None
-		self.task_idle.emit()
+		self.task_idle.?emit()
 	
 class EMPartSetOptions(object):
 	def __init__(self,data_dict_name,bdb_only=False):
