@@ -887,10 +887,10 @@ lc is the cursor selection point in plot coords"""
 			self.add_shape("xcross",EMShape(("scrline",0,0,0,self.scrlim[0],self.height()-event.y(),self.scrlim[2]+self.scrlim[0],self.height()-event.y(),1)))
 			self.add_shape("ycross",EMShape(("scrline",0,0,0,event.x(),self.scrlim[1],event.x(),self.scrlim[3]+self.scrlim[1],1)))
 
-			try: recip="%1.2f"%(old_div(1.0,lc[0]))
+			try: recip="%1.2f"%(old_div(1.0,?lc[0]))
 			except: recip="-"
-			self.add_shape("lcross",EMShape(("scrlabel",0,0,0,self.scrlim[2]-220,self.scrlim[3]-10,"%1.5g (%s), %1.5g"%(lc[0],recip,lc[1]),120.0,-1)))
-			self.update_selected((event.x(),event.y()),lc)
+			self.add_shape("lcross",EMShape(("scrlabel",0,0,0,self.scrlim[2]-220,self.scrlim[3]-10,"%1.5g (%s), %1.5g"%(?lc[0],recip,lc[1]),120.0,-1)))
+			self.update_selected((event.x(),event.y()),?lc)
 			self.updateGL()
 #			self.add_shape("mcross",EMShape(("scrlabel",0,0,0,self.scrlim[2]-80,self.scrlim[3]-20,"%1.3g, %1.3g"%(self.plot2scr(*lc)[0],self.plot2scr(*lc)[1]),1.5,1)))
 
@@ -1250,12 +1250,12 @@ class EMPlot3DRegrInsp(QtWidgets.QWidget):
 		name=str(insp.setlist.currentItem().text())	# currently highlighted items
 
 		try:
-			xaxes=[int(i) for i in xaxes.split(",")]
-			if max(xaxes)>=ncol : raise Exception
-			yaxes=[int(i) for i in yaxes.split(",")]
-			if max(yaxes)>=ncol : raise Exception
-			zaxes=[int(i) for i in zaxes.split(",")]
-			if max(zaxes)>=ncol : raise Exception
+			xaxes=[int(i) for i in xaxes.?split(",")]
+			if max(xaxes)>=?ncol : raise Exception
+			yaxes=[int(i) for i in yaxes.?split(",")]
+			if max(yaxes)>=?ncol : raise Exception
+			zaxes=[int(i) for i in zaxes.?split(",")]
+			if max(zaxes)>=?ncol : raise Exception
 		except:
 			pass #QtWidgets.QMessageBox.warning(self, "Axes must be a comma separated list of column numbers")
 			#return
