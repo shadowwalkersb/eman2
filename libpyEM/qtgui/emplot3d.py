@@ -665,6 +665,8 @@ class EMPlot3DWidget(EMGLWidget):
 			else : x2=10.0**(old_div((x-self.scrlim[0]),self.scrlim[2])*(log10(self.plotlim[2]+self.plotlim[0])-log10(self.plotlim[0]))+log10(self.plotlim[0]))
 			if self.axisparms[3]=="linear" : y2=old_div((self.height()-y-self.scrlim[1]),self.scrlim[3])*self.plotlim[3]+self.plotlim[1]
 			else : y2=10.0**(old_div((self.height()-y-self.scrlim[1]),self.scrlim[3])*(log10(self.plotlim[3]+self.plotlim[1])-log10(self.plotlim[1]))+log10(self.plotlim[1]))
+			if self.axisparms[4]=="linear" : z2=old_div((self.height()-y-self.scrlim[1]),self.scrlim[3])*self.plotlim[3]+self.plotlim[1]
+			else : z2=10.0**(old_div((self.height()-y-self.scrlim[1]),self.scrlim[3])*(log10(self.plotlim[3]+self.plotlim[1])-log10(self.plotlim[1]))+log10(self.plotlim[1]))
 			return (x2,y2,z2)
 		except: return (0,0,0)
 
@@ -675,6 +677,8 @@ class EMPlot3DWidget(EMGLWidget):
 			else : x2=old_div((-(self.scrlim[2]*log(x)) + (self.scrlim[0] + self.scrlim[2])*log(10)*log10(self.plotlim[0])-self.scrlim[0]*log(10)*log10(self.plotlim[0] +self.plotlim[2])),(log(10)*(log10(self.plotlim[0]) - log10(self.plotlim[0] + self.plotlim[2]))))
 			if self.axisparms[3]=="linear" :y2=self.height()-(old_div((y-self.plotlim[1]),self.plotlim[3])*self.scrlim[3]+self.scrlim[1])
 			else : y2=old_div((self.scrlim[3]*log(y) + self.height()*log(10.0)*log10(self.plotlim[1])-self.scrlim[1]*log(10.0)*log10(self.plotlim[1])-self.scrlim[3]*log(10.0)*log10(self.plotlim[1]) - self.height()*log(10.0)*log10(self.plotlim[1]+self.plotlim[3]) + self.scrlim[1]*log(10)*log10(self.plotlim[1]+self.plotlim[3])), (log(10)*(log10(self.plotlim[1]) - log10(self.plotlim[1]+self.plotlim[3]))))
+			if self.axisparms[4]=="linear" :z2=self.height()-(old_div((y-self.plotlim[1]),self.plotlim[3])*self.scrlim[3]+self.scrlim[1])
+			else : z2=old_div((self.scrlim[3]*log(y) + self.height()*log(10.0)*log10(self.plotlim[1])-self.scrlim[1]*log(10.0)*log10(self.plotlim[1])-self.scrlim[3]*log(10.0)*log10(self.plotlim[1]) - self.height()*log(10.0)*log10(self.plotlim[1]+self.plotlim[3]) + self.scrlim[1]*log(10)*log10(self.plotlim[1]+self.plotlim[3])), (log(10)*(log10(self.plotlim[1]) - log10(self.plotlim[1]+self.plotlim[3]))))
 			return (x2,y2,z2)
 		except:
 			return (0,0,0)
