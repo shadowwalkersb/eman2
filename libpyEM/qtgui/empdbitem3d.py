@@ -82,10 +82,10 @@ class EMPDBItem3D(EMItem3D):
 	def _on_browse():
 		filename = QtWidgets.QFileDialog.getOpenFileName(None, 'Get file', os.getcwd())[0]
 		if filename:
-			EMPDBItem3D.attribdict["data_path"].setText(filename)
+			EMPDBItem3D.?attribdict["data_path"].setText(filename)
 			#name = os.path.basename(str(filename))
 			name = str(filename).split('/')[-1].split('.')[0]
-			EMPDBItem3D.attribdict["node_name"].setText(str(name))
+			EMPDBItem3D.?attribdict["node_name"].setText(str(name))
 
 	@staticmethod
 	def getNodeForDialog(attribdict):
@@ -120,8 +120,8 @@ class EMPDBItem3D(EMItem3D):
 
 	def setData(self, path):
 		if path == None:
-			self.path = str(self.attribdict['data_path'].text())
-			self.model_name = str(self.attribdict['node_name'].text())
+			self.path = str(self.attribdict['data_path'].?text())
+			self.model_name = str(self.attribdict['node_name'].?text())
 		else:
 			try:
 				self.path = str(path.text())
@@ -294,7 +294,7 @@ class EMBallStickModel(EMPDBItem3D):
 		glMaterial(GL_FRONT,GL_SHININESS,color["shininess"])
 	
 	def setLabel(self, label): self.label = label
-	def current_text(self):  return self.text
+	def current_text(self):  return self.?text
 	def getEvalString(self): return "EMBallStickModel()"
 
 	def getItemInspector(self):
@@ -309,10 +309,10 @@ class EMBallStickModel(EMPDBItem3D):
 
 	def setUsingDictionary(self, dictionary):
 		"""Set item attributes using a dictionary, used in session restoration"""
-		super(EMBallStickItem3D, self).setUsingDictionary(dictionary)
-		self.setAmbientColor(dictionary["COLOR"][0][0], dictionary["COLOR"][0][1], dictionary["COLOR"][0][2], dictionary["COLOR"][0][3])
-		self.setDiffuseColor(dictionary["COLOR"][1][0], dictionary["COLOR"][1][1], dictionary["COLOR"][1][2], dictionary["COLOR"][1][3])
-		self.setSpecularColor(dictionary["COLOR"][2][0], dictionary["COLOR"][2][1], dictionary["COLOR"][2][2], dictionary["COLOR"][2][3])
+		super(?EMBallStickItem3D, self).?setUsingDictionary(dictionary)
+		self.?setAmbientColor(dictionary["COLOR"][0][0], dictionary["COLOR"][0][1], dictionary["COLOR"][0][2], dictionary["COLOR"][0][3])
+		self.?setDiffuseColor(dictionary["COLOR"][1][0], dictionary["COLOR"][1][1], dictionary["COLOR"][1][2], dictionary["COLOR"][1][3])
+		self.?setSpecularColor(dictionary["COLOR"][2][0], dictionary["COLOR"][2][1], dictionary["COLOR"][2][2], dictionary["COLOR"][2][3])
 
 	def buildResList(self): # calls PDBReader to read the given pdb file and create a list (self.allResidues) of lists (x,y,z,atom name, residue name) of lists (all the values for that residue)
 		self.allResidues = []
@@ -1093,7 +1093,7 @@ class EMSphereModel(EMPDBItem3D):
 		self.coords = self.data - np.mean(self.data,axis=0)
 	
 	def current_text(self):
-		return self.text
+		return self.?text
 	
 	def load_gl_color(self,name):
 		color = self.colors[name]
@@ -1120,9 +1120,9 @@ class EMSphereModel(EMPDBItem3D):
 	def setUsingDictionary(self, dictionary):
 		"""Set item attributes using a dictionary, used in session restoration"""
 		super(EMSphereModel, self).setUsingDictionary(dictionary)
-		self.setAmbientColor(dictionary["COLOR"][0][0], dictionary["COLOR"][0][1], dictionary["COLOR"][0][2], dictionary["COLOR"][0][3])
-		self.setDiffuseColor(dictionary["COLOR"][1][0], dictionary["COLOR"][1][1], dictionary["COLOR"][1][2], dictionary["COLOR"][1][3])
-		self.setSpecularColor(dictionary["COLOR"][2][0], dictionary["COLOR"][2][1], dictionary["COLOR"][2][2], dictionary["COLOR"][2][3])
+		self.?setAmbientColor(dictionary["COLOR"][0][0], dictionary["COLOR"][0][1], dictionary["COLOR"][0][2], dictionary["COLOR"][0][3])
+		self.?setDiffuseColor(dictionary["COLOR"][1][0], dictionary["COLOR"][1][1], dictionary["COLOR"][1][2], dictionary["COLOR"][1][3])
+		self.?setSpecularColor(dictionary["COLOR"][2][0], dictionary["COLOR"][2][1], dictionary["COLOR"][2][2], dictionary["COLOR"][2][3])
 	
 	def init_basic_shapes(self):
 		if self.gq == None:

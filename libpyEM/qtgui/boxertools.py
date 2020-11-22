@@ -358,7 +358,7 @@ class Box(object):
 		if method == Box.CENTEROFMASS:
 			if low_res == True:
 				# WONT WORK there is no self.autoboxer
-				image = self.get_small_box_image(self.autoboxer.get_template_radius(),self.autoboxer.get_subsample_rate())
+				image = self.get_small_box_image(self.?autoboxer.get_template_radius(),self.?autoboxer.get_subsample_rate())
 				ali = image.calc_center_of_mass()
 				dx = -int((ali[0]+0.5-old_div(image.get_xsize(),2)))*extrasomething.get_subsample_rate()
 				dy = -int((ali[1]+0.5-old_div(image.get_ysize(),2)))*extrasomething.get_subsample_rate()
@@ -371,7 +371,7 @@ class Box(object):
 		elif method == Box.CENTERACF:
 			if low_res == True:
 				# WONT WORK there is no self.autoboxer
-				image = self.get_small_box_image(self.autoboxer.get_template_radius(),self.autoboxer.get_subsample_rate())
+				image = self.get_small_box_image(self.?autoboxer.get_template_radius(),self.?autoboxer.get_subsample_rate())
 				ccf  = image.calc_ccf(None)
 				trans = ccf.calc_max_location_wrap(-1,-1,-1)
 				dx = old_div(trans[0],2)*extrasomething.get_subsample_rate()
@@ -1134,7 +1134,7 @@ class FLCFImage(object):
 		return self.image_name
 	
 	def get_output_image_name(self):
-		return self.outputimage_name
+		return self.?outputimage_name
 	
 	def get_sigma_image_flatten_radius(self):
 		return self.flcfimage.get_attr("get_sigma_image_flatten_radius")
@@ -2278,7 +2278,7 @@ class Boxable(object):
 		
 	def process_finished(self,int):
 		try:
-			from eman2_gui.emimage import EMImage
+			from eman2_gui.emimage import ?EMImage
 		except:
 			print("Cannot import EMAN image GUI objects (emimage,etc.)")
 			sys.exit(1)

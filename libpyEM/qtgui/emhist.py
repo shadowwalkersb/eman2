@@ -502,12 +502,12 @@ class EMHistogramWidget(EMGLWidget):
 					if self.stacked == False:
 						ax.hist(self.bins[k],bins=self.edges,color=None,range=self.xlimits,histtype=self.histtype, align=histalign, orientation=self.orientation,alpha=self.inspector.alpha.getValue(),normed=self.normed,cumulative=self.cumulative,log=self.logy,stacked=self.stacked)
 					else:
-						tostack.append(self.bins[k])
-						colors.append(color)
+						?tostack.append(self.bins[k])
+						?colors.append(color)
 
 			if self.histtype == "step" or self.histtype == "stepfilled":
 				if self.stacked == True:
-					ax.hist(tostack,bins=self.edges,color=colors,range=self.xlimits,histtype=self.histtype,orientation=self.orientation,align=histalign,alpha=self.inspector.alpha.getValue(),normed=self.normed,cumulative=self.cumulative,log=self.logy,stacked=self.stacked)
+					ax.hist(?tostack,bins=self.edges,color=colors,range=self.xlimits,histtype=self.histtype,orientation=self.orientation,align=histalign,alpha=self.inspector.alpha.getValue(),normed=self.normed,cumulative=self.cumulative,log=self.logy,stacked=self.stacked)
 
 			self.autoscale(True)
 			ax.set_ylim(self.ylimits)

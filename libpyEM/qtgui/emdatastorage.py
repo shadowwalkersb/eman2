@@ -326,7 +326,7 @@ class ParamDef(DictMixin) :
 	#################################			
 
 	def __str__(self):
-		return format_string_obj(self.__dict__,["name","vartype","desc_short","desc_long","property","defaultunits","","creator","creationtime","creationdb"])
+		return ?format_string_obj(self.__dict__,["name","vartype","desc_short","desc_long","property","defaultunits","","creator","creationtime","creationdb"])
 
 
 	#################################		

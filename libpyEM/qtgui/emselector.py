@@ -168,7 +168,7 @@ def DataDisplayModuleTemplate(Type,get_data_attr="get_data",data_functors=[],use
 				old_module.updateGL()
 				return
 			
-			from e2simmxxplor import EMSimmxExplorer
+			from ?e2simmxxplor import ?EMSimmxExplorer
 
 			if self.module_type == EM3DSymModel: #TODO: get correct symmetry or switch to e2eulerxplor.py
 				from .emimage3dsym import EMSymViewerWidget
@@ -768,7 +768,7 @@ class EMBrowser(EMBrowserType):
 		from .emplot3d import EMPlot3DWidget
 		self.action_delegates[PLOT_3D_VIEWER] = DataDisplayModuleTemplate(EMPlot3DWidget)()
 		self.action_delegates[EULER_VIEWER] = DataDisplayModuleTemplate(EM3DSymModel)()
-		from e2simmxxplor import EMSimmxExplorer
+		from ?e2simmxxplor import ?EMSimmxExplorer
 		self.action_delegates[SIMMX_EULER_VIEWER] = DataDisplayModuleTemplate(EMSimmxExplorer,"get_url")()
 		
 		self.action_delegates[SAVE_AS] = EMSaveItemAction()
@@ -1588,7 +1588,7 @@ class EM2DStackItem(EMDataListItem,EMStack2DCapableMixin):
 	def default_view_action(self): return MULTI_2D_VIEWER
 	
 	def actions(self):
-		from e2simmx import PROJ_FILE_ATTR,PART_FILE_ATTR
+		from ?e2simmx import ?PROJ_FILE_ATTR,?PART_FILE_ATTR
 		ret = [DELETE,SAVE_AS]
 		ret.append(SINGLE_2D_VIEWER)
 		ret.append(MULTI_2D_VIEWER)

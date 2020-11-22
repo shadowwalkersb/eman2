@@ -1120,17 +1120,17 @@ class EMScene3D(EMItem3D, EMGLWidget):
 		if (event.buttons()&Qt.LeftButton and self.mousemode == "app"):
 			self.sgmousemove.?emit(event.x(), event.y())
 		if (event.buttons()&Qt.LeftButton and self.mousemode == "line"):
-			self.newnode.setEndAndWidth(0.0, 0.0, 0.0, x - self.first_x, self.first_y - y, 0.0, 20.0)
+			self.newnode.?setEndAndWidth(0.0, 0.0, 0.0, x - self.first_x, self.first_y - y, 0.0, 20.0)
 		if (event.buttons()&Qt.LeftButton and self.mousemode == "ruler"):
 			self.newnode.setRuler(0.0, 0.0, 0.0, x - self.first_x, self.first_y - y, 0.0)
 		if (event.buttons()&Qt.LeftButton and self.mousemode == "cube"):
-			self.newnode.setSize(math.sqrt((x - self.first_x)**2 + (y - self.first_y)**2))
+			self.newnode.?setSize(math.sqrt((x - self.first_x)**2 + (y - self.first_y)**2))
 		if (event.buttons()&Qt.LeftButton and self.mousemode == "sphere"):
-			self.newnode.setRadius(math.sqrt((x - self.first_x)**2 + (y - self.first_y)**2))
+			self.newnode.?setRadius(math.sqrt((x - self.first_x)**2 + (y - self.first_y)**2))
 		if (event.buttons()&Qt.LeftButton and self.mousemode == "cylinder"):
-			self.newnode.setRadiusAndHeight(math.fabs(x - self.first_x), math.fabs(y - self.first_y))
+			self.newnode.?setRadiusAndHeight(math.fabs(x - self.first_x), math.fabs(y - self.first_y))
 		if (event.buttons()&Qt.LeftButton and self.mousemode == "cone"):
-			self.newnode.setRadiusAndHeight(math.fabs(x - self.first_x), math.fabs(y - self.first_y))
+			self.newnode.?setRadiusAndHeight(math.fabs(x - self.first_x), math.fabs(y - self.first_y))
 		if (event.buttons()&Qt.LeftButton and self.mousemode == "rotate"):
 			magnitude = math.sqrt(dx*dx + dy*dy)
 			# We want to remove the effect of self.camera.getViewPortWidthScaling() for rotation. For everything else the effect is desired
@@ -2293,7 +2293,7 @@ class EMInspector3D(QtWidgets.QWidget):
 		Clear the entire tree
 		"""
 		if self.tree_widget.topLevelItem(0):
-			self.tree_widget.topLevelItem(0).removeAllChildren(self)
+			self.tree_widget.topLevelItem(0).?removeAllChildren(self)
 			self.tree_widget.takeTopLevelItem(0)
 		
 	def _tree_widget_click(self, item, col, quiet=False):
@@ -2335,10 +2335,10 @@ class EMInspector3D(QtWidgets.QWidget):
 		item = self.tree_widget.currentItem()
 		if item.parent:
 			self.removeTreeNode(item.parent(), item.parent().indexOfChild(item)) 
-			item.parent().item3d().removeChild(item.item3d())
+			item.parent().?item3d().removeChild(item.?item3d())
 			# In case we delete the currently selected item, we want6 to move selected item to last selection
-			if self.scenegraph().getCurrentSelection() == item.item3d():
-				self.scenegraph().setCurrentSelection(self.tree_widget.currentItem().item3d())
+			if self.scenegraph().getCurrentSelection() == item.?item3d():
+				self.scenegraph().setCurrentSelection(self.tree_widget.currentItem().?item3d())
 			self.updateSceneGraph()
 		else:
 			print("Error cannot remove root node!!")

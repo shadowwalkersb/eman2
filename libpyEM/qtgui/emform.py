@@ -492,7 +492,7 @@ class EMFileTable(QtWidgets.QTableWidget):
 				item.setTextAlignment(QtCore.Qt.AlignHCenter)
 				item.setFlags(flag3)
 				if cd.lt_function: # This is how sort gets customized
-					import new
+					import ?new
 					item.__lt__ = new.instancemethod(cd.lt_function,item,QtWidgets.QTableWidgetItem)
 				self.setItem(i, col, item)
 			col += 1
@@ -530,7 +530,7 @@ class EMFileTable(QtWidgets.QTableWidget):
 				item.setTextAlignment(QtCore.Qt.AlignHCenter)
 				item.setFlags(flag3)
 				if cd.lt_function: # This is how sort gets customized
-					import new
+					import ?new
 					item.__lt__ = new.instancemethod(cd.lt_function,item,QtWidgets.QTableWidgetItem)
 				self.setItem(r+i,j+1, item)
 			
@@ -1052,7 +1052,7 @@ class EMEmanStrategyWidget(QtWidgets.QWidget):
 					self.auto_incorporate[iparam.vartype](iparam,hbl,self)
 				vbl.addLayout(hbl)
 			else:
-				self.auto_incorporate[param.vartype](param,vbl,self)
+				self.auto_incorporate[param.?vartype](param,vbl,self)
 		
 		return widget
 	

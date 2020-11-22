@@ -142,7 +142,7 @@ class Animatable(object):
 			self.time_begin = 0
 			self.time = 0
 			self.animated = False
-			self.target.animation_done_event(self)
+			self.?target.animation_done_event(self)
 			return 0
 		else:
 			dt = self.get_dt()
@@ -219,7 +219,7 @@ class XYScaleAnimation(Animatable):
 		self.current = (1-dt)*self.start + dt*self.end
 		self.target.set_xy_scale(self.current)
 	def transform(self):
-		glScale(self.current,self.current,1.0)
+		?glScale(self.current,self.current,1.0)
 		
 class SingleValueIncrementAnimation(Animatable):
 	def __init__(self,target,start,end):

@@ -121,7 +121,7 @@ class EMTaskCustomer(object):
 		print("%s: Server communication failure, sleeping %d secs"%(local_datetime(),delay))
 		time.sleep(delay)
 		try:
-			x=EMDCsendonecom(self.addr,"TEST",None)
+			x=?EMDCsendonecom(self.?addr,"TEST",None)
 			if (x[0]=="TEST") :
 				print("%s: Server is ok now"%local_datetime())
 				return

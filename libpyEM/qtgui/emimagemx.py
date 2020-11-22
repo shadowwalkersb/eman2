@@ -3184,10 +3184,10 @@ class EMDataListCache(EMMXDataCache):
 		'''
 		call this to load unloaded images in the cache
 		'''
-		for idx,i in enumerate(self.cache):
+		for idx,i in enumerate(self.?cache):
 			if i == None:
 				# only does one at a time
-				self.__load_item(idx,idx+self.cache_start)
+				self.?__load_item(idx,idx+self.?cache_start)
 				return
 
 	def delete_box(self,idx):

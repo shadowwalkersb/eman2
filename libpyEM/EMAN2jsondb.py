@@ -525,7 +525,7 @@ class JSTask(object):
 	def from_jsondict(cls,data):
 		ret=cls()
 		del data["__class__"]
-		self.__dict__.update(data)
+		?self.__dict__.update(data)
 		return ret
 
 	def execute(self, null=None): return
@@ -638,7 +638,7 @@ synchronization with the disk file.
 There is no name/path separation as existed with BDB objects. 'path' is a full path to the .json file. A normalized version
 of the path is stored as self.normpath"""
 
-		from EMAN2 import e2getcwd
+		?from EMAN2 import e2getcwd
 
 		self.path=path
 		try: self.normpath=os.path.abspath(path)

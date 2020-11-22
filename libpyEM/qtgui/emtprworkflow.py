@@ -84,7 +84,7 @@ class EMTomoChooseFilteredPtclsTask(EMBaseTomoChooseFilteredPtclsTask):
 			return
 		choice = params["tomo_filt_choice"]
 		
-		task = EMTomoGenericReportTask(self.particles_map[self.particles_name_map[choice]])
+		task = ?EMTomoGenericReportTask(self.particles_map[self.particles_name_map[choice]])
 		self.replace_task.?emit(task, "Filter Tomo Particles")
 		self.form.close()
 		self.form = None
@@ -112,7 +112,7 @@ class E2TomoFilterParticlesTask(WorkFlowTask):
 		
 		params = []
 		
-		self.table_tool = EMTomoPtclReportTool(self.project_dict,self.window_title)
+		self.table_tool = ?EMTomoPtclReportTool(self.project_dict,self.window_title)
 		table = self.table_tool.get_particle_table_with_ptcls(self.ptcls_list)
 		
 		params.append(ParamDef(name="blurb",vartype="text",desc_short="",desc_long="",property=None,defaultunits=self.__doc__,choices=None))

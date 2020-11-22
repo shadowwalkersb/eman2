@@ -1590,7 +1590,7 @@ class EMBoxerModuleVitals(object):
 			self.full_box_update()
 
 	def detect_box_collision(self, data):
-		z_idx=self.get_2d_window().list_idx
+		z_idx=self.?get_2d_window().list_idx
 		return self.box_list.detect_collision(data[0], data[1], self.box_size, z_idx)
 
 
@@ -1632,9 +1632,9 @@ class EMBoxerModuleVitals(object):
 				mask = BinaryCircleImageCache.get_image_directly(int(old_div(self.box_size,(2*sr))))
 				BoxingTools.set_region(self.get_exclusion_image(),mask,xx,yy,val)
 				set_idd_image_entry(self.current_file(),ScaledExclusionImage.database_name,self.get_exclusion_image())
-				if self.main_2d_window:
-					self.main_2d_window.set_other_data(self.get_exclusion_image(),self.get_subsample_rate(),True)
-					self.main_2d_window.updateGL()
+				if self.?main_2d_window:
+					self.?main_2d_window.set_other_data(self.get_exclusion_image(),self.get_subsample_rate(),True)
+					self.?main_2d_window.updateGL()
 
 	def remove_boxes(self, box_numbers, update_gl=True):
 		'''
@@ -1708,7 +1708,7 @@ class EMBoxerModuleVitals(object):
 
 		if idx != self.current_idx:
 			self.current_idx = idx
-			self.set_current_file(self.file_names[idx])
+			self.?set_current_file(self.file_names[idx])
 
 	def set_image_quality(self, val):
 		set_database_entry(self.current_file(),"quality",val)

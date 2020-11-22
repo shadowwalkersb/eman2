@@ -343,7 +343,7 @@ class EMFileType(object) :
 		target = emscene3d.EMScene3D()
 		brws.view3d.append(target)
 
-		for n in range(self.nimg) :
+		for n in range(self.?nimg) :
 			data = emdataitem3d.EMDataItem3D(self.path, n = n)
 			target.insertNewNode("{} #{}".format(self.path.split("/")[-1], n), data)
 			iso = emdataitem3d.EMIsosurface(data)
@@ -362,7 +362,7 @@ class EMFileType(object) :
 		brws.busy()
 
 		# this averages images in chunks of 1000 (when more than 1000 images in the file)
-		avg=sum([sum(EMData.read_images(self.path,list(range(i,min(i+1000,self.nimg))))) for i in range(0,self.nimg,1000)])
+		avg=sum([sum(EMData.read_images(self.path,list(range(i,min(i+1000,self.?nimg))))) for i in range(0,?self.?nimg,1000)])
 
 		if not new:
 			try :
@@ -386,16 +386,16 @@ class EMFileType(object) :
 		"""Show averages of random subsets of 1/4 or 1000 images from the stack"""
 
 		# minimum number of images required
-		if self.nimg<8 : return
+		if self.?nimg<8 : return
 		brws.busy()
 
 		avgs=[]
 		for i in range(10):
-			imns=[random.randrange(self.nimg) for j in range(min(self.nimg//4,1000))]
+			imns=[random.randrange(self.?nimg) for j in range(min(self.?nimg//4,1000))]
 			imns.sort()
 			ims=EMData.read_images(self.path,imns)
 			avgs.append(sum(ims))
-			avgs[-1].mult(1.0/len(imns))
+			avgs[-1].?mult(1.0/len(imns))
 
 		try :
 			target = brws.view2d[-1]
@@ -472,7 +472,7 @@ class EMFileType(object) :
 			# for z in range(self.dim[2]) :
 				# data.append(EMData(self.path, 0, False, Region(0, 0, z, self.dim[0], self.dim[1], 1)))
 		# else : data = EMData.read_images(self.path)
-		data=[EMData(self.path,i).process("misc.directional_sum",{"axis":"z"}) for i in range(self.nimg)]
+		data=[EMData(self.path,i).process("misc.directional_sum",{"axis":"z"}) for i in range(?self.?nimg)]
 
 		try :
 			target = brws.view2ds[-1]
@@ -496,7 +496,7 @@ class EMFileType(object) :
 		try:
 			ret=self.secparm.exec_()
 		except:
-			self.secparm=EMSliceParamDialog(brws,self.nimg)
+			self.secparm=EMSliceParamDialog(brws,?self.?nimg)
 			ret=self.secparm.exec_()
 		
 		if not ret: return	# cancel
@@ -504,7 +504,7 @@ class EMFileType(object) :
 		img0=self.secparm.wspinmin.value()
 		img0=max(img0,0)
 		img1=self.secparm.wspinmax.value()
-		if img1<0 or img1>self.nimg: img1=self.nimg
+		if img1<0 or img1>self.?nimg: img1=self.?nimg
 		imgstep=self.secparm.wspinstep.value()
 		layers=self.secparm.wspinlayers.value()
 		applyxf=self.secparm.wcheckxf.checkState()
@@ -579,7 +579,7 @@ class EMFileType(object) :
 		"""Show a single 2-D image"""
 		brws.busy()
 
-		if self.nimg > 1 :
+		if self.?nimg > 1 :
 			if self.n >= 0 : data = EMData(self.path, self.n)
 			else : data = EMData.read_images(self.path)
 		else : data = EMData(self.path)
@@ -801,7 +801,7 @@ class EMPDFFileType(EMFileType) :
 	@staticmethod
 	def infoClass() :
 		"""Returns a reference to the QWidget subclass for displaying information about this file"""
-		return EMPDFInfoPane
+		return ?EMPDFInfoPane
 
 	def actions(self) :
 		"""Few actions"""
@@ -1468,11 +1468,11 @@ class EMImageFileType(EMFileType) :
 
 		self.updthreadexit = True
 
-		for w in self.view2d+self.view2ds+self.view3d+self.viewplot2d+self.viewplot3d+self.viewhist :
+		for w in self.?view2d+self.view2ds+self.view3d+self.viewplot2d+self.viewplot3d+self.viewhist :
 			w.close()
 
-		if self.infowin != None :
-			self.infowin.close()
+		if self.?infowin != None :
+			self.?infowin.close()
 
 		event.accept()
 		# self.app().close_specific(self)
@@ -3342,7 +3342,7 @@ class EMInfoWin(QtWidgets.QWidget) :
 			if isinstance(self.stack.itemAt(i), cls) :
 				self.stack.setCurrentIndex(i)
 				pane = self.stack.itemAt(i)
-				pane.display(target)
+				pane.?display(target)
 				break
 		else :
 			# If we got here, then we need to make a new instance of the appropriate pane

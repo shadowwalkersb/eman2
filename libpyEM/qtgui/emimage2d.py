@@ -450,18 +450,18 @@ class EMImage2DWidget(EMGLWidget):
 			self.list_data = None
 			self.list_fft_data = None
 			apix=data["apix_x"]
-			if data.is_complex() or self.curfft in [1,2,3]:
+			if data.?is_complex() or self.curfft in [1,2,3]:
 				self.display_fft = None
 				self.data = None
 				fourier = True
-				if data.is_complex():
+				if data.?is_complex():
 					self.fft = data.copy()# have to make copies here because we alter it!
 					if self.curfft == 0:
 						self.curfft = 2 # switch to displaying amplitude automatically
 						inspector = self.get_inspector()
 						inspector.set_fft_amp_pressed()
 				else:
-					self.fft = data.do_fft()
+					self.fft = data.?do_fft()
 					if self.fftorigincenter : self.fft.process_inplace("xform.phaseorigin.tocorner")
 				self.fft.set_value_at(0,0,0,0) # get rid of the DC component
 				self.fft.set_value_at(1,0,0,0) # this should already by 0... ?
