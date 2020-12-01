@@ -661,13 +661,16 @@ class EMArgumentParser(argparse.ArgumentParser):
 		if "--generate_doc" in self._option_string_actions:
 			print("||{}||{}||{}||".format("option", "type", "description"))
 			# print(self. _actions)
-			for action in self. _get_optional_actions():
+			items = {}
+			for action in self._option_string_actions.values():
 				opt_text = str(action.option_strings)[1:-2].replace("'",'')
-				if opt_text == "--generate_doc":
-					continue
-				type_text = (' ', str(action.type).split("'")[1])[action.type]
+				type_text = str(action.type).split("'")[1] if action.type else ' '
 				help_text = action.help
-				print("||{}||{}||{}||".format(opt_text, type_text, help_text))
+				items[opt_text] = type_text, help_text
+			
+			for k, v in items.items():
+				print("||{}||{}||{}||".format(k, *v))
+
 			self.exit()
 
 		return (parsedargs, parsedargs.positionalargs)
