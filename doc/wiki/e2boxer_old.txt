@@ -1,15 +1,12 @@
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
-||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||
 ||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
-||--boxsize, -B||int||Box size in pixels||
 ||--boxsize, -B||int||Box size in pixels||
 ||--write_dbbox|| ||Write coordinate file (eman1 dbbox) files||
 ||--write_ptcls|| ||Write particles to disk||
 ||--exclude_edges|| ||Don't generate output for any particles extending outside the micrograph||
 ||--exclude_bad|| ||Don't generate output for any particles marked as exclude||
-||--force, -f|| ||Force overwrite||
 ||--force, -f|| ||Force overwrite||
 ||--format|| ||Format of the output particle images. For EMAN2 refinement must be HDF.||
 ||--norm||str||Normalization processor to apply to written particle images. Should be normalize, normalize.edgemean,etc.Specific "None" to turn this off||
@@ -19,7 +16,6 @@
 ||--autoboxer||str||A key of the swarm_boxers dict in the local directory, used by the workflow.||
 ||--ppid||int||Set the PID of the parent process, used for cross platform PPID||
 ||--gui|| ||Dummy option; used in older version of e2boxer||
-||--verbose, -v||int||verbose level [0-9], higher number means higher level of verboseness||
 ||--verbose, -v||int||verbose level [0-9], higher number means higher level of verboseness||
 ||--gauss_autoboxer||str||Name of autoboxed file whose autoboxing parameters (obtained via some previous run of Gauss autoboxer via the GUI) should be used for automatic boxing.||
 ||--do_ctf||str||Name of file whose ctf estimation parameters (obtained via some previous run of Gauss autoboxer via the GUI) should be used for automatic ctf estimation.||

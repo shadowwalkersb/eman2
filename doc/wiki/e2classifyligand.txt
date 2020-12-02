@@ -1,9 +1,7 @@
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
-||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||
 ||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
-||--verbose, -v||int||verbose level [0-9], higher number means higher level of verboseness||
 ||--verbose, -v||int||verbose level [0-9], higher number means higher level of verboseness||
 ||--ref1||str||Rather than using a mask, ref1/ref2 permit using a pair of volumes for classification.||
 ||--ref2||str||Rather than using a mask, ref1/ref2 permit using a pair of volumes for classification.||

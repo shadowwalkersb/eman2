@@ -1,9 +1,7 @@
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
-||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||
 ||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
-||--verbose, -v||int||verbose level [0-9], higher number means higher level of verboseness||
 ||--verbose, -v||int||verbose level [0-9], higher number means higher level of verboseness||
 ||--shrink3d||int||Shrink the class-averages and make a downsampled variance map||
 ||--reslimit||float||Low-pass filter the individual maps to target the variance to the specified resolution in A. Variance maps cannot be filtered as a post-processing operation. Default = 10||
@@ -40,6 +38,5 @@
 ||--m3dpostprocess||str||Post processor to be applied to the 3D volume once the reconstruction is completed||
 ||--keep3d|| ||Keep all of the individual 3-D models used to make the variance map. This make take substantial disk space.||
 ||--lowmem|| ||Make limited use of memory when possible - useful on lower end machines||
-||--parallel, -P||str||Run in parallel, specify type:<option>=<value>:<option>:<value>||
 ||--parallel, -P||str||Run in parallel, specify type:<option>=<value>:<option>:<value>||
 ||--ppid||int||Set the PID of the parent process, used for cross platform PPID||

@@ -1,13 +1,11 @@
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
-||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||
 ||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
 ||--apix||float||The angstrom per pixel of the micrographs||
 ||--cs||float||The spherical aberration of the microscope||
 ||--voltage||float||The voltage (in kV) of the microscope||
 ||--ac||float||The amplitude contrast of the micrographs||
-||--verbose, -v||int||verbose level [0-9], higher number means higher level of verboseness||
 ||--verbose, -v||int||verbose level [0-9], higher number means higher level of verboseness||
 ||--importrelionstar|| ||Import CTFFIND3 data in Relion STAR format. Put STAR files in 'ctffind3' folder||
 ||--importctffind3|| ||Import ctffind3 data?||

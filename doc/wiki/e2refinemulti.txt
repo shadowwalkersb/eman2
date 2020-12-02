@@ -1,6 +1,5 @@
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
-||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||
 ||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
 ||--model||str||The map to use as a starting point for refinement||
@@ -25,10 +24,8 @@
 ||--nosingle|| ||Normally the multi-model refinement will be followed by N single model refinements automatically. If this is set the job will finish after making the split data sets.||
 ||--m3dpostprocess||str||Default=none. An arbitrary post-processor to run after all other automatic processing. Maps are autofiltered, so a low-pass filter is not required here.||
 ||--parallel, -P||str||Run in parallel, specify type:<option>=<value>:<option>=<value>. See http://blake.bcm.edu/emanwiki/EMAN2/Parallel||
-||--parallel, -P||str||Run in parallel, specify type:<option>=<value>:<option>=<value>. See http://blake.bcm.edu/emanwiki/EMAN2/Parallel||
 ||--threads||int||Number of threads to run in parallel on a single computer when multi-computer parallelism isn't useful||
 ||--path||str||The name of a directory where results are placed. Default = create new multi_xx||
-||--verbose, -v||int||verbose level [0-9], higher number means higher level of verboseness||
 ||--verbose, -v||int||verbose level [0-9], higher number means higher level of verboseness||
 ||--automask3d||str||Default=auto. Specify as a processor, eg - mask.auto3d:threshold=1.1:radius=30:nshells=5:nshellsgauss=5.||
 ||--projector|| ||Default=standard. Projector to use with parameters.||

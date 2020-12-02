@@ -1,6 +1,5 @@
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
-||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||
 ||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
 ||--path||str||Default=spt. Directory to store results in. The default is a numbered series of directories containing the prefix 'spt'; for example, spt_02 will be the directory by default if 'spt_01' already exists.||
@@ -8,7 +7,6 @@
 ||--npeakstorefine||int||Default=1. The number of best coarse alignments to refine in search of the best final alignment. Default=1.||
 ||--parallel|| ||default=thread:2. Parallelism. See http://blake.bcm.edu/emanwiki/EMAN2/Parallel||
 ||--ppid||int||Default=-1. Set the PID of the parent process, used for cross platform PPID||
-||--verbose, -v||int||Default=0. Verbose level [0-9], higher number means higher level of verboseness||
 ||--verbose, -v||int||Default=0. Verbose level [0-9], higher number means higher level of verboseness||
 ||--plots|| ||Default=False. Turn this option on to generatea plot of the ccc scores during each iteration. Running on a cluster or via ssh remotely might not support plotting.||
 ||--subset||int||Default=0 (not used). Refine only this substet of particles from the stack provided through --input||

@@ -1,6 +1,5 @@
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
-||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||
 ||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
 ||--allinfo|| ||Uses all of the .json files in info/ rather than specifying a list on the command line||
@@ -11,5 +10,4 @@
 ||--setoption||str||Set a single option in application preferences, eg - display2d.autocontrast:true||
 ||--listoptions|| ||List all currently set user application preferences||
 ||--ppid||int||Set the PID of the parent process, used for cross platform PPID||
-||--verbose, -v||int||verbose level [0-9], higher number means higher level of verboseness||
 ||--verbose, -v||int||verbose level [0-9], higher number means higher level of verboseness||

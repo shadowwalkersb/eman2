@@ -1,6 +1,5 @@
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
-||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||
 ||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
 ||--output||str||Name of the output stack to build (including file extension).||
@@ -8,5 +7,4 @@
 ||--rawtlt||str||Name of tilt angles text file.
 Note, angles must correspond to stack file names in alphabetical/numerical order.||
 ||--ppid||int||Set the PID of the parent process, used for cross platform PPID||
-||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness||
 ||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness||

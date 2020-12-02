@@ -1,6 +1,5 @@
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
-||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||
 ||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
 ||--alltiltseries|| ||Use all tilt series in the folder. Acceptable file extensions include hdf, mrc, mrcs, st.||
@@ -30,7 +29,6 @@
 ||--rmbeadthr||float||Density value threshold (of sigma) for removing beads. high contrast objects beyond this value will be removed. default is -1 for not removing. try 10 for removing fiducials||
 ||--threads||int||Number of threads||
 ||--tmppath||str||Temporary path||
-||--verbose, -v||int||Verbose||
 ||--verbose, -v||int||Verbose||
 ||--noali|| ||skip initial alignment||
 ||--dryrun|| ||skip final reconstruction||

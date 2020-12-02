@@ -1,6 +1,5 @@
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
-||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||
 ||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
 ||--refinemulti|| ||Extracts particles based on the model_id header value in each class-average, normally produced by e2refinemulti||
@@ -15,5 +14,4 @@
 ||--noderef|| ||If particle file was .lst, normally the output .lst will reference the original image file. With this option, the output will reference the .lst file instead, creating a lst pointing to another lst.||
 ||--sort|| ||If set, output .lst file will be sorted. The default is to leave the output grouped by class-average. If (and only if) sorted, duplicate entries will be removed.||
 ||--ppid||int||Set the PID of the parent process, used for cross platform PPID||
-||--verbose, -v||int||verbose level [0-9], higher number means higher level of verboseness||
 ||--verbose, -v||int||verbose level [0-9], higher number means higher level of verboseness||

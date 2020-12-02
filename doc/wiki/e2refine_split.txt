@@ -1,6 +1,5 @@
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
-||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||
 ||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
 ||--path||str||The name of an existing refine_xx folder, where e2refine_easy ran to completion||
@@ -9,6 +8,5 @@
 ||--minptcl||int||Minimum number of particles in a class. Classes with fewer particles will be excluded.||
 ||--mask|| ||Optional 3D mask to focus the classification||
 ||--parallel|| ||Standard parallelism option. Default=thread:2||
-||--verbose, -v||int||verbose level [0-9], higher number means higher level of verboseness||
 ||--verbose, -v||int||verbose level [0-9], higher number means higher level of verboseness||
 ||--ppid||int||Set the PID of the parent process, used for cross platform PPID||

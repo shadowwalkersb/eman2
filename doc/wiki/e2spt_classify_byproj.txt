@@ -1,6 +1,5 @@
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
-||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||
 ||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
 ||--path||str||Path to an existing spt_XX folder with the alignment results to use, defualt = highest spt_XX||
@@ -15,6 +14,5 @@
 ||--hp||float||Apply a high-pass filter at the specified resolution when generating projections. Specify as resolution in A, eg - 100||
 ||--lp||float||Apply a low-pass filter at the specified resolution when generating projections. Specify the resolution in A, eg - 25||
 ||--saveali|| ||In addition to the unaligned sets/ for each class, generate aligned particle stacks per class||
-||--verbose, -v||int||verbose level [0-9], higher number means higher level of verboseness||
 ||--verbose, -v||int||verbose level [0-9], higher number means higher level of verboseness||
 ||--ppid||int||Set the PID of the parent process, used for cross platform PPID||

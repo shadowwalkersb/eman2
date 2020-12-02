@@ -1,6 +1,5 @@
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
-||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||
 ||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
 ||--input||str||Comma separated files in .ali, .st .hdf format of the aligned subtiltseries.||
@@ -8,7 +7,6 @@
 ||--inputdir||str||Alternative to --input and --inputstem. Path to a directory containing individual subtiltseries stacks.||
 ||--path||str||Directory to store results in. The default is a numbered series of directories containing the prefix 'sptisr'; for example, sptisr02 will be the directory by default if 'sptisr_01' already exists.||
 ||--ppid||int||Default=1. Set the PID of the parent process, used for cross platform PPID||
-||--verbose, -v||int||Default 0. Verbose level [0-9], higher number means higher level of verboseness||
 ||--verbose, -v||int||Default 0. Verbose level [0-9], higher number means higher level of verboseness||
 ||--reconstructor||str||Default=fourier:mode=gauss_2. The reconstructor to use to reconstruct the tilt series into a tomogram. Type 'e2help.py reconstructors' at the command line to see all options and parameters available. To specify the interpolation scheme for the fourier reconstructor, specify 'mode'. Options are 'nearest_neighbor', 'gauss_2', 'gauss_3', 'gauss_5'. For example --reconstructor=fourier:mode=gauss_5 ||
 ||--iter||int||Number of iterations to run algorithm for.||

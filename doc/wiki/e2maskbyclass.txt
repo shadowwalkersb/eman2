@@ -1,6 +1,5 @@
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
-||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||
 ||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
 ||--classes||str||Path to a class-average file (must be EMAN2 HDF averages)||
@@ -9,6 +8,5 @@
 ||--redobispec|| ||Recomputes bispectra from masked particles||
 ||--redoharmonic|| ||Recomputes harmonic power from masked particles||
 ||--gui|| ||Permits interactive adjustment of mask parameters||
-||--verbose, -v||int||verbose level [0-9], higher number means higher level of verboseness||
 ||--verbose, -v||int||verbose level [0-9], higher number means higher level of verboseness||
 ||--ppid||int||Set the PID of the parent process, used for cross platform PPID||

@@ -1,6 +1,5 @@
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
-||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||
 ||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
 ||--boxsize||int||Box size for each tile in pixels. Default is 512.||
@@ -10,5 +9,4 @@
 ||--ymin||int||Start tiling on this y-pixel. If -1, will start one boxsize inward.||
 ||--ymax||int||Generate tiles in y-direction until this many pixels. If -1, will tile the entire image.||
 ||--ystep||int||Step length in y-direction. If less than --boxsize, tiles will overlap. Default is 256.||
-||--verbose, -v||int||verbose level [0-9], higher number means higher level of verboseness||
 ||--verbose, -v||int||verbose level [0-9], higher number means higher level of verboseness||

@@ -1,6 +1,5 @@
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
-||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||
 ||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
 ||--apix||float||Angstroms per pixel for all images||
@@ -9,5 +8,4 @@
 ||--ac||float||Amplitude contrast (percentage, default=10)||
 ||--samples||int||Number of samples in the plotted curve||
 ||--apply||str||A 2-D image file which the CTF will be applied to in real-time||
-||--verbose, -v||int||verbose level [0-9], higher number means higher level of verboseness||
 ||--verbose, -v||int||verbose level [0-9], higher number means higher level of verboseness||

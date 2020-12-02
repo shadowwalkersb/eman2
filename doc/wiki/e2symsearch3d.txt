@@ -1,6 +1,5 @@
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
-||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||
 ||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
 ||--align||str||Default=symalignquat. WARNING: The aligner cannot be changed for this program currently. Option ignored.||
@@ -21,7 +20,6 @@
 ||--nopreprocprefft|| ||Turns off all preprocessing that happens only once before alignment (--normproc, --mask, --maskfile, --clip, --threshold; i.e., all preprocessing excepting filters --highpass, --lowpass, --preprocess, and --shrink.||
 ||--normproc||str||Normalization processor applied to particles before alignment. Default is to use normalize. If normalize.mask is used, results of the mask option will be passed in automatically. If you want to turn this option off specify 'None'||
 ||--parallel, -P||str||Default=thread:2. Run in parallel, see http://eman2.org/Parallel||
-||--parallel, -P||str||Default=thread:2. Run in parallel, see http://eman2.org/Parallel||
 ||--path||str||Name of path for output file||
 ||--plots|| ||Default=False. Turn this option on to generate a plot of the ccc scores if --average is supplied. Running on a cluster or via ssh remotely might not support plotting.||
 ||--ppid||int||Set the PID of the parent process, used for cross platform PPID.||
@@ -37,7 +35,6 @@
 ||--sym|| ||Specify symmetry -choices are: c<n>, d<n>, h<n>, tet, oct, icos. For asymmetric reconstruction ommit this option or specify c1.||
 ||--threshold||str||A threshold applied to the subvolumes after normalization. For example, --threshold=threshold.belowtozero:minval=0 makes all negative pixels equal 0, so that they do not contribute to the correlation score.||
 ||--tweak|| ||WARNING: Not used for anything yet. This will perform a final alignment with no downsampling [without using --shrink or --shrinkfine] if --shrinkfine > 1.||
-||--verbose, -v||int||verbose level [0-9], higher number means higher level ofoptions.verboseness.||
 ||--verbose, -v||int||verbose level [0-9], higher number means higher level ofoptions.verboseness.||
 ||--weighbytiltaxis||str||Default=None. A,B, where A is an integer number and B a decimal. A represents the location of the tilt axis in the tomogram in pixels (eg.g, for a 4096x4096xZ tomogram, this value should be 2048), and B is the weight of the particles furthest from the tomogram. For example, --weighbytiltaxis=2048,0.5 means that praticles at the tilt axis (with an x coordinate of 2048) will have a weight of 1.0 during averaging, while the distance in the x coordinates of particles not-on the tilt axis will be used to weigh their contribution to the average, with particles at the edge(0+radius or 4096-radius) weighing 0.5, as specified by the value provided for B.||
 ||--weighbyscore|| ||Default=False. This option will weigh the contribution of each subtomogram to the average by score/bestscore.||

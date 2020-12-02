@@ -1,6 +1,5 @@
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
-||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||
 ||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
 ||--apix||float||default=0.0 (not used). Reset the apix on the header of each image to this value.||
@@ -10,5 +9,4 @@
 ||--outputstem||str||default=stack. Output filename stem/root to write stacked frames out to; e.g., "stack_01", "stack_02", "stack_03", etc. Explicitly choose an extension/format by supplying --extension; e.g., --extension=.hdf, and the output will be 'stack_01_angle+02.hdf','stack_02_angle+00.hdf','stack_03_angle-02.hdf', etc, etc.||
 ||--ppid||int||Set the PID of the parent process, used for cross platform PPID||
 ||--twodstack|| ||default=False (not used). Produces a stack of 2D images (Z number of images of X,Y size under the same "virutal stack" file name). By default, the output stack will be a 3D stack (a single image of size X,Y,Z, where Z is equal to the number of stacked frames).||
-||--verbose, -v||int||verbose level [0-9], higher number means higher level of verboseness.||
 ||--verbose, -v||int||verbose level [0-9], higher number means higher level of verboseness.||

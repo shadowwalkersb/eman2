@@ -1,6 +1,5 @@
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
-||-h, --help|| ||show this help message and exit||
 ||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
 ||--output|| ||Output reconstructed volume file name.||
 ||--input|| ||The input projections. Project should usually have the xform.projection header attribute, which is used for slice insertion||
@@ -28,7 +27,6 @@ Choices are: i, c, d, tet, icos, or oct.||
 ||--seedmap||str||If specified this volume will be used as a starting point for the reconstruction, filling any missing values in Fourier space. experimental.||
 ||--seedweight||float||If seedmap specified, this is how strongly the seedmap will bias existing values. 1 is default, and is equivalent to a one particle weight.||
 ||--seedweightmap||str||Specify a full map of weights for the seed. This must be in the same format as the --savenorm output map.||
-||--verbose, -v||int||verbose level [0-9], higher number means higher level of verboseness||
 ||--verbose, -v||int||verbose level [0-9], higher number means higher level of verboseness||
 ||--threads||int||Number of threads to run in parallel on a single computer. This is the only parallelism supported by e2make3dpar||
 ||--preprocess||str||preprocessor to be applied to the projections prior to 3D insertion. There can be more than one preprocessor and they are applied in the order in which they are specifed. Applied before padding occurs. See e2help.py processors for a complete list of available processors.||

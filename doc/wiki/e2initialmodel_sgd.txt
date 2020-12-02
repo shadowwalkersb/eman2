@@ -1,6 +1,5 @@
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
-||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||
 ||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
 ||--path||str||Path to write initial model output. Default is initmodel_XX||
@@ -18,6 +17,5 @@
 ||--writetmp|| ||Write output for each iteration||
 ||--fullcov|| ||Assume the input particles covers most of the orientation of the model. This gives better performance when the model is relatively feature-less, but is more likely to fail when there are incorrect particles in the input.||
 ||--threads||int||threads||
-||--verbose, -v||int||Verbose||
 ||--verbose, -v||int||Verbose||
 ||--targetres||float||Target resolution||

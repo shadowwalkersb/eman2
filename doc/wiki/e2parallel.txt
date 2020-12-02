@@ -1,6 +1,5 @@
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
-||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||
 ||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
 ||--scratchdir||str||Internal use only. Used by the MPI client||
@@ -9,5 +8,4 @@
 ||--taskout||str||Internal use only. Used when executing local threaded tasks.||
 ||--loadmodule||str||load module||
 ||--usethreads||int||max thread to use. only used for producing occupancy in mpi mode. default is the same as threads/mpi option given||
-||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness||
 ||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness||

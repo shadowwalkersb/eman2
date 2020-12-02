@@ -1,6 +1,5 @@
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
-||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||
 ||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
 ||--gpus||str||default=-1 (all available GPUs will be used). To select specific GPUs to use, provide them as a comma-separated list of integers.||
@@ -15,5 +14,4 @@
 ||--thickness||int||default=0. Thickness of the specimen as seen in a preliminary weighted back projection reconstruction from IMOD (through how many slices in Z are there specimen densities?).||
 ||--tiltseries||str||default=None. .st file from IMOD if --iconpreproc is turned on. Otherwise, supply the .ali file from IMOD *after* X-ray correction, iconpreprocessing, and alignment with IMOD.||
 ||--tltfile||str||default=None. .tlt file from IMOD.||
-||--verbose, -v||int||verbose level [0-9], higher number means higher level of verboseness.||
 ||--verbose, -v||int||verbose level [0-9], higher number means higher level of verboseness.||

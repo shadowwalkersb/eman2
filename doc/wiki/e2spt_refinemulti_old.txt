@@ -1,6 +1,5 @@
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
-||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||
 ||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
 ||--input||str||The name of the input volume stack. MUST be HDF since volume stack support is required.||
@@ -58,7 +57,6 @@
 ||--searchfine||int||"During FINE alignment translational search in X, Y and Z, in pixels. Default=2. This WILL overwrite any search: provided through --falign, EXCEPT if you provide --searchfine=2, which is the default. In general, just avoid providing search twice (through here and through the fine aligner --falign). If you do, just be careful to make them consistent to minimize misinterpretation and error.||
 ||--parallel|| ||Parallelism. See http://blake.bcm.edu/emanwiki/EMAN2/Parallel||
 ||--ppid||int||Set the PID of the parent process, used for cross platform PPID||
-||--verbose, -v||int||verbose level [0-9], higher number means higher level of verboseness||
 ||--verbose, -v||int||verbose level [0-9], higher number means higher level of verboseness||
 ||--plots|| ||Turn this option on to generate a plot of the ccc scores both during model generation with e2spt_classaverage.py or e2spt_hac.py and for refinement results of e2spt_refinemulti.py. Running on a cluster or via ssh remotely might not support plotting.||
 ||--notmatchimgs|| ||Default=True. This option prevents applying filter.match.to to one image so that it matches the other's spectral profile during preprocessing for alignment purposes.||

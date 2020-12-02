@@ -1,6 +1,5 @@
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
-||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||
 ||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
 ||--apix||float||A/pixel for S scaling||
@@ -51,7 +50,6 @@
 ||--translate||str||Translate by x,y pixels||
 ||--headertransform||int||This will take the xform.align2d header value from each particle, and apply it. Pass 0 to perform the transform or 1 to perform the inverse.||
 ||--verbose, -v||int||verbose level [0-9], higher number means higher level of verboseness||
-||--verbose, -v||int||verbose level [0-9], higher number means higher level of verboseness||
 ||--plane||str||Change the plane of image processing, useful for processing 3D mrcs as 2D images.||
 ||--writejunk|| ||Writes the image even if its sigma is 0.||
 ||--swap|| ||Swap the byte order||
@@ -63,5 +61,4 @@
 ||--step||str||Specify <init>,<step>. Processes only a subset of the input data. For example, 0,2 would process only the even numbered particles||
 ||--eer2x|| ||Render EER file on 8k grid.||
 ||--eer4x|| ||Render EER file on 16k grid.||
-||--parallel, -P||str||Run in parallel, specify type:n=<proc>:option:option||
 ||--parallel, -P||str||Run in parallel, specify type:n=<proc>:option:option||

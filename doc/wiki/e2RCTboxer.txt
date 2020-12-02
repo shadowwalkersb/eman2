@@ -1,9 +1,7 @@
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
-||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||
 ||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
-||--boxsize, -B||int||Box size in pixels||
 ||--boxsize, -B||int||Box size in pixels||
 ||--write_boxes|| ||Write coordinate file (eman1 dbbox) files||
 ||--write_ptcls|| ||Write particles to disk||
@@ -13,5 +11,4 @@
 ||--invert|| ||If writing outputt inverts pixel intensities||
 ||--suffix||str||suffix which is appended to the names of output particle and coordinate files||
 ||--ppid||int||Set the PID of the parent process, used for cross platform PPID||
-||--verbose, -v||int||verbose level [0-9], higher number means higher level of verboseness||
 ||--verbose, -v||int||verbose level [0-9], higher number means higher level of verboseness||

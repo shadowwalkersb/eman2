@@ -1,6 +1,5 @@
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
-||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||
 ||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
 ||--apix||float||Override Apix in image header.||
@@ -11,7 +10,6 @@
 ||--oversample||int||Oversample noise image to smooth transitions from regions with different noise.||
 ||--boxsize||int||Box size to use when computing local noise.||
 ||--debug|| ||Save noise and mask/masked image(s).||
-||--verbose, -v||int||verbose level [0-9], higher number means higher level of verboseness||
 ||--verbose, -v||int||verbose level [0-9], higher number means higher level of verboseness||
 ||--ppid||int||Set the PID of the parent process, used for cross platform PPID||
 ||--parallel||str||Default=None (not used). Parallelism. See http://blake.bcm.edu/emanwiki/EMAN2/Parallel||

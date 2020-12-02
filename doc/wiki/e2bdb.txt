@@ -1,24 +1,17 @@
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
-||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||
 ||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
 ||--cleanup, -c|| ||This option will clean up the database cache so files can safely be moved or accessed on another computer via NFS.||
-||--cleanup, -c|| ||This option will clean up the database cache so files can safely be moved or accessed on another computer via NFS.||
-||--force, -F|| ||This will force an action that would normally fail due to failed checks.||
 ||--force, -F|| ||This will force an action that would normally fail due to failed checks.||
 ||--delete|| ||This will delete (or at least empty) the named database(s)||
 ||--all, -a|| ||List per-particle info||
-||--all, -a|| ||List per-particle info||
 ||--long, -l|| ||Long listing||
-||--long, -l|| ||Long listing||
-||--short, -s|| ||Dense listing of names only||
 ||--short, -s|| ||Dense listing of names only||
 ||--filt||str||Only include dictionary names containing the specified string||
 ||--filtexclude||str||Exclude dictionary names containing the specified string||
 ||--match||str||Only include dictionaries matching the provided Python regular expression||
 ||--exclude||str||The name of a database containing a list of exclusion keys||
-||--dump, -D|| ||List contents of an entire database, eg 'e2bdb.py -D refine_01#register||
 ||--dump, -D|| ||List contents of an entire database, eg 'e2bdb.py -D refine_01#register||
 ||--smalldump|| ||Lists contents of an entire database, but only list 2 items per dictionary to better see headers||
 ||--extractplots|| ||If a database contains sets of plots, such as bdb:refine_xx#convergence.results, this will extract the plots as text files.||
@@ -27,7 +20,6 @@
 ||--merge|| ||This will merge the contents of BDB 2-N into BDB 1 (including BDB 1's contents)||
 ||--makevstack||str||Creates a 'virtual' BDB stack with its own metadata, but the binary data taken from the (filtered) list of stacks||
 ||--appendvstack||str||Appends to/creates a 'virtual' BDB stack with its own metadata, but the binary data taken from the (filtered) list of stacks||
-||--verbose, -v||int||verbose level [0-9], higher number means higher level of verboseness||
 ||--verbose, -v||int||verbose level [0-9], higher number means higher level of verboseness||
 ||--list||str||Specify the name of a file with a list of images to use in creation of virtual stacks. Please see source for details.||
 ||--exlist||str||Specify the name of a file with a list of images to exclude in creation of virtual stacks. Please see source for details.||

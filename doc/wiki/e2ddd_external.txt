@@ -1,6 +1,5 @@
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
-||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||
 ||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
 ||--program||str||Use this external program to align frames. Choose between imod_alignframes and ucsf_motioncor2. Note, programs must be accessible from your PATH environment variable.||
@@ -22,6 +21,5 @@
 ||--mc2_patchY||int||Use this many patches along Y with MotionCor2. Default is 1, i.e. whole-frame alignment.||
 ||--tomo|| ||If checked, aligned frames will be placed in a tiltseries located in the 'tiltseries' directory. Otherwise, aligned sums will populate the 'micrographs_mrc' directory.||
 ||--tiltseries_name||str||Specify the name of the output tiltseries. A .mrc extension will be appended to the filename provided.||
-||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness||
 ||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness||
 ||--ppid||int||Set the PID of the parent process, used for cross platform PPID||

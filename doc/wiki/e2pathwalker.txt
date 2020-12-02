@@ -1,6 +1,5 @@
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
-||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||
 ||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
 ||--output||str||Output file||
@@ -18,12 +17,10 @@
 ||--chain||str||Load Chain. Default: load all chains||
 ||--edgefile||str||Load fixed fragment file; one sequence of forced connections per line, separated by space.||
 ||-e, --edge|| ||Forced edge: e.g. -e1,3||
-||-e, --edge|| ||Forced edge: e.g. -e1,3||
 ||--fixed||str||Same as --edgefile.||
 ||--iterations||int||Iterations||
 ||--json||int||If writing output pdb, also write JSON metadata. Default: 1. Options: 0, 1||
 ||--overwrite|| ||Overwrite files without prompting||
-||--verbose, -v||int||verbose level [0-9], higher number means higher level of verboseness||
 ||--verbose, -v||int||verbose level [0-9], higher number means higher level of verboseness||
 ||--ppid||int||Set the PID of the parent process, used for cross platform PPID||
 ||--subunit||int||Number of subunits.||

@@ -1,6 +1,5 @@
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
-||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||
 ||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
 ||--saveali|| ||Save a stack file (aliptcls_XX.hdf) containing the aligned particles.||
@@ -10,6 +9,5 @@
 ||--scorebands||int||If specified will generate averages over N bands of 'score' values, including only particles in each band.||
 ||--scorebandsali||int||If specified will generate averages over N bands of 'score' values, including only particles in each band, and iteratively realigning in each band.||
 ||--scoreprogressive||int||If specified will generate progressive averages over N bands of 'score' values, including all particles starting with the best through the progressive bands.||
-||--verbose, -v||int||verbose level [0-9], higher number means higher level of verboseness||
 ||--verbose, -v||int||verbose level [0-9], higher number means higher level of verboseness||
 ||--ppid||int||Set the PID of the parent process, used for cross platform PPID||

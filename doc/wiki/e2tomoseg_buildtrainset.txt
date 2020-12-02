@@ -1,10 +1,8 @@
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
-||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||
 ||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
 ||--boxing|| ||Boxing particles.||
-||--boxsize, -B||int||Box size in pixels||
 ||--boxsize, -B||int||Box size in pixels||
 ||--segment|| ||Segment particles.||
 ||--output||str||output file name. Default is the input particle file name plus _seg.hdf||

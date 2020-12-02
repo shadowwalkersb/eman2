@@ -1,6 +1,5 @@
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
-||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||
 ||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
 ||--tiltseries||str||File in .ali, .mrc or .hdf format of the aligned tiltseries.||
@@ -27,7 +26,6 @@
 ||--boxsize||int||Size of the 2D "tiles" or images for each particle from each image in the tiltseries.||
 ||--apix||float||If provided, this value will be used for apix instead of the one read from the header of --tiltseries||
 ||--ppid||int||Set the PID of the parent process, used for cross platform PPID||
-||--verbose, -v||int||verbose level [0-9], higher number means higher level of verboseness||
 ||--verbose, -v||int||verbose level [0-9], higher number means higher level of verboseness||
 ||--subset||int||Specify how many sub-tiltseries (or particles) from the coordinates file you want to extract; e.g, if you specify 10, the first 10 particles will be boxed.
 0 means "box them all" because it makes no sense to box none||

@@ -1,6 +1,5 @@
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
-||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||
 ||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
 ||--tiltseries||str||Aligned tilt series. File format must be MRC and must have .mrc or .st or .ali extension.||
@@ -16,7 +15,6 @@
 ||--subtiltsdir||str||Provide a directory containing individual stacks, where each stack is a 'mini tilt series' or a 'subtilt series' for single particles. Then, each image for each particle in the dir will be phase-phlipped using the ctf parameters you provide. If each image in the subtilt series is at a different defocus, then the parameters should be provided through --ctfparamsfile, whith a different defocus value per row. (There should be as many rows as images in each subtiltseries).||
 ||--path||str||Directory to store results in. The default is a numbered series of directories containing the prefix 'sptctf'; for example, sptctf_02 will be the directory by default if 'sptctf_01' already exists.||
 ||--reconstructor||str||Default=fourier:mode=gauss_2. The reconstructor to use to reconstruct the tilt series into a tomogram. Type 'e2help.py reconstructors' at the command line to see all options and parameters available. To specify the interpolation scheme for the fourier reconstruction, specify 'mode'. Options are 'nearest_neighbor', 'gauss_2', 'gauss_3', 'gauss_5', 'gauss_5_slow', 'gypergeom_5', 'experimental'. For example --reconstructor=fourier:mode=gauss_5 ||
-||--verbose, -v||int||verbose level [0-9], higher number means higher level of verboseness.||
 ||--verbose, -v||int||verbose level [0-9], higher number means higher level of verboseness.||
 ||--ppid||int||Set the PID of the parent process, used for cross platform PPID||
 ||--pad2d||float||Padding factor to zero-pad

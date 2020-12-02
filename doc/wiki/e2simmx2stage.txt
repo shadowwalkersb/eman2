@@ -1,6 +1,5 @@
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
-||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||
 ||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
 ||--align||str||The name of an 'aligner' to use prior to comparing the images||
@@ -14,12 +13,10 @@
 ||--prefilt|| ||Filter each reference (c) to match the power spectrum of each particle (r) before alignment and comparison||
 ||--prectf|| ||Apply CTF to each projection before comparison||
 ||--verbose, -v||int||verbose level [0-9], higher number means higher level of verboseness||
-||--verbose, -v||int||verbose level [0-9], higher number means higher level of verboseness||
 ||--exclude||str||The named file should contain a set of integers, each representing an image from the input file to exclude. Matrix elements will still be created, but will be zeroed.||
 ||--shrink||float||Optionally shrink the input particles by an integer amount prior to computing similarity scores. This will speed the process up but may change classifications.||
 ||--shrinks1||float||Shrinking performed for first stage classification, default=2||
 ||--finalstage|| ||Assume that existing preliminary particle classifications are correct, and only recompute final local orientations||
 ||--ppid||int||Set the PID of the parent process, used for cross platform PPID||
 ||--parallel||str||Parallelism string||
-||--force, -f|| ||Deprecated. Value ignored||
 ||--force, -f|| ||Deprecated. Value ignored||

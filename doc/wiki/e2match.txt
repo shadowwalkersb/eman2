@@ -1,6 +1,5 @@
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
-||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||
 ||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
 ||--img2process||str||Path to the stack 
@@ -14,7 +13,6 @@
 		will assume this is the correct apix for --img2match if --img2match is provided,
 		so the current value will be overwritten if --img2match is in .hdf format. 
 		This value will also be used to scale the images in --img2process.||
-||--verbose, -v||int||verbose level [0-9], higher number means higher level of verboseness||
 ||--verbose, -v||int||verbose level [0-9], higher number means higher level of verboseness||
 ||--preprocess||str||Any processor (as in e2proc3d.py) to be applied to the edited img2process.||
 ||--lowpass||str||A lowpass filtering processor (as in e2proc3d.py) be applied to the edited img2process.||

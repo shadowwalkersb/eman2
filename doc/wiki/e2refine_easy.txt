@@ -1,6 +1,5 @@
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
-||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||
 ||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
 ||--input||str||Image stack containing phase-flipped particles used for alignment||
@@ -30,11 +29,9 @@
 ||--m3dkeep||float||The fraction of slices to keep in e2make3d.py. Default=0.8 -> 80%%||
 ||--m3dpostprocess||str||Default=none. An arbitrary post-processor to run after all other automatic processing. Maps are autofiltered, so a low-pass filter should not normally be used here.||
 ||--parallel, -P||str||Run in parallel, specify type:<option>=<value>:<option>=<value>. See http://blake.bcm.edu/emanwiki/EMAN2/Parallel||
-||--parallel, -P||str||Run in parallel, specify type:<option>=<value>:<option>=<value>. See http://blake.bcm.edu/emanwiki/EMAN2/Parallel||
 ||--threads||int||Number of threads to run in parallel on a single computer when multi-computer parallelism isn't useful||
 ||--path||str||The name of a directory where results are placed. Default = create new refine_xx||
 ||--compressbits||int||Bits of precision to keep in class-averages and 3-D volumes, 0->losless, default=10 (3 decimal digits of precision)||
-||--verbose, -v||int||verbose level [0-9], higher number means higher level of verboseness||
 ||--verbose, -v||int||verbose level [0-9], higher number means higher level of verboseness||
 ||--automaskexpand||int||Default=boxsize/20. Specify number of voxels to expand mask before soft edge. Use this if low density peripheral features are cut off by the mask.||
 ||--automask3d||str||Default=auto. Specify as a processor, eg - mask.auto3d:threshold=1.1:radius=30:nshells=5:nshellsgauss=5.||

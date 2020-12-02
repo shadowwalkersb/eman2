@@ -1,6 +1,5 @@
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
-||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||
 ||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
 ||--noalign|| ||Regenerates unaligned particle averages into __orig||
@@ -11,5 +10,4 @@
 ||--parallel|| ||parallelism argument. This program supports only thread:<n>||
 ||--threads||int||Number of threads to run in parallel on a single computer when multi-computer parallelism isn't useful||
 ||--ppid||int||Set the PID of the parent process, used for cross platform PPID||
-||--verbose, -v||int||verbose level [0-9], higher number means higher level of verboseness||
 ||--verbose, -v||int||verbose level [0-9], higher number means higher level of verboseness||

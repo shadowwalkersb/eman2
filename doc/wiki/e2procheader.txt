@@ -1,6 +1,5 @@
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
-||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||
 ||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
 ||--addfilename|| ||Adds the original filename of a file or stack to the header of each particle. This only works for .hdf files.||
@@ -12,5 +11,4 @@
 ||--stem||str||Some parameters have common stems. For example, 'origin_x', 'origin_y', 'origin"x'. Supply the stem and all parameters containing it will be modified.||
 ||--stemval||str||New value for all parameters containing --stem.||
 ||--valtype||str||Type of the value to enforce. It can be: str, float, int, list, or transform.||
-||--verbose, -v||int||verbose level [0-9], higher number means higher level of verboseness.||
 ||--verbose, -v||int||verbose level [0-9], higher number means higher level of verboseness.||

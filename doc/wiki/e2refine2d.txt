@@ -1,6 +1,5 @@
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
-||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||
 ||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
 ||--path||str||Path for the refinement, default=auto||
@@ -13,12 +12,9 @@
 ||--automask|| ||Automasking during class-averaging to help with centering when particle density is high||
 ||--naliref||int||Number of alignment references to when determining particle orientations||
 ||--parallel, -P||str||Run in parallel, specify type:<option>=<value>:<option>:<value>||
-||--parallel, -P||str||Run in parallel, specify type:<option>=<value>:<option>:<value>||
 ||--centeracf|| ||This option has been removed in favor of a new centering algorithm||
 ||--center||str||If the default centering algorithm (xform.center) doesn't work well, you can specify one of the others here (e2help.py processor center)||
 ||--check, -c|| ||Checks the contents of the current directory to verify that e2refine2d.py command will work - checks for the existence of the necessary starting files and checks their dimensions. Performs no work ||
-||--check, -c|| ||Checks the contents of the current directory to verify that e2refine2d.py command will work - checks for the existence of the necessary starting files and checks their dimensions. Performs no work ||
-||--verbose, -v||int||verbose level [0-9], higher number means higher level of verboseness||
 ||--verbose, -v||int||verbose level [0-9], higher number means higher level of verboseness||
 ||--maxshift||int||Maximum particle translation in x and y||
 ||--exclude||str||The named file should contain a set of integers, each representing an image from the input file to exclude.||

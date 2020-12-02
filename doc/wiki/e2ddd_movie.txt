@@ -1,6 +1,5 @@
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
-||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||
 ||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
 ||--tiltseries_name|| ||Specify a name for the tilt series to be generated from the input movies.||
@@ -38,7 +37,6 @@ Note: 'robust' utilizes a bimodal Gaussian to robustly determine CCF peaks betwe
 ||--frames|| ||Write corrected stack of frames.||
 ||--ext||str||Save frames with this extension. Default is 'hdf'.||
 ||--threads||int||Number of threads to run in parallel. The default is 4, and our alignment routine requires 2+ threads. Using more threads will result in faster processing times.||
-||--verbose, -v||int||verbose level [0-9], higher number means higher level of verboseness||
 ||--verbose, -v||int||verbose level [0-9], higher number means higher level of verboseness||
 ||--debug|| ||run with debugging output||
 ||--ppid||int||Set the PID of the parent process, used for cross platform PPID||

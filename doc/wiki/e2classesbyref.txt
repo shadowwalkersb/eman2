@@ -1,6 +1,5 @@
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
-||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||
 ||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
 ||--sep||int||The number of classes a particle can contribute towards (default is 1)||
@@ -18,6 +17,5 @@
 ||--nbasisfp||int||Only used in MSA mode. Number of MSA basis vectors to use when classifying particles, default=12||
 ||--compressbits||int||Bits to keep when writing class-averages with compression. 0->lossless floating point. Default 10 (3 significant figures)||
 ||--threads||int||Number of threads to run in parallel on the local computer||
-||--verbose, -v||int||verbose level [0-9], higher number means higher level of verboseness||
 ||--verbose, -v||int||verbose level [0-9], higher number means higher level of verboseness||
 ||--ppid||int||Set the PID of the parent process, used for cross platform PPID||

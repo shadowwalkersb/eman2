@@ -1,6 +1,5 @@
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
-||-h, --help|| ||show this help message and exit||
 ||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
 ||--tiltseries|| ||The input projections. 
 		Project should usually have the xform.projection header attribute, which is 
@@ -27,8 +26,6 @@
 		reading from disk every time. While this can be faster, it is very memory-intensive.||
 ||--saveslices|| ||If provided,
 		this option will save each reconstructed 2-D slice (along Y) to disk.||
-||--verbose, -v||int||
-		verbose level [0-9], higher number means higher level of verboseness.||
 ||--verbose, -v||int||
 		verbose level [0-9], higher number means higher level of verboseness.||
 ||--parallel||str||Default=thread:1. 

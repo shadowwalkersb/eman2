@@ -1,6 +1,5 @@
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
-||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||
 ||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
 ||--ampcont||float||Default=0.05. Amplitude contrast to use for CTF correction phase flipping.||
@@ -18,6 +17,5 @@
 ||--tilesize||int||Tile size to use for strips when --autofit is provided.||
 ||--tiltangle||float||Default=None. Single 2D image or image stack to calculate CTF for.||
 ||--tltfile||str||File containing a list of tilt angles corresponding to the tilt angles of images 0 to n.||
-||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness.||
 ||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness.||
 ||--voltage||int||Default=300. Voltage of the microscope with which the images where collected.||

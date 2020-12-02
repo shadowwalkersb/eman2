@@ -1,16 +1,12 @@
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
-||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||
 ||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
 ||--sep||int||The number of classes a particle can contribute towards (default is 1)||
 ||--simvec|| ||Instead of using the class for the peak value, uses the pattern of similarities for each orientation for assignment.||
 ||--force, -f|| ||Force overwrite the output file if it exists||
-||--force, -f|| ||Force overwrite the output file if it exists||
-||--verbose, -v||int||verbose level [0-9], higher number means higher level of verboseness||
 ||--verbose, -v||int||verbose level [0-9], higher number means higher level of verboseness||
 ||--nofilecheck|| ||Turns file checking off in the check functionality - used by e2refine.py.||
-||--check, -c|| ||Performs a command line argument check only.||
 ||--check, -c|| ||Performs a command line argument check only.||
 ||--noalign|| ||Ignore the alignments||
 ||--ppid||int||Set the PID of the parent process, used for cross platform PPID||

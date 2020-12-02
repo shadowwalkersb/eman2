@@ -1,6 +1,5 @@
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
-||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||
 ||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
 ||--input||str||The name of the input particle stack||
@@ -37,13 +36,9 @@
 ||--even|| ||Used by EMAN2 when running eotests. Includes only even numbered particles in class averages.||
 ||--parallel|| ||parallelism argument||
 ||--force, -f|| ||Force overwrite the output file if it exists.||
-||--force, -f|| ||Force overwrite the output file if it exists.||
 ||--saveali|| ||Writes aligned particle images to aligned.hdf. Normally resultmx produces more useful information. This can be used for debugging.||
 ||--verbose, -v||int||verbose level [0-9], higher number means higher level of verboseness||
-||--verbose, -v||int||verbose level [0-9], higher number means higher level of verboseness||
-||--debug, -d|| ||Print debugging information while the program is running. Default is off.||
 ||--debug, -d|| ||Print debugging information while the program is running. Default is off.||
 ||--nofilecheck|| ||Turns file checking off in the check functionality - used by e2refine.py.||
-||--check, -c|| ||Performs a command line argument check only.||
 ||--check, -c|| ||Performs a command line argument check only.||
 ||--ppid||int||Set the PID of the parent process, used for cross platform PPID||

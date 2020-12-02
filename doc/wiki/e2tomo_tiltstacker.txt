@@ -1,6 +1,5 @@
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
-||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||
 ||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
 ||--anglesindxinfilename||int||Default=None. The filename of the images will be split at any occurence of the following delimiters: '_', '-', '+', '[' , ']' , ',' , ' ' (the two last ones are a comma and a blank space). Provide the index (position) of the angle in the split filename. For example, if the filename of an image is "my_specimen-oct-10-2015_-50_deg-from_k2 camera.mrc", it will be split into ['my','specimen','oct','10','2015','','50','deg','from','k2','camera','mrc']. The angle '-50', is at position 6 (starting from 0). Therefore, you would provide --anglesindxinfilename=6, assuming all images to be stacked/processed are similarly named. No worries about the minus sign disappearing. The program will look at whether there's a minus sign immediately preceeding the position where the angle info is.||
@@ -15,5 +14,4 @@
 ||--tag||str||"String to append to the beginning of the tiltseries output filename. The default is filename is 'stack.st'; if tag=xxx, the output will be 'xxx_stack.st' ||
 ||--tiltrange||float||If provided, this will make --lowesttilt=-1*tiltrange and --highesttilt=tiltrange. If the range is asymmetric, supply --lowesttilt and --highesttilt directly.||
 ||--tiltstep||float||Step between tilts. Required if using --stem2stack.||
-||--verbose, -v||int||verbose level [0-9], higher number means higher level of verboseness.||
 ||--verbose, -v||int||verbose level [0-9], higher number means higher level of verboseness.||

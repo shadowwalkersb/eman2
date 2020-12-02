@@ -1,6 +1,5 @@
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
-||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||
 ||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
 ||--input||str||The name of the image file containing the particle data||
@@ -14,8 +13,6 @@
 ||--simraligncmp||str||Default=auto. The name and parameters of the comparitor used by the second stage aligner.||
 ||--simcmp||str||Default=auto. The name of a 'cmp' to be used in comparing the aligned images||
 ||--parallel, -P||str||Run in parallel, specify type:<option>=<value>:<option>=<value>. See http://blake.bcm.edu/emanwiki/EMAN2/Parallel||
-||--parallel, -P||str||Run in parallel, specify type:<option>=<value>:<option>=<value>. See http://blake.bcm.edu/emanwiki/EMAN2/Parallel||
 ||--threads||int||Number of threads to run in parallel on a single computer when multi-computer parallelism isn't useful||
 ||--path||str||The name of a directory where results are placed. Default = create new ptclmap_xx||
-||--verbose, -v||int||verbose level [0-9], higher number means higher level of verboseness||
 ||--verbose, -v||int||verbose level [0-9], higher number means higher level of verboseness||

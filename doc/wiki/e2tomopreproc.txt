@@ -1,6 +1,5 @@
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
-||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||
 ||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
 ||--path||str||Directory to store results in. 
@@ -29,6 +28,5 @@
 ||--prenadminite||int||Default=0. Requires IMOD to be installed. Used to apply prenad filtering to a tiltseries. This is the --minite parameter in IMOD's preNAD program (minimum number of iterations).||
 ||--prenadmaxite||int||Default=0. Requires IMOD to be installed. Used to apply prenad filtering to a tiltseries. This is the --maxite parameter in IMOD's preNAD program (maximum number of iterations).||
 ||--prenadsigma||int||Default=0. Requires IMOD to be installed. Used to apply prenad filtering to a tiltseries. This is the --sigma parameter in IMOD's preNAD program (initial sigma for 'smoothing structure tensor').||
-||--verbose, -v||int||verbose level [0-9], higher number means higher level of verboseness.||
 ||--verbose, -v||int||verbose level [0-9], higher number means higher level of verboseness.||
 ||--ppid||int||Set the PID of the parent process, used for cross platform PPID||

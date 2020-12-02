@@ -1,6 +1,5 @@
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
-||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||
 ||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
 ||--path||str||Path to a folder where results should be stored, following standard naming conventions (default = spt_XX)||
@@ -12,7 +11,6 @@
 ||--nbasis||int||Number of PCA basis vectors. Default is 3.||
 ||--nowedgefill|| ||Do not fill the missing wedge before classification.||
 ||--clean|| ||remove outliers before PCA.||
-||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness||
 ||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness||
 ||--shrink||int||Shrink particles before classification||
 ||--dotest||int||test using N random particles||

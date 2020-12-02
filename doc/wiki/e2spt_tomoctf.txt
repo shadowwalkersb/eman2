@@ -1,6 +1,5 @@
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
-||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||
 ||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
 ||--alltiltseries|| ||Use all tilt series in the folder. Acceptable file extensions include hdf, mrc, mrcs, st.||
@@ -15,6 +14,5 @@
 ||--checkhand|| ||Check the handedness of tomogram.||
 ||--threads||int||Number of threads to run in parallel on the local computer||
 ||--nolog|| ||Default=False. Turn off recording of the command ran for this program onto the .eman2log.txt file||
-||--verbose, -v||int||verbose level [0-9], higher number means higher level of verboseness||
 ||--verbose, -v||int||verbose level [0-9], higher number means higher level of verboseness||
 ||--ppid||int||Set the PID of the parent process, used for cross platform PPID||

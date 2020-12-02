@@ -1,6 +1,5 @@
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
-||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||
 ||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
 ||--classmx||str||<classmx>,<#> Show particles in one class from a classification matrix. Pass raw particle file as first argument to command.||
@@ -13,5 +12,4 @@
 ||--fullrange|| ||A specialized flag that disables auto contrast for the display of particles stacks and 2D images only.||
 ||--newwidget|| ||Use the new 3D widgetD. Highly recommended!!!!||
 ||--ppid||int||Set the PID of the parent process, used for cross platform PPID||
-||--verbose, -v||int||verbose level [0-9], higher number means higher level of verboseness||
 ||--verbose, -v||int||verbose level [0-9], higher number means higher level of verboseness||

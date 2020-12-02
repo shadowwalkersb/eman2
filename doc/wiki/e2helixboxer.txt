@@ -1,23 +1,16 @@
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
-||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||
 ||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
 ||--gui|| ||Start the graphic user interface for boxing helices.||
 ||--helix-coords, -X||str||Save coordinates for helices to the file specified, which will have the EMAN1 *.box format:			x1-w/2        y1-w/2        w        w        -1                    x2-w/2        y2-w/2        w        w        -2||
-||--helix-coords, -X||str||Save coordinates for helices to the file specified, which will have the EMAN1 *.box format:			x1-w/2        y1-w/2        w        w        -1                    x2-w/2        y2-w/2        w        w        -2||
-||--helix-images, -x||str||Save images of the helices. The file name specified will have helix numbers added to it.||
 ||--helix-images, -x||str||Save images of the helices. The file name specified will have helix numbers added to it.||
 ||--ptcl-coords, -P||str||Save coordinates of the centers of particles to the specified formatted text file||
-||--ptcl-coords, -P||str||Save coordinates of the centers of particles to the specified formatted text file||
-||--ptcl-images, -p||str||Save images of the particles. The file name specified will have helix numbers (and particle numbers if the file type does not support image stacks) added to it.||
 ||--ptcl-images, -p||str||Save images of the particles. The file name specified will have helix numbers (and particle numbers if the file type does not support image stacks) added to it.||
 ||--ptcl-images-stack-mode||str||Options for saving particle images to stack files. 'single' uses one stack file, 'multiple' (default) uses one stack file per helix, 'none' uses a file for each particle and is always used when the output file format does not support image stacks.||
 ||--db-add-hcoords||str||Append any unique helix coordinates to the database from the specified file (in EMAN1 *.box format). Use --helix-width to specify a width for all boxes.||
 ||--db-set-hcoords||str||Replaces the helix coordinates in the database with the coordinates from the specified file (in EMAN1 *.box format). Use --helix-width to specify a width for all boxes.||
 ||--helix-width, -w||int||Helix width in pixels. Overrides widths saved in the database or in an input file.||
-||--helix-width, -w||int||Helix width in pixels. Overrides widths saved in the database or in an input file.||
-||--helix-length, -l||int||Helix length in pixels. Normally each filament can be an arbitrary length. This forces all new helices to a fixed size.||
 ||--helix-length, -l||int||Helix length in pixels. Normally each filament can be an arbitrary length. This forces all new helices to a fixed size.||
 ||--ptcl-overlap||int||Particle overlap in pixels||
 ||--ptcl-length||int||Particle length in pixels||

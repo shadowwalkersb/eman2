@@ -1,6 +1,5 @@
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
-||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||
 ||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
 ||--input||str||Volume or stack of volumes to be compared to --ref||
@@ -19,7 +18,6 @@
 ||--smooththresh||float||If --smooth is provided the curve will be smoothed only up to this resolution. Default is 100.||
 ||--polydegree||int||Degree of the polynomial to fit.||
 ||--ppid||int||Set the PID of the parent process, used for cross platform PPID.||
-||--verbose, -v||int||verbose level [0-9], higher number means higher level of verboseness||
 ||--verbose, -v||int||verbose level [0-9], higher number means higher level of verboseness||
 ||--plotonly||str||FSC curves to plot in separate plots. Skips fsc curve generation. Provide .txt. files separated by commas --plotonly=file1.txt,file2.txt,file3.txt etc...||
 ||--singleplot|| ||It --plotonly provided, all FSC curves will be on the same plot/figure||
