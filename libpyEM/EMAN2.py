@@ -659,6 +659,12 @@ class EMArgumentParser(argparse.ArgumentParser):
 		parsedargs = argparse.ArgumentParser.parse_args(self)
 
 		if "--generate_doc" in self._option_string_actions:
+			print("{{{\n")
+
+			self.print_usage()
+			
+			print("\n}}}\n\n")
+
 			print("||{}||{}||{}||".format("option", "type", "description"))
 			# print(self. _actions)
 			items = {}
