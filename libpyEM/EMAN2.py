@@ -664,6 +664,8 @@ class EMArgumentParser(argparse.ArgumentParser):
 			items = {}
 			for action in self._option_string_actions.values():
 				opt_text = str(action.option_strings)[1:-2].replace("'",'')
+				if opt_text == "--generate_doc":
+					continue
 				type_text = str(action.type).split("'")[1] if action.type else ' '
 				help_text = action.help
 				items[opt_text] = type_text, help_text
