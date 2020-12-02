@@ -4,7 +4,6 @@ SRC_DIR="$(cd ../.. "$(dirname "$0")"; pwd -P)"
 progs=$( find "${SRC_DIR}/programs" -name 'e2*.py' -exec basename {} \; )
 
 progs_exclude=( e2.py e2projectmanager.py e2unwrap3d.py e2version.py e2fhstat.py e2_real.py 
-                e2proc3d_huge.py    # uses OptionParser
                 e2proc3d.py         # uses OptionParser
                 e2seq2pdb.py        # no help provided
 )
