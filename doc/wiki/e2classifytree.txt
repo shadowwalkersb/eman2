@@ -1,3 +1,13 @@
+{{{
+
+usage: e2classifytree.py <projection> <particle> [options]
+	
+	Classify particles using a binary tree. Can be used as an alternative for e2simmx2stage.py + e2classify.py.
+	
+
+}}}
+
+
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||

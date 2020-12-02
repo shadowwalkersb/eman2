@@ -1,3 +1,12 @@
+{{{
+
+usage: Usage:
+proctxt.py [options] <txt 1> <txt 2> ... 
+Simple manipulations of text files conatining multi-column data, as would be used with plotting programs.
+
+}}}
+
+
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||

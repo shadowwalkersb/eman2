@@ -1,3 +1,16 @@
+{{{
+
+usage: Must be run in the directory containing the stack(s)/particle(s) whose header 
+	is to be modified. e2fixheaderparam.py imgs.hdf --input=stack_to_fix --output=fixed_stack_name 
+	--params=param1:value1,param2:value2... --type=type_of_parameters. 
+	This program fixes values for any parameter on the header of an HDF file or a stack of 
+	HDF files or an MRC file. ADDING new parameters, such as through --addfilename, or any
+	parameters supplied through --params=parameter:value,parameter:value,.... that are not
+	already in the header, will enforce HDF format on the output.
+
+}}}
+
+
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||

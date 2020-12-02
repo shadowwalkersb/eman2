@@ -1,3 +1,22 @@
+{{{
+
+usage: prog [options] <command> <file A> ...
+	
+Performs various options with basis sets, such as the orthogonal
+basis produced by e2msa.py. 
+
+project <basis input> <image input> <projection output>
+	Projects a set of images into the input basis subspace. The default
+	is to normalize the individual basis vectors, but not the final resulting
+	projection. The projections are stored as a 1-D image stack.
+	
+projectrot <basis input> <image input> <simmx input> <projection output>
+	Same as project, except it will rotate/translate the particles based on the
+	best match found in simmx before projection.
+
+}}}
+
+
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||

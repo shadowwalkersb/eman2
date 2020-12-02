@@ -1,3 +1,13 @@
+{{{
+
+usage: prog [options] <tile file>
+	
+	Operates on files containing sets of tiled JPEG images representing larger images. Used for 
+	interactive web browsing. Not generally useful to end-users.
+
+}}}
+
+
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||

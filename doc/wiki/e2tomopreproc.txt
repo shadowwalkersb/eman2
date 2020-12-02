@@ -1,3 +1,13 @@
+{{{
+
+usage: e2tomopreproc.py <imgs> <options> . 
+	This program takes a tiltseries ('.st' or '.ali' file from IMOD) and applies preprocessing operations to them, such as lowpass, highpass, masking, etc.
+	The options should be supplied in "--option=value" format, replacing "option" for a valid option name, and "value" for an acceptable value for that option. 
+	
+
+}}}
+
+
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||

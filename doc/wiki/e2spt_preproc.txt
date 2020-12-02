@@ -1,3 +1,14 @@
+{{{
+
+usage: prog <output> [options]
+
+	This program is used to preprocess subtomograms before aligning them. The same can be accomplished with 
+	e2proc3d, except that this program is parallelized and thus should be substantially faster for large subtomograms.
+	
+
+}}}
+
+
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||

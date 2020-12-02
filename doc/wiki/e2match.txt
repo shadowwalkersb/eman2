@@ -1,3 +1,14 @@
+{{{
+
+usage: prog [options] <Volume file>
+	Files to be processed must NOT contain ANY dots '.' other than the one preceding the file's format.
+	Prepares one volume (the "reference") to be at the same apix and boxsize than another (a "particle" you might want to align to the reference).
+	Takes PDB, MRC and HDF file formats, but outputs HDF or MRC only. The reference can also be subject to symmetrization, filters, and other processing options. 
+	
+
+}}}
+
+
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||

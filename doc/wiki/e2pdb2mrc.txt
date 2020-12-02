@@ -1,3 +1,15 @@
+{{{
+
+usage: prog [options] input.pdb output.mrc
+
+	Converts a pdb file into an electron density map. 0,0,0 in PDB space will
+	map to the center of the volume. Use e2procpdb.py to adjust coordinates,
+	apply symmetry, etc. Resolution is equivalent to standard cryoEM definition,
+	using 1/2 width of Gaussian in Fourier space.
+
+}}}
+
+
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||

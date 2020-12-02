@@ -1,3 +1,35 @@
+{{{
+
+usage: prog [options] <stack>
+
+	WARNING: This program still EXPERIMENTAL (It's under heavy development)	
+	
+	Refinement of a 3D-volume stack against multiple models. The initial models can be provided in a stack, OR generated from the data itself.
+	
+	When no reference is provided, you define a number of models greater than 1 to use (for example, 2, 3, 4 or more).
+	[If you want to refine the data against ONE model, use e2spt_refine.py]
+	The data set is divded into that specified number of groups.
+	
+	An initial model will be generated with the particles assigned to each group.
+	Then, the entire data set will be refined against all initial models.
+	
+	You can increase the number of references used for each iteration by specifying the 
+	--addmodel parameter.
+	This will take the "best initial model" (the one that most particles preferred) and include it as an initial model for the next round of refinement.
+	For exampe, if you start with two references A and B, 
+	two averages will come out of aligning the data against them, A' and B'.
+	So if --addmodel is on, instead of only using A' and B' as references for the next 
+	refinement round, the best of A and B will also be used,
+	which means you will refine the data against 3 models in the next round, not just 2.
+	
+	If you supply a single reference/model then --addmodel will be ASSUMED to be True; 
+	otherwise, to refine a data set against a single model use
+	e2spt_refine.py
+	 
+
+}}}
+
+
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||

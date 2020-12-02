@@ -1,3 +1,27 @@
+{{{
+
+usage: 
+		WARNING: Experimental program. Processing subtiltseries is enabled (Oct/2014),
+		but other functionality might be incomplete.
+		
+		This program can do the following:
+		1) Flip phases of the entire image for all images in a tilt series using the same 
+		parameters for all images (approximate solution that will only work for low-tilt
+		and/or small images) or
+		
+		2) Using different parameters for each image (supply --ctfparamfile or
+		--defocilist in that case)
+		
+		The same can be done for subtiltseries extracted with e2spt_subtilt.py,
+		except that for subtiltseries the correction is tweaked on a per-particle basis and
+		is thus as accurate as possible.
+		
+		3) The program can also correct frames (in tilt series or subtiltseries) on a 
+		strip-by-strip basis.
+
+}}}
+
+
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||

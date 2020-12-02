@@ -1,3 +1,23 @@
+{{{
+
+usage: prog <output> [options]
+	Program to build an initial subtomogram average by averaging pairs from the largest subset
+	in --input that is a power of 2. For example, if you supply an input stack with 100 subtomograms,
+	this program will build an initial reference using 64, since 64 is the largest power of 2 contained in 100.
+	In the first iteration, particle 1 will be averaged with 2, 3 with 4, 5 with 6... etc.
+	32 new averages (each an average of 2 subtomograms) will be used for the second iteration.
+	Again, 1 will be averaged with 2, 3 with 4, etc... yielding 16 new averages.
+	The algorithm continues until the entire subset (64) has been merged into 1 average.
+	
+	This program imports 'preprocfunc' from e2spt_preproc.py and 'alignment' from e2spt_classaverage.py
+	
+	--mask=mask.sharp:outer_radius=<safe radius>
+	--preprocess=filter.lowpass.gauss:cutoff_freq=<1/resolution in A>
+	
+
+}}}
+
+
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||

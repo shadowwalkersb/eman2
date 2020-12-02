@@ -1,3 +1,12 @@
+{{{
+
+usage:  New single particle refinement routine. Still under construction. For simple usage,
+	e2spa_refine.py --ptcl <particle list file> --ref <reference map> --res <inital resoution>
+	
+
+}}}
+
+
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||

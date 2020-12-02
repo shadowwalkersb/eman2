@@ -1,3 +1,14 @@
+{{{
+
+usage: prog [classfile]
+
+	This program provides tools for evaluating particle data in various ways. For example it will allow you to select class-averages
+	containing bad (or good) particles and manipulate the project to in/exclude them. It will locate files with class-averages automatically,
+	but you can specify additional files at the command-line.
+
+}}}
+
+
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||

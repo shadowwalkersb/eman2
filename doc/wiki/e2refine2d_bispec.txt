@@ -1,3 +1,20 @@
+{{{
+
+usage: prog [options]
+
+	This program is used to produce reference-free class averages from a population of mixed,
+	unaligned particle images. These averages can be used to generate initial models or assess
+	the structural variability of the data. They are not normally themselves used as part of
+	the single particle reconstruction refinement process, which uses the raw particles in a
+	reference-based classification approach. However, with a good structure, projections of
+	the final 3-D model should be consistent with the results of this reference-free analysis.
+
+	This variant of the program uses rotational/translational invariants derived from the bispectrum
+	of each particle.
+
+}}}
+
+
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||

@@ -1,3 +1,13 @@
+{{{
+
+usage: prog  <projection file>  <particles file>
+	
+Compare different similarity metrics for a given particle stack. Note that all particles and projections are
+read into memory. Do not use it on large sets of particles !!!
+
+}}}
+
+
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||

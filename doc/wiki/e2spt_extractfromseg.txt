@@ -1,3 +1,10 @@
+{{{
+
+usage: This program is designed to extract subtomograms from segmentation results from the Tomoseg workflow in EMAN2. Run e2spt_boxer22 to visualize the results, and follow the SPT protocol for following steps.
+
+}}}
+
+
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||

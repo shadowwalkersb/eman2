@@ -1,3 +1,24 @@
+{{{
+
+usage: prog [options] files
+	This program performs a variety of tasks for getting data or metadata from other programs into an EMAN2 project.
+
+	import_movies - imports DDD movie data for a cryoEM project (--importation copy recommended)
+
+	import_particles - will simply copy a set of per-micrograph particle files into EMAN2.1's preferred HDF format in particles/
+	import_boxes - will read EMAN1 '.box' files (text files containing coordinates) into appropriate info/*json files (see --box_type)
+	import_eman1 - will convert a typical EMAN1 phase-flipped start.hed/img file into an EMAN2 project (converting files, fixing CTF, splitting, ...)
+
+	import_tomos - flag to handle imported files as subtomogams for a SPT project (see also --importation)
+	import_serialem - flag to handle imported files as SerialEM mdoc files
+	import_fei - flag to handle imported files as FEI tomography metadata files
+	import_ucsftomo - flag to handle imported files as UCSF tomo metadata files
+	import_tiltseries - imports tilt series for a tomography project (--importation copy recommended)
+	
+
+}}}
+
+
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||

@@ -1,3 +1,14 @@
+{{{
+
+usage: prog [options] <Volume file>
+
+	WARNING: This program is still under development.
+	
+	It takes in an HDF stack and randomizes the position of images in it.
+
+}}}
+
+
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||

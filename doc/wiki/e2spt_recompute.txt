@@ -1,3 +1,16 @@
+{{{
+
+usage: prog [options] 
+	This program takes aligned stacks produced by e2spt_classaverage.py and raw tomograms
+	to recompute averages with different options (such as extracting recentered particles,
+	and possibly with a larger or smaller boxisze).
+	All the necessary files (aligned stacks in HDF format and raw tomograms in MRC format 
+	ending in .rec, as produced by IMOD) should be in the running directory.
+	
+
+}}}
+
+
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||

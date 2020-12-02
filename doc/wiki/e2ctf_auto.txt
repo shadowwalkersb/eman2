@@ -1,3 +1,23 @@
+{{{
+
+usage: prog [options]
+This program automates the CTF fitting and structure factor generation process, which normally involves a
+sequence of at least 4 different steps. For most projects, this will work correctly with no human intervention.
+We strongly recommend running the GUI after it completes to double-check the fitting of a few of the closest
+and a few of the furthest from focus images by hand.
+
+If you detect fitting problems on any images, manually adjust those images to a defocus near the correct value,
+then rerun this program (without --fromscratch) and the problem should be fixed.
+
+For defocus with astigmatism fitting, whole frame fitting as implemented in e2rawdata.py and
+e2evalimage.py generally produce superior fits. If you have run this whole-frame fitting, e2ctf_auto will
+take this into account, and only fit the other required parameters.
+
+Important: This program must be run from the project directory, not from within the particles directory
+
+}}}
+
+
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||

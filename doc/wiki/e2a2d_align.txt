@@ -1,3 +1,15 @@
+{{{
+
+usage: Usage: e22da_align.py [options] <sets/file.lst> <reference>[,nref]
+	This program will align a stack of 2-D particle images to a single 2-D reference image, recording all of the alignment parameters in a
+	JSON file. This is designed as the first step in a longer 2-D processing sequence. 
+	
+	This could, for example, be used to align a full particle set against a 2-D reference, then select a subset which matches well, as opposed 
+	to the normal 3-D refinement process where particles are competed against many references.
+
+}}}
+
+
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||

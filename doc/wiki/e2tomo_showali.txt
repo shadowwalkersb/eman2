@@ -1,3 +1,14 @@
+{{{
+
+usage: This shows the alignment result from e2tomogram.py uing the information from a tomorecon_xx folder.
+	
+	Example: e2tomo_showali.py --path <tomorecon_xx> 
+	
+	
+
+}}}
+
+
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||

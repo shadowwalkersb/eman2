@@ -1,4 +1,28 @@
 Running e2refinetorelion3d.py
+{{{
+
+usage:  prog [options] <set name> <reference map name>
+
+This program will extract the necessary parameters from an EMAN2 refinement and
+
+Examples:
+
+       [-h] [--version] [--generate_doc] [--randomizemodel RANDOMIZEMODEL]
+       [--greyscale] [--symmgroup SYMMGROUP] [--symmnumber SYMMNUMBER]
+       [--ctfcorrect] [--dataphaseflipped] [--ignoretofirstpeak]
+       [--lowpass LOWPASS] [--particle_mask_diameter PARTICLE_MASK_DIAMETER]
+       [--solventmask SOLVENTMASK] [--healpix HEALPIX]
+       [--auto_healpix AUTO_HEALPIX] [--offsetrange OFFSETRANGE]
+       [--offsetstep OFFSETSTEP] [--threads THREADS] [--maxmemory MAXMEMORY]
+       [--amplitudecontrast AMPLITUDECONTRAST] [--intensitycorrection]
+       [--print_symmetry] [--nearest_neighbor] [--pad PAD]
+       [--limit_tilt LIMIT_TILT] [--verbose VERBOSE] [--onlyflipphase]
+       [--ppid PPID]
+       [positionalargs [positionalargs ...]]
+
+}}}
+
+
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||

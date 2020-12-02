@@ -1,4 +1,17 @@
 Running e2runresmap.py
+{{{
+
+usage: add stuff
+
+ [-h] [--version] [--generate_doc] [--use_mask]
+                    [--res_step RES_STEP] [--res_min RES_MIN]
+                    [--res_max RES_MAX] [--p_value P_VALUE]
+                    [--resmapexe RESMAPEXE] [--verbose VERBOSE] [--ppid PPID]
+                    [positionalargs [positionalargs ...]]
+
+}}}
+
+
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||

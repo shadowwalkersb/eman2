@@ -1,3 +1,11 @@
+{{{
+
+usage: Make 3D particles from subtilt refinement results
+	spt_remake3dptcl.py --path <subtlt_xx> --iter <final iteration #> --label <label of new 3D particles>
+
+}}}
+
+
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||

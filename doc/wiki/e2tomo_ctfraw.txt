@@ -1,3 +1,11 @@
+{{{
+
+usage: Program to fit CTF (find defocus and estimate highest resolution conent) in raw images of tiltseries by periodogram averaging of 
+	tiles in strips parallel to the tilt axis.
+
+}}}
+
+
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||

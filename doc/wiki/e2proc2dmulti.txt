@@ -1,3 +1,13 @@
+{{{
+
+usage: e2proc2dmulti.py [options] <inputfiles>
+
+	A generic 2D image processing program which acts on multiple input stacks. Default operation is similar to e2proc2d.py --inplace, but operating
+	on many files.
+
+}}}
+
+
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||

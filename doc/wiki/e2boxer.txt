@@ -1,3 +1,14 @@
+{{{
+
+usage: prog [options] <image> <image2>....
+
+	The even newer version of e2boxer. Complete rewrite..
+	
+	
+
+}}}
+
+
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||

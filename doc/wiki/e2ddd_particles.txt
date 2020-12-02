@@ -1,3 +1,20 @@
+{{{
+
+usage: prog [options] <refine_xx folder>
+
+	WARNING: this program is still considered experimental!
+
+	Based on a completed refinement, this will perform per-particle alignment using reference projections from the reconstruction.
+	It will only perform alignments on particles used in the specified refinement run. 
+	
+	This will make an attempt to rename the original particles as *__orig before writing the new particles with the original particle
+	names. It will do this only the first time. If __orig files already exist, it will not replace them. This way if you run this
+	program multiple times, you can produce new versions of the aligned particles without destroying the true originals.
+	
+
+}}}
+
+
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||

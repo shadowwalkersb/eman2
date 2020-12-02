@@ -1,3 +1,15 @@
+{{{
+
+usage: e2proc3d_huge.py [options] <inputfile>
+	This is a specialized version of e2proc3d.py targeted at performing a limited set of operations on
+very large volumes in-place (such as tomograms) which may not readily fit into system memory. Operations are 
+performed by reading portions of the image, processing, then writing the portion back to disk. Unlike e2proc3d.py
+you may pass only a single operation to the program for each invocation, or behavior will be undefined. It will 
+process a single volume in a single file in-place.
+
+}}}
+
+
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||

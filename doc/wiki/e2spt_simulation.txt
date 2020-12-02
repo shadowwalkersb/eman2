@@ -1,3 +1,13 @@
+{{{
+
+usage: e2spt_simulation.py <options>.
+	 This program DEPENDS on e2spt_classaverage.py from which it imports the sptmakepath function.
+	 The options should be supplied in "--option=value", replacing "option" for a valid option name, and "value" for an acceptable value for that option. This program produces simulated sub volumes in random orientations from a given PDB or EM file. The output is ALWAYS in HDF format, since it's the only format supported by E2SPT programs.
+	
+
+}}}
+
+
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||

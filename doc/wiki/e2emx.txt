@@ -1,4 +1,18 @@
 Running e2emx.py
+{{{
+
+usage:  prog [options]
+
+This program will extract the required information from an EMAN2 project and output it in EMX form.
+
+       [-h] [--version] [--generate_doc] [--export_whole_project]
+       [--import_emx IMPORT_EMX] [--refinedefocus] [--refitdefocus]
+       [--writeimages] [--verbose n] [--ppid PPID]
+       [positionalargs [positionalargs ...]]
+
+}}}
+
+
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||

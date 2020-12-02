@@ -1,3 +1,11 @@
+{{{
+
+usage: prog [options] 
+For more information on ctffind3 please see: Mindell, JA, Grigorieff N.  2003.  Accurate determination of local defocus and specimen tilt in electron microscopy. J Struct Biol. 142:334-47.
+
+}}}
+
+
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||

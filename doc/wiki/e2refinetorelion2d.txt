@@ -1,4 +1,26 @@
 Running e2refinetorelion2d.py
+{{{
+
+usage:  prog [options] <set name>
+
+This program will extract the necessary parameters from an EMAN2 refinement and determine class averages using Relion 2D ML
+
+Examples:
+
+       [-h] [--version] [--generate_doc] [--numclasses NUMCLASSES]
+       [--ctfcorrect] [--dataphaseflipped] [--ignoretofirstpeak]
+       [--numiter NUMITER] [--regparam REGPARAM]
+       [--particle_mask_diameter PARTICLE_MASK_DIAMETER] [--maskzeroes]
+       [--solventmask SOLVENTMASK] [--inplaneang INPLANEANG]
+       [--offsetrange OFFSETRANGE] [--offsetstep OFFSETSTEP]
+       [--threads THREADS] [--verbosity VERBOSITY] [--voltage VOLTAGE]
+       [--cs CS] [--apix APIX] [--defocus DEFOCUS] [--ampcont AMPCONT]
+       [--echo] [--ppid PPID]
+       [positionalargs [positionalargs ...]]
+
+}}}
+
+
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||

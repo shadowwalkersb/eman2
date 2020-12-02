@@ -1,3 +1,15 @@
+{{{
+
+usage: prog <imagefile> [<imagefile>] [imagefile] [options]
+	Generates 2-D projections of a 3-D object or multiple 3-D objects. Various options for specifiying distribution of orientations
+	and other options.
+
+	Typical usage:
+	e2project3d.py map.mrc --outfile=projections.hdf --orientgen=eman:delta=5 --sym=c3 --projector=standard --verbose=2
+
+}}}
+
+
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||

@@ -1,3 +1,17 @@
+{{{
+
+usage: usage: e2spt_wedgefill <input stack> --options
+	This program will identify and fill in the missing wedge in a stack of subtomograms (with a missing wedge) which have been aligned to an average (with no missing wedge). While in a sense this creates 'Frankenstien particles' it is assumed that having values from an average of many particles is better than having zero in the same areas, at least for certain purposes.
+	
+	You must provide an average volume from which to draw the missing values and it is critical that this volume be an average of the particles being corrected. The particles should also have been properly normalized prior to averaging to achieve the desired effect.
+	
+	#Specifically, this process is designed to make it possible to run PCA or other classification processes on the particles. Any missing values will all be at the same point near the center of the cloud defined by the entire population, rather than having zero values distorting the cloud. Once particles have been classified, the originals wihout filled wedge can be used for averaging. 
+	#.
+	
+
+}}}
+
+
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||

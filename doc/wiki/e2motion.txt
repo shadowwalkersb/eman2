@@ -1,3 +1,23 @@
+{{{
+
+usage: prog [options]
+
+	WARNING: This program still under development.
+	
+	This program is used to interactively generate sequences of class-averages from sets of particles. It can be
+	used for many purposes, but is primarily intended at studies of macromolecular dynamics and variability. A stack
+	of particles ostensibly in the same 3-D (but not 2-D) orientation are read in, then alignment, classification
+	and averaging is performed to produce pseudo time-series animations detailing some aspect of the structure's
+	variability.
+	
+	To use this program, you must first run e2a2d_align to align a stack of particles to a single 2-D reference image.
+	This program will use those results as a starting point.
+	
+	If an existing project is specified with --path, previous results will be re-opened
+
+}}}
+
+
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||

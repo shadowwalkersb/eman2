@@ -1,3 +1,10 @@
+{{{
+
+usage: Calculates, plots and optionally averages the FSC between multiple images and a reference.
+
+}}}
+
+
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||

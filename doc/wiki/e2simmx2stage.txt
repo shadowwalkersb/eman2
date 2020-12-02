@@ -1,3 +1,15 @@
+{{{
+
+usage: prog [options] <c input> <r input> <output> <ref simmx> <stg1 refs> <stg1 simmx>
+	Computes a similarity matrix between c-input (col - projections) and r-input (row - particles) stacks of 2-D images. Unlike
+	e2simmx.py, this will perform classification in two stages, first a coarse classification, then a local classification. Particle
+	association for coarse classification, however, is not assigned based on Euler angle, but rather on mutual similarity in a subsampled
+	reference-image self-classification. Output is the same as e2simmx, with coarsely sampled results inserted in unsampled local regions.
+	When used for classification, c input is the references and r input are the particles.
+
+}}}
+
+
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||

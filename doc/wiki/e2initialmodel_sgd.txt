@@ -1,3 +1,14 @@
+{{{
+
+usage: 
+	This program makes initial models using a (kind of) stochastic gradient descent approach. It is recommended that the box size of particles is around 100. 
+	[prog] --ptcls <particle stack> 
+	
+	
+
+}}}
+
+
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||

@@ -1,3 +1,11 @@
+{{{
+
+usage: prog --path <spt_xx> --iter <X> --tomo <tomogram>
+	map aligned particles back to tomograms 
+
+}}}
+
+
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||

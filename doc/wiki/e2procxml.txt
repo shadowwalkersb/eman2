@@ -1,3 +1,13 @@
+{{{
+
+usage: Usage:
+procxml.py [options] <input file> <output file> 
+Simple manipulations of XML files.
+.
+
+}}}
+
+
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||

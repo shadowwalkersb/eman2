@@ -1,3 +1,16 @@
+{{{
+
+usage: Usage: e2enrich.py <sets/particles.lst> [options]
+This program will enrich each particle in a SPA project by averaging it with N similar particles. 
+The additional particles are identified using an MSA subspace of the bispectra, which makes the process
+fast enough to be practical. This program is best used with a set containing reasonably reliable 
+particles, to avoid "bad particle" contamination. Particles must have run through standard ctf
+autoprocessing prior to using this program, but no other processing is required. Suggest running this on
+'fullres' particles.
+
+}}}
+
+
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||

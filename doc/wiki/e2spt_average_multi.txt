@@ -1,3 +1,16 @@
+{{{
+
+usage: Usage: e2spt_average.py <ref1> <ref2> ... [options] 
+Note that this program is not part of the original e2spt hierarchy, but is part of an experimental refactoring.
+
+Will read metadata from the specified spt_XX directory, as produced by e2spt_align.py, and average a selected subset of subtomograms in the predetermined orientation.
+This version of the program competes each particle against N reference volumes, and only averages it with the best match. Alignment parameters from a previous
+e2spt_align run are used to define the coarse orientation, so the references must be similar and in the same orientation. Alignments are translationally adjusted only.
+If --sym is specified, each possible symmetric orientation is tested starting with the exisiting alignment parameters, and only the best is kept.
+
+}}}
+
+
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||

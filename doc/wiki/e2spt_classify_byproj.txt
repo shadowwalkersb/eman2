@@ -1,3 +1,15 @@
+{{{
+
+usage: Usage: e2spt_classify_byproj.py --ncls <n> --path <spt_XX> --iter <N> 
+This program is part of the 'new' hierarchy of e2spt_ programs.
+
+This program will generate a set of 3 orthogonal projections of the central slices of each aligned particle from an existing spt_XX result, 
+then use this triplet of projections to perform a k-means classification on the particles. In addition to the class-averages, will also 
+produce new sets/ for each class, which could be further-refined.
+
+}}}
+
+
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||

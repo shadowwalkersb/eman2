@@ -1,3 +1,16 @@
+{{{
+
+usage: e2tvrecon.py [options]
+	e2tvrecon3d.py reconstructs a 3D tomogram from a tilt series and tlt tilt 
+	angles file. In order to reconstruct the original image, we minimize a 
+	function that is the sum of a L2 data fit term and the total variation of 
+	the image. Proximal iterations using the Fast Iterative Shrinking & 
+	Thresholding Algorithm (FISTA) are used.
+	
+
+}}}
+
+
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--tiltseries|| ||The input projections. 

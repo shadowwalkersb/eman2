@@ -1,3 +1,12 @@
+{{{
+
+usage: prog --path <spt_xx folder> --iter <iteration number> [options]
+	This program reads a spt refinement run with the --refine option, looks for the difference between the current alignment and the initial one, and builds a motion trajectory from it. 
+	
+
+}}}
+
+
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||

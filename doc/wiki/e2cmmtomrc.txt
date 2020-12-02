@@ -1,3 +1,13 @@
+{{{
+
+usage: prog [options] input.cmm output.mrc
+
+	This program will read a 'marker file' produced by UCSF Chimera and turn it into an density map.
+	
+
+}}}
+
+
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||

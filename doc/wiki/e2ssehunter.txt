@@ -1,3 +1,14 @@
+{{{
+
+usage: prog [options] <volume file> <Angstroms per pixel> <resolution> <threshold>
+	
+	WARNING: This program is still under development
+
+	Identifies alpha helices and beta sheets in maps at subnanometer resolutions
+
+}}}
+
+
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||

@@ -1,3 +1,16 @@
+{{{
+
+usage: prog [options] <relion STAR file>
+
+This program will take data from a Relion project and convert it into a basic EMAN2 project. Provide 
+the name of the Relion STAR file associated with the raw particle data. An eman2 subdirectory will be
+created, and the images, and available metadata will be copied into the new project. CTF parameters
+will be extracted from the STAR file and stored as frame CTF parameters. You will still need to run
+CTF autoprocessing after importing is complete.
+
+}}}
+
+
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||

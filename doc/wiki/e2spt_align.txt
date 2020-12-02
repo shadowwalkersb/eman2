@@ -1,3 +1,15 @@
+{{{
+
+usage: Usage: e2spt_align.py [options] <subvolume_stack> <reference>
+This program is part of the 'new' hierarchy of e2spt_ programs. It performs one iteration of a classical subtomogram refinement, ie -  aligning particles with missing wedge to a reference in 3-D
+
+The reference may be <volume> or <volume>,<n>
+
+If --goldstandard is specified, even and odd variants of the alignment reference must be provided, and even and odd particles will be aligned separately
+
+}}}
+
+
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||

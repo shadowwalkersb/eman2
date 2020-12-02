@@ -1,3 +1,14 @@
+{{{
+
+usage: prog [options] 
+	This program stacks DDD frames saved as independent files but collected as part of a tomographic tiltseries, provided that the tilt angle
+	information is in the filename between '[' and ']'; e.g., "afsdas_img1234_[-60.0].mrc", "afsdasd_img1235_[-60.0].mrc", "asdfasd_img1236_[-60.0].mrc", 
+	... "afsdasfad_imgN_[-58.0].mrc", etc.
+	
+
+}}}
+
+
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||

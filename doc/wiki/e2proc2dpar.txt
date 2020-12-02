@@ -1,3 +1,15 @@
+{{{
+
+usage: e2proc2dpar.py [options] <inputfile> <outputfile>
+
+	Limited version of e2proc2d.py which can operate in parallel using threads. Works on a single input/output file, lacks wildcards and many other options.
+	
+	Note that --inplace is implied. Output image number is always the same as input image number!
+	
+
+}}}
+
+
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||

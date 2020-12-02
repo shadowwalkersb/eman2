@@ -1,3 +1,13 @@
+{{{
+
+usage: Usage: e2spt_stat.py [options] 
+Note that this program is not part of the original e2spt hierarchy, but is part of an experimental refactoring.
+
+This program will look in an spt_XX folder at particle_parms_xx.json and show a quality histogram of the particles as compared to the alignment reference. Smaller values are better.
+
+}}}
+
+
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||

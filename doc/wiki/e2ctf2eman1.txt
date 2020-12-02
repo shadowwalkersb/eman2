@@ -1,3 +1,19 @@
+{{{
+
+usage: prog [options]
+	
+Converts EMAN2 CTF model to the EMAN1 CTF model as well as possible.
+Outputs CTF parameters to ctfparm.txt file in the current directory.
+
+To use, run this program in the directory containing your EMAN2DB directory.
+It is recommended that you specify a structure factor file (--sf=<file>). 
+
+Always manually check/refine output, since the EMAN1 and EMAN2 CTF
+models are not completely compatible.
+
+}}}
+
+
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||

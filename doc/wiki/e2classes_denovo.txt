@@ -1,3 +1,16 @@
+{{{
+
+usage: prog [options]
+
+	This program is used to produce reference-free class averages from a population of mixed,
+	unaligned particle images. Unlike e2refine2d, this program performs only a single pass of classification,
+	based entirely on specific low-resolution invariants. Its primary aim is to identify groups of bad particles,
+	or rather to separate them from the general population. This program may also tend to split particles by
+	defocus if the range within a project is too large.
+
+}}}
+
+
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||

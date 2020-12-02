@@ -1,3 +1,18 @@
+{{{
+
+usage: prog <output> [options]
+
+	This program produces iterative class-averages, one of the secrets to EMAN's rapid convergence.
+	Normal usage is to provide a stack of particle images and a classification matrix file defining
+	class membership. Members of each class are then iteratively aligned to each other and averaged
+	together with (optional) CTF correction.  It is also possible to use this program on all of the
+	images in a single stack.
+
+	
+
+}}}
+
+
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||

@@ -1,3 +1,35 @@
+{{{
+
+usage: This program requires ICON-GPU and IMOD. Wrapper to run ICON-GPU reconstructions using fewer parameters. The program automatically crops the tiltseries into a square, runs test alignments
+	to make sure a good XY size is picked (some sizes make ICON crash), and picks the correct iteration numbers. 
+	The reconstructed tomogram is also automatically rotated around x so that z is the shortest size using IMOD's clip rotx function, and can be optionally binned if --shrink is provided.
+
+	Preprocessing and reconstruction normally happen in separate runs since preprocessing acts on the raw (or ideally, X-ray corrected) tiltseries, the .st file from IMOD after X-ray correction.
+	On the other hand, the reconstruction should be performed with the preprocessed tiltseries AFTER it has been aligned with IMOD (the .ali file) and AFTER gold fiducials have been deleted.
+	This program automatically backs up the .st and .ali IMOD files while replacing them with the ICONPreProcessed files (gold deletion needs to proceed in IMOD's pipeline) prior to reconstruction.
+	An option is provided through --skipgolderasing to streamline the entire pipeline with a single run of this program if the sample has no gold fiducials or the user doesn't want to delete them.
+
+	To preprocess the raw tiltseries, run:
+
+	e2tomo_icongpu.py --tiltseries=<.st file> --iconpreproc --thickness=<value in pixels>
+
+	This MUST be run from the IMOD reconstruction directory, with all alignment files in it, so that the preprocessed tiltseries can be realigned automatically without going through IMOD's ETOMO pipeline again.
+
+	For reconstruction, run:
+
+	e2tomo_icongpu.py --tiltseries=<.ali file> --sizez=<size of output tomogram in z>
+
+	The .tlt file should be located automatically if it has the same name (but with .tlt extension) as the --tiltseries, as should be the case for an intact IMOD directory.
+	Otherwise, to supply an alternative .tlt file, add --tltfile=<.tlt file from imod> to the command above.
+
+	(This can be run in any given directory as long as the .ali and .tlt files are there).
+
+	If you don't need or want to delete gold fiducials and want to run BOTH steps at once (ICONPreProcess and reconstruction with ICON-GPU), add --skipgolderasing
+	
+
+}}}
+
+
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||

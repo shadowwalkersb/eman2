@@ -1,3 +1,16 @@
+{{{
+
+usage: prog [options] 
+	This program aligns a paricle to its symmetry axis. There are two algorithmic modes. 
+	A coarse search followed by simplex minimization (not yet implimented) OR monte carlo course 
+	search followed by simplex minimization. The Goal is to align the paricle to its 
+	symmetry axis so symmetry can be applied for avergaing and for alignment speed up 
+	(it is only necessary to search over one asymmetric unit!
+	
+
+}}}
+
+
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||

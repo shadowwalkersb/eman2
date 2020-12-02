@@ -1,3 +1,19 @@
+{{{
+
+usage: 
+	This program takes unaligned tilt series, performs alignment, and generate a tomogram.
+	
+	Usage:
+		e2tomogram.py <tilt series stack> --rawtlt <raw tilt file> [options]
+	or:
+		e2tomogram.py <tilt series stack> --tltstep <angle between tilts> [options]
+	
+	Note: Tiltseries must have the correct Apix values in their headers.
+	
+
+}}}
+
+
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||

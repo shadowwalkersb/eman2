@@ -1,3 +1,25 @@
+{{{
+
+usage: e2spt_tiltstacker.py <options> . 
+	The options should be supplied in "--option=value" format, 
+	replacing "option" for a valid option name, and "value" for an acceptable value for that option. 
+	
+	This program operates in 3 different modes:
+	1) It can STACK individual .dm3, .tiff or .hdf images into an .mrc (or .st) stack,
+	by supplying a common string to all the images to stack via --stem2stack.
+	It must be run in a directory containing the numbered images only.
+	It also generates a .rawtlt file with tilt angle values if --lowerend, --upperend and --tiltstep are provided.
+	
+	2) It can UNSTACK a tilt series into individual files (either all the images, or selected
+	images, controlled through the --exclude or --include parameters).
+	
+	3) It can RESTACK a tilt series; that is, put together a new tilt series that excludes/includes
+	specific images
+	
+
+}}}
+
+
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||

@@ -1,3 +1,16 @@
+{{{
+
+usage: prog [options] 
+	This program will compute a variance map, using the results from an iteration of e2refine_easy.py as a basis
+	for the computation. It uses a bootstrap resampling technique, where random particles are excluded from
+	the model with replacement. This is repeated N times, producing a new 3-D model each time. The variance of
+	the 3-D models is then computed. Note that this program requires a fair bit of memory. If running the entire program
+	on a single machine, you will need enough memory to hold ~5 copies of a 3-D map + whatever is required
+	by e2classaverage.py. It may be best-used on downsampled data (also for speed).
+
+}}}
+
+
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||

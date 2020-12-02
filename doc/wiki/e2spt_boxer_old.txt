@@ -1,3 +1,26 @@
+{{{
+
+usage: 
+	
+	e2spt_boxer.py <tomogram> <options>.
+
+	This program has two modalities: 
+
+	1) bring up a Graphical User Inteface (GUI) to interactively find features in a tomogram, allowing to find multiple types of features kept as separate sets and to save metadata in the new EMAN2 tomogram framework (2017).
+	For this, you would a command similar to:
+		
+		e2spt_boxer.py tomo.rec --inmemory.
+	
+	2) extract particles from a tomogram using a coordinates file WITHOUT opening the GUI. This is useful when re-exctracting particles from a tomogram, when extracting only a subset of particles, when extracting particles on a remote machine without needing the -X server, when extracting particles multiple times from tomograms reconstructed using diferent algorithms, parameters, or filters, or when the sampling size of the coordinates file does not match the sampling size of the raw tomogram. 
+	In this case, you woukld run a command similar to:
+	
+		e2spt_boxer.py tomo_raw.rec --coords coords_bin4.txt --cshrink 4 --output ptcls_sirt12.hdf --path sptboxer_sirt12 --normproc normalize.edgemean --invert --boxsize 256 --bruteaverage
+	
+	
+
+}}}
+
+
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||

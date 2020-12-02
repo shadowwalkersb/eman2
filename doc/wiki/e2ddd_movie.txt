@@ -1,3 +1,23 @@
+{{{
+
+usage: prog [options] <ddd_movie_stack>
+
+	This program will do various processing operations on "movies" recorded on direct detection cameras. It
+	is primarily used to do whole-frame alignment of movies using all-vs-all CCFs with a global optimization
+	strategy. Several outputs including different frame subsets are produced, as well as a text file with the
+	translation vector map.
+
+	See e2ddd_particles for per-particle alignment.
+
+	Note: We have found the following to work on DE64 images:
+	e2ddd_movie.py <movies> --de64 --dark <dark_frames> --gain <gain_frames> --gain_darkcorrected --reverse_gain --invert_gain
+
+	Note: For multi-image files in MRC format, use the .mrcs extension. Do not use .mrc, as it will handle input stack as a 3D volume.
+	
+
+}}}
+
+
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||

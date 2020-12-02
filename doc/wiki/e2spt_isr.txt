@@ -1,3 +1,11 @@
+{{{
+
+usage: Program for individual subtomogram refinement (ISR) based on subtiltseries
+	for each subtomogram extracted with e2spt_subtilt.py.
+
+}}}
+
+
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||

@@ -1,3 +1,43 @@
+{{{
+
+usage: Usage: e2compress.py [options] <file1> <file2> <file3> 
+converts a list of image files to compressed hdf files. If the input file is also HDF, it will overwrite the file, otherwise it will change
+the file extension. When read by EMAN2, compressed HDF files will be rescaled to their original (rounded) values, not the integer
+values stored in the file. If read using other software it is likely that the integer values will be seen.
+
+The --nooutliers option will truncate extreme image values. This is an ALTERNATIVE to specifying --range or --sigrange. This will eliminate 
+a small fraction of the most extreme values in the images.
+
+Default behavior is to perform 10 bit integer compression, which is sufficient for pretty much any CryoEM image file
+or reconstruction. Raw movie frames may need only 2-4 bits and aligned averaged micrographs are likely to be fine with 4-6 bits, so it
+is wise to specify the number of bits to use. Specifying 0 bits is a special case which will cause compression of the native floating point
+format. In most cases this will result in only 10-30% compression, whereas most files can be compressed by a factor of 5-10 with no impairment
+of results.
+
+Additionally, if the input file contains integer values, it will try to mak a mapping which will produce integer values in the file when read 
+back in. If there are a significant number of values which are exactly 0.0, this value will also be preserved. 
+
+The smaller the number of bits, the faster the compression, and the better the compression ratio. Noise compresses poorly, so eliminating bits
+containing pure noise is benificial in multiple ways.
+
+--compresslevel will not impact the quality of the stored images, but will impact compression size and time required. For example, when storing
+a typical movie stack of 50 K2 frames using a single thread:
+uncompressed   2848 MB   7.1 s
+level 0         738      9.3     3.8x compression
+level 1         193     15.7    14.7
+level 2         184     16.9    15.5
+level 3         175     24.7    16.3
+level 4         165     21.2    17.3
+level 5         158     32.8    18.0  (typical int-compressed tiff)
+level 6         152     62.5    18.7
+level 7         149     95.4    19.1
+
+Typical usage:
+e2compress.py --nooutliers --outpath ../micrographs_5bit --threads 32 -v 2 --bits 5 *.mrc
+
+}}}
+
+
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||

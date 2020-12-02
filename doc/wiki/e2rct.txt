@@ -1,3 +1,16 @@
+{{{
+
+usage: prog [options] 
+	
+	This program is designed to generate a reconstruction via the random conical tilt technique.
+	Starting from a tilted and untilted dataset. Thce program interfaces with e2refine2d.py to 
+	find the azimuthal angles from the untilited dataset and e2make3d.py to make the 3D model
+	from the untilted dataset combined with the azimuthal angles and stage tilt. A model is made
+	foreach e2refine2d.py class(used for alignment)
+
+}}}
+
+
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||

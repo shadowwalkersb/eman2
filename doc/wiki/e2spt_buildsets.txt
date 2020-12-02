@@ -1,3 +1,16 @@
+{{{
+
+usage: Build virtual stacks (.lst) from particles of the same label.  
+	To generate all particle stacks:
+	    e2spt_buildsets.py --allparticles
+	Adding --label option will only build stack for the specified label
+	To only include particles from some tomograms:
+	    e2spt_buildsets.py <particles3d/xxx.hdf> <particles3d/yyy.hdf> ...
+	
+
+}}}
+
+
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||

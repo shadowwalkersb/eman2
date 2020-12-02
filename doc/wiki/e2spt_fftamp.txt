@@ -1,3 +1,11 @@
+{{{
+
+usage: prog <Volume file> [options]
+	This program writes out the 3D image of the amplitudes of the Fourier transform of a subvolume or a stack of subvolumes.
+
+}}}
+
+
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||

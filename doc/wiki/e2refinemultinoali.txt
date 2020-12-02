@@ -1,3 +1,11 @@
+{{{
+
+usage: prog --model model1.hdf,model2.hdf --oldpath refine_01
+	Perform a 3d classification like e2refine_multi using the orientation of each particle in an e2refine_easy
+
+}}}
+
+
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||

@@ -1,3 +1,20 @@
+{{{
+
+usage: prog <output> [options]
+	
+	This program depends on e2spt_classaverage.py because it imports the alignment function from it.
+	
+	This program produces a final average of a dataset (or mutually exclusive classes of a given size [in terms of a minimum # of particles in each class]),
+	where all particles have been subjected to all vs all alignments and hierarchical ascendent classification.
+	
+	Look for "spt" in the EMAN2 Wiki for tips on how to run a sensible command.
+
+	There should be no need to supply any preprocessing parameters, unless you're doing fancy/complicated things and default options don't yield the expected results.
+	
+
+}}}
+
+
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||

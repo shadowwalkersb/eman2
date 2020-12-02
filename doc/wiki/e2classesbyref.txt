@@ -1,3 +1,17 @@
+{{{
+
+usage: prog <references> <particles> <classmx> [options]
+	
+	** EXPERIMENTAL **
+	
+	This program classifies a set of particles based on a set of references (usually projections). This program makes use of
+	rotational/translational invariants which, aside from computing the invariants, makes the process extremely fast.
+	
+	
+
+}}}
+
+
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||

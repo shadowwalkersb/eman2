@@ -1,3 +1,19 @@
+{{{
+
+usage: Usage: e2maskbyclass.py [options]
+This program will generate a masked stack of particles for each micrograph based on the class-average each particle belongs to. While this will run with any EMAN2.2 generated class-average stack, it is designed to work on averages produced from __ctf_flip_fullres particles.
+
+In short:
+- read a class-average stack
+- convert each class-average into a 2-D mask
+- find the original phase-flipped particle for each particle in the class-average
+- mask each particle on a per-micrograph basis
+
+once complete, bispectra can be recomputed based on the masked particles, or the masked particles can be used directly, potentially producing better alignments and averages.
+
+}}}
+
+
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||

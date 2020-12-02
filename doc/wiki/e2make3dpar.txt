@@ -1,3 +1,31 @@
+{{{
+
+usage: e2make3dpar.py [options]
+	Reconstructs 3D volumes using a set of 2D images. Euler angles are extracted from the 2D image headers and symmetry is imposed.
+	This is an optimized version with fewer options than e2make3d, but can run in parallel using threads, and has a number of other changes.
+
+	A simple example of usage is:
+
+	e2make3d.py --input=classes.img --sym=c3 --output=recon.mrc --pad=128
+
+	Because there are several default settings, this is more or less equivalent to:
+
+	e2make3d.py --input=classes.img --sym=c3 --output=recon.mrc --pad=128 --keep=1 --recon=fourier --iter=3
+
+	Because the padding is always done using zeroes it is best if your data (or preferably
+	the edge pixels of your data) have mean zero. If you are unsure whether your data are
+	appropriately normalized you can add the --preprocess flag
+
+	e2make3d.py --input=classes.img --sym=c3 --output=recon.mrc --pad=128 --preprocess=normalize.edgemean
+
+	You can add as many --preprocess arguments as you like, which are applied in
+	the order in which they are specified, before padding occurs.
+
+	
+
+}}}
+
+
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--output|| ||Output reconstructed volume file name.||

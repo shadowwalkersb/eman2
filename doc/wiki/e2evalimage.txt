@@ -1,3 +1,13 @@
+{{{
+
+usage: prog [options] <single image file> ...
+
+This program will allow you to evaluate an individual scanned micrograph or CCD frame, by looking at its
+power spectrum in various ways.
+
+}}}
+
+
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||

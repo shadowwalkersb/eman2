@@ -1,3 +1,14 @@
+{{{
+
+usage: prog [options] <classmx_xx> <classmx_yy> ...
+
+	WARNING: experimental program
+
+	This program traces the orientation of particles through multiple iterations. Specify a list of classmx_xx.hdf files for the comparison. Clearly the files to be compared must refer to exactly the same particles.
+
+}}}
+
+
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||

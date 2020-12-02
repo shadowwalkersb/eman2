@@ -1,3 +1,14 @@
+{{{
+
+usage: Usage:
+proclst.py [options] <lst 1> <lst 2> ... 
+Simple manipulations of LST files. If your goal is to produce an actual image file rather than the
+sort of virtual stack represented by .lst files, use e2proc2d.py or e2proc3d.py instead. Those other programs will treat LST files as normal image files for input.
+.
+
+}}}
+
+
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||

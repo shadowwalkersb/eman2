@@ -1,3 +1,14 @@
+{{{
+
+usage: prog [options] <image file> ...
+
+	This program can be used to visualize most files used in EMAN2. Running it without arguments
+	will open a browser window with more flexible functionality than the command-line.
+	
+
+}}}
+
+
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||

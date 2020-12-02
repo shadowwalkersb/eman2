@@ -1,3 +1,12 @@
+{{{
+
+usage: UNDER DEVELOPOMENT. Extracts particles from each image in an aligned tilt 
+		series based on A) their position in the reconstructed tomogram
+		or B) their position in the 0 degrees tilt image of a tilt series.
+
+}}}
+
+
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||

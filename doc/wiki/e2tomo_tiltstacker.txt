@@ -1,3 +1,21 @@
+{{{
+
+usage: e2tomo_tiltstacker.py <imgs> <options> . 
+	The options should be supplied in "--option=value" format, 
+	replacing "option" for a valid option name, and "value" for an acceptable value for that option. 
+	
+	The program stacks individual .dm3, .tiff, .mrc, or .hdf images into an .mrc (or .st) stack,
+	by supplying a common string to all the images to stack.
+	
+	For example:
+	e2tomo_tiltstacker.py --input=my_imgs --anglesindxinfilename=6
+
+	It also generates a .rawtlt file with tilt angle values if --lowerend, --upperend and --tiltstep are provided.
+	
+
+}}}
+
+
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||

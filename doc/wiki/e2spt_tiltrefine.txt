@@ -1,3 +1,11 @@
+{{{
+
+usage: prog --path <path to previous spt or subtlt refinement> [options]
+	This program will run subtilt refinement based on previous subtomogram or subtilt refinement.
+
+}}}
+
+
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||

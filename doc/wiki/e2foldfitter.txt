@@ -1,4 +1,15 @@
 WARNING: This program is currently considered experimental. Contact sludtke@bcm.edu before using it for any serious project
+{{{
+
+usage: prog [options] target.mrc probe.mrc
+	
+Locates the best 'docking' locations for a small probe in a large target map. Note that the probe
+should be in a box barely large enough for it. The target may be arbitrarily padded. For best speed
+both box sizes should be multiples of 8.
+
+}}}
+
+
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||

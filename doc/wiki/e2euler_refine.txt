@@ -1,3 +1,14 @@
+{{{
+
+usage: e2euler_refine.py [options]
+	Takes as input/output a set of class-averages or particles with Euler angles in their header, and a 3-D map.
+	Optimizes orientation based on agreement with the map. Initial orientations should be close to correct.
+
+	
+
+}}}
+
+
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--input|| ||The input projections. Project should usually have the xform.projection header attribute, which is used for slice insertion||

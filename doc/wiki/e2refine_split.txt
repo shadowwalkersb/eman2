@@ -1,3 +1,17 @@
+{{{
+
+usage: prog <output> [options]
+
+	The goal of this program is to reduce the heterogeneity of a reconstruction by splitting a single map
+	into two maps, each more homogeneous. You must run e2refine_easy to completion before using this program.
+	It will take the class-averaging results from the final iteration, and split the particles from each 
+	class-average into 2 groups, producing 2 class-averages for each. The program then attempts to construct
+	a maximally self-consistent grouping of these pairs of class averages into 2 3-D maps. 
+	
+
+}}}
+
+
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||

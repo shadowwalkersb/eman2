@@ -1,3 +1,21 @@
+{{{
+
+usage: Single particle alignment, reconstruction and heterogeneity analysis with Gaussian model and neural networks. There are a few modes.
+	
+	Reconstruction from projections or particles with transforms:
+	e2gmm_refine.py --projs <projection file> --modelout <model output text file> --npts <number of Gaussian in model>
+	
+	Align particles using the model (local refinement only):
+	e2gmm_refine.py --model <model input> --ptclsin <particle input list> --ptclout <particle list output> --align 
+	
+	Heterogeneity analysis:
+	e2gmm_refine.py --model <model input> --ptclsin <particle input list>  --heter --midout <conformation output text file>
+	
+	
+
+}}}
+
+
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||

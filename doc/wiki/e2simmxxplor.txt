@@ -1,3 +1,16 @@
+{{{
+
+usage: prog  <simmx file> <projection file>  <particles file>
+
+	This program allows you to look at per-particle classification based on a pre-computed similarity
+	matrix. If a particle seems to be mis-classified, you can use this program to help figure out
+	why. It will display a single asymmetric triangle on the unit sphere, with cylinders representing
+	the similarity value for the selected particle vs. each possible reference projection. Use the
+	normal middle-click on the asymmetric unit viewer for more options.
+
+}}}
+
+
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||

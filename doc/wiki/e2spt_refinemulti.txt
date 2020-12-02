@@ -1,3 +1,12 @@
+{{{
+
+usage: prog <particle stack> --ref <reference> [options]
+	Iterative subtomogram refinement.  
+	
+
+}}}
+
+
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||

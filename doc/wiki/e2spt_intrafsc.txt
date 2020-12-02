@@ -1,3 +1,16 @@
+{{{
+
+usage: 
+		This program takes a subtomgoram tiltseries (subtiltseries) as extracted with
+		e2spt_subtilt.py, and computes the resolution of two volumes reconstructed with
+		the even and the odd images in the tilt series. Must be in HDF format.
+		Note that the apix in the header must be accurate to get sensible results.
+		(You can fix the header of an image with e2fixheaderparam.py).
+		
+
+}}}
+
+
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||

@@ -1,3 +1,14 @@
+{{{
+
+usage: Usage:
+procjson.py [options] <json 1> <json 2> ... 
+	
+	Provides simple utility functions for examining and modifying JSON files. Note that JSON (JavaScript Object Notation) 
+	is a text format, so files can also be read/processed with standard text editing and processing tools.
+
+}}}
+
+
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||

@@ -1,3 +1,18 @@
+{{{
+
+usage: prog
+
+	Presents a graphical representation of the orientation distribution of the particles in a single particle
+	reconstruction. This is displayed as a single asymmetric unit on a sphere, with cylinders of varying height
+	representing the number of particles found in each orientation. Middle-click will produce a control-panel
+	as usual, and clicking on a single peak will permit viewing the class-average and related projection
+	(and particles).
+
+	Normally launched without arguments from a e2workflow project directory.
+
+}}}
+
+
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||

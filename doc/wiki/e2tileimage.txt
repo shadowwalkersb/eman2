@@ -1,3 +1,16 @@
+{{{
+
+usage: prog [options] <image1> <image2>....
+	
+	Creates a stack of images for each input file. The stack consists of a moving 
+	window across each file of a specified size and step. An example use case for 
+	this program is to create test data for particle filtering, centering and 
+	general image processing.
+	
+
+}}}
+
+
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||

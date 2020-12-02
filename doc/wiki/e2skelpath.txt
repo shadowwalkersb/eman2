@@ -1,3 +1,13 @@
+{{{
+
+usage: prog [options] <skeleton map> <dejavu file> <output>
+
+	Experimental program for tracing paths in skeletonized density maps. Contact mbaker@bcm.edu for more details.
+	
+
+}}}
+
+
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||

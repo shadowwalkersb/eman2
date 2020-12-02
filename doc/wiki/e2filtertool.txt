@@ -1,3 +1,12 @@
+{{{
+
+usage: prog [options] <image file>
+
+	Provides a GUI interface for applying a sequence of processors to an image, stack of images or a volume.
+
+}}}
+
+
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||

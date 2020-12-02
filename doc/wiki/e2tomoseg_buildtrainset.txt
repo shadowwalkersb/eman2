@@ -1,3 +1,10 @@
+{{{
+
+usage: Generate training set for tomogram segmentation. Please run this program from the GUI in e2projectmanager.py.
+
+}}}
+
+
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||

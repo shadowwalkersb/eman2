@@ -1,3 +1,46 @@
+{{{
+
+usage: e2proc2d.py [options] <inputfile> ... <inputfile> <outputfile>
+
+	MRC stack files MUST use the .mrcs extension to be treated as a set of 2-D images (or you must 
+	use one of the --threed* options)
+
+	If there is more than one input file, then outputfile is a pattern, where @
+	in the pattern is replaced by the input file base name (minus any extension).
+
+	Generic 2-D image processing and file format conversion program. Acts on stacks of 2-D images
+	(multiple images in one file). All EMAN2 recognized file formats accepted (see Wiki for list).
+
+	You can create a new 2-D or 3-D image from scratch instead of reading from a file by specifying 
+	':<nx>:<ny>:<expression_in_x_y>' or ':<nx>:<ny>:<nz>:<expression_in_x_y_z>' as an input filename,
+	where 0 <= x < nx, 0 <= y < ny, 0 <= z < nz, and the expression can be just a number.
+
+        If performing certain operations which do not require an output file, specify "none" as the output file.
+
+	Examples:
+
+	convert IMAGIC format test.hed to HDF format:
+	e2proc2d.py test.hed test.hdf
+
+	convert all MRC format files in current directory to HDF format:
+	e2proc2d.py *.mrc @.hdf
+
+	convert a 'set' (.lst file) to an MRC stack file:
+	e2proc2d.py sets/myset.lst myset.mrcs
+	
+	create a new image, initialized with 1.0, then mask it:
+	e2proc2d.py :128:128:1 mymask.hdf --process mask.soft:outer_radius=50
+
+	apply a 10 A low-pass filter to a stack of particles downsample the particles by a factor of 2
+	and write output to a new file.
+	e2proc2d.py ptcl.hdf ptcl.filt.hdf --process filter.lowpass.gauss:cutoff_freq=0.1 --meanshrink 2
+
+	'e2help.py processors -v 2' for a detailed list of available procesors
+	
+
+}}}
+
+
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||

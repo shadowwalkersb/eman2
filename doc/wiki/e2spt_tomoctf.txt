@@ -1,3 +1,11 @@
+{{{
+
+usage: prog  <tilt series 1> <tilt seires 2> ... [options]
+	CTF estimation for tilt series. The tomogram reconstruction needs to be done with e2tomogram.py. This will only estimate CTF parameters and write the information in the corresponding info files. Actual per particle CTF correction will be done at the particle extraction step.
+
+}}}
+
+
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||

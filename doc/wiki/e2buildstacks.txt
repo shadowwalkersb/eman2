@@ -1,3 +1,24 @@
+{{{
+
+usage: prog [options] --stackname myfile.hdf <image1> <image2> <image3> ...
+	This program will combine many image files into a single output file. 
+	
+	If the output name has a ".lst" extension:
+	the output is a formatted text file, one line per image, describing the file containing the actual
+	image data in a searchable form. .lst files can be used as if they contained actual images in any
+	EMAN2 programs.
+	
+	If the output is a normal image file (.hdf, .spi, etc.) then the images will be copied into the
+	output file sequentially in the order provided on the command-line. Some file formats will not
+	support multiple images, or multiple volumes. Appropriate errors will be raised in these cases.
+	HDF is the only format supporting full metadata retention for stacks of images or volumes.
+	
+	The output file will be emptied and overwritten!
+	
+
+}}}
+
+
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||

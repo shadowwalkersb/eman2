@@ -1,3 +1,12 @@
+{{{
+
+usage: prog Refinement directory [options]
+	Plot Euler angle distributions for refinement results. Poiont size is proportional to Euler bin count.
+	>
+
+}}}
+
+
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||

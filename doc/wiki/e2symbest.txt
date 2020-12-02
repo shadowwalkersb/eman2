@@ -1,3 +1,14 @@
+{{{
+
+usage: e2symbest.py [options] <inputfile> <outputfile>
+
+	WARNING: Experimental progam. Email sludtke@bcm.edu for more info.
+
+	
+
+}}}
+
+
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||

@@ -1,3 +1,25 @@
+{{{
+
+usage:  prog [options] <name of refinement directory> <iteration number>
+
+This program will extract the necessary parameters from an EMAN2 refinement and create a card file (card.txt)
+and a particle meta data file in the correct formats for FreAlign. 
+
+Examples:
+
+The Eman2 refinement directory is refine_04 and the iteration you want to use within it is the 7th iteration:
+e2refinetofrealign.py refine_04 7 
+
+       [-h] [--version] [--generate_doc] [--mode MODE] [--fbeaut] [--ffilt]
+       [--fstat] [--reslow RESLOW] [--reshigh RESHIGH] [--rrec RREC]
+       [--rclas RCLAS] [--thresh THRESH] [--mass MASS] [--interp INTERP]
+       [--randomizemodel RANDOMIZEMODEL] [--imem IMEM] [--verbose VERBOSE]
+       [--ppid PPID]
+       [positionalargs [positionalargs ...]]
+
+}}}
+
+
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||

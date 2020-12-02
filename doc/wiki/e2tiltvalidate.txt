@@ -1,3 +1,20 @@
+{{{
+
+usage: prog [options]
+	Tiltvalidation using Richard Henderson's technique. To use a stack of untilted and tiltimages whose set relationship is one-to-one is required along with a
+	volume to validate. This can be generated using e2RCTboxer.py. After running this program two bits of data are products. A contour plot similar to Figure 5 in the Henderson paper(see below), and a list of
+	titlangles and tiltaxes between particle paris, which can be used to makes plot similar to Figure 6 in Hendersons paper. The contour plot is stored as contour.hdf and the tiltpairs data is
+	stored as bdb:perparticletilts.
+	For more information see:
+	Optimal determination of particle orientation, absolute hand, and contrast loss in 
+	single-particle electron cryomicroscopy.
+	Rosenthal PB, Henderson R.
+	J Mol Biol. 2003 Oct 31;333(4):721-45 
+	
+
+}}}
+
+
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||

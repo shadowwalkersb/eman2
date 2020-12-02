@@ -1,3 +1,13 @@
+{{{
+
+usage: e2helixboxer.py --gui <micrograph1> <<micrograph2> <micrograph3> ...
+	e2helixboxer.py --gui --helix-width=<width> <micrograph1> <<micrograph2> <micrograph3> ...
+	e2helixboxer.py <options (not --gui)> <micrograph>
+	
+
+}}}
+
+
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||

@@ -1,3 +1,11 @@
+{{{
+
+usage: Usage: e2a2d_average.py [options] 
+	This program takes the results of e2a2d_align and produces averages of subsets of the aligned particles.
+
+}}}
+
+
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||

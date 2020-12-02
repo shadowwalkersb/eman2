@@ -1,3 +1,10 @@
+{{{
+
+usage: This is a GUI program that allows users inspect tomograms easily. Simply run without argument in a tomogram project directory.
+
+}}}
+
+
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||

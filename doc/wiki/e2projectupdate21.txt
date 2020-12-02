@@ -1,3 +1,14 @@
+{{{
+
+usage: prog <dest folder> 
+	
+This program will update an EMAN2.0x project to EMAN2.1. Since this is a one-way process, rather than modifying your project in-place, this script will create a new complete copy of your existing project in a new folder. This insures you always have the original in case the script fails, or there are other bugs in EMAN 2.1. It does mean you will want to insure you have sufficient disk space. 
+
+This program must be run from within an existing EMAN2.0x project directory. It takes a single argument, the name of a new folder in which to place the EMAN2.1 copy.
+
+}}}
+
+
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||

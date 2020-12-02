@@ -1,3 +1,14 @@
+{{{
+
+usage: e2pdbviewer.py <project directory>
+	
+	A wrapper program to view a .pdb file on your computer. This is simply an PDB
+	specific interface to the more general EMScene3D viewer.
+	
+
+}}}
+
+
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||

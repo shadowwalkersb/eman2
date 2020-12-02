@@ -1,3 +1,20 @@
+{{{
+
+usage: prog [options] <input_stack> <output_stack> <input #2> <output #2>
+
+	This program will sort a stack of images based on some similarity criterion. Note that byptcl, iterative and reverse are mutually exclusive.
+
+	It can handle file sequences rather than a single stack file as well, in a limited form. If you have files named var3d_000.mrc, var3d_001.mrc, ...
+	you can specify input (and output) files as (for example) var3d_03d.mrc. The '3' indicates the number of digits in the value, the '0'
+	means there should be leading zeroes in the name, and the 'd' means it is a decimal number.
+
+	If specified input#2 and output#2 will be sorted in the same order as input_stack. Input #2 must have the same number of images as input_stack.
+
+	Note that there is no low-memory option for this command, and all images in the sequence are read in, so make sure you have enough RAM.
+
+}}}
+
+
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||

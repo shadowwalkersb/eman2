@@ -1,3 +1,13 @@
+{{{
+
+usage: Usage: e2spt_average.py [options] 
+Note that this program is not part of the original e2spt hierarchy, but is part of an experimental refactoring.
+
+Will read metadata from the specified spt_XX directory, as produced by e2spt_align.py, and average a selected subset of subtomograms in the predetermined orientation.
+
+}}}
+
+
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||
