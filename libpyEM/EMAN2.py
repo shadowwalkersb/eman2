@@ -656,7 +656,6 @@ class EMArgumentParser(argparse.ArgumentParser):
 
 	def parse_args(self):
 		""" Masquerade as optparser parse options """
-		parsedargs = argparse.ArgumentParser.parse_args(self)
 
 		if "--generate_doc" in self._option_string_actions:
 			print("{{{\n")
@@ -681,6 +680,7 @@ class EMArgumentParser(argparse.ArgumentParser):
 
 			self.exit()
 
+		parsedargs = argparse.ArgumentParser.parse_args(self)
 		return (parsedargs, parsedargs.positionalargs)
 
 	def add_pos_argument(self, **kwargs):
