@@ -665,15 +665,28 @@ class EMArgumentParser(argparse.ArgumentParser):
 
 			print("||{}||{}||{}||".format("option", "type", "description"))
 			# print(self. _actions)
+			# print(type(self._option_string_actions))			
 			items = {}
+			# for key, action in items:
 			for action in self._option_string_actions.values():
 				opt_text = str(action.option_strings)[1:-2].replace("'",'')
 				type_text = str(action.type).split("'")[1] if action.type else ' '
 				help_text = action.help
 				items[opt_text] = type_text, help_text
+				# print(action.option_strings, action.type, action.help)
+				# print(type(action.option_strings), type(action.type), type(action.help))
+				# opt_text = str(action.option_strings)[1:-2].replace("'",'')
+				# print(str(action.type).split("'"))
+				# continue
+				# if opt_text == "--generate_doc":
+				# 	continue
+				# type_text = (' ', str(action.type).split("'")[1])[action.type]
+				# help_text = action.help
+				# print("||{}||{}||{}||".format(opt_text, type_text, help_text))
 			
 			for k, v in items.items():
 				print("||{}||{}||{}||".format(k, *v))
+				# print(type(action.option_strings), type(action.type), type(action.help))
 
 			self.exit()
 
