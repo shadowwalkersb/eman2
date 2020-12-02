@@ -1,0 +1,26 @@
+{{{
+
+usage: prog [options] stack1.hdf stack2.mrcs ...
+
+	Program to erase gold fiducials and other high-density features from images, such as frames in DDD movies or images in tiltseries. Requires scipy.
+	
+
+}}}
+
+
+||option||type||description||
+||-h, --help|| ||show this help message and exit||
+||--version|| ||show program's version number and exit||
+||--apix||float||Override Apix in image header.||
+||--lowpass||float||Multiply lowpass filter frequency by this constant when filtering noise image. Default is 1.11.||
+||--coords||str||Specify box file with x and y gold coordinates. Must follow standard box file format (x<tab>y<tab>xsize<ysize>) although box sizes are ignored.||
+||--keepdust|| ||Do not remove 'dust' from mask (include objects smaller than gold fiducials).||
+||--goldsize||float||Diameter (in pixels) of gold fiducials to erase.||
+||--oversample||int||Oversample noise image to smooth transitions from regions with different noise.||
+||--boxsize||int||Box size to use when computing local noise.||
+||--debug|| ||Save noise and mask/masked image(s).||
+||--verbose, -v||int||verbose level [0-9], higher number means higher level of verboseness||
+||--ppid||int||Set the PID of the parent process, used for cross platform PPID||
+||--parallel||str||Default=None (not used). Parallelism. See http://blake.bcm.edu/emanwiki/EMAN2/Parallel||
+||--subset||int||Default=0 (not used). Apply algorithm to only a subset of images in each stack file.||
+||--nsigmas||float||Default=3.0. Number of standard deviations above the mean to determine pixels to mask out (erase).||
