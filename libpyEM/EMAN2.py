@@ -53,6 +53,8 @@ import argparse, copy
 import glob
 import random
 
+from pprint import pprint
+
 import threading
 #from Sparx import *
 
@@ -658,22 +660,33 @@ class EMArgumentParser(argparse.ArgumentParser):
 		""" Masquerade as optparser parse options """
 		parsedargs = argparse.ArgumentParser.parse_args(self)
 
-		if "--generate_doc" in self._option_string_actions:
-			self.print_usage()
-			
-			print("\n\n")
-
-			print("||{}||{}||{}||".format("option", "type", "description"))
-			self.print_usage()
-			# print(self. _actions)
-			# for action in self. _get_optional_actions():
-			# 	opt_text = str(action.option_strings)[1:-2].replace("'",'')
-			# 	if opt_text == "--generate_doc":
-			# 		continue
-			# 	type_text = (' ', str(action.type).split("'")[1])[action.type]
-			# 	help_text = action.help
-			# 	print("||{}||{}||{}||".format(opt_text, type_text, help_text))
-			self.exit()
+		# if "--generate_doc" in self._option_string_actions:
+			# for p in dir(argparse.ArgumentParser):
+			# 	print(p)
+			# 	print("\n\n", p)
+			# 	pprint(dir(getattr(argparse.ArgumentParser, p)))
+			# pprint(self._option_string_actions)
+			# self.exit()
+			# print("||{}||{}||{}||".format("option", "type", "description"))
+			# pprint(str(self._get_values))
+			# pprint(self)
+			# for key in self._option_string_actions:
+			# 	val = self._option_string_actions[key]
+			# 	print(key, " : \n", val)
+				# opt_text = str(val.option_strings)[1:-2].replace("'",'')
+				# type_text = (' ', str(val.type).split("'")[1])[val.type]
+				# help_text = val.help
+				# print("||{}||{}||{}||".format(opt_text, type_text, help_text))
+			# self.exit()
+		# parsedargs = argparse.ArgumentParser.parse_args(self)
+		# pprint(parsedargs)
+		# pprint(parsedargs.positionalargs)
+		# pprint(str(self. _get_positional_actions()))
+		# pprint(str(self. _get_optional_actions()))
+		# for key in self. _get_optional_actions():
+		for action in self. _actions:
+			print(action.option_strings, action.help)
+		self.exit()
 
 		return (parsedargs, parsedargs.positionalargs)
 
