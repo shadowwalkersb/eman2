@@ -1,0 +1,27 @@
+||option||type||description||
+||-h, --help|| ||show this help message and exit||
+||-h, --help|| ||show this help message and exit||
+||--version|| ||show program's version number and exit||
+||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
+||--program||str||Use this external program to align frames. Choose between imod_alignframes and ucsf_motioncor2. Note, programs must be accessible from your PATH environment variable.||
+||--device||str||When possible, use this device to process movie frames. Default is gpu.||
+||--mdoc||str||When an mdoc or idoc is provided, the raw files are automatically found within the input directory||
+||--apix||float||Specify the Apix of the movies to be processed.||
+||--dark||str||Use this dark reference.||
+||--gain||str||Use this gain reference.||
+||--defect_file||str||Specify the camera defects file.||
+||--mc2_rotgain||int||Rotates the gain 90 degress counter clockwise X times. Rotation is applied before flipping.||
+||--mc2_flipgain||int||A value of 1 flips gain image vertically, 2 flips gain image horizontally. Default is 0.||
+||--imod_rotflipgain||int||Rotates the gain 90 degress counter clockwise X times. If value is greater than 3, gain image is flipped about the y axis before rotation.||
+||--device_num||str||When possible, use this device to process movie frames. Default is GPU.||
+||--binby||int||The degree of binning for final image. Default is 1, i.e. no binning. Note that this option takes only integer values.||
+||--groupby||int||Before alignment, sum raw frames in groups of X to increase signal to noise ratio.||
+||--first||int||The index of the leading frame to include in alignment.||
+||--last||int||The index of the last frame to include in alignment.||
+||--mc2_patchX||int||Use this many patches along X with MotionCor2. Default is 1, i.e. whole-frame alignment.||
+||--mc2_patchY||int||Use this many patches along Y with MotionCor2. Default is 1, i.e. whole-frame alignment.||
+||--tomo|| ||If checked, aligned frames will be placed in a tiltseries located in the 'tiltseries' directory. Otherwise, aligned sums will populate the 'micrographs_mrc' directory.||
+||--tiltseries_name||str||Specify the name of the output tiltseries. A .mrc extension will be appended to the filename provided.||
+||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness||
+||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness||
+||--ppid||int||Set the PID of the parent process, used for cross platform PPID||

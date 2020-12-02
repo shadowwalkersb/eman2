@@ -1,0 +1,15 @@
+||option||type||description||
+||-h, --help|| ||show this help message and exit||
+||-h, --help|| ||show this help message and exit||
+||--version|| ||show program's version number and exit||
+||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
+||--ptcl||str||particle input||
+||--ncls||int||number of classes||
+||--path||str||path||
+||--parallel||str||||
+||--sym||str||sym||
+||--mask||str||mask file||
+||--maxres||float||max resolution||
+||--minres||float||min resolution||
+||--niter||int||iter||
+||--setsf||str||setsf||

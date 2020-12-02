@@ -1,14 +1,14 @@
 Running e2runresmap.py
 ||option||type||description||
-||--res_max|| ||Maximum resolution (in Angstroms)||
-||--resmapexe|| ||Full path to the ResMap executable||
-||--ppid||int||Set the PID of the parent process, used for cross platform PPID||
+||-h, --help|| ||show this help message and exit||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||
 ||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
 ||--use_mask|| ||Use the final EMAN2 mask?||
-||--p_value|| ||Confidence level (Usually between .01 and .05) ||
 ||--res_step|| ||Step size (in Angstroms)||
-||--verbose||int||Set the level of verbosity for the code||
 ||--res_min|| ||Minimum resolution (in Angstroms)||
-||-h, --help|| ||show this help message and exit||
+||--res_max|| ||Maximum resolution (in Angstroms)||
+||--p_value|| ||Confidence level (Usually between .01 and .05) ||
+||--resmapexe|| ||Full path to the ResMap executable||
+||--verbose||int||Set the level of verbosity for the code||
+||--ppid||int||Set the PID of the parent process, used for cross platform PPID||

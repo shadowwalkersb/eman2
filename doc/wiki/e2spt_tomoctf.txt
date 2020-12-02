@@ -1,0 +1,20 @@
+||option||type||description||
+||-h, --help|| ||show this help message and exit||
+||-h, --help|| ||show this help message and exit||
+||--version|| ||show program's version number and exit||
+||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
+||--alltiltseries|| ||Use all tilt series in the folder. Acceptable file extensions include hdf, mrc, mrcs, st.||
+||--dfrange||str||Search range of defocus (start, end, step). default is 2., 7, 0.02||
+||--psrange||str||phase shift range (start, end, step). default is 10, 15, 5||
+||--tilesize||int||Size of tile to calculate FFT, default is 256||
+||--voltage||int||Voltage of microscope in kV||
+||--cs||float||Cs of microscope||
+||--nref||int||Using N tilt images near the center tilt to estimate the range of defocus for all images. Default is 15||
+||--stepx||int||Number of tiles to generate on x-axis (different defocus)||
+||--stepy||int||Number of tiles to generate on y-axis (same defocus)||
+||--checkhand|| ||Check the handedness of tomogram.||
+||--threads||int||Number of threads to run in parallel on the local computer||
+||--nolog|| ||Default=False. Turn off recording of the command ran for this program onto the .eman2log.txt file||
+||--verbose, -v||int||verbose level [0-9], higher number means higher level of verboseness||
+||--verbose, -v||int||verbose level [0-9], higher number means higher level of verboseness||
+||--ppid||int||Set the PID of the parent process, used for cross platform PPID||

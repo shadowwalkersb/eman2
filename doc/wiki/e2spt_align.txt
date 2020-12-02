@@ -1,15 +1,31 @@
 ||option||type||description||
-||--threads||int||Number of alignment threads to run in parallel on a single computer. This is the only parallelism supported by e2spt_align at present.||
-||--goldcontinue|| ||Will use even/odd refs corresponding to specified reference to continue refining without phase randomizing again||
-||--saveali|| ||Save a stack file (aliptcls.hdf) containing the aligned subtomograms.||
+||-h, --help|| ||show this help message and exit||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||
-||--path||str||Path to a folder where results should be stored, following standard naming conventions (default = spt_XX)||
 ||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
-||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness||
-||--sym||str||Symmetry of the input. Must be aligned in standard orientation to work properly.||
-||--goldstandard||float||If specified, will phase randomize the even and odd references past the specified resolution (in A, not 1/A)||
+||--threads||int||Number of alignment threads to run in parallel on a single computer. This is the only parallelism supported by e2spt_align at present.||
 ||--iter||int||Iteration number within path. Default = start a new iteration||
+||--goldstandard||float||If specified, will phase randomize the even and odd references past the specified resolution (in A, not 1/A)||
+||--goldcontinue|| ||Will use even/odd refs corresponding to specified reference to continue refining without phase randomizing again||
+||--path||str||Path to a folder where results should be stored, following standard naming conventions (default = spt_XX)||
+||--sym||str||Symmetry of the input. Must be aligned in standard orientation to work properly.||
+||--maxres||float||Maximum resolution (the smaller number) to consider in alignment (in A, not 1/A)||
+||--minres||float||Minimum resolution (the larger number) to consider in alignment (in A, not 1/A)||
+||--nsoln||int||number of solutions to keep at low resolution for the aligner||
+||--verbose, -v||int||verbose level [0-9], higher number means higher level of verboseness||
+||--verbose, -v||int||verbose level [0-9], higher number means higher level of verboseness||
 ||--ppid||int||Set the PID of the parent process, used for cross platform PPID||
-||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness||
-||-h, --help|| ||show this help message and exit||
+||--parallel||str||Thread/mpi parallelism to use||
+||--transonly|| ||translational alignment only, for prealigned particles||
+||--refine|| ||local refinement from xform.align3d in header.||
+||--refinentry||int||number of tests for refine mode. default is 8||
+||--randphi|| ||randomize phi during refine alignment||
+||--breaksym|| ||symmetry breaking.||
+||--breaksymsym||str||the symmetry to use for breaksym. setting sym to c6 and this to c2 results in a c3 structure. default is the same as sym||
+||--rand180|| ||randomly add a 180 degree rotation during refine alignment||
+||--test180|| ||Test for improved alignment with 180 degree rotations even during refine alignment||
+||--skipali|| ||skip alignment. the program will do nothing. mostly for testing...||
+||--maxang||float||Maximum angular difference for the refine mode. default is 30||
+||--maxshift||float||Maximum shift for the refine mode. default is 16||
+||--scipytest|| ||test scipy optimizer.||
+||--debug|| ||.||

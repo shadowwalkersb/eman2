@@ -1,24 +1,25 @@
 ||option||type||description||
-||--projector|| ||Projector to use||
-||--postprocess||str||postprocessor to be applied to each projection. There can be more than one postprocessor, and they are applied in the order in which they are specified. See e2help.py processors for a complete list of available processors.||
 ||-h, --help|| ||show this help message and exit||
-||--force, -f|| ||Force overwrite the output file if it exists||
-||--append, -a|| ||Append to the output file||
-||--append, -a|| ||Append to the output file||
-||--check, -c|| ||Checks to see if the command line arguments will work.||
-||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
-||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness||
-||--parallel||str||Parallelism string||
-||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness||
-||--force, -f|| ||Force overwrite the output file if it exists||
-||--nofilecheck|| ||Turns file checking off in the check functionality - used by e2refine.py.||
-||--smear||int||Used in conjunction with --phitoo, this will rotationally smear between phi steps. The user must specify the amount of smearing (typically 2-10)||
+||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||
-||--outfile|| ||Output file. Default is 'e2proj.img'||
-||--orientgen|| ||The orientation generator to use. See e2help.py orientgen. Example: --orientgen=eman:delta=3.0:inc_mirror=0:perturb=1||
-||--ppid||int||Set the PID of the parent process, used for cross platform PPID||
-||--cuda|| ||Use CUDA for the projections.||
-||--check, -c|| ||Checks to see if the command line arguments will work.||
+||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
 ||--sym|| ||Specify symmetry - choices are: c<n>, d<n>, h<n>, tet, oct, icos. If multiple input models are specified, multiple comma-separated symmetries may also be specified.||
+||--orientgen|| ||The orientation generator to use. See e2help.py orientgen. Example: --orientgen=eman:delta=3.0:inc_mirror=0:perturb=1||
+||--outfile|| ||Output file. Default is 'e2proj.img'||
+||--smear||int||Used in conjunction with --phitoo, this will rotationally smear between phi steps. The user must specify the amount of smearing (typically 2-10)||
+||--projector|| ||Projector to use||
+||--force, -f|| ||Force overwrite the output file if it exists||
+||--force, -f|| ||Force overwrite the output file if it exists||
+||--append, -a|| ||Append to the output file||
+||--append, -a|| ||Append to the output file||
+||--verbose, -v||int||verbose level [0-9], higher number means higher level of verboseness||
+||--verbose, -v||int||verbose level [0-9], higher number means higher level of verboseness||
+||--check, -c|| ||Checks to see if the command line arguments will work.||
+||--check, -c|| ||Checks to see if the command line arguments will work.||
+||--nofilecheck|| ||Turns file checking off in the check functionality - used by e2refine.py.||
+||--postprocess||str||postprocessor to be applied to each projection. There can be more than one postprocessor, and they are applied in the order in which they are specified. See e2help.py processors for a complete list of available processors.||
+||--cuda|| ||Use CUDA for the projections.||
 ||--prethreshold|| ||Applies an automatic threshold to the volume before projecting||
-||-h, --help|| ||show this help message and exit||
+||--compressbits||int||Bits to keep when writing projections with compression. 0->lossless floating point. Default 10 (3 significant figures)||
+||--ppid||int||Set the PID of the parent process, used for cross platform PPID||
+||--parallel||str||Parallelism string||

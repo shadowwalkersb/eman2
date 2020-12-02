@@ -1,14 +1,14 @@
 ||option||type||description||
-||--defcol||int||which column of ctf file is the defocus||
-||--unbin||float||Unbin factor from input particles/tomogram to raw tilt. If unspecified, the program will calculate from the Apix of the header.||
-||--weight|| ||Weight the particles by the variance of defocus||
-||--ptclout||str||File name of output 2D extracted particles.||
-||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
+||-h, --help|| ||show this help message and exit||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||
-||--ctffile||str||estimated ctf||
+||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
+||--tomo||str||File name of reconstructed tomogram.||
 ||--ptclin||str||File name of input 3D particles.||
-||--tomo||str||File name of reconstructed tomograms||
-||--edf||str||IMOD .edf file name||
-||-h, --help|| ||show this help message and exit||
+||--edf||str||IMOD .edf file name.||
+||--ptclout||str||File name of output 2D extracted particles.||
+||--unbin||float||Unbin factor from input particles/tomogram to raw tilt. If unspecified, the program will calculate from the Apix of the header.||
 ||--boxsz||int||Box size of extracted 2D particles.||
+||--defcol||int||Which column of ctf file is the defocus||
+||--weight|| ||Weight the particles by the variance of defocus.||
+||--ctffile||str||Estimated CTF||

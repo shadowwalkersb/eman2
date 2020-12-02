@@ -1,14 +1,14 @@
 Running e2emx.py
 ||option||type||description||
-||--refinedefocus|| ||Will use EMAN2 CTF fitting to refine the defocus by SNR optimization (+-0.1 micron from the current values, no astigmatism adjustment)||
-||--export_whole_project|| ||This option will create an emx directory, where it will export the eman2 project into EMX format||
+||-h, --help|| ||show this help message and exit||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||
-||--writeimages|| ||If specified, micrographs and particles will be written to the emx directory.||
 ||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
+||--export_whole_project|| ||This option will create an emx directory, where it will export the eman2 project into EMX format||
+||--import_emx||str||Import emx information and corresponding micrographs||
+||--refinedefocus|| ||Will use EMAN2 CTF fitting to refine the defocus by SNR optimization (+-0.1 micron from the current values, no astigmatism adjustment)||
+||--refitdefocus|| ||Will use EMAN2 CTF fitting to refit the defocus values (+-0.1 micron, astigmatism unchanged)||
+||--writeimages|| ||If specified, micrographs and particles will be written to the emx directory.||
+||--verbose, -v||int||verbose level [0-9], higher number means higher level of verboseness||
 ||--verbose, -v||int||verbose level [0-9], higher number means higher level of verboseness||
 ||--ppid||int||Set the PID of the parent process, used for cross platform PPID||
-||--verbose, -v||int||verbose level [0-9], higher number means higher level of verboseness||
-||-h, --help|| ||show this help message and exit||
-||--import_emx||str||Import emx information and corresponding micrographs||
-||--refitdefocus|| ||Will use EMAN2 CTF fitting to refit the defocus values (+-0.1 micron, astigmatism unchanged)||

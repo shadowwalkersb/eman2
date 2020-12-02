@@ -1,17 +1,17 @@
 ||option||type||description||
-||--ref||str||A reference image to be used in conjunction with --cmp and --multicmp||
+||-h, --help|| ||show this help message and exit||
+||-h, --help|| ||show this help message and exit||
+||--version|| ||show program's version number and exit||
+||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
+||--path||str||Path to a folder containing current results (default = highest spt_XX)||
+||--iter||int||Iteration number within path. Default = auto||
+||--bins||int||Number of bins to use in the histogram||
 ||--gui|| ||If set will open an interactive plot with the results||
 ||--mode||str||Which variable to histogram, score, coverage, alpha, tx, ty. default=score||
-||-h, --help|| ||show this help message and exit||
-||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness||
-||--version|| ||show program's version number and exit||
-||--path||str||Path to a folder containing current results (default = highest spt_XX)||
-||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
-||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness||
-||--iter||int||Iteration number within path. Default = auto||
-||--ppid||int||Set the PID of the parent process, used for cross platform PPID||
-||--extract|| ||If set, will convert the .json file to a .txt file suitable for plotting. No histogramming is involved, this is a per-particle conversion||
-||--multicmp|| ||If set will apply a range of different comparators to the aligned particle data and generate a multicolumn text file||
 ||--cmp||str||A comparitor used to generate new quality scores. Will add an additional column with --extract, otherwise replaces score for this run.||
-||-h, --help|| ||show this help message and exit||
-||--bins||int||Number of bins to use in the histogram||
+||--multicmp|| ||If set will apply a range of different comparators to the aligned particle data and generate a multicolumn text file||
+||--ref||str||A reference image to be used in conjunction with --cmp and --multicmp||
+||--extract|| ||If set, will convert the .json file to a .txt file suitable for plotting. No histogramming is involved, this is a per-particle conversion||
+||--verbose, -v||int||verbose level [0-9], higher number means higher level of verboseness||
+||--verbose, -v||int||verbose level [0-9], higher number means higher level of verboseness||
+||--ppid||int||Set the PID of the parent process, used for cross platform PPID||

@@ -1,25 +1,27 @@
 ||option||type||description||
-||--fastseed|| ||Will seed the k-means loop quickly, but may produce lest consistent results.||
-||--average, -A|| ||Average the particles within each class||
-||--clsfiles, -C|| ||Write EMAN 1 style cls files with members of each class||
-||--original, -O||str||If the input stack was derived from another stack, you can provide the name of the original stack here||
-||--ncls, -N||int||Number of classes to generate||
-||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness||
-||--exclude||str||The named file should contain a set of integers, each representing an image from the input file to exclude.||
 ||-h, --help|| ||show this help message and exit||
-||--average, -A|| ||Average the particles within each class||
-||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
-||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness||
-||--clsfiles, -C|| ||Write EMAN 1 style cls files with members of each class||
-||--ncls, -N||int||Number of classes to generate||
-||--minchange||int||Minimum number of particles that change group before deicding to terminate. Default = len(data)/(#cls*25)||
-||--original, -O||str||If the input stack was derived from another stack, you can provide the name of the original stack here||
+||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||
-||--onein|| ||Read 1-d input images from a single 2-D image (oneout in e2basis.py)||
-||--ppid||int||Set the PID of the parent process, used for cross platform PPID||
-||--mininclass||int||Try to eliminate classes with fewer than specified members. Default=2||
+||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
+||--ncls, -N||int||Number of classes to generate||
+||--ncls, -N||int||Number of classes to generate||
+||--average, -A|| ||Average the particles within each class||
+||--average, -A|| ||Average the particles within each class||
+||--sigma|| ||with --average, this will also produce standard deviation images for each average||
+||--onein|| ||Read 1-d input images from a single 2-D image (oneout in e2basis.py, default out e2msa.py)||
 ||--oneinali|| ||Read 1-d input images from a single 2-D image where the first 4 elements on each row are da,dx,dy,flip||
 ||--normavg|| ||Normalize averages||
-||--sigma|| ||with --average, this will also produce standard deviation images for each average||
-||-h, --help|| ||show this help message and exit||
 ||--clsmx||str||Standard EMAN2 output suitable for use with e2classaverage, etc.||
+||--clsfiles, -C|| ||Write EMAN 1 style cls files with members of each class||
+||--clsfiles, -C|| ||Write EMAN 1 style cls files with members of each class||
+||--mininclass||int||Try to eliminate classes with fewer than specified members. Default=2||
+||--outlierclass|| ||If selected, classes with fewer than mininclass particles will move permanently to an outlier class (the last class)||
+||--original, -O||str||If the input stack was derived from another stack, you can provide the name of the original stack here||
+||--original, -O||str||If the input stack was derived from another stack, you can provide the name of the original stack here||
+||--axes||str||Works only for 1-D input images. Specify a range, eg 0-5 to indicate which components to use from each vector. Inclusive. default=all||
+||--exclude||str||The named file should contain a set of integers, each representing an image from the input file to exclude.||
+||--minchange||int||Minimum number of particles that change group before deicding to terminate. Default = len(data)/(#cls*25)||
+||--fastseed|| ||Will seed the k-means loop quickly, but may produce lest consistent results.||
+||--ppid||int||Set the PID of the parent process, used for cross platform PPID||
+||--verbose, -v||int||verbose level [0-9], higher number means higher level of verboseness||
+||--verbose, -v||int||verbose level [0-9], higher number means higher level of verboseness||

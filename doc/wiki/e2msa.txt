@@ -1,19 +1,21 @@
 ||option||type||description||
-||--gsl|| ||Use gsl SVD algorithm||
-||--step||str||Specify <init>,<step>. Processes only a subset of the input data. For example, 0,2 would process only the even numbered particles||
-||--scratchfile||str||Specify an explicit scratch file to avoid multi-process conflicts||
-||--maskfile, -M||str||File containing a mask defining the pixels to include in the Eigenimages||
-||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness||
-||--ppid||int||Set the PID of the parent process, used for cross platform PPID||
-||--nbasis, -n||int||Number of basis images to generate.||
-||--normalize|| ||Perform a careful normalization of input images before MSA. Otherwise normalization is not modified until after mean subtraction.||
+||-h, --help|| ||show this help message and exit||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||
-||--varimax|| ||Perform a 'rotation' of the basis set to produce a varimax basis||
 ||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
-||--maskfile, -M||str||File containing a mask defining the pixels to include in the Eigenimages||
-||--simmx||str||Will use transformations from simmx on each particle prior to analysis||
-||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness||
+||--mode||str||Mode should be one of: pca, sparsepca, fastica, factan, lda, nmf||
+||--nomean|| ||Suppress writing the average image as the first output image||
+||--nomeansub|| ||Suppress subtracting the mean from each input image, also implies --nomean||
 ||--nbasis, -n||int||Number of basis images to generate.||
-||--mask||int||Mask radius||
-||-h, --help|| ||show this help message and exit||
+||--nbasis, -n||int||Number of basis images to generate.||
+||--maskfile, -M||str||File containing a mask defining the pixels to include in the Eigenimages||
+||--maskfile, -M||str||File containing a mask defining the pixels to include in the Eigenimages||
+||--projin||str||When generating subspace projections, use this file instead of the input used for the MSA||
+||--normproj|| ||When generating subspace projections, normalize each projection vector to unit length||
+||--mask||int||Mask radius, negative values imply ny/2+1+mask, --mask=0 disables, --maskfile overrides||
+||--simmx||str||Will use transformations from simmx on each particle prior to analysis||
+||--normalize|| ||Perform a careful normalization of input images before MSA. Otherwise normalization is not modified until after mean subtraction.||
+||--step||str||Specify <init>,<step>[,last]. Processes only a subset of the input data. For example, 0,2 would process only the even numbered particles||
+||--ppid||int||Set the PID of the parent process, used for cross platform PPID||
+||--verbose, -v||int||verbose level [0-9], higher number means higher level of verboseness||
+||--verbose, -v||int||verbose level [0-9], higher number means higher level of verboseness||

@@ -1,0 +1,17 @@
+||option||type||description||
+||-h, --help|| ||show this help message and exit||
+||-h, --help|| ||show this help message and exit||
+||--version|| ||show program's version number and exit||
+||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
+||--path||str||Output path||
+||--ncls||int||number of class||
+||--niter||int||number of iterations||
+||--maxres||float||max resolution in A||
+||--parm||str||particle_parms_xx.json file from spt_refine||
+||--strucfac||str||Structure factor file||
+||--parallel||str||parallel||
+||--mask||str||mask file||
+||--sym||str||||
+||--applysym||str||||
+||--symcopy|| ||Copy each particle for each asymetrical unit. need a maskclass to focus on one unit. do not work with applysym||
+||--randsym|| ||randomize symmetry unit assignment at the begining. seems to be helpful for high symmetry without obvious asymetrical features..||

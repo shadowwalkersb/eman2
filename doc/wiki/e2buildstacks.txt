@@ -1,9 +1,11 @@
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
+||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||
 ||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
-||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness||
-||--stackname||str||Name of the stack to build||
+||--output||str||Name of the output stack to build (Extension will be .hdf unless specified). Note, all tiltseries will be stored in the 'tiltseries' directory.||
+||--tilts|| ||Write results to 'tiltseries' directory in current project.||
+||--guess|| ||Guess how to split micrographs into tilt series and the order of images in each tilt series from file names. Tilt angles must be incuded in file names. May and may not work depending on the file name format...||
 ||--ppid||int||Set the PID of the parent process, used for cross platform PPID||
-||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness||
-||-h, --help|| ||show this help message and exit||
+||--verbose, -v||int||verbose level [0-9], higher number means higher level of verboseness||
+||--verbose, -v||int||verbose level [0-9], higher number means higher level of verboseness||

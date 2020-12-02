@@ -1,26 +1,28 @@
 ||option||type||description||
-||--voltage||float||Microscope voltage in KV||
-||--boxsize, -B||int||Box size in pixels||
-||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness||
-||--ptclsize, -P||int||Longest axis of particle in pixels (diameter, not radius)||
-||--cs||float||Microscope Cs (spherical aberation)||
-||--unboxedonly|| ||Only include image files without existing box locations||
 ||-h, --help|| ||show this help message and exit||
-||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
-||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness||
-||--ac||float||Amplitude contrast (percentage, default=10)||
-||--no_ctf|| ||Disable CTF determination||
-||--threads||int||Number of threads to run in parallel on a single computer when multi-computer parallelism isn't useful||
-||--boxsize, -B||int||Box size in pixels||
+||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||
+||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
 ||--allmicrographs|| ||Add all images from micrographs folder||
-||--gui|| ||Interactive GUI mode||
-||--ppid||int||Set the PID of the parent process, used for cross platform PPID||
-||--write_dbbox|| ||Export EMAN1 .box files||
-||--autopick||str||Perform automatic particle picking. Provide mode and parameter string, eg - auto_local:threshold=5.5||
+||--unboxedonly|| ||Only include image files without existing box locations||
+||--boxsize, -B||int||Box size in pixels||
+||--boxsize, -B||int||Box size in pixels||
 ||--ptclsize, -P||int||Longest axis of particle in pixels (diameter, not radius)||
-||-h, --help|| ||show this help message and exit||
-||--suffix||str||Suffix of the micrographs used for particle picking (i.e. suffix=goodali will use micrographs end with __goodali.hdf). It is only useful when [allmicrographs] is True.||
-||--apix||float||Angstroms per pixel for all images||
+||--ptclsize, -P||int||Longest axis of particle in pixels (diameter, not radius)||
+||--compressbits||int||Bits to keep when writing images with compression. 0->lossless floating point. Default 6||
+||--write_dbbox|| ||Export EMAN1 .box files||
 ||--write_ptcls|| ||Extract selected particles from micrographs and write to disk||
 ||--invert|| ||If specified, inverts input contrast. Particles MUST be white on a darker background.||
+||--no_ctf|| ||Disable CTF determination||
+||--suffix||str||Suffix of the micrographs used for particle picking (i.e. suffix=goodali will use micrographs end with __goodali.hdf). It is only useful when [allmicrographs] is True.||
+||--apix||float||Angstroms per pixel for all images||
+||--voltage||float||Microscope voltage in KV||
+||--cs||float||Microscope Cs (spherical aberation)||
+||--ac||float||Amplitude contrast (percentage, default=10)||
+||--autopick||str||Perform automatic particle picking. Provide mode and parameter string, eg - auto_local:threshold=5.5||
+||--gui|| ||Interactive GUI mode||
+||--threads||int||Number of threads to run in parallel on a single computer when multi-computer parallelism isn't useful||
+||--ppid||int||Set the PID of the parent process, used for cross platform PPID||
+||--device||str||For Convnet training only. Pick a device to use. chose from cpu, gpu, or gpuX (X=0,1,...) when multiple gpus are available. default is cpu||
+||--verbose, -v||int||verbose level [0-9], higher number means higher level of verboseness||
+||--verbose, -v||int||verbose level [0-9], higher number means higher level of verboseness||

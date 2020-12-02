@@ -1,23 +1,28 @@
 ||option||type||description||
-||--import_tomos|| ||Import tomograms||
-||--extension||str||Extension of the micrographs that the boxes match||
-||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness||
-||--preprocess||str||Other pre-processing operation before importing tomograms. Dose not work while not copying.||
-||--importation|| ||Specify mode move, copy or link, for importing tomograms only||
-||--invert|| ||Invert the contrast before importing tomograms||
 ||-h, --help|| ||show this help message and exit||
-||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
-||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness||
-||--shrink||int||Shrink tomograms before importing. Dose not work while not copying.||
-||--threads||int||Number of threads to run in parallel on a single computer when multi-computer parallelism isn't useful||
-||--curdefocushint|| ||Used with import_eman1, will use EMAN1 defocus as starting point||
-||--tomoseg_auto|| ||Default process for tomogram segmentation, including lowpass, highpass, normalize, clampminmax.||
+||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||
-||--ppid||int||Set the PID of the parent process, used for cross platform PPID||
-||--import_boxes|| ||Import boxes||
-||--box_type|| ||Type of boxes to import, normally boxes, but for tilted data use tiltedboxes, and untiltedboxes for the tilted  particle partner||
+||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
+||--import_movies|| ||Import DDD movies||
+||--darkrefs|| ||Specify a comma separated list of dark refereence stacks/images to import. Files will be placed in movierefs_raw. See --importation for additional options.||
+||--gainrefs|| ||Specify a comma separated list of gain refereence stacks/images to import. Files will be placed in movierefs_raw. See --importation for additional options.||
+||--apix||float||Specify the apix of the tiltseries you are importing. If -1 (default), the apix in the header will not be changed.||
+||--import_tiltseries|| ||Import tiltseries||
+||--rawtlt|| ||Specify an imod/serialem rawtlt file, and imported tilt series will be sorted in tilt sequence instead of collection sequence, 'auto' will attempt to find a .tlt file automatically||
+||--import_tomos|| ||Import tomograms for segmentation and/or subtomogram averaging||
+||--compressbits||int||Bits to keep for compression. default is -1 meaning uncompressed floating point. Currently used only on tiltseries and eman1||
 ||--import_particles|| ||Import particles||
-||--curdefocusfix|| ||Used with import_eman1, will use EMAN1 defocus unchanged (+-.001 um)||
 ||--import_eman1|| ||This will import a phase-flipped particle stack from EMAN1||
+||--importation|| ||Specify import mode: move, copy or link||
+||--invert|| ||Invert the contrast before importing tomograms||
+||--shrink||int||Shrink tomograms before importing. Does not work while not copying.||
+||--import_boxes|| ||Import boxes||
+||--extension||str||Extension of the micrographs that the boxes match||
+||--box_type|| ||Type of boxes to import, normally boxes, but for tilted data use tiltedboxes, and untiltedboxes for the tilted  particle partner||
 ||--boxsize||int||Specify the boxsize for each particle.||
-||-h, --help|| ||show this help message and exit||
+||--curdefocushint|| ||Used with import_eman1, will use EMAN1 defocus as starting point||
+||--curdefocusfix|| ||Used with import_eman1, will use EMAN1 defocus unchanged (+-.001 um)||
+||--threads||int||Number of threads to run in parallel on a single computer when multi-computer parallelism isn't useful||
+||--verbose, -v||int||verbose level [0-9], higher number means higher level of verboseness||
+||--verbose, -v||int||verbose level [0-9], higher number means higher level of verboseness||
+||--ppid||int||Set the PID of the parent process, used for cross platform PPID||

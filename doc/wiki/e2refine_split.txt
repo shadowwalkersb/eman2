@@ -1,15 +1,14 @@
 ||option||type||description||
-||--novarimax|| ||Disable varimax rotation among computed basis vectors.||
-||--parallel|| ||Standard parallelism option. Default=thread:2||
+||-h, --help|| ||show this help message and exit||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||
-||--minptcl||int||Minimum number of particles in a class. Classes with fewer particles will be excluded.||
-||--path||str||The name of an existing refine_xx folder, where e2refine_easy ran to completion||
 ||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
-||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness||
-||--ppid||int||Set the PID of the parent process, used for cross platform PPID||
-||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness||
+||--path||str||The name of an existing refine_xx folder, where e2refine_easy ran to completion||
 ||--usebasis||int||Select which Eigenimage to use for separation. With novarimax, n=0 is highest energy.||
 ||--nbasis||int||Number of basis vectors to compute. Must be at least usebasis+1. Default 6 or usebasis+1.||
+||--minptcl||int||Minimum number of particles in a class. Classes with fewer particles will be excluded.||
 ||--mask|| ||Optional 3D mask to focus the classification||
-||-h, --help|| ||show this help message and exit||
+||--parallel|| ||Standard parallelism option. Default=thread:2||
+||--verbose, -v||int||verbose level [0-9], higher number means higher level of verboseness||
+||--verbose, -v||int||verbose level [0-9], higher number means higher level of verboseness||
+||--ppid||int||Set the PID of the parent process, used for cross platform PPID||

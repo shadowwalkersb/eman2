@@ -1,0 +1,31 @@
+||option||type||description||
+||-h, --help|| ||show this help message and exit||
+||-h, --help|| ||show this help message and exit||
+||--version|| ||show program's version number and exit||
+||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
+||--path||str||Path to the previous spt/subtlt refinement||
+||--iter||int||Start from iteration X of previous refinement||
+||--niters||int||Run this many iterations. Default is 4.||
+||--keep||float||propotion of tilts to keep. default is 0.8||
+||--maxalt||float||max altitude to insert to volume||
+||--mask||str||Refinement and reprojection masking. Default uses mask from source||
+||--maskalign||str||Mask to apply during alignment, but not the final model. Default is to use the same mask.||
+||--nogs|| ||Skip gold standard. This is not a great idea...||
+||--threads||int||Number of CPU threads to use. Default is 12.||
+||--parallel||str||Thread/mpi parallelism to use. Default is thread:12||
+||--buildsetonly|| ||will only prepare particle set for the refinement but skip the actual refinement process.||
+||--resume|| ||continue from previous run||
+||--reproject|| ||Reproject 3D particles into 2D particles.||
+||--reprj_offset||str||Offset translation before reprojection||
+||--reprj_clip||int||clip after reprojection||
+||--tophat||str||Filter option for refine_postprocess. auto: same as spt refinement; local; global;||
+||--refineastep||float||Mean angular variation for refine alignment||
+||--refinentry||int||number of starting points for refine alignment||
+||--maxshift||int||maximum shift allowed||
+||--padby||float||pad by factor. default is 1.5||
+||--output||str||Write results to this directory. We do not recommend changing this.||
+||--debug|| ||Turn on debug mode. This will only process a small subset of the data (threads * 8 particles)||
+||--localnorm|| ||local normalization. do not use yet....||
+||--sym||str||symmetry. will use symmetry from spt refinement by default||
+||--ppid||int||ppid...||
+||--transonly|| ||only refine translation||

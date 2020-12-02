@@ -1,24 +1,24 @@
 ||option||type||description||
+||-h, --help|| ||show this help message and exit||
+||-h, --help|| ||show this help message and exit||
+||--version|| ||show program's version number and exit||
+||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
 ||--apix, -A||float||A/voxel||
-||--box, -B||str||Box size in pixels, <xyz> or <x>,<y>,<z>||
-||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness||
+||--apix, -A||float||A/voxel||
 ||--res, -R||float||Resolution in A, equivalent to Gaussian lowpass with 1/e width at 1/res||
+||--res, -R||float||Resolution in A, equivalent to Gaussian lowpass with 1/e width at 1/res||
+||--box, -B||str||Box size in pixels, <xyz> or <x>,<y>,<z>||
+||--box, -B||str||Box size in pixels, <xyz> or <x>,<y>,<z>||
 ||--het|| ||Include HET atoms in the map||
 ||--center|| ||Move the atomic center to the center of the box||
-||-h, --help|| ||show this help message and exit||
-||--model||int||Extract only a single numbered model from a multi-model PDB||
-||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
-||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness||
-||--res, -R||float||Resolution in A, equivalent to Gaussian lowpass with 1/e width at 1/res||
-||--full|| ||Apply non-crystallographic symmetry to obtain 'full' structure.||
-||--addpdbbfactor|| ||Use the bfactor/temperature factor as the atom blurring radius, equivalent to Gaussian lowpass with 1/e width at 1/bfactor||
-||--box, -B||str||Box size in pixels, <xyz> or <x>,<y>,<z>||
-||--version|| ||show program's version number and exit||
-||--ppid||int||Set the PID of the parent process, used for cross platform PPID||
-||--info|| ||If this is specified, information on the PDB file is displayed, no conversion is performed.||
-||--quiet|| ||Verbose is the default||
-||--omit||float||Randomly omit this percentage of atoms in the output map.||
-||--quick|| ||Use a slight approximation to the Gaussian during insertion. Does not support B-factors.||
 ||--chains||str||String list of chain identifiers to include, eg 'ABEFG'||
-||--apix, -A||float||A/voxel||
-||-h, --help|| ||show this help message and exit||
+||--info|| ||If this is specified, information on the PDB file is displayed, no conversion is performed.||
+||--full|| ||Apply non-crystallographic symmetry to obtain 'full' structure.||
+||--quiet|| ||Verbose is the default||
+||--model||int||Extract only a single numbered model from a multi-model PDB||
+||--ppid||int||Set the PID of the parent process, used for cross platform PPID||
+||--verbose, -v||int||verbose level [0-9], higher number means higher level of verboseness||
+||--verbose, -v||int||verbose level [0-9], higher number means higher level of verboseness||
+||--quick|| ||Use a slight approximation to the Gaussian during insertion. Does not support B-factors.||
+||--addpdbbfactor|| ||Use the bfactor/temperature factor as the atom blurring radius, equivalent to Gaussian lowpass with 1/e width at 1/bfactor||
+||--omit||float||Randomly omit this percentage of atoms in the output map.||

@@ -1,0 +1,23 @@
+||option||type||description||
+||-h, --help|| ||show this help message and exit||
+||-h, --help|| ||show this help message and exit||
+||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
+||--output|| ||Output reconstructed volume file name.||
+||--input|| ||The input projections. Project should usually have the xform.projection header attribute, which is used for slice insertion||
+||--sym|| ||Set the symmetry; if no value is given then the model is assumed to have no symmetry.
+Choices are: i, c, d, tet, icos, or oct.||
+||--pad||int||Will zero-pad images to the specifed size. ||
+||--outsize||int||Defines the dimensions of the final volume written to disk||
+||--keep||float||The fraction of slices to keep, based on quality scores (1.0 = use all slices). See keepsig.||
+||--no_wt|| ||This argument turns automatic weighting off causing all images to be weighted by 1.||
+||--mode||str||Fourier reconstruction 'mode' to use. The default should not normally be changed.||
+||--verbose, -v||int||verbose level [0-9], higher number means higher level of verboseness||
+||--verbose, -v||int||verbose level [0-9], higher number means higher level of verboseness||
+||--apix||float||A/pix value for output, overrides automatic values||
+||--ref||str||ref||
+||--minres||float||||
+||--maxres||float||||
+||--parallel||str||Thread/mpi parallelism to use||
+||--debug|| ||||
+||--clsid||int||only reconstruct a class of particles||
+||--ppid||int||Set the PID of the parent process, used for cross platform PPID||

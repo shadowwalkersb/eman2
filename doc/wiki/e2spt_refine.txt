@@ -1,0 +1,38 @@
+||option||type||description||
+||-h, --help|| ||show this help message and exit||
+||-h, --help|| ||show this help message and exit||
+||--version|| ||show program's version number and exit||
+||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
+||--reference, --ref|| ||3D reference for iterative alignment/averaging. No reference is used by default. <name> or <name>,#||
+||--reference, --ref|| ||3D reference for iterative alignment/averaging. No reference is used by default. <name> or <name>,#||
+||--mask||str||Mask file to be applied to initial model||
+||--maskalign||str||Mask file applied to 3D alignment reference in each iteration. Not applied to the average, which will follow normal masking routine.||
+||--niter||int||Number of iterations||
+||--sym||str||symmetry||
+||--maxres||float||Maximum resolution (the smaller number) to consider in alignment (in A, not 1/A)||
+||--minres||float||Minimum resolution (the larger number) to consider in alignment (in A, not 1/A, default=200)||
+||--mass||float||mass. default -1 will skip by mass normalization||
+||--localfilter|| ||Deprecated. Please use --tophat||
+||--tophat||str||'local', 'localwiener' or 'global'. Instead of imposing a final overall Wiener filter, use a tophat filter (global similar to Relion). local is a local tophat filter, localwiener is a localized Wiener filter||
+||--goldstandard||int||Phase randomization resolution for gold standard refinement in A. Not equivalent to restarget in e2refine_easy.||
+||--goldcontinue|| ||continue from an existing gold standard refinement||
+||--restarget||float||The resolution you reasonably expect to achieve in the current refinement run in A.||
+||--setsf||str||structure factor||
+||--pkeep||float||fraction of particles to keep||
+||--maxtilt||float||Explicitly zeroes data beyond specified tilt angle. Assumes tilt axis exactly on Y and zero tilt in X-Y plane. Default 90 (no limit).||
+||--path||str||Specify name of refinement folder. Default is spt_XX.||
+||--maxang||float||maximum anglular difference in refine mode.||
+||--maxshift||float||maximum shift in pixel.||
+||--ppid||int||Set the PID of the parent process, used for cross platform PPID||
+||--threads||int||threads||
+||--parallel||str||Thread/mpi parallelism to use||
+||--transonly|| ||translational alignment only||
+||--refine|| ||local refinement from xform in header.||
+||--randphi|| ||randomize phi for refine search||
+||--rand180|| ||include 180 degree rotation for refine search||
+||--test180|| ||Test for improved alignment with 180 degree rotations even during refine alignment||
+||--resume|| ||resume from previous run||
+||--scipy|| ||test scipy refinement||
+||--breaksym|| ||break symmetry||
+||--breaksymsym||str||Specify a different symmetry for breaksym.||
+||--symalimask||str||This will translationally realign each asymmetric unit to the previous map masked by the specified mask. While this invokes symalimasked in e2spt_average, this isn't the same, it is a mask, not a masked reference. ||

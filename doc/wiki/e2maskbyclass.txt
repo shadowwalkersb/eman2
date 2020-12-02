@@ -1,12 +1,14 @@
 ||option||type||description||
-||--threads||int||Number of alignment threads to run in parallel on a single computer. This is the only parallelism supported by e2spt_align at present.||
-||--redobispec|| ||Recomputes bispectra from masked particles||
+||-h, --help|| ||show this help message and exit||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||
-||--nofullresok|| ||Overrides the requirement that the class-averages be made from _fullres particle images.||
 ||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
-||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness||
-||--ppid||int||Set the PID of the parent process, used for cross platform PPID||
-||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness||
 ||--classes||str||Path to a class-average file (must be EMAN2 HDF averages)||
-||-h, --help|| ||show this help message and exit||
+||--threads||int||Number of alignment threads to run in parallel on a single computer.||
+||--nofullresok|| ||Overrides the requirement that the class-averages be made from _fullres particle images.||
+||--redobispec|| ||Recomputes bispectra from masked particles||
+||--redoharmonic|| ||Recomputes harmonic power from masked particles||
+||--gui|| ||Permits interactive adjustment of mask parameters||
+||--verbose, -v||int||verbose level [0-9], higher number means higher level of verboseness||
+||--verbose, -v||int||verbose level [0-9], higher number means higher level of verboseness||
+||--ppid||int||Set the PID of the parent process, used for cross platform PPID||

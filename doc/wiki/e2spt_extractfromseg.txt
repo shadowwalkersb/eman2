@@ -1,0 +1,13 @@
+||option||type||description||
+||-h, --help|| ||show this help message and exit||
+||-h, --help|| ||show this help message and exit||
+||--version|| ||show program's version number and exit||
+||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
+||--thresh||float||Threshold of density value for particle extraction.||
+||--featurename||str||name of the current feature to extract||
+||--boxsz||int||Box size||
+||--random||int||Specifying N will randomly seed N particles on density above threshold. default is -1, means only choosing peaks. Useful for non-globular particles||
+||--massthresh||float||Threshold of total mass of each continous object to be considered a particle. ||
+||--edge||int||mininmum distance to the edge of tomogram||
+||--sort|| ||Sort particles by segmentation density.||
+||--ppid||int||ppid||

@@ -1,0 +1,17 @@
+||option||type||description||
+||-h, --help|| ||show this help message and exit||
+||-h, --help|| ||show this help message and exit||
+||--version|| ||show program's version number and exit||
+||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
+||--even||str||||
+||--odd||str||||
+||--output||str||||
+||--setsf||str||||
+||--mask||str||||
+||--step||int||||
+||--winsize||int||||
+||--cut||float||||
+||--sym||str||||
+||--overwrite|| ||overwrite even/odd input||
+||--gauss|| ||gauss instead of tophat||
+||--ppid||int||||

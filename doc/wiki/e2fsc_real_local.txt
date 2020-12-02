@@ -1,0 +1,19 @@
+||option||type||description||
+||-h, --help|| ||show this help message and exit||
+||-h, --help|| ||show this help message and exit||
+||--version|| ||show program's version number and exit||
+||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
+||--output||str||Output .143 resolution volume||
+||--outfilt||str||Output locally filtered average volume||
+||--outfilte||str||Apply the local filter to the even map as well and write to specified file||
+||--outfilto||str||Apply the local filter to the odd map as well and write to specified file||
+||--compressbits||int||Bits to keep when writing volumes with compression. 0->lossless floating point. Default 10 (3 significant figures)||
+||--localsizea||int||Size in Angstroms of the local region to compute the resolution in||
+||--apix||float||A/pix to use for the comparison (default uses Vol1 apix)||
+||--cutoff||float||fsc cutoff. default is 0.143||
+||--mask||str||Optional mask to produce masked overall FSC curve. Must have the same dimensions as the input volumes.||
+||--tophat|| ||If set, the local filter is a tophat filter, otherwise a local Wiener filter is applied||
+||--threads||int||Number of threads to run in parallel on the local computer||
+||--ppid||int||Set the PID of the parent process, used for cross platform PPID||
+||--verbose, -v||int||verbosity [0-9]. Larger values produce more output.||
+||--verbose, -v||int||verbosity [0-9]. Larger values produce more output.||

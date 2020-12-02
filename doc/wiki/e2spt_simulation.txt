@@ -1,51 +1,54 @@
 ||option||type||description||
-||--input||str||The name of the input volume from which simulated subtomograms will be generated. The output will be in HDF format, since volume stack support is required. The input CAN be PDB, MRC or and HDF stack. If the input file is PDB or MRC, a version of the supplied model will be written out in HDF format. If the input file is a stack, simulatd subvolumes will be generated from each model in the stack and written to different output stacks. For example, if the input file contains models A and B, two output stacks with simulated subvolumes will be generated.||
-||--tzrange||int||Maximum number of pixels to randomly translate each subtomogram in Z. The random translation will be picked between -tzrange and +tzrange. Default value is set by --trange, but --txrange will overwrite it if specified.||
-||--txerror||int||Range of random translation error in pixels to perturb individual 2-D images in each subtiltseries by along x. The random translation perturbation will be picked between -txerror and +txerror. Default value is set by --terror, but --txerror will overwrite it if specified.||
-||--trange||int||Maximum number of pixels to randomly translate each subtomogram in all X, Y and Z. The random translation will be picked between -transrage and +trange; --txrange, --tyrange and --tzrange overwrite --trange for each specified direction.||
-||--nptcls||int||Number of simulated subtomograms to generate per reference model supplied.||
-||--parallel||str||Default=thread:1. See http://blake.bcm.edu/emanwiki/EMAN2/Parallel||
-||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness||
-||--tiltangles||str||File in .tlt or .txt format containing the tilt angle of each tilt image in the tiltseries.||
-||--path||str||Directory to store results in. The default is a numbered series of directories containing the prefix 'sptsim'; for example, sptsim_02 will be the directory by default if 'sptsim_01' already exists.||
-||--saverandstack|| ||DEPREPCATED. [This option is on by default and there's no way to turn it off. The stack of randomly oriented particles before simulating the missing wedge WILL be saved]. Save the stack of randomly oriented particles, before subtomogram simulation (before the missing wedge and noise are added).||
-||--pad3d||float||Factor to calculate the boxsize to use for 3D reconstruction. For example, if the model in --input has an original boxsize with its largest dimension of 64 and you enter --pad3d=1.5x, then the volume used for 3D reconstruction will be 1.5*64, that is, 96. If you provide --shrink, for example, --shrink=2, then the reconstruction box will be 64/2 * 1.5 = 48. Make sure to supply --clip to clip the simulated subtomograms to the final desired box size; otherwise they will be clipped to the current largest dimension of the supplied model/volume.||
-||--applyctf|| ||If on, it applies ctf to the projections in the simulated tilt series based on defocus, cs, and voltage parameters.||
-||--simref|| ||This will make a simulated particle in the same orientation as the original input (or reference).||
-||--voltage||int||Voltage of the microscope, used to simulate the ctf added to the subtomograms. Default is 200 KV.||
-||--saveprjs|| ||Save the projections (the 'tilt series') for each simulated subtomogram.||
-||--tyerror||int||Range of random translation error in pixels to perturb individual 2-D images in each subtiltseries by along y. The random translation perturbation will be picked between -tyerror and +tyerror. Default value is set by --terror, but --tyerror will overwrite it if specified.||
-||--invert|| ||"This will multiply the pixel values by -1. This is intended to make the simulated particles be like real EM data before contrast reversal (black, negative contrast), assuming that they're being generated from a model/image where the protein has positive values. It not supplied, 'white protein' (positive density values) will be used by default (or whatever the original contrast is of the image supplied as a model).||
-||--preferredside|| ||Default=False. If supplied, this option will cause the distribution of orientations to be biased towards alt=90. Works in conjuction with --preferredtop, in which case half of the particles will be biased towards 'top' view orientations and half towards 'side' view orientations.||
-||--preferredtop|| ||Default=False. If supplied, this option will cause the distribution of orientations to be biased towards alt=180 and alt=0. Works in conjuction with --preferredside, in which case half of the particles will be biased towards 'top' view orientations and half towards 'side' view orientations.||
 ||-h, --help|| ||show this help message and exit||
-||--bfactor||int||Bfactor to use for CTF correction phase flipping. Default is 400.||
-||--txrange||int||Maximum number of pixels to randomly translate each subtomogram in X. The random translation will be picked between -txrange and +txrange. Default value is set by --trange, but --txrange will overwrite it if specified.||
-||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
-||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness||
-||--notrandomize|| ||This will prevent the simulated particles from being rotated and translated into random orientations.||
-||--clip||int||The final box size to clip the output subtomograms to.||
-||--terror||int||Range of random translation error in pixels to perturb individual 2-D images in each subtiltseries by along x, y and z. The random translation perturbation will be picked between -terror and +terror. If set, this will overwrite --txerror, --tyerror and --tzerror.||
-||--nosim|| ||If on, the program will generate stacks of "perfect particles" in different random orientations, but with no missing wedge, no noise, no ctf parameters, etc. The output randstack.hdf will be identical to simptcls.hdf||
-||--reconstructor||str||The reconstructor to use to reconstruct the tilt series into a tomogram. Type 'e2help.py reconstructors' at the command line to see all options and parameters available. To specify the interpolation scheme for the fourier reconstruction, specify 'mode'. Options are 'nearest_neighbor', 'gauss_2', 'gauss_3', 'gauss_5', 'gauss_5_slow', 'gypergeom_5', 'experimental'. For example --reconstructor=fourier:mode=gauss_5 ||
-||--cs||float||Cs of the microscope, used to simulate the ctf added to the subtomograms. Default is 2.1.||
-||--set2tiltaxis|| ||Default=False. Simulate particles along the tilt axis only.||
-||--randstack||str||If you already have a stack of particles (presumably in random orientations) you can supply it here.||
+||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||
+||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
+||--clip||int||Default=None. The final box size to clip the output subtomograms to.||
+||--dualaxis|| ||Default=False. Simulate subtomograms made of two independent and orthogonal tilt series.||
 ||--gridholesize||float||Default=1.0. Size of the carbon hole in micrometers for the simulated grid (this will determine the shifts in defocus for each particle at each tilt angle, depending on the position of the particle respect to the tilt axis; the tilt axis by convention goes parallel to Y through the middle of the tomogram.||
-||--pad2d||float||Factor to pad projections in the tilt series by before reconstruction.||
-||--ppid||int||Set the PID of the parent process, used for cross platform PPID||
-||--nslices||int||This will determine the tilt step between slices, depending on tiltrange. For example, to simulate a 2 deg tilt step supply --nslices=61 --tiltrange=60. Recall that --tiltrange goes from - to + the supplied value, and that there is a central slice or projection at 0 deg, for symmetrical tilt series.||
-||--icethickness||float||Thickness of the specimen to simulate, in microns. Default=0.4; --icethickness will be used to calculate the size of the tomogram in Z in PIXELS for the simulated tomogram. This parameter will also be used to assign a random coordinate in Z to each subtomogram.||
-||--saveorthostack|| ||If on, --nptcls is ignored and you get 3 subtomograms (simulated from the model supplied) which are orthogonal to each other.||
-||--defocus||float||Target defocus at the tilt axis (in microns) for the simulated tilt series. Default is 3.0. Notice that DEFOCUS (underfocus) values are POSITIVE, by convention.||
-||--savetlt|| ||Save a text file with .tlt extension (as in IMOD) containing the tilt angles for the simulated tomogram and/or subtomograms.||
-||--savenoise|| ||If on, it saves the noise stack for each particle. This can be useful for testing alignment under varying SNR, so that the same noise (just at a different ratio/level) is tested.||
-||--ampcont||float||Amplitude contrast to use for CTF correction phase flipping. Default is 0.05.||
-||--snr||float||Weighing noise factor for noise added to the image.||
-||--tiltaxis||str||Axis to produce projections about. Default is 'y'; the only other valid option is 'x'.||
-||--sym||str||If your particle is symmetrical, it is only necessary to randomize orientations within the asymmetric unit only.||
-||--apix||float||Provide accurate apix in case the header has the wrong apix info.||
-||--tiltrange||float||Maximum angular value at which the highest tilt picture will be simulated. Projections will be simulated from -tiltrange to +titlrange. For example, if simulating a tilt series collected from -60 to 60 degrees, enter a --tiltrange value of 60. Note that this parameter will determine the size of the missing wedge.||
-||-h, --help|| ||show this help message and exit||
-||--tyrange||int||Maximum number of pixels to randomly translate each subtomogram in Y. The random translation will be picked between -tyrange and +tyrange. Default value is set by --trange, but --txrange will overwrite it if specified.||
+||--icethickness||float||Default=0.0. Thickness of the specimen to simulate, in microns (e.g., 0.4 would be 400 nm); --icethickness will be used to calculate the size of the tomogram in Z in PIXELS for the simulated tomogram. This parameter will also be used to assign a random coordinate in Z to each subtomogram.||
+||--input||str||The name of the input volume from which simulated subtomograms will be generated. The output will be in HDF format, since volume stack support is required. The input CAN be PDB, MRC or and HDF stack. If the input file is PDB or MRC, a version of the supplied model will be written out in HDF format. If the input file is a stack, simulatd subvolumes will be generated from each model in the stack and written to different output stacks. For example, if the input file contains models A and B, two output stacks with simulated subvolumes will be generated.||
+||--invert|| ||"Default=False. This will multiply the pixel values by -1. This is intended to make the simulated particles be like real EM data before contrast reversal (black, negative contrast), assuming that they're being generated from a model/image where the protein has positive values. It not supplied, 'white protein' (positive density values) will be used by default (or whatever the original contrast is of the image supplied as a model).||
+||--nosim|| ||Default=False. If on, the program will generate stacks of "perfect particles" in different random orientations, but with no missing wedge, no noise, no ctf parameters, etc. The output randstack.hdf will be identical to simptcls.hdf||
+||--notrandomize|| ||Default=False. This will prevent the simulated particles from being rotated and translated into random orientations.||
+||--nptcls||int||Default=10. Number of simulated subtomograms to generate per reference model supplied.||
+||--nslices||int||Default=61. This will determine the tilt step between slices, depending on tiltrange. For example, to simulate a 2 deg tilt step supply --nslices=61 --tiltrange=60. Recall that --tiltrange goes from - to + the supplied value, and that there is a central slice or projection at 0 deg, for symmetrical tilt series.||
+||--path||str||Defautl=sptsim. Directory to store results in. The default is a numbered series of directories containing the prefix 'sptsim'; for example, sptsim_02 will be the directory by default if 'sptsim_01' already exists.||
+||--pad3d||float||Default=0.0. Factor to calculate the boxsize to use for 3D reconstruction. For example, if the model in --input has an original boxsize with its largest dimension of 64 and you enter --pad3d=1.5x, then the volume used for 3D reconstruction will be 1.5*64, that is, 96. If you provide --shrink, for example, --shrink=2, then the reconstruction box will be 64/2 * 1.5 = 48. Make sure to supply --clip to clip the simulated subtomograms to the final desired box size; otherwise they will be clipped to the current largest dimension of the supplied model/volume.||
+||--pad2d||float||Default=0.0. Factor to pad projections in the tilt series by before reconstruction.||
+||--parallel||str||Default=thread:1. See http://blake.bcm.edu/emanwiki/EMAN2/Parallel||
+||--ppid||int||Default=-1. Set the PID of the parent process, used for cross platform PPID||
+||--preferredside||float||Default=None. Standard deviation in degrees to use to generate a set of orientations with a mean altitude equal to 90 degrees. Works in conjuction with --preferredtop, in which case half of the particles will be biased towards 'top' view orientations and half towards 'side' view orientations.||
+||--preferredtop||float||Default=None. Standard deviation in degrees to use to generate a set of orientations with a mean altitude equal to 180 and 0 degrees (half of the particles will be oriented around mean alt=0, half around mean alat=180). Works in conjuction with --preferredside, in which case half of the particles will be biased towards 'top' view orientations and half towards 'side' view orientations.||
+||--randstack||str||Default=None. If you already have a stack of particles (presumably in random orientations) you can supply it here.||
+||--reconstructor||str||Default=fourier. The reconstructor to use to reconstruct the tilt series into a tomogram. Type 'e2help.py reconstructors' at the command line to see all options and parameters available. To specify the interpolation scheme for the fourier reconstruction, specify 'mode'. Options are 'nearest_neighbor', 'gauss_2', 'gauss_3', 'gauss_5', 'gauss_5_slow', 'gypergeom_5', 'experimental'. For example --reconstructor=fourier:mode=gauss_5 ||
+||--savenoise|| ||Default=False. If on, it saves the noise stack for each particle. This can be useful for testing alignment under varying SNR, so that the same noise (just at a different ratio/level) is tested.||
+||--saveorthostack|| ||Default=False. If on, --nptcls is ignored and you get 3 subtomograms (simulated from the model supplied) which are orthogonal to each other.||
+||--saverandstack|| ||Default=True. DEPREPCATED. [This option is on by default and there's no way to turn it off. The stack of randomly oriented particles before simulating the missing wedge WILL be saved]. Save the stack of randomly oriented particles, before subtomogram simulation (before the missing wedge and noise are added).||
+||--saveprjs|| ||Default=False. Save the projections (the 'tilt series') for each simulated subtomogram.||
+||--savetlt|| ||Default=False. Save a text file with .tlt extension (as in IMOD) containing the tilt angles for the simulated tomogram and/or subtomograms.||
+||--savemissingtilts|| ||Default=False. Save tilt images corresponding to the missing wedge region.||
+||--snr||float||Default=None. Number smaller than 1.0 to make the final SNR in each tilt image. This will be calculated as SNR=sgima_signal/sigma_noise. 0.5 might be a good number assuming typical cryoEM-SPA images have SNR of 0.1 or less, and cryoET tilt series are collected with 4-6x the dose as cryoEM-SPA images.||
+||--sym||str||Default=c1. If your particle is symmetrical, it is only necessary to randomize orientations within the asymmetric unit.||
+||--simref|| ||Default=False. This will make a simulated particle in the same orientation as the original --input, saved to its own separate file.||
+||--set2tiltaxis|| ||Default=False. Simulate particles along the tilt axis only.||
+||--tiltaxis||str||Default=y. Axis to produce projections about. The only other valid option is 'x'.||
+||--tiltangles||str||Default=None. File in .tlt or .txt format containing the tilt angle of each tilt image in the tiltseries.||
+||--txrange||int||Default=None. Maximum number of pixels to randomly translate each subtomogram in X. The random translation will be picked between -txrange and +txrange. Default value is set by --trange, but --txrange will overwrite it if specified.||
+||--txerror||int||Default=None. Range of random translation error in pixels to perturb individual 2-D images in each subtiltseries by along x. The random translation perturbation will be picked between -txerror and +txerror. Default value is set by --terror, but --txerror will overwrite it if specified.||
+||--tyrange||int||Default=None. Maximum number of pixels to randomly translate each subtomogram in Y. The random translation will be picked between -tyrange and +tyrange. Default value is set by --trange, but --txrange will overwrite it if specified.||
+||--tyerror||int||Default=None. Range of random translation error in pixels to perturb individual 2-D images in each subtiltseries by along y. The random translation perturbation will be picked between -tyerror and +tyerror. Default value is set by --terror, but --tyerror will overwrite it if specified.||
+||--tzrange||int||Default=None. Maximum number of pixels to randomly translate each subtomogram in Z. The random translation will be picked between -tzrange and +tzrange. Default value is set by --trange, but --txrange will overwrite it if specified.||
+||--trange||int||Default=None. Maximum number of pixels to randomly translate each subtomogram in all X, Y and Z. The random translation will be picked between -transrage and +trange; --txrange, --tyrange and --tzrange overwrite --trange for each specified direction.||
+||--terror||int||Default=None. Range of random translation error in pixels to perturb individual 2-D images in each subtiltseries by along x, y and z. The random translation perturbation will be picked between -terror and +terror. If set, this will overwrite --txerror, --tyerror and --tzerror.||
+||--tiltrange||float||Default=60. Maximum angular value at which the highest tilt picture will be simulated. Projections will be simulated from -tiltrange to +titlrange. For example, if simulating a tilt series collected from -60 to 60 degrees, enter a --tiltrange value of 60. Note that this parameter will determine the size of the missing wedge.||
+||--verbose, -v||int||verbose level [0-9], higher number means higher level of verboseness||
+||--verbose, -v||int||verbose level [0-9], higher number means higher level of verboseness||
+||--applyctf|| ||Default=False (off). If on, it applies ctf to the projections in the simulated tilt series based on defocus, cs, and voltage parameters.||
+||--applyfocusdepth|| ||Default=False (off). If on, this will assign different 'z-height' values to different particles||
+||--defocus||float||Default=3.0. Target defocus at the tilt axis (in microns) for the simulated tilt series. Notice that DEFOCUS (underfocus) values are POSITIVE, by convention.||
+||--voltage||int||Default=200 KV. Voltage of the microscope, used to simulate the ctf added to the subtomograms.||
+||--cs||float||Default is 2.1. Cs of the microscope, used to simulate the ctf added to the subtomograms.||
+||--apix||float||Default=None. Provide accurate apix in case the header of --input has the wrong apix info.||
+||--bfactor||int||Default=400. Bfactor to use for CTF correction phase flipping.||
+||--ampcont||float||Default=0.05. Amplitude contrast to use for CTF correction phase flipping.||

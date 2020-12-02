@@ -1,27 +1,27 @@
 ||option||type||description||
+||-h, --help|| ||show this help message and exit||
+||-h, --help|| ||show this help message and exit||
+||--version|| ||show program's version number and exit||
+||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
+||--stacks||str||Comma separated list of HDF image stacks to process.||
+||--tomograms||str||Comma separated list of tomograms with REC extension from which all particles in --stacks came from.||
+||--sym||str||Symmetry to impose - choices are: c<n>, d<n>, h<n>, tet, oct, icos||
+||--path||str||Name of directory where to save the output file.||
 ||--boxsize, -B||int||Default=0 (option not used). Provide a value for the boxsize of the output average in pixels. If not provided, the boxsize of --stacks will be used.||
+||--boxsize, -B||int||Default=0 (option not used). Provide a value for the boxsize of the output average in pixels. If not provided, the boxsize of --stacks will be used.||
+||--normproc||str||Normalization processor applied to particles before extraction. Default=normalize.edgemean. If using the latter, you must provide --masknorm, otherwise, a default --masknorm=mask.sharp:outer_radius=-2 will be used.||
 ||--threshold||str||Threshold processor to apply to particles before writing them out to get rid of too high and/or too low pixel values.||
-||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness.||
+||--usetomograms|| ||"Re-extract particles from the original tomogram.||
+||--useinverseali|| ||"Use the inverse of the value stored in xform.align3d in the header of each particle.||
+||--shrink||int||Shrink factor to shrink particles before averaging. Default=1, which means no shrinking.||
+||--lowpass||str||Lowpass filtering processor to apply to particles before averaging. Default=None.||
 ||--preprocess||str||A processor (as in e2proc3d.py) to be applied to the tomogram before opening it. 
 For example, a specific filter with specific parameters you might like. 
 Type 'e2proc3d.py --processors' at the commandline to see a list of the available processors and their usage||
-||--path||str||Name of directory where to save the output file.||
-||--normproc||str||Normalization processor applied to particles before extraction. Default=normalize.edgemean. If using the latter, you must provide --masknorm, otherwise, a default --masknorm=mask.sharp:outer_radius=-2 will be used.||
-||--lowpass||str||Lowpass filtering processor to apply to particles before averaging. Default=None.||
 ||--invert|| ||Default=False. This parameer indicates you want the contrast to me inverted while boxing, AND for the extracted sub-volumes. Remember that EMAN2 **MUST** work with "white" protein. You can very easily figure out what the original color
 of the protein is in your data by looking at the gold fiducials or the edge of the carbon hole in your tomogram. If they look black you MUST specify this option||
-||-h, --help|| ||show this help message and exit||
-||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
-||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness.||
-||--shrink||int||Shrink factor to shrink particles before averaging. Default=1, which means no shrinking.||
-||--stacks||str||Comma separated list of HDF image stacks to process.||
-||--boxsize, -B||int||Default=0 (option not used). Provide a value for the boxsize of the output average in pixels. If not provided, the boxsize of --stacks will be used.||
 ||--averager||str||The type of averager used to produce the class average. Default=mean.tomo||
-||--version|| ||show program's version number and exit||
-||--ppid||int||Set the PID of the parent process, used for cross platform PPID||
-||--sym||str||Symmetry to impose - choices are: c<n>, d<n>, h<n>, tet, oct, icos||
-||--useinverseali|| ||"Use the inverse of the value stored in xform.align3d in the header of each particle.||
 ||--keep||float||The fraction of particles to keep in each class. Default=1.0||
-||--tomograms||str||Comma separated list of tomograms with REC extension from which all particles in --stacks came from.||
-||-h, --help|| ||show this help message and exit||
-||--usetomograms|| ||"Re-extract particles from the original tomogram.||
+||--ppid||int||Set the PID of the parent process, used for cross platform PPID||
+||--verbose, -v||int||verbose level [0-9], higher number means higher level of verboseness.||
+||--verbose, -v||int||verbose level [0-9], higher number means higher level of verboseness.||

@@ -1,12 +1,15 @@
 ||option||type||description||
-||--removekey||str||DANGER! This will remove all data associated with the named key from all listed .json files.||
-||--output||str||Output filename. default = jsoninfo.txt||
-||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
+||-h, --help|| ||show this help message and exit||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||
-||--extractkey||str||This will extract a single named value from each specified file. Output will be multicolumn if the referenced label is an object, such as CTF.||
-||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness||
+||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
 ||--allinfo|| ||Uses all of the .json files in info/ rather than specifying a list on the command line||
+||--listkeys|| ||Lists all of the keys in all of the specified info files||
+||--extractkey||str||This will extract a single named value from each specified file. Output will be multicolumn if the referenced label is an object, such as CTF.||
+||--removekey||str||DANGER! This will remove all data associated with the named key from all listed .json files.||
+||--output||str||Output filename. default = jsoninfo.txt||
+||--setoption||str||Set a single option in application preferences, eg - display2d.autocontrast:true||
+||--listoptions|| ||List all currently set user application preferences||
 ||--ppid||int||Set the PID of the parent process, used for cross platform PPID||
-||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness||
-||-h, --help|| ||show this help message and exit||
+||--verbose, -v||int||verbose level [0-9], higher number means higher level of verboseness||
+||--verbose, -v||int||verbose level [0-9], higher number means higher level of verboseness||

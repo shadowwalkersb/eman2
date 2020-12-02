@@ -1,28 +1,29 @@
 ||option||type||description||
-||--parallel||str||Parallelism string||
-||--init|| ||Initialize the output matrix file before performing 'range' calculations||
-||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness||
-||--check, -c|| ||Performs a command line argument check only.||
-||--exclude||str||The named file should contain a set of integers, each representing an image from the input file to exclude. Matrix elements will still be created, but will be zeroed.||
-||--force, -f|| ||Force overwrite the output file if it exists||
-||--saveali|| ||Save alignment values, output is 5, c x r images instead of 1. Images are (score,dx,dy,da,flip). ||
 ||-h, --help|| ||show this help message and exit||
-||--range||str||Range of images to process (c0,r0,c1,r1) c0,r0 inclusive c1,r1 exclusive||
-||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
-||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness||
-||--shrink||float||Optionally shrink the input particles by an integer amount prior to computing similarity scores. This will speed the process up.||
-||--force, -f|| ||Force overwrite the output file if it exists||
-||--nofilecheck|| ||Turns file checking off in the check functionality - used by e2refine.py.||
-||--raligncmp||str||The name and parameters of the comparitor used by the second stage aligner. Default is dot.||
+||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||
+||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
+||--align||str||The name of an 'aligner' to use prior to comparing the images||
+||--aligncmp||str||Name of the aligner along with its construction arguments||
 ||--ralign||str||The name and parameters of the second stage aligner which refines the results of the first alignment||
-||--ppid||int||Set the PID of the parent process, used for cross platform PPID||
+||--raligncmp||str||The name and parameters of the comparitor used by the second stage aligner. Default is dot.||
 ||--cmp||str||The name of a 'cmp' to be used in comparing the aligned images||
+||--prefilt|| ||Filter each reference (c) to match the power spectrum of each particle (r) before alignment and comparison||
+||--prectf|| ||Apply CTF to each projection before comparison||
 ||--mask||str||File containing a single mask image to apply after alignment, but before similarity comparison||
 ||--colmasks||str||File containing one mask for each column (projection) image, to be used when refining row (particle) image alignments.||
-||--prefilt|| ||Filter each reference (c) to match the power spectrum of each particle (r) before alignment and comparison||
+||--range||str||Range of images to process (c0,r0,c1,r1) c0,r0 inclusive c1,r1 exclusive||
+||--saveali|| ||Save alignment values, output is 5, c x r images instead of 1. Images are (score,dx,dy,da,flip). ||
+||--verbose, -v||int||verbose level [0-9], higher number means higher level of verboseness||
+||--verbose, -v||int||verbose level [0-9], higher number means higher level of verboseness||
+||--init|| ||Initialize the output matrix file before performing 'range' calculations||
 ||--fillzero|| ||Checks the existing output file, and fills only matrix elements which are exactly zero.||
-||--aligncmp||str||Name of the aligner along with its construction arguments||
-||--align||str||The name of an 'aligner' to use prior to comparing the images||
+||--force, -f|| ||Force overwrite the output file if it exists||
+||--force, -f|| ||Force overwrite the output file if it exists||
+||--exclude||str||The named file should contain a set of integers, each representing an image from the input file to exclude. Matrix elements will still be created, but will be zeroed.||
+||--shrink||float||Optionally shrink the input particles by an integer amount prior to computing similarity scores. This will speed the process up.||
+||--nofilecheck|| ||Turns file checking off in the check functionality - used by e2refine.py.||
 ||--check, -c|| ||Performs a command line argument check only.||
-||-h, --help|| ||show this help message and exit||
+||--check, -c|| ||Performs a command line argument check only.||
+||--ppid||int||Set the PID of the parent process, used for cross platform PPID||
+||--parallel||str||Parallelism string||

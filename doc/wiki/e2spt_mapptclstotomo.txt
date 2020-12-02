@@ -1,0 +1,13 @@
+||option||type||description||
+||-h, --help|| ||show this help message and exit||
+||-h, --help|| ||show this help message and exit||
+||--version|| ||show program's version number and exit||
+||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
+||--path||str||spt_xx path||
+||--iter||int||iteration number||
+||--tomo||str||tomogram file name||
+||--avg||str||3D average. will use spt_xx/threed_xx by default||
+||--ptcl||str||particle input. will read from 0_spt_params by default||
+||--postxf||str||extra shift after alignment||
+||--keep||float||propotion to keep. will exclude bad particles if this is smaller than 1.0||
+||--ppid||int||ppid...||

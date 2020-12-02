@@ -1,0 +1,19 @@
+||option||type||description||
+||-h, --help|| ||show this help message and exit||
+||-h, --help|| ||show this help message and exit||
+||--version|| ||show program's version number and exit||
+||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
+||--gpus||str||default=-1 (all available GPUs will be used). To select specific GPUs to use, provide them as a comma-separated list of integers.||
+||--highpasspixels||int||Default=4. Number of Fourier pixels to zero out during highpass filtering AFTER reconstruction (postprocessing). Provide 'None' or '0' to disactivate.||
+||--iconpreproc|| ||default=False. If on, this will trigger a call to ICONPreProcess on the .st file supplied through --tiltseries.||
+||--lowpassresolution||float||Default=100. Resolution in angstroms to lowpass filter the tomogram AFTER reconstruction (postprocessing). Type 'None' or '0' to disactivate.||
+||--path||str||Default=icongpu. Name of the directory where to store the output results. Only works when reconstructing the .ali file (preprocessing of the .st file will output the preprocessed tiltseries to the current directory). A numbered series of 'icongpu' directories will be created (i.e., if the program is run more than once, results will be stored in iconpu_01, icongpu_02, etc., directories, to avoid overwriting data).||
+||--ppid||int||Default=-1. Set the PID of the parent process, used for cross platform PPID||
+||--shrink||int||Default=0 (not used). Shrink factor to provide IMOD's binvol program with to bin/shrink the output tomogram after rotation about the x axis.||
+||--sizez||int||Default=0 (not used). Output size in Z for the reconstructed tomogram. This should be the same as the --thickness value provided during tiltseries preprocessing, or larger (it's good to make sure the entire reconstruction will fit in the reconstruction volume without being too tight). If running a reconstruction of the .ali file and both --thickness and --sizez are provided, the latter will supersede the former.||
+||--skipgolderasing|| ||default=False. If on, this will call IMOD to generate a new aligned tiltseries after ICONPreProcess, and then ICON-GPU will be automatically called to perform the reconstruction. Typically, one would NOT use this option as it is useful to delete the gold fiducials prior to reconstruction.||
+||--thickness||int||default=0. Thickness of the specimen as seen in a preliminary weighted back projection reconstruction from IMOD (through how many slices in Z are there specimen densities?).||
+||--tiltseries||str||default=None. .st file from IMOD if --iconpreproc is turned on. Otherwise, supply the .ali file from IMOD *after* X-ray correction, iconpreprocessing, and alignment with IMOD.||
+||--tltfile||str||default=None. .tlt file from IMOD.||
+||--verbose, -v||int||verbose level [0-9], higher number means higher level of verboseness.||
+||--verbose, -v||int||verbose level [0-9], higher number means higher level of verboseness.||

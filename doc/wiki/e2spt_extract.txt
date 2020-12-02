@@ -1,0 +1,33 @@
+||option||type||description||
+||-h, --help|| ||show this help message and exit||
+||-h, --help|| ||show this help message and exit||
+||--version|| ||show program's version number and exit||
+||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
+||--boxsz_unbin||int||box size in unbinned tomogram||
+||--label||str||Only extract particle with this name. Leave blank to extract all particles.||
+||--newlabel||str||Label of output particles. Same as original particle label by default.||
+||--threads||int||threads||
+||--maxtilt||int||max tilt||
+||--padtwod||float||padding factor||
+||--noctf|| ||skip ctf correction.||
+||--wiener|| ||wiener filter the particles using ctf information..||
+||--alltomograms|| ||use all tomograms.||
+||--dotest|| ||only make 1 batch of subtomograms for testing||
+||--shrink||float||Shrinking factor for output particles. 1.5 or integers allowed. Default is 1 (no shrink).||
+||--tltkeep||float||keep a fraction of tilt images with good score determined from tomogram reconstruction||
+||--rmbeadthr||float||remove 2d particles with high contrast object beyond N sigma at 100A. Note that this may result in generating fewer particles than selected. Default is -1 (include all particles). 0.5 might be a good choice for removing gold beads but may need some testing...||
+||--curves||int||specify curve id to extract particles from saved curves. ||
+||--curves_overlap||float||fraction of overlap when generating particle along curves. default is 0.5||
+||--jsonali||str||re-extract particles using a particle_param_xx json file from a spt alignment||
+||--mindist||float||minimum distance between particles in A. for reextraction only||
+||--keep||float||fraction of particles to keep fron previous alignment. for reextraction only.||
+||--postproc||str||processor after 3d particle reconstruction||
+||--postmask||str||masking after 3d particle reconstruction. The mask is transformed if json ||
+||--textin||str||text file for particle coordinates. do not use..||
+||--compressbits||int||Bits to keep for compression. default is -1 meaning uncompressed floating point. 8 bit seems fine...||
+||--norewrite|| ||skip existing files. do not rewrite.||
+||--parallel||str||parallel||
+||--postxf||str||a file listing post transforms (see http://eman2.org/e2tomo_more), or for simple symmetry, <sym>,<cx>,<cy>,<cz> where the coordinates specify the center of a single subunit||
+||--ppid||int||Set the PID of the parent process, used for cross platform PPID||
+||--skip3d|| ||do not make 3d particles. only generate 2d particles and 3d header. ||
+||--verbose||int||verbose||

@@ -1,0 +1,23 @@
+||option||type||description||
+||-h, --help|| ||show this help message and exit||
+||-h, --help|| ||show this help message and exit||
+||--version|| ||show program's version number and exit||
+||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
+||--ampcont||float||Default=0.05. Amplitude contrast to use for CTF correction phase flipping.||
+||--apix||float||Default=whatever is on the header of the images. Sampling of the images in angstroms/pixel.||
+||--bfactor||int||Default=1000. Bfactor ("temperature factor") to use.||
+||--cs||float||Default=2.7. Cs of the microscope with which the images were collected.||
+||--defocus||float||Default=None. Target defocus at the tilt axis. If not provided, a "global defocus" value will be estimated automatially.||
+||--debug|| ||Default=False. Shows plots as they are being produced -requires user feedback to proceed.||
+||--input||str||Default=None. Single 2D image or image stack to calculate CTF for.||
+||--path||str||Directory to store results in. The default is a numbered series of directories containing the prefix 'tomoctfraw'; for example, sptctf_02 will be the directory by default if 'sptctf_01' already exists.||
+||--phaseplate|| ||Default=False. Supply this if the data were collected with hole-free phase plate.||
+||--plots|| ||Default=False. Turn this option on to generate plots of the background-subtracted 1D power spectrum overlaid with the best CTF fit. Running on a cluster or via ssh remotely might not support plotting.||
+||--ppid||int||Set the PID of the parent process, used for cross platform PPID||
+||--savefft|| ||Default=False. Saves the average of the ffts of the tiles for an image or its strips.||
+||--tilesize||int||Tile size to use for strips when --autofit is provided.||
+||--tiltangle||float||Default=None. Single 2D image or image stack to calculate CTF for.||
+||--tltfile||str||File containing a list of tilt angles corresponding to the tilt angles of images 0 to n.||
+||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness.||
+||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness.||
+||--voltage||int||Default=300. Voltage of the microscope with which the images where collected.||

@@ -1,14 +1,14 @@
 ||option||type||description||
-||--input||str||this is redundant with supplying the image stack directly after the program name.||
-||--fillwithnoise|| ||this will fill the missing wedge with gaussian noise. --matchto will be turned on by default if this option is supplied.||
-||--fillimage||str||the iamge to use to fill in the missing wedge of the images in --input. Ideally, this is the average of the aligned images in --input, or the reference the images in --input were aligned to.||
-||--subset||int||Default=0 (not used). Plot only this substet of transforms from the hdf stack or json file provided.||
-||--output||str||optional file name to save the stack with a filled wedge.||
+||-h, --help|| ||show this help message and exit||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||
 ||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
-||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness||
-||--ppid||int||Set the PID of the parent process, used for cross platform PPID||
-||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness||
-||-h, --help|| ||show this help message and exit||
+||--input||str||this is redundant with supplying the image stack directly after the program name.||
+||--output||str||optional file name to save the stack with a filled wedge.||
+||--fillimage||str||the iamge to use to fill in the missing wedge of the images in --input. Ideally, this is the average of the aligned images in --input, or the reference the images in --input were aligned to.||
+||--fillwithnoise|| ||this will fill the missing wedge with gaussian noise. --matchto will be turned on by default if this option is supplied.||
 ||--matchto|| ||this will match the power spectrum of each image in --input to that --fillimage so that things are properly normalized.||
+||--ppid||int||Set the PID of the parent process, used for cross platform PPID||
+||--subset||int||Default=0 (not used). Plot only this substet of transforms from the hdf stack or json file provided.||
+||--verbose, -v||int||verbose level [0-9], higher number means higher level of verboseness||
+||--verbose, -v||int||verbose level [0-9], higher number means higher level of verboseness||

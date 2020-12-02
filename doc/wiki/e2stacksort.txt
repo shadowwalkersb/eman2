@@ -1,23 +1,24 @@
 ||option||type||description||
-||--byheader||str||Uses the named header parameter to sort the images||
-||--seqalicen|| ||Align each particle to the previous particle before saving, with a postalignment recentering. No flip in alignment. Aligns stack #2 instead if provided.||
-||--useali|| ||Save aligned particles to the output file, note that if used with shrink= this will store the reduced aligned particles||
-||--byptcl|| ||Sort in order of number of particles represented in each class-average. No alignment, shrinking, etc. is performed||
-||--reverse|| ||Sort in order of least mutual similarity||
-||--iterative|| ||Iterative approach for achieving a good 'consensus alignment' among the set of particles||
-||--center|| ||After alignment, particles are centered via center of mass before comparison||
 ||-h, --help|| ||show this help message and exit||
-||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
-||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness||
-||--shrink||int||Reduce the particles for comparisons||
-||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness||
-||--simalign||str||The name of an 'aligner' to use prior to comparing the images (default=no alignment)||
-||--seqali|| ||Align each particle to the previous particle before saving with rotate_translate_tree. No flip in alignment. Aligns stack #2 instead if provided.||
-||--ninput||int||Number of input particles to read (first n in the file)||
+||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||
+||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
 ||--simcmp||str||The name of a 'cmp' to be used in comparing the after optional alignment (default=optvariance:keepzero=1:matchfilt=1)||
-||--ppid||int||Set the PID of the parent process, used for cross platform PPID||
+||--simalign||str||The name of an 'aligner' to use prior to comparing the images (default=no alignment)||
 ||--simmask||str||A file containing a mask to apply prior to comparisons, to focus the sort on one particular region||
-||--nsort||int||Number of output particles to generate (mainly for reverse mode)||
-||-h, --help|| ||show this help message and exit||
+||--reverse|| ||Sort in order of least mutual similarity||
+||--byptcl|| ||Sort in order of number of particles represented in each class-average. No alignment, shrinking, etc. is performed||
 ||--bykurtosis|| ||Sort by image Kurtosis. No alignment, shrinking, etc. is performed||
+||--byheader||str||Uses the named header parameter to sort the images||
+||--iterative|| ||Iterative approach for achieving a good 'consensus alignment' among the set of particles||
+||--invar|| ||Sorting and alignment using invariants.||
+||--useali|| ||Save aligned particles to the output file, note that if used with shrink= this will store the reduced aligned particles||
+||--seqali|| ||Align each particle to the previous particle before saving with rotate_translate_tree. No flip in alignment. Aligns stack #2 instead if provided.||
+||--seqalicen|| ||Align each particle to the previous particle before saving, with a postalignment recentering. No flip in alignment. Aligns stack #2 instead if provided.||
+||--center|| ||After alignment, particles are centered via center of mass before comparison||
+||--nsort||int||Number of output particles to generate (mainly for reverse mode)||
+||--ninput||int||Number of input particles to read (first n in the file)||
+||--shrink||int||Reduce the particles for comparisons||
+||--ppid||int||Set the PID of the parent process, used for cross platform PPID||
+||--verbose, -v||int||verbose level [0-9], higher number means higher level of verboseness||
+||--verbose, -v||int||verbose level [0-9], higher number means higher level of verboseness||

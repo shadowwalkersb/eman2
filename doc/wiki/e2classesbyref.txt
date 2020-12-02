@@ -1,19 +1,23 @@
 ||option||type||description||
-||--threads||int||Number of threads to run in parallel on the local computer||
-||--classinfo||str||Store results in a classinfo_xx.json style file||
-||--classes||str||Generate class-averages directly. No bad particle exclusion or iteration. Specify filename.||
-||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness||
-||--raligncmp||str||Similarity metric for the refine aligner||
-||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness||
-||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
+||-h, --help|| ||show this help message and exit||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||
-||--aligncmp||str||Similarity metric for the aligner||
-||--align||str||specify an aligner to use after classification. Default rotate_translate_tree||
+||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
 ||--sep||int||The number of classes a particle can contribute towards (default is 1)||
-||--averager||str||Averager to use for class-averages||
-||--ppid||int||Set the PID of the parent process, used for cross platform PPID||
-||--classmx||str||Store results in a classmx_xx.hdf style file||
-||--cmp||str||Default=auto. The name of a 'cmp' to be used in assessing the aligned images||
-||-h, --help|| ||show this help message and exit||
+||--align||str||specify an aligner to use after classification. Default rotate_translate_tree||
+||--aligncmp||str||Similarity metric for the aligner||
 ||--ralign||str||specify a refine aligner to use after the coarse alignment||
+||--raligncmp||str||Similarity metric for the refine aligner||
+||--cmp||str||Default=auto. The name of a 'cmp' to be used in assessing the aligned images||
+||--classmx||str||Store results in a classmx_xx.hdf style file||
+||--classinfo||str||Store results in a classinfo_xx.json style file||
+||--classes||str||Generate class-averages directly. No bad particle exclusion or iteration. Specify filename.||
+||--averager||str||Averager to use for class-averages||
+||--invartype|| ||Which type of invariants to generate: (bispec,harmonic)||
+||--msamode||str||Enable MSA based classification, default=disabled, typically 'pca', see e2msa.py --mode option for full list||
+||--nbasisfp||int||Only used in MSA mode. Number of MSA basis vectors to use when classifying particles, default=12||
+||--compressbits||int||Bits to keep when writing class-averages with compression. 0->lossless floating point. Default 10 (3 significant figures)||
+||--threads||int||Number of threads to run in parallel on the local computer||
+||--verbose, -v||int||verbose level [0-9], higher number means higher level of verboseness||
+||--verbose, -v||int||verbose level [0-9], higher number means higher level of verboseness||
+||--ppid||int||Set the PID of the parent process, used for cross platform PPID||

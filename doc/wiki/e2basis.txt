@@ -1,22 +1,22 @@
 ||option||type||description||
-||--ppid||int||Set the PID of the parent process, used for cross platform PPID||
-||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness||
-||--mean1|| ||Indicates that the first image in the basis set is actually the mean image, which should be subtracted prior to projection. Output from e2msa requires this flag.||
-||--oneout|| ||Output is a single 2-D image rather than a set of 1-D images||
-||--maskfile, -M||str||File containing a mask to apply to the particles before normalization||
-||--normcomponent|| ||Normalize the dot product for each component of the output vector. If the basis spans the input vector, then the projected vector length will be 1, otherwise it will be less than 1.||
-||--nbasis, -n||int||Will use the first n basis images from the input, excluding the mean if present||
-||--normalize||str||Normalize the input images using the named processor. Specify 'tomean' for mean-based scaling. Specify None to disable.||
+||-h, --help|| ||show this help message and exit||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||
-||--recalcmean|| ||This will recompute the mean from the input set and subtract before projection. Useful if a different normalization is used than in the original basis file.||
 ||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
-||--maskfile, -M||str||File containing a mask to apply to the particles before normalization||
-||--basislist, -z||str||List of basis vectors to use, comma delimited.||
-||--nbasis, -n||int||Will use the first n basis images from the input, excluding the mean if present||
-||--txtout|| ||Output will be a multicolumn text file suitable for plotting||
 ||--normproj|| ||Normalize the projections resulting from 'project', such that the length of each vector is 1||
+||--normcomponent|| ||Normalize the dot product for each component of the output vector. If the basis spans the input vector, then the projected vector length will be 1, otherwise it will be less than 1.||
+||--normalize||str||Normalize the input images using the named processor. Specify 'tomean' for mean-based scaling. Specify None to disable.||
 ||--mask||int||Mask radius||
-||-h, --help|| ||show this help message and exit||
-||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness||
+||--maskfile, -M||str||File containing a mask to apply to the particles before normalization||
+||--maskfile, -M||str||File containing a mask to apply to the particles before normalization||
+||--mean1|| ||Indicates that the first image in the basis set is actually the mean image, which should be subtracted prior to projection. Output from e2msa requires this flag.||
+||--recalcmean|| ||This will recompute the mean from the input set and subtract before projection. Useful if a different normalization is used than in the original basis file.||
+||--txtout|| ||Output will be a multicolumn text file suitable for plotting||
+||--oneout|| ||Output is a single 2-D image rather than a set of 1-D images||
+||--nbasis, -n||int||Will use the first n basis images from the input, excluding the mean if present||
+||--nbasis, -n||int||Will use the first n basis images from the input, excluding the mean if present||
 ||--basislist, -z||str||List of basis vectors to use, comma delimited.||
+||--basislist, -z||str||List of basis vectors to use, comma delimited.||
+||--verbose, -v||int||verbose level [0-9], higher number means higher level of verboseness||
+||--verbose, -v||int||verbose level [0-9], higher number means higher level of verboseness||
+||--ppid||int||Set the PID of the parent process, used for cross platform PPID||

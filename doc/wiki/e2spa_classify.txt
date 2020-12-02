@@ -1,0 +1,17 @@
+||option||type||description||
+||-h, --help|| ||show this help message and exit||
+||-h, --help|| ||show this help message and exit||
+||--version|| ||show program's version number and exit||
+||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
+||--ptclin||str||particle input||
+||--output||str||score output||
+||--parallel||str||Thread/mpi parallelism to use. Default is thread:12||
+||--debug|| ||Turn on debug mode. This will only process a small subset of the data (threads * 8 particles)||
+||--maxres||float||max resolution for cmp||
+||--minres||float||min resolution for cmp||
+||--sym||str||symmetry. ||
+||--mask||str||mask. ||
+||--maxshift||int||max shift.||
+||--ppid||int||ppid...||
+||--verbose, -v||int||Verbose||
+||--verbose, -v||int||Verbose||

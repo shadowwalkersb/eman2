@@ -1,0 +1,28 @@
+||option||type||description||
+||-h, --help|| ||show this help message and exit||
+||-h, --help|| ||show this help message and exit||
+||--version|| ||show program's version number and exit||
+||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
+||--sym||str||symmetry. currently only support c and d||
+||--model||str||load from an existing model file||
+||--modelout||str||output trained model file. only used when --projs is provided||
+||--projs||str||projections with orientations (in hdf header or comment column of lst file) to train model||
+||--evalmodel||str||generate model projection images to the given file name||
+||--evalsize||int||Box size for the projections for evaluation.||
+||--ptclsin||str||particles input for alignment||
+||--ptclsout||str||aligned particle output||
+||--learnrate||float||learning rate for model training only. Default is 1e-4. ||
+||--sigmareg||float||regularizer for the sigma of gaussian width. Larger value means all Gaussian functions will have essentially the same width. Smaller value may help compensating local resolution difference.||
+||--niter||int||number of iterations||
+||--npts||int||number of points to initialize. ||
+||--batchsz||int||batch size||
+||--maxboxsz||int||maximum fourier box size to use. 2 x target Fourier radius. ||
+||--align|| ||align particles.||
+||--heter|| ||heterogeneity analysis.||
+||--fromscratch|| ||start from coarse alignment. otherwise will only do refinement from last round||
+||--gradout||str||gradient output||
+||--gradin||str||reading from gradient output instead of recomputing||
+||--midout||str||middle layer output||
+||--pas||str||choose whether to adjust position, amplitude, sigma. use 3 digit 0/1 input. default is 110, i.e. only adjusting position and amplitude||
+||--nmid||int||size of the middle layer||
+||--mask||str||remove points outside mask||

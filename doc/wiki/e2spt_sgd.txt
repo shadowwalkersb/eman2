@@ -1,0 +1,23 @@
+||option||type||description||
+||-h, --help|| ||show this help message and exit||
+||-h, --help|| ||show this help message and exit||
+||--version|| ||show program's version number and exit||
+||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
+||--reference, --ref||str||3D reference for initial model generation. No reference is used by default.||
+||--reference, --ref||str||3D reference for initial model generation. No reference is used by default.||
+||--mask||str||Mask file to be applied to initial model||
+||--sym||str||symmetry||
+||--filterto||float||Fiter map to frequency after each iteration. Default is 0.02||
+||--fourier|| ||gradient descent in fourier space||
+||--batchsize||int||SGD batch size||
+||--learnrate||float||Learning rate. Default is 0.1||
+||--niter||int||Number of iterations||
+||--nbatch||int||Number of batches per iteration||
+||--applysym|| ||apply symmetry||
+||--writemovie|| ||write all temporary files as a stack||
+||--shrink||int||Shrink factor for particles||
+||--path||str||path of output||
+||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness||
+||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness||
+||--ppid||int||ppid||
+||--refine|| ||start from xform.align3d in header||

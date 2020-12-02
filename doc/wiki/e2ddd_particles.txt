@@ -1,15 +1,15 @@
 ||option||type||description||
-||--threads||int||Number of threads to run in parallel on a single computer when multi-computer parallelism isn't useful||
-||--filefilt||str||Only processes image stacks where the filename contains the specified string. Mostly used for debugging.||
-||--step||str||Specify <first>,<last>,<step>. Processes only a subset of the input frames. For example, 0,6,2 would process only frames 0,2,4. 1,5,1 would process frames 1,2,3 and 4, skipping frame 0. First is inclusive, last exclusive||
-||--frac||str||Processes a fraction of the data, used automatically by --threads. <n>,<ntot>||
-||--parallel|| ||parallelism argument. This program supports only thread:<n>||
-||--invert|| ||Invert the contrast of the particles in output files (default false)||
-||--noalign|| ||Regenerates unaligned particle averages into __orig||
+||-h, --help|| ||show this help message and exit||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||
 ||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
-||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness||
+||--noalign|| ||Regenerates unaligned particle averages into __orig||
+||--invert|| ||Invert the contrast of the particles in output files (default false)||
+||--filefilt||str||Only processes image stacks where the filename contains the specified string. Mostly used for debugging.||
+||--frac||str||Processes a fraction of the data, used automatically by --threads. <n>,<ntot>||
+||--step||str||Specify <first>,<last>,<step>. Processes only a subset of the input frames. For example, 0,6,2 would process only frames 0,2,4. 1,5,1 would process frames 1,2,3 and 4, skipping frame 0. First is inclusive, last exclusive||
+||--parallel|| ||parallelism argument. This program supports only thread:<n>||
+||--threads||int||Number of threads to run in parallel on a single computer when multi-computer parallelism isn't useful||
 ||--ppid||int||Set the PID of the parent process, used for cross platform PPID||
-||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness||
-||-h, --help|| ||show this help message and exit||
+||--verbose, -v||int||verbose level [0-9], higher number means higher level of verboseness||
+||--verbose, -v||int||verbose level [0-9], higher number means higher level of verboseness||

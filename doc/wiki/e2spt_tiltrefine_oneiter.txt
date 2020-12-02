@@ -1,0 +1,33 @@
+||option||type||description||
+||-h, --help|| ||show this help message and exit||
+||-h, --help|| ||show this help message and exit||
+||--version|| ||show program's version number and exit||
+||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
+||--ptclin||str||particle input||
+||--ptclout||str||particle output||
+||--ref||str||reference input||
+||--threedout||str||map output||
+||--keep||float||propotion of tilts to keep. default is 0.5||
+||--threads||int||Number of CPU threads to use. Default is 12.||
+||--parallel||str||Thread/mpi parallelism to use. Default is thread:12||
+||--debug|| ||Turn on debug mode. This will only process a small subset of the data (threads * 8 particles)||
+||--transonly|| ||only refine translation||
+||--savepath|| ||save alignment path in a json file for testing.||
+||--fromscratch|| ||align from scratch and ignore previous particle transforms. for spt mostly. will include mirror||
+||--refineastep||float||Mean angular variation for refine alignment||
+||--refinentry||int||number of starting points for refine alignment||
+||--maxshift||int||maximum shift allowed||
+||--localrefine|| ||local refinement||
+||--defocus|| ||refine defocus. Still under development||
+||--seedmap|| ||seed||
+||--ctfweight|| ||weight by ctf||
+||--skipm3d|| ||skip make3d. only output aligned list||
+||--padby||float||pad by factor. default is 2||
+||--maxres||float||max resolution for cmp||
+||--minres||float||min resolution for cmp||
+||--sym||str||symmetry. will use symmetry from spt refinement by default||
+||--smooth||int||Smooth trajectory per image based on nearby particles. Still under development||
+||--ppid||int||ppid...||
+||--nkeep||int||||
+||--verbose, -v||int||Verbose||
+||--verbose, -v||int||Verbose||

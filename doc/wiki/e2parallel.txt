@@ -1,16 +1,13 @@
 ||option||type||description||
-||--clientid||int||Internal use only||
-||--cache|| ||Internal use only. Used by the MPI client||
-||--port||int||Specifies server port, default is automatic assignment||
-||--clientpath||str||Scratch directory for DC clients. Default is current directory.||
-||--server||str||Specifies host of the server to connect to||
 ||-h, --help|| ||show this help message and exit||
-||--taskout||str||Internal use only. Used when executing local threaded tasks.||
+||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||
-||--taskin||str||Internal use only. Used when executing local threaded tasks.||
 ||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
-||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness||
-||--ppid||int||Set the PID of the parent process, used for cross platform PPID||
-||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness||
-||-h, --help|| ||show this help message and exit||
 ||--scratchdir||str||Internal use only. Used by the MPI client||
+||--mode||str||choose from thread and mpi||
+||--taskin||str||Internal use only. Used when executing local threaded tasks.||
+||--taskout||str||Internal use only. Used when executing local threaded tasks.||
+||--loadmodule||str||load module||
+||--usethreads||int||max thread to use. only used for producing occupancy in mpi mode. default is the same as threads/mpi option given||
+||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness||
+||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness||

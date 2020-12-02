@@ -1,0 +1,20 @@
+||option||type||description||
+||-h, --help|| ||show this help message and exit||
+||-h, --help|| ||show this help message and exit||
+||--version|| ||show program's version number and exit||
+||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
+||--ptclin||str||particle input||
+||--ptclout||str||particle output||
+||--ref||str||reference input||
+||--keep||float||propotion of tilts to keep. default is 0.8||
+||--parallel||str||Thread/mpi parallelism to use. Default is thread:12||
+||--debug|| ||Turn on debug mode. This will only process a small subset of the data||
+||--maxshift||int||maximum shift allowed||
+||--localrefine|| ||local refinement||
+||--slow|| ||slow but finer search||
+||--maxres||float||max resolution for cmp||
+||--minrespx||int||skip the first x pixel in fourier space||
+||--sym||str||symmetry. ||
+||--ppid||int||ppid...||
+||--verbose, -v||int||Verbose||
+||--verbose, -v||int||Verbose||
