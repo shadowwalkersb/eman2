@@ -1,7 +1,6 @@
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||
-||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
 ||--ampcont||float||Default=0.05. Amplitude contrast to use for CTF correction phase flipping.||
 ||--apix||float||Default=whatever is on the header of the images. Sampling of the images in angstroms/pixel.||
 ||--bfactor||int||Default=1000. Bfactor ("temperature factor") to use.||

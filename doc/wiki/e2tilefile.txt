@@ -1,7 +1,6 @@
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||
-||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
 ||--build||str||Build a new tile file from the specified image||
 ||--buildpspec||float||Builds 1D and 2D power spectra for the images when building, Value is A/pix for image.||
 ||--tilesize||int||Build a new tile file from this image||

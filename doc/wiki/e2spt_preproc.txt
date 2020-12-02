@@ -1,7 +1,6 @@
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||
-||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
 ||--apix||float||Default=0.0 (not used). Use this apix value where relevant instead of whatever is in the header of the reference and the particles. Will overwrite particle header as well.||
 ||--clip||int||Default=0 (which means it's not used). Boxsize to clip particles. For example, the boxsize of the particles might be 100 pixels, but the particles are only 50 pixels in diameter. Aliasing effects are not always as deleterious for all specimens, and sometimes 2x padding isn't necessary.||
 ||--highpass||str||Default=None. A highpass filtering processor (see 'e2help.py processors -v 10' at the command line) to be applied to each volume prior to COARSE alignment. Not applied to aligned particles before averaging.||

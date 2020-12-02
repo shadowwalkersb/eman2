@@ -1,7 +1,6 @@
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||
-||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
 ||--sym|| ||Specify symmetry - choices are: c<n>, d<n>, tet, oct, icos. If specified each input 'particle' will become N extracted subparticles.||
 ||--subunitmask||str||Required. When applied to the 3-D volume, this mask contains the subunit being extracted. 'soft' edges are permitted||
 ||--outermask||str||Optional. If specified, this mask is projected into 2-D and used to mask out noise outside the subunit. If not specified a thresholded subunitmask is used. Only useful with --masked. ||

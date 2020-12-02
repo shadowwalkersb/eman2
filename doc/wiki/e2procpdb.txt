@@ -1,7 +1,6 @@
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||
-||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
 ||--animorph, -AN||str||This will use a morph vector file (segment3d) to morph atom positions,#P [animorph=<n>,<apix>,<vecfile>]||
 ||--scale, -S||float||scale||
 ||--center, -C||str||center of the rotation, (0,0,0)||

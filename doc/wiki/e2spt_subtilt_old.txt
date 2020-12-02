@@ -1,7 +1,6 @@
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||
-||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
 ||--tiltseries||str||File in .ali, .mrc or .hdf format of the aligned tiltseries.||
 ||--tiltangles||str||File in .tlt or .txt format containing the tilt angle of each tilt image in the tiltseries.||
 ||--coords3d||str||File in .txt format containing the coordinates of particles determined from the reconstructed tomogram of the supplied tiltseries.||

@@ -1,7 +1,6 @@
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||
-||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
 ||--hires|| ||Perform CTF processing for projects targeting 2-6 A resolution||
 ||--midres|| ||Perform CTF processing for projects targeting 7-15 A resolution||
 ||--lores|| ||Perform CTF processing for projects targeting 15-30 A resolution||

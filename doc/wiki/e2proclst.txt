@@ -1,7 +1,6 @@
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||
-||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
 ||--create||str||to use this option, the input files should be image files. Specify an .lst or .lsx file to create here (e.g., --create mylst.lst) with references to all of the images in the inputs.||
 ||--eosplit|| ||Will generate _even and _odd .lst files for each specified input .lst file||
 ||--dereforig||str||Extract the data_source and data_n parameters from each image in the file and create a new .lst file referencing the original image(s)||

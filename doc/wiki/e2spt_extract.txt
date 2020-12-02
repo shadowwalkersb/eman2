@@ -1,7 +1,6 @@
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||
-||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
 ||--boxsz_unbin||int||box size in unbinned tomogram||
 ||--label||str||Only extract particle with this name. Leave blank to extract all particles.||
 ||--newlabel||str||Label of output particles. Same as original particle label by default.||

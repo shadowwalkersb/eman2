@@ -1,7 +1,6 @@
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||
-||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
 ||--ncls||int||Default=3. Number of classes to sort the particle stack into. In theory, a minimum of 2 conformational classes and 1 'garbage' class should be used.||
 ||--nbasis||int||Basis vectors to use||
 ||--input||str||The name of the volumes stack that HAVE BEEN ALIGNED to a common reference||

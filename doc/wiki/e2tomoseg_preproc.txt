@@ -1,7 +1,6 @@
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||
-||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
 ||--invert|| ||Invert the contrast of the tomograms in output files (default false). If specified _proctag tomograms will be generated.||
 ||--proctag|| ||Tag added to the name of each tomogram when using the proc options. Default is 'preproc'.||
 ||--proc1|| ||If specified _proctag files will be generated. Typical = filter.lowpass.gauss:cutoff_abs=.25||

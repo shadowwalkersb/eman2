@@ -1,7 +1,6 @@
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||
-||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
 ||--apix||float||Override the A/pix value stored in the file header||
 ||--safemode|| ||Safe mode without the timer...||
 ||--ppid||int||Set the PID of the parent process, used for cross platform PPID||

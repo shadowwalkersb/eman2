@@ -1,7 +1,6 @@
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||
-||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
 ||--model||str||The map to use as a starting point for refinement||
 ||--nmodels||int||The total number of different maps to generate. Specify with --model, but not with --models||
 ||--mapfragment|| ||Generate initial maps by randomly removing portions of the input map rather than by phase randomizing.||

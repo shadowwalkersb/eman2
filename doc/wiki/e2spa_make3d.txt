@@ -1,6 +1,5 @@
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
-||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
 ||--output|| ||Output reconstructed volume file name.||
 ||--input|| ||The input projections. Project should usually have the xform.projection header attribute, which is used for slice insertion||
 ||--sym|| ||Set the symmetry; if no value is given then the model is assumed to have no symmetry.

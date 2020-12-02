@@ -1,7 +1,6 @@
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||
-||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
 ||--tiltseries||str||Aligned tilt series. File format must be MRC and must have .mrc or .st or .ali extension.||
 ||--exclude||str||Comma-separated list of image indexes in the --tiltseries to exclude from CTF fitting. For example, --exclude 0,3,4,6,7.||
 ||--skipstripping||str||Default=None. Comma-separated list of image indexes to exclude from strip-based fitting (in this case, only global defocus tiling the entire image wil be measured).||

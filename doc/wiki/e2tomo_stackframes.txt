@@ -1,7 +1,6 @@
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||
-||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
 ||--apix||float||default=0.0 (not used). Reset the apix on the header of each image to this value.||
 ||--extension||str||default=.mrc. Valid choices are .mrcs, .hdf, .tiff||
 ||--inputstring||str||default=.mrc. String common to all images to be processed. E.g., with '.mrc' as the default, all files in the directory ending in '.mrc' (or containing this as part of the filename) will be analyzed.||

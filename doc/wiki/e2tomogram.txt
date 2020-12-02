@@ -1,7 +1,6 @@
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||
-||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
 ||--alltiltseries|| ||Use all tilt series in the folder. Acceptable file extensions include hdf, mrc, mrcs, st.||
 ||--zeroid||int||Index of the center tilt. Ignored when rawtlt is provided.||
 ||--tltstep||float||Step between tilts. Ignored when rawtlt is provided. Default is 2.0.||

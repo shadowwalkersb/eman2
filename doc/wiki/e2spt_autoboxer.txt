@@ -1,7 +1,6 @@
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||
-||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
 ||--parallel||str||Standard EMAN2 parallelism option. See http://eman2.org/Parallel||
 ||--pad|| ||Provide this if the particles in the --particlestack used to create a template, or the template supplied through --template are in a tight box. The size||
 ||--rotsearch|| ||At each translation position, vary euler angles as well when searching for particles.||

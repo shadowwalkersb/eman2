@@ -1,7 +1,6 @@
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||
-||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
 ||--addfilename|| ||Adds the original filename of a file or stack to the header of each particle. This only works for .hdf files.||
 ||--input||str||File or stack for which to fix header parameters. To indicate multiple files, do not use --input. Simply provide the program name followed by the string common to all files to process and *, followed by all parameters of interest. For example, to process all .mrc files in a directory, you would run e2fixheader.py *.mrc <parameters>.||
 ||--output||str||File to write the fixed stack to. If not provided, the stack in --input will be overwritten.||

@@ -1,7 +1,6 @@
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||
-||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
 ||--ncls, -N||int||Number of classes to generate||
 ||--average, -A|| ||Average the particles within each class||
 ||--sigma|| ||with --average, this will also produce standard deviation images for each average||

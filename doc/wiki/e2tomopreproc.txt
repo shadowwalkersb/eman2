@@ -1,7 +1,6 @@
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||
-||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
 ||--path||str||Directory to store results in. 
 		The default is a numbered series of directories containing the prefix 'tomopreproc';
 		for example, tomopreproc_02 will be the directory by default if 'tomopreproc_01' 

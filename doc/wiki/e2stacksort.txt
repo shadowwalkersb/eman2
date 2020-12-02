@@ -1,7 +1,6 @@
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||
-||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
 ||--simcmp||str||The name of a 'cmp' to be used in comparing the after optional alignment (default=optvariance:keepzero=1:matchfilt=1)||
 ||--simalign||str||The name of an 'aligner' to use prior to comparing the images (default=no alignment)||
 ||--simmask||str||A file containing a mask to apply prior to comparisons, to focus the sort on one particular region||

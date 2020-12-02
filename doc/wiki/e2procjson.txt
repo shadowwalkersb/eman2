@@ -1,7 +1,6 @@
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||
-||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
 ||--allinfo|| ||Uses all of the .json files in info/ rather than specifying a list on the command line||
 ||--listkeys|| ||Lists all of the keys in all of the specified info files||
 ||--extractkey||str||This will extract a single named value from each specified file. Output will be multicolumn if the referenced label is an object, such as CTF.||

@@ -1,7 +1,6 @@
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||
-||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
 ||--bits||int||Bits to retain in the output file, 0 or 2-16. 0 is a flag indicating the native floating point format.||
 ||--compresslevel||int||Compression level to use when writing. No impact on image quality, but large impact on speed. Default = 1||
 ||--nooutliers|| ||will set --range to eliminate a few of the most extreme values from both ends of the histogram||

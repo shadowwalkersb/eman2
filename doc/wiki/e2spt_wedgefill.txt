@@ -1,7 +1,6 @@
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||
-||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
 ||--input||str||this is redundant with supplying the image stack directly after the program name.||
 ||--output||str||optional file name to save the stack with a filled wedge.||
 ||--fillimage||str||the iamge to use to fill in the missing wedge of the images in --input. Ideally, this is the average of the aligned images in --input, or the reference the images in --input were aligned to.||

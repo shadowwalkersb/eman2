@@ -1,7 +1,6 @@
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||
-||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
 ||--sep||int||The number of classes a particle can contribute towards (default is 1)||
 ||--align||str||specify an aligner to use after classification. Default rotate_translate_tree||
 ||--aligncmp||str||Similarity metric for the aligner||

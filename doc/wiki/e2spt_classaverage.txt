@@ -1,7 +1,6 @@
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||
-||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
 ||--input||str||Default=None. The name of the input volume stack. MUST be HDF since volume stack support is required.||
 ||--ref||str||Default=None. Reference image. Used as an initial alignment reference. The refinements are 'gold standard' by default, and therefore two independent copies of the reference will be generated and randomphase-lowpass filtered to the resolution specified through --refrandphase. To turn dataset splitting and gold standard refinement off, supply --goldstandardoff.||
 ||--apix||float||Default=0.0 (not used). Use this apix value where relevant instead of whatever is in the header of the reference and the particles.||

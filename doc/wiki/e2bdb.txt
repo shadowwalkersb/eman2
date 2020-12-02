@@ -1,7 +1,6 @@
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||
-||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
 ||--cleanup, -c|| ||This option will clean up the database cache so files can safely be moved or accessed on another computer via NFS.||
 ||--force, -F|| ||This will force an action that would normally fail due to failed checks.||
 ||--delete|| ||This will delete (or at least empty) the named database(s)||

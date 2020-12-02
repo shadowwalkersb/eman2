@@ -1,6 +1,5 @@
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
-||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
 ||--input|| ||The input projections. Project should usually have the xform.projection header attribute, which is used for slice insertion||
 ||--ref_volume|| ||The reference volume for orientation determination.||
 ||--input_model|| ||If the class-averages have the model_id parameter (produced by e2refinemulti.py), this will use only class-averages with the specified model_id for the reconstruction.||

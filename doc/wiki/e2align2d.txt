@@ -1,7 +1,6 @@
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||
-||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
 ||--output||str||The name of the output class stack||
 ||--ref||str||Reference image to use for alignment. Required||
 ||--refn||int||Number of the reference image in 'ref'. Default=0||

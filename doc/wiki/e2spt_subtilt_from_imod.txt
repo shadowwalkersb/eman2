@@ -1,7 +1,6 @@
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||
-||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
 ||--tomo||str||File name of reconstructed tomogram.||
 ||--ptclin||str||File name of input 3D particles.||
 ||--edf||str||IMOD .edf file name.||

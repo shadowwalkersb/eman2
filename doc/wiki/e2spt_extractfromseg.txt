@@ -1,7 +1,6 @@
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||
-||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
 ||--thresh||float||Threshold of density value for particle extraction.||
 ||--featurename||str||name of the current feature to extract||
 ||--boxsz||int||Box size||

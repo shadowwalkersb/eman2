@@ -1,7 +1,6 @@
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||
-||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
 ||--coords||str||Default=None. Used to extract particles without the GUI. Provide a coordinates file that contains the center coordinates of the subvolumes you want to extract from the command line (without bringing up the GUI).||
 ||--output||str||Default=None. Used to extract particles without the GUI. Requires --coords. If not specified, the suffix '_ptlcs' will be attached to the name of the input tomogram. Otherwise, specify here the name of the stack file where to write the extracted subvolumes.||
 ||--inmemory|| ||Default=False. If on, this option will read the entire tomogram into memory. Much faster than reading 'from disk', but you must have enough RAM!||

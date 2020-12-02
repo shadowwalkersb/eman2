@@ -1,7 +1,6 @@
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||
-||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
 ||--gui|| ||This is a GUI-only program. This option is provided for self-consistency||
 ||--apix||float||Angstroms per pixel for all images||
 ||--constbfactor||float||Set B-factor to fixed specified value, negative value autofits||

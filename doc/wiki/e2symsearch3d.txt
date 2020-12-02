@@ -1,7 +1,6 @@
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||
-||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
 ||--align||str||Default=symalignquat. WARNING: The aligner cannot be changed for this program currently. Option ignored.||
 ||--average|| ||Default=False. If supplied and a stack is provided through --input, the average of the aligned and/or symmetrized stack will also be saved.||
 ||--averager||str||Default=mean.tomo. The type of averager used to produce the class average. Default=mean.tomo.||

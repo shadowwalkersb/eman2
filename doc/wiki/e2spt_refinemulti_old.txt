@@ -1,7 +1,6 @@
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||
-||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
 ||--input||str||The name of the input volume stack. MUST be HDF since volume stack support is required.||
 ||--ref||str||Comma separated list of individual images; e.g. --refs=ref1.hdf,ref2.hdf,ref3.hdf. If a single image is provided, several copies will be made based on the number of references specified through --nref.||
 ||--nref||int||Default=3. (For single reference refinement use e2spt_classaverage.py). Number of references to generate from a single image provided through --ref (random-phase filtered differently), or number of different initial references to generate from scratch from the data set (--input). Default=2||

@@ -1,7 +1,6 @@
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||
-||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
 ||--reference|| ||Specify a 3D reference volume. This should be 'light contrast', ie - positive isosurface.||
 ||--label||str||Assign unique label to particles resembling specified reference. This allows specific particles to be extracted in the next step and aids project organization with easily interpreted filenames.
 If --label is not specified, this set of particles will be labeled according to the file name of the reference without file extension.||

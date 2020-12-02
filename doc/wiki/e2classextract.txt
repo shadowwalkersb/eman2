@@ -1,7 +1,6 @@
 ||option||type||description||
 ||-h, --help|| ||show this help message and exit||
 ||--version|| ||show program's version number and exit||
-||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
 ||--refinemulti|| ||Extracts particles based on the model_id header value in each class-average, normally produced by e2refinemulti||
 ||--classlist||str||Filename of a text file containing a (comma or whitespace separated) list of class average numbers to operate on. ||
 ||--orientedparticles||str||Filename of the set (.lst file) with the particles used for the --orientcls file||
