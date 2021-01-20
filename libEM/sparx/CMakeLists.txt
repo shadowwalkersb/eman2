@@ -1,4 +1,11 @@
-target_sources(EM2 PRIVATE
+add_library(SPARX SHARED "")
+set_property(TARGET SPARX PROPERTY CXX_STANDARD 14)
+target_include_directories(SPARX PRIVATE
+		${CMAKE_SOURCE_DIR}/libEM
+		${Boost_INCLUDE_DIR}
+		)
+
+target_sources(SPARX PRIVATE
 			   		${CMAKE_CURRENT_LIST_DIR}/emdata_sparx.cpp
 			   		${CMAKE_CURRENT_LIST_DIR}/fundamentals.cpp
 			   		${CMAKE_CURRENT_LIST_DIR}/fourierfilter.cpp
