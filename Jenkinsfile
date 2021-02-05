@@ -175,29 +175,32 @@ def deployPackage(size_type='') {
     def mvCommand   = "mv " + sourceFile + " " + targetFile
     def execCommand = cdCommand + " && " + mvCommand
     
-    sshPublisher(publishers: [
-                              sshPublisherDesc(configName: 'Installer-Server',
-                                               transfers:
-                                                          [sshTransfer(sourceFiles:        sourceFile,
-                                                                       removePrefix:       "",
-                                                                       remoteDirectory:    stability_type,
-                                                                       remoteDirectorySDF: false,
-                                                                       cleanRemote:        false,
-                                                                       excludes:           '',
-                                                                       execCommand:        execCommand,
-                                                                       execTimeout:        120000,
-                                                                       flatten:            false,
-                                                                       makeEmptyDirs:      false,
-                                                                       noDefaultExcludes:  false,
-                                                                       patternSeparator:   '[, ]+'
-                                                                      )
-                                                          ],
-                                                          usePromotionTimestamp:   false,
-                                                          useWorkspaceInPromotion: false,
-                                                          verbose:                 true
-                                              )
-                             ]
-                )
+    echo cpCommand
+    echo execCommand
+    
+//     sshPublisher(publishers: [
+//                               sshPublisherDesc(configName: 'Installer-Server',
+//                                                transfers:
+//                                                           [sshTransfer(sourceFiles:        sourceFile,
+//                                                                        removePrefix:       "",
+//                                                                        remoteDirectory:    stability_type,
+//                                                                        remoteDirectorySDF: false,
+//                                                                        cleanRemote:        false,
+//                                                                        excludes:           '',
+//                                                                        execCommand:        execCommand,
+//                                                                        execTimeout:        120000,
+//                                                                        flatten:            false,
+//                                                                        makeEmptyDirs:      false,
+//                                                                        noDefaultExcludes:  false,
+//                                                                        patternSeparator:   '[, ]+'
+//                                                                       )
+//                                                           ],
+//                                                           usePromotionTimestamp:   false,
+//                                                           useWorkspaceInPromotion: false,
+//                                                           verbose:                 true
+//                                               )
+//                              ]
+//                 )
 }
 
 def testDeployedPackage(size_type) {
