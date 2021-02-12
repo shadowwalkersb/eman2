@@ -1,0 +1,293 @@
+## page was renamed from EMAN2/COMPILE_EMAN2_ANACONDA/2.9
+## page was renamed from EMAN2/COMPILE_EMAN2_ANACONDA
+## page was renamed from EMAN2/COMPILE_EMAN2_ANACONDA-DRAFT
+
+<<TableOfContents()>>
+
+
+= Building EMAN2/SPARX/SPHIRE from Source =
+
+''The EMAN2 source lives on [[https://github.com/cryoem/eman2|GitHub]], downloading the source is part of the instructions below. '''Do not download it yet!''' ''
+
+These are the standard instructions for establishing a build and runtime environment for EMAN2/SPARX/SPHIRE on Linux and Mac. While the instructions look long, in reality it should only take 10-15 minutes to complete the entire process (with a decent network connection). This build uses [[https://www.anaconda.com/distribution/|Miniconda]] for a working environment and most of the dependencies. Anaconda has become ubiquitous for Python and R-based scientific computing and education over the last decade. While it may be possible to build the system without using Anaconda, we do not recommend doing this, and cannot provide support for a non-Anaconda approach. If you follow the instructions below, you should have a painless source build very quickly.
+
+
+Note that even with a source build it may be difficult to get this working on systems with very old operating system installs. We normally try to support OS versions as much as 5-7 years old. Please report any problems.
+
+=== GPU Support (Linux Only!) ===
+
+For features which support the GPU, please complete the standard source install instructions below, then follow the [[EMAN2/Install/BinaryInstallAnaconda/2.31#Using_the_GPU|GPU instructions]] from the binary installation page.
+
+== Building and Installing EMAN2/SPHIRE/SPARX ==
+
+Anaconda comes in two flavors ''Anaconda'' which is a full featured system with many libraries and capabilities built in, and ''Miniconda'' which is a stripped down version of the system. Both systems are the same, it is just a question of which packages come preinstalled. These instructions are based on the smaller Miniconda install. You may also have success with Anaconda, but a better approach may be to install Miniconda, then add in any extra packages you actually need. 
+
+We make use of the [[https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html|environment]] system in Anaconda to isolate EMAN2 dependencies from other Anaconda packages you may have installed. If you need to install other packages you wish to use in concert with EMAN2, you will need to install them within the EMAN2 environment. Be warned that sometimes installing another package may trigger a version change in one of EMAN2's dependencies, which may or may not be a problem, depending on which dependency it is. We strongly suggest getting the base EMAN2 installed and working first, before trying to install any additional packages within the same Anaconda environment. 
+
+=== Initial Setup and Build (one time) ===
+
+ 1. '''Remove/deactivate other Anaconda installs.''' If you do not have Anaconda/Miniconda (or another copy of EMAN2/SPARX/SPHIRE) already installed in your account, skip to step 2. If you DO have Anaconda or Miniconda installed in your account, you must ensure that any existing install you have is not active in your shell (not in PATH, no LD_LIBRARY_PATH or PYTHONPATH set). While it may also be possible to set up an environment for EMAN2 in your existing Anaconda install, you will need to know what you're doing, and adapt these instructions to your situation.
+ {{{#!highlight bash
+echo $PATH
+# make sure no Anaconda/Miniconda/EMAN2 entries
+echo $LD_LIBRARY_PATH
+echo $PYTHONPATH
+# ideally, both return nothing. If it set to something it is possible that it may interfere with Anaconda
+# strongly suggest at least during the install, ''unset'' both of these. After installation you can test
+# to see if they cause any issues
+}}}
+
+ 1. '''Download and install''' '''''this specific version (4.8.3) of''''' '''Miniconda''': [[https://repo.anaconda.com/miniconda/Miniconda3-py37_4.8.3-Linux-x86_64.sh|Linux]] or [[https://repo.anaconda.com/miniconda/Miniconda3-py37_4.8.3-MacOSX-x86_64.sh|MacOSX]]
+
+ {{{#!highlight bash
+bash <Miniconda-installer>
+
+# There are a variety of options you can use, but the default command above is sufficient in most cases
+bash <Miniconda-installer> --help
+}}}
+ and follow the prompts. When you see ''Do you wish the installer to initialize Miniconda3 by running conda init?'', say ''no'', then move on to the next step.
+
+ 1. '''Initialize conda for shell interaction.''' These instructions will depend on what shell you use. The default on most systems is ''bash''. If you use a different shell ( ''tsch'', ''zsh'', ... ), you will need to take this into account:
+
+ {{{#!highlight bash
+# for bash-like shells, such as bash and zsh
+source <miniconda-path>/etc/profile.d/conda.sh
+
+# for csh-like shells, such as csh and tcsh:
+source <miniconda-path>/etc/profile.d/conda.csh
+
+# <shell-name> is bash, fish, powershell, tcsh, xonsh or zsh
+conda init <shell-name>
+
+# we suggest the following, meaning you will need to use ''conda activate'' after logging in before using EMAN2
+conda config --set auto_activate_base False
+}}}
+
+ As it says after you run this command, you will need to close and reopen your shell/terminal for it to take effect. This command modified your shell initialization so the ''conda activate'' command can be used properly. For more information on conda-init and activation, see [[https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#activating-an-environment|Environment Activation]].
+
+ {{{#!wiki caution
+'''MacOS''' Users (bash only)
+
+On MacOS, this modifies ''~/.bash_profile''. If you have a ''~/.profile'' startup file, creation of ''~/.bash_profile'' will prevent ''~/.profile'' from being read. A simple solution is to ''source .profile'' within ''.bash_profile''.
+
+For differences between login- and non-login shells and order of reading the startup files on Mac OSX, see, [[https://www.anintegratedworld.com/basics-of-osx-bashrc-v-profile-v-bash_profile/]].
+}}}
+
+ 1. '''Configure and update conda.'''
+ {{{#!highlight bash
+# Automatic Anaconda/Miniconda updates may cause things to break, so we suggest making all package upgrades explicitly
+# The current version verified to work with EMAN is '''conda 4.9.1'''
+conda config --set auto_update_conda False
+
+# Flexible channel priority works better for eman-deps
+conda config --set channel_priority flexible
+
+# Update base environment to get the latest conda
+conda update --all -n base
+}}}
+
+ 1. '''Create a new environment''' with EMAN2 dependencies. ''eman2'' below is the name of the environment. You may make this whatever you like, as long as you remember to use the same name when doing ''conda activate''. Note that this name will appear as part of your prompt when activated, so you may want to keep it short.
+ 
+ {{{#!highlight bash
+conda create -n eman2 eman-deps-dev -c cryoem -c defaults -c conda-forge
+}}}
+ If you wish to see the list of conda dependencies that '''eman-deps''' (current version is '''24.1''') is built from, look [[https://github.com/cryoem/eman-deps-feedstock/blob/master/recipe/meta.yaml|here]].
+
+ {{{{#!wiki caution
+'''MacOS Big Sur Users'''
+
+The new Big Sur MacOS release (fall 2020) broke some things in Python, which are only now (Dec 2020) getting fixed. These fixes have not yet made their way into Anaconda. If you experience an error similar to "Unable to load OpenGL library", install a patched pyopengl package from cryoem channel.
+
+{{{#!shell
+conda install pyopengl -c cryoem
+}}}
+
+'''OR'''
+
+This quick fix seems to provide a temporary solution until Anaconda gets the necessary updates:
+
+You need to go into your miniconda3 or anaconda3 folder and find this file (the path may be slightly different on your install, but you should be able to find it):
+
+''~/anaconda3/envs/eman2/lib/python3.7/site-packages/OpenGL/platform/ctypesloader.py''
+
+Around line 80 you should find a line like:
+
+''        fullName = util.find_library( name )''
+
+change this line to:
+
+''        fullName = '/System/Library/Frameworks/' + name + '.framework/' + name ''
+
+(important to use 8 spaces before fullName, not a <tab>)
+
+}}}}
+
+ 1. '''Get EMAN code''' from [[https://github.com/cryoem/eman2|GitHub:cryoem/eman2]].
+ {{{#!highlight bash
+cd <path-where-you-want-eman2-source>   # eg - $HOME/src
+git clone https://github.com/cryoem/eman2.git # this will create an eman2 folder containing the current source code from the master branch
+}}}
+
+ 1. '''Create a build directory''' (out-of-source builds are recommended).
+ {{{#!highlight bash
+mkdir <build-directory> # eg- $HOME/src/eman2-build
+}}}
+
+ 1. '''Activate''' your environment. If you used a different name above, use it here too.
+ {{{#!highlight bash
+conda activate eman2
+}}}
+
+ 1. '''Checkout source code''' and pull from the remote.
+ {{{#!highlight bash
+cd <source-directory>  # <path-where-you-want-eman2-source>/eman2
+git fetch --all --prune
+git checkout master
+}}}
+ 1. Ensure you have OpenGL
+  * EMAN2 uses OpenGL (via !PyQt) for all of its graphics. OpenGL installation depends on OS variant and, for example, whether you are using proprietary NVidia drivers under Linux. You will need to have OpenGL set up on your machine as a whole before continuing. On the Mac, you should already have this with XCode. On Linux with an NVidia driver you will likely also need to install the Mesa header files. If you aren't sure how to set up OpenGL, Google can probably help.
+ 1. '''Build EMAN'''
+  1. '''CMake'''
+  {{{#!highlight bash
+cd <build-directory>
+# on Mac:
+cmake <source-directory>   # - eg $HOME/src/eman2, optionally add -DCMAKE_VERBOSE_MAKEFILE
+
+# on Linux:
+cmake <source-directory> -DENABLE_OPTIMIZE_MACHINE=ON  # - eg $HOME/src/eman2, optionally add -DCMAKE_VERBOSE_MAKEFILE
+}}}
+   * '''cmake-gui'''
+    * If you use '''cmake-gui''', since conda is not in PATH anymore, cmake will fail to find the environment directory. In that case set CONDA_PREFIX to your conda environment directory manually.
+    * Make sure to delete any cmake variables that cmake already found, variables like *_LIBRARY or similar, *_INCLUDE_PATH or similar, CONDA_EXECUTABLE, CMAKE_INSTALL_PREFIX and any variables that are expected to contain conda environment related values.
+    * Configure and generate.
+   * '''ccmake'''
+    * If you use '''ccmake''', you may get an error related to OpenGL. If this happens try quitting ccmake and running it again.
+
+  1. '''Make'''
+  {{{#!highlight bash
+make -j 8
+make install
+}}}
+
+  Note that the '''make -j 8''' above will compile using 8 threads. On some machines omitting the 8 will compile faster and cause no problems, and if you have more than 8 threads on your machine, you can increase the number.
+
+ 1. '''Test your installation.''' We do NOT recommend this for end-users. A failure does NOT necessarily indicate an installation problem. These commands are mostly provided for developers actively changing the code to detect harmful changes before committing them. Sometimes the system will have a failing test, and still be absolutely fine.
+ {{{#!highlight bash
+make test          # if everything passes you are fine, if there are failures, please ask. A failure does not necessarily mean a bad build, it may be a problem with the test.
+make test-verbose  # verbose test output to help to identify specific failures
+}}}
+
+
+{{{#!wiki note
+For debugging and reporting, see [[#debug_and_report|Debugging and Reporting]].
+}}}
+
+
+
+
+== EMAN Daily Development (updating code, etc) ==
+When you start a new shell, these are the steps you will need to take before running EMAN2 programs or compiling the system:
+
+ 1. '''Activate''' your environment. If you used a different name above, use it here too.
+ {{{#!highlight bash
+conda activate eman2
+}}}
+
+ 1. '''Update'''. Periodically you should update your source using standard git techniques. If you are not modifying EMAN, just compiling from source, you just need to periodically:
+ {{{#!highlight bash
+cd <source-directory>  # <path-where-you-want-eman2-source>/eman2
+git pull
+}}}
+
+ 1. '''Build EMAN'''
+ {{{#!highlight bash
+cd <build-directory>
+make -j
+# if there are build problems, before reporting them, try rerunning cmake (above) first
+make install
+}}}
+
+ 1. '''Other Environments'''. To switch to another conda environment (stop working with EMAN2), first deactivate your current environment.
+ {{{#!highlight bash
+conda deactivate
+}}}
+
+
+{{{#!wiki note
+For debugging and reporting, see [[#debug_and_report|Debugging and Reporting]].
+}}}
+
+
+<<Anchor(debug_and_report)>>
+== Debugging and Reporting ==
+
+Please, include the output of the following items when reporting a problem.
+
+ 1. If '''make test''' fails, run the verbose tests.
+
+ {{{#!highlight bash
+make test-verbose
+}}}
+
+ 1. In the source directory, run
+ {{{#!highlight bash
+git status
+git log -1
+}}}
+
+ 1. {{{#!highlight bash
+conda info -a
+conda list
+
+
+# This is not always needed.
+# It will print urls of packages and should be needed
+# only if the previous output is not sufficient.
+conda list --explicit
+}}}
+
+ 1. In the build directory, run
+ {{{#!highlight bash
+cmake . -LA
+}}}
+
+
+=== Alternatively... ===
+
+It could be better to record the session via '''script'''. This, also, records the commands.
+
+ 1. {{{#!highlight bash
+script filename.txt
+
+conda activate eman2
+
+cd <source-dir>
+git status
+git log -1
+
+cd <build-dir>
+rm CMakeCache.txt
+cmake <source-dir>
+make clean
+make -j
+make install
+make test-verbose
+
+conda info -a
+conda list
+conda list --explicit
+
+cmake . -LA
+
+conda deactivate
+
+exit # or Ctrl+D
+}}}
+
+ 1. Send '''filename.txt'''.
+
+
+
+== Linux Clusters ==
+
+The approach above will install EMAN with a precompiled version of OpenMPI, which may or may not work with the batch queuing system on your cluster. If it does not work, the symptom will be that MPI parallel jobs will use only a single node, no matter how many you have allocated in your job. Currently, we do not have alternative OpenMPI installation instructions.
