@@ -1488,7 +1488,7 @@ def file_exists( file_name ):
 	Also checks if the argument is a valid dictionary
 	'''
 
-	if ( os.path.exists(file_name) ):
+	if os.path.exists(file_name):
 		parts = file_name.split('.')
 		file_tag = parts[len(parts)-1]
 
@@ -1497,13 +1497,13 @@ def file_exists( file_name ):
 		for i in range(0,len(parts)-1):
 			name = name + parts[i] + '.'
 
-		if ( file_tag == 'hed' ):
-			if ( not os.path.exists(name+'img') ):
+		if file_tag == 'hed':
+			if not os.path.exists(name+'img'):
 				print("Warning - %s does not exist" %(name+'img'))
 				return False
 			else: return True;
-		elif (file_tag == 'img'):
-			if (not os.path.exists(name+'hed')):
+		elif file_tag == 'img':
+			if not os.path.exists(name+'hed'):
 				print("Warning - %s does not exist" %(name+'hed'))
 				return False
 			else: return True;
@@ -1515,16 +1515,6 @@ def file_exists( file_name ):
 				return True
 			else: return False
 		except: return False
-
-
-def strip_after_dot(file_name):
-	""" a function for stripping the contents of a filename so that all
-	 that remains is up to the first '.'
-	 eg if given image.sh4. mrc this functions strips the 'sh4.mrc' and returns 'image'
-	 FIXME it's probably easiest to do this with regular expressions... """
-	idx = str.find(file_name,'.')
-	return file_name[0:idx]
-
 
 def get_platform():
 	'''
