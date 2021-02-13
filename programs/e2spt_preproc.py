@@ -162,7 +162,7 @@ def main():
 		print("\n(e2spt_preproc)(main) - INITIALIZING PARALLELISM!\n")
 		
 		if options.parallel:
-			from EMAN2PAR import EMTaskCustomer
+			from EMAN2.par import EMTaskCustomer
 			etc=EMTaskCustomer(options.parallel,"e2spt_preproc.Preproc3DTask")
 			pclist=[options.input]
 

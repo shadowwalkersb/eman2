@@ -68,7 +68,7 @@ def main():
 	nfiles = len(args)
 
 	if options.parallel:
-		from EMAN2PAR import EMTaskCustomer
+		from EMAN2.par import EMTaskCustomer
 		etc=EMTaskCustomer(options.parallel,"e2erasefiducials.EraseGold2DTask")
 
 	if options.coords:

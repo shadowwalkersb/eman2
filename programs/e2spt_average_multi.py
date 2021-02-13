@@ -289,7 +289,7 @@ If --sym is specified, each possible symmetric orientation is tested starting wi
 			nref=options.randnclass
 		else:
 			nref=len(args)
-		from EMAN2PAR import EMTaskCustomer
+		from EMAN2.par import EMTaskCustomer
 		etc=EMTaskCustomer(options.parallel, module="e2spt_average_multi.SptavgmultTask")
 		num_cpus = etc.cpu_est()
 		

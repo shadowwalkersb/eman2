@@ -150,7 +150,7 @@ The reference may be <volume> or <volume>,<n>
 			ii=tasks[i][1]
 			tasks[i].append(xinfo[ii])
 
-	from EMAN2PAR import EMTaskCustomer
+	from EMAN2.par import EMTaskCustomer
 	etc=EMTaskCustomer(options.parallel, module="e2spt_align_subtlt.SptAlignTask")
 	
 	num_cpus = etc.cpu_est()

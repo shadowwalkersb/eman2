@@ -570,7 +570,7 @@ class EMTomoAlignments(object):
 
 				task = EMTomoAlignTaskDC(data=data)
 				
-				from EMAN2PAR import EMTaskCustomer
+				from EMAN2.par import EMTaskCustomer
 				etc=EMTaskCustomer(self.options.parallel)
 				#print "Est %d CPUs"%etc.cpu_est()
 				tid=etc.send_task(task)

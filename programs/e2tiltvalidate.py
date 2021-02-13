@@ -165,10 +165,10 @@ def main():
 
 	# Initialize parallelism if being used
 	if options.parallel :
-		from EMAN2PAR import EMTaskCustomer
+		from EMAN2.par import EMTaskCustomer
 		etc=EMTaskCustomer(options.parallel,"e2tiltvalidate.CompareToTiltTask")
 	else:
-		from EMAN2PAR import EMTaskCustomer
+		from EMAN2.par import EMTaskCustomer
 		etc=EMTaskCustomer("thread:1", "e2tiltvalidate.CompareToTiltTask")
 		#etc.precache(pclist)
 	

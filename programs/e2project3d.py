@@ -65,7 +65,7 @@ class EMParallelProject3D(object):
 		self.start=start
 		self.modeln=modeln
 
-		from EMAN2PAR import EMTaskCustomer
+		from EMAN2.par import EMTaskCustomer
 		self.etc=EMTaskCustomer(options.parallel, module="e2project3d.EMProject3DTaskDC")
 		print("Precache ",fsp)
 		self.etc.precache([fsp])
@@ -96,7 +96,7 @@ class EMParallelProject3D(object):
 		return self.__task_options
 
 	def execute(self):
-#		from EMAN2PAR import EMTaskCustomer
+#		from EMAN2.par import EMTaskCustomer
 
 		if len(self.options.parallel) > 1:
 			self.__init_memory(self.options)

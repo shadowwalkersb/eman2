@@ -303,7 +303,7 @@ def main():
 			if it>0:
 				seed=output
 		
-			from EMAN2PAR import EMTaskCustomer
+			from EMAN2.par import EMTaskCustomer
 			etc=EMTaskCustomer(options.parallel, module="e2make3dpar.Make3dTask")
 			num_cpus = etc.cpu_est()
 			

@@ -107,7 +107,7 @@ def main():
 		
 		
 	if options.parallel!="":
-		from EMAN2PAR import EMTaskCustomer
+		from EMAN2.par import EMTaskCustomer
 		etc=EMTaskCustomer(options.parallel, module="e2spt_extract.SptExtractTask")
 		num_cpus = etc.cpu_est()
 		options.nowtime=time.time()

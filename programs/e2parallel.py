@@ -42,7 +42,7 @@ import traceback
 
 import sys
 from EMAN2 import *
-from EMAN2PAR import EMMpiClient
+from EMAN2.par import EMMpiClient
 
 debug=False
 logid=None

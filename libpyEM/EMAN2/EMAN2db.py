@@ -123,10 +123,10 @@ def cuda_exit():
 
 
 def parallel_process_exit():
-    # Compete HACK to prevent EMAN2DB creation if one doesn't already exist. Need to do this b/c when anything in EMAN2PAR gets imported, and EMAN2DB is created!!!
+    # Compete HACK to prevent EMAN2DB creation if one doesn't already exist. Need to do this b/c when anything in EMAN2.par gets imported, and EMAN2DB is created!!!
     if os.access('EMAN2DB', os.R_OK):
         # Kill any running process from e2parallel.py running on localhost. If none are running nothing happens
-        from EMAN2PAR import EMLocalTaskHandler
+        from EMAN2.par import EMLocalTaskHandler
         for proc in list(EMLocalTaskHandler.allrunning.values()):
             proc.terminate()
             os.kill(proc.pid, signal.SIGKILL)

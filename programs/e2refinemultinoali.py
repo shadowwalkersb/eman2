@@ -62,7 +62,7 @@ def main():
 
 	parser.add_argument("--ppid", type=int, help="Set the PID of the parent process, used for cross platform PPID",default=-1)
 	
-	from EMAN2PAR import EMTaskCustomer
+	from EMAN2.par import EMTaskCustomer
 	(options, args) = parser.parse_args()
 	logid=E2init(sys.argv)
 

@@ -196,7 +196,7 @@ If --goldstandard is specified, even and odd variants of the alignment reference
 			
 
 
-	from EMAN2PAR import EMTaskCustomer
+	from EMAN2.par import EMTaskCustomer
 	if options.scipytest:
 		etc=EMTaskCustomer(options.parallel, module="e2spt_align.ScipySptAlignTask")
 	else:

@@ -742,7 +742,7 @@ def subtomosim(options,ptcls,outname,dimension):
 		if options.verbose > 9: 
 			print("\n\n(e2spt_simulation.py) INITIALIZING PARALLELISM, for this outname (stack, or reference)", outname)
 			print("\n\n")
-		from EMAN2PAR import EMTaskCustomer
+		from EMAN2.par import EMTaskCustomer
 		etc=EMTaskCustomer(options.parallel, "e2spt_simulation.SubtomoSimTask")
 	
 	if options.verbose:

@@ -223,7 +223,7 @@ Will read metadata from the specified spt_XX directory, as produced by e2spt_ali
 	if options.parallel and options.symalimasked==None:
 		#print("running in mpi mode. This is experimental, so please switch back to threading if anything goes wrong...")
 				
-		from EMAN2PAR import EMTaskCustomer
+		from EMAN2.par import EMTaskCustomer
 		etc=EMTaskCustomer(options.parallel, module="e2spt_average.SptavgTask")
 		num_cpus = etc.cpu_est()
 		

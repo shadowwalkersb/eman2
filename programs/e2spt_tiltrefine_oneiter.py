@@ -5,7 +5,7 @@ import numpy as np
 import queue
 import threading
 from EMAN2jsondb import JSTask
-from EMAN2PAR import EMTaskCustomer
+from EMAN2.par import EMTaskCustomer
 #from scipy.optimize import minimize
 
 def main():

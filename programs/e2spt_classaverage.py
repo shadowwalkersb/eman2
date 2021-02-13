@@ -528,7 +528,7 @@ def main():
 		else:
 			print("\n\n(e2spt_classaverage)(main) - INITIALIZING PARALLELISM!")
 			print("\n\n")
-			from EMAN2PAR import EMTaskCustomer
+			from EMAN2.par import EMTaskCustomer
 			etc=EMTaskCustomer(options.parallel, "e2spt_classaverage.Align3DTask")
 			pclist=[options.input]
 	
@@ -2003,7 +2003,7 @@ def compareEvenOdd( options, avgeven, avgodd, it, etc, fscfile, tag, average=Tru
 	avgeven.process_inplace( 'normalize.edgemean' )
 	avgodd.process_inplace( 'normalize.edgemean' )
 	
-	#from EMAN2PAR import EMTaskCustomer
+	#from EMAN2.par import EMTaskCustomer
 	#etc=EMTaskCustomer(options.parallel)
 	
 	#tasks = []

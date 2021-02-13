@@ -36,7 +36,7 @@
 from builtins import range
 from EMAN2db import EMTask
 from EMAN2 import *
-from EMAN2PAR import *
+from EMAN2.par import *
 from math import *
 import time
 import os

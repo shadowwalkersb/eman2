@@ -60,7 +60,7 @@ def main():
 	padvol=options.pad
 		
 
-	from EMAN2PAR import EMTaskCustomer
+	from EMAN2.par import EMTaskCustomer
 	if options.ref:
 		print("weighting by reference...")
 		ref=EMData(options.ref)

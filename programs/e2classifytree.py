@@ -113,7 +113,7 @@ def main():
 	clsmx=[EMData(1,npt) for i in range(7)]
 	nnod=EMUtil.get_image_count(options.nodes)
 	if options.parallel :
-		from EMAN2PAR import EMTaskCustomer
+		from EMAN2.par import EMTaskCustomer
 		etc=EMTaskCustomer(options.parallel, module="e2classifytree.TreeClassifyTask")
 		tasks=[]
 		step=50

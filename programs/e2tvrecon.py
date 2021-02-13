@@ -147,7 +147,7 @@ def main():
 	if options.verbose:
 		print("\n\n(e2tvrecon.py) INITIALIZING PARALLELISM\n\n")
 		
-	from EMAN2PAR import EMTaskCustomer
+	from EMAN2.par import EMTaskCustomer
 	etc=EMTaskCustomer(options.parallel, "e2tvrecon.TVReconTask")
 
 	tasks=[]

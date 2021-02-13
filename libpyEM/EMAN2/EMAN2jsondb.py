@@ -487,7 +487,7 @@ class JSTask(object):
 	get transmitted over the network. Make use of command, data and options instead.
 
 	If you subclass this class, make SURE you add an appropriate definition in the 'jsonclasses' dict below, and
-	make sure the subclass is imported in EMAN2PAR.py"""
+	make sure the subclass is imported in EMAN2.par.py"""
 	def __init__(self,command=None,data=None,options=None,user=None):
 		self.taskid=None		# unique task identifier (in this directory)
 		self.queuetime=None		# Time (as returned by time.time()) when task queued

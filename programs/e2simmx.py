@@ -98,7 +98,7 @@ class EMParallelSimMX(object):
 		self.logger = logger
 
 
-		from EMAN2PAR import EMTaskCustomer
+		from EMAN2.par import EMTaskCustomer
 		self.etc=EMTaskCustomer(options.parallel, module="e2simmx.EMSimTaskDC")
 		if options.colmasks!=None : self.etc.precache([args[0],args[1],options.colmasks])
 		else : self.etc.precache([args[0],args[1]])
@@ -376,7 +376,7 @@ class EMSimTaskDC(JSTask):
 		This function assigns critical attributes
 		'''
 #		print "init ",options
-		#from EMAN2PAR import image_range
+		#from EMAN2.par import image_range
 		shrink = None
 		if "shrink" in options and options["shrink"] != None and options["shrink"] > 1:
 			shrink = options["shrink"]

@@ -149,7 +149,7 @@ def main():
 
 	# Initialize parallelism
 	if options.parallel :
-		from EMAN2PAR import EMTaskCustomer
+		from EMAN2.par import EMTaskCustomer
 		etc=EMTaskCustomer(options.parallel, module="e2classaverage.ClassAvTask")
 		pclist=[options.input]
 		if options.ref: pclist.append(options.ref)

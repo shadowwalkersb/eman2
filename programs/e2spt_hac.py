@@ -647,7 +647,7 @@ def allvsall(options,preproc):
 			print("WARNING: no --parallel specified. Please see http://eman2.org/Parallel")
 			options.parallel="thread:2"
 			
-		from EMAN2PAR import EMTaskCustomer
+		from EMAN2.par import EMTaskCustomer
 		etc=EMTaskCustomer(options.parallel,"e2spt_hac.Align3DTaskAVSA")
 		pclist=[options.input]
 		etc.precache(pclist)

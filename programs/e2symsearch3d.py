@@ -187,7 +187,7 @@ def main():
 			print("\nDone preprocessing on ptcl",i)
 		
 		if options.parallel :
-			from EMAN2PAR import EMTaskCustomer
+			from EMAN2.par import EMTaskCustomer
 			etc=EMTaskCustomer(options.parallel,"e2symsearch3d.SymAlignTask")
 		
 		symalgorithm = SymALignStrategy( preprocvol, options.sym, options.steps, options.cmp, etc)

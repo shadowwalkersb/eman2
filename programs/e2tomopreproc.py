@@ -189,7 +189,7 @@ def main():
 	
 	print("\n(e2spt_preproc)(main) - INITIALIZING PARALLELISM!\n")
 
-	from EMAN2PAR import EMTaskCustomer
+	from EMAN2.par import EMTaskCustomer
 	etc=EMTaskCustomer(options.parallel, "e2tomopreproc.TomoPreproc2DTask")
 	pclist=[options.input]
 
