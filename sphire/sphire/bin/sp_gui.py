@@ -52,7 +52,7 @@ except ImportError:
     from PyQt5 import QtWidgets as QtGui
     from PyQt5 import QtCore
 from EMAN2 import *
-from EMAN2_cppwrap import *
+from EMAN2.cppwrap import *
 try:
 	from sphire.libpy import sp_global_def  #### from ..libpy.sp_global_def import *
 	from sphire.libpy.sp_sparx import *     #### from ..libpy.sp_sparx import *

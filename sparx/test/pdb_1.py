@@ -127,7 +127,7 @@ if 1:
 
 # Convert the cctbx flex array to EMData.  Better done in C++, or
 # work with EMData after getting the `coords` above.
-from EMAN2_cppwrap import *
+from EMAN2.cppwrap import *
 ed = EMData()
 # .focus() is logical array size
 # .all() is the allocated size (padding etc.)

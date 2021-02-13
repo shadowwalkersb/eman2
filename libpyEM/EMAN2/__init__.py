@@ -46,7 +46,7 @@ import pickle
 import zlib
 import socket
 import subprocess
-from EMAN2_cppwrap import *
+from EMAN2.cppwrap import *
 from EMAN2_meta import *
 import EMAN2db, EMAN2.jsondb
 import argparse, copy

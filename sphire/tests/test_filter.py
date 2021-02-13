@@ -5,7 +5,7 @@ from __future__ import division
 import unittest
 from numpy import array_equal, linspace, allclose
 from sphire.sphire.libpy.sp_utilities import model_gauss_noise
-from EMAN2_cppwrap import EMData, EMAN2Ctf
+from EMAN2.cppwrap import EMData, EMAN2Ctf
 from copy import deepcopy
 
 from .test_module import IMAGE_2D, IMAGE_BLANK_2D, IMAGE_3D, IMAGE_BLANK_3D, MASK
@@ -24870,7 +24870,7 @@ import unittest
 
 
 from test_module import get_data, get_data_3d
-from EMAN2_cppwrap import EMData
+from EMAN2.cppwrap import EMData
 
 
 @unittest.skip("original adnan")

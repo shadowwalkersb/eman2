@@ -39,7 +39,7 @@
 from builtins import range
 from builtins import object
 from global_def import *
-from EMAN2_cppwrap import *
+from EMAN2.cppwrap import *
 
 ref_ali2d_counter = -1
 def ref_ali2d( ref_data ):

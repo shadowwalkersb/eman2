@@ -41,7 +41,7 @@ from PyQt4.Qt import *
 from PyQt4 import QtGui
 from PyQt4 import QtCore
 from EMAN2 import *
-from EMAN2_cppwrap import *
+from EMAN2.cppwrap import *
 from global_def import *
 from sparx import *
 from optparse import OptionParser

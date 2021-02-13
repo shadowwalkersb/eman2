@@ -16,7 +16,7 @@ ABSOLUTE_PATH = path.dirname(path.realpath(__file__))
 
 from numpy import array_equal as numpy_array_equal
 from copy import deepcopy
-from EMAN2_cppwrap import EMData
+from EMAN2.cppwrap import EMData
 
 TOLERANCE = 0.00005
 from sphire.libpy_py3 import sp_multi_shc as oldfu

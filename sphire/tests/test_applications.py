@@ -73,7 +73,7 @@ from .test_module import (
 
 from sphire.sphire.libpy.sp_utilities import even_angles
 
-from EMAN2_cppwrap import EMData
+from EMAN2.cppwrap import EMData
 
 from sphire.libpy_py3 import sp_applications as oldfu
 from sphire.sphire.libpy import sp_applications as fu

@@ -43,7 +43,7 @@ from ..libpy.sp_global_def import sxprint, ERROR
 
 from ..libpy.sp_global_def import *
 from optparse import OptionParser
-from EMAN2_cppwrap import *
+from EMAN2.cppwrap import *
 
 import os
 import sys

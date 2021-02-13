@@ -51,7 +51,7 @@ List:
 from os import system as os_system
 from numpy import arange, float32 as np_float32
 from sphire.sphire.libpy.sp_utilities import model_blank, model_circle
-from EMAN2_cppwrap import Util, EMData
+from EMAN2.cppwrap import Util, EMData
 from os import path, remove
 
 # import io

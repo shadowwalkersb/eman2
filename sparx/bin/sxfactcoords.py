@@ -34,7 +34,7 @@
 import global_def
 from global_def import *
 from optparse import OptionParser
-from EMAN2_cppwrap import *
+from EMAN2.cppwrap import *
 
 import os
 import sys

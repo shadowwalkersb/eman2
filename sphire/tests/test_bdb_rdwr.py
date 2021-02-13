@@ -51,7 +51,7 @@ import threading
 import time
 ABSOLUTE_PATH = path.dirname(path.realpath(__file__))
 
-from EMAN2_cppwrap import Transform
+from EMAN2.cppwrap import Transform
 from EMAN2 import EMAN2Ctf
 import EMAN2
 

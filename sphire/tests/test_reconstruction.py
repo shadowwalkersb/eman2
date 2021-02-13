@@ -1,6 +1,6 @@
 import unittest
 from copy import deepcopy
-from EMAN2_cppwrap import EMData, Reconstructors, EMUtil
+from EMAN2.cppwrap import EMData, Reconstructors, EMUtil
 
 from numpy import array_equal, allclose, zeros as numpy_zeros
 from .test_module import get_arg_from_pickle_file

@@ -10,7 +10,7 @@ from os import path
 from sphire.tests.test_module import ABSOLUTE_OLDBIN_PATH,ABSOLUTE_PATH_TO_SPHIRE_DEMO_RESULTS_FOLDER_NEW,ABSOLUTE_BIN_PATH,remove_dir,IMAGE_2D,get_arg_from_pickle_file,ABSOLUTE_PATH, give_ali_vol_data, give_ormq_data
 import unittest
 from sp_utilities import get_im
-from EMAN2_cppwrap import EMAN2Ctf
+from EMAN2.cppwrap import EMAN2Ctf
 try:
     # python 3.4+ should use builtin unittest.mock not mock package
     from unittest.mock import patch

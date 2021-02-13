@@ -49,7 +49,7 @@ from ..libpy.sp_global_def import sxprint, ERROR
 from ..libpy.sp_global_def 	import *
 from	EMAN2 		import EMUtil, parsemodopt, EMAN2Ctf, EMData
 from    EMAN2.jsondb import js_open_dict
-from EMAN2_cppwrap import Transform
+from EMAN2.cppwrap import Transform
 from ..libpy.sp_utilities 	import *
 from ..libpy.sp_utilities	import write_text_row
 from ..libpy.sp_statistics import mono

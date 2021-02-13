@@ -28,7 +28,7 @@ from .test_module import (
     MASK_3DIMAGE,
 )
 from sphire.libpy.sp_utilities import model_blank, model_gauss_noise
-from EMAN2_cppwrap import EMData, EMAN2Ctf
+from EMAN2.cppwrap import EMData, EMAN2Ctf
 from copy import deepcopy
 from os import path, mkdir
 from shutil import copyfile

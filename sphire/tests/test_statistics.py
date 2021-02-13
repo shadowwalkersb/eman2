@@ -27,7 +27,7 @@ from sphire.tests.test_module import (
     give_ave_series_data,
 )
 from sphire.sphire.libpy.sp_utilities import model_circle
-from EMAN2_cppwrap import EMData
+from EMAN2.cppwrap import EMData
 
 ABSOLUTE_PATH = path.dirname(path.realpath(__file__))
 

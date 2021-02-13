@@ -92,7 +92,7 @@ from sphire.tests.test_module import (
 )
 from sphire.sphire.libpy.sp_fundamentals import symclass as foundamental_symclasss
 
-from EMAN2_cppwrap import EMData
+from EMAN2.cppwrap import EMData
 from EMAN2 import EMNumPy
 from copy import deepcopy
 from json import load as json_load

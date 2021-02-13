@@ -41,7 +41,7 @@ from numpy import abs as numpy_abs
 from numpy import sum as numpy_sum
 from math import isnan as math_isnan
 from copy import deepcopy
-from EMAN2_cppwrap import EMData, Util, EMAN2Ctf
+from EMAN2.cppwrap import EMData, Util, EMAN2Ctf
 import unittest
 from os import path
 
