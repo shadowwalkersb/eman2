@@ -419,9 +419,9 @@ def e2getinstalldir() :
 	
 	this_file_dirname = os.path.dirname(__file__)
 	if get_platform() != "Windows":
-		rel_path = '../../../'
+		rel_path = '../../../../'
 	else:
-		rel_path = '../../Library/'
+		rel_path = '../../../Library/'
 	
 	return os.path.abspath(os.path.join(this_file_dirname, rel_path))
 
