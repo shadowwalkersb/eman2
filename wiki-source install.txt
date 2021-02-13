@@ -26,7 +26,7 @@ We make use of the [[https://docs.conda.io/projects/conda/en/latest/user-guide/t
 
 === Initial Setup and Build (one time) ===
 
- 1. '''Remove/deactivate other Anaconda installs.''' If you do not have Anaconda/Miniconda (or another copy of EMAN2/SPARX/SPHIRE) already installed in your account, skip to step 2. If you DO have Anaconda or Miniconda installed in your account, you must ensure that any existing install you have is not active in your shell (not in PATH, no LD_LIBRARY_PATH or PYTHONPATH set). While it may also be possible to set up an environment for EMAN2 in your existing Anaconda install, you will need to know what you're doing, and adapt these instructions to your situation.
+ 1. '''Remove/deactivate other Anaconda installs.''' If you do not have Anaconda/Miniconda (or another copy of EMAN2/SPARX/SPHIRE) already installed in your account, skip to step 2. If you DO have Anaconda or Miniconda installed in your account, you must ensure that any existing install you have is not active in your shell (not in PATH, no LD_LIBRARY_PATH, PYTHONPATH or PYTHONHOME set). While it may also be possible to set up an environment for EMAN2 in your existing Anaconda install, you will need to know what you're doing, and adapt these instructions to your situation.
  {{{#!highlight bash
 echo $PATH
 # make sure no Anaconda/Miniconda/EMAN2 entries
@@ -96,7 +96,7 @@ conda create -n eman2 eman-deps-dev -c cryoem -c defaults -c conda-forge
  {{{{#!wiki caution
 '''MacOS Big Sur Users'''
 
-The new Big Sur MacOS release (fall 2020) broke some things in Python, which are only now (Dec 2020) getting fixed. These fixes have not yet made their way into Anaconda. If you experience an error similar to "Unable to load OpenGL library", install a patched pyopengl package from cryoem channel.
+The new Big Sur MacOS release (fall 2020) broke some things in Python, which are only now (Dec 2020) getting fixed. These fixes have not yet made their way into Anaconda. If you experience an error similar to "Unable to load OpenGL library", install a patched pyopengl package from cryoem channel (as of 1/13/2021).
 
 {{{#!shell
 conda install pyopengl -c cryoem
