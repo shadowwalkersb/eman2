@@ -3,7 +3,7 @@ from builtins import range
 from sys import argv,stdout
 from EMAN2 import *
 from mpi import *
-from mpi_eman import *
+from EMAN2.mpi import *
 
 mpi_init(0,[])
 mpi_barrier(MPI_COMM_WORLD)

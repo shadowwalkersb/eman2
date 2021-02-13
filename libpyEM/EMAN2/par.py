@@ -47,7 +47,7 @@ from EMAN2 import test_image,EMData,abs_path,local_datetime,EMUtil,Util,get_plat
 # If we can't import it then we probably won't be trying to use MPI
 try :
 	from mpi import *
-	from mpi_eman import *
+	from EMAN2.mpi import *
 	MPIOK=True
 except : 
 	MPIOK=False
