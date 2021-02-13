@@ -39,7 +39,7 @@ from past.utils import old_div
 
 import EMAN2_cppwrap
 import EMAN2db
-import EMAN2jsondb
+import EMAN2.jsondb
 import glob
 import inspect
 import mpi
@@ -86,7 +86,7 @@ def read_eman1_coords_file(coords_path):
 
 
 def read_eman2_coords_file(coords_path):
-    coords_list = EMAN2jsondb.js_open_dict(coords_path)["boxes"]
+    coords_list = EMAN2.jsondb.js_open_dict(coords_path)["boxes"]
     for i in range(len(coords_list)):
         coords_list[i] = [coords_list[i][0], coords_list[i][1]]
     return coords_list

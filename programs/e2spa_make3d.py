@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 from EMAN2 import *
 import numpy as np
-from EMAN2jsondb import JSTask
+from EMAN2.jsondb import JSTask
 from scipy.signal import argrelextrema
 
 def main():

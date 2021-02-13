@@ -4,7 +4,7 @@ from EMAN2 import *
 import numpy as np
 import queue
 import threading
-from EMAN2jsondb import JSTask
+from EMAN2.jsondb import JSTask
 from EMAN2.par import EMTaskCustomer
 
 def main():

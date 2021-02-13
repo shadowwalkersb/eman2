@@ -37,7 +37,7 @@ import time
 import copy
 import numpy as np
 
-from EMAN2jsondb import JSTask,jsonclasses
+from EMAN2.jsondb import JSTask,jsonclasses
 
 
 def get_usage():

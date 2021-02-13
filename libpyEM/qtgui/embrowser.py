@@ -33,7 +33,7 @@ from past.utils import old_div
 from builtins import range
 from builtins import object
 from EMAN2 import *
-from EMAN2jsondb import js_open_dict
+from EMAN2.jsondb import js_open_dict
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtCore import Qt, QTimer
 from .emapplication import EMApp

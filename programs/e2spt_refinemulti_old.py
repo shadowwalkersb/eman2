@@ -35,7 +35,7 @@ from sys import argv
 import os
 from EMAN2 import *
 from EMAN2_utils import *
-from EMAN2jsondb import JSTask,jsonclasses
+from EMAN2.jsondb import JSTask,jsonclasses
 
 from e2spt_classaverage import Align3DTask, align3Dfunc, get_results
 

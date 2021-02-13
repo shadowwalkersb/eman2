@@ -31,7 +31,7 @@
 from past.utils import old_div
 
 from EMAN2 import *
-from EMAN2jsondb import JSTask,jsonclasses
+from EMAN2.jsondb import JSTask,jsonclasses
 
 import sys
 from sys import argv

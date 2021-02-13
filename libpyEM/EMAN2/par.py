@@ -41,7 +41,7 @@ from builtins import object
 import sys, os, getpass, socket, subprocess, threading, time,select,shutil, traceback, random,_thread, queue
 from pickle import dumps,loads,dump,load
 
-from EMAN2jsondb import JSTask,JSTaskQueue,js_open_dict
+from EMAN2.jsondb import JSTask,JSTaskQueue,js_open_dict
 from EMAN2 import test_image,EMData,abs_path,local_datetime,EMUtil,Util,get_platform, e2getinstalldir
 
 # If we can't import it then we probably won't be trying to use MPI

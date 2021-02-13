@@ -349,7 +349,7 @@ def image_range(a,b=None):
 	else:
 		for i in a : yield i
 
-from EMAN2jsondb import JSTask,jsonclasses
+from EMAN2.jsondb import JSTask,jsonclasses
 class EMSimTaskDC(JSTask):
 	'''
 	Originally added to encapsulate a similarity matrix generation task

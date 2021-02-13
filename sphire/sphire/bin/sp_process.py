@@ -41,7 +41,7 @@ from past.utils import old_div
 
 import EMAN2
 import EMAN2_cppwrap
-import EMAN2jsondb
+import EMAN2.jsondb
 import glob
 import matplotlib
 import matplotlib.pylab
@@ -813,7 +813,7 @@ def run():
 
         dbkey = args[0]
         print("database key under which params will be stored: ", dbkey)
-        gbdb = EMAN2jsondb.js_open_dict("e2boxercache/gauss_box_DB.json")
+        gbdb = EMAN2.jsondb.js_open_dict("e2boxercache/gauss_box_DB.json")
 
         parmstr = "dummy:" + options.makedb[0]
         (processorname, param_dict) = EMAN2.parsemodopt(parmstr)

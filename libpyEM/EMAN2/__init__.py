@@ -48,7 +48,7 @@ import socket
 import subprocess
 from EMAN2_cppwrap import *
 from EMAN2_meta import *
-import EMAN2db, EMAN2jsondb
+import EMAN2db, EMAN2.jsondb
 import argparse, copy
 import glob
 import random
@@ -80,7 +80,7 @@ except: pass
 #try:
 #import EMAN2db
 from EMAN2db import EMAN2DB,db_open_dict,db_close_dict,db_remove_dict,db_list_dicts,db_check_dict,db_parse_path,db_convert_path,db_get_image_info,e2gethome, e2getcwd
-from EMAN2jsondb import JSDict,js_open_dict,js_close_dict,js_remove_dict,js_list_dicts,js_check_dict,js_one_key
+from EMAN2.jsondb import JSDict,js_open_dict,js_close_dict,js_remove_dict,js_list_dicts,js_check_dict,js_one_key
 #except:
 #	HOMEDB=None
 

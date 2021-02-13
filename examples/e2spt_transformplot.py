@@ -33,7 +33,7 @@ Author: Jesus Galaz - May/2017, Last update: may/2016
 from past.utils import old_div
 from builtins import range
 from EMAN2 import *
-from EMAN2jsondb import JSTask,jsonclasses
+from EMAN2.jsondb import JSTask,jsonclasses
 
 import sys
 import numpy

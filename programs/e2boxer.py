@@ -37,7 +37,7 @@ standard_library.install_aliases()
 from builtins import range
 from builtins import object
 from EMAN2 import *
-from EMAN2jsondb import *
+from EMAN2.jsondb import *
 import numpy as np
 import threading
 import queue

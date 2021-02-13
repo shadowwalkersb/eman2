@@ -50,7 +50,7 @@ from optparse import OptionParser
 from .emapplication import EMApp,get_application
 from eman2_gui.boxertools import BigImageCache, Cache
 from EMAN2 import file_exists,EMANVERSION,gimme_image_dimensions2D,EMData,get_image_directory,Region,file_exists,gimme_image_dimensions3D,get_platform,base_name
-from EMAN2jsondb import *
+from EMAN2.jsondb import *
 from EMAN2 import *
 
 import os,sys,weakref,math, json

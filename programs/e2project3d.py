@@ -40,7 +40,7 @@ from builtins import range
 from builtins import object
 import sys, math, os, random
 from EMAN2 import *
-from EMAN2jsondb import JSTask,jsonclasses
+from EMAN2.jsondb import JSTask,jsonclasses
 deg2rad = old_div(math.pi, 180.0)
 rad2deg = old_div(180.0, math.pi)
 DEBUG = False

@@ -31,7 +31,7 @@ Author: Jesus Galaz - Sep/2017, Last update: Sep/2017
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  2111-1307 USA
 '''
 from EMAN2 import *
-from EMAN2jsondb import JSTask,jsonclasses
+from EMAN2.jsondb import JSTask,jsonclasses
 
 import os
 

@@ -35,7 +35,7 @@ from EMAN2 import *
 from EMAN2_utils import *
 import os
 import sys
-from EMAN2jsondb import JSTask,jsonclasses
+from EMAN2.jsondb import JSTask,jsonclasses
 from pprint import pprint
 
 

@@ -31,7 +31,7 @@ from EMAN2 import *
 import os
 import sys
 from sys import argv
-from EMAN2jsondb import JSTask,jsonclasses
+from EMAN2.jsondb import JSTask,jsonclasses
 
 def main():
 	progname = os.path.basename(sys.argv[0])

@@ -518,7 +518,7 @@ class JSTask(object):
 		dct=dict(self.__dict__)		# copies the dict of the object
 		dct["__class__"]=self.__class__.__name__
 		#if self.__class__.__name__!="JSTask" :
-			#print "WARNING : class <{}> must have to_jsondict and from_jsondict methods defined to function properly. See EMAN2jsondb.py.".format(self.__class__.__name__)
+			#print "WARNING : class <{}> must have to_jsondict and from_jsondict methods defined to function properly. See EMAN2.jsondb.py.".format(self.__class__.__name__)
 		return dct
 
 	@classmethod

@@ -39,7 +39,7 @@ import os
 import threading
 import queue
 from sys import argv,exit
-from EMAN2jsondb import JSTask
+from EMAN2.jsondb import JSTask
 import numpy as np
 from scipy.optimize import minimize
 

@@ -39,7 +39,7 @@ from math import *
 import os
 import sys
 from e2simmx import cmponetomany
-from EMAN2jsondb import JSTask,jsonclasses
+from EMAN2.jsondb import JSTask,jsonclasses
 import traceback
 
 def main():

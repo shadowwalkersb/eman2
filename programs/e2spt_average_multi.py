@@ -12,7 +12,7 @@ import threading
 import queue
 from sys import argv,exit
 import numpy as np
-from EMAN2jsondb import JSTask
+from EMAN2.jsondb import JSTask
 #def rotfncompete(jsd,avgs,fsp,fspn,a,sym,refs,shrinkrefs,maxtilt,wedgesigma,shrink,maxres,simthr2,verbose):
 def rotfncompete(jsd,avgs,fsp,fspn,a,refs, shrinkrefs, options):
 	

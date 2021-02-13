@@ -12,7 +12,7 @@ import threading
 import queue
 from sys import argv,exit
 import numpy as np
-from EMAN2jsondb import JSTask
+from EMAN2.jsondb import JSTask
 
 
 def rotfn(avg,fsp,i,a,maxtilt,verbose):

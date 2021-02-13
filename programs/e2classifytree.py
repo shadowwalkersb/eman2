@@ -39,7 +39,7 @@ from builtins import range
 from EMAN2 import *
 import os
 import numpy as np
-from EMAN2jsondb import JSTask
+from EMAN2.jsondb import JSTask
 	
 def main():
 	

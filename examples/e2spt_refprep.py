@@ -44,7 +44,7 @@ import sys
 #import random
 #from random import choice
 #from pprint import pprint
-from EMAN2jsondb import JSTask,jsonclasses
+from EMAN2.jsondb import JSTask,jsonclasses
 #import datetime
 import gc 	#this will be used to free-up unused memory
 

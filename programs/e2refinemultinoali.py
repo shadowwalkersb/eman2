@@ -36,7 +36,7 @@ import numpy as np
 #from multiprocessing import Pool
 import threading
 from queue import Queue
-#from EMAN2jsondb import JSTask
+#from EMAN2.jsondb import JSTask
 import time
 import json
 from shutil import copyfile

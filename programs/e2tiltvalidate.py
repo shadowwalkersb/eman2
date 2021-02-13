@@ -37,7 +37,7 @@ from builtins import range
 from builtins import object
 from EMAN2 import *
 import os, math
-from EMAN2jsondb import JSTask,jsonclasses
+from EMAN2.jsondb import JSTask,jsonclasses
 	
 def main():
 	"""Program to validate a reconstruction by the Richard Henderson tilt validation method. A volume to validate, a small stack (~100 imgs) of untilted and ~10-15 degree

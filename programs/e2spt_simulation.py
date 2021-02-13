@@ -34,7 +34,7 @@ from builtins import range
 from EMAN2 import *
 from EMAN2_utils import *
 import shutil
-from EMAN2jsondb import JSTask,jsonclasses
+from EMAN2.jsondb import JSTask,jsonclasses
 
 import sys
 import numpy

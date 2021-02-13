@@ -32,7 +32,7 @@ Author: Jesus Galaz - oct/2017, Last update: nov/2017
 '''
 from builtins import range
 from EMAN2 import *
-from EMAN2jsondb import JSTask,jsonclasses
+from EMAN2.jsondb import JSTask,jsonclasses
 
 import sys
 import numpy

@@ -34,7 +34,7 @@
 from past.utils import old_div
 from builtins import range
 from EMAN2 import *
-from EMAN2jsondb import *
+from EMAN2.jsondb import *
 from os import system
 import sys
 

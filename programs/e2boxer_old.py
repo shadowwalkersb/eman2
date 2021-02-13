@@ -35,7 +35,7 @@ from past.utils import old_div
 from builtins import range
 from builtins import object
 from EMAN2 import BoxingTools,gm_time_string,Transform, E2init, E2progress,db_open_dict,EMArgumentParser
-from EMAN2jsondb import *
+from EMAN2.jsondb import *
 from eman2_gui.boxertools import CoarsenedFlattenedImageCache,FLCFImageCache
 from copy import deepcopy
 from EMAN2 import *

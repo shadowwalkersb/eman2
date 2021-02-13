@@ -37,7 +37,7 @@ except: ndimage=None
 import subprocess
 import os
 import time
-from EMAN2jsondb import JSTask,jsonclasses
+from EMAN2.jsondb import JSTask,jsonclasses
 
 def main():
 	progname = os.path.basename(sys.argv[0])

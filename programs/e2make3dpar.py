@@ -45,7 +45,7 @@ import math
 import random
 import traceback
 import numpy as np
-from EMAN2jsondb import JSTask
+from EMAN2.jsondb import JSTask
 
 def get_usage():
 	progname = os.path.basename(sys.argv[0])

@@ -37,7 +37,7 @@ from EMAN2_utils import *
 from EMAN2 import *
 import math
 import os
-from EMAN2jsondb import JSTask,jsonclasses
+from EMAN2.jsondb import JSTask,jsonclasses
 import sys
 
 
