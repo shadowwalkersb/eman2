@@ -44,7 +44,7 @@ from past.utils import old_div
 #
 import os
 import EMAN2
-import EMAN2_cppwrap
+import EMAN2.cppwrap
 import argparse
 import datetime
 import glob
@@ -738,7 +738,7 @@ def apsh(
 
     # Read image stack (as a filename or already an EMDataobject)
     if isinstance(imgs2align, str):
-        imagestacklist = EMAN2_cppwrap.EMData.read_images(imgs2align)
+        imagestacklist = EMAN2.cppwrap.EMData.read_images(imgs2align)
     else:
         imagestacklist = [imgs2align]
 
@@ -786,7 +786,7 @@ def apsh(
             mirrorfloat,
             bestreffloat,
             peakt,
-        ] = EMAN2_cppwrap.Util.multiref_polar_ali_2d(
+        ] = EMAN2.cppwrap.Util.multiref_polar_ali_2d(
             currimg,
             polarrefs,
             txrng,
@@ -913,7 +913,7 @@ def mref2polar(refimgs, firstring=1, outerradius=-1, ringstep=1, mode="F", normb
 
     # Read reference stack
     if isinstance(refimgs, str):
-        referencelist = EMAN2_cppwrap.EMData.read_images(refimgs)
+        referencelist = EMAN2.cppwrap.EMData.read_images(refimgs)
     else:
         referencelist = [refimgs]  # For single image
 
@@ -948,18 +948,18 @@ def mref2polar(refimgs, firstring=1, outerradius=-1, ringstep=1, mode="F", normb
     # Loop through reference images (adapted from sxisac2)
     for refindex in range(numrefs):
         # Convert to polar
-        cimage = EMAN2_cppwrap.Util.Polar2Dm(
+        cimage = EMAN2.cppwrap.Util.Polar2Dm(
             referencelist[refindex], halfdim, halfdim, alignringlist, mode
         )
 
         # Fourier transform of rings
-        EMAN2_cppwrap.Util.Frngs(cimage, alignringlist)
+        EMAN2.cppwrap.Util.Frngs(cimage, alignringlist)
 
         # Apply weights to rings
-        EMAN2_cppwrap.Util.Applyws(cimage, alignringlist, ringweightlist)
+        EMAN2.cppwrap.Util.Applyws(cimage, alignringlist, ringweightlist)
 
         # Normalize
-        EMAN2_cppwrap.Util.Normalize_ring(cimage, alignringlist, normbysquare)
+        EMAN2.cppwrap.Util.Normalize_ring(cimage, alignringlist, normbysquare)
         # normbysquare: if other than 0, normalizes by setting the norm to 1
 
         # Copy to reference stack
@@ -1339,7 +1339,7 @@ def montage2(inputstack, ncol, marginwidth=0, bkgd=0, outfile=None):
     """
 
     if isinstance(inputstack, str):
-        inputstack = EMAN2_cppwrap.EMData.read_images(inputstack)
+        inputstack = EMAN2.cppwrap.EMData.read_images(inputstack)
 
     # Get single-image dimensions
     nx = inputstack[0].get_xsize()

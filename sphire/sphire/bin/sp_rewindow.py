@@ -36,7 +36,7 @@ from past.utils import old_div
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
 
 
-import EMAN2_cppwrap
+import EMAN2.cppwrap
 import EMAN2db
 import glob
 import inspect
@@ -132,7 +132,7 @@ def mrk_resample2d(img, sub_rate, target_size=None):
         assert sub_rate > 1.0
         nn = int(original_size * sub_rate + 0.5)
         resample_img, kb = sp_fundamentals.prepi(
-            EMAN2_cppwrap.Util.pad(img, nn, nn, 1, 0, 0, 0, "circumference")
+            EMAN2.cppwrap.Util.pad(img, nn, nn, 1, 0, 0, 0, "circumference")
         )
         resample_img = resample_img.rot_scale_conv_new(0.0, 0.0, 0.0, kb, sub_rate)
     assert resample_img is not None
@@ -149,11 +149,11 @@ def mrk_resample2d(img, sub_rate, target_size=None):
     assert target_size > 1
 
     if resampled_size < target_size:
-        resample_img = EMAN2_cppwrap.Util.pad(
+        resample_img = EMAN2.cppwrap.Util.pad(
             resample_img, target_size, target_size, 1, 0, 0, 0, "circumference"
         )
     elif resampled_size > target_size:
-        resample_img = EMAN2_cppwrap.Util.window(
+        resample_img = EMAN2.cppwrap.Util.window(
             resample_img, target_size, target_size, 1, 0, 0
         )
     else:
@@ -1381,10 +1381,10 @@ For negative staining data, use --skip_invert.
         # If necessary, invert image contrast of this micrograph
         # --------------------------------------------------------------------------------
         if not options.skip_invert:
-            mic_stats = EMAN2_cppwrap.Util.infomask(
+            mic_stats = EMAN2.cppwrap.Util.infomask(
                 mic_img, None, True
             )  # mic_stat[0:mean, 1:SD, 2:min, 3:max]
-            EMAN2_cppwrap.Util.mul_scalar(mic_img, -1.0)
+            EMAN2.cppwrap.Util.mul_scalar(mic_img, -1.0)
             mic_img += 2 * mic_stats[0]
 
         # --------------------------------------------------------------------------------
@@ -1626,7 +1626,7 @@ For negative staining data, use --skip_invert.
                 and (y + resampled_box_half < ny)
             ):
                 try:
-                    particle_img = EMAN2_cppwrap.Util.window(
+                    particle_img = EMAN2.cppwrap.Util.window(
                         mic_img,
                         resampled_box_size,
                         resampled_box_size,
@@ -1714,7 +1714,7 @@ For negative staining data, use --skip_invert.
 
             # Normalize this particle image
             particle_img = sp_fundamentals.ramp(particle_img)
-            particle_stats = EMAN2_cppwrap.Util.infomask(
+            particle_stats = EMAN2.cppwrap.Util.infomask(
                 particle_img, mask2d, False
             )  # particle_stats[0:mean, 1:SD, 2:min, 3:max]
             particle_img -= particle_stats[0]

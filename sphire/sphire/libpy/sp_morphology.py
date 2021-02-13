@@ -40,7 +40,7 @@ from past.utils import old_div
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
 #
-import EMAN2_cppwrap
+import EMAN2.cppwrap
 import EMAN2db
 import glob
 import inspect
@@ -107,10 +107,10 @@ def soft_edge(img, length, mode="c", do_approx=False):
 	Returns:
 	Expanded mask
 	"""
-    if isinstance(img, EMAN2_cppwrap.EMData):
-        img_data = EMAN2_cppwrap.EMNumPy.em2numpy(img)
-        return_object = EMAN2_cppwrap.EMData(*img_data.shape[::-1])
-        return_data = EMAN2_cppwrap.EMNumPy.em2numpy(return_object)
+    if isinstance(img, EMAN2.cppwrap.EMData):
+        img_data = EMAN2.cppwrap.EMNumPy.em2numpy(img)
+        return_object = EMAN2.cppwrap.EMData(*img_data.shape[::-1])
+        return_data = EMAN2.cppwrap.EMNumPy.em2numpy(return_object)
         out_eman = True
     else:
         img_data = img
@@ -272,9 +272,9 @@ def dilation(f, mask=None, morphtype="BINARY"):
             sp_global_def.ERROR("Command does not work for 1D images", "dilation", 1)
 
     if morphtype == "BINARY":
-        return EMAN2_cppwrap.filt_dilation_(f, mask, EMAN2_cppwrap.morph_type.BINARY)
+        return EMAN2.cppwrap.filt_dilation_(f, mask, EMAN2.cppwrap.morph_type.BINARY)
     elif morphtype == "GRAYLEVEL":
-        return EMAN2_cppwrap.filt_dilation_(f, mask, EMAN2_cppwrap.morph_type.GRAYLEVEL)
+        return EMAN2.cppwrap.filt_dilation_(f, mask, EMAN2.cppwrap.morph_type.GRAYLEVEL)
     else:
         sp_global_def.ERROR("Unknown dilation type", "dilation", 1)
 
@@ -310,9 +310,9 @@ def erosion(f, mask=None, morphtype="BINARY"):
             sp_global_def.ERROR("Command does not work for 1D images", "erosion", 1)
 
     if morphtype == "BINARY":
-        return EMAN2_cppwrap.filt_erosion_(f, mask, EMAN2_cppwrap.morph_type.BINARY)
+        return EMAN2.cppwrap.filt_erosion_(f, mask, EMAN2.cppwrap.morph_type.BINARY)
     elif morphtype == "GRAYLEVEL":
-        return EMAN2_cppwrap.filt_erosion_(f, mask, EMAN2_cppwrap.morph_type.GRAYLEVEL)
+        return EMAN2.cppwrap.filt_erosion_(f, mask, EMAN2.cppwrap.morph_type.GRAYLEVEL)
     else:
         sp_global_def.ERROR("Unknown erosion type", "erosion", 1)
 
@@ -339,7 +339,7 @@ def square_root(img):
 		Output
 			output image.
 	"""
-    [a, b, c, d] = EMAN2_cppwrap.Util.infomask(img, None, False)
+    [a, b, c, d] = EMAN2.cppwrap.Util.infomask(img, None, False)
     if c < 0.0:
         sp_global_def.ERROR(
             "Cannot calculate square root of negative pixels", "square_root", 1
@@ -506,11 +506,11 @@ def ctf_1d(nx, ctf, sign=1, doabs=False):
     if doabs:
         for i in range(length):
             ctf_1[i] = abs(
-                EMAN2_cppwrap.Util.tf(dz, i * scl, voltage, cs, ampcont, bfactor, sign)
+                EMAN2.cppwrap.Util.tf(dz, i * scl, voltage, cs, ampcont, bfactor, sign)
             )
     else:
         for i in range(length):
-            ctf_1[i] = EMAN2_cppwrap.Util.tf(
+            ctf_1[i] = EMAN2.cppwrap.Util.tf(
                 dz, i * scl, voltage, cs, ampcont, bfactor, sign
             )
     return ctf_1
@@ -538,7 +538,7 @@ def ctf_2(nx, ctf):
     length = int(1.7321 * float(old_div(nx, 2))) + 2
     ctf_2 = [0.0] * length
     for i in range(length):
-        ctf_val = EMAN2_cppwrap.Util.tf(dz, i * scl, voltage, cs, ampcont, b_factor)
+        ctf_val = EMAN2.cppwrap.Util.tf(dz, i * scl, voltage, cs, ampcont, b_factor)
         ctf_2[i] = ctf_val * ctf_val
     return ctf_2
 
@@ -568,7 +568,7 @@ def ctf_img(nx, ctf, sign=1, ny=0, nz=1):
 
     if ny < 1:
         ny = nx
-    return EMAN2_cppwrap.Util.ctf_img(
+    return EMAN2.cppwrap.Util.ctf_img(
         nx, ny, nz, dz, pixel_size, voltage, cs, ampcont, b_factor, dza, azz, sign
     )
 
@@ -598,7 +598,7 @@ def ctf_img_real(nx, ctf, sign=1, ny=0, nz=1):
 
     if ny < 1:
         ny = nx
-    return EMAN2_cppwrap.Util.ctf_img_real(
+    return EMAN2.cppwrap.Util.ctf_img_real(
         nx, ny, nz, dz, pixel_size, voltage, cs, ampcont, b_factor, dza, azz, sign
     )
 
@@ -628,7 +628,7 @@ def ctf_rimg(nx, ctf, sign=1, ny=0, nz=1):
 
     if ny < 1:
         ny = nx
-    return EMAN2_cppwrap.Util.ctf_rimg(
+    return EMAN2.cppwrap.Util.ctf_rimg(
         nx, ny, nz, dz, pixel_size, voltage, cs, ampcont, b_factor, dza, azz, sign
     )
 
@@ -658,7 +658,7 @@ def ctf2_rimg(nx, ctf, sign=1, ny=0, nz=1):
 
     if ny < 1:
         ny = nx
-    return EMAN2_cppwrap.Util.ctf2_rimg(
+    return EMAN2.cppwrap.Util.ctf2_rimg(
         nx, ny, nz, dz, pixel_size, voltage, cs, ampcont, b_factor, dza, azz, sign
     )
 
@@ -918,7 +918,7 @@ def imf_params_cl1(pw, n=2, iswi=3, Pixel_size=1):
     cur = []
     parm = []
 
-    t = EMAN2_cppwrap.Util.pw_extract_sphire(pw, n, iswi, Pixel_size)
+    t = EMAN2.cppwrap.Util.pw_extract_sphire(pw, n, iswi, Pixel_size)
     for i in range(len(pw)):
         cur.append(t[i * 2])
         feq.append(t[i * 2 + 1])
@@ -947,7 +947,7 @@ def adaptive_mask(
     mc = sp_utilities.model_circle(
         old_div(nx, 2), nx, ny, nz
     ) - sp_utilities.model_circle(old_div(nx, 3), nx, ny, nz)
-    s1 = EMAN2_cppwrap.Util.infomask(
+    s1 = EMAN2.cppwrap.Util.infomask(
         vol, mc, True
     )  # flip true: find statistics under the mask (mask >0.5)
     if threshold <= -9999.0:
@@ -961,10 +961,10 @@ def adaptive_mask(
         else:
             s1 = [threshold, s1[0], s1[1], 0.0]
         # new s1[3] is calculated nsigma corresponding to user-provided threshold
-    mask = EMAN2_cppwrap.Util.get_biggest_cluster(binarize(vol, s1[0]))
+    mask = EMAN2.cppwrap.Util.get_biggest_cluster(binarize(vol, s1[0]))
     for i in range(ndilation):
         mask = dilation(mask)
-    mask = EMAN2_cppwrap.Util.soft_edge(mask, edge_width, mode)
+    mask = EMAN2.cppwrap.Util.soft_edge(mask, edge_width, mode)
     return mask
 
 
@@ -997,7 +997,7 @@ def adaptive_mask_scipy(
     mc = sp_utilities.model_circle(
         old_div(nx, 2), nx, ny, nz
     ) - sp_utilities.model_circle(old_div(nx, 3), nx, ny, nz)
-    s1 = EMAN2_cppwrap.Util.infomask(
+    s1 = EMAN2.cppwrap.Util.infomask(
         vol, mc, True
     )  # flip true: find statistics under the mask (mask >0.5)
     if threshold <= -9999.0:
@@ -1021,7 +1021,7 @@ def adaptive_mask_scipy(
     if not allow_disconnected:
         if do_print:
             sp_global_def.sxprint("Get biggest cluster")
-        mask = EMAN2_cppwrap.Util.get_biggest_cluster(mask)
+        mask = EMAN2.cppwrap.Util.get_biggest_cluster(mask)
     if ndilation:
         if do_print:
             sp_global_def.sxprint("Do dilation")
@@ -1048,12 +1048,12 @@ def fill_cavities(img):
 	Explanation
 	"""
 
-    if isinstance(img, EMAN2_cppwrap.EMData):
-        img_data = EMAN2_cppwrap.EMNumPy.em2numpy(img)
-        return_object = EMAN2_cppwrap.EMData(
+    if isinstance(img, EMAN2.cppwrap.EMData):
+        img_data = EMAN2.cppwrap.EMNumPy.em2numpy(img)
+        return_object = EMAN2.cppwrap.EMData(
             *img_data.shape
         )  # makes an empty EMData object with the dimensions of the input
-        return_data = EMAN2_cppwrap.EMNumPy.em2numpy(
+        return_data = EMAN2.cppwrap.EMNumPy.em2numpy(
             return_object
         )  # NumPy wrapper around the above EMData object
         out_eman = True
@@ -1081,7 +1081,7 @@ def cosinemask(im, radius=-1, cosine_width=5, bckg=None, s=999999.0):
 		i.e., mask(radius) = 1 and mask(radius+cosine_width)=0.
 		if s=999999.0 using average else program takes in user-provided s
 	"""
-    return EMAN2_cppwrap.Util.cosinemask(im, radius, cosine_width, bckg, s)
+    return EMAN2.cppwrap.Util.cosinemask(im, radius, cosine_width, bckg, s)
 
 
 """Multiline Comment3"""
@@ -1099,7 +1099,7 @@ def get_biggest_cluster(mg):
     nz = mg.get_zsize()
 
     lg = mg.copy()
-    s = EMAN2_cppwrap.Util.infomask(lg, None, True)
+    s = EMAN2.cppwrap.Util.infomask(lg, None, True)
     nnc = int(s[0] * nx * ny * nz)
 
     cls = sp_utilities.model_blank(nx, ny, nz)
@@ -1134,7 +1134,7 @@ def get_biggest_cluster(mg):
                 return cls
             st = 0.0
             for ig in range(1, grp):
-                s = EMAN2_cppwrap.Util.infomask(
+                s = EMAN2.cppwrap.Util.infomask(
                     collapse(cls, ig - 0.5, ig + 0.5), None, True
                 )
                 if s[0] > st:
@@ -1886,10 +1886,10 @@ def cter_mrk(
             set_end = len(namics)
     else:
         pw2 = []
-        data = EMAN2_cppwrap.EMData.read_images(stack)
+        data = EMAN2.cppwrap.EMData.read_images(stack)
         nima = len(data)
         for i in range(nima):
-            pw2.append(EMAN2_cppwrap.periodogram(data[i]))
+            pw2.append(EMAN2.cppwrap.periodogram(data[i]))
         wn = pw2[0].get_xsize()
         set_start = 0
         set_end = 1
@@ -1960,10 +1960,10 @@ def cter_mrk(
             img_type = "Stack"
             img_name = stack
 
-            numFM = EMAN2_cppwrap.EMUtil.get_image_count(img_name)
+            numFM = EMAN2.cppwrap.EMUtil.get_image_count(img_name)
             pw2 = [None] * numFM
             for i in range(numFM):
-                pw2.append(EMAN2_cppwrap.periodogram(sp_utilities.get_im(img_name, i)))
+                pw2.append(EMAN2.cppwrap.periodogram(sp_utilities.get_im(img_name, i)))
 
         for i in range(len(pw2)):
             pw2[i] = square_root(pw2[i])
@@ -2003,7 +2003,7 @@ def cter_mrk(
             aroo = numpy.zeros(lenroo, numpy.float32)
 
             for imi in range(nimi):
-                EMAN2_cppwrap.Util.add_img(qa, pw2[boot[imi]])
+                EMAN2.cppwrap.Util.add_img(qa, pw2[boot[imi]])
                 temp1 = numpy.array(allroo[boot[imi]])
                 roo += temp1
                 temp2 = movingaverage(temp1, 10)
@@ -2113,9 +2113,9 @@ def cter_mrk(
             numr = sp_alignment.Numrinit(istart, istop, 1, mode)
             wr = sp_alignment.ringwe(numr, mode)
 
-            crefim = EMAN2_cppwrap.Util.Polar2Dm(qse * mask, cnx, cny, numr, mode)
-            EMAN2_cppwrap.Util.Frngs(crefim, numr)
-            EMAN2_cppwrap.Util.Applyws(crefim, numr, wr)
+            crefim = EMAN2.cppwrap.Util.Polar2Dm(qse * mask, cnx, cny, numr, mode)
+            EMAN2.cppwrap.Util.Frngs(crefim, numr)
+            EMAN2.cppwrap.Util.Applyws(crefim, numr, wr)
 
             # pc = ctf2_rimg(wn,generate_ctf([defc,Cs,voltage,pixel_size,0.0,wgh]))
             # print ccc(pc*envl, subpw, mask)
@@ -2348,9 +2348,9 @@ def cter_mrk(
                 supe = sp_utilities.model_blank(wn, wn)
                 niter = 1000
                 for it in range(niter):
-                    EMAN2_cppwrap.Util.add_img(
+                    EMAN2.cppwrap.Util.add_img(
                         supe,
-                        EMAN2_cppwrap.Util.ctf_rimg(
+                        EMAN2.cppwrap.Util.ctf_rimg(
                             wn,
                             wn,
                             1,
@@ -3388,10 +3388,10 @@ def cter_pap(
             set_end = len(namics)
     else:
         pw2 = []
-        data = EMAN2_cppwrap.EMData.read_images(stack)
+        data = EMAN2.cppwrap.EMData.read_images(stack)
         nima = len(data)
         for i in range(nima):
-            pw2.append(EMAN2_cppwrap.periodogram(data[i]))
+            pw2.append(EMAN2.cppwrap.periodogram(data[i]))
         wn = pw2[0].get_xsize()
         set_start = 0
         set_end = 1
@@ -3458,10 +3458,10 @@ def cter_pap(
             img_type = "Stack"
             img_name = stack
 
-            numFM = EMAN2_cppwrap.EMUtil.get_image_count(img_name)
+            numFM = EMAN2.cppwrap.EMUtil.get_image_count(img_name)
             pw2 = [None] * numFM
             for i in range(numFM):
-                pw2.append(EMAN2_cppwrap.periodogram(sp_utilities.get_im(img_name, i)))
+                pw2.append(EMAN2.cppwrap.periodogram(sp_utilities.get_im(img_name, i)))
 
         if debug_mode:
             sp_global_def.sxprint(
@@ -3499,7 +3499,7 @@ def cter_pap(
             aroo = numpy.zeros(lenroo, numpy.float32)
 
             for imi in range(nimi):
-                EMAN2_cppwrap.Util.add_img(qa, pw2[boot[imi]])
+                EMAN2.cppwrap.Util.add_img(qa, pw2[boot[imi]])
                 temp1 = numpy.array(allroo[boot[imi]])
                 roo += temp1
                 temp2 = movingaverage(temp1, 10)
@@ -3608,9 +3608,9 @@ def cter_pap(
             numr = sp_alignment.Numrinit(istart, istop, 1, mode)
             wr = sp_alignment.ringwe(numr, mode)
 
-            crefim = EMAN2_cppwrap.Util.Polar2Dm(qse * mask, cnx, cny, numr, mode)
-            EMAN2_cppwrap.Util.Frngs(crefim, numr)
-            EMAN2_cppwrap.Util.Applyws(crefim, numr, wr)
+            crefim = EMAN2.cppwrap.Util.Polar2Dm(qse * mask, cnx, cny, numr, mode)
+            EMAN2.cppwrap.Util.Frngs(crefim, numr)
+            EMAN2.cppwrap.Util.Applyws(crefim, numr, wr)
 
             # pc = ctf2_rimg(wn,generate_ctf([defc,Cs,voltage,pixel_size,0.0,wgh]))
             # print ccc(pc*envl, subpw, mask)
@@ -3836,9 +3836,9 @@ def cter_pap(
                 supe = sp_utilities.model_blank(wn, wn)
                 niter = 1000
                 for it in range(niter):
-                    EMAN2_cppwrap.Util.add_img(
+                    EMAN2.cppwrap.Util.add_img(
                         supe,
-                        EMAN2_cppwrap.Util.ctf_rimg(
+                        EMAN2.cppwrap.Util.ctf_rimg(
                             wn,
                             wn,
                             1,
@@ -5107,12 +5107,12 @@ def simctf2out(dz, data):
         0.0,
         -old_div(nx, 4),
     )
-    s = EMAN2_cppwrap.Util.infomask(pc, None, True)
+    s = EMAN2.cppwrap.Util.infomask(pc, None, True)
     pc -= s[0]
     pc = old_div(pc, s[1])
     dout = sp_utilities.model_blank(nx, nx)
     dout += pc * mm
-    s = EMAN2_cppwrap.Util.infomask(normpw, data[1], True)
+    s = EMAN2.cppwrap.Util.infomask(normpw, data[1], True)
     dout += (
         (old_div((normpw - s[0]), s[1]))
         * (sp_utilities.model_blank(nx, nx, 1, 1) - mm)
@@ -5825,10 +5825,10 @@ def cter_vpp(
             set_end = len(namics)
     else:
         pw2 = []
-        data = EMAN2_cppwrap.EMData.read_images(stack)
+        data = EMAN2.cppwrap.EMData.read_images(stack)
         nima = len(data)
         for i in range(nima):
-            pw2.append(EMAN2_cppwrap.periodogram(data[i]))
+            pw2.append(EMAN2.cppwrap.periodogram(data[i]))
         wn = pw2[0].get_xsize()
         set_start = 0
         set_end = 1
@@ -5892,10 +5892,10 @@ def cter_vpp(
             img_type = "Stack"
             img_name = stack
 
-            numFM = EMAN2_cppwrap.EMUtil.get_image_count(img_name)
+            numFM = EMAN2.cppwrap.EMUtil.get_image_count(img_name)
             pw2 = [None] * numFM
             for i in range(numFM):
-                pw2[i] = EMAN2_cppwrap.periodogram(sp_utilities.get_im(img_name, i))
+                pw2[i] = EMAN2.cppwrap.periodogram(sp_utilities.get_im(img_name, i))
 
         for i in range(len(pw2)):
             pw2[i] = square_root(pw2[i])
@@ -5937,7 +5937,7 @@ def cter_vpp(
             aroo = numpy.zeros(lenroo, numpy.float32)
 
             for imi in range(nimi):
-                EMAN2_cppwrap.Util.add_img(qa, pw2[boot[imi]])
+                EMAN2.cppwrap.Util.add_img(qa, pw2[boot[imi]])
                 temp1 = numpy.array(allroo[boot[imi]])
                 roo += temp1
                 temp2 = movingaverage(temp1, 10)
@@ -6193,9 +6193,9 @@ def cter_vpp(
                 supe = sp_utilities.model_blank(wn, wn)
                 niter = 1000
                 for it in range(niter):
-                    EMAN2_cppwrap.Util.add_img(
+                    EMAN2.cppwrap.Util.add_img(
                         supe,
-                        EMAN2_cppwrap.Util.ctf_rimg(
+                        EMAN2.cppwrap.Util.ctf_rimg(
                             wn,
                             wn,
                             1,
@@ -6776,9 +6776,9 @@ def defocusgett_vpp2(
     numr = sp_alignment.Numrinit(i_start, i_stop - 1, 1, mode)
     wr = sp_alignment.ringwe(numr, mode)
 
-    crefim = EMAN2_cppwrap.Util.Polar2Dm(qse, cnx, cny, numr, mode)
-    EMAN2_cppwrap.Util.Frngs(crefim, numr)
-    EMAN2_cppwrap.Util.Applyws(crefim, numr, wr)
+    crefim = EMAN2.cppwrap.Util.Polar2Dm(qse, cnx, cny, numr, mode)
+    EMAN2.cppwrap.Util.Frngs(crefim, numr)
+    EMAN2.cppwrap.Util.Applyws(crefim, numr, wr)
 
     bdef = 0.0
     bphs = 0.0  # phase_shift
@@ -6929,10 +6929,10 @@ def ornq_vpp(image, crefim, xrng, yrng, step, mode, numr, cnx, cny, deltapsi=0.0
         iy = i * step
         for j in range(-lkx, rkx + 1):
             ix = j * step
-            cimage = EMAN2_cppwrap.Util.Polar2Dm(image, cnx + ix, cny + iy, numr, mode)
-            EMAN2_cppwrap.Util.Frngs(cimage, numr)
-            EMAN2_cppwrap.Util.Normalize_ring(cimage, numr, 0)
-            retvals = EMAN2_cppwrap.Util.Crosrng_e(crefim, cimage, numr, 0, deltapsi)
+            cimage = EMAN2.cppwrap.Util.Polar2Dm(image, cnx + ix, cny + iy, numr, mode)
+            EMAN2.cppwrap.Util.Frngs(cimage, numr)
+            EMAN2.cppwrap.Util.Normalize_ring(cimage, numr, 0)
+            retvals = EMAN2.cppwrap.Util.Crosrng_e(crefim, cimage, numr, 0, deltapsi)
             qn = retvals["qn"]
             if qn >= peak:
                 sx = -ix

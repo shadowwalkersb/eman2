@@ -37,7 +37,7 @@ from __future__ import print_function
 from __future__ import division
 from past.utils import old_div
 
-import EMAN2_cppwrap
+import EMAN2.cppwrap
 import EMAN2db
 import EMAN2.jsondb
 import glob
@@ -1616,10 +1616,10 @@ For negative staining data, set the pixel size [A/Pixels] as the source of CTF p
         # If necessary, invert image contrast of this micrograph
         # --------------------------------------------------------------------------------
         if not options.skip_invert:
-            mic_stats = EMAN2_cppwrap.Util.infomask(
+            mic_stats = EMAN2.cppwrap.Util.infomask(
                 mic_img, None, True
             )  # mic_stat[0:mean, 1:SD, 2:min, 3:max]
-            EMAN2_cppwrap.Util.mul_scalar(mic_img, -1.0)
+            EMAN2.cppwrap.Util.mul_scalar(mic_img, -1.0)
             mic_img += 2 * mic_stats[0]
 
             # --------------------------------------------------------------------------------
@@ -1684,7 +1684,7 @@ For negative staining data, set the pixel size [A/Pixels] as the source of CTF p
 
         local_particle_id = 0  # can be different from coordinates_id
         if coords_accepted:
-            local_mrcs = EMAN2_cppwrap.EMData(box_size, box_size, len(coords_accepted))
+            local_mrcs = EMAN2.cppwrap.EMData(box_size, box_size, len(coords_accepted))
             local_mrcs.set_attr(
                 "apix_x", 1.0
             )  # particle_img.set_attr("apix_x", resampled_pixel_size)
@@ -1700,7 +1700,7 @@ For negative staining data, set the pixel size [A/Pixels] as the source of CTF p
             for coords_id, entry in enumerate(coords_accepted):
 
                 original_id = entry[idx_id]
-                particle_img = EMAN2_cppwrap.Util.window(*entry[idx_info])
+                particle_img = EMAN2.cppwrap.Util.window(*entry[idx_info])
 
                 if is_filament:
                     long_axis_radius = old_div(
@@ -1720,7 +1720,7 @@ For negative staining data, set the pixel size [A/Pixels] as the source of CTF p
 
                     # Normalize this particle image
                 particle_img = sp_fundamentals.ramp(particle_img)
-                particle_stats = EMAN2_cppwrap.Util.infomask(
+                particle_stats = EMAN2.cppwrap.Util.infomask(
                     particle_img, mask2d, False
                 )  # particle_stats[0:mean, 1:SD, 2:min, 3:max]
                 particle_img -= particle_stats[0]

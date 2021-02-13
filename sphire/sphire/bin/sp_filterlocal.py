@@ -40,7 +40,7 @@ from past.utils import old_div
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
 #
 #
-import EMAN2_cppwrap
+import EMAN2.cppwrap
 import mpi
 import optparse
 from ..libpy import sp_filter
@@ -175,13 +175,13 @@ def run():
             for y in range(nn):
                 for z in range(nn):
                     ui.set_value_at_fast(x, y, z, round(ui.get_value_at(x, y, z), 2))
-        st = EMAN2_cppwrap.Util.infomask(ui, m, True)
+        st = EMAN2.cppwrap.Util.infomask(ui, m, True)
 
         filteredvol = sp_utilities.model_blank(nn, nn, nn)
         cutoff = max(st[2] - 0.01, 0.0)
         while cutoff < st[3]:
             cutoff = round(cutoff + 0.01, 2)
-            pt = EMAN2_cppwrap.Util.infomask(
+            pt = EMAN2.cppwrap.Util.infomask(
                 sp_morphology.threshold_outside(ui, cutoff - 0.00501, cutoff + 0.005),
                 m,
                 True,

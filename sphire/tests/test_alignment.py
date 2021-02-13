@@ -9280,7 +9280,7 @@ class Test_align2d_scf(unittest.TestCase):
         sxs = -p2[0][4]
         IndexError: list index out of range
     BUT p2 is the ouput of:
-        -) ccf2 = EMAN2_cppwrap.Util.window(ccf(rot_shift2D(image, alpha+180.0, 0.0, 0.0, mirr), frotim),nrx,nry)
+        -) ccf2 = EMAN2.cppwrap.Util.window(ccf(rot_shift2D(image, alpha+180.0, 0.0, 0.0, mirr), frotim),nrx,nry)
 	    -) p2 = sparx_utilities.peak_search(ccf2)
 	in these casea it is a list of 4 elements and it is trying to get the 5th
     """
@@ -9932,7 +9932,7 @@ class Test_generate_list_of_reference_angles_for_search(unittest.TestCase):
 import copy
 import os
 import cPickle as pickle
-import EMAN2_cppwrap as e2cpp
+import EMAN2.cppwrap as e2cpp
 def get_data(num,dim = 10):
     data_list = []
     for i in range(num):
@@ -10206,7 +10206,7 @@ class Test_lib_alignment_compare(unittest.TestCase):
         mode = "F"
         ou = 174
 
-        cimage = EMAN2_cppwrap.Util.Polar2Dm(tavg, float(cnx), float(cny), numr, mode)
+        cimage = EMAN2.cppwrap.Util.Polar2Dm(tavg, float(cnx), float(cny), numr, mode)
         frotim = [sparx_fundamentals.fft(tavg)]
 
 

@@ -40,7 +40,7 @@ from past.utils import old_div
 #
 
 
-import EMAN2_cppwrap
+import EMAN2.cppwrap
 import mpi
 import numpy
 from . import sp_applications
@@ -84,17 +84,17 @@ def ali2d_single_iter(
         frotim = [sp_fundamentals.fft(tavg)]
         xrng = int(xrng + 0.5)
         yrng = int(yrng + 0.5)
-        cimage = EMAN2_cppwrap.Util.Polar2Dm(
+        cimage = EMAN2.cppwrap.Util.Polar2Dm(
             sp_fundamentals.scf(tavg), cnx, cny, numr, mode
         )
 
-        EMAN2_cppwrap.Util.Frngs(cimage, numr)
-        EMAN2_cppwrap.Util.Applyws(cimage, numr, wr)
+        EMAN2.cppwrap.Util.Frngs(cimage, numr)
+        EMAN2.cppwrap.Util.Applyws(cimage, numr, wr)
     else:
         # 2D alignment using rotational ccf in polar coords and quadratic interpolation
-        cimage = EMAN2_cppwrap.Util.Polar2Dm(tavg, cnx, cny, numr, mode)
-        EMAN2_cppwrap.Util.Frngs(cimage, numr)
-        EMAN2_cppwrap.Util.Applyws(cimage, numr, wr)
+        cimage = EMAN2.cppwrap.Util.Polar2Dm(tavg, cnx, cny, numr, mode)
+        EMAN2.cppwrap.Util.Frngs(cimage, numr)
+        EMAN2.cppwrap.Util.Applyws(cimage, numr, wr)
 
     sx_sum = 0.0
     sy_sum = 0.0
@@ -142,7 +142,7 @@ def ali2d_single_iter(
             #  A possibility would be to reject moves that results in too large departure from the center.
             #  On the other hand, one cannot simply do searches around the proper center all the time,
             #    as if xr is decreased, the image cannot be brought back if the established shifts are further than new range
-            olo = EMAN2_cppwrap.Util.shc(
+            olo = EMAN2.cppwrap.Util.shc(
                 ima,
                 [cimage],
                 txrng,
@@ -261,7 +261,7 @@ def crit2d(args, data):
     if mn:
         temp.process_inplace("xform.mirror", {"axis": "x"})
     # temp2 = data[3] + temp/data[2]
-    temp2 = EMAN2_cppwrap.Util.madn_scalar(data[3], temp, old_div(1.0, data[2]))
+    temp2 = EMAN2.cppwrap.Util.madn_scalar(data[3], temp, old_div(1.0, data[2]))
     v = temp2.cmp("dot", temp2, {"negative": 0, "mask": data[1]})
     # print  " AMOEBA ",args,mn,v
     return v
@@ -306,9 +306,9 @@ def ornq(image, crefim, xrng, yrng, step, mode, numr, cnx, cny, deltapsi=0.0):
         iy = i * step
         for j in range(-lkx, rkx + 1):
             ix = j * step
-            cimage = EMAN2_cppwrap.Util.Polar2Dm(image, cnx + ix, cny + iy, numr, mode)
-            EMAN2_cppwrap.Util.Frngs(cimage, numr)
-            retvals = EMAN2_cppwrap.Util.Crosrng_e(crefim, cimage, numr, 0, deltapsi)
+            cimage = EMAN2.cppwrap.Util.Polar2Dm(image, cnx + ix, cny + iy, numr, mode)
+            EMAN2.cppwrap.Util.Frngs(cimage, numr)
+            retvals = EMAN2.cppwrap.Util.Crosrng_e(crefim, cimage, numr, 0, deltapsi)
             qn = retvals["qn"]
             if qn >= peak:
                 sx = -ix
@@ -344,13 +344,13 @@ def ormq(image, crefim, xrng, yrng, step, mode, numr, cnx, cny, delta=0.0):
         iy = i * step
         for j in range(-lkx, rkx + 1):
             ix = j * step
-            cimage = EMAN2_cppwrap.Util.Polar2Dm(image, cnx + ix, cny + iy, numr, mode)
-            EMAN2_cppwrap.Util.Frngs(cimage, numr)
+            cimage = EMAN2.cppwrap.Util.Polar2Dm(image, cnx + ix, cny + iy, numr, mode)
+            EMAN2.cppwrap.Util.Frngs(cimage, numr)
             # The following code it used when mirror is considered
             if delta == 0.0:
-                retvals = EMAN2_cppwrap.Util.Crosrng_ms(crefim, cimage, numr, 0.0)
+                retvals = EMAN2.cppwrap.Util.Crosrng_ms(crefim, cimage, numr, 0.0)
             else:
-                retvals = EMAN2_cppwrap.Util.Crosrng_ms_delta(
+                retvals = EMAN2.cppwrap.Util.Crosrng_ms_delta(
                     crefim, cimage, numr, 0.0, delta
                 )
             qn = retvals["qn"]
@@ -395,11 +395,11 @@ def ormq_fast(dimage, crefim, xrng, yrng, step, numr, mode, delta=0.0):
     for j in range(-lky, rky + 1, istep):
         for i in range(-lkx, rkx + 1, istep):
             if delta == 0.0:
-                retvals = EMAN2_cppwrap.Util.Crosrng_ms(
+                retvals = EMAN2.cppwrap.Util.Crosrng_ms(
                     crefim, dimage[i + maxrange][j + maxrange], numr, 0.0
                 )
             else:
-                retvals = EMAN2_cppwrap.Util.Crosrng_ms_delta(
+                retvals = EMAN2.cppwrap.Util.Crosrng_ms_delta(
                     crefim, dimage[i + maxrange][j + maxrange], numr, delta
                 )
             qn = retvals["qn"]
@@ -435,7 +435,7 @@ def prepref(data, maskfile, cnx, cny, numr, mode, maxrangex, maxrangey, step):
         for im in range(nima)
     ]
     for im in range(nima):
-        sts = EMAN2_cppwrap.Util.infomask(data[im], maskfile, False)
+        sts = EMAN2.cppwrap.Util.infomask(data[im], maskfile, False)
         data[im] -= sts[0]
         data[im] = old_div(data[im], sts[1])
         alpha, sx, sy, mirror, dummy = sp_utilities.get_params2D(data[im])
@@ -450,11 +450,11 @@ def prepref(data, maskfile, cnx, cny, numr, mode, maxrangex, maxrangey, step):
             iy = j * step
             for i in range(-maxrangex * istep, maxrangex * istep + 1):
                 ix = i * step
-                dimage[im][i + maxrangex][j + maxrangey] = EMAN2_cppwrap.Util.Polar2Dm(
+                dimage[im][i + maxrangex][j + maxrangey] = EMAN2.cppwrap.Util.Polar2Dm(
                     data[im], cnx + sxi + ix, cny + syi + iy, numr, mode
                 )
                 # print ' prepref  ',j,i,j+maxrangey,i+maxrangex
-                EMAN2_cppwrap.Util.Frngs(dimage[im][i + maxrangex][j + maxrangey], numr)
+                EMAN2.cppwrap.Util.Frngs(dimage[im][i + maxrangex][j + maxrangey], numr)
         dimage[im][0][0].set_attr("sxi", sxi)
         dimage[im][0][0].set_attr("syi", syi)
 
@@ -557,7 +557,7 @@ def prepare_refrings(
     sizex = numr[len(numr) - 2] + numr[len(numr) - 1] - 1
 
     for i in range(num_ref):
-        prjref = EMAN2_cppwrap.EMData()
+        prjref = EMAN2.cppwrap.EMData()
         prjref.set_size(sizex, 1, 1)
         refrings.append(prjref)
 
@@ -568,12 +568,12 @@ def prepare_refrings(
                 kb,
                 [ref_angles[i][0], ref_angles[i][1], ref_angles[i][2], 0.0, 0.0],
             )
-            cimage = EMAN2_cppwrap.Util.Polar2Dm(
+            cimage = EMAN2.cppwrap.Util.Polar2Dm(
                 prjref, cnx, cny, numr, mode
             )  # currently set to quadratic....
-            EMAN2_cppwrap.Util.Normalize_ring(cimage, numr, 0)
-            EMAN2_cppwrap.Util.Frngs(cimage, numr)
-            EMAN2_cppwrap.Util.Applyws(cimage, numr, wr_four)
+            EMAN2.cppwrap.Util.Normalize_ring(cimage, numr, 0)
+            EMAN2.cppwrap.Util.Frngs(cimage, numr)
+            EMAN2.cppwrap.Util.Applyws(cimage, numr, wr_four)
             refrings[i] = cimage
     else:
         for i in range(ref_start, ref_end):
@@ -584,12 +584,12 @@ def prepare_refrings(
                 kbx,
                 kby,
             )
-            cimage = EMAN2_cppwrap.Util.Polar2Dm(
+            cimage = EMAN2.cppwrap.Util.Polar2Dm(
                 prjref, cnx, cny, numr, mode
             )  # currently set to quadratic....
-            EMAN2_cppwrap.Util.Normalize_ring(cimage, numr, 0)
-            EMAN2_cppwrap.Util.Frngs(cimage, numr)
-            EMAN2_cppwrap.Util.Applyws(cimage, numr, wr_four)
+            EMAN2.cppwrap.Util.Normalize_ring(cimage, numr, 0)
+            EMAN2.cppwrap.Util.Frngs(cimage, numr)
+            EMAN2.cppwrap.Util.Applyws(cimage, numr, wr_four)
             refrings[i] = cimage
 
     if MPI:
@@ -621,7 +621,7 @@ def kbt(nx, npad=2):
     alpha = 1.75
     r = old_div(nx, 2)
     v = old_div(old_div(K, 2.0), N)
-    return EMAN2_cppwrap.Util.KaiserBessel(alpha, K, r, old_div(K, (2.0 * N)), N)
+    return EMAN2.cppwrap.Util.KaiserBessel(alpha, K, r, old_div(K, (2.0 * N)), N)
 
 
 def log2(n):
@@ -735,7 +735,7 @@ def fine_2D_refinement(data, br, mask, tavg, group=-1):
         if mirror:
             temp.process_inplace("xform.mirror", {"axis": "x"})
         #  Subtract current image from the average
-        refim = EMAN2_cppwrap.Util.madn_scalar(tavg, temp, old_div(-1.0, float(nima)))
+        refim = EMAN2.cppwrap.Util.madn_scalar(tavg, temp, old_div(-1.0, float(nima)))
         stuff.append(refim)  # curent ave-1
         stuff.append(ddata)  # curent image
         # perform amoeba alignment
@@ -762,7 +762,7 @@ def fine_2D_refinement(data, br, mask, tavg, group=-1):
             temp.process_inplace("xform.mirror", {"axis": "x"})
         # check whether the criterion actually increased
         # add current image to the average
-        tavg = EMAN2_cppwrap.Util.madn_scalar(refim, temp, old_div(1.0, float(nima)))
+        tavg = EMAN2.cppwrap.Util.madn_scalar(refim, temp, old_div(1.0, float(nima)))
         # print  im,tave.cmp("dot", tave, {"negative":0,"mask":mask}),params,outparams[0],outparams[2]
         # tave,tvar = ave_var_series_g(data,kb)
         # print  " Criterium on the fly ", tave.cmp("dot", tave, {"negative":0,"mask":mask})
@@ -798,11 +798,11 @@ def align2d(
     numr = Numrinit(first_ring, last_ring, rstep, mode)
     wr = ringwe(numr, mode)
     # cimage=Util.Polar2Dmi(refim, cnx, cny, numr, mode, kb)
-    crefim = EMAN2_cppwrap.Util.Polar2Dm(refim, cnx, cny, numr, mode)
+    crefim = EMAN2.cppwrap.Util.Polar2Dm(refim, cnx, cny, numr, mode)
     # crefim = Util.Polar2D(refim, numr, mode)
     # print_col(crefim)
-    EMAN2_cppwrap.Util.Frngs(crefim, numr)
-    EMAN2_cppwrap.Util.Applyws(crefim, numr, wr)
+    EMAN2.cppwrap.Util.Frngs(crefim, numr)
+    EMAN2.cppwrap.Util.Applyws(crefim, numr, wr)
     return ormq(image, crefim, xrng, yrng, step, mode, numr, cnx, cny)
 
 
@@ -835,9 +835,9 @@ def align2d_scf(image, refim, xrng=-1, yrng=-1, ou=-1):
     # precalculate rings
     numr = Numrinit(first_ring, ou, 1, "H")
     wr = ringwe(numr, "H")
-    crefim = EMAN2_cppwrap.Util.Polar2Dm(scr, cnx, cny, numr, "H")
-    EMAN2_cppwrap.Util.Frngs(crefim, numr)
-    EMAN2_cppwrap.Util.Applyws(crefim, numr, wr)
+    crefim = EMAN2.cppwrap.Util.Polar2Dm(scr, cnx, cny, numr, "H")
+    EMAN2.cppwrap.Util.Frngs(crefim, numr)
+    EMAN2.cppwrap.Util.Applyws(crefim, numr, wr)
     alpha1, sxs, sys, mirr, peak1 = ornq(
         sci, crefim, [0.0], [0.0], 1.0, "H", numr, cnx, cny
     )
@@ -854,7 +854,7 @@ def align2d_scf(image, refim, xrng=-1, yrng=-1, ou=-1):
     nrx = min(2 * (xrng + 1) + 1, ((old_div((nx - 2), 2)) * 2 + 1))
     nry = min(2 * (yrng + 1) + 1, ((old_div((ny - 2), 2)) * 2 + 1))
     frotim = sp_fundamentals.fft(refim)
-    ccf1 = EMAN2_cppwrap.Util.window(
+    ccf1 = EMAN2.cppwrap.Util.window(
         sp_fundamentals.ccf(
             sp_fundamentals.rot_shift2D(image, alpha, 0.0, 0.0, mirr), frotim
         ),
@@ -863,7 +863,7 @@ def align2d_scf(image, refim, xrng=-1, yrng=-1, ou=-1):
     )
     p1 = sp_utilities.peak_search(ccf1)
 
-    ccf2 = EMAN2_cppwrap.Util.window(
+    ccf2 = EMAN2.cppwrap.Util.window(
         sp_fundamentals.ccf(
             sp_fundamentals.rot_shift2D(image, alpha + 180.0, 0.0, 0.0, mirr), frotim
         ),
@@ -924,12 +924,12 @@ def multalign2d_scf(image, refrings, frotim, numr, xrng=-1, yrng=-1, ou=-1):
     cnx = old_div(nx, 2) + 1
     cny = old_div(ny, 2) + 1
 
-    cimage = EMAN2_cppwrap.Util.Polar2Dm(sci, cnx, cny, numr, "H")
-    EMAN2_cppwrap.Util.Frngs(cimage, numr)
-    mimage = EMAN2_cppwrap.Util.Polar2Dm(
+    cimage = EMAN2.cppwrap.Util.Polar2Dm(sci, cnx, cny, numr, "H")
+    EMAN2.cppwrap.Util.Frngs(cimage, numr)
+    mimage = EMAN2.cppwrap.Util.Polar2Dm(
         sp_fundamentals.mirror(sci), cnx, cny, numr, "H"
     )
-    EMAN2_cppwrap.Util.Frngs(mimage, numr)
+    EMAN2.cppwrap.Util.Frngs(mimage, numr)
 
     nrx = min(2 * (xrng + 1) + 1, (old_div(nx - 2, 2) * 2 + 1))
     nry = min(2 * (yrng + 1) + 1, (old_div(ny - 2, 2) * 2 + 1))
@@ -939,10 +939,10 @@ def multalign2d_scf(image, refrings, frotim, numr, xrng=-1, yrng=-1, ou=-1):
     for iki in range(len(refrings)):
         # print  "TEMPLATE  ",iki
         #  Find angle
-        retvals = EMAN2_cppwrap.Util.Crosrng_e(refrings[iki], cimage, numr, 0, 0.0)
+        retvals = EMAN2.cppwrap.Util.Crosrng_e(refrings[iki], cimage, numr, 0, 0.0)
         alpha1 = ang_n(retvals["tot"], "H", numr[-1])
         peak1 = retvals["qn"]
-        retvals = EMAN2_cppwrap.Util.Crosrng_e(refrings[iki], mimage, numr, 0, 0.0)
+        retvals = EMAN2.cppwrap.Util.Crosrng_e(refrings[iki], mimage, numr, 0, 0.0)
         alpha2 = ang_n(retvals["tot"], "H", numr[-1])
         peak2 = retvals["qn"]
         # print  alpha1, peak1
@@ -955,7 +955,7 @@ def multalign2d_scf(image, refrings, frotim, numr, xrng=-1, yrng=-1, ou=-1):
             mirr = 1
             alpha = -alpha2
 
-        ccf1 = EMAN2_cppwrap.Util.window(
+        ccf1 = EMAN2.cppwrap.Util.window(
             sp_fundamentals.ccf(
                 sp_fundamentals.rot_shift2D(image, alpha, 0.0, 0.0, mirr), frotim[iki]
             ),
@@ -964,7 +964,7 @@ def multalign2d_scf(image, refrings, frotim, numr, xrng=-1, yrng=-1, ou=-1):
         )
         p1 = sp_utilities.peak_search(ccf1)
 
-        ccf2 = EMAN2_cppwrap.Util.window(
+        ccf2 = EMAN2.cppwrap.Util.window(
             sp_fundamentals.ccf(
                 sp_fundamentals.rot_shift2D(image, alpha + 180.0, 0.0, 0.0, mirr),
                 frotim[iki],
@@ -1153,7 +1153,7 @@ def align2d_direct3(
         for i in range(nm * 2):
             for mirror_flag in [0, 1]:
                 c = sp_fundamentals.ccf(ims, refs[i][mirror_flag])
-                w = EMAN2_cppwrap.Util.window(c, 2 * xrng + 1, 2 * yrng + 1)
+                w = EMAN2.cppwrap.Util.window(c, 2 * xrng + 1, 2 * yrng + 1)
                 pp = sp_utilities.peak_search(w)[0]
                 px = int(pp[4])
                 py = int(pp[5])
@@ -1234,7 +1234,7 @@ def shc(
         finfo.flush()
 
     previousmax = data.get_attr("previousmax")
-    [ang, sxs, sys, mirror, iref, peak, checked_refs] = EMAN2_cppwrap.Util.shc(
+    [ang, sxs, sys, mirror, iref, peak, checked_refs] = EMAN2.cppwrap.Util.shc(
         data,
         refrings,
         list_of_reference_angles,
@@ -1268,10 +1268,10 @@ def shc(
         s2y = sys + syi
 
         # set_params_proj(data, [phi, theta, psi, s2x, s2y])
-        t2 = EMAN2_cppwrap.Transform(
+        t2 = EMAN2.cppwrap.Transform(
             {"type": "spider", "phi": phi, "theta": theta, "psi": psi}
         )
-        t2.set_trans(EMAN2_cppwrap.Vec2f(-s2x, -s2y))
+        t2.set_trans(EMAN2.cppwrap.Vec2f(-s2x, -s2y))
         data.set_attr("xform.projection", t2)
         data.set_attr("previousmax", peak)
         #  Find the pixel error that is minimum over symmetry transformations
@@ -1375,7 +1375,7 @@ def ali_nvol(v, mask):
         sp_utilities.set_params3D(v[l], (0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0, 1.0))
     while gogo:
         ave, var = sp_statistics.ave_var(v)
-        p = EMAN2_cppwrap.Util.infomask(var, mask, True)
+        p = EMAN2.cppwrap.Util.infomask(var, mask, True)
         crit = p[1]
         if (
             old_div(old_div((crit - ocrit), (crit + ocrit)), 2.0) > -1.0e-2

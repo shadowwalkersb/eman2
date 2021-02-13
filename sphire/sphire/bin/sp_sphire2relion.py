@@ -42,7 +42,7 @@ Convert particle stack and partres file to star file.
 # pylint: disable=C0330
 from __future__ import print_function, division
 from past.utils import old_div
-import EMAN2_cppwrap
+import EMAN2.cppwrap
 import argparse
 import numpy
 import os
@@ -304,7 +304,7 @@ def create_particle_stack(particle_stack, output_dir, particle_data):
     for particle_idx in range(particle_data.shape[0]):
         if particle_idx % 10000 == 0:
             sp_global_def.sxprint(particle_idx, " of ", particle_data.shape[0])
-        emdata = EMAN2_cppwrap.EMData(particle_stack, particle_idx)
+        emdata = EMAN2.cppwrap.EMData(particle_stack, particle_idx)
 
         output_name = os.path.join(output_dir, "Particles", os.path.basename(ptcl_names[particle_idx]))
         try:
@@ -793,7 +793,7 @@ def import_particle_stack(particle_stack, output_dir, project_dir):
 	Returns:
 	Particle array
 	"""
-    particle_header = EMAN2_cppwrap.EMData()
+    particle_header = EMAN2.cppwrap.EMData()
     particle_header.read_image(particle_stack, 0, True)
 
     dtype_list, name_list = create_stack_dtype(particle_header.get_attr_dict())

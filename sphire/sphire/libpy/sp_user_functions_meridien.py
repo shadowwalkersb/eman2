@@ -54,7 +54,7 @@ from . import sp_global_def
 import past
 from past.utils import old_div
 import numpy
-import EMAN2_cppwrap
+import EMAN2.cppwrap
 
 
 def do_volume_mask(ref_data):
@@ -72,7 +72,7 @@ def do_volume_mask(ref_data):
     if Tracker["constants"]["mask3D"] is None:
         vol = sp_morphology.cosinemask(vol, radius=Tracker["constants"]["radius"])
     else:
-        EMAN2_cppwrap.Util.mul_img(
+        EMAN2.cppwrap.Util.mul_img(
             vol, sp_utilities.get_im(Tracker["constants"]["mask3D"])
         )
 

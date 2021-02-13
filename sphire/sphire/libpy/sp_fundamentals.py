@@ -40,7 +40,7 @@ from past.utils import old_div
 #
 
 
-import EMAN2_cppwrap
+import EMAN2.cppwrap
 import math
 import numpy
 import past.utils
@@ -55,7 +55,7 @@ def ccf(e, f, center=True):
 	Input images may be real or complex.  Output image is real.
 	1-D, 2-D, or 3-D images supported.
 	"""
-    return EMAN2_cppwrap.correlation(e, f, EMAN2_cppwrap.fp_flag.CIRCULANT, center)
+    return EMAN2.cppwrap.correlation(e, f, EMAN2.cppwrap.fp_flag.CIRCULANT, center)
 
 
 def scf(e, center=True):
@@ -68,7 +68,7 @@ def scf(e, center=True):
 		Output
 			circulant self-correlation function of the input image. Real.
 	"""
-    return EMAN2_cppwrap.self_correlation(e, EMAN2_cppwrap.fp_flag.CIRCULANT, center)
+    return EMAN2.cppwrap.self_correlation(e, EMAN2.cppwrap.fp_flag.CIRCULANT, center)
 
 
 def cyclic_shift(img, dx=0, dy=0, dz=0):
@@ -84,7 +84,7 @@ def cyclic_shift(img, dx=0, dy=0, dz=0):
 			output image
 	"""
     e = img.copy()
-    EMAN2_cppwrap.Util.cyclicshift(e, {"dx": dx, "dy": dy, "dz": dz})
+    EMAN2.cppwrap.Util.cyclicshift(e, {"dx": dx, "dy": dy, "dz": dz})
     return e
 
 
@@ -189,12 +189,12 @@ def fshift(e, delx=0, dely=0, delz=0):
 	"""
 
     params = {
-        "filter_type": EMAN2_cppwrap.Processor.fourier_filter_types.SHIFT,
+        "filter_type": EMAN2.cppwrap.Processor.fourier_filter_types.SHIFT,
         "x_shift": float(delx),
         "y_shift": float(dely),
         "z_shift": float(delz),
     }
-    return EMAN2_cppwrap.Processor.EMFourierFilter(e, params)
+    return EMAN2.cppwrap.Processor.EMFourierFilter(e, params)
 
 
 def subsample(image, subsample_rate=1.0):
@@ -202,7 +202,7 @@ def subsample(image, subsample_rate=1.0):
         return image.copy()
     template_min = 15
     frequency_cutoff = 0.5 * subsample_rate
-    sb = EMAN2_cppwrap.Util.sincBlackman(
+    sb = EMAN2.cppwrap.Util.sincBlackman(
         template_min, frequency_cutoff, 1999
     )  # 1999 taken directly from util_sparx.h
     return image.downsample(sb, subsample_rate)
@@ -237,9 +237,9 @@ def resample(img, sub_rate=0.5):
             new_nz = int(ny * sub_rate + 0.5)
         if nx != ny and nz == 1:
             nn = max(new_nx, new_ny)
-            e = EMAN2_cppwrap.Util.pad(img, nn, nn, 1, 0, 0, 0, "circumference")
+            e = EMAN2.cppwrap.Util.pad(img, nn, nn, 1, 0, 0, 0, "circumference")
             e, kb = prepi(e)
-            e = EMAN2_cppwrap.Util.window(
+            e = EMAN2.cppwrap.Util.window(
                 e.rot_scale_conv_new(0.0, 0.0, 0.0, kb, sub_rate),
                 new_nx,
                 new_ny,
@@ -251,9 +251,9 @@ def resample(img, sub_rate=0.5):
 
         elif (nx != ny or nx != nz or ny != nz) and nz > 1:
             nn = max(new_nx, new_ny, new_nz)
-            e = EMAN2_cppwrap.Util.pad(img, nn, nn, nn, 0, 0, 0, "circumference")
+            e = EMAN2.cppwrap.Util.pad(img, nn, nn, nn, 0, 0, 0, "circumference")
             e, kb = prepi3D(e)
-            e = EMAN2_cppwrap.Util.window(
+            e = EMAN2.cppwrap.Util.window(
                 e.rot_scale_conv_new_3D(0.0, 0.0, 0.0, 0.0, 0.0, 0.0, kb, sub_rate),
                 new_nx,
                 new_ny,
@@ -265,14 +265,14 @@ def resample(img, sub_rate=0.5):
         else:
             if nz == 1:
                 e, kb = prepi(
-                    EMAN2_cppwrap.Util.pad(
+                    EMAN2.cppwrap.Util.pad(
                         img, new_nx, new_ny, 1, 0, 0, 0, "circumference"
                     )
                 )
                 e = e.rot_scale_conv_new(0.0, 0.0, 0.0, kb, sub_rate)
             else:
                 e, kb = prepi3D(
-                    EMAN2_cppwrap.Util.pad(
+                    EMAN2.cppwrap.Util.pad(
                         img, new_nx, new_ny, new_nz, 0, 0, 0, "circumference"
                     )
                 )
@@ -312,7 +312,7 @@ def prepf(image, npad=2):
 			imageft: Fourier space image prepared for Fourier interpolation rotation/shift
 	"""
 
-    cimage = EMAN2_cppwrap.Util.pad(
+    cimage = EMAN2.cppwrap.Util.pad(
         image, 2 * (image.get_xsize()), 2 * (image.get_ysize()), 1, 0, 0, 0, "0.0"
     )
     cimage.set_attr("npad", npad)
@@ -345,24 +345,24 @@ def prepi(image, RetReal=True):
     alpha = 1.75
     r = old_div(M, 2)
     v = old_div(old_div(K, 2.0), N)
-    kb = EMAN2_cppwrap.Util.KaiserBessel(alpha, K, r, v, N)
+    kb = EMAN2.cppwrap.Util.KaiserBessel(alpha, K, r, v, N)
     # first pad it with zeros in Fourier space
     q = image.FourInterpol(N, N, 1, 0)
     params = {
-        "filter_type": EMAN2_cppwrap.Processor.fourier_filter_types.KAISER_SINH_INVERSE,
+        "filter_type": EMAN2.cppwrap.Processor.fourier_filter_types.KAISER_SINH_INVERSE,
         "alpha": alpha,
         "K": K,
         "r": r,
         "v": v,
         "N": N,
     }
-    q = EMAN2_cppwrap.Processor.EMFourierFilter(q, params)
+    q = EMAN2.cppwrap.Processor.EMFourierFilter(q, params)
     params = {
-        "filter_type": EMAN2_cppwrap.Processor.fourier_filter_types.TOP_HAT_LOW_PASS,
+        "filter_type": EMAN2.cppwrap.Processor.fourier_filter_types.TOP_HAT_LOW_PASS,
         "cutoff_abs": 0.25,
         "dopad": False,
     }
-    q = EMAN2_cppwrap.Processor.EMFourierFilter(q, params)
+    q = EMAN2.cppwrap.Processor.EMFourierFilter(q, params)
     if RetReal:
         return fft(q), kb
     else:
@@ -389,24 +389,24 @@ def prepi3D(image):
     alpha = 1.75
     r = old_div(M, 2)
     v = old_div(old_div(K, 2.0), N)
-    kb = EMAN2_cppwrap.Util.KaiserBessel(alpha, K, r, v, N)
+    kb = EMAN2.cppwrap.Util.KaiserBessel(alpha, K, r, v, N)
     # pad with zeros in Fourier space:
     q = image.FourInterpol(N, N, N, 0)
     params = {
-        "filter_type": EMAN2_cppwrap.Processor.fourier_filter_types.KAISER_SINH_INVERSE,
+        "filter_type": EMAN2.cppwrap.Processor.fourier_filter_types.KAISER_SINH_INVERSE,
         "alpha": alpha,
         "K": K,
         "r": r,
         "v": v,
         "N": N,
     }
-    q = EMAN2_cppwrap.Processor.EMFourierFilter(q, params)
+    q = EMAN2.cppwrap.Processor.EMFourierFilter(q, params)
     params = {
-        "filter_type": EMAN2_cppwrap.Processor.fourier_filter_types.TOP_HAT_LOW_PASS,
+        "filter_type": EMAN2.cppwrap.Processor.fourier_filter_types.TOP_HAT_LOW_PASS,
         "cutoff_abs": 0.25,
         "dopad": False,
     }
-    q = EMAN2_cppwrap.Processor.EMFourierFilter(q, params)
+    q = EMAN2.cppwrap.Processor.EMFourierFilter(q, params)
     return fft(q), kb
 
 
@@ -433,14 +433,14 @@ def prepg(image, kb):
     # first pad it with zeros in Fourier space
     o = image.FourInterpol(2 * M, 2 * M, 1, 0)
     params = {
-        "filter_type": EMAN2_cppwrap.Processor.fourier_filter_types.KAISER_SINH_INVERSE,
+        "filter_type": EMAN2.cppwrap.Processor.fourier_filter_types.KAISER_SINH_INVERSE,
         "alpha": alpha,
         "K": K,
         "r": r,
         "v": v,
         "N": N,
     }
-    q = EMAN2_cppwrap.Processor.EMFourierFilter(o, params)
+    q = EMAN2.cppwrap.Processor.EMFourierFilter(o, params)
     return fft(q)
 
 
@@ -596,7 +596,7 @@ def gridrot_shift2D(image, ang=0.0, sx=0.0, sy=0.0, scale=1.0):
         alpha = 1.75
         r = old_div(nx, 2)
         v = old_div(old_div(K, 2.0), N)
-        kb = EMAN2_cppwrap.Util.KaiserBessel(alpha, K, r, v, N)
+        kb = EMAN2.cppwrap.Util.KaiserBessel(alpha, K, r, v, N)
 
         # invert shifts
         _, tsx, tsy, _ = sp_utilities.compose_transform2(0.0, sx, sy, 1, -ang, 0, 0, 1)
@@ -606,7 +606,7 @@ def gridrot_shift2D(image, ang=0.0, sx=0.0, sy=0.0, scale=1.0):
         isy = int(tsy)
         fsy = tsy - isy
         # shift image to the center
-        EMAN2_cppwrap.Util.cyclicshift(image1, {"dx": isx, "dy": isy, "dz": 0})
+        EMAN2.cppwrap.Util.cyclicshift(image1, {"dx": isx, "dy": isy, "dz": 0})
         # bring back fractional shifts
         _, tsx, tsy, _ = sp_utilities.compose_transform2(0.0, fsx, fsy, 1, ang, 0, 0, 1)
         # divide out gridding weights
@@ -620,12 +620,12 @@ def gridrot_shift2D(image, ang=0.0, sx=0.0, sy=0.0, scale=1.0):
         image1 = image1.fouriergridrot2d(ang, scale, kb)
         if (fsx != 0.0) or (fsy != 0.0):
             params = {
-                "filter_type": EMAN2_cppwrap.Processor.fourier_filter_types.SHIFT,
+                "filter_type": EMAN2.cppwrap.Processor.fourier_filter_types.SHIFT,
                 "x_shift": float(tsx),
                 "y_shift": float(tsy),
                 "z_shift": 0.0,
             }
-            image1 = EMAN2_cppwrap.Processor.EMFourierFilter(image1, params)
+            image1 = EMAN2.cppwrap.Processor.EMFourierFilter(image1, params)
         # put the origin back in the corner
         image1.center_origin_fft()
         # undo FFT and remove padding (window)
@@ -634,12 +634,12 @@ def gridrot_shift2D(image, ang=0.0, sx=0.0, sy=0.0, scale=1.0):
     else:
         if (sx != 0.0) or (sy != 0.0):
             params = {
-                "filter_type": EMAN2_cppwrap.Processor.fourier_filter_types.SHIFT,
+                "filter_type": EMAN2.cppwrap.Processor.fourier_filter_types.SHIFT,
                 "x_shift": float(sx),
                 "y_shift": float(sy),
                 "z_shift": 0.0,
             }
-            image1 = EMAN2_cppwrap.Processor.EMFourierFilter(image, params)
+            image1 = EMAN2.cppwrap.Processor.EMFourierFilter(image, params)
         else:
             return image
 
@@ -677,7 +677,7 @@ def rot_shift2D(
         use_method = sp_global_def.interpolation_method_2D
 
     if use_method == "linear" and mode == "cyclic":
-        T = EMAN2_cppwrap.Transform(
+        T = EMAN2.cppwrap.Transform(
             {"type": "SPIDER", "psi": angle, "tx": sx, "ty": sy, "scale": scale}
         )
         img = img.rot_scale_trans(T, None)
@@ -685,7 +685,7 @@ def rot_shift2D(
             img.process_inplace("xform.mirror", {"axis": "x"})
         return img
     elif use_method == "linear" and mode == "background":
-        T = EMAN2_cppwrap.Transform(
+        T = EMAN2.cppwrap.Transform(
             {"type": "SPIDER", "psi": angle, "tx": sx, "ty": sy, "scale": scale}
         )
         img = img.rot_scale_trans_background(T, None)
@@ -757,8 +757,8 @@ def rot_shift3D(
 
     if scale == 0.0:
         sp_global_def.ERROR("0 scale factor encountered", "rot_shift3D", 1)
-    T1 = EMAN2_cppwrap.Transform({"scale": scale})
-    T2 = EMAN2_cppwrap.Transform(
+    T1 = EMAN2.cppwrap.Transform({"scale": scale})
+    T2 = EMAN2.cppwrap.Transform(
         {
             "type": "SPIDER",
             "phi": phi,
@@ -882,9 +882,9 @@ def tilemic(img, win_size=512, overlp_x=50, overlp_y=50, edge_x=0, edge_y=0):
                 ix - 1
             ) + edge_x  # x-direction it should start from 0 if edge_x =0
             wi = ramp(window2d(e_fil, win_size, win_size, "l", x22, x21))
-            st = EMAN2_cppwrap.Util.infomask(wi, None, True)
+            st = EMAN2.cppwrap.Util.infomask(wi, None, True)
             wi = old_div((wi - st[0]), st[1]) * win_size
-            pw2.append(EMAN2_cppwrap.periodogram(wi))
+            pw2.append(EMAN2.cppwrap.periodogram(wi))
     return pw2
 
 
@@ -902,15 +902,15 @@ def window2d(img, isize_x, isize_y, opt="c", ix=0, iy=0):
     if lx == isize_x and ly == isize_y:
         return img.copy()
     if opt == "l":
-        reg = EMAN2_cppwrap.Region(ix, iy, isize_x, isize_y)
+        reg = EMAN2.cppwrap.Region(ix, iy, isize_x, isize_y)
     elif opt == "c":
         mx = old_div(lx, 2) - old_div(isize_x, 2)
         my = old_div(ly, 2) - old_div(isize_y, 2)
-        reg = EMAN2_cppwrap.Region(mx, my, isize_x, isize_y)
+        reg = EMAN2.cppwrap.Region(mx, my, isize_x, isize_y)
     elif opt == "a":
         mx = ix - old_div(isize_x, 2)
         my = iy - old_div(isize_y, 2)
-        reg = EMAN2_cppwrap.Region(mx, my, isize_x, isize_y)
+        reg = EMAN2.cppwrap.Region(mx, my, isize_x, isize_y)
     else:
         sp_global_def.ERROR("Unknown window2d option", "window2d", 1)
     return img.get_clip(reg)
@@ -1207,7 +1207,7 @@ class symclass(object):
 
         for args in self.symangles:
             self.transform.append(
-                EMAN2_cppwrap.Transform(
+                EMAN2.cppwrap.Transform(
                     {"type": "spider", "phi": args[0], "theta": args[1], "psi": args[2]}
                 )
             )

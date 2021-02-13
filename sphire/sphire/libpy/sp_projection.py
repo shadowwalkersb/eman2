@@ -40,7 +40,7 @@ from past.utils import old_div
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
 #
 
-import EMAN2_cppwrap
+import EMAN2.cppwrap
 from . import sp_global_def
 from . import sp_utilities
 
@@ -60,7 +60,7 @@ def project(volume, params, radius=-1):
 
     if radius > 0:
         myparams = {
-            "transform": EMAN2_cppwrap.Transform(
+            "transform": EMAN2.cppwrap.Transform(
                 {
                     "type": "spider",
                     "phi": params[0],
@@ -72,7 +72,7 @@ def project(volume, params, radius=-1):
         }
     else:
         myparams = {
-            "transform": EMAN2_cppwrap.Transform(
+            "transform": EMAN2.cppwrap.Transform(
                 {
                     "type": "spider",
                     "phi": params[0],
@@ -84,12 +84,12 @@ def project(volume, params, radius=-1):
     proj = volume.project("pawel", myparams)
     if params[3] != 0.0 or params[4] != 0.0:
         params2 = {
-            "filter_type": EMAN2_cppwrap.Processor.fourier_filter_types.SHIFT,
+            "filter_type": EMAN2.cppwrap.Processor.fourier_filter_types.SHIFT,
             "x_shift": params[3],
             "y_shift": params[4],
             "z_shift": 0.0,
         }
-        proj = EMAN2_cppwrap.Processor.EMFourierFilter(proj, params2)
+        proj = EMAN2.cppwrap.Processor.EMFourierFilter(proj, params2)
         # proj = rot_shift2D(proj, sx = params[3], sy = params[4], interpolation_method = "linear")
     sp_utilities.set_params_proj(
         proj, [params[0], params[1], params[2], -params[3], -params[4]]
@@ -117,7 +117,7 @@ def prgs(volft, kb, params, kbx=None, kby=None):
 	"""
     #  params:  phi, theta, psi, sx, sy
 
-    R = EMAN2_cppwrap.Transform(
+    R = EMAN2.cppwrap.Transform(
         {"type": "spider", "phi": params[0], "theta": params[1], "psi": params[2]}
     )
     if kbx is None:
@@ -130,12 +130,12 @@ def prgs(volft, kb, params, kbx=None, kby=None):
 
     if params[3] != 0.0 or params[4] != 0.0:
         filt_params = {
-            "filter_type": EMAN2_cppwrap.Processor.fourier_filter_types.SHIFT,
+            "filter_type": EMAN2.cppwrap.Processor.fourier_filter_types.SHIFT,
             "x_shift": params[3],
             "y_shift": params[4],
             "z_shift": 0.0,
         }
-        temp = EMAN2_cppwrap.Processor.EMFourierFilter(temp, filt_params)
+        temp = EMAN2.cppwrap.Processor.EMFourierFilter(temp, filt_params)
     temp.do_ift_inplace()
     sp_utilities.set_params_proj(
         temp, [params[0], params[1], params[2], -params[3], -params[4]]
@@ -164,7 +164,7 @@ def prgl(volft, params, interpolation_method=0, return_real=True):
             "Unsupported interpolation method", "interpolation_method", 1, 0
         )
     npad = volft.get_attr_default("npad", 1)
-    R = EMAN2_cppwrap.Transform(
+    R = EMAN2.cppwrap.Transform(
         {"type": "spider", "phi": params[0], "theta": params[1], "psi": params[2]}
     )
     if npad == 1:
@@ -176,12 +176,12 @@ def prgl(volft, params, interpolation_method=0, return_real=True):
 
     if params[3] != 0.0 or params[4] != 0.0:
         filt_params = {
-            "filter_type": EMAN2_cppwrap.Processor.fourier_filter_types.SHIFT,
+            "filter_type": EMAN2.cppwrap.Processor.fourier_filter_types.SHIFT,
             "x_shift": params[3],
             "y_shift": params[4],
             "z_shift": 0.0,
         }
-        temp = EMAN2_cppwrap.Processor.EMFourierFilter(temp, filt_params)
+        temp = EMAN2.cppwrap.Processor.EMFourierFilter(temp, filt_params)
     if return_real:
         temp.do_ift_inplace()
         temp.set_attr_dict({"ctf_applied": 0, "npad": 1})
@@ -222,7 +222,7 @@ def prep_vol(vol, npad=2, interpolation_method=-1):
             # padd two times
             N = M * npad
             # support of the window
-            kb = EMAN2_cppwrap.Util.KaiserBessel(
+            kb = EMAN2.cppwrap.Util.KaiserBessel(
                 alpha, K, old_div(M, 2), old_div(K, (2.0 * N)), N
             )
             volft = vol.copy()
@@ -237,13 +237,13 @@ def prep_vol(vol, npad=2, interpolation_method=-1):
             Ny = My * npad
             Nz = Mz * npad
             # support of the window
-            kbx = EMAN2_cppwrap.Util.KaiserBessel(
+            kbx = EMAN2.cppwrap.Util.KaiserBessel(
                 alpha, K, old_div(Mx, 2), old_div(K, (2.0 * Nx)), Nx
             )
-            kby = EMAN2_cppwrap.Util.KaiserBessel(
+            kby = EMAN2.cppwrap.Util.KaiserBessel(
                 alpha, K, old_div(My, 2), old_div(K, (2.0 * Ny)), Ny
             )
-            kbz = EMAN2_cppwrap.Util.KaiserBessel(
+            kbz = EMAN2.cppwrap.Util.KaiserBessel(
                 alpha, K, old_div(Mz, 2), old_div(K, (2.0 * Nz)), Nz
             )
             volft = vol.copy()

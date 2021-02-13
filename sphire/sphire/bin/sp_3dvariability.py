@@ -41,7 +41,7 @@ from past.utils import old_div
 #
 #
 import EMAN2
-import EMAN2_cppwrap
+import EMAN2.cppwrap
 import EMAN2db
 import mpi
 import numpy
@@ -282,7 +282,7 @@ def run():
         else:
             stack = instack
 
-        qt = EMAN2_cppwrap.EMUtil.get_all_attributes(stack, "xform.projection")
+        qt = EMAN2.cppwrap.EMUtil.get_all_attributes(stack, "xform.projection")
 
         na = len(qt)
         ts = sp_utilities.get_symt(sym)
@@ -512,7 +512,7 @@ def run():
 
         symbaselen = 0
         if myid == main_node:
-            nima = EMAN2_cppwrap.EMUtil.get_image_count(stack)
+            nima = EMAN2.cppwrap.EMUtil.get_image_count(stack)
             img = sp_utilities.get_image(stack)
             nx = img.get_xsize()
             ny = img.get_ysize()
@@ -638,7 +638,7 @@ def run():
                 t1 = time.time()
                 proj_angles = []
                 aveList = []
-                tab = EMAN2_cppwrap.EMUtil.get_all_attributes(stack, "xform.projection")
+                tab = EMAN2.cppwrap.EMUtil.get_all_attributes(stack, "xform.projection")
                 for i in range(nima):
                     t = tab[i].get_params("spider")
                     phi = t["phi"]
@@ -830,7 +830,7 @@ def run():
                 if ki >= symbaselen:
                     continue
                 mi = index[ki]
-                dpar = EMAN2_cppwrap.Util.get_transform_params(
+                dpar = EMAN2.cppwrap.Util.get_transform_params(
                     imgdata[mi], "xform.projection", "spider"
                 )
                 phiM, thetaM, psiM, s2xM, s2yM = (
@@ -843,7 +843,7 @@ def run():
                 grp_imgdata = []
                 for j in range(img_per_grp):
                     mj = index[proj_angles[proj_list[i][j]][3]]
-                    cpar = EMAN2_cppwrap.Util.get_transform_params(
+                    cpar = EMAN2.cppwrap.Util.get_transform_params(
                         imgdata[mj], "xform.projection", "spider"
                     )
                     alpha, sx, sy, mirror = params_3D_2D_NEW(
@@ -888,7 +888,7 @@ def run():
                             )
                     imgdata[mj].set_attr(
                         "xform.align2d",
-                        EMAN2_cppwrap.Transform(
+                        EMAN2.cppwrap.Transform(
                             {
                                 "type": "2D",
                                 "alpha": alpha,
@@ -902,7 +902,7 @@ def run():
                     grp_imgdata.append(imgdata[mj])
                 if not options.no_norm:
                     for k in range(img_per_grp):
-                        ave, std, minn, maxx = EMAN2_cppwrap.Util.infomask(
+                        ave, std, minn, maxx = EMAN2.cppwrap.Util.infomask(
                             grp_imgdata[k], mask, False
                         )
                         grp_imgdata[k] -= ave

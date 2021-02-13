@@ -40,7 +40,7 @@ from past.utils import old_div
 #
 
 
-import EMAN2_cppwrap
+import EMAN2.cppwrap
 import EMAN2db
 import EMAN2
 import mpi
@@ -138,7 +138,7 @@ def ali2d_MPI(
         # del active
         # nima = len(list_of_particles)
 
-        nima = EMAN2_cppwrap.EMUtil.get_image_count(stack)
+        nima = EMAN2.cppwrap.EMUtil.get_image_count(stack)
         list_of_particles = list(range(nima))
 
     else:
@@ -161,7 +161,7 @@ def ali2d_MPI(
 
     # read nx and ctf_app (if CTF) and broadcast to all nodes
     if myid == main_node:
-        ima = EMAN2_cppwrap.EMData()
+        ima = EMAN2.cppwrap.EMData()
         ima.read_image(stack, list_of_particles[0], True)
         nx = ima.get_xsize()
         if CTF:
@@ -259,17 +259,17 @@ def ali2d_MPI(
         mode = "F"
     data = []
     if CTF:
-        ctf_abs_sum = EMAN2_cppwrap.EMData(nx, nx, 1, False)
-        ctf_2_sum = EMAN2_cppwrap.EMData(nx, nx, 1, False)
+        ctf_abs_sum = EMAN2.cppwrap.EMData(nx, nx, 1, False)
+        ctf_2_sum = EMAN2.cppwrap.EMData(nx, nx, 1, False)
     else:
         ctf_2_sum = None
 
     if sp_global_def.CACHE_DISABLE:
-        data = EMAN2_cppwrap.EMData.read_images(stack, list_of_particles)
+        data = EMAN2.cppwrap.EMData.read_images(stack, list_of_particles)
     else:
         for i in range(number_of_proc):
             if myid == i:
-                data = EMAN2_cppwrap.EMData.read_images(stack, list_of_particles)
+                data = EMAN2.cppwrap.EMData.read_images(stack, list_of_particles)
             if ftp == "bdb":
                 mpi.mpi_barrier(mpi.MPI_COMM_WORLD)
 
@@ -282,7 +282,7 @@ def ali2d_MPI(
 
     for im in range(len(data)):
         data[im].set_attr("ID", list_of_particles[im])
-        st = EMAN2_cppwrap.Util.infomask(data[im], mask, False)
+        st = EMAN2.cppwrap.Util.infomask(data[im], mask, False)
         data[im] -= st[0]
         if CTF:
             ctf_params = data[im].get_attr("ctf")
@@ -298,8 +298,8 @@ def ali2d_MPI(
                         ctf_params.ampcont,
                     ]
                 )
-            EMAN2_cppwrap.Util.add_img2(ctf_2_sum, ctfimg)
-            EMAN2_cppwrap.Util.add_img_abs(ctf_abs_sum, ctfimg)
+            EMAN2.cppwrap.Util.add_img2(ctf_2_sum, ctfimg)
+            EMAN2.cppwrap.Util.add_img_abs(ctf_abs_sum, ctfimg)
         if CUDA:
             alpha, sx, sy, mirror, scale = sp_utilities.get_params2D(data[im])
             all_ali_params.extend([alpha, sx, sy, mirror])
@@ -314,9 +314,9 @@ def ali2d_MPI(
         sp_utilities.reduce_EMData_to_root(ctf_2_sum, myid, main_node)
         sp_utilities.reduce_EMData_to_root(ctf_abs_sum, myid, main_node)
         if myid == main_node:
-            adw_img = EMAN2_cppwrap.Util.mult_scalar(ctf_2_sum, snr)
-            EMAN2_cppwrap.Util.div_filter(adw_img, ctf_abs_sum)
-            EMAN2_cppwrap.Util.mul_scalar(adw_img, old_div(float(Ng - 1), (nima - 1)))
+            adw_img = EMAN2.cppwrap.Util.mult_scalar(ctf_2_sum, snr)
+            EMAN2.cppwrap.Util.div_filter(adw_img, ctf_abs_sum)
+            EMAN2.cppwrap.Util.mul_scalar(adw_img, old_div(float(Ng - 1), (nima - 1)))
             adw_img += old_div(float(nima - Ng), (nima - 1))
     else:
         ctf_2_sum = None
@@ -395,7 +395,7 @@ def ali2d_MPI(
                     ave2 = old_div(ave2, (nx * 2) ** 2)
             else:
                 ave1, ave2 = sp_statistics.sum_oe(
-                    data, "a", CTF, EMAN2_cppwrap.EMData()
+                    data, "a", CTF, EMAN2.cppwrap.EMData()
                 )  # pass empty object to prevent calculation of ctf^2
             sp_utilities.reduce_EMData_to_root(ave1, myid, main_node)
             sp_utilities.reduce_EMData_to_root(ave2, myid, main_node)
@@ -403,10 +403,10 @@ def ali2d_MPI(
                 sp_utilities.print_msg("Iteration #%4d\n" % (total_iter))
                 if CTF:
                     tavg_Ng = sp_fundamentals.fft(
-                        EMAN2_cppwrap.Util.divn_filter(
-                            EMAN2_cppwrap.Util.muln_img(
+                        EMAN2.cppwrap.Util.divn_filter(
+                            EMAN2.cppwrap.Util.muln_img(
                                 sp_fundamentals.fft(
-                                    EMAN2_cppwrap.Util.addn_img(ave1, ave2)
+                                    EMAN2.cppwrap.Util.addn_img(ave1, ave2)
                                 ),
                                 adw_img,
                             ),
@@ -414,9 +414,9 @@ def ali2d_MPI(
                         )
                     )
                     tavg = sp_fundamentals.fft(
-                        EMAN2_cppwrap.Util.divn_filter(
+                        EMAN2.cppwrap.Util.divn_filter(
                             sp_fundamentals.fft(
-                                EMAN2_cppwrap.Util.addn_img(ave1, ave2)
+                                EMAN2.cppwrap.Util.addn_img(ave1, ave2)
                             ),
                             ctf_2_sum,
                         )
@@ -449,9 +449,9 @@ def ali2d_MPI(
             if myid == main_node:
                 if Fourvar:
                     tavg = sp_fundamentals.fft(
-                        EMAN2_cppwrap.Util.divn_img(sp_fundamentals.fft(tavg), vav)
+                        EMAN2.cppwrap.Util.divn_img(sp_fundamentals.fft(tavg), vav)
                     )
-                    vav_r = EMAN2_cppwrap.Util.pack_complex_to_real(vav)
+                    vav_r = EMAN2.cppwrap.Util.pack_complex_to_real(vav)
                     if outdir:
                         vav_r.write_image(
                             os.path.join(outdir, "varf.hdf"), total_iter - 1
@@ -732,7 +732,7 @@ def ali2d_base(
 
     if isinstance(stack, (bytes, str)):
         if myid == main_node:
-            total_nima = EMAN2_cppwrap.EMUtil.get_image_count(stack)
+            total_nima = EMAN2.cppwrap.EMUtil.get_image_count(stack)
         else:
             total_nima = 0
         total_nima = sp_utilities.bcast_number_to_all(total_nima)
@@ -741,7 +741,7 @@ def ali2d_base(
         image_start, image_end = MPI_start_end(total_nima, number_of_proc, myid)
         list_of_particles = list_of_particles[image_start:image_end]
         nima = len(list_of_particles)
-        data = EMAN2_cppwrap.EMData.read_images(stack, list_of_particles)
+        data = EMAN2.cppwrap.EMData.read_images(stack, list_of_particles)
 
     else:
         data = stack
@@ -842,21 +842,21 @@ def ali2d_base(
         mode = "F"
 
     if CTF:
-        ctf_abs_sum = EMAN2_cppwrap.EMData(nx, nx, 1, False)
-        ctf_2_sum = EMAN2_cppwrap.EMData(nx, nx, 1, False)
+        ctf_abs_sum = EMAN2.cppwrap.EMData(nx, nx, 1, False)
+        ctf_2_sum = EMAN2.cppwrap.EMData(nx, nx, 1, False)
     else:
         ctf_2_sum = None
 
     for im in range(nima):
         data[im].set_attr("ID", list_of_particles[im])
         sp_utilities.set_params2D(data[im], [0.0, 0.0, 0.0, 0, 1.0], "xform.align2d")
-        st = EMAN2_cppwrap.Util.infomask(data[im], mask, False)
+        st = EMAN2.cppwrap.Util.infomask(data[im], mask, False)
         data[im] -= st[0]
         if CTF:
             ctf_params = data[im].get_attr("ctf")
             ctfimg = sp_morphology.ctf_img(nx, ctf_params)
-            EMAN2_cppwrap.Util.add_img2(ctf_2_sum, ctfimg)
-            EMAN2_cppwrap.Util.add_img_abs(ctf_abs_sum, ctfimg)
+            EMAN2.cppwrap.Util.add_img2(ctf_2_sum, ctfimg)
+            EMAN2.cppwrap.Util.add_img_abs(ctf_abs_sum, ctfimg)
         if random_method == "SHC":
             data[im].set_attr("previousmax", 1.0e-23)
         if phase_flip:
@@ -868,9 +868,9 @@ def ali2d_base(
         sp_utilities.reduce_EMData_to_root(ctf_2_sum, myid, main_node)
         sp_utilities.reduce_EMData_to_root(ctf_abs_sum, myid, main_node)
         if myid == main_node:
-            adw_img = EMAN2_cppwrap.Util.mult_scalar(ctf_2_sum, snr)
-            EMAN2_cppwrap.Util.div_filter(adw_img, ctf_abs_sum)
-            EMAN2_cppwrap.Util.mul_scalar(adw_img, old_div(float(Ng - 1), (nima - 1)))
+            adw_img = EMAN2.cppwrap.Util.mult_scalar(ctf_2_sum, snr)
+            EMAN2.cppwrap.Util.div_filter(adw_img, ctf_abs_sum)
+            EMAN2.cppwrap.Util.mul_scalar(adw_img, old_div(float(Ng - 1), (nima - 1)))
             adw_img += old_div(float(nima - Ng), (nima - 1))
     else:
         ctf_2_sum = None
@@ -907,7 +907,7 @@ def ali2d_base(
         for Iter in range(max_iter):
             total_iter += 1
             ave1, ave2 = sp_statistics.sum_oe(
-                data, "a", CTF, EMAN2_cppwrap.EMData()
+                data, "a", CTF, EMAN2.cppwrap.EMData()
             )  # pass empty object to prevent calculation of ctf^2
             sp_utilities.reduce_EMData_to_root(ave1, myid, main_node)
             sp_utilities.reduce_EMData_to_root(ave2, myid, main_node)
@@ -922,10 +922,10 @@ def ali2d_base(
                 log.add(msg)
                 if CTF:
                     tavg_Ng = sp_fundamentals.fft(
-                        EMAN2_cppwrap.Util.divn_filter(
-                            EMAN2_cppwrap.Util.muln_img(
+                        EMAN2.cppwrap.Util.divn_filter(
+                            EMAN2.cppwrap.Util.muln_img(
                                 sp_fundamentals.fft(
-                                    EMAN2_cppwrap.Util.addn_img(ave1, ave2)
+                                    EMAN2.cppwrap.Util.addn_img(ave1, ave2)
                                 ),
                                 adw_img,
                             ),
@@ -933,9 +933,9 @@ def ali2d_base(
                         )
                     )
                     tavg = sp_fundamentals.fft(
-                        EMAN2_cppwrap.Util.divn_filter(
+                        EMAN2.cppwrap.Util.divn_filter(
                             sp_fundamentals.fft(
-                                EMAN2_cppwrap.Util.addn_img(ave1, ave2)
+                                EMAN2.cppwrap.Util.addn_img(ave1, ave2)
                             ),
                             ctf_2_sum,
                         )
@@ -969,9 +969,9 @@ def ali2d_base(
             if myid == main_node:
                 if Fourvar:
                     tavg = sp_fundamentals.fft(
-                        EMAN2_cppwrap.Util.divn_img(sp_fundamentals.fft(tavg), vav)
+                        EMAN2.cppwrap.Util.divn_img(sp_fundamentals.fft(tavg), vav)
                     )
-                    vav_r = EMAN2_cppwrap.Util.pack_complex_to_real(vav)
+                    vav_r = EMAN2.cppwrap.Util.pack_complex_to_real(vav)
                     if outdir:
                         vav_r.write_image(
                             os.path.join(outdir, "varf.hdf"), total_iter - 1
@@ -1261,7 +1261,7 @@ def mref_ali2d(
     sp_utilities.print_msg("Maskfile                    : %s\n" % (maskfile))
     sp_utilities.print_msg("Inner radius                : %i\n" % (first_ring))
 
-    ima = EMAN2_cppwrap.EMData()
+    ima = EMAN2.cppwrap.EMData()
     ima.read_image(stack, 0)
     nx = ima.get_xsize()
     # default value for the last ring
@@ -1292,7 +1292,7 @@ def mref_ali2d(
         mask = sp_utilities.model_circle(last_ring, nx, nx)
     #  references
     refi = []
-    numref = EMAN2_cppwrap.EMUtil.get_image_count(refim)
+    numref = EMAN2.cppwrap.EMUtil.get_image_count(refim)
     #  CTF stuff
     if CTF:
         ctf_params = ima.get_attr("ctf")
@@ -1312,12 +1312,12 @@ def mref_ali2d(
     # reference images
     params = []
     # read all data
-    data = EMAN2_cppwrap.EMData.read_images(stack)
+    data = EMAN2.cppwrap.EMData.read_images(stack)
     nima = len(data)
     # prepare the reference
     ima.to_zero()
     for j in range(numref):
-        temp = EMAN2_cppwrap.EMData()
+        temp = EMAN2.cppwrap.EMData()
         temp.read_image(refim, j)
         #  eve, odd, numer of even, number of images.  After frc, totav
         refi.append([temp, ima.copy(), 0])
@@ -1335,9 +1335,9 @@ def mref_ali2d(
         mashi = cnx - last_ring - 2
         for j in range(numref):
             refi[j][0].process_inplace("normalize.mask", {"mask": mask, "no_sigma": 1})
-            cimage = EMAN2_cppwrap.Util.Polar2Dm(refi[j][0], cnx, cny, numr, mode)
-            EMAN2_cppwrap.Util.Frngs(cimage, numr)
-            EMAN2_cppwrap.Util.Applyws(cimage, numr, wr)
+            cimage = EMAN2.cppwrap.Util.Polar2Dm(refi[j][0], cnx, cny, numr, mode)
+            EMAN2.cppwrap.Util.Frngs(cimage, numr)
+            EMAN2.cppwrap.Util.Applyws(cimage, numr, wr)
             ringref.append(cimage)
             # zero refi
             refi[j][0].to_zero()
@@ -1354,7 +1354,7 @@ def mref_ali2d(
             if CTF:
                 ctf_params = data[im].get_attr("ctf")
                 if data[im].get_attr("ctf_applied") == 0:
-                    st = EMAN2_cppwrap.Util.infomask(data[im], mask, False)
+                    st = EMAN2.cppwrap.Util.infomask(data[im], mask, False)
                     data[im] -= st[0]
                     data[im] = sp_filter.filt_ctf(data[im], ctf_params)
                     data[im].set_attr("ctf_applied", 1)
@@ -1381,7 +1381,7 @@ def mref_ali2d(
                 mirrort,
                 xiref,
                 peakt,
-            ] = EMAN2_cppwrap.Util.multiref_polar_ali_2d(
+            ] = EMAN2.cppwrap.Util.multiref_polar_ali_2d(
                 data[im], ringref, txrng, tyrng, step, mode, numr, cnx + sxi, cny + syi
             )
             iref = int(xiref)
@@ -1399,7 +1399,7 @@ def mref_ali2d(
             # apply current parameters and add to the average
             temp = sp_fundamentals.rot_shift2D(data[im], alphan, sxn, syn, mn)
             it = im % 2
-            EMAN2_cppwrap.Util.add_img(refi[iref][it], temp)
+            EMAN2.cppwrap.Util.add_img(refi[iref][it], temp)
             if CTF:
                 ctm = sp_morphology.ctf_2(nx, ctf_params)
                 for i in range(lctf):
@@ -1448,7 +1448,7 @@ def mref_ali2d(
                                     (ctf2[j][0][i] + ctf2[j][1][i] + old_div(1.0, snr)),
                                 )
                             refi[j][0] = sp_filter.filt_table(
-                                EMAN2_cppwrap.Util.addn_img(refi[j][0], refi[j][1]), ctm
+                                EMAN2.cppwrap.Util.addn_img(refi[j][0], refi[j][1]), ctm
                             )
                         else:
                             frsc = sp_statistics.fsc(
@@ -1457,8 +1457,8 @@ def mref_ali2d(
                                 1.0,
                                 os.path.join(outdir, "drm_%03d_%04d.txt" % (Iter, j)),
                             )
-                            EMAN2_cppwrap.Util.add_img(refi[j][0], refi[j][1])
-                            EMAN2_cppwrap.Util.mul_scalar(
+                            EMAN2.cppwrap.Util.add_img(refi[j][0], refi[j][1])
+                            EMAN2.cppwrap.Util.mul_scalar(
                                 refi[j][0], old_div(1.0, float(refi[j][2]))
                             )
 
@@ -1501,7 +1501,7 @@ def mref_ali2d(
                                     data[im], alpha, sx, sy, mn
                                 )
                                 it = im % 2
-                                EMAN2_cppwrap.Util.add_img(refi[j][it], temp)
+                                EMAN2.cppwrap.Util.add_img(refi[j][it], temp)
 
                 # write the current average
                 TMP = []
@@ -1573,12 +1573,12 @@ def mref_ali2d_MPI(
         sp_global_def.LOGFILE = os.path.join(outdir, sp_global_def.LOGFILE)
         sp_utilities.print_begin_msg("mref_ali2d_MPI")
 
-    nima = EMAN2_cppwrap.EMUtil.get_image_count(stack)
+    nima = EMAN2.cppwrap.EMUtil.get_image_count(stack)
 
     image_start, image_end = MPI_start_end(nima, number_of_proc, myid)
 
-    nima = EMAN2_cppwrap.EMUtil.get_image_count(stack)
-    ima = EMAN2_cppwrap.EMData()
+    nima = EMAN2.cppwrap.EMUtil.get_image_count(stack)
+    ima = EMAN2.cppwrap.EMData()
     ima.read_image(stack, image_start)
 
     first_ring = int(ir)
@@ -1627,7 +1627,7 @@ def mref_ali2d_MPI(
         mask = sp_utilities.model_circle(last_ring, nx, nx)
     #  references, do them on all processors...
     refi = []
-    numref = EMAN2_cppwrap.EMUtil.get_image_count(refim)
+    numref = EMAN2.cppwrap.EMUtil.get_image_count(refim)
     #  CTF stuff
     if CTF:
         ctf_params = ima.get_attr("ctf")
@@ -1652,13 +1652,13 @@ def mref_ali2d_MPI(
         #  even, odd, numer of even, number of images.  After frc, totav
         refi.append([sp_utilities.get_im(refim, j), ima.copy(), 0])
     #  for each node read its share of data
-    data = EMAN2_cppwrap.EMData.read_images(stack, list(range(image_start, image_end)))
+    data = EMAN2.cppwrap.EMData.read_images(stack, list(range(image_start, image_end)))
     for im in range(image_start, image_end):
         data[im - image_start].set_attr("ID", im)
         if CTF:
             ctf_params = data[im - image_start].get_attr("ctf")
             if data[im - image_start].get_attr("ctf_applied") == 0:
-                st = EMAN2_cppwrap.Util.infomask(data[im - image_start], mask, False)
+                st = EMAN2.cppwrap.Util.infomask(data[im - image_start], mask, False)
                 data[im - image_start] -= st[0]
                 data[im - image_start] = sp_filter.filt_ctf(
                     data[im - image_start], ctf_params
@@ -1680,9 +1680,9 @@ def mref_ali2d_MPI(
             refi[j][0].process_inplace(
                 "normalize.mask", {"mask": mask, "no_sigma": 1}
             )  # normalize reference images to N(0,1)
-            cimage = EMAN2_cppwrap.Util.Polar2Dm(refi[j][0], cnx, cny, numr, mode)
-            EMAN2_cppwrap.Util.Frngs(cimage, numr)
-            EMAN2_cppwrap.Util.Applyws(cimage, numr, wr)
+            cimage = EMAN2.cppwrap.Util.Polar2Dm(refi[j][0], cnx, cny, numr, mode)
+            EMAN2.cppwrap.Util.Frngs(cimage, numr)
+            EMAN2.cppwrap.Util.Applyws(cimage, numr, wr)
             ringref.append(cimage)
             # zero refi
             refi[j][0].to_zero()
@@ -1726,7 +1726,7 @@ def mref_ali2d_MPI(
                 mirrort,
                 xiref,
                 peakt,
-            ] = EMAN2_cppwrap.Util.multiref_polar_ali_2d(
+            ] = EMAN2.cppwrap.Util.multiref_polar_ali_2d(
                 data[im - image_start],
                 ringref,
                 txrng,
@@ -1751,7 +1751,7 @@ def mref_ali2d_MPI(
                 data[im - image_start], alphan, sxn, syn, mn
             )
             it = im % 2
-            EMAN2_cppwrap.Util.add_img(refi[iref][it], temp)
+            EMAN2.cppwrap.Util.add_img(refi[iref][it], temp)
             assign[iref].append(im)
             if CTF:
                 #  I wonder whether params are still there....
@@ -1859,7 +1859,7 @@ def mref_ali2d_MPI(
                                 1.0, (ctf2[j][0][i] + ctf2[j][1][i] + old_div(1.0, snr))
                             )
                         refi[j][0] = sp_filter.filt_table(
-                            EMAN2_cppwrap.Util.addn_img(refi[j][0], refi[j][1]), ctm
+                            EMAN2.cppwrap.Util.addn_img(refi[j][0], refi[j][1]), ctm
                         )
                     else:
                         # frsc = fsc_mask(refi[j][0], refi[j][1], mask, 1.0, os.path.join(outdir,"drm%03d%04d"%(Iter, j)))
@@ -1869,8 +1869,8 @@ def mref_ali2d_MPI(
                             1.0,
                             os.path.join(outdir, "drm%03d%04d.txt" % (Iter, j)),
                         )
-                        EMAN2_cppwrap.Util.add_img(refi[j][0], refi[j][1])
-                        EMAN2_cppwrap.Util.mul_scalar(
+                        EMAN2.cppwrap.Util.add_img(refi[j][0], refi[j][1])
+                        EMAN2.cppwrap.Util.mul_scalar(
                             refi[j][0], old_div(1.0, float(refi[j][2]))
                         )
 
@@ -1989,8 +1989,8 @@ def transform2d(stack_data, stack_data_ali, shift = False, ignore_mirror = False
         from ..libpy.sp_utilities     import compose_transform2m
         from ..libpy.sp_fundamentals  import fshift, mirror
 
-    t = EMAN2_cppwrap.Transform({"type":"2D"})# Transform({"type":"2D"})
-    nima = EMAN2_cppwrap.EMUtil.get_image_count(stack_data)
+    t = EMAN2.cppwrap.Transform({"type":"2D"})# Transform({"type":"2D"})
+    nima = EMAN2.cppwrap.EMUtil.get_image_count(stack_data)
     for im in range(nima):
         data = get_im(stack_data, im)
         al2d = get_params2D(data)
@@ -2027,12 +2027,12 @@ def cpy(ins_list, ous):
     for ins in image_list:
 
         # print ins
-        nima = EMAN2_cppwrap.EMUtil.get_image_count(ins)
+        nima = EMAN2.cppwrap.EMUtil.get_image_count(ins)
         iextension = sp_utilities.file_type(ins)
 
         if nima == 1 and oextension == "spi":
             sp_utilities.get_im(ins).write_image(
-                ous, 0, EMAN2_cppwrap.EMUtil.ImageType.IMAGE_SINGLE_SPIDER
+                ous, 0, EMAN2.cppwrap.EMUtil.ImageType.IMAGE_SINGLE_SPIDER
             )
 
         elif iextension == "bdb" and oextension == "bdb":
@@ -2120,16 +2120,16 @@ def project3d(
         noise_level = None
 
     if isinstance(volume, (bytes, str)):
-        vol = EMAN2_cppwrap.EMData()
+        vol = EMAN2.cppwrap.EMData()
         vol.read_image(volume)
         if mask:
             if isinstance(mask, (bytes, str)):
-                maski = EMAN2_cppwrap.EMData()
+                maski = EMAN2.cppwrap.EMData()
                 maski.read_image(volume)
-                EMAN2_cppwrap.Util.mul_img(vol, maski)
+                EMAN2.cppwrap.Util.mul_img(vol, maski)
                 del maski
             else:
-                EMAN2_cppwrap.Util.mul_img(vol, mask)
+                EMAN2.cppwrap.Util.mul_img(vol, mask)
         nx = vol.get_xsize()
         ny = vol.get_ysize()
         nz = vol.get_zsize()
@@ -2148,12 +2148,12 @@ def project3d(
         if mask:
             vol = vol.copy()
             if isinstance(mask, (bytes, str)):
-                maski = EMAN2_cppwrap.EMData()
+                maski = EMAN2.cppwrap.EMData()
                 maski.read_image(volume)
-                EMAN2_cppwrap.Util.mul_img(vol, maski)
+                EMAN2.cppwrap.Util.mul_img(vol, maski)
                 del maski
             else:
-                EMAN2_cppwrap.Util.mul_img(vol, mask)
+                EMAN2.cppwrap.Util.mul_img(vol, mask)
         nx = vol.get_xsize()
         ny = vol.get_ysize()
         nz = vol.get_zsize()
@@ -2338,7 +2338,7 @@ def project3d(
             if trillinear:
                 if ctfs is not None:
                     proj.set_attr_dict({"is_complex": 0})
-                    EMAN2_cppwrap.Util.mulclreal(
+                    EMAN2.cppwrap.Util.mulclreal(
                         proj, sp_morphology.ctf_img_real(proj.get_ysize(), ctf)
                     )
                 proj.set_attr_dict({"padffted": 1, "is_complex": 1})
@@ -2504,7 +2504,7 @@ def recons3d_n(
         pid_list = sp_utilities.read_text_file(listfile, 0)
         pid_list = list(map(int, pid_list))
     elif group > -1:
-        tmp_list = EMAN2_cppwrap.EMUtil.get_all_attributes(prj_stack, "group")
+        tmp_list = EMAN2.cppwrap.EMUtil.get_all_attributes(prj_stack, "group")
         pid_list = []
         for i in range(len(tmp_list)):
             if tmp_list[i] == group:
@@ -2550,7 +2550,7 @@ def recons3d_n_MPI(
         if listfile:
             pid_list = sp_utilities.read_text_file(listfile, 0)
         elif group > -1:
-            tmp_list = EMAN2_cppwrap.EMUtil.get_all_attributes(prj_stack, "group")
+            tmp_list = EMAN2.cppwrap.EMUtil.get_all_attributes(prj_stack, "group")
             pid_list = []
             for i in range(len(tmp_list)):
                 if tmp_list[i] == group:
@@ -2650,7 +2650,7 @@ def recons3d_trl_MPI(
         finfo = open(infofile, "w")
 
     image_start, image_end = MPI_start_end(nima, nproc, myid)
-    prjlist = EMAN2_cppwrap.EMData.read_images(
+    prjlist = EMAN2.cppwrap.EMData.read_images(
         prj_stack, pid_list[image_start:image_end]
     )
 
@@ -2666,8 +2666,8 @@ def recons3d_trl_MPI(
     if not (finfo is None):
         nimg = 0
 
-    fftvol = EMAN2_cppwrap.EMData()
-    weight = EMAN2_cppwrap.EMData()
+    fftvol = EMAN2.cppwrap.EMData()
+    weight = EMAN2.cppwrap.EMData()
 
     params = {
         "size": target_size,
@@ -2680,7 +2680,7 @@ def recons3d_trl_MPI(
         "weight": weight,
         "do_ctf": do_ctf,
     }
-    r = EMAN2_cppwrap.Reconstructors.get("nn4_ctfw", params)
+    r = EMAN2.cppwrap.Reconstructors.get("nn4_ctfw", params)
     r.setup()
     m = [1.0] * target_size
     is_complex = prjlist[0].get_attr("is_complex")
@@ -2715,13 +2715,13 @@ def recons3d_trl_MPI(
             fftvol = fftvol.symfvol(sym, -1)
             weight = weight.symfvol(sym, -1)  # symmetrize if not asymmetric
         maxr2 = ((old_div(target_window_size, -1)) * 2) ** 2
-        EMAN2_cppwrap.Util.iterefa(fftvol, weight, maxr2, target_window_size)
+        EMAN2.cppwrap.Util.iterefa(fftvol, weight, maxr2, target_window_size)
         fftvol = sp_fundamentals.fft(
             sp_fundamentals.fshift(
                 fftvol, target_window_size, target_window_size, target_window_size
             )
         )
-        fftvol = EMAN2_cppwrap.Util.window(
+        fftvol = EMAN2.cppwrap.Util.window(
             fftvol, target_window_size, target_window_size, target_window_size
         )
         fftvol = sp_morphology.cosinemask(
@@ -2809,7 +2809,7 @@ def header(
         )
         return
 
-    nimage = EMAN2_cppwrap.EMUtil.get_image_count(stack)
+    nimage = EMAN2.cppwrap.EMUtil.get_image_count(stack)
     ext = sp_utilities.file_type(stack)
     if ext == "bdb":
         DB = EMAN2db.db_open_dict(stack)
@@ -2851,7 +2851,7 @@ def header(
                     else:
                         scale = 1.0
                     # set_params2D(img, [alpha, sx, sy, mirror, scale], params[0])
-                    t = EMAN2_cppwrap.Transform(
+                    t = EMAN2.cppwrap.Transform(
                         {
                             "type": "2D",
                             "alpha": alpha,
@@ -2864,7 +2864,7 @@ def header(
                     if ext == "bdb":
                         DB.set_attr(i, "xform.align2d", t)
                     elif ext == "hdf":
-                        EMAN2_cppwrap.EMUtil.write_hdf_attribute(
+                        EMAN2.cppwrap.EMUtil.write_hdf_attribute(
                             stack, "xform.align2d", t, i
                         )
                     il += 5
@@ -2885,14 +2885,14 @@ def header(
                     else:
                         s2y = 0.0
                     # set_params_proj(img, [phi, theta, psi, s2x, s2y], params[0])
-                    t = EMAN2_cppwrap.Transform(
+                    t = EMAN2.cppwrap.Transform(
                         {"type": "spider", "phi": phi, "theta": theta, "psi": psi}
                     )
-                    t.set_trans(EMAN2_cppwrap.Vec2f(-s2x, -s2y))
+                    t.set_trans(EMAN2.cppwrap.Vec2f(-s2x, -s2y))
                     if ext == "bdb":
                         DB.set_attr(i, "xform.projection", t)
                     elif ext == "hdf":
-                        EMAN2_cppwrap.EMUtil.write_hdf_attribute(
+                        EMAN2.cppwrap.EMUtil.write_hdf_attribute(
                             stack, "xform.projection", t, i
                         )
                     il = min(il + 5, len(parmvalues))
@@ -2909,7 +2909,7 @@ def header(
                     mirror = int(extract_value(parmvalues[il + 6]))
                     scale = extract_value(parmvalues[il + 7])
                     # set_params3D(img, [phi, theta, psi, s3x, s3y, s3z, mirror, scale], params[0])
-                    t = EMAN2_cppwrap.Transform(
+                    t = EMAN2.cppwrap.Transform(
                         {
                             "type": "spider",
                             "phi": phi,
@@ -2925,7 +2925,7 @@ def header(
                     if ext == "bdb":
                         DB.set_attr(i, "xform.align3d", t)
                     elif ext == "hdf":
-                        EMAN2_cppwrap.EMUtil.write_hdf_attribute(
+                        EMAN2.cppwrap.EMUtil.write_hdf_attribute(
                             stack, "xform.align3d", t, i
                         )
                     il += 8
@@ -2934,14 +2934,14 @@ def header(
                     if ext == "bdb":
                         DB.set_attr(i, "members", members)
                     elif ext == "hdf":
-                        EMAN2_cppwrap.EMUtil.write_hdf_attribute(
+                        EMAN2.cppwrap.EMUtil.write_hdf_attribute(
                             stack, "members", members, i
                         )
                 elif p.startswith("ISAC_SPLIT_"):
                     if ext == "bdb":
                         DB.set_attr(i, p.strip(), line.strip())
                     elif ext == "hdf":
-                        EMAN2_cppwrap.EMUtil.write_hdf_attribute(
+                        EMAN2.cppwrap.EMUtil.write_hdf_attribute(
                             stack, p.strip(), line.strip(), i
                         )
                 elif p == "ctf":
@@ -2963,7 +2963,7 @@ def header(
                     if ext == "bdb":
                         DB.set_attr(i, "ctf", ctf)
                     elif ext == "hdf":
-                        EMAN2_cppwrap.EMUtil.write_hdf_attribute(stack, "ctf", ctf, i)
+                        EMAN2.cppwrap.EMUtil.write_hdf_attribute(stack, "ctf", ctf, i)
                     il += 6
                 else:
                     # if len(params)!=len(parmvalues):
@@ -2972,7 +2972,7 @@ def header(
                     if ext == "bdb":
                         DB.set_attr(i, p, extract_value(parmvalues[il]))
                     elif ext == "hdf":
-                        EMAN2_cppwrap.EMUtil.write_hdf_attribute(
+                        EMAN2.cppwrap.EMUtil.write_hdf_attribute(
                             stack, p, extract_value(parmvalues[il]), i
                         )
                     il += 1
@@ -2988,7 +2988,7 @@ def header(
                 if zero:
                     if p[:13] == "xform.align2d":
                         # set_params2D(img, [0.0, 0.0, 0.0, 0, 1.0], p)
-                        t = EMAN2_cppwrap.Transform(
+                        t = EMAN2.cppwrap.Transform(
                             {
                                 "type": "2D",
                                 "alpha": 0.0,
@@ -3001,25 +3001,25 @@ def header(
                         if ext == "bdb":
                             DB.set_attr(i, "xform.align2d", t)
                         elif ext == "hdf":
-                            EMAN2_cppwrap.EMUtil.write_hdf_attribute(
+                            EMAN2.cppwrap.EMUtil.write_hdf_attribute(
                                 stack, "xform.align2d", t, i
                             )
                     elif p[:16] == "xform.projection":
                         # set_params_proj(img, [0.0, 0.0, 0.0, 0.0, 0.0], p)
-                        t = EMAN2_cppwrap.Transform({"type": "spider"})
+                        t = EMAN2.cppwrap.Transform({"type": "spider"})
                         if ext == "bdb":
                             DB.set_attr(i, "xform.projection", t)
                         elif ext == "hdf":
-                            EMAN2_cppwrap.EMUtil.write_hdf_attribute(
+                            EMAN2.cppwrap.EMUtil.write_hdf_attribute(
                                 stack, "xform.projection", t, i
                             )
                     elif p[:13] == "xform.align3d":
                         # set_params3D(img, [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0, 1.0], p)
-                        t = EMAN2_cppwrap.Transform({"type": "spider"})
+                        t = EMAN2.cppwrap.Transform({"type": "spider"})
                         if ext == "bdb":
                             DB.set_attr(i, "xform.align3d", t)
                         elif ext == "hdf":
-                            EMAN2_cppwrap.EMUtil.write_hdf_attribute(
+                            EMAN2.cppwrap.EMUtil.write_hdf_attribute(
                                 stack, "xform.align3d", t, i
                             )
                     elif p == "ctf":
@@ -3030,7 +3030,7 @@ def header(
                         if ext == "bdb":
                             DB.set_attr(i, p, 0)
                         elif ext == "hdf":
-                            EMAN2_cppwrap.EMUtil.write_hdf_attribute(stack, p, 0, i)
+                            EMAN2.cppwrap.EMUtil.write_hdf_attribute(stack, p, 0, i)
                 elif one:
                     if p[:6] == "xform." or p == "ctf":
                         sp_global_def.sxprint("Invalid operation!")
@@ -3040,7 +3040,7 @@ def header(
                         if ext == "bdb":
                             DB.set_attr(i, p, 1)
                         elif ext == "hdf":
-                            EMAN2_cppwrap.EMUtil.write_hdf_attribute(stack, p, 1, i)
+                            EMAN2.cppwrap.EMUtil.write_hdf_attribute(stack, p, 1, i)
                 elif doset:
                     if p[:6] == "xform." or p == "ctf":
                         sp_global_def.sxprint("Invalid operation!")
@@ -3050,12 +3050,12 @@ def header(
                         if ext == "bdb":
                             DB.set_attr(i, p, set)
                         elif ext == "hdf":
-                            EMAN2_cppwrap.EMUtil.write_hdf_attribute(stack, p, set, i)
+                            EMAN2.cppwrap.EMUtil.write_hdf_attribute(stack, p, set, i)
                 elif consecutive:
                     if ext == "bdb":
                         DB.set_attr(i, p, i)
                     elif ext == "hdf":
-                        EMAN2_cppwrap.EMUtil.write_hdf_attribute(stack, p, i, i)
+                        EMAN2.cppwrap.EMUtil.write_hdf_attribute(stack, p, i, i)
                 elif randomize:
                     if p[:13] == "xform.align2d":
                         alpha = random.random() * 360.0
@@ -3064,7 +3064,7 @@ def header(
                         mirror = random.randint(0, 1)
                         scale = 1.0
                         # set_params2D(img, [alpha, sx, sy, mirror, scale], p)
-                        t = EMAN2_cppwrap.Transform(
+                        t = EMAN2.cppwrap.Transform(
                             {
                                 "type": "2D",
                                 "alpha": alpha,
@@ -3077,7 +3077,7 @@ def header(
                         if ext == "bdb":
                             DB.set_attr(i, "xform.align2d", t)
                         elif ext == "hdf":
-                            EMAN2_cppwrap.EMUtil.write_hdf_attribute(
+                            EMAN2.cppwrap.EMUtil.write_hdf_attribute(
                                 stack, "xform.align2d", t, i
                             )
                     elif p[:16] == "xform.projection":
@@ -3087,14 +3087,14 @@ def header(
                         s2x = random.random() * 4.0 - 2.0
                         s2y = random.random() * 4.0 - 2.0
                         # set_params_proj(img, [phi, theta, psi, s2x, s2y], p)
-                        t = EMAN2_cppwrap.Transform(
+                        t = EMAN2.cppwrap.Transform(
                             {"type": "spider", "phi": phi, "theta": theta, "psi": psi}
                         )
-                        t.set_trans(EMAN2_cppwrap.Vec2f(-s2x, -s2y))
+                        t.set_trans(EMAN2.cppwrap.Vec2f(-s2x, -s2y))
                         if ext == "bdb":
                             DB.set_attr(i, "xform.projection", t)
                         elif ext == "hdf":
-                            EMAN2_cppwrap.EMUtil.write_hdf_attribute(
+                            EMAN2.cppwrap.EMUtil.write_hdf_attribute(
                                 stack, "xform.projection", t, i
                             )
                     elif p[:13] == "xform.align3d":
@@ -3107,7 +3107,7 @@ def header(
                         mirror = random.randint(0, 1)
                         scale = 1.0
                         # set_params3D(img, [phi, theta, psi, s3x, s3y, s3z, mirror, scale], p)
-                        t = EMAN2_cppwrap.Transform(
+                        t = EMAN2.cppwrap.Transform(
                             {
                                 "type": "spider",
                                 "phi": phi,
@@ -3123,7 +3123,7 @@ def header(
                         if ext == "bdb":
                             DB.set_attr(i, "xform.align3d", t)
                         elif ext == "hdf":
-                            EMAN2_cppwrap.EMUtil.write_hdf_attribute(
+                            EMAN2.cppwrap.EMUtil.write_hdf_attribute(
                                 stack, "xform.align3d", t, i
                             )
                     else:
@@ -3137,7 +3137,7 @@ def header(
                         mirror = random.randint(0, 1)
                         scale = 1.0
                         # set_params2D(img, [alpha, sx, sy, mirror, scale], p)
-                        t = EMAN2_cppwrap.Transform(
+                        t = EMAN2.cppwrap.Transform(
                             {
                                 "type": "2D",
                                 "alpha": alpha,
@@ -3150,7 +3150,7 @@ def header(
                         if ext == "bdb":
                             DB.set_attr(i, "xform.align2d", t)
                         elif ext == "hdf":
-                            EMAN2_cppwrap.EMUtil.write_hdf_attribute(
+                            EMAN2.cppwrap.EMUtil.write_hdf_attribute(
                                 stack, "xform.align2d", t, i
                             )
                     elif p[:16] == "xform.projection":
@@ -3161,14 +3161,14 @@ def header(
                         s2y = 0.0
                         # set_params_proj(img, [phi, theta, psi, s2x, s2y], p)
 
-                        t = EMAN2_cppwrap.Transform(
+                        t = EMAN2.cppwrap.Transform(
                             {"type": "spider", "phi": phi, "theta": theta, "psi": psi}
                         )
-                        t.set_trans(EMAN2_cppwrap.Vec2f(-s2x, -s2y))
+                        t.set_trans(EMAN2.cppwrap.Vec2f(-s2x, -s2y))
                         if ext == "bdb":
                             DB.set_attr(i, "xform.projection", t)
                         elif ext == "hdf":
-                            EMAN2_cppwrap.EMUtil.write_hdf_attribute(
+                            EMAN2.cppwrap.EMUtil.write_hdf_attribute(
                                 stack, "xform.projection", t, i
                             )
                     elif p[:13] == "xform.align3d":
@@ -3181,7 +3181,7 @@ def header(
                         mirror = random.randint(0, 1)
                         scale = 1.0
                         # set_params3D(img, [phi, theta, psi, s3x, s3y, s3z, mirror, scale], p)
-                        t = EMAN2_cppwrap.Transform(
+                        t = EMAN2.cppwrap.Transform(
                             {
                                 "type": "spider",
                                 "phi": phi,
@@ -3197,7 +3197,7 @@ def header(
                         if ext == "bdb":
                             DB.set_attr(i, "xform.align3d", t)
                         elif ext == "hdf":
-                            EMAN2_cppwrap.EMUtil.write_hdf_attribute(
+                            EMAN2.cppwrap.EMUtil.write_hdf_attribute(
                                 stack, "xform.align3d", t, i
                             )
                     else:
@@ -3222,7 +3222,7 @@ def header(
                             )
 
                         elif ext == "hdf":
-                            t = EMAN2_cppwrap.EMUtil.read_hdf_attribute(
+                            t = EMAN2.cppwrap.EMUtil.read_hdf_attribute(
                                 stack, "xform.align2d", i
                             )
                             d = t.get_params("2D")
@@ -3248,7 +3248,7 @@ def header(
                             )
 
                         elif ext == "hdf":
-                            t = EMAN2_cppwrap.EMUtil.read_hdf_attribute(
+                            t = EMAN2.cppwrap.EMUtil.read_hdf_attribute(
                                 stack, "xform.projection", i
                             )
                             d = t.get_params("spider")
@@ -3277,7 +3277,7 @@ def header(
                             )
 
                         elif ext == "hdf":
-                            t = EMAN2_cppwrap.EMUtil.read_hdf_attribute(
+                            t = EMAN2.cppwrap.EMUtil.read_hdf_attribute(
                                 stack, "xform.align3d", i
                             )
                             d = t.get_params("spider")
@@ -3300,7 +3300,7 @@ def header(
                         if ext == "bdb":
                             t = DB.get_attr(i, "ctf")
                         elif ext == "hdf":
-                            t = EMAN2_cppwrap.EMUtil.read_hdf_attribute(stack, "ctf", i)
+                            t = EMAN2.cppwrap.EMUtil.read_hdf_attribute(stack, "ctf", i)
                         fexp.write(
                             "%16.6f %16.6f %16.6f %16.6f %16.6f %16.6f %16.6f %16.6f"
                             % (
@@ -3323,7 +3323,7 @@ def header(
                             fexp.write(
                                 "%15s "
                                 % str(
-                                    EMAN2_cppwrap.EMUtil.read_hdf_attribute(stack, p, i)
+                                    EMAN2.cppwrap.EMUtil.read_hdf_attribute(stack, p, i)
                                 )
                             )
                 elif fprint:
@@ -3345,7 +3345,7 @@ def header(
                             )
 
                         elif ext == "hdf":
-                            t = EMAN2_cppwrap.EMUtil.read_hdf_attribute(
+                            t = EMAN2.cppwrap.EMUtil.read_hdf_attribute(
                                 stack, "xform.align2d", i
                             )
                             d = t.get_params("2D")
@@ -3371,7 +3371,7 @@ def header(
                                 end=" ",
                             )
                         elif ext == "hdf":
-                            t = EMAN2_cppwrap.EMUtil.read_hdf_attribute(
+                            t = EMAN2.cppwrap.EMUtil.read_hdf_attribute(
                                 stack, "xform.projection", i
                             )
                             d = t.get_params("spider")
@@ -3400,7 +3400,7 @@ def header(
                                 end=" ",
                             )
                         elif ext == "hdf":
-                            t = EMAN2_cppwrap.EMUtil.read_hdf_attribute(
+                            t = EMAN2.cppwrap.EMUtil.read_hdf_attribute(
                                 stack, "xform.align3d", i
                             )
                             d = t.get_params("spider")
@@ -3423,7 +3423,7 @@ def header(
                         if ext == "bdb":
                             t = DB.get_attr(i, "ctf")
                         elif ext == "hdf":
-                            t = EMAN2_cppwrap.EMUtil.read_hdf_attribute(stack, "ctf", i)
+                            t = EMAN2.cppwrap.EMUtil.read_hdf_attribute(stack, "ctf", i)
                         print(
                             "%16.6f %16.6f %16.6f %16.6f %16.6f %16.6f %16.6f %16.6f"
                             % (
@@ -3446,7 +3446,7 @@ def header(
                             print(
                                 "%15s"
                                 % str(
-                                    EMAN2_cppwrap.EMUtil.read_hdf_attribute(stack, p, i)
+                                    EMAN2.cppwrap.EMUtil.read_hdf_attribute(stack, p, i)
                                 ),
                                 end=" ",
                             )
@@ -3457,8 +3457,8 @@ def header(
                         t = DB.get_attr(i, p)
                         DB.set_attr(i, p + suffix, t)
                     elif ext == "hdf":
-                        t = EMAN2_cppwrap.EMUtil.read_hdf_attribute(stack, p, i)
-                        EMAN2_cppwrap.EMUtil.write_hdf_attribute(
+                        t = EMAN2.cppwrap.EMUtil.read_hdf_attribute(stack, p, i)
+                        EMAN2.cppwrap.EMUtil.write_hdf_attribute(
                             stack, p + suffix, t, i
                         )
 
@@ -3483,8 +3483,8 @@ def header(
                             t = DB.get_attr(i, p)
                             DB.set_attr(i, "xform.align2d", t)
                         elif ext == "hdf":
-                            t = EMAN2_cppwrap.EMUtil.read_hdf_attribute(stack, p, i)
-                            EMAN2_cppwrap.EMUtil.write_hdf_attribute(
+                            t = EMAN2.cppwrap.EMUtil.read_hdf_attribute(stack, p, i)
+                            EMAN2.cppwrap.EMUtil.write_hdf_attribute(
                                 stack, "xform.align2d", t, i
                             )
                     elif p[:16] == "xform.projection":
@@ -3493,8 +3493,8 @@ def header(
                             t = DB.get_attr(i, p)
                             DB.set_attr(i, "xform.projection", t)
                         elif ext == "hdf":
-                            t = EMAN2_cppwrap.EMUtil.read_hdf_attribute(stack, p, i)
-                            EMAN2_cppwrap.EMUtil.write_hdf_attribute(
+                            t = EMAN2.cppwrap.EMUtil.read_hdf_attribute(stack, p, i)
+                            EMAN2.cppwrap.EMUtil.write_hdf_attribute(
                                 stack, "xform.projection", t, i
                             )
                     elif p[:13] == "xform.align3d":
@@ -3504,8 +3504,8 @@ def header(
                             DB.set_attr(i, "xform.align3d", t)
                     elif ext == "hdf":
                         for i in range(nimage):
-                            t = EMAN2_cppwrap.EMUtil.read_hdf_attribute(stack, p, i)
-                            EMAN2_cppwrap.EMUtil.write_hdf_attribute(
+                            t = EMAN2.cppwrap.EMUtil.read_hdf_attribute(stack, p, i)
+                            EMAN2.cppwrap.EMUtil.write_hdf_attribute(
                                 stack, "xform.align3d", t, i
                             )
                     else:
@@ -3514,12 +3514,12 @@ def header(
                             t = DB.get_attr(i, p)
                             DB.set_attr(i, p[: -len(suffix)], t)
                         elif ext == "hdf":
-                            t = EMAN2_cppwrap.EMUtil.read_hdf_attribute(stack, p, i)
-                            EMAN2_cppwrap.EMUtil.write_hdf_attribute(
+                            t = EMAN2.cppwrap.EMUtil.read_hdf_attribute(stack, p, i)
+                            EMAN2.cppwrap.EMUtil.write_hdf_attribute(
                                 stack, p[: -len(suffix)], t, i
                             )
                 elif delete:
-                    img = EMAN2_cppwrap.EMData()
+                    img = EMAN2.cppwrap.EMData()
                     img.read_image(stack, i, True)
                     img.del_attr(p)
                     sp_utilities.write_header(stack, img, i)
@@ -3745,14 +3745,14 @@ def within_group_refinement(
                 # tavg.write_image('tata.hdf',total_iter-1)
     else:
         if CTF:
-            ctf2 = EMAN2_cppwrap.EMData(nx, nx, 1, False)
+            ctf2 = EMAN2.cppwrap.EMData(nx, nx, 1, False)
             cdata = []
             for im in data:
                 ctt = sp_morphology.ctf_img(nx, im.get_attr("ctf"))
-                EMAN2_cppwrap.Util.add_img2(ctf2, ctt)
+                EMAN2.cppwrap.Util.add_img2(ctf2, ctt)
                 cdata.append(
                     sp_fundamentals.fft(
-                        EMAN2_cppwrap.Util.muln_img(sp_fundamentals.fft(im), ctt)
+                        EMAN2.cppwrap.Util.muln_img(sp_fundamentals.fft(im), ctt)
                     )
                 )
         else:
@@ -3766,7 +3766,7 @@ def within_group_refinement(
                 tavg = sp_statistics.ave_series(cdata)
                 if CTF:
                     tavg = sp_fundamentals.fft(
-                        EMAN2_cppwrap.Util.divn_img(sp_fundamentals.fft(tavg), ctf2)
+                        EMAN2.cppwrap.Util.divn_img(sp_fundamentals.fft(tavg), ctf2)
                     )
                 if FH > 0.0:
                     fl = 0.1 + old_div((FH - 0.1) * Iter, float(max_iter - 1))
@@ -3843,7 +3843,7 @@ def refinement_2d_local(data, ou, arange, xrng, yrng, CTF=True, SNR=1.0e10):
         nima = len(mstack)
         tima = list(range(nima))
         random.shuffle(tima)
-        mask = EMAN2_cppwrap.Util.unrollmask(nx, nx)
+        mask = EMAN2.cppwrap.Util.unrollmask(nx, nx)
 
         sqct2 = []
         sqave = []
@@ -3854,15 +3854,15 @@ def refinement_2d_local(data, ou, arange, xrng, yrng, CTF=True, SNR=1.0e10):
             qave = mstack[ib][7].copy()
             qct2 = mstack[ib][5].copy()
             for i in range(ib + 1, ie):
-                EMAN2_cppwrap.Util.add_img(qave, mstack[i][7])
-                EMAN2_cppwrap.Util.add_img(qct2, mstack[i][5])
+                EMAN2.cppwrap.Util.add_img(qave, mstack[i][7])
+                EMAN2.cppwrap.Util.add_img(qct2, mstack[i][5])
 
             qct2 += old_div(1.0, SNR)
             sqave.append(qave)
             sqct2.append(qct2)
             diva = sp_utilities.model_blank(qct2.get_xsize(), qct2.get_ysize(), 1, 1.0)
-            EMAN2_cppwrap.Util.div_img(diva, qct2)
-            parts.append(EMAN2_cppwrap.Util.mulnclreal(qave, diva))
+            EMAN2.cppwrap.Util.div_img(diva, qct2)
+            parts.append(EMAN2.cppwrap.Util.mulnclreal(qave, diva))
 
         # fff = fsc(parts[0],parts[1])
         ffm = sp_statistics.fsc(
@@ -3884,15 +3884,15 @@ def refinement_2d_local(data, ou, arange, xrng, yrng, CTF=True, SNR=1.0e10):
             fl2 = fl
         # print("  FSC     %6.4f   %6.4f"%(fl1,fl2))
 
-        qave = EMAN2_cppwrap.Util.addn_img(sqave[0], sqave[1])
-        qct2 = EMAN2_cppwrap.Util.addn_img(sqct2[0], sqct2[1])
+        qave = EMAN2.cppwrap.Util.addn_img(sqave[0], sqave[1])
+        qct2 = EMAN2.cppwrap.Util.addn_img(sqct2[0], sqct2[1])
         diva = sp_utilities.model_blank(qct2.get_xsize(), qct2.get_ysize(), 1, 1.0)
-        EMAN2_cppwrap.Util.div_img(diva, qct2)
-        EMAN2_cppwrap.Util.mulclreal(qave, diva)
+        EMAN2.cppwrap.Util.div_img(diva, qct2)
+        EMAN2.cppwrap.Util.mulclreal(qave, diva)
         if fl > 0.0:
             qave = sp_filter.filt_tanl(qave, fl2, aa)
 
-        L2 = EMAN2_cppwrap.Util.innerproduct(qave, qave, None)
+        L2 = EMAN2.cppwrap.Util.innerproduct(qave, qave, None)
         return qave, L2, fl2
 
     def iteration_2Dshc(mstack, ave, shifts, angles):
@@ -3968,7 +3968,7 @@ def refinement_2d_local(data, ou, arange, xrng, yrng, CTF=True, SNR=1.0e10):
                         mstack[i][3][2],
                         interpolation_method="fourier",
                     )
-                    ctf_rot = EMAN2_cppwrap.EMAN2Ctf()
+                    ctf_rot = EMAN2.cppwrap.EMAN2Ctf()
                     ctf_rot.copy_from(mstack[i][2])
                     if mir == 0:
                         ctf_rot.dfang = ctf_rot.dfang + mstack[i][1][0] + alphaf
@@ -4000,7 +4000,7 @@ def refinement_2d_local(data, ou, arange, xrng, yrng, CTF=True, SNR=1.0e10):
             ctf_params = sp_utilities.generate_ctf(
                 [1.0e-5, 0.0, 300.0, 1.0, 0.0, 100.0, 0.0, 0]
             )  # fake, values approximately one.
-        ctf_rot = EMAN2_cppwrap.EMAN2Ctf()
+        ctf_rot = EMAN2.cppwrap.EMAN2Ctf()
         ctf_rot.copy_from(ctf_params)
         ctc = sp_morphology.ctf_img_real(nx, ctf_params)
         alpha, sx, sy, mir, _ = sp_utilities.get_params2D(ima)
@@ -4009,16 +4009,16 @@ def refinement_2d_local(data, ou, arange, xrng, yrng, CTF=True, SNR=1.0e10):
             0.0, sx, sy, 0, -alpha, 0.0, 0.0, 0
         )
         ima = sp_fundamentals.fshift(ima, sx_c, sy_c)
-        st = EMAN2_cppwrap.Util.infomask(ima, cosine_mask, True)
+        st = EMAN2.cppwrap.Util.infomask(ima, cosine_mask, True)
         ima -= st[0]
         ima = old_div(ima, st[1])
         pwrot.append(
-            sp_fundamentals.rops_table(EMAN2_cppwrap.Util.muln_img(ima, outside_mask))
+            sp_fundamentals.rops_table(EMAN2.cppwrap.Util.muln_img(ima, outside_mask))
         )
         #  Now that the image is centered, normalize and apply mask
-        EMAN2_cppwrap.Util.mul_img(ima, cosine_mask)
+        EMAN2.cppwrap.Util.mul_img(ima, cosine_mask)
         ima = sp_fundamentals.fft(
-            EMAN2_cppwrap.Util.mulnclreal(sp_fundamentals.fft(ima), ctc)
+            EMAN2.cppwrap.Util.mulnclreal(sp_fundamentals.fft(ima), ctc)
         )
         if mir:
             ima.process_inplace("xform.mirror", {"axis": "x"})
@@ -4085,7 +4085,7 @@ def refinement_2d_local(data, ou, arange, xrng, yrng, CTF=True, SNR=1.0e10):
     aa = 0.02
     iter = 0
     while got_better:
-        avem = EMAN2_cppwrap.Util.muln_img(
+        avem = EMAN2.cppwrap.Util.muln_img(
             sp_fundamentals.fft(sp_filter.filt_table(qave, avp)), cosine_mask
         )
         got_better = iteration_2Dshc(mstack, avem, shifts, angles)

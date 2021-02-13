@@ -44,7 +44,7 @@ import sp_global_def
 import numpy
 import weakref
 import EMAN2db
-import EMAN2_cppwrap
+import EMAN2.cppwrap
 from os import path, mkdir
 from pickle import loads as pickle_loads
 import threading
@@ -441,9 +441,9 @@ class Test_Stacks(unittest.TestCase):
         # img1 = EMAN2db.db_read_images("bdb:/home/adnan/DemoResults/06_SUBSTACK_ANO#isac_substack")
         # print(img1[0].get_2dview())
 
-        e = EMAN2_cppwrap.EMData()
+        e = EMAN2.cppwrap.EMData()
         e.read_image("bdb:/home/adnan/DemoResults/04_ISAC#stack_ali2d", 5)
-        d = EMAN2_cppwrap.EMData()
+        d = EMAN2.cppwrap.EMData()
         d.read_image("bdb:/home/adnan/DemoResults/04_ISAC#case4stack", 5)
         img = EMAN2db.EMData.read_images("bdb:/home/adnan/DemoResults/04_ISAC#case4stack")
         self.assertTrue(numpy.array_equal(e.get_2dview(), d.get_2dview()))

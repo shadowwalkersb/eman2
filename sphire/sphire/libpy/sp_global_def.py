@@ -40,7 +40,7 @@ Suite 330, Boston, MA  02111-1307 USA
 """
 
 # --------------------------------------------------------------------[ header ]
-import EMAN2_cppwrap
+import EMAN2.cppwrap
 import EMAN2_meta
 import inspect
 import mpi
@@ -287,11 +287,11 @@ def ERROR(message, where="", action=1, myid=0):
 
 
 # set global random seed
-rand_seed = EMAN2_cppwrap.Util.get_randnum_seed()
+rand_seed = EMAN2.cppwrap.Util.get_randnum_seed()
 random.seed(rand_seed)
 
-rand_seed = EMAN2_cppwrap.Util.get_randnum_seed()
-EMAN2_cppwrap.Util.set_randnum_seed(rand_seed)
+rand_seed = EMAN2.cppwrap.Util.get_randnum_seed()
+EMAN2.cppwrap.Util.set_randnum_seed(rand_seed)
 
 # ___________________________________________ User settings: change as necessary
 

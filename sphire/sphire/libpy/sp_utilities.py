@@ -40,7 +40,7 @@ this program; if not, write to the Free Software Foundation, Inc., 59 Temple
 Place, Suite 330, Boston, MA  02111-1307 USA
 """
 import EMAN2
-import EMAN2_cppwrap
+import EMAN2.cppwrap
 import EMAN2db
 import datetime
 import errno
@@ -321,7 +321,7 @@ def compose_transform2(alpha1, sx1, sy1, scale1, alpha2, sx2, sy2, scale2):
 		   angles in degrees
 	"""
 
-    t1 = EMAN2_cppwrap.Transform(
+    t1 = EMAN2.cppwrap.Transform(
         {
             "type": "2D",
             "alpha": alpha1,
@@ -331,7 +331,7 @@ def compose_transform2(alpha1, sx1, sy1, scale1, alpha2, sx2, sy2, scale2):
             "scale": scale1,
         }
     )
-    t2 = EMAN2_cppwrap.Transform(
+    t2 = EMAN2.cppwrap.Transform(
         {
             "type": "2D",
             "alpha": alpha2,
@@ -368,7 +368,7 @@ def compose_transform2m(
 		   angles in degrees
 	"""
 
-	t1 = EMAN2_cppwrap.Transform(
+	t1 = EMAN2.cppwrap.Transform(
 		{
 			"type": "2D",
 			"alpha": alpha1,
@@ -378,7 +378,7 @@ def compose_transform2m(
 			"scale": scale1,
 		}
 	)
-	t2 = EMAN2_cppwrap.Transform(
+	t2 = EMAN2.cppwrap.Transform(
 		{
 			"type": "2D",
 			"alpha": alpha2,
@@ -405,7 +405,7 @@ def compose_transform3(
 		   angles in degrees
 	"""
 
-    R1 = EMAN2_cppwrap.Transform(
+    R1 = EMAN2.cppwrap.Transform(
         {
             "type": "spider",
             "phi": float(phi1),
@@ -418,7 +418,7 @@ def compose_transform3(
             "scale": float(scale1),
         }
     )
-    R2 = EMAN2_cppwrap.Transform(
+    R2 = EMAN2.cppwrap.Transform(
         {
             "type": "spider",
             "phi": float(phi2),
@@ -442,7 +442,7 @@ def combine_params2(alpha1, sx1, sy1, mirror1, alpha2, sx2, sy2, mirror2):
 	  Combined parameters correspond to image first transformed by set 1 followed by set 2.
 	"""
 
-    t1 = EMAN2_cppwrap.Transform(
+    t1 = EMAN2.cppwrap.Transform(
         {
             "type": "2D",
             "alpha": alpha1,
@@ -452,7 +452,7 @@ def combine_params2(alpha1, sx1, sy1, mirror1, alpha2, sx2, sy2, mirror2):
             "scale": 1.0,
         }
     )
-    t2 = EMAN2_cppwrap.Transform(
+    t2 = EMAN2.cppwrap.Transform(
         {
             "type": "2D",
             "alpha": alpha2,
@@ -474,7 +474,7 @@ def inverse_transform2(alpha, tx=0.0, ty=0.0, mirror=0):
 		Usage: nalpha, ntx, nty, mirror = inverse_transform2(alpha,tx,ty,mirror)
 	"""
 
-    t = EMAN2_cppwrap.Transform(
+    t = EMAN2.cppwrap.Transform(
         {
             "type": "2D",
             "alpha": alpha,
@@ -499,9 +499,9 @@ def drop_image(imagename, destination, itype="h"):
 
     if type(destination) == type(""):
         if itype == "h":
-            imgtype = EMAN2_cppwrap.EMUtil.ImageType.IMAGE_HDF
+            imgtype = EMAN2.cppwrap.EMUtil.ImageType.IMAGE_HDF
         elif itype == "s":
-            imgtype = EMAN2_cppwrap.EMUtil.ImageType.IMAGE_SINGLE_SPIDER
+            imgtype = EMAN2.cppwrap.EMUtil.ImageType.IMAGE_SINGLE_SPIDER
         else:
             sp_global_def.ERROR("unknown image type", "drop_image", 1)
         imagename.write_image(destination, 0, imgtype)
@@ -712,16 +712,16 @@ def center_2D(
         pass  # IMPORTIMPORTIMPORT from ..libpy.sp_utilities import model_blank
         pass  # IMPORTIMPORTIMPORT from EMAN2 import rsconvolution
 
-        p = EMAN2_cppwrap.Util.infomask(image_to_be_centered, None, True)
+        p = EMAN2.cppwrap.Util.infomask(image_to_be_centered, None, True)
         cc = sp_morphology.binarize(
-            EMAN2_cppwrap.rsconvolution(
+            EMAN2.cppwrap.rsconvolution(
                 sp_morphology.binarize(image_to_be_centered, p[0] + p[1]),
                 model_blank(5, 5, 1, old_div(1.0, (5.0 * 5.0))),
             ),
             0.5,
         )
         c = sp_fundamentals.ccf(cc, self_defined_reference)
-        p = EMAN2_cppwrap.Util.infomask(c, None, True)[3]
+        p = EMAN2.cppwrap.Util.infomask(c, None, True)[3]
         nx = c.get_xsize()
         ny = c.get_ysize()
         cx = old_div(nx, 2)
@@ -760,7 +760,7 @@ def center_2D(
             reference = sp_fundamentals.rot_avg_image(tmp_image)
             ccmap = sp_fundamentals.ccf(tmp_image, reference)
             if searching_range > 0:
-                ccmap = EMAN2_cppwrap.Util.window(
+                ccmap = EMAN2.cppwrap.Util.window(
                     ccmap, searching_range, searching_range, 1, 0, 0, 0
                 )
             peak = peak_search(ccmap)
@@ -778,7 +778,7 @@ def center_2D(
         ny = image_to_be_centered.get_ysize()
         r = old_div(nx, 2) - 2
         mask = model_circle(r, nx, ny)
-        [mean, sigma, xmin, xmax] = EMAN2_cppwrap.Util.infomask(
+        [mean, sigma, xmin, xmax] = EMAN2.cppwrap.Util.infomask(
             image_to_be_centered, mask, True
         )
         new_image = sp_morphology.threshold_to_minval(
@@ -805,16 +805,16 @@ def center_2D(
         if center_method == 3:
             do1 = model_gauss(Gauss_radius_outter, nx, ny)
             do2 = model_gauss(Gauss_radius_inner, nx, ny)
-            s = EMAN2_cppwrap.Util.infomask(do1, None, True)
+            s = EMAN2.cppwrap.Util.infomask(do1, None, True)
             do1 = old_div(do1, s[3])
-            s = EMAN2_cppwrap.Util.infomask(do2, None, True)
+            s = EMAN2.cppwrap.Util.infomask(do2, None, True)
             do2 = old_div(do2, s[3])
             reference = do1 - do2
         if center_method == 4:
             reference = self_defined_reference
         ccmap = sp_fundamentals.ccf(image_to_be_centered, reference)
         if searching_range > 1:
-            ccmap = EMAN2_cppwrap.Util.window(
+            ccmap = EMAN2.cppwrap.Util.window(
                 ccmap, searching_range, searching_range, 1, 0, 0, 0
             )
         peak = peak_search(ccmap)
@@ -837,7 +837,7 @@ def even_angles_cd(
 
     angles = []
     if method == "P":
-        temp = EMAN2_cppwrap.Util.even_angles(delta, theta1, theta2, phi1, phi2)
+        temp = EMAN2.cppwrap.Util.even_angles(delta, theta1, theta2, phi1, phi2)
         # 		                                              phi, theta, psi
         for i in range(old_div(len(temp), 3)):
             angles.append([temp[3 * i], temp[3 * i + 1], temp[3 * i + 2]])
@@ -903,13 +903,13 @@ def gauss_edge(sharp_edge_image, kernel_size=7, gauss_standard_dev=3):
         kern = model_gauss(gauss_standard_dev, kernel_size, kernel_size)
     else:
         kern = model_gauss(gauss_standard_dev, kernel_size)
-    aves = EMAN2_cppwrap.Util.infomask(kern, None, False)
+    aves = EMAN2.cppwrap.Util.infomask(kern, None, False)
     nx = kern.get_xsize()
     ny = kern.get_ysize()
     nz = kern.get_zsize()
 
     kern = old_div(kern, aves[0] * nx * ny * nz)
-    return EMAN2_cppwrap.rsconvolution(sharp_edge_image, kern)
+    return EMAN2.cppwrap.rsconvolution(sharp_edge_image, kern)
 
 
 def get_image(imagename, nx=0, ny=1, nz=1, im=0):
@@ -919,10 +919,10 @@ def get_image(imagename, nx=0, ny=1, nz=1, im=0):
 	or     myimage = readImage(name_of_existing_image)
 	"""
     if type(imagename) == type(""):
-        e = EMAN2_cppwrap.EMData()
+        e = EMAN2.cppwrap.EMData()
         e.read_image(imagename, im)
     elif not imagename:
-        e = EMAN2_cppwrap.EMData()
+        e = EMAN2.cppwrap.EMData()
         if nx > 0:
             e.set_size(nx, ny, nz)
     else:
@@ -937,7 +937,7 @@ def get_im(stackname, im=0):
 	   or: myimage = get_im( data, im )
 	"""
     if type(stackname) == type(""):
-        e = EMAN2_cppwrap.EMData()
+        e = EMAN2.cppwrap.EMData()
         e.read_image(stackname, im)
         return e
     else:
@@ -952,7 +952,7 @@ def get_image_data(img):
 		as well (and vice versa).
 	"""
 
-    return EMAN2_cppwrap.EMNumPy.em2numpy(img)
+    return EMAN2.cppwrap.EMNumPy.em2numpy(img)
 
 
 def get_symt(symmetry):
@@ -964,7 +964,7 @@ def get_symt(symmetry):
     trans = []
     for q in scl.symangles:
         trans.append(
-            EMAN2_cppwrap.Transform(
+            EMAN2.cppwrap.Transform(
                 {"type": "spider", "phi": q[0], "theta": q[1], "psi": q[2]}
             )
         )
@@ -993,7 +993,7 @@ def model_circle(r, nx, ny, nz=1):
     """
 	Create a centered circle (or sphere) having radius r.
 	"""
-    e = EMAN2_cppwrap.EMData()
+    e = EMAN2.cppwrap.EMData()
     e.set_size(nx, ny, nz)
     e.process_inplace("testimage.circlesphere", {"radius": r, "fill": 1})
     return e
@@ -1011,7 +1011,7 @@ def model_gauss(
     zcenter=None,
 ):
     """Multiline Comment6"""
-    e = EMAN2_cppwrap.EMData()
+    e = EMAN2.cppwrap.EMData()
     e.set_size(nx, ny, nz)
     if ysigma == None:
         ysigma = xsigma
@@ -1041,7 +1041,7 @@ def model_cylinder(radius, nx, ny, nz):
     """
 	 create a cylinder along z axis
 	"""
-    e = EMAN2_cppwrap.EMData()
+    e = EMAN2.cppwrap.EMData()
     e.set_size(nx, ny, nz)
     e.process_inplace("testimage.cylinder", {"radius": radius})
     return e
@@ -1100,7 +1100,7 @@ def model_gauss_noise(sigma, nx, ny=1, nz=1):
 	Create an image of noise having standard deviation "sigma",
 	and average 0.
 	"""
-    e = EMAN2_cppwrap.EMData()
+    e = EMAN2.cppwrap.EMData()
     e.set_size(nx, ny, nz)
     if sigma == 0.0:
         e.to_zero()
@@ -1113,7 +1113,7 @@ def model_blank(nx, ny=1, nz=1, bckg=0.0):
     """
 	Create a blank image.
 	"""
-    e = EMAN2_cppwrap.EMData()
+    e = EMAN2.cppwrap.EMData()
     e.set_size(nx, ny, nz)
     e.to_zero()
     if bckg != 0.0:
@@ -1286,7 +1286,7 @@ def pad(
     if not isinstance(background, (bytes, str)):
         background = str(background)
     if background == "average":
-        image_padded = EMAN2_cppwrap.Util.pad(
+        image_padded = EMAN2.cppwrap.Util.pad(
             image_to_be_padded,
             new_nx,
             new_ny,
@@ -1297,7 +1297,7 @@ def pad(
             "average",
         )
     elif background == "circumference":
-        image_padded = EMAN2_cppwrap.Util.pad(
+        image_padded = EMAN2.cppwrap.Util.pad(
             image_to_be_padded,
             new_nx,
             new_ny,
@@ -1308,7 +1308,7 @@ def pad(
             "circumference",
         )
     else:
-        image_padded = EMAN2_cppwrap.Util.pad(
+        image_padded = EMAN2.cppwrap.Util.pad(
             image_to_be_padded,
             new_nx,
             new_ny,
@@ -1526,7 +1526,7 @@ def rotate_shift_params(paramsin, transf):
     # moved from sxprocess.py
     if len(paramsin[0]) > 3:
 
-        t = EMAN2_cppwrap.Transform(
+        t = EMAN2.cppwrap.Transform(
             {
                 "type": "spider",
                 "phi": transf[0],
@@ -1542,7 +1542,7 @@ def rotate_shift_params(paramsin, transf):
         t = t.inverse()
         cpar = []
         for params in paramsin:
-            d = EMAN2_cppwrap.Transform(
+            d = EMAN2.cppwrap.Transform(
                 {
                     "type": "spider",
                     "phi": params[0],
@@ -1550,18 +1550,18 @@ def rotate_shift_params(paramsin, transf):
                     "psi": params[2],
                 }
             )
-            d.set_trans(EMAN2_cppwrap.Vec2f(-params[3], -params[4]))
+            d.set_trans(EMAN2.cppwrap.Vec2f(-params[3], -params[4]))
             c = d * t
             u = c.get_params("spider")
             cpar.append([u["phi"], u["theta"], u["psi"], -u["tx"], -u["ty"]])
     else:
-        t = EMAN2_cppwrap.Transform(
+        t = EMAN2.cppwrap.Transform(
             {"type": "spider", "phi": transf[0], "theta": transf[1], "psi": transf[2]}
         )
         t = t.inverse()
         cpar = []
         for params in paramsin:
-            d = EMAN2_cppwrap.Transform(
+            d = EMAN2.cppwrap.Transform(
                 {
                     "type": "spider",
                     "phi": params[0],
@@ -1711,7 +1711,7 @@ def estimate_3D_center_MPI(data, nima, myid, number_of_proc, main_node, mpi_comm
 
 def rotate_3D_shift(data, shift3d):
 
-    t = EMAN2_cppwrap.Transform(
+    t = EMAN2.cppwrap.Transform(
         {
             "type": "spider",
             "phi": 0.0,
@@ -1822,7 +1822,7 @@ def bcast_compacted_EMData_all_to_all(list_of_em_objects, myid, comm=-1):
         # used for copying the header and other info
 
         reference_em_object = list_of_em_objects[ref_start]
-        data = EMAN2_cppwrap.EMNumPy.em2numpy(reference_em_object)
+        data = EMAN2.cppwrap.EMNumPy.em2numpy(reference_em_object)
         size_of_one_refring_assumed_common_to_all = data.size
 
         nx = reference_em_object.get_xsize()
@@ -1867,12 +1867,12 @@ def bcast_compacted_EMData_all_to_all(list_of_em_objects, myid, comm=-1):
         if sender_id == myid:
             if ref_start == ref_end:
                 continue
-            data = EMAN2_cppwrap.EMNumPy.em2numpy(
+            data = EMAN2.cppwrap.EMNumPy.em2numpy(
                 list_of_em_objects[ref_start]
             )  # array([], dtype = 'float32')
             for i in range(ref_start + 1, ref_end):
                 data = numpy.concatenate(
-                    [data, EMAN2_cppwrap.EMNumPy.em2numpy(list_of_em_objects[i])]
+                    [data, EMAN2.cppwrap.EMNumPy.em2numpy(list_of_em_objects[i])]
                 )
         else:
             if sender_ref_start == sender_ref_end:
@@ -1912,7 +1912,7 @@ def bcast_EMData_to_all(tavg, myid, source_node=0, comm=-1):
 
     if comm == -1 or comm == None:
         comm = mpi.MPI_COMM_WORLD
-    tavg_data = EMAN2_cppwrap.EMNumPy.em2numpy(tavg)
+    tavg_data = EMAN2.cppwrap.EMNumPy.em2numpy(tavg)
     n = numpy.shape(tavg_data)
     ntot = 1
     for i in n:
@@ -2087,7 +2087,7 @@ def recv_attr_dict(
     if comm == -1:
         comm = mpi.MPI_COMM_WORLD
 
-    TransType = type(EMAN2_cppwrap.Transform())
+    TransType = type(EMAN2.cppwrap.Transform())
     # prepare keys for float/int
     value = get_arb_params(data[0], list_params)
     ink = []
@@ -2124,7 +2124,7 @@ def recv_attr_dict(
         data[im - image_start].write_image(
             stack,
             data[im - image_start].get_attr_default("ID", im),
-            EMAN2_cppwrap.EMUtil.ImageType.IMAGE_HDF,
+            EMAN2.cppwrap.EMUtil.ImageType.IMAGE_HDF,
             True,
         )
 
@@ -2145,7 +2145,7 @@ def recv_attr_dict(
                     ilis += 1
                 else:
                     assert ink[il] == 2
-                    t = EMAN2_cppwrap.Transform()
+                    t = EMAN2.cppwrap.Transform()
                     tmp = []
                     for iii in range(par_begin + ilis, par_begin + ilis + 12):
                         tmp.append(float(header[iii]))
@@ -2158,13 +2158,13 @@ def recv_attr_dict(
             else:
                 imm = nvalue[list_params.index("ID")]
                 # read head, set params, and write it
-            dummy = EMAN2_cppwrap.EMData()
+            dummy = EMAN2.cppwrap.EMData()
             dummy.read_image(stack, imm, True)
             set_arb_params(dummy, nvalue, list_params)
             dummy.write_image(
                 stack,
                 dummy.get_attr_default("ID", im),
-                EMAN2_cppwrap.EMUtil.ImageType.IMAGE_HDF,
+                EMAN2.cppwrap.EMUtil.ImageType.IMAGE_HDF,
                 True,
             )
 
@@ -2175,7 +2175,7 @@ def send_attr_dict(main_node, data, list_params, image_start, image_end, comm=-1
 
     if comm == -1:
         comm = mpi.MPI_COMM_WORLD
-    TransType = type(EMAN2_cppwrap.Transform())
+    TransType = type(EMAN2.cppwrap.Transform())
     mpi.mpi_send(
         [image_start, image_end],
         2,
@@ -2218,7 +2218,7 @@ def recv_attr_dict_bdb(
         comm = mpi.MPI_COMM_WORLD
 
     DB = EMAN2db.db_open_dict(stack)
-    TransType = type(EMAN2_cppwrap.Transform())
+    TransType = type(EMAN2.cppwrap.Transform())
     # prepare keys for float/int
     value = get_arb_params(data[0], list_params)
     ink = []
@@ -2265,7 +2265,7 @@ def recv_attr_dict_bdb(
                         ilis += 1
                     else:
                         assert ink[il] == 2
-                        t = EMAN2_cppwrap.Transform()
+                        t = EMAN2.cppwrap.Transform()
                         tmp = []
                         for iii in range(par_begin + ilis, par_begin + ilis + 12):
                             tmp.append(float(header[iii]))
@@ -2386,11 +2386,11 @@ def circumference(img, inner=-1, outer=-1):
             outer = inner + 1
     inner_sphere = model_circle(inner, nx, ny, nz)
 
-    [mean_a, sigma, imin, imax] = EMAN2_cppwrap.Util.infomask(
+    [mean_a, sigma, imin, imax] = EMAN2.cppwrap.Util.infomask(
         img, model_circle(outer, nx, ny, nz) - inner_sphere, True
     )
     inner_rest = model_blank(nx, ny, nz, 1.0) - inner_sphere
-    return EMAN2_cppwrap.Util.muln_img(inner_sphere, img - mean_a)
+    return EMAN2.cppwrap.Util.muln_img(inner_sphere, img - mean_a)
     # return Util.addn_img(inner_sphere, Util.mult_scalar(inner_rest, mean_a ) )
 
 
@@ -2415,7 +2415,7 @@ def write_headers(filename, data, lima):
     elif ftp == "hdf":
         for i in range(len(lima)):
             data[i].write_image(
-                filename, lima[i], EMAN2_cppwrap.EMUtil.ImageType.IMAGE_HDF, True
+                filename, lima[i], EMAN2.cppwrap.EMUtil.ImageType.IMAGE_HDF, True
             )
     else:
         sp_global_def.ERROR("Unacceptable file format", "write_headers", 1)
@@ -2435,7 +2435,7 @@ def write_header(filename, data, lima):
         DB = EMAN2db.db_open_dict(filename)
         DB.set_header(lima, data)
     elif ftp == "hdf":
-        data.write_image(filename, lima, EMAN2_cppwrap.EMUtil.ImageType.IMAGE_HDF, True)
+        data.write_image(filename, lima, EMAN2.cppwrap.EMUtil.ImageType.IMAGE_HDF, True)
     else:
         sp_global_def.ERROR("Unacceptable file format", "write_headers", 1)
 
@@ -2456,7 +2456,7 @@ def get_params2D(ima, xform="xform.align2d"):
 	  retrieve 2D alignment parameters from the header
 	  alpha, tx, ty, mirror, scale
 	"""
-    d = EMAN2_cppwrap.Util.get_transform_params(ima, xform, "2D")
+    d = EMAN2.cppwrap.Util.get_transform_params(ima, xform, "2D")
     return d["alpha"], d["tx"], d["ty"], d["mirror"], d["scale"]
 
 
@@ -2465,7 +2465,7 @@ def set_params2D(ima, p, xform="xform.align2d"):
 	  set 2D alignment parameters in the header
 	  p = [alpha, tx, ty, mirror, scale]
 	"""
-    t = EMAN2_cppwrap.Transform(
+    t = EMAN2.cppwrap.Transform(
         {
             "type": "2D",
             "alpha": p[0],
@@ -2483,7 +2483,7 @@ def get_params3D(ima, xform="xform.align3d"):
 	  retrieve 3D alignment parameters from the header
 	  phi,theta, psi, tx, ty, tz, mirror,scale
 	"""
-    d = EMAN2_cppwrap.Util.get_transform_params(ima, xform, "spider")
+    d = EMAN2.cppwrap.Util.get_transform_params(ima, xform, "spider")
     return (
         d["phi"],
         d["theta"],
@@ -2501,7 +2501,7 @@ def set_params3D(ima, p, xform="xform.align3d"):
 	  set 3D alignment parameters in the header
 	  p = [phi,theta, psi, tx, ty, tz, mirror,scale]
 	"""
-    t = EMAN2_cppwrap.Transform(
+    t = EMAN2.cppwrap.Transform(
         {
             "type": "spider",
             "phi": p[0],
@@ -2522,7 +2522,7 @@ def get_params_proj(ima, xform="xform.projection"):
 	  retrieve projection alignment parameters from the header
 	  phi, theta, psi, s2x, s2y
 	"""
-    d = EMAN2_cppwrap.Util.get_transform_params(ima, xform, "spider")
+    d = EMAN2.cppwrap.Util.get_transform_params(ima, xform, "spider")
     return d["phi"], d["theta"], d["psi"], -d["tx"], -d["ty"]
 
 
@@ -2532,10 +2532,10 @@ def set_params_proj(ima, p, xform="xform.projection"):
 	  p = [phi, theta, psi, s2x, s2y]
 	"""
 
-    t = EMAN2_cppwrap.Transform(
+    t = EMAN2.cppwrap.Transform(
         {"type": "spider", "phi": p[0], "theta": p[1], "psi": p[2]}
     )
-    t.set_trans(EMAN2_cppwrap.Vec2f(-p[3], -p[4]))
+    t.set_trans(EMAN2.cppwrap.Vec2f(-p[3], -p[4]))
     ima.set_attr(xform, t)
 
 
@@ -2586,7 +2586,7 @@ def generate_ctf(p):
     ):  # which means it is very likely in Angstrom, therefore we are using the old convention
         defocus *= 1.0e-4
 
-    ctf = EMAN2_cppwrap.EMAN2Ctf()
+    ctf = EMAN2.cppwrap.EMAN2Ctf()
     if len(p) == 6:
         ctf.from_dict(
             {
@@ -2678,7 +2678,7 @@ def nearest_fang(vecs, phi, tht):
 	"""
 
     vec = getfvec(phi, tht)
-    return EMAN2_cppwrap.Util.nearest_fang(vecs, vec[0], vec[1], vec[2])[0]
+    return EMAN2.cppwrap.Util.nearest_fang(vecs, vec[0], vec[1], vec[2])[0]
 
 
 """Multiline Comment17"""
@@ -2697,13 +2697,13 @@ def nearest_many_full_k_projangles(
     if sym_class.sym[:2] == "c1":
         for i, q in enumerate(angles):
             ref = getfvec(q[0], q[1])
-            assignments[i] = EMAN2_cppwrap.Util.nearest_fang_select(
+            assignments[i] = EMAN2.cppwrap.Util.nearest_fang_select(
                 reference_normals, ref[0], ref[1], ref[2], howmany
             )
     else:
         for i, q in enumerate(angles):
             ancordir = angles_to_normals(sym_class.symmetry_neighbors([q[:3]]))
-            assignments[i] = EMAN2_cppwrap.Util.nearest_fang_sym(
+            assignments[i] = EMAN2.cppwrap.Util.nearest_fang_sym(
                 ancordir, reference_normals, len(ancordir), howmany
             )
 
@@ -2731,7 +2731,7 @@ def assign_projdirs_f(projdirs, refdirs, neighbors):
 		qsti[i] = this
 	"""
     #  Create a list that for each projdirs contains an index of the closest refdirs/neighbors
-    qsti = EMAN2_cppwrap.Util.assign_projdirs_f(projdirs, refdirs, neighbors)
+    qsti = EMAN2.cppwrap.Util.assign_projdirs_f(projdirs, refdirs, neighbors)
     assignments = [[] for i in range(old_div(len(refdirs), neighbors))]
     for i in range(len(projdirs)):
         assignments[qsti[i]].append(i)
@@ -2751,7 +2751,7 @@ def assign_projdirs_f(projdirs, refdirs, neighbors):
 
 
 def angles_to_normals(angles):
-    temp = EMAN2_cppwrap.Util.angles_to_normals(angles)
+    temp = EMAN2.cppwrap.Util.angles_to_normals(angles)
     return [[temp[l * 3 + i] for i in range(3)] for l in range(len(angles))]
 
 
@@ -2901,7 +2901,7 @@ def balance_angular_distribution(params, max_occupy=-1, angstep=15.0, sym="c1"):
 def symmetry_neighbors(angles, symmetry):
     #  input is a list of lists  [[phi0,theta0,psi0],[phi1,theta1,psi1],...]
     #  output is [[phi0,theta0,psi0],[phi0,theta0,psi0]_SYM1,...,[phi1,theta1,psi1],[phi1,theta1,psi1]_SYM1,...]
-    temp = EMAN2_cppwrap.Util.symmetry_neighbors(angles, symmetry)
+    temp = EMAN2.cppwrap.Util.symmetry_neighbors(angles, symmetry)
     nt = old_div(len(temp), 3)
     return [[temp[l * 3 + i] for i in range(3)] for l in range(nt)]
     #  We could make it a list of lists
@@ -3371,7 +3371,7 @@ class iterImagesStack(object):
     def __init__(self, stack_name, list_of_indexes=None):
         if list_of_indexes == None:
             self.imagesIndexes = list(
-                range(EMAN2_cppwrap.EMUtil.get_image_count(stack_name))
+                range(EMAN2.cppwrap.EMUtil.get_image_count(stack_name))
             )
         else:
             self.imagesIndexes = list_of_indexes[:]
@@ -3385,7 +3385,7 @@ class iterImagesStack(object):
 
     def image(self):
         if self.currentImage == None:
-            self.currentImage = EMAN2_cppwrap.EMData()
+            self.currentImage = EMAN2.cppwrap.EMData()
             self.currentImage.read_image(
                 self.stackName, self.imagesIndexes[self.position]
             )
@@ -3641,7 +3641,7 @@ def eliminate_moons(my_volume, moon_elimination_params):
 
     my_volume_binarized = sp_morphology.binarize(my_volume, histogram_threshold)
     # my_volume_binarized.write_image ("my_volume_binarized.hdf")
-    my_volume_binarized_with_no_moons = EMAN2_cppwrap.Util.get_biggest_cluster(
+    my_volume_binarized_with_no_moons = EMAN2.cppwrap.Util.get_biggest_cluster(
         my_volume_binarized
     )
     # my_volume_binarized_with_no_moons.write_image("my_volume_binarized_with_no_moons.hdf")
@@ -3812,7 +3812,7 @@ def getindexdata(stack, partids, partstack, myid, nproc):
         image_start, image_end = sp_applications.MPI_start_end(ndata, nproc, myid)
     lpartids = lpartids[image_start:image_end]
     partstack = partstack[image_start:image_end]
-    data = EMAN2_cppwrap.EMData.read_images(stack, lpartids)
+    data = EMAN2.cppwrap.EMData.read_images(stack, lpartids)
 
     for i in range(len(partstack)):
         set_params_proj(data[i], partstack[i])
@@ -4404,7 +4404,7 @@ def numpy2em_python(numpy_array):
     if len(shape) == 1:
         shape = (shape[0], 1)
     return_array = EMAN2.EMData(*shape)
-    return_view = EMAN2_cppwrap.EMNumPy.em2numpy(return_array)
+    return_view = EMAN2.cppwrap.EMNumPy.em2numpy(return_array)
     return_view[...] = numpy_array
     return_array.update()
     return return_array
@@ -4546,7 +4546,7 @@ def gather_compacted_EMData_to_root(number_of_all_em_objects_distributed_across_
     # process data before transfer
     data = []
     for i in range(len(list_of_em_objects_for_myid_process)):
-        data.append(EMAN2_cppwrap.EMNumPy.em2numpy(list_of_em_objects_for_myid_process[i]))
+        data.append(EMAN2.cppwrap.EMNumPy.em2numpy(list_of_em_objects_for_myid_process[i]))
     data = numpy.array(data)
 
     # transfer: gather all data at the root process (myid==0)
@@ -4625,7 +4625,7 @@ def compose_transform2(alpha1, sx1, sy1, scale1, alpha2, sx2, sy2, scale2):
 		   angles in degrees
 	"""
 
-	t1 = EMAN2_cppwrap.Transform(
+	t1 = EMAN2.cppwrap.Transform(
 		{
 			"type": "2D",
 			"alpha": alpha1,
@@ -4635,7 +4635,7 @@ def compose_transform2(alpha1, sx1, sy1, scale1, alpha2, sx2, sy2, scale2):
 			"scale": scale1,
 		}
 	)
-	t2 = EMAN2_cppwrap.Transform(
+	t2 = EMAN2.cppwrap.Transform(
 		{
 			"type": "2D",
 			"alpha": alpha2,

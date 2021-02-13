@@ -9,7 +9,7 @@ from numpy import nan as numpy_nan
 from numpy import asarray as numpy_asarray
 from mpi import *
 import sp_global_def
-import EMAN2_cppwrap
+import EMAN2.cppwrap
 
 mpi_init(0, [])
 sp_global_def.BATCH = True
@@ -967,14 +967,14 @@ class Test_add_ave_varf_MPI(unittest.TestCase):
         self.assertTrue(
             allclose(
                 return_new[0].get_3dview(),
-                EMAN2_cppwrap.EMData().get_3dview(),
+                EMAN2.cppwrap.EMData().get_3dview(),
                 equal_nan=True,
             )
         )
         self.assertTrue(
             allclose(
                 return_new[-1].get_3dview(),
-                EMAN2_cppwrap.EMData().get_3dview(),
+                EMAN2.cppwrap.EMData().get_3dview(),
                 equal_nan=True,
             )
         )
@@ -1181,7 +1181,7 @@ class Test_sum_oe(unittest.TestCase):
             data=self.data,
             mode="a",
             CTF=False,
-            ctf_2_sum=EMAN2_cppwrap.EMData(),
+            ctf_2_sum=EMAN2.cppwrap.EMData(),
             ctf_eo_sum=False,
             return_params=True,
         )
@@ -1189,7 +1189,7 @@ class Test_sum_oe(unittest.TestCase):
             data=self.data,
             mode="a",
             CTF=False,
-            ctf_2_sum=EMAN2_cppwrap.EMData(),
+            ctf_2_sum=EMAN2.cppwrap.EMData(),
             ctf_eo_sum=False,
             return_params=True,
         )
@@ -1470,7 +1470,7 @@ class Test_varf2d_MPI(unittest.TestCase):
             allclose(return_new[1], return_old[1], atol=TOLERANCE, equal_nan=True)
         )
         self.assertTrue(
-            array_equal(return_new[0].get_3dview(), EMAN2_cppwrap.EMData().get_3dview())
+            array_equal(return_new[0].get_3dview(), EMAN2.cppwrap.EMData().get_3dview())
         )
         self.assertTrue(array_equal(return_new[1], [0]))
 
@@ -3542,9 +3542,9 @@ class Test_lib_statistics_compare(unittest.TestCase):
     # def test_varf3d_MPI_true_should_return_equal_objects(self):
     #
     #     stack_name = "bdb:tests/Substack/sort3d_substack_003"
-    #     nima = EMAN2_cppwrap.EMUtil.get_image_count(stack_name)
+    #     nima = EMAN2.cppwrap.EMUtil.get_image_count(stack_name)
     #     list_proj = list(range(nima))
-    #     proj = EMAN2_cppwrap.EMData()
+    #     proj = EMAN2.cppwrap.EMData()
     #     proj.read_image(stack_name, list_proj[0])
     #
     #     return_new = fu.varf3d_MPI([proj], mask2D=False  )

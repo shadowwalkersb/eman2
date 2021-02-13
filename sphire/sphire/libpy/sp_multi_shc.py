@@ -38,7 +38,7 @@ from past.utils import old_div
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
 #
 
-import EMAN2_cppwrap
+import EMAN2.cppwrap
 import copy
 from copy import deepcopy
 import math
@@ -383,7 +383,7 @@ def ali3d_multishc(
         ctf_applied = data[im].get_attr_default("ctf_applied", 0)
         if CTF and ctf_applied == 0:
             ctf_params = data[im].get_attr("ctf")
-            st = EMAN2_cppwrap.Util.infomask(data[im], mask2D, False)
+            st = EMAN2.cppwrap.Util.infomask(data[im], mask2D, False)
             data[im] -= st[0]
             data[im] = sp_filter.filt_ctf(data[im], ctf_params)
             data[im].set_attr("ctf_applied", 1)
@@ -466,10 +466,10 @@ def ali3d_multishc(
                     # 	'''
 
                     # peak, temp = proj_ali_incore_local(data[im], [refrings[iqa]], [reference_angles[iqa]], numr, 0., 0., 1., 180.0 , sym="c1")
-                    cimage = EMAN2_cppwrap.Util.Polar2Dm(data[im], cnx, cny, numr, "F")
-                    EMAN2_cppwrap.Util.Normalize_ring(cimage, numr, 0)
-                    EMAN2_cppwrap.Util.Frngs(cimage, numr)
-                    retvals = EMAN2_cppwrap.Util.Crosrng_e(
+                    cimage = EMAN2.cppwrap.Util.Polar2Dm(data[im], cnx, cny, numr, "F")
+                    EMAN2.cppwrap.Util.Normalize_ring(cimage, numr, 0)
+                    EMAN2.cppwrap.Util.Frngs(cimage, numr)
+                    retvals = EMAN2.cppwrap.Util.Crosrng_e(
                         refrings[iqa], cimage, numr, 0, 0.0
                     )
                     data[im].set_attr("previousmax", retvals["qn"])
@@ -1109,7 +1109,7 @@ def ali3d_multishc_2(
         ctf_applied = data[im].get_attr_default("ctf_applied", 0)
         if CTF and ctf_applied == 0:
             ctf_params = data[im].get_attr("ctf")
-            st = EMAN2_cppwrap.Util.infomask(data[im], mask2D, False)
+            st = EMAN2.cppwrap.Util.infomask(data[im], mask2D, False)
             data[im] -= st[0]
             data[im] = sp_filter.filt_ctf(data[im], ctf_params)
             data[im].set_attr("ctf_applied", 1)
@@ -1143,18 +1143,18 @@ def ali3d_multishc_2(
     for im in range(nima):
         phi, theta, psi, tx, ty = sp_utilities.get_params_proj(data[im])
         refrings = sp_projection.prgs(volft, kb, [phi, theta, psi, 0.0, 0.0])
-        refrings = EMAN2_cppwrap.Util.Polar2Dm(refrings, cnx, cny, numr, "F")
-        EMAN2_cppwrap.Util.Normalize_ring(refrings, numr, 0)
-        EMAN2_cppwrap.Util.Frngs(refrings, numr)
-        EMAN2_cppwrap.Util.Applyws(refrings, numr, wr_four)
+        refrings = EMAN2.cppwrap.Util.Polar2Dm(refrings, cnx, cny, numr, "F")
+        EMAN2.cppwrap.Util.Normalize_ring(refrings, numr, 0)
+        EMAN2.cppwrap.Util.Frngs(refrings, numr)
+        EMAN2.cppwrap.Util.Applyws(refrings, numr, wr_four)
         """Multiline Comment9"""
 
         # print "orin  ",data[im].get_attr("ID"),get_params_proj(data[im])
         # peak, pixer = proj_ali_incore_local(data[im],refrings, [[phi, theta], [phi, theta]], numr,0.0,0.0,1.0,delta[0]/4)
-        cimage = EMAN2_cppwrap.Util.Polar2Dm(data[im], cnx, cny, numr, "F")
-        EMAN2_cppwrap.Util.Normalize_ring(cimage, numr, 0)
-        EMAN2_cppwrap.Util.Frngs(cimage, numr)
-        retvals = EMAN2_cppwrap.Util.Crosrng_e(refrings, cimage, numr, 0, 0.0)
+        cimage = EMAN2.cppwrap.Util.Polar2Dm(data[im], cnx, cny, numr, "F")
+        EMAN2.cppwrap.Util.Normalize_ring(cimage, numr, 0)
+        EMAN2.cppwrap.Util.Frngs(cimage, numr)
+        retvals = EMAN2.cppwrap.Util.Crosrng_e(refrings, cimage, numr, 0, 0.0)
         data[im].set_attr("previousmax", retvals["qn"])
         # print  " VIPER2  peak ",myid,im,data[im].get_attr("ID"), retvals["qn"],get_params_proj(data[im])
 
@@ -1752,7 +1752,7 @@ def do_volume(data, options, iter, mpi_comm):
                 mask3D = (options.mask3D).copy()
             nxm = mask3D.get_xsize()
             if nx != nxm:
-                mask3D = EMAN2_cppwrap.Util.window(
+                mask3D = EMAN2.cppwrap.Util.window(
                     sp_fundamentals.rot_shift3D(
                         mask3D, scale=old_div(float(nx), float(nxm))
                     ),
@@ -1763,9 +1763,9 @@ def do_volume(data, options, iter, mpi_comm):
                 nxm = mask3D.get_xsize()
                 assert nx == nxm
 
-        stat = EMAN2_cppwrap.Util.infomask(vol, mask3D, False)
+        stat = EMAN2.cppwrap.Util.infomask(vol, mask3D, False)
         vol -= stat[0]
-        EMAN2_cppwrap.Util.mul_scalar(vol, old_div(1.0, stat[1]))
+        EMAN2.cppwrap.Util.mul_scalar(vol, old_div(1.0, stat[1]))
         vol = sp_morphology.threshold(vol)
         # Util.mul_img(vol, mask3D)
         if options.pwreference:
@@ -1790,12 +1790,12 @@ def do_volume(data, options, iter, mpi_comm):
                 vol = sp_filter.filt_table(vol, options.fl)
             else:
                 vol = sp_filter.filt_tanl(vol, options.fl, options.aa)
-        stat = EMAN2_cppwrap.Util.infomask(vol, mask3D, False)
+        stat = EMAN2.cppwrap.Util.infomask(vol, mask3D, False)
         vol -= stat[0]
-        EMAN2_cppwrap.Util.mul_scalar(vol, old_div(1.0, stat[1]))
+        EMAN2.cppwrap.Util.mul_scalar(vol, old_div(1.0, stat[1]))
         vol = sp_morphology.threshold(vol)
         vol = sp_filter.filt_btwl(vol, 0.38, 0.5)
-        EMAN2_cppwrap.Util.mul_img(vol, mask3D)
+        EMAN2.cppwrap.Util.mul_img(vol, mask3D)
         del mask3D
         # vol.write_image('toto%03d.hdf'%iter)
     # broadcast volume

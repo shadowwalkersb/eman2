@@ -40,7 +40,7 @@ from past.utils import old_div
 #
 #
 
-import EMAN2_cppwrap
+import EMAN2.cppwrap
 import copy
 import json
 import matplotlib
@@ -819,7 +819,7 @@ def found_outliers(
         "--list=" + mainoutputdir + "this_iteration_index_keep_images.txt",
     )
     junk = sp_utilities.cmdexecute(cmd)
-    dat = EMAN2_cppwrap.EMData.read_images(
+    dat = EMAN2.cppwrap.EMData.read_images(
         bdb_stack_location + "_%03d" % (rviper_iter - 1)
     )
 
@@ -1018,7 +1018,7 @@ def calculate_volumes_after_rotation_and_save_them(
         # do the alignment
         nx = asa.get_xsize()
         radius = old_div(nx, 2) - 0.5
-        st = EMAN2_cppwrap.Util.infomask(
+        st = EMAN2.cppwrap.Util.infomask(
             asa * asa, sp_utilities.model_circle(radius, nx, nx, nx), True
         )
         goal = st[0]
@@ -1036,7 +1036,7 @@ def calculate_volumes_after_rotation_and_save_them(
                 del o
                 sp_utilities.set_params3D(vls[idx], p)
             asa, sas = sp_statistics.ave_var(vls)
-            st = EMAN2_cppwrap.Util.infomask(
+            st = EMAN2.cppwrap.Util.infomask(
                 asa * asa, sp_utilities.model_circle(radius, nx, nx, nx), True
             )
             if st[0] > goal:
@@ -1420,7 +1420,7 @@ output_directory: directory name into which the output files will be written.  I
         sp_global_def.sxprint(
             "****************************************************************"
         )
-        EMAN2_cppwrap.Util.version()
+        EMAN2.cppwrap.Util.version()
         sp_global_def.sxprint(
             "****************************************************************"
         )
@@ -1677,7 +1677,7 @@ output_directory: directory name into which the output files will be written.  I
     # Loop through iterations
     for rviper_iter in range(iteration_start, number_of_rrr_viper_runs + 1):
         if myid == main_node:
-            all_projs = EMAN2_cppwrap.EMData.read_images(
+            all_projs = EMAN2.cppwrap.EMData.read_images(
                 bdb_stack_location + "_%03d" % (rviper_iter - 1)
             )
             sp_global_def.sxprint("XXXXXXXXXXXXXXXXX")

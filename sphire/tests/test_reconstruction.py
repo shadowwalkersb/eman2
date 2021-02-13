@@ -2770,7 +2770,7 @@ class Test_lib_compare_for_reconstruction(unittest.TestCase):
         finfo = open("dummytext.txt", 'w')
         list_proj = []
         stack_name = "bdb:Substack/sort3d_substack_003"
-        nima = EMAN2_cppwrap.EMUtil.get_image_count(stack_name)
+        nima = EMAN2.cppwrap.EMUtil.get_image_count(stack_name)
         list_proj = list(range(nima))
         proj = EMData()
         proj.read_image(stack_name, list_proj[0])
@@ -2789,7 +2789,7 @@ class Test_lib_compare_for_reconstruction(unittest.TestCase):
         finfo = open("dummytext.txt", 'w')
         list_proj = []
         stack_name = "bdb:Substack/sort3d_substack_003"
-        nima = EMAN2_cppwrap.EMUtil.get_image_count(stack_name)
+        nima = EMAN2.cppwrap.EMUtil.get_image_count(stack_name)
         list_proj = list(range(nima))
         proj = EMData()
         proj.read_image(stack_name, list_proj[0])

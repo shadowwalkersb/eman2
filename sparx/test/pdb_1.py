@@ -7,13 +7,13 @@
 # Pick the wrapper wanted (cctbx or eman), and import accordingly.
 # With cctbx first, get the warning:  
 
-# eman2/install/lib/EMAN2_cppwrap.py:44:
+# eman2/install/lib/EMAN2.cppwrap.py:44:
 #   RuntimeWarning: to-Python converter for std::vector<double,
 #   std::allocator<double> > already registered; second conversion
 #   method ignored. 
 
 #   from libpyTypeConverter2 import *
-# eman2/install/lib/EMAN2_cppwrap.py:44:
+# eman2/install/lib/EMAN2.cppwrap.py:44:
 #     RuntimeWarning: to-Python converter for std::map<std::string,
 #     double, std::less<std::string>,
 #     std::allocator<std::pair<std::string const, double> > > already

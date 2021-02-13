@@ -39,7 +39,7 @@ from past.utils import old_div
 # Imports
 # ========================================================================================
 # Python Standard Libraries
-import EMAN2_cppwrap
+import EMAN2.cppwrap
 import EMAN2db
 import argparse
 import glob
@@ -86,7 +86,7 @@ def reorder_filaments(args, overwrite=False):
     # Check error conditions of arguments
     args.input_stack_path = args.input_stack_path.strip()
     try:
-        EMAN2_cppwrap.EMData(args.input_stack_path)
+        EMAN2.cppwrap.EMData(args.input_stack_path)
     except RuntimeError:
         sp_global_def.ERROR( "Input image stack file does not exist. Please check the file path and restart the program.", where=subcommand_name)
     args.output_directory = args.output_directory.strip()
@@ -94,9 +94,9 @@ def reorder_filaments(args, overwrite=False):
         sp_global_def.ERROR( "Output directory exists. Please change the name and restart the program.", where=subcommand_name)
     
     # Import important information
-    segment_id = EMAN2_cppwrap.EMUtil.get_all_attributes(args.input_stack_path, 'segment_id')
-    filament_track_length = EMAN2_cppwrap.EMUtil.get_all_attributes(args.input_stack_path, 'filament_track_length')
-    filament_id = EMAN2_cppwrap.EMUtil.get_all_attributes(args.input_stack_path, 'filament_id')
+    segment_id = EMAN2.cppwrap.EMUtil.get_all_attributes(args.input_stack_path, 'segment_id')
+    filament_track_length = EMAN2.cppwrap.EMUtil.get_all_attributes(args.input_stack_path, 'filament_track_length')
+    filament_id = EMAN2.cppwrap.EMUtil.get_all_attributes(args.input_stack_path, 'filament_id')
     str_length = max(map(len, filament_id))
     filament_dtype = '|U{0}'.format(str_length)
 
@@ -150,7 +150,7 @@ def reorder_filaments(args, overwrite=False):
         numpy.savetxt(write, output_data['original_id'], fmt='%d')
 
     substack_path = "bdb:{}#{}".format(args.output_directory, args.substack_basename)
-    filament_id = EMAN2_cppwrap.EMUtil.get_all_attributes(args.input_stack_path, 'filament_id')
+    filament_id = EMAN2.cppwrap.EMUtil.get_all_attributes(args.input_stack_path, 'filament_id')
 
     if args.input_stack_path.startswith('bdb:'):
         cmd_line = "e2bdb.py {} --makevstack={} --list={}".format(
@@ -344,7 +344,7 @@ def isac_substack(args):
     os.makedirs(args.output_directory)
     sp_global_def.write_command(args.output_directory)
     # Extract the number of images in the input BDB stack
-    n_fullstack_img = EMAN2_cppwrap.EMUtil.get_image_count(args.input_bdb_stack_path)
+    n_fullstack_img = EMAN2.cppwrap.EMUtil.get_image_count(args.input_bdb_stack_path)
     if n_fullstack_img == 0:
         sp_global_def.ERROR(
             "Input BDB image stack file does contain no images. Please check the file path and restart the program.",
@@ -811,7 +811,7 @@ def isac_substack(args):
     )
     n_default_class_avg = 0
     if os.path.exists(default_isac_class_avgs_path):
-        n_default_class_avg = EMAN2_cppwrap.EMUtil.get_image_count(
+        n_default_class_avg = EMAN2.cppwrap.EMUtil.get_image_count(
             default_isac_class_avgs_path
         )
     else:
@@ -830,7 +830,7 @@ def isac_substack(args):
     sp_global_def.sxprint(
         "Extracting original fullstack particle IDs of members listed in ISAC class averages..."
     )
-    n_class_avg = EMAN2_cppwrap.EMUtil.get_image_count(args.isac_class_avgs_path)
+    n_class_avg = EMAN2.cppwrap.EMUtil.get_image_count(args.isac_class_avgs_path)
 
     sp_global_def.sxprint(" ")
     sp_global_def.sxprint(
@@ -1050,7 +1050,7 @@ def isac_substack(args):
     sp_global_def.sxprint("  Extracted class members : %6d" % (n_isac_substack_img))
     sp_global_def.sxprint(
         "  ISAC substack size      : %6d"
-        % (EMAN2_cppwrap.EMUtil.get_image_count(virtual_bdb_substack_path_tmp))
+        % (EMAN2.cppwrap.EMUtil.get_image_count(virtual_bdb_substack_path_tmp))
     )
 
     if args.min_nr_segments:
@@ -1060,7 +1060,7 @@ def isac_substack(args):
         sp_global_def.sxprint("Summary of processing...")
         sp_global_def.sxprint("  Previous filaments : %6d"%(ori_n_filaments)) 
         sp_global_def.sxprint("  Splitted filaments : %6d"%(n_filaments))
-        sp_global_def.sxprint("  Valid segments     : %6d"%(EMAN2_cppwrap.EMUtil.get_image_count(virtual_bdb_substack_path)))
+        sp_global_def.sxprint("  Valid segments     : %6d"%(EMAN2.cppwrap.EMUtil.get_image_count(virtual_bdb_substack_path)))
 
     sp_global_def.sxprint(" ")
 
@@ -2605,7 +2605,7 @@ def restacking(args):
                 where=subcommand_name,
             )  # action=1 - fatal error, exit
     if not args.reboxing:
-        img = EMAN2_cppwrap.EMData()
+        img = EMAN2.cppwrap.EMData()
         img.read_image(args.input_bdb_stack_path, 0, True)
         img_size = img.get_xsize()
         if abs(args.shift3d_x) >= old_div(img_size, 2):
@@ -2738,7 +2738,7 @@ def restacking(args):
     sp_global_def.sxprint(
         "Checking the input stack {}...".format(args.input_bdb_stack_path)
     )
-    n_img = EMAN2_cppwrap.EMUtil.get_image_count(args.input_bdb_stack_path)
+    n_img = EMAN2.cppwrap.EMUtil.get_image_count(args.input_bdb_stack_path)
     # sxprint(" ")
     sp_global_def.sxprint(
         "Found {} particle images in the input stack {}".format(
@@ -2753,7 +2753,7 @@ def restacking(args):
     eman1_dummy = -1  # For 5th column of EMAN1 boxer format
     missing_ctf_params_counter = 0
     missing_proj_params_counter = 0
-    img = EMAN2_cppwrap.EMData()
+    img = EMAN2.cppwrap.EMData()
     for img_id in range(n_img):
         # Load images
         # img = get_im(args.input_bdb_stack_path, img_id)
@@ -2854,7 +2854,7 @@ def restacking(args):
             )
 
         # Transform the coordinates according to projection parameters and user-provided 3D shift (corresponding to shifting the 3D volume)
-        trans3x3 = EMAN2_cppwrap.Transform(
+        trans3x3 = EMAN2.cppwrap.Transform(
             {
                 "phi": float(proj_phi),
                 "theta": float(proj_theta),
@@ -2865,7 +2865,7 @@ def restacking(args):
                 "type": "spider",
             }
         )
-        origin_vec3d = EMAN2_cppwrap.Vec3f(
+        origin_vec3d = EMAN2.cppwrap.Vec3f(
             float(resampled_shift3d_x),
             float(resampled_shift3d_y),
             float(resampled_shift3d_z),
@@ -3651,10 +3651,10 @@ def moon_eliminator(args):
 
     # Load second volume if specified
     if args.input_volume_path_2nd:
-        EMAN2_cppwrap.Util.add_img(
+        EMAN2.cppwrap.Util.add_img(
             vol3d, sp_utilities.get_im(args.input_volume_path_2nd)
         )
-        EMAN2_cppwrap.Util.mul_scalar(vol3d, 0.5)
+        EMAN2.cppwrap.Util.mul_scalar(vol3d, 0.5)
 
     # Create output directory
     sp_global_def.sxprint(" ")
@@ -3736,7 +3736,7 @@ def moon_eliminator(args):
                 "Adjusting the dimensions of 3D volume to {}...".format(args.box_size)
             )
             if args.box_size > vol3d_dims:
-                vol3d = EMAN2_cppwrap.Util.pad(
+                vol3d = EMAN2.cppwrap.Util.pad(
                     vol3d,
                     args.box_size,
                     args.box_size,
@@ -3747,7 +3747,7 @@ def moon_eliminator(args):
                     "circumference",
                 )
             else:
-                vol3d = EMAN2_cppwrap.Util.window(
+                vol3d = EMAN2.cppwrap.Util.window(
                     vol3d, args.box_size, args.box_size, args.box_size, 0, 0, 0
                 )
 
@@ -3869,7 +3869,7 @@ def moon_eliminator(args):
         )
     )
     my_volume_binarized = sp_morphology.binarize(vol3d, density_threshold)
-    my_volume_binarized_with_no_moons = EMAN2_cppwrap.Util.get_biggest_cluster(
+    my_volume_binarized_with_no_moons = EMAN2.cppwrap.Util.get_biggest_cluster(
         my_volume_binarized
     )
     volume_difference = my_volume_binarized - my_volume_binarized_with_no_moons
@@ -3894,7 +3894,7 @@ def moon_eliminator(args):
             mode,
         )
         mask_no_moon.write_image(ref3d_moon_eliminated_mask_file_path)
-        EMAN2_cppwrap.Util.mul_img(vol3d, mask_no_moon)
+        EMAN2.cppwrap.Util.mul_img(vol3d, mask_no_moon)
 
     del volume_difference, my_volume_binarized, my_volume_binarized_with_no_moons
 
@@ -4034,7 +4034,7 @@ def desymmetrize(args):
         args.input_bdb_stack_path, ro=True
     )  # Read only
 
-    n_img_detected = EMAN2_cppwrap.EMUtil.get_image_count(args.input_bdb_stack_path)
+    n_img_detected = EMAN2.cppwrap.EMUtil.get_image_count(args.input_bdb_stack_path)
     sp_global_def.sxprint(
         "Detected %d particles in symmetrized input BDB stack %s."
         % (n_img_detected, args.input_bdb_stack_path)

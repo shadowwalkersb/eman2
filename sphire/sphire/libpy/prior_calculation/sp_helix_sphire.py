@@ -35,7 +35,7 @@ along with this program; if not, write to the free software
 foundation, inc., 59 temple place, suite 330, boston, ma  02111-1307 usa
 """
 import sys
-import EMAN2_cppwrap
+import EMAN2.cppwrap
 import numpy as np
 import shutil
 
@@ -57,7 +57,7 @@ def import_sphire_stack(stack_path, group_id):
             break
     if not is_in_dtype:
         try:
-            data = EMAN2_cppwrap.EMUtil.get_all_attributes(stack_path, group_id)
+            data = EMAN2.cppwrap.EMUtil.get_all_attributes(stack_path, group_id)
         except KeyError:
             print('Group_id', group_id, 'needs to be present in the stack header!')
             sys.exit(1)
@@ -69,7 +69,7 @@ def import_sphire_stack(stack_path, group_id):
     bad_idx = []
     for idx, entry in enumerate(dtype_list):
         try:
-            data = EMAN2_cppwrap.EMUtil.get_all_attributes(stack_path, entry[0])
+            data = EMAN2.cppwrap.EMUtil.get_all_attributes(stack_path, entry[0])
         except KeyError:
             bad_idx.append(idx)
             if entry[0] == group_id:

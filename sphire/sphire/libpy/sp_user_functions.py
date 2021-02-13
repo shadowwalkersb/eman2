@@ -47,7 +47,7 @@ from past.utils import old_div
 #   from appropriate application, in this case "sxali2d_c.py ...  --function=wei_func
 #
 
-import EMAN2_cppwrap
+import EMAN2.cppwrap
 import math
 import mpi
 import os
@@ -83,7 +83,7 @@ def ref_ali2d(ref_data):
         aa,
     )
     sp_utilities.print_msg(msg)
-    st = EMAN2_cppwrap.Util.infomask(ref_data[2], ref_data[0], True)
+    st = EMAN2.cppwrap.Util.infomask(ref_data[2], ref_data[0], True)
     tavg = sp_filter.filt_tanl((ref_data[2] - st[0]) * ref_data[0], fl, aa)
     cs = [0.0] * 2
     if ref_data[1] > 0:
@@ -321,11 +321,11 @@ def ref_ali3d(ref_data):
     # fl, fh = filt_params(fscc)
     # print "fl, fh, iter",fl,fh,Iter
     # vol = filt_btwl(vol, fl, fh)
-    stat = EMAN2_cppwrap.Util.infomask(ref_data[2], ref_data[0], False)
+    stat = EMAN2.cppwrap.Util.infomask(ref_data[2], ref_data[0], False)
     volf = ref_data[2] - stat[0]
-    EMAN2_cppwrap.Util.mul_scalar(volf, old_div(1.0, stat[1]))
+    EMAN2.cppwrap.Util.mul_scalar(volf, old_div(1.0, stat[1]))
     # volf = threshold(volf)
-    EMAN2_cppwrap.Util.mul_img(volf, ref_data[0])
+    EMAN2.cppwrap.Util.mul_img(volf, ref_data[0])
     fl, aa = sp_filter.fit_tanh(ref_data[3])
     # fl = 0.4
     # aa = 0.1
@@ -355,7 +355,7 @@ def helical(ref_data):
     global ref_ali2d_counter
     ref_ali2d_counter += 1
     sp_utilities.print_msg("helical   #%6d\n" % (ref_ali2d_counter))
-    stat = EMAN2_cppwrap.Util.infomask(ref_data[0], None, True)
+    stat = EMAN2.cppwrap.Util.infomask(ref_data[0], None, True)
     volf = ref_data[0] - stat[0]
     nx = volf.get_xsize()
     ny = volf.get_ysize()
@@ -409,11 +409,11 @@ def reference3(ref_data):
     sp_utilities.print_msg("reference3\n")
     cs = [0.0] * 3
 
-    stat = EMAN2_cppwrap.Util.infomask(ref_data[2], ref_data[0], False)
+    stat = EMAN2.cppwrap.Util.infomask(ref_data[2], ref_data[0], False)
     volf = ref_data[2] - stat[0]
-    EMAN2_cppwrap.Util.mul_scalar(volf, old_div(1.0, stat[1]))
+    EMAN2.cppwrap.Util.mul_scalar(volf, old_div(1.0, stat[1]))
     volf = sp_morphology.threshold(volf)
-    EMAN2_cppwrap.Util.mul_img(volf, ref_data[0])
+    EMAN2.cppwrap.Util.mul_img(volf, ref_data[0])
     # fl, aa = fit_tanh1(ref_data[3], 0.1)
     fl = 0.2
     aa = 0.2
@@ -447,9 +447,9 @@ def reference4(ref_data):
     # print_msg("reference4\n")
     cs = [0.0] * 3
 
-    stat = EMAN2_cppwrap.Util.infomask(ref_data[2], ref_data[0], False)
+    stat = EMAN2.cppwrap.Util.infomask(ref_data[2], ref_data[0], False)
     volf = ref_data[2] - stat[0]
-    EMAN2_cppwrap.Util.mul_scalar(volf, old_div(1.0, stat[1]))
+    EMAN2.cppwrap.Util.mul_scalar(volf, old_div(1.0, stat[1]))
     volf = sp_morphology.threshold(volf)
     # Util.mul_img(volf, ref_data[0])
     # fl, aa = fit_tanh(ref_data[3])
@@ -486,12 +486,12 @@ def ref_aliB_cone(ref_data):
     sp_utilities.print_msg("ref_aliB_cone\n")
     # cs = [0.0]*3
 
-    stat = EMAN2_cppwrap.Util.infomask(ref_data[2], None, True)
+    stat = EMAN2.cppwrap.Util.infomask(ref_data[2], None, True)
     volf = ref_data[2] - stat[0]
-    EMAN2_cppwrap.Util.mul_scalar(volf, old_div(1.0, stat[1]))
+    EMAN2.cppwrap.Util.mul_scalar(volf, old_div(1.0, stat[1]))
 
     volf = sp_morphology.threshold(volf)
-    EMAN2_cppwrap.Util.mul_img(volf, ref_data[0])
+    EMAN2.cppwrap.Util.mul_img(volf, ref_data[0])
 
     pwem = sp_fundamentals.rops_table(volf)
     ftb = []
@@ -508,9 +508,9 @@ def ref_aliB_cone(ref_data):
     )
     sp_utilities.print_msg(msg)
     volf = sp_filter.filt_tanl(volf, fl, aa)
-    stat = EMAN2_cppwrap.Util.infomask(volf, None, True)
+    stat = EMAN2.cppwrap.Util.infomask(volf, None, True)
     volf -= stat[0]
-    EMAN2_cppwrap.Util.mul_scalar(volf, old_div(1.0, stat[1]))
+    EMAN2.cppwrap.Util.mul_scalar(volf, old_div(1.0, stat[1]))
     """Multiline Comment2"""
     return volf
 
@@ -526,10 +526,10 @@ def ref_7grp(ref_data):
     #  apply filtration (FSC) to reference image:
     # cs = [0.0]*3
 
-    stat = EMAN2_cppwrap.Util.infomask(ref_data[2], None, False)
+    stat = EMAN2.cppwrap.Util.infomask(ref_data[2], None, False)
     volf = ref_data[2] - stat[0]
-    EMAN2_cppwrap.Util.mul_scalar(volf, old_div(1.0, stat[1]))
-    volf = EMAN2_cppwrap.Util.muln_img(sp_morphology.threshold(volf), ref_data[0])
+    EMAN2.cppwrap.Util.mul_scalar(volf, old_div(1.0, stat[1]))
+    volf = EMAN2.cppwrap.Util.muln_img(sp_morphology.threshold(volf), ref_data[0])
 
     fl, aa = sp_filter.fit_tanh(ref_data[3])
     msg = "Tangent filter:  cut-off frequency = %10.3f        fall-off = %10.3f\n" % (
@@ -564,15 +564,15 @@ def spruce_up(ref_data):
     sp_utilities.print_msg("Changed4 spruce_up\n")
     cs = [0.0] * 3
 
-    stat = EMAN2_cppwrap.Util.infomask(ref_data[2], None, True)
+    stat = EMAN2.cppwrap.Util.infomask(ref_data[2], None, True)
     volf = ref_data[2] - stat[0]
-    EMAN2_cppwrap.Util.mul_scalar(volf, old_div(1.0, stat[1]))
+    EMAN2.cppwrap.Util.mul_scalar(volf, old_div(1.0, stat[1]))
     volf = sp_morphology.threshold(volf)
     # Apply B-factor
     B = old_div(1.0, math.sqrt(2.0 * 14.0))
     volf = sp_filter.filt_gaussinv(volf, B, False)
     nx = volf.get_xsize()
-    stat = EMAN2_cppwrap.Util.infomask(
+    stat = EMAN2.cppwrap.Util.infomask(
         volf,
         sp_utilities.model_circle(old_div(nx, 2) - 2, nx, nx, nx)
         - sp_utilities.model_circle(old_div(nx, 2) - 6, nx, nx, nx),
@@ -580,7 +580,7 @@ def spruce_up(ref_data):
     )
 
     volf -= stat[0]
-    EMAN2_cppwrap.Util.mul_img(volf, ref_data[0])
+    EMAN2.cppwrap.Util.mul_img(volf, ref_data[0])
     fl, aa = sp_filter.fit_tanh(ref_data[3])
     # fl = 0.35
     # aa = 0.1
@@ -626,12 +626,12 @@ def spruce_up_variance(ref_data):
     sp_utilities.print_msg(msg)
     volf = sp_filter.filt_tanl(volf, fl, aa)
 
-    stat = EMAN2_cppwrap.Util.infomask(volf, None, True)
+    stat = EMAN2.cppwrap.Util.infomask(volf, None, True)
     volf = volf - stat[0]
-    EMAN2_cppwrap.Util.mul_scalar(volf, old_div(1.0, stat[1]))
+    EMAN2.cppwrap.Util.mul_scalar(volf, old_div(1.0, stat[1]))
 
     nx = volf.get_xsize()
-    stat = EMAN2_cppwrap.Util.infomask(
+    stat = EMAN2.cppwrap.Util.infomask(
         volf,
         sp_utilities.model_circle(old_div(nx, 2) - 2, nx, nx, nx)
         - sp_utilities.model_circle(old_div(nx, 2) - 6, nx, nx, nx),
@@ -639,7 +639,7 @@ def spruce_up_variance(ref_data):
     )
 
     volf -= stat[0]
-    EMAN2_cppwrap.Util.mul_img(volf, mask)
+    EMAN2.cppwrap.Util.mul_img(volf, mask)
 
     volf = sp_morphology.threshold(volf)
 
@@ -691,7 +691,7 @@ def ref_ali3dm_new(refdata):
         vol.append(
             sp_utilities.get_im(os.path.join(outdir, "vol%04d.hdf" % total_iter), i)
         )
-        stat = EMAN2_cppwrap.Util.infomask(vol[i], mask, False)
+        stat = EMAN2.cppwrap.Util.infomask(vol[i], mask, False)
         vol[i] -= stat[0]
         vol[i] = old_div(vol[i], stat[1])
         vol[i] *= mask
@@ -748,19 +748,19 @@ def spruce_up_var_m(refdata):
         if not (varf is None):
             volf = volf.filter_by_image(varf)
         volf = sp_filter.filt_tanl(volf, flmin, aamin)
-        stat = EMAN2_cppwrap.Util.infomask(volf, mask, True)
+        stat = EMAN2.cppwrap.Util.infomask(volf, mask, True)
         volf -= stat[0]
-        EMAN2_cppwrap.Util.mul_scalar(volf, old_div(1.0, stat[1]))
+        EMAN2.cppwrap.Util.mul_scalar(volf, old_div(1.0, stat[1]))
 
         nx = volf.get_xsize()
-        stat = EMAN2_cppwrap.Util.infomask(
+        stat = EMAN2.cppwrap.Util.infomask(
             volf,
             sp_utilities.model_circle(old_div(nx, 2) - 2, nx, nx, nx)
             - sp_utilities.model_circle(old_div(nx, 2) - 6, nx, nx, nx),
             True,
         )
         volf -= stat[0]
-        EMAN2_cppwrap.Util.mul_img(volf, mask)
+        EMAN2.cppwrap.Util.mul_img(volf, mask)
 
         volf = sp_morphology.threshold(volf)
         volf = sp_filter.filt_gaussl(volf, 0.4)
@@ -831,7 +831,7 @@ def constant(ref_data):
     # msg = "Tangent filter:  cut-off frequency = %10.3f        fall-off = %10.3f\n"%(fl, aa)
     # print_msg(msg)
     nx = ref_data[2].get_xsize()
-    stat = EMAN2_cppwrap.Util.infomask(
+    stat = EMAN2.cppwrap.Util.infomask(
         ref_data[2], sp_utilities.model_circle(old_div(nx, 2) - 2, nx, nx), False
     )
     ref_data[2] -= stat[0]
@@ -860,9 +860,9 @@ def temp_dovolume(ref_data):
         % (ref_ali2d_counter, fl)
     )
 
-    stat = EMAN2_cppwrap.Util.infomask(ref_data[2], ref_data[0], False)
+    stat = EMAN2.cppwrap.Util.infomask(ref_data[2], ref_data[0], False)
     vol = ref_data[2] - stat[0]
-    EMAN2_cppwrap.Util.mul_scalar(vol, old_div(1.0, stat[1]))
+    EMAN2.cppwrap.Util.mul_scalar(vol, old_div(1.0, stat[1]))
     vol = sp_morphology.threshold(vol)
     # Util.mul_img(vol, ref_data[0])
     try:
@@ -893,12 +893,12 @@ def temp_dovolume(ref_data):
     except:
         vol = sp_fundamentals.fft(sp_filter.filt_tanl(vol, fl, aa))
 
-    stat = EMAN2_cppwrap.Util.infomask(vol, ref_data[0], False)
+    stat = EMAN2.cppwrap.Util.infomask(vol, ref_data[0], False)
     vol -= stat[0]
-    EMAN2_cppwrap.Util.mul_scalar(vol, old_div(1.0, stat[1]))
+    EMAN2.cppwrap.Util.mul_scalar(vol, old_div(1.0, stat[1]))
     vol = sp_morphology.threshold(vol)
     vol = sp_filter.filt_btwl(vol, 0.38, 0.5)
-    EMAN2_cppwrap.Util.mul_img(vol, ref_data[0])
+    EMAN2.cppwrap.Util.mul_img(vol, ref_data[0])
 
     if ref_data[1] == 1:
         cs = volf.phase_cog()
@@ -933,9 +933,9 @@ def dovolume(ref_data):
         % (ref_ali2d_counter, fl)
     )
 
-    stat = EMAN2_cppwrap.Util.infomask(ref_data[2], ref_data[0], False)
+    stat = EMAN2.cppwrap.Util.infomask(ref_data[2], ref_data[0], False)
     vol = ref_data[2] - stat[0]
-    EMAN2_cppwrap.Util.mul_scalar(vol, old_div(1.0, stat[1]))
+    EMAN2.cppwrap.Util.mul_scalar(vol, old_div(1.0, stat[1]))
     vol = sp_morphology.threshold(vol)
     # Util.mul_img(vol, ref_data[0])
     try:
@@ -966,12 +966,12 @@ def dovolume(ref_data):
     except:
         vol = sp_fundamentals.fft(sp_filter.filt_tanl(vol, fl, aa))
 
-    stat = EMAN2_cppwrap.Util.infomask(vol, ref_data[0], False)
+    stat = EMAN2.cppwrap.Util.infomask(vol, ref_data[0], False)
     vol -= stat[0]
-    EMAN2_cppwrap.Util.mul_scalar(vol, old_div(1.0, stat[1]))
+    EMAN2.cppwrap.Util.mul_scalar(vol, old_div(1.0, stat[1]))
     vol = sp_morphology.threshold(vol)
     vol = sp_filter.filt_btwl(vol, 0.38, 0.5)
-    EMAN2_cppwrap.Util.mul_img(vol, ref_data[0])
+    EMAN2.cppwrap.Util.mul_img(vol, ref_data[0])
 
     if ref_data[1] == 1:
         cs = volf.phase_cog()
@@ -1057,7 +1057,7 @@ def do_volume_mrk02(ref_data):
                 mask3D = (Tracker["constants"]["mask3D"]).copy()
             nxm = mask3D.get_xsize()
             if nx != nxm:
-                mask3D = EMAN2_cppwrap.Util.window(
+                mask3D = EMAN2.cppwrap.Util.window(
                     sp_fundamentals.rot_shift3D(
                         mask3D, scale=old_div(float(nx), float(nxm))
                     ),
@@ -1068,11 +1068,11 @@ def do_volume_mrk02(ref_data):
                 nxm = mask3D.get_xsize()
                 assert nx == nxm
 
-        stat = EMAN2_cppwrap.Util.infomask(vol, mask3D, False)
+        stat = EMAN2.cppwrap.Util.infomask(vol, mask3D, False)
         vol -= stat[0]
-        EMAN2_cppwrap.Util.mul_scalar(vol, old_div(1.0, stat[1]))
+        EMAN2.cppwrap.Util.mul_scalar(vol, old_div(1.0, stat[1]))
         vol = sp_morphology.threshold(vol)
-        EMAN2_cppwrap.Util.mul_img(vol, mask3D)
+        EMAN2.cppwrap.Util.mul_img(vol, mask3D)
         if Tracker["PWadjustment"]:
             rt = sp_utilities.read_text_file(Tracker["PWadjustment"])
             sp_fundamentals.fftip(vol)
@@ -1216,7 +1216,7 @@ def do_volume_mrk02(ref_data):
             lx = locres.get_xsize()
             if lx != nx:
                 if lx < nx:
-                    mask = EMAN2_cppwrap.Util.window(
+                    mask = EMAN2.cppwrap.Util.window(
                         sp_fundamentals.rot_shift3D(
                             mask, scale=old_div(float(lx), float(nx))
                         ),
@@ -1231,9 +1231,9 @@ def do_volume_mrk02(ref_data):
                         "user function",
                         1,
                     )
-            stat = EMAN2_cppwrap.Util.infomask(vol, mask, False)
+            stat = EMAN2.cppwrap.Util.infomask(vol, mask, False)
             vol -= stat[0]
-            EMAN2_cppwrap.Util.mul_scalar(vol, old_div(1.0, stat[1]))
+            EMAN2.cppwrap.Util.mul_scalar(vol, old_div(1.0, stat[1]))
         else:
             lx = 0
             locres = sp_utilities.model_blank(1, 1, 1)
@@ -1253,7 +1253,7 @@ def do_volume_mrk02(ref_data):
             vol = sp_filter.filt_btwl(
                 vol, 0.38, 0.5
             )  #  This will have to be corrected.
-            EMAN2_cppwrap.Util.mul_img(vol, mask3D)
+            EMAN2.cppwrap.Util.mul_img(vol, mask3D)
             del mask3D
             # vol.write_image('toto%03d.hdf'%iter)
         else:
@@ -1262,14 +1262,14 @@ def do_volume_mrk02(ref_data):
         if myid == 0:
             # from utilities import write_text_file
             # write_text_file(rops_table(vol,1),"goo.txt")
-            stat = EMAN2_cppwrap.Util.infomask(vol, mask3D, False)
+            stat = EMAN2.cppwrap.Util.infomask(vol, mask3D, False)
             vol -= stat[0]
-            EMAN2_cppwrap.Util.mul_scalar(vol, old_div(1.0, stat[1]))
+            EMAN2.cppwrap.Util.mul_scalar(vol, old_div(1.0, stat[1]))
             vol = sp_morphology.threshold(vol)
             vol = sp_filter.filt_btwl(
                 vol, 0.38, 0.5
             )  #  This will have to be corrected.
-            EMAN2_cppwrap.Util.mul_img(vol, mask3D)
+            EMAN2.cppwrap.Util.mul_img(vol, mask3D)
             del mask3D
             # vol.write_image('toto%03d.hdf'%iter)
     # broadcast volume
@@ -1348,7 +1348,7 @@ def do_volume_mrk03(ref_data):
                 mask3D = (Tracker["constants"]["mask3D"]).copy()
             nxm = mask3D.get_xsize()
             if nx != nxm:
-                mask3D = EMAN2_cppwrap.Util.window(
+                mask3D = EMAN2.cppwrap.Util.window(
                     sp_fundamentals.rot_shift3D(
                         mask3D, scale=old_div(float(nx), float(nxm))
                     ),
@@ -1379,7 +1379,7 @@ def do_volume_mrk03(ref_data):
             lx = locres.get_xsize()
             if lx != nx:
                 if lx < nx:
-                    mask = EMAN2_cppwrap.Util.window(
+                    mask = EMAN2.cppwrap.Util.window(
                         sp_fundamentals.rot_shift3D(
                             mask, scale=old_div(float(lx), float(nx))
                         ),
@@ -1394,9 +1394,9 @@ def do_volume_mrk03(ref_data):
                         "user function",
                         1,
                     )
-            stat = EMAN2_cppwrap.Util.infomask(vol, mask, False)
+            stat = EMAN2.cppwrap.Util.infomask(vol, mask, False)
             vol -= stat[0]
-            EMAN2_cppwrap.Util.mul_scalar(vol, old_div(1.0, stat[1]))
+            EMAN2.cppwrap.Util.mul_scalar(vol, old_div(1.0, stat[1]))
         else:
             lx = 0
             locres = sp_utilities.model_blank(1, 1, 1)
@@ -1414,7 +1414,7 @@ def do_volume_mrk03(ref_data):
             if lx < nx:
                 vol = sp_fundamentals.fpol(vol, nx, nx, nx)
             vol = sp_morphology.threshold(vol)
-            EMAN2_cppwrap.Util.mul_img(vol, mask3D)
+            EMAN2.cppwrap.Util.mul_img(vol, mask3D)
             del mask3D
             # vol.write_image('toto%03d.hdf'%iter)
         else:
@@ -1423,9 +1423,9 @@ def do_volume_mrk03(ref_data):
         if myid == 0:
             # from utilities import write_text_file
             # write_text_file(rops_table(vol,1),"goo.txt")
-            stat = EMAN2_cppwrap.Util.infomask(vol, mask3D, False)
+            stat = EMAN2.cppwrap.Util.infomask(vol, mask3D, False)
             vol -= stat[0]
-            EMAN2_cppwrap.Util.mul_scalar(vol, old_div(1.0, stat[1]))
+            EMAN2.cppwrap.Util.mul_scalar(vol, old_div(1.0, stat[1]))
             # vol = threshold(vol)
             # vol.write_image('toto%03d.hdf'%iter)
     # broadcast volume
@@ -1435,7 +1435,7 @@ def do_volume_mrk03(ref_data):
         # =========================================================================
         return vol, None
     else:
-        mvol = EMAN2_cppwrap.Util.muln_img(vol, mask3D)
+        mvol = EMAN2.cppwrap.Util.muln_img(vol, mask3D)
         return mvol, vol
 
 
@@ -1507,7 +1507,7 @@ def do_volume_mrk04(ref_data):
                 mask3D = (Tracker["constants"]["mask3D"]).copy()
             nxm = mask3D.get_xsize()
             if nx != nxm:
-                mask3D = EMAN2_cppwrap.Util.window(
+                mask3D = EMAN2.cppwrap.Util.window(
                     sp_fundamentals.rot_shift3D(
                         mask3D, scale=old_div(float(nx), float(nxm))
                     ),
@@ -1518,11 +1518,11 @@ def do_volume_mrk04(ref_data):
                 nxm = mask3D.get_xsize()
                 assert nx == nxm
 
-        stat = EMAN2_cppwrap.Util.infomask(vol, mask3D, False)
+        stat = EMAN2.cppwrap.Util.infomask(vol, mask3D, False)
         vol -= stat[0]
-        EMAN2_cppwrap.Util.mul_scalar(vol, old_div(1.0, stat[1]))
+        EMAN2.cppwrap.Util.mul_scalar(vol, old_div(1.0, stat[1]))
         vol = sp_morphology.threshold(vol)
-        EMAN2_cppwrap.Util.mul_img(vol, mask3D)
+        EMAN2.cppwrap.Util.mul_img(vol, mask3D)
 
     if local_filter:
         if myid == 0:
@@ -1538,7 +1538,7 @@ def do_volume_mrk04(ref_data):
             lx = locres.get_xsize()
             if lx != nx:
                 if lx < nx:
-                    mask = EMAN2_cppwrap.Util.window(
+                    mask = EMAN2.cppwrap.Util.window(
                         sp_fundamentals.rot_shift3D(
                             mask, scale=old_div(float(lx), float(nx))
                         ),
@@ -1553,9 +1553,9 @@ def do_volume_mrk04(ref_data):
                         "user function",
                         1,
                     )
-            stat = EMAN2_cppwrap.Util.infomask(vol, mask, False)
+            stat = EMAN2.cppwrap.Util.infomask(vol, mask, False)
             vol -= stat[0]
-            EMAN2_cppwrap.Util.mul_scalar(vol, old_div(1.0, stat[1]))
+            EMAN2.cppwrap.Util.mul_scalar(vol, old_div(1.0, stat[1]))
         else:
             lx = 0
             locres = sp_utilities.model_blank(1, 1, 1)
@@ -1576,7 +1576,7 @@ def do_volume_mrk04(ref_data):
             vol = sp_filter.filt_btwl(
                 vol, 0.38, 0.5
             )  #  This will have to be corrected.
-            EMAN2_cppwrap.Util.mul_img(vol, mask3D)
+            EMAN2.cppwrap.Util.mul_img(vol, mask3D)
             del mask3D
             # vol.write_image('toto%03d.hdf'%iter)
         else:
@@ -1624,7 +1624,7 @@ def do_volume_mrk05(ref_data):
             mask3D = (Tracker["constants"]["mask3D"]).copy()
         nxm = mask3D.get_xsize()
         if nx != nxm:
-            mask3D = EMAN2_cppwrap.Util.window(
+            mask3D = EMAN2.cppwrap.Util.window(
                 sp_fundamentals.rot_shift3D(
                     mask3D, scale=old_div(float(nx), float(nxm))
                 ),
@@ -1635,12 +1635,12 @@ def do_volume_mrk05(ref_data):
             nxm = mask3D.get_xsize()
             assert nx == nxm
 
-    stat = EMAN2_cppwrap.Util.infomask(vol, mask3D, False)
+    stat = EMAN2.cppwrap.Util.infomask(vol, mask3D, False)
     vol -= stat[0]
-    EMAN2_cppwrap.Util.mul_scalar(vol, old_div(1.0, stat[1]))
+    EMAN2.cppwrap.Util.mul_scalar(vol, old_div(1.0, stat[1]))
 
     # =========================================================================
-    return EMAN2_cppwrap.Util.muln_img(vol, mask3D)  # , vol
+    return EMAN2.cppwrap.Util.muln_img(vol, mask3D)  # , vol
 
 
 # rewrote factory dict to provide a flexible interface for providing user functions dynamically.

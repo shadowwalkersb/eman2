@@ -41,7 +41,7 @@ from past.utils import old_div
 #
 #
 
-import EMAN2_cppwrap
+import EMAN2.cppwrap
 import mpi
 import optparse
 from ..libpy import sp_global_def
@@ -275,7 +275,7 @@ directory		output directory name: into which the results will be written (if it 
     )  # Total number of processes, passed by --np option.
 
     if mpi_rank == 0:
-        all_projs = EMAN2_cppwrap.EMData.read_images(args[0])
+        all_projs = EMAN2.cppwrap.EMData.read_images(args[0])
         subset = list(range(len(all_projs)))
         # if mpi_size > len(all_projs):
         # 	ERROR('Number of processes supplied by --np needs to be less than or equal to %d (total number of images) ' % len(all_projs), 'sxviper', 1)

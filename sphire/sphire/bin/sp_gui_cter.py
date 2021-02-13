@@ -38,7 +38,7 @@ from past.utils import old_div
 #
 
 import EMAN2
-import EMAN2_cppwrap
+import EMAN2.cppwrap
 import EMAN2_meta
 import PyQt5
 import PyQt5.QtCore
@@ -2714,7 +2714,7 @@ class SXGuiCter(PyQt5.QtWidgets.QWidget):
         assert os.path.exists(self.cter_micthumb_file_path), "MRK_DEBUG"
 
         # Now update the image
-        micthumb_img = EMAN2_cppwrap.EMData(
+        micthumb_img = EMAN2.cppwrap.EMData(
             self.cter_micthumb_file_path
         )  # read the image from disk
         self.wimgmicthumb.set_data(micthumb_img)
@@ -2784,7 +2784,7 @@ class SXGuiCter(PyQt5.QtWidgets.QWidget):
         assert os.path.exists(self.cter_fft_file_path), "MRK_DEBUG"
 
         # Now update the image
-        fft_img = EMAN2_cppwrap.EMData(
+        fft_img = EMAN2.cppwrap.EMData(
             self.cter_fft_file_path
         )  # read the image from disk
         self.wfft.set_data(fft_img)

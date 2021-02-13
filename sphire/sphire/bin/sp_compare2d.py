@@ -42,7 +42,7 @@ from __future__ import division
 from past.utils import old_div
 import os
 import EMAN2
-import EMAN2_cppwrap
+import EMAN2.cppwrap
 import datetime
 import argparse
 import math
@@ -328,7 +328,7 @@ def apsh(refstack, imgs2align, outangles=None, refanglesdoc=None, outaligndoc=No
         currimg= imagestacklist[imgindex]
         
         # Perform multi-reference alignment (adapted from alignment.mref_ali2d)
-        [angt, sxst, syst, mirrorfloat, bestreffloat, peakt]= EMAN2_cppwrap.Util.multiref_polar_ali_2d(
+        [angt, sxst, syst, mirrorfloat, bestreffloat, peakt]= EMAN2.cppwrap.Util.multiref_polar_ali_2d(
             currimg, polarrefs, txrng, tyrng, ringstep, mode, alignrings, halfdim, halfdim)
         bestref= int(bestreffloat)
         mirrorflag= int(mirrorfloat)
@@ -429,7 +429,7 @@ def mref2polar(refstack, firstring=1, outerradius=-1, ringstep=1, mode="F", norm
     # Loop through reference images (adapted from sxisac2)
     for refindex in range(numrefs):
         # Convert to polar
-        cimage= EMAN2_cppwrap.Util.Polar2Dm(
+        cimage= EMAN2.cppwrap.Util.Polar2Dm(
             referencelist[refindex], 
             halfdim, 
             halfdim, 
@@ -438,14 +438,14 @@ def mref2polar(refstack, firstring=1, outerradius=-1, ringstep=1, mode="F", norm
             )
         
         # Normalize
-        EMAN2_cppwrap.Util.Normalize_ring(cimage, alignringlist, normbysquare)  
+        EMAN2.cppwrap.Util.Normalize_ring(cimage, alignringlist, normbysquare)  
         #normbysquare: if other than 0, normalizes by setting the norm to 1
         
         # Fourier transform of rings
-        EMAN2_cppwrap.Util.Frngs(cimage, alignringlist)
+        EMAN2.cppwrap.Util.Frngs(cimage, alignringlist)
 
         # Apply weights to rings
-        EMAN2_cppwrap.Util.Applyws(cimage, alignringlist, ringweightlist)
+        EMAN2.cppwrap.Util.Applyws(cimage, alignringlist, ringweightlist)
 
         # Copy to reference stack
         polarreflist.append(cimage.copy())
@@ -610,7 +610,7 @@ def montage_norm(input_stack_or_list, ncol=None, marginwidth=0, bkgd=0, outfile=
                 # match FFT amplitudes
                 img_norm= sp_filter.filt_table(image_list[img_num], roo_list)
         elif norm_mode== 'sigmaone':
-            img_stat= EMAN2_cppwrap.Util.infomask(image_list[img_num]*mask, mask, False)
+            img_stat= EMAN2.cppwrap.Util.infomask(image_list[img_num]*mask, mask, False)
             img_mask= image_list[img_num]*mask
             img_zero= img_mask - img_stat[0]
             img_norm= old_div(img_zero, img_stat[1])

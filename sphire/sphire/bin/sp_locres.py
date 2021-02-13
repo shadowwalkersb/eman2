@@ -40,7 +40,7 @@ from past.utils import old_div
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
 #
 #
-import EMAN2_cppwrap
+import EMAN2.cppwrap
 import mpi
 import numpy
 import optparse
@@ -105,7 +105,7 @@ def output_volume(
             1, float(numpy.mean(data_freqvol[mask & mask_low_pass & mask_high_pass]))
         )
         overall_res_real = old_div(1, float(res_overall))
-        # mean_ang = options.apix / float(EMAN2_cppwrap.Util.infomask(freqvol, m, True)[0])
+        # mean_ang = options.apix / float(EMAN2.cppwrap.Util.infomask(freqvol, m, True)[0])
 
         volume_out_real = makeAngRes(freqvol, nx, ny, nz, 1)
         volume_out_real += overall_res_real - mean_real
@@ -319,38 +319,38 @@ def run():
             # print(lp,i,step,fl,fh)
             v = sp_fundamentals.fft(sp_filter.filt_tophatb(vf, fl, fh))
             u = sp_fundamentals.fft(sp_filter.filt_tophatb(uf, fl, fh))
-            tmp1 = EMAN2_cppwrap.Util.muln_img(v, v)
-            tmp2 = EMAN2_cppwrap.Util.muln_img(u, u)
+            tmp1 = EMAN2.cppwrap.Util.muln_img(v, v)
+            tmp2 = EMAN2.cppwrap.Util.muln_img(u, u)
 
-            do = EMAN2_cppwrap.Util.infomask(
+            do = EMAN2.cppwrap.Util.infomask(
                 sp_morphology.square_root(
-                    sp_morphology.threshold(EMAN2_cppwrap.Util.muln_img(tmp1, tmp2))
+                    sp_morphology.threshold(EMAN2.cppwrap.Util.muln_img(tmp1, tmp2))
                 ),
                 m,
                 True,
             )[0]
 
-            tmp3 = EMAN2_cppwrap.Util.muln_img(u, v)
-            dp = EMAN2_cppwrap.Util.infomask(tmp3, m, True)[0]
+            tmp3 = EMAN2.cppwrap.Util.muln_img(u, v)
+            dp = EMAN2.cppwrap.Util.infomask(tmp3, m, True)[0]
             resolut.append([i, old_div((fl + fh), 2.0), old_div(dp, do)])
 
-            tmp1 = EMAN2_cppwrap.Util.box_convolution(tmp1, nk)
-            tmp2 = EMAN2_cppwrap.Util.box_convolution(tmp2, nk)
-            tmp3 = EMAN2_cppwrap.Util.box_convolution(tmp3, nk)
+            tmp1 = EMAN2.cppwrap.Util.box_convolution(tmp1, nk)
+            tmp2 = EMAN2.cppwrap.Util.box_convolution(tmp2, nk)
+            tmp3 = EMAN2.cppwrap.Util.box_convolution(tmp3, nk)
 
-            EMAN2_cppwrap.Util.mul_img(tmp1, tmp2)
+            EMAN2.cppwrap.Util.mul_img(tmp1, tmp2)
 
             tmp1 = sp_morphology.square_root(sp_morphology.threshold(tmp1))
 
-            EMAN2_cppwrap.Util.mul_img(tmp1, m)
-            EMAN2_cppwrap.Util.add_img(tmp1, mc)
+            EMAN2.cppwrap.Util.mul_img(tmp1, m)
+            EMAN2.cppwrap.Util.add_img(tmp1, mc)
 
-            EMAN2_cppwrap.Util.mul_img(tmp3, m)
-            EMAN2_cppwrap.Util.add_img(tmp3, mc)
+            EMAN2.cppwrap.Util.mul_img(tmp3, m)
+            EMAN2.cppwrap.Util.add_img(tmp3, mc)
 
-            EMAN2_cppwrap.Util.div_img(tmp3, tmp1)
+            EMAN2.cppwrap.Util.div_img(tmp3, tmp1)
 
-            EMAN2_cppwrap.Util.mul_img(tmp3, m)
+            EMAN2.cppwrap.Util.mul_img(tmp3, m)
             freq = old_div((fl + fh), 2.0)
             bailout = True
             for x in range(nn):

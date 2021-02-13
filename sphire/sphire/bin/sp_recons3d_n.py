@@ -41,7 +41,7 @@ from __future__ import division
 #
 #
 
-import EMAN2_cppwrap
+import EMAN2.cppwrap
 import mpi
 import optparse
 from ..libpy import sp_applications
@@ -149,7 +149,7 @@ def run():
     if len(args) == 2:
         prj_stack = args[0]
         vol_stack = args[1]
-        nimage = EMAN2_cppwrap.EMUtil.get_image_count(prj_stack)
+        nimage = EMAN2.cppwrap.EMUtil.get_image_count(prj_stack)
         pid_list = list(range(0, nimage))
     elif len(args) == 5:
         prj_stack = args[0]

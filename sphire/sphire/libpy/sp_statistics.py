@@ -40,7 +40,7 @@ from past.utils import old_div
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
 #
 
-import EMAN2_cppwrap
+import EMAN2.cppwrap
 import copy
 import mpi
 import numpy
@@ -81,9 +81,9 @@ def add_ave_varf_MPI(
     n = len(data)
     nx = data[0].get_xsize()
     ny = data[0].get_ysize()
-    ave1 = EMAN2_cppwrap.EMData(nx, ny, 1, False)
-    ave2 = EMAN2_cppwrap.EMData(nx, ny, 1, False)
-    var = EMAN2_cppwrap.EMData(nx, ny, 1, False)
+    ave1 = EMAN2.cppwrap.EMData(nx, ny, 1, False)
+    ave2 = EMAN2.cppwrap.EMData(nx, ny, 1, False)
+    var = EMAN2.cppwrap.EMData(nx, ny, 1, False)
 
     if CTF:
         if data[0].get_attr_default("ctf_applied", 1) == 1:
@@ -93,7 +93,7 @@ def add_ave_varf_MPI(
         else:
             get_ctf2 = True
         if get_ctf2:
-            ctf_2_sum = EMAN2_cppwrap.EMData(nx, ny, 1, False)
+            ctf_2_sum = EMAN2.cppwrap.EMData(nx, ny, 1, False)
         ctf_params = data[i].get_attr("ctf")
         for i in range(n):
             if mode == "a":
@@ -104,7 +104,7 @@ def add_ave_varf_MPI(
                     data[i], alpha, sx, sy, mirror, scale, "quadratic"
                 )
                 if mask:
-                    EMAN2_cppwrap.Util.mul_img(ima, mask)
+                    EMAN2.cppwrap.Util.mul_img(ima, mask)
                 sp_fundamentals.fftip(ima)
                 ctf_params.dfang += alpha
                 if mirror == 1:
@@ -112,18 +112,18 @@ def add_ave_varf_MPI(
             else:
                 if mask:
                     ima = sp_fundamentals.fft(
-                        EMAN2_cppwrap.Util.muln_img(data[i], mask)
+                        EMAN2.cppwrap.Util.muln_img(data[i], mask)
                     )
                 else:
                     ima = sp_fundamentals.fft(data[i])
             ima_filt = sp_filter.filt_ctf(ima, ctf_params, dopad=False)
             if i % 2 == 0:
-                EMAN2_cppwrap.Util.add_img(ave1, ima_filt)
+                EMAN2.cppwrap.Util.add_img(ave1, ima_filt)
             else:
-                EMAN2_cppwrap.Util.add_img(ave2, ima_filt)
-            EMAN2_cppwrap.Util.add_img2(var, ima)
+                EMAN2.cppwrap.Util.add_img(ave2, ima_filt)
+            EMAN2.cppwrap.Util.add_img2(var, ima)
             if get_ctf2:
-                EMAN2_cppwrap.Util.add_img2(
+                EMAN2.cppwrap.Util.add_img2(
                     ctf_2_sum, sp_morphology.ctf_img(nx, ctf_params)
                 )
     else:
@@ -137,20 +137,20 @@ def add_ave_varf_MPI(
                     data[i], alpha, sx, sy, mirror, scale, "quadratic"
                 )
                 if mask:
-                    EMAN2_cppwrap.Util.mul_img(ima, mask)
+                    EMAN2.cppwrap.Util.mul_img(ima, mask)
                 sp_fundamentals.fftip(ima)
             else:
                 if mask:
                     ima = sp_fundamentals.fft(
-                        EMAN2_cppwrap.Util.muln_img(data[i], mask)
+                        EMAN2.cppwrap.Util.muln_img(data[i], mask)
                     )
                 else:
                     ima = sp_fundamentals.fft(data[i])
             if i % 2 == 0:
-                EMAN2_cppwrap.Util.add_img(ave1, ima)
+                EMAN2.cppwrap.Util.add_img(ave1, ima)
             else:
-                EMAN2_cppwrap.Util.add_img(ave2, ima)
-            EMAN2_cppwrap.Util.add_img2(var, ima)
+                EMAN2.cppwrap.Util.add_img(ave2, ima)
+            EMAN2.cppwrap.Util.add_img2(var, ima)
     sp_utilities.reduce_EMData_to_root(ave1, myid, main_node, comm)
     sp_utilities.reduce_EMData_to_root(ave2, myid, main_node, comm)
     sp_utilities.reduce_EMData_to_root(var, myid, main_node, comm)
@@ -160,24 +160,24 @@ def add_ave_varf_MPI(
     nima = mpi.mpi_reduce(nima, 1, mpi.MPI_INT, mpi.MPI_SUM, main_node, comm)
     if myid == main_node:
         nima = int(nima)
-        sumsq = EMAN2_cppwrap.Util.addn_img(ave1, ave2)
+        sumsq = EMAN2.cppwrap.Util.addn_img(ave1, ave2)
         if CTF:
-            tavg = EMAN2_cppwrap.Util.divn_img(sumsq, ctf_2_sum)
-            EMAN2_cppwrap.Util.mul_img(sumsq, sumsq)
-            EMAN2_cppwrap.Util.div_img(sumsq, ctf_2_sum)
+            tavg = EMAN2.cppwrap.Util.divn_img(sumsq, ctf_2_sum)
+            EMAN2.cppwrap.Util.mul_img(sumsq, sumsq)
+            EMAN2.cppwrap.Util.div_img(sumsq, ctf_2_sum)
         else:
-            tavg = EMAN2_cppwrap.Util.mult_scalar(sumsq, old_div(1.0, float(nima)))
-            EMAN2_cppwrap.Util.mul_img(sumsq, sumsq)
-            EMAN2_cppwrap.Util.mul_scalar(sumsq, old_div(1.0, float(nima)))
-        EMAN2_cppwrap.Util.sub_img(var, sumsq)
-        EMAN2_cppwrap.Util.mul_scalar(var, old_div(1.0, float(nima - 1)))
+            tavg = EMAN2.cppwrap.Util.mult_scalar(sumsq, old_div(1.0, float(nima)))
+            EMAN2.cppwrap.Util.mul_img(sumsq, sumsq)
+            EMAN2.cppwrap.Util.mul_scalar(sumsq, old_div(1.0, float(nima)))
+        EMAN2.cppwrap.Util.sub_img(var, sumsq)
+        EMAN2.cppwrap.Util.mul_scalar(var, old_div(1.0, float(nima - 1)))
         var.set_value_at(0, 0, 1.0)
-        st = EMAN2_cppwrap.Util.infomask(var, None, True)
+        st = EMAN2.cppwrap.Util.infomask(var, None, True)
         if st[2] < 0.0:
             sp_global_def.ERROR("Negative variance!", "add_ave_varf_MPI", 1)
     else:
-        tavg = EMAN2_cppwrap.EMData()
-        sumsq = EMAN2_cppwrap.EMData()
+        tavg = EMAN2.cppwrap.EMData()
+        sumsq = EMAN2.cppwrap.EMData()
     return tavg, ave1, ave2, var, sumsq
 
 
@@ -200,10 +200,10 @@ def sum_oe(
         params_list = [None] * n
     if CTF:
         origin_size = data[0].get_xsize()
-        ave1 = EMAN2_cppwrap.EMData(origin_size, origin_size, 1, False)
-        ave2 = EMAN2_cppwrap.EMData(origin_size, origin_size, 1, False)
-        ctf_2_sumo = EMAN2_cppwrap.EMData(origin_size, origin_size, 1, False)
-        ctf_2_sume = EMAN2_cppwrap.EMData(origin_size, origin_size, 1, False)
+        ave1 = EMAN2.cppwrap.EMData(origin_size, origin_size, 1, False)
+        ave2 = EMAN2.cppwrap.EMData(origin_size, origin_size, 1, False)
+        ctf_2_sumo = EMAN2.cppwrap.EMData(origin_size, origin_size, 1, False)
+        ctf_2_sume = EMAN2.cppwrap.EMData(origin_size, origin_size, 1, False)
 
         if data[0].get_attr_default("ctf_applied", 1) == 1:
             sp_global_def.ERROR("data cannot be ctf-applied", "sum_oe", 1)
@@ -233,13 +233,13 @@ def sum_oe(
                     alpha, sx, sy, mirror, scale = sp_utilities.get_params2D(data[im])
                     params_list[im] = [alpha, sx, sy, mirror, scale]
             ima = sp_fundamentals.fft(ima)
-            EMAN2_cppwrap.Util.mul_img(ima, ctt)
+            EMAN2.cppwrap.Util.mul_img(ima, ctt)
             if im % 2 == 0:
-                EMAN2_cppwrap.Util.add_img(ave1, ima)
-                EMAN2_cppwrap.Util.add_img2(ctf_2_sume, ctt)
+                EMAN2.cppwrap.Util.add_img(ave1, ima)
+                EMAN2.cppwrap.Util.add_img2(ctf_2_sume, ctt)
             else:
-                EMAN2_cppwrap.Util.add_img(ave2, ima)
-                EMAN2_cppwrap.Util.add_img2(ctf_2_sumo, ctt)
+                EMAN2.cppwrap.Util.add_img(ave2, ima)
+                EMAN2.cppwrap.Util.add_img2(ctf_2_sumo, ctt)
     else:
         nx = data[0].get_xsize()
         ny = data[0].get_ysize()
@@ -259,14 +259,14 @@ def sum_oe(
                     alpha, sx, sy, mirror, scale = sp_utilities.get_params2D(data[im])
                     params_list[im] = [alpha, sx, sy, mirror, scale]
             if im % 2 == 0:
-                EMAN2_cppwrap.Util.add_img(ave1, ima)
+                EMAN2.cppwrap.Util.add_img(ave1, ima)
             else:
-                EMAN2_cppwrap.Util.add_img(ave2, ima)
+                EMAN2.cppwrap.Util.add_img(ave2, ima)
 
     if CTF:
         if get_ctf2:
             if not ctf_eo_sum:  # Old usage
-                ctf_2_sum = EMAN2_cppwrap.Util.addn_img(ctf_2_sume, ctf_2_sumo)
+                ctf_2_sum = EMAN2.cppwrap.Util.addn_img(ctf_2_sume, ctf_2_sumo)
                 return sp_fundamentals.fft(ave1), sp_fundamentals.fft(ave2), ctf_2_sum
             else:  # return Fourier images
                 if return_params:
@@ -292,7 +292,7 @@ def ave_var(data, mode="a", listID=None):
 		data can be either in-core stack or a disk file
 	"""
     if type(data) == type(""):
-        n = EMAN2_cppwrap.EMUtil.get_image_count(data)
+        n = EMAN2.cppwrap.EMUtil.get_image_count(data)
     else:
         n = len(data)
     if listID == None:
@@ -323,9 +323,9 @@ def ave_var(data, mode="a", listID=None):
             else:
                 angle, sx, sy, mirror, scale = sp_utilities.get_params2D(img)
                 img = sp_fundamentals.rot_shift2D(img, angle, sx, sy, mirror, scale)
-        EMAN2_cppwrap.Util.add_img(ave, img)
-        EMAN2_cppwrap.Util.add_img2(var, img)
-    EMAN2_cppwrap.Util.mul_scalar(ave, old_div(1.0, float(nlistID)))
+        EMAN2.cppwrap.Util.add_img(ave, img)
+        EMAN2.cppwrap.Util.add_img2(var, img)
+    EMAN2.cppwrap.Util.mul_scalar(ave, old_div(1.0, float(nlistID)))
 
     return ave, old_div((var - ave * ave * nlistID), (nlistID - 1))
 
@@ -342,11 +342,11 @@ def ave_series(data, pave=True, mask=None):
     for i in range(n):
         alpha, sx, sy, mirror, scale = sp_utilities.get_params2D(data[i])
         temp = sp_fundamentals.rot_shift2D(data[i], alpha, sx, sy, mirror)
-        EMAN2_cppwrap.Util.add_img(ave, temp)
+        EMAN2.cppwrap.Util.add_img(ave, temp)
     if mask:
-        EMAN2_cppwrap.Util.mul_img(ave, mask)
+        EMAN2.cppwrap.Util.mul_img(ave, mask)
     if pave:
-        EMAN2_cppwrap.Util.mul_scalar(ave, old_div(1.0, float(n)))
+        EMAN2.cppwrap.Util.mul_scalar(ave, old_div(1.0, float(n)))
     return ave
 
 
@@ -362,7 +362,7 @@ def aves_wiener(input_stack, mode="a", SNR=1.0, interpolation_method="linear"):
 	"""
 
     if type(input_stack) == type(""):
-        n = EMAN2_cppwrap.EMUtil.get_image_count(input_stack)
+        n = EMAN2.cppwrap.EMUtil.get_image_count(input_stack)
     else:
         n = len(input_stack)
     ima = sp_utilities.get_im(input_stack, 0)
@@ -373,7 +373,7 @@ def aves_wiener(input_stack, mode="a", SNR=1.0, interpolation_method="linear"):
         sp_global_def.ERROR("data cannot be ctf-applied", "aves_wiener", 1)
 
     ave = sp_utilities.model_blank(nx, ny)
-    ctf_2_sum = EMAN2_cppwrap.EMData(nx, ny, 1, False)
+    ctf_2_sum = EMAN2.cppwrap.EMData(nx, ny, 1, False)
     snrsqrt = numpy.sqrt(SNR)
 
     for i in range(n):
@@ -388,17 +388,17 @@ def aves_wiener(input_stack, mode="a", SNR=1.0, interpolation_method="linear"):
             ctf_params.dfang += alpha
             if mirror == 1:
                 ctf_params.dfang = 270.0 - ctf_params.dfang
-        EMAN2_cppwrap.Util.mul_scalar(oc, SNR)
-        EMAN2_cppwrap.Util.add_img(ave, oc)
-        EMAN2_cppwrap.Util.add_img2(
+        EMAN2.cppwrap.Util.mul_scalar(oc, SNR)
+        EMAN2.cppwrap.Util.add_img(ave, oc)
+        EMAN2.cppwrap.Util.add_img2(
             ctf_2_sum, snrsqrt * sp_morphology.ctf_img(nx, ctf_params, ny=ny, nz=1)
         )
     ctf_2_sum += 1.0
-    ave = EMAN2_cppwrap.Util.divn_filter(
+    ave = EMAN2.cppwrap.Util.divn_filter(
         sp_fundamentals.fft(ave), ctf_2_sum
     )  # result in Fourier space
     # variance
-    var = EMAN2_cppwrap.EMData(nx, ny)
+    var = EMAN2.cppwrap.EMData(nx, ny)
     var.to_zero()
     for i in range(n):
         ima = sp_utilities.get_im(input_stack, i)
@@ -413,9 +413,9 @@ def aves_wiener(input_stack, mode="a", SNR=1.0, interpolation_method="linear"):
                 ctf_params.dfang = 270.0 - ctf_params.dfang
         """Multiline Comment2"""
         #  Subtract in Fourier space, multiply again by the ctf, divide by the ctf^2, fft, square in real space
-        ima = EMAN2_cppwrap.Util.divn_filter(
+        ima = EMAN2.cppwrap.Util.divn_filter(
             sp_filter.filt_ctf(
-                EMAN2_cppwrap.Util.subn_img(
+                EMAN2.cppwrap.Util.subn_img(
                     sp_fundamentals.fft(ima),
                     sp_filter.filt_ctf(ave, ctf_params, dopad=False),
                 ),
@@ -424,8 +424,8 @@ def aves_wiener(input_stack, mode="a", SNR=1.0, interpolation_method="linear"):
             ),
             ctf_2_sum,
         )
-        EMAN2_cppwrap.Util.mul_scalar(ima, SNR)
-        EMAN2_cppwrap.Util.add_img2(var, sp_fundamentals.fft(ima))
+        EMAN2.cppwrap.Util.mul_scalar(ima, SNR)
+        EMAN2.cppwrap.Util.add_img2(var, sp_fundamentals.fft(ima))
     # ave = Util.window(fft(ave),nx,ny,1,0,0,0)
     # Util.mul_scalar(var, 1.0/(n-1))
     return sp_fundamentals.fft(ave), var
@@ -448,7 +448,7 @@ def varf2d_MPI(myid, data, ave, mask=None, mode="a", CTF=False, main_node=0, com
     n = len(data)
     nx = data[0].get_xsize()
     ny = data[0].get_ysize()
-    var = EMAN2_cppwrap.EMData(nx, ny, 1, False)
+    var = EMAN2.cppwrap.EMData(nx, ny, 1, False)
 
     if CTF:
         if data[0].get_attr_default("ctf_applied", 1) == 1:
@@ -464,10 +464,10 @@ def varf2d_MPI(myid, data, ave, mask=None, mode="a", CTF=False, main_node=0, com
             else:
                 ima = data[i].copy()
             if mask:
-                EMAN2_cppwrap.Util.mul_img(ima, mask)
+                EMAN2.cppwrap.Util.mul_img(ima, mask)
             oc = sp_filter.filt_ctf(ave, ctf_params, dopad=True)
-            EMAN2_cppwrap.Util.add_img2(
-                var, sp_fundamentals.fft(EMAN2_cppwrap.Util.subn_img(ima, oc))
+            EMAN2.cppwrap.Util.add_img2(
+                var, sp_fundamentals.fft(EMAN2.cppwrap.Util.subn_img(ima, oc))
             )
     else:
         for i in range(n):
@@ -477,33 +477,33 @@ def varf2d_MPI(myid, data, ave, mask=None, mode="a", CTF=False, main_node=0, com
                     data[i], alpha, sx, sy, mirror, scale, "quadratic"
                 )
                 if mask:
-                    EMAN2_cppwrap.Util.mul_img(ima, mask)
+                    EMAN2.cppwrap.Util.mul_img(ima, mask)
                 sp_fundamentals.fftip(ima)
             else:
                 if mask:
                     ima = sp_fundamentals.fft(
-                        EMAN2_cppwrap.Util.muln_img(data[i], mask)
+                        EMAN2.cppwrap.Util.muln_img(data[i], mask)
                     )
                 else:
                     ima = sp_fundamentals.fft(data[i])
-            EMAN2_cppwrap.Util.add_img2(var, ima)
+            EMAN2.cppwrap.Util.add_img2(var, ima)
     sp_utilities.reduce_EMData_to_root(var, myid, main_node, comm)
     nima = n
     nima = mpi.mpi_reduce(nima, 1, mpi.MPI_INT, mpi.MPI_SUM, main_node, comm)
     if myid == main_node:
-        EMAN2_cppwrap.Util.mul_scalar(var, old_div(1.0, float(nima - 1)))
+        EMAN2.cppwrap.Util.mul_scalar(var, old_div(1.0, float(nima - 1)))
         if var.get_value_at(0, 0) < 0.0:
             var.set_value_at(0, 0, 0.0)
-        st = EMAN2_cppwrap.Util.infomask(var, None, True)
+        st = EMAN2.cppwrap.Util.infomask(var, None, True)
         if st[2] < 0.0:
             sp_global_def.ERROR("Negative variance!", "varf2_MPI", 1)
         return (
             var,
-            sp_fundamentals.rot_avg_table(EMAN2_cppwrap.Util.pack_complex_to_real(var)),
+            sp_fundamentals.rot_avg_table(EMAN2.cppwrap.Util.pack_complex_to_real(var)),
         )
     else:
         return (
-            EMAN2_cppwrap.EMData(),
+            EMAN2.cppwrap.EMData(),
             [0],
         )  # return minimum what has to be returned, but no meaning.
 
@@ -558,8 +558,8 @@ def fsc_mask(img1, img2, mask=None, w=1.0, filename=None):
     if mask == None:
         mask = sp_utilities.model_circle(old_div(nx, 2), nx, ny, nz)
     m = sp_morphology.binarize(mask, 0.5)
-    s1 = EMAN2_cppwrap.Util.infomask(img1, m, True)
-    s2 = EMAN2_cppwrap.Util.infomask(img2, m, True)
+    s1 = EMAN2.cppwrap.Util.infomask(img1, m, True)
+    s2 = EMAN2.cppwrap.Util.infomask(img2, m, True)
     return fsc((img1 - s1[0]) * mask, (img2 - s2[0]) * mask, w, filename)
 
 
@@ -571,10 +571,10 @@ def locres(vi, ui, m, nk, cutoff, step, myid, main_node, number_of_proc):
     mc = sp_utilities.model_blank(nx, ny, nz, 1.0) - m
 
     if myid == main_node:
-        st = EMAN2_cppwrap.Util.infomask(vi, m, True)
+        st = EMAN2.cppwrap.Util.infomask(vi, m, True)
         vi -= st[0]
 
-        st = EMAN2_cppwrap.Util.infomask(ui, m, True)
+        st = EMAN2.cppwrap.Util.infomask(ui, m, True)
         ui -= st[1]
 
     sp_utilities.bcast_EMData_to_all(vi, myid, main_node)
@@ -600,17 +600,17 @@ def locres(vi, ui, m, nk, cutoff, step, myid, main_node, number_of_proc):
         if i > 0:
             v = sp_fundamentals.fft(sp_filter.filt_tophatb(vf, fl, fh))
             u = sp_fundamentals.fft(sp_filter.filt_tophatb(uf, fl, fh))
-            tmp1 = EMAN2_cppwrap.Util.muln_img(v, v)
-            tmp2 = EMAN2_cppwrap.Util.muln_img(u, u)
-            tmp3 = EMAN2_cppwrap.Util.muln_img(u, v)
-            do = EMAN2_cppwrap.Util.infomask(
+            tmp1 = EMAN2.cppwrap.Util.muln_img(v, v)
+            tmp2 = EMAN2.cppwrap.Util.muln_img(u, u)
+            tmp3 = EMAN2.cppwrap.Util.muln_img(u, v)
+            do = EMAN2.cppwrap.Util.infomask(
                 sp_morphology.square_root(
-                    sp_morphology.threshold(EMAN2_cppwrap.Util.muln_img(tmp1, tmp2))
+                    sp_morphology.threshold(EMAN2.cppwrap.Util.muln_img(tmp1, tmp2))
                 ),
                 m,
                 True,
             )[0]
-            dp = EMAN2_cppwrap.Util.infomask(tmp3, m, True)[0]
+            dp = EMAN2.cppwrap.Util.infomask(tmp3, m, True)[0]
             # print "dpdo   ",myid,dp,do
             if do == 0.0:
                 dis = [freq, 0.0]
@@ -622,23 +622,23 @@ def locres(vi, ui, m, nk, cutoff, step, myid, main_node, number_of_proc):
             tmp3 = sp_utilities.model_blank(nx, ny, nz, 1.0)
             dis = [freq, 1.0]
 
-        tmp1 = EMAN2_cppwrap.Util.box_convolution(tmp1, nk)
-        tmp2 = EMAN2_cppwrap.Util.box_convolution(tmp2, nk)
-        tmp3 = EMAN2_cppwrap.Util.box_convolution(tmp3, nk)
+        tmp1 = EMAN2.cppwrap.Util.box_convolution(tmp1, nk)
+        tmp2 = EMAN2.cppwrap.Util.box_convolution(tmp2, nk)
+        tmp3 = EMAN2.cppwrap.Util.box_convolution(tmp3, nk)
 
-        EMAN2_cppwrap.Util.mul_img(tmp1, tmp2)
+        EMAN2.cppwrap.Util.mul_img(tmp1, tmp2)
 
         tmp1 = sp_morphology.square_root(sp_morphology.threshold(tmp1))
 
-        EMAN2_cppwrap.Util.mul_img(tmp1, m)
-        EMAN2_cppwrap.Util.add_img(tmp1, mc)
+        EMAN2.cppwrap.Util.mul_img(tmp1, m)
+        EMAN2.cppwrap.Util.add_img(tmp1, mc)
 
-        EMAN2_cppwrap.Util.mul_img(tmp3, m)
-        EMAN2_cppwrap.Util.add_img(tmp3, mc)
+        EMAN2.cppwrap.Util.mul_img(tmp3, m)
+        EMAN2.cppwrap.Util.add_img(tmp3, mc)
 
-        EMAN2_cppwrap.Util.div_img(tmp3, tmp1)
+        EMAN2.cppwrap.Util.div_img(tmp3, tmp1)
 
-        EMAN2_cppwrap.Util.mul_img(tmp3, m)
+        EMAN2.cppwrap.Util.mul_img(tmp3, m)
 
         mpi.mpi_barrier(mpi.MPI_COMM_WORLD)
 
@@ -666,7 +666,7 @@ def locres(vi, ui, m, nk, cutoff, step, myid, main_node, number_of_proc):
                 # if(k == number_of_proc-1):  bailout = 1
                 bailout = 0
                 # print  "setting freqvol  ",k
-                EMAN2_cppwrap.Util.set_freq_sphire(freqvol, tmp3, m, cutoff, freq)
+                EMAN2.cppwrap.Util.set_freq_sphire(freqvol, tmp3, m, cutoff, freq)
                 """Multiline Comment6"""
             """Multiline Comment7"""
 
@@ -1067,7 +1067,7 @@ def k_means_match_clusters_asg_new(asg1, asg2, T=0):
     dummy = numpy.array([0], "int32")
     for k1 in range(K):
         for k2 in range(K):
-            MAT[k1][k2] = EMAN2_cppwrap.Util.k_means_cont_table(
+            MAT[k1][k2] = EMAN2.cppwrap.Util.k_means_cont_table(
                 asg1[k1], asg2[k2], dummy, asg1[k1].size, asg2[k2].size, 0
             )
             if MAT[k1][k2] <= T:
@@ -1087,7 +1087,7 @@ def k_means_match_clusters_asg_new(asg1, asg2, T=0):
             continue
         nb_tot_objs += cont
         objs = numpy.zeros(cont, "int32")
-        dummy = EMAN2_cppwrap.Util.k_means_cont_table(
+        dummy = EMAN2.cppwrap.Util.k_means_cont_table(
             asg1[r], asg2[c], objs, asg1[r].size, asg2[c].size, 1
         )
         list_stable.append(objs)
@@ -1521,7 +1521,7 @@ def k_means_match_bbenum(
         ar_class_dim = numpy.array(class_dim, "int32")
 
         # Single processor version
-        output = EMAN2_cppwrap.Util.bb_enumerateMPI(
+        output = EMAN2.cppwrap.Util.bb_enumerateMPI(
             ar_argParts,
             ar_class_dim,
             np,

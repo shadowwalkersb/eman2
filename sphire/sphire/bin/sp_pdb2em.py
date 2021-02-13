@@ -50,7 +50,7 @@ from past.utils import old_div
 # HEADER    COMPLEX(ANTIBODY/HIV-1 FRAGMENT)        10-FEB-94   1ACY      1ACY   2
 
 
-import EMAN2_cppwrap
+import EMAN2.cppwrap
 import EMAN2_meta
 import math
 import optparse
@@ -156,7 +156,7 @@ map to the center of the volume."""
             txlist.append(cols[1][i])
             txlist.append(cols[2][i])
             txlist.append(cols[3][i])
-        tr0 = EMAN2_cppwrap.Transform(txlist)
+        tr0 = EMAN2.cppwrap.Transform(txlist)
 
     # parse the pdb file and pull out relevant atoms
     for line in infile:
@@ -286,7 +286,7 @@ map to the center of the volume."""
                 "Applying initial transformation to PDB coordinates... "
             )
         for i in range(len(atoms)):
-            atom_coords = EMAN2_cppwrap.Vec3f(atoms[i][1], atoms[i][2], atoms[i][3])
+            atom_coords = EMAN2.cppwrap.Vec3f(atoms[i][1], atoms[i][2], atoms[i][3])
             new_atom_coords = tr0 * atom_coords
             atoms[i][1] = new_atom_coords[0]
             atoms[i][2] = new_atom_coords[1]
@@ -354,7 +354,7 @@ map to the center of the volume."""
         bigbox.append(box[i] * fcbig)
 
     # initialize the final output volume
-    outmap = EMAN2_cppwrap.EMData(bigbox[0], bigbox[1], bigbox[2], True)
+    outmap = EMAN2.cppwrap.EMData(bigbox[0], bigbox[1], bigbox[2], True)
     nc = []
     for i in range(3):
         nc.append(old_div(bigbox[i], 2))
@@ -399,11 +399,11 @@ map to the center of the volume."""
         else:
             sp_global_def.sxprint("Pixel_size is not set in the header!")
 
-        outmap.write_image(args[1], 0, EMAN2_cppwrap.EMUtil.ImageType.IMAGE_HDF)
+        outmap.write_image(args[1], 0, EMAN2.cppwrap.EMUtil.ImageType.IMAGE_HDF)
 
     elif filextension == ".spi":
         outmap.write_image(
-            args[1], 0, EMAN2_cppwrap.EMUtil.ImageType.IMAGE_SINGLE_SPIDER
+            args[1], 0, EMAN2.cppwrap.EMUtil.ImageType.IMAGE_SINGLE_SPIDER
         )
 
     else:

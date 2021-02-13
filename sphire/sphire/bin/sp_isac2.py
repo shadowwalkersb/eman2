@@ -40,7 +40,7 @@ Place, Suite 330, Boston, MA  02111-1307 USA
 """
 
 import EMAN2
-import EMAN2_cppwrap
+import EMAN2.cppwrap
 from EMAN2db import db_open_dict
 import ctypes
 import mpi
@@ -764,7 +764,7 @@ def isac_MPI_pap(
         # read all data
         sp_global_def.sxprint("  SHOULD NOT BE HERE")
         sys.exit()
-        alldata = EMAN2_cppwrap.EMData.read_images(stack)
+        alldata = EMAN2.cppwrap.EMData.read_images(stack)
     else:
         alldata = stack
     nx = alldata[0].get_xsize()
@@ -788,7 +788,7 @@ def isac_MPI_pap(
         mask = sp_utilities.model_circle(last_ring, nx, nx)
 
     if type(refim) == type(""):
-        refi = EMAN2_cppwrap.EMData.read_images(refim)
+        refi = EMAN2.cppwrap.EMData.read_images(refim)
     else:
         # It's safer to make a hard copy here. Although I am not sure, I believe a shallow copy
         # has messed up the program.
@@ -855,13 +855,13 @@ def isac_MPI_pap(
             refi[j].process_inplace(
                 "normalize.mask", {"mask": mask, "no_sigma": 1}
             )  # normalize reference images to N(0,1)
-            cimage = EMAN2_cppwrap.Util.Polar2Dm(
+            cimage = EMAN2.cppwrap.Util.Polar2Dm(
                 refi[j], cnx, cny, numr, mode
             )  # converting reference images to polar cordinates
-            EMAN2_cppwrap.Util.Frngs(
+            EMAN2.cppwrap.Util.Frngs(
                 cimage, numr
             )  # Applying FFT on the reference images
-            EMAN2_cppwrap.Util.Applyws(
+            EMAN2.cppwrap.Util.Applyws(
                 cimage, numr, wr
             )  # apply weights to FTs of rings
             refi[j] = cimage.copy()
@@ -911,7 +911,7 @@ def isac_MPI_pap(
 
             # compute alignment parameters for single image with index <im> and all references <refi>
             # NOTE: multiref_polar_ali_2d_peaklist includes conversion of image data into polar coordinates AND an FFT
-            temp = EMAN2_cppwrap.Util.multiref_polar_ali_2d_peaklist(
+            temp = EMAN2.cppwrap.Util.multiref_polar_ali_2d_peaklist(
                 alldata[im], refi, txrng, tyrng, step, mode, numr, cnx + sxi, cny + syi
             )
             for iref in range(numref):
@@ -967,7 +967,7 @@ def isac_MPI_pap(
 
         if myid == main_node:
             # find maximum in the peak list to determine highest subject/reference match
-            id_list_long = EMAN2_cppwrap.Util.assign_groups(
+            id_list_long = EMAN2.cppwrap.Util.assign_groups(
                 str(d.__array_interface__["data"][0]), numref, nima
             )  # string with memory address is passed as parameters
             id_list = [[] for i in range(numref)]
@@ -1022,7 +1022,7 @@ def isac_MPI_pap(
             sy_sum[matchref] += syn
 
             # apply current parameters and add to the average
-            EMAN2_cppwrap.Util.add_img(
+            EMAN2.cppwrap.Util.add_img(
                 refi[matchref],
                 sp_fundamentals.rot_shift2D(alldata[im], alphan, sxn, syn, mn),
             )
@@ -1084,7 +1084,7 @@ def isac_MPI_pap(
 
             if myid == main_node:
                 # Golden rule when to do within group refinement
-                EMAN2_cppwrap.Util.mul_scalar(refi[j], old_div(1.0, float(members[j])))
+                EMAN2.cppwrap.Util.mul_scalar(refi[j], old_div(1.0, float(members[j])))
                 refi[j] = sp_filter.filt_tanl(refi[j], fl, FF)
                 refi[j] = sp_fundamentals.fshift(refi[j], -sx_sum[j], -sy_sum[j])
                 sp_utilities.set_params2D(refi[j], [0.0, 0.0, 0.0, 0, 1.0])
@@ -1556,7 +1556,7 @@ def do_generation(
 
     buffer = buffer.reshape(nimastack, target_nx, target_nx)
 
-    emnumpy2 = EMAN2_cppwrap.EMNumPy()
+    emnumpy2 = EMAN2.cppwrap.EMNumPy()
     bigbuffer = emnumpy2.register_numpy_to_emdata(buffer)
 
     if Blockdata["myid_on_node"] == 0:
@@ -1578,7 +1578,7 @@ def do_generation(
         pointer_location = ctypes.cast(newpoint, ctypes.POINTER(ctypes.c_int * size_of_one_image))
         img_buffer = numpy.frombuffer(pointer_location.contents, dtype="f4")
         img_buffer = img_buffer.reshape(target_nx, target_nx)
-        emnumpy3[i] = EMAN2_cppwrap.EMNumPy()
+        emnumpy3[i] = EMAN2.cppwrap.EMNumPy()
         alldata[i] = emnumpy3[i].register_numpy_to_emdata(img_buffer)
     mpi.mpi_barrier(mpi.MPI_COMM_WORLD)
 
@@ -1646,7 +1646,7 @@ def do_generation(
     if Blockdata["myid"] == Blockdata["main_node"]:
         #  How many averages alreay exist
         if os.path.exists(os.path.join(Blockdata["masterdir"], "class_averages.hdf")):
-            nave_exist = EMAN2_cppwrap.EMUtil.get_image_count(
+            nave_exist = EMAN2.cppwrap.EMUtil.get_image_count(
                 os.path.join(Blockdata["masterdir"], "class_averages.hdf")
             )
         else:
@@ -2236,7 +2236,7 @@ def run(args):
 
     # get total number of images (nima) and broadcast
     if myid == main_node:
-        Blockdata["total_nima"] = EMAN2_cppwrap.EMUtil.get_image_count(
+        Blockdata["total_nima"] = EMAN2.cppwrap.EMUtil.get_image_count(
             Blockdata["stack"]
         )
     else:
@@ -2381,7 +2381,7 @@ def run(args):
             Blockdata["total_nima"], nproc, myid
         )
 
-        original_images = EMAN2_cppwrap.EMData.read_images(
+        original_images = EMAN2.cppwrap.EMData.read_images(
             Blockdata["stack"], list(range(image_start, image_end))
         )
 
@@ -2521,7 +2521,7 @@ def run(args):
         #  Note images can be also padded, in which case shrink_ratio > 1.
         shrink_ratio = old_div(float(target_radius), float(radi))
 
-        aligned_images = EMAN2_cppwrap.EMData.read_images(
+        aligned_images = EMAN2.cppwrap.EMData.read_images(
             Blockdata["stack"], list(range(image_start, image_end))
         )
         nx = aligned_images[0].get_xsize()
@@ -2572,7 +2572,7 @@ def run(args):
                     angle=aligned_images[im].get_attr("segment_angle"),
                 )
             # subtract mean of the within-mask area
-            st = EMAN2_cppwrap.Util.infomask(aligned_images[im], mask, False)
+            st = EMAN2.cppwrap.Util.infomask(aligned_images[im], mask, False)
             aligned_images[im] -= st[0]
             # for normal data: CTF correction
             if options.CTF:

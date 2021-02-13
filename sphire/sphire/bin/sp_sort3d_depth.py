@@ -45,7 +45,7 @@ from past.utils import old_div
 #
 #
 
-import EMAN2_cppwrap
+import EMAN2.cppwrap
 import copy
 import json
 import mpi
@@ -1461,7 +1461,7 @@ def compute_noise(image_size):
             Blockdata["bckgnoise"].append(prj)
         for i in range(len(Blockdata["bckgnoise"])):
             Blockdata["unrolldata"].append(
-                EMAN2_cppwrap.Util.unroll1dpw(ny, ny, Blockdata["bckgnoise"][i])
+                EMAN2.cppwrap.Util.unroll1dpw(ny, ny, Blockdata["bckgnoise"][i])
             )
     else:  # from datastack and relion
         temp_image = sp_utilities.model_blank(image_size, image_size)
@@ -1469,7 +1469,7 @@ def compute_noise(image_size):
         nx = temp_image.get_xsize()
         ny = temp_image.get_ysize()
         Blockdata["bckgnoise"] = [1.0] * nx
-        Blockdata["unrolldata"] = EMAN2_cppwrap.Util.unroll1dpw(ny, ny, nx * [1.0])
+        Blockdata["unrolldata"] = EMAN2.cppwrap.Util.unroll1dpw(ny, ny, nx * [1.0])
     return
 
 
@@ -1489,7 +1489,7 @@ def get_params_for_analysis(orgstack, ali3d_params, smearing_file, smearing_numb
     ##
     if orgstack is not None:
         defo_list = []
-        ctfs = EMAN2_cppwrap.EMUtil.get_all_attributes(orgstack, "ctf")
+        ctfs = EMAN2.cppwrap.EMUtil.get_all_attributes(orgstack, "ctf")
         for im in range(len(ctfs)):
             defo_list.append(ctfs[im].defocus)
     else:
@@ -2598,10 +2598,10 @@ def Kmeans_minimum_group_size_orien_groups(
                         True,
                         False,
                     )
-                stat = EMAN2_cppwrap.Util.infomask(ref_vol, mask3D, False)
+                stat = EMAN2.cppwrap.Util.infomask(ref_vol, mask3D, False)
                 ref_vol -= stat[0]
                 if stat[1] != 0.0:
-                    EMAN2_cppwrap.Util.mul_scalar(ref_vol, old_div(1.0, stat[1]))
+                    EMAN2.cppwrap.Util.mul_scalar(ref_vol, old_div(1.0, stat[1]))
                 ref_vol *= mask3D
             else:
                 ref_vol = sp_utilities.model_blank(
@@ -2924,7 +2924,7 @@ def get_shrink_data_sorting(
             data[im] = sp_fundamentals.fshift(data[im], sx, sy)
             sx = 0.0
             sy = 0.0
-        st = EMAN2_cppwrap.Util.infomask(data[im], mask2D, False)
+        st = EMAN2.cppwrap.Util.infomask(data[im], mask2D, False)
         data[im] -= st[0]
         data[im] = old_div(data[im], st[1])
         if apply_mask:
@@ -3457,7 +3457,7 @@ def precalculate_shifted_data_for_recons3D(
                 toprab = 0.0
                 for ki in range(len(lshifts)):
                     toprab += probs[lshifts[ki]]
-                recdata = EMAN2_cppwrap.EMData(nny, nny, 1, False)
+                recdata = EMAN2.cppwrap.EMData(nny, nny, 1, False)
                 recdata.set_attr("is_complex", 0)
                 for ki in range(len(lshifts)):
                     lpt = allshifts[lshifts[ki]]
@@ -3466,9 +3466,9 @@ def precalculate_shifted_data_for_recons3D(
                             prjlist[im], rshifts_shrank[lpt][0], rshifts_shrank[lpt][1]
                         )
                         data[lpt].set_attr("is_complex", 0)
-                    EMAN2_cppwrap.Util.add_img(
+                    EMAN2.cppwrap.Util.add_img(
                         recdata,
-                        EMAN2_cppwrap.Util.mult_scalar(
+                        EMAN2.cppwrap.Util.mult_scalar(
                             data[lpt], old_div(probs[lshifts[ki]], toprab)
                         ),
                     )
@@ -3580,10 +3580,10 @@ def downsize_data_for_sorting(
         [sx1, sy1] = image.get_attr("current_shifts")
         rimage = sp_fundamentals.cyclic_shift(image, int(round(sx)), int(round(sy)))
         cimage = sp_fundamentals.fshift(image, sx1, sy1)
-        st = EMAN2_cppwrap.Util.infomask(rimage, mask2D, False)
+        st = EMAN2.cppwrap.Util.infomask(rimage, mask2D, False)
         rimage -= st[0]
         rimage = old_div(rimage, st[1])
-        st = EMAN2_cppwrap.Util.infomask(cimage, mask2D, False)
+        st = EMAN2.cppwrap.Util.infomask(cimage, mask2D, False)
         cimage -= st[0]
         cimage = old_div(cimage, st[1])
 
@@ -3610,7 +3610,7 @@ def downsize_data_for_sorting(
                         sp_filter.filt_table(bckg, oneover[particle_group_id])
                     )
                     #  Normalize bckg noise in real space, only region actually used.
-                    st = EMAN2_cppwrap.Util.infomask(bckg, mask2D, False)
+                    st = EMAN2.cppwrap.Util.infomask(bckg, mask2D, False)
                     bckg -= st[0]
                     bckg = old_div(bckg, st[1])
                     cimage = sp_morphology.cosinemask(
@@ -3741,7 +3741,7 @@ def downsize_data_for_rec3D(original_data, particle_size, return_real=False, npa
             image = sp_fundamentals.fshift(image, s2x, s2y)
         else:
             image = sp_fundamentals.cyclic_shift(image, int(round(sx)), int(round(sy)))
-        st = EMAN2_cppwrap.Util.infomask(image, mask2D, False)
+        st = EMAN2.cppwrap.Util.infomask(image, mask2D, False)
         image -= st[0]
         image = old_div(image, st[1])
         image = sp_fundamentals.fft(image)
@@ -3808,7 +3808,7 @@ def compare_two_images_eucd(data, ref_vol, fdata):
 
         if Tracker["applybckgnoise"]:
             peaks[im] = old_div(
-                -EMAN2_cppwrap.Util.sqed(
+                -EMAN2.cppwrap.Util.sqed(
                     data[im],
                     rtemp,
                     ctfs[im],
@@ -3818,7 +3818,7 @@ def compare_two_images_eucd(data, ref_vol, fdata):
             )
         else:
             peaks[im] = old_div(
-                -EMAN2_cppwrap.Util.sqed(
+                -EMAN2.cppwrap.Util.sqed(
                     data[im], rtemp, ctfs[im], Blockdata["unrolldata"]
                 ),
                 qt,
@@ -3850,20 +3850,20 @@ def compare_two_images_cross(data, ref_vol):
             data[im], xform="xform.projection"
         )
         ref = sp_projection.prgl(volft, [phi, theta, psi, 0.0, 0.0], 1, False)
-        EMAN2_cppwrap.Util.mulclreal(ref, ctfs[im])
+        EMAN2.cppwrap.Util.mulclreal(ref, ctfs[im])
         ref.set_attr("is_complex", 0)
         ref.set_value_at(0, 0, 0.0)
-        nrmref = numpy.sqrt(EMAN2_cppwrap.Util.innerproduct(ref, ref, None))
+        nrmref = numpy.sqrt(EMAN2.cppwrap.Util.innerproduct(ref, ref, None))
         if data[im].get_attr("is_complex") == 1:
             data[im].set_attr("is_complex", 0)
         if Tracker["constants"]["focus3D"]:
             peaks[im] = old_div(
-                EMAN2_cppwrap.Util.innerproduct(ref, data[im], None), nrmref
+                EMAN2.cppwrap.Util.innerproduct(ref, data[im], None), nrmref
             )
         else:
             if Tracker["applybckgnoise"]:
                 peaks[im] = old_div(
-                    EMAN2_cppwrap.Util.innerproduct(
+                    EMAN2.cppwrap.Util.innerproduct(
                         ref,
                         data[im],
                         Blockdata["unrolldata"][data[im].get_attr("particle_group")],
@@ -3872,7 +3872,7 @@ def compare_two_images_cross(data, ref_vol):
                 )
             else:
                 peaks[im] = old_div(
-                    EMAN2_cppwrap.Util.innerproduct(ref, data[im], None), nrmref
+                    EMAN2.cppwrap.Util.innerproduct(ref, data[im], None), nrmref
                 )
     return peaks
 
@@ -5379,12 +5379,12 @@ def MPI_volume_start_end(number_of_groups, ncolor, mycolor):
 def stepone(tvol, tweight):
     global Tracker, Blockdata
     tvol.set_attr("is_complex", 1)
-    ovol = EMAN2_cppwrap.Util.shrinkfvol(tvol, 2)
-    owol = EMAN2_cppwrap.Util.shrinkfvol(tweight, 2)
+    ovol = EMAN2.cppwrap.Util.shrinkfvol(tvol, 2)
+    owol = EMAN2.cppwrap.Util.shrinkfvol(tweight, 2)
     if Tracker["constants"]["symmetry"] != "c1":
         ovol = ovol.symfvol(Tracker["constants"]["symmetry"], -1)
         owol = owol.symfvol(Tracker["constants"]["symmetry"], -1)
-    return EMAN2_cppwrap.Util.divn_cbyr(ovol, owol)
+    return EMAN2.cppwrap.Util.divn_cbyr(ovol, owol)
 
 
 def steptwo_mpi(tvol, tweight, treg, cfsc=None, regularized=True, color=0):
@@ -5425,7 +5425,7 @@ def steptwo_mpi(tvol, tweight, treg, cfsc=None, regularized=True, color=0):
             #  Do not regularize first four
             for i in range(5):
                 treg[i] = 0.0
-            EMAN2_cppwrap.Util.reg_weights(tweight, treg, it)
+            EMAN2.cppwrap.Util.reg_weights(tweight, treg, it)
             del it
         else:
             limitres = 2 * min(
@@ -5503,7 +5503,7 @@ def steptwo_mpi(tvol, tweight, treg, cfsc=None, regularized=True, color=0):
             Tracker["constants"]["nnxo"],
             Tracker["constants"]["nnxo"],
         )
-        tvol = EMAN2_cppwrap.Util.window(
+        tvol = EMAN2.cppwrap.Util.window(
             tvol,
             Tracker["constants"]["nnxo"],
             Tracker["constants"]["nnxo"],
@@ -5561,7 +5561,7 @@ def steptwo_mpi_filter(
             #  Do not regularize first four
             for i in range(5):
                 treg[i] = 0.0
-            EMAN2_cppwrap.Util.reg_weights(tweight, treg, it)
+            EMAN2.cppwrap.Util.reg_weights(tweight, treg, it)
             del it
         else:
             limitres = 2 * min(
@@ -5640,7 +5640,7 @@ def steptwo_mpi_filter(
             Tracker["constants"]["nnxo"],
             Tracker["constants"]["nnxo"],
         )
-        tvol = EMAN2_cppwrap.Util.window(
+        tvol = EMAN2.cppwrap.Util.window(
             tvol,
             Tracker["constants"]["nnxo"],
             Tracker["constants"]["nnxo"],
@@ -5682,8 +5682,8 @@ def recons3d_4nnsorting_MPI(
         do_ctf = 1
     else:
         do_ctf = 0
-    fftvol = EMAN2_cppwrap.EMData()
-    weight = EMAN2_cppwrap.EMData()
+    fftvol = EMAN2.cppwrap.EMData()
+    weight = EMAN2.cppwrap.EMData()
     params = {
         "size": target_size,
         "npad": 2,
@@ -5695,7 +5695,7 @@ def recons3d_4nnsorting_MPI(
         "weight": weight,
         "do_ctf": do_ctf,
     }
-    r = EMAN2_cppwrap.Reconstructors.get("nn4_ctfw", params)
+    r = EMAN2.cppwrap.Reconstructors.get("nn4_ctfw", params)
     r.setup()
     # if norm_per_particle == None: norm_per_particle = len(prjlist)*[1.0]
     for im in range(len(prjlist)):
@@ -5712,7 +5712,7 @@ def recons3d_4nnsorting_MPI(
             prjlist[im].set_attr("bckgnoise", bckgn)
             r.insert_slice(
                 prjlist[im],
-                EMAN2_cppwrap.Transform(
+                EMAN2.cppwrap.Transform(
                     {"type": "spider", "phi": phi, "theta": theta, "psi": psi}
                 ),
                 1.0,
@@ -5729,7 +5729,7 @@ def recons3d_4nnsorting_MPI(
                 prjlist[im].set_attr("bckgnoise", bckgn)
                 r.insert_slice(
                     prjlist[im],
-                    EMAN2_cppwrap.Transform(
+                    EMAN2.cppwrap.Transform(
                         {"type": "spider", "phi": phi, "theta": theta, "psi": psi}
                     ),
                     1.0,
@@ -5771,8 +5771,8 @@ def recons3d_4nnsorting_group_MPI(
         do_ctf = 1
     else:
         do_ctf = 0
-    fftvol = EMAN2_cppwrap.EMData()
-    weight = EMAN2_cppwrap.EMData()
+    fftvol = EMAN2.cppwrap.EMData()
+    weight = EMAN2.cppwrap.EMData()
     try:
         qt = prjlist[0].get_attr("qt")
     except:
@@ -5788,7 +5788,7 @@ def recons3d_4nnsorting_group_MPI(
         "weight": weight,
         "do_ctf": do_ctf,
     }
-    r = EMAN2_cppwrap.Reconstructors.get("nn4_ctfw", params)
+    r = EMAN2.cppwrap.Reconstructors.get("nn4_ctfw", params)
     r.setup()
     for im in range(len(prjlist)):
         phi, theta, psi, s2x, s2y = sp_utilities.get_params_proj(
@@ -5810,7 +5810,7 @@ def recons3d_4nnsorting_group_MPI(
                 image.set_attr("bckgnoise", bckgn)
                 r.insert_slice(
                     image,
-                    EMAN2_cppwrap.Transform(
+                    EMAN2.cppwrap.Transform(
                         {"type": "spider", "phi": phi, "theta": theta, "psi": psi}
                     ),
                     1.0,
@@ -5831,7 +5831,7 @@ def recons3d_4nnsorting_group_MPI(
                     image.set_attr("bckgnoise", bckgn)
                     r.insert_slice(
                         image,
-                        EMAN2_cppwrap.Transform(
+                        EMAN2.cppwrap.Transform(
                             {"type": "spider", "phi": phi, "theta": theta, "psi": psi}
                         ),
                         1.0,
@@ -6472,7 +6472,7 @@ def get_input_from_sparx_ref3d(log_main):  # case one
             except:
                 import_from_sparx_refinement = 0
         try:
-            total_stack = EMAN2_cppwrap.EMUtil.get_image_count(
+            total_stack = EMAN2.cppwrap.EMUtil.get_image_count(
                 Tracker["constants"]["orgstack"]
             )
         except:
@@ -6954,7 +6954,7 @@ def get_input_from_datastack(log_main):  # Case three
             Blockdata["myid"],
         )
     if Blockdata["myid"] == Blockdata["main_node"]:
-        total_stack = EMAN2_cppwrap.EMUtil.get_image_count(
+        total_stack = EMAN2.cppwrap.EMUtil.get_image_count(
             Tracker["constants"]["orgstack"]
         )
     else:
@@ -7010,7 +7010,7 @@ def get_input_from_datastack(log_main):  # Case three
             chunk_dict[particle] = 0
         for particle in chunk_two:
             chunk_dict[particle] = 1
-        xform_proj_list = EMAN2_cppwrap.EMUtil.get_all_attributes(
+        xform_proj_list = EMAN2.cppwrap.EMUtil.get_all_attributes(
             Tracker["constants"]["orgstack"], "xform.projection"
         )
         for index_of_particle in range(len(xform_proj_list)):
@@ -7087,7 +7087,7 @@ def get_input_from_datastack(log_main):  # Case three
             tweight1 = sp_utilities.get_im(
                 os.path.join(Tracker["directory"], "tempdir", "tweight_1.hdf")
             )
-            EMAN2_cppwrap.Util.fuse_low_freq(
+            EMAN2.cppwrap.Util.fuse_low_freq(
                 tvol0, tvol1, tweight0, tweight1, 2 * Tracker["fuse_freq"]
             )
             shrank0 = stepone(tvol0, tweight0)
@@ -7134,7 +7134,7 @@ def get_input_from_datastack(log_main):  # Case three
             tweight1 = sp_utilities.get_im(
                 os.path.join(Tracker["directory"], "tempdir", "tweight_1.hdf")
             )
-            EMAN2_cppwrap.Util.fuse_low_freq(
+            EMAN2.cppwrap.Util.fuse_low_freq(
                 tvol0, tvol1, tweight0, tweight1, 2 * Tracker["fuse_freq"]
             )
             tag = 7007
@@ -7614,7 +7614,7 @@ def recons3d_trl_struct_group_nofsc_shifted_data_partial_MPI(
         "weight": weight,
         "do_ctf": do_ctf,
     }
-    r = EMAN2_cppwrap.Reconstructors.get("nn4_ctfws", params)
+    r = EMAN2.cppwrap.Reconstructors.get("nn4_ctfws", params)
     r.setup()
     if nosmearing:
         nnx = prjlist[0].get_xsize()
@@ -7634,7 +7634,7 @@ def recons3d_trl_struct_group_nofsc_shifted_data_partial_MPI(
                     )
                     r.insert_slice(
                         prjlist[im],
-                        EMAN2_cppwrap.Transform(
+                        EMAN2.cppwrap.Transform(
                             {"type": "spider", "phi": phi, "theta": theta, "psi": psi}
                         ),
                         flag,
@@ -7646,7 +7646,7 @@ def recons3d_trl_struct_group_nofsc_shifted_data_partial_MPI(
                     )
                     r.insert_slice(
                         prjlist[im],
-                        EMAN2_cppwrap.Transform(
+                        EMAN2.cppwrap.Transform(
                             {"type": "spider", "phi": phi, "theta": theta, "psi": psi}
                         ),
                         flag,
@@ -7663,7 +7663,7 @@ def recons3d_trl_struct_group_nofsc_shifted_data_partial_MPI(
                         )
                         r.insert_slice(
                             prjlist[im][jm],
-                            EMAN2_cppwrap.Transform(
+                            EMAN2.cppwrap.Transform(
                                 {
                                     "type": "spider",
                                     "phi": phi,
@@ -7681,7 +7681,7 @@ def recons3d_trl_struct_group_nofsc_shifted_data_partial_MPI(
                         )
                         r.insert_slice(
                             prjlist[im][jm],
-                            EMAN2_cppwrap.Transform(
+                            EMAN2.cppwrap.Transform(
                                 {
                                     "type": "spider",
                                     "phi": phi,
@@ -7730,8 +7730,8 @@ def recons3d_trl_struct_group_nofsc_shifted_data_MPI(
         do_ctf = 1
     else:
         do_ctf = 0
-    fftvol = EMAN2_cppwrap.EMData()
-    weight = EMAN2_cppwrap.EMData()
+    fftvol = EMAN2.cppwrap.EMData()
+    weight = EMAN2.cppwrap.EMData()
     params = {
         "size": target_size,
         "npad": 2,
@@ -7743,7 +7743,7 @@ def recons3d_trl_struct_group_nofsc_shifted_data_MPI(
         "weight": weight,
         "do_ctf": do_ctf,
     }
-    r = EMAN2_cppwrap.Reconstructors.get("nn4_ctfw", params)
+    r = EMAN2.cppwrap.Reconstructors.get("nn4_ctfw", params)
     r.setup()
     if nosmearing:
         nnx = prjlist[0].get_xsize()
@@ -7759,7 +7759,7 @@ def recons3d_trl_struct_group_nofsc_shifted_data_MPI(
                 )
                 r.insert_slice(
                     prjlist[im],
-                    EMAN2_cppwrap.Transform(
+                    EMAN2.cppwrap.Transform(
                         {"type": "spider", "phi": phi, "theta": theta, "psi": psi}
                     ),
                     1.0,
@@ -7772,7 +7772,7 @@ def recons3d_trl_struct_group_nofsc_shifted_data_MPI(
                     )
                     r.insert_slice(
                         prjlist[im][jm],
-                        EMAN2_cppwrap.Transform(
+                        EMAN2.cppwrap.Transform(
                             {"type": "spider", "phi": phi, "theta": theta, "psi": psi}
                         ),
                         prjlist[im][jm].get_attr("wprob"),
@@ -7823,8 +7823,8 @@ def recons3d_trl_struct_group_MPI(
         do_ctf = 1
     else:
         do_ctf = 0
-    fftvol = EMAN2_cppwrap.EMData()
-    weight = EMAN2_cppwrap.EMData()
+    fftvol = EMAN2.cppwrap.EMData()
+    weight = EMAN2.cppwrap.EMData()
     params = {
         "size": target_size,
         "npad": 2,
@@ -7836,7 +7836,7 @@ def recons3d_trl_struct_group_MPI(
         "weight": weight,
         "do_ctf": do_ctf,
     }
-    r = EMAN2_cppwrap.Reconstructors.get("nn4_ctfw", params)
+    r = EMAN2.cppwrap.Reconstructors.get("nn4_ctfw", params)
     r.setup()
     if norm_per_particle == None:
         norm_per_particle = len(prjlist) * [1.0]
@@ -7871,7 +7871,7 @@ def recons3d_trl_struct_group_MPI(
                     )
                     r.insert_slice(
                         prjlist[im],
-                        EMAN2_cppwrap.Transform(
+                        EMAN2.cppwrap.Transform(
                             {"type": "spider", "phi": phi, "theta": theta, "psi": psi}
                         ),
                         1.0,
@@ -7901,7 +7901,7 @@ def recons3d_trl_struct_group_MPI(
                         toprab = 0.0
                         for ki in range(len(lshifts)):
                             toprab += probs[lshifts[ki]]
-                        recdata = EMAN2_cppwrap.EMData(nny, nny, 1, False)
+                        recdata = EMAN2.cppwrap.EMData(nny, nny, 1, False)
                         recdata.set_attr("is_complex", 0)
                         for ki in range(len(lshifts)):
                             lpt = allshifts[lshifts[ki]]
@@ -7912,9 +7912,9 @@ def recons3d_trl_struct_group_MPI(
                                     rshifts_shrank[lpt][1],
                                 )
                                 data[lpt].set_attr("is_complex", 0)
-                            EMAN2_cppwrap.Util.add_img(
+                            EMAN2.cppwrap.Util.add_img(
                                 recdata,
-                                EMAN2_cppwrap.Util.mult_scalar(
+                                EMAN2.cppwrap.Util.mult_scalar(
                                     data[lpt], old_div(probs[lshifts[ki]], toprab)
                                 ),
                             )
@@ -7934,7 +7934,7 @@ def recons3d_trl_struct_group_MPI(
                         iang = old_div(tdir[ii], 100000)
                         r.insert_slice(
                             recdata,
-                            EMAN2_cppwrap.Transform(
+                            EMAN2.cppwrap.Transform(
                                 {
                                     "type": "spider",
                                     "phi": refang[iang][0],
@@ -7955,7 +7955,7 @@ def recons3d_trl_struct_group_MPI(
                         )
                         r.insert_slice(
                             prjlist[im],
-                            EMAN2_cppwrap.Transform(
+                            EMAN2.cppwrap.Transform(
                                 {
                                     "type": "spider",
                                     "phi": phi,
@@ -7990,7 +7990,7 @@ def recons3d_trl_struct_group_MPI(
                             toprab = 0.0
                             for ki in range(len(lshifts)):
                                 toprab += probs[lshifts[ki]]
-                            recdata = EMAN2_cppwrap.EMData(nny, nny, 1, False)
+                            recdata = EMAN2.cppwrap.EMData(nny, nny, 1, False)
                             recdata.set_attr("is_complex", 0)
                             for ki in range(len(lshifts)):
                                 lpt = allshifts[lshifts[ki]]
@@ -8001,9 +8001,9 @@ def recons3d_trl_struct_group_MPI(
                                         rshifts_shrank[lpt][1],
                                     )
                                     data[lpt].set_attr("is_complex", 0)
-                                EMAN2_cppwrap.Util.add_img(
+                                EMAN2.cppwrap.Util.add_img(
                                     recdata,
-                                    EMAN2_cppwrap.Util.mult_scalar(
+                                    EMAN2.cppwrap.Util.mult_scalar(
                                         data[lpt], old_div(probs[lshifts[ki]], toprab)
                                     ),
                                 )
@@ -8023,7 +8023,7 @@ def recons3d_trl_struct_group_MPI(
                             iang = old_div(tdir[ii], 100000)
                             r.insert_slice(
                                 recdata,
-                                EMAN2_cppwrap.Transform(
+                                EMAN2.cppwrap.Transform(
                                     {
                                         "type": "spider",
                                         "phi": refang[iang][0],
@@ -8102,7 +8102,7 @@ def do3d_sorting_groups_fsc_only_iter(
                         )
                         % index_of_group
                     )
-                    EMAN2_cppwrap.Util.fuse_low_freq(
+                    EMAN2.cppwrap.Util.fuse_low_freq(
                         tvol0, tvol1, tweight0, tweight1, 2 * Tracker["fuse_freq"]
                     )
                     tag = 7007
@@ -8159,7 +8159,7 @@ def do3d_sorting_groups_fsc_only_iter(
                         )
                         % index_of_group
                     )
-                    EMAN2_cppwrap.Util.fuse_low_freq(
+                    EMAN2.cppwrap.Util.fuse_low_freq(
                         tvol0, tvol1, tweight0, tweight1, 2 * Tracker["fuse_freq"]
                     )
                     tag = 7007
@@ -8395,8 +8395,8 @@ def recons3d_4nnsorting_group_fsc_MPI(
         do_ctf = 1
     else:
         do_ctf = 0
-    fftvol = EMAN2_cppwrap.EMData()
-    weight = EMAN2_cppwrap.EMData()
+    fftvol = EMAN2.cppwrap.EMData()
+    weight = EMAN2.cppwrap.EMData()
     try:
         qt = prjlist[0].get_attr("qt")
     except:
@@ -8412,7 +8412,7 @@ def recons3d_4nnsorting_group_fsc_MPI(
         "weight": weight,
         "do_ctf": do_ctf,
     }
-    r = EMAN2_cppwrap.Reconstructors.get("nn4_ctfw", params)
+    r = EMAN2.cppwrap.Reconstructors.get("nn4_ctfw", params)
     r.setup()
     if norm_per_particle == None:
         norm_per_particle = len(prjlist) * [1.0]
@@ -8453,7 +8453,7 @@ def recons3d_4nnsorting_group_fsc_MPI(
                     )
                     r.insert_slice(
                         prjlist[im],
-                        EMAN2_cppwrap.Transform(
+                        EMAN2.cppwrap.Transform(
                             {"type": "spider", "phi": phi, "theta": theta, "psi": psi}
                         ),
                         1.0,
@@ -8483,7 +8483,7 @@ def recons3d_4nnsorting_group_fsc_MPI(
                         toprab = 0.0
                         for ki in range(len(lshifts)):
                             toprab += probs[lshifts[ki]]
-                        recdata = EMAN2_cppwrap.EMData(nny, nny, 1, False)
+                        recdata = EMAN2.cppwrap.EMData(nny, nny, 1, False)
                         recdata.set_attr("is_complex", 0)
                         for ki in range(len(lshifts)):
                             lpt = allshifts[lshifts[ki]]
@@ -8494,9 +8494,9 @@ def recons3d_4nnsorting_group_fsc_MPI(
                                     rshifts_shrank[lpt][1],
                                 )
                                 data[lpt].set_attr("is_complex", 0)
-                            EMAN2_cppwrap.Util.add_img(
+                            EMAN2.cppwrap.Util.add_img(
                                 recdata,
-                                EMAN2_cppwrap.Util.mult_scalar(
+                                EMAN2.cppwrap.Util.mult_scalar(
                                     data[lpt], old_div(probs[lshifts[ki]], toprab)
                                 ),
                             )
@@ -8516,7 +8516,7 @@ def recons3d_4nnsorting_group_fsc_MPI(
                         iang = old_div(tdir[ii], 100000)
                         r.insert_slice(
                             recdata,
-                            EMAN2_cppwrap.Transform(
+                            EMAN2.cppwrap.Transform(
                                 {
                                     "type": "spider",
                                     "phi": refang[iang][0],

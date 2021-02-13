@@ -40,7 +40,7 @@ from past.utils import old_div
 #
 
 
-import EMAN2_cppwrap
+import EMAN2.cppwrap
 import mpi
 from . import sp_filter
 from . import sp_fundamentals
@@ -98,13 +98,13 @@ def recons3d_4nn(
 
     if list_proj == []:
         if isinstance(stack_name, (bytes, str)):
-            nima = EMAN2_cppwrap.EMUtil.get_image_count(stack_name)
+            nima = EMAN2.cppwrap.EMUtil.get_image_count(stack_name)
         else:
             nima = len(stack_name)
         list_proj = list(range(nima))
     # read first image to determine the size to use
     if isinstance(stack_name, (bytes, str)):
-        proj = EMAN2_cppwrap.EMData()
+        proj = EMAN2.cppwrap.EMData()
         proj.read_image(stack_name, list_proj[0])
     else:
         proj = stack_name[list_proj[0]].copy()
@@ -115,8 +115,8 @@ def recons3d_4nn(
         sp_global_def.ERROR("input data has to be square", "recons3d_4nn", 1)
 
     # reconstructor
-    fftvol = EMAN2_cppwrap.EMData()
-    weight = EMAN2_cppwrap.EMData()
+    fftvol = EMAN2.cppwrap.EMData()
+    weight = EMAN2.cppwrap.EMData()
     params = {
         "npad": npad,
         "symmetry": symmetry,
@@ -129,7 +129,7 @@ def recons3d_4nn(
         if snr != None:
             params["snr"] = snr
             # params["varsnr"] = int(varsnr)
-        r = EMAN2_cppwrap.Reconstructors.get("nn4", params)
+        r = EMAN2.cppwrap.Reconstructors.get("nn4", params)
     else:
         if xysize != -1 and zsize != -1:
             rx = old_div(float(xysize), size)
@@ -156,7 +156,7 @@ def recons3d_4nn(
             params["xratio"] = rx
             params["yratio"] = ry
             params["zratio"] = rz
-        r = EMAN2_cppwrap.Reconstructors.get("nn4_rect", params)
+        r = EMAN2.cppwrap.Reconstructors.get("nn4_rect", params)
 
     r.setup()
 
@@ -208,8 +208,8 @@ def recons3d_4nn_MPI(
         dopad = False
     prjlist.goToPrev()
 
-    fftvol = EMAN2_cppwrap.EMData()
-    weight = EMAN2_cppwrap.EMData()
+    fftvol = EMAN2.cppwrap.EMData()
+    weight = EMAN2.cppwrap.EMData()
     if xysize == -1 and zsize == -1:
         params = {
             "size": imgsize,
@@ -219,7 +219,7 @@ def recons3d_4nn_MPI(
             "weight": weight,
             "snr": snr,
         }
-        r = EMAN2_cppwrap.Reconstructors.get("nn4", params)
+        r = EMAN2.cppwrap.Reconstructors.get("nn4", params)
     else:
         if xysize != -1 and zsize != -1:
             rx = old_div(float(xysize), imgsize)
@@ -243,7 +243,7 @@ def recons3d_4nn_MPI(
             "yratio": ry,
             "zratio": rz,
         }
-        r = EMAN2_cppwrap.Reconstructors.get("nn4_rect", params)
+        r = EMAN2.cppwrap.Reconstructors.get("nn4_rect", params)
     r.setup()
 
     if not (finfo is None):
@@ -351,8 +351,8 @@ def recons3d_4nnw_MPI(
         refvol = sp_utilities.model_blank(bnx, 1, 1, 1.0)
     refvol.set_attr("fudge", 1.0)
 
-    fftvol = EMAN2_cppwrap.EMData()
-    weight = EMAN2_cppwrap.EMData()
+    fftvol = EMAN2.cppwrap.EMData()
+    weight = EMAN2.cppwrap.EMData()
 
     if smearstep > 0.0:
         # if myid == 0:  print "  Setting smear in prepare_recons_ctf"
@@ -384,7 +384,7 @@ def recons3d_4nnw_MPI(
             "fftvol": fftvol,
             "weight": weight,
         }
-        r = EMAN2_cppwrap.Reconstructors.get("nn4_ctfw", params)
+        r = EMAN2.cppwrap.Reconstructors.get("nn4_ctfw", params)
     else:
         if xysize != -1 and zsize != -1:
             rx = old_div(float(xysize), imgsize)
@@ -411,7 +411,7 @@ def recons3d_4nnw_MPI(
             "yratio": ry,
             "zratio": rz,
         }
-        r = EMAN2_cppwrap.Reconstructors.get("nn4_ctf_rect", params)
+        r = EMAN2.cppwrap.Reconstructors.get("nn4_ctf_rect", params)
     r.setup()
 
     # from utilities import model_blank, get_im, read_text_file
@@ -521,8 +521,8 @@ def recons3d_trl_struct_MPI(
     else:
         do_ctf = 0
 
-    fftvol = EMAN2_cppwrap.EMData()
-    weight = EMAN2_cppwrap.EMData()
+    fftvol = EMAN2.cppwrap.EMData()
+    weight = EMAN2.cppwrap.EMData()
 
     params = {
         "size": target_size,
@@ -535,7 +535,7 @@ def recons3d_trl_struct_MPI(
         "weight": weight,
         "do_ctf": do_ctf,
     }
-    r = EMAN2_cppwrap.Reconstructors.get("nn4_ctfw", params)
+    r = EMAN2.cppwrap.Reconstructors.get("nn4_ctfw", params)
     r.setup()
 
     if prjlist:
@@ -567,7 +567,7 @@ def recons3d_trl_struct_MPI(
                 toprab = 0.0
                 for ki in range(len(lshifts)):
                     toprab += probs[lshifts[ki]]
-                recdata = EMAN2_cppwrap.EMData(nny, nny, 1, False)
+                recdata = EMAN2.cppwrap.EMData(nny, nny, 1, False)
                 recdata.set_attr("is_complex", 0)
                 for ki in range(len(lshifts)):
                     lpt = allshifts[lshifts[ki]]
@@ -576,9 +576,9 @@ def recons3d_trl_struct_MPI(
                             prjlist[im], rshifts_shrank[lpt][0], rshifts_shrank[lpt][1]
                         )
                         data[lpt].set_attr("is_complex", 0)
-                    EMAN2_cppwrap.Util.add_img(
+                    EMAN2.cppwrap.Util.add_img(
                         recdata,
-                        EMAN2_cppwrap.Util.mult_scalar(
+                        EMAN2.cppwrap.Util.mult_scalar(
                             data[lpt], old_div(probs[lshifts[ki]], toprab)
                         ),
                     )
@@ -598,7 +598,7 @@ def recons3d_trl_struct_MPI(
                 iang = old_div(tdir[ii], 100000)
                 r.insert_slice(
                     recdata,
-                    EMAN2_cppwrap.Transform(
+                    EMAN2.cppwrap.Transform(
                         {
                             "type": "spider",
                             "phi": refang[iang][0],
@@ -655,13 +655,13 @@ def recons3d_4nn_ctf(
     # read first image to determine the size to use
     if list_proj == []:
         if isinstance(stack_name, (bytes,str)) :
-            nima = EMAN2_cppwrap.EMUtil.get_image_count(stack_name)
+            nima = EMAN2.cppwrap.EMUtil.get_image_count(stack_name)
         else:
             nima = len(stack_name)
         list_proj = list(range(nima))
     # read first image to determine the size to use
     if isinstance(stack_name, (bytes,str)):
-        proj = EMAN2_cppwrap.EMData()
+        proj = EMAN2.cppwrap.EMData()
         proj.read_image(stack_name, list_proj[0])
     else:
         proj = stack_name[list_proj[0]].copy()
@@ -677,8 +677,8 @@ def recons3d_4nn_ctf(
         dopad = False
 
     # reconstructor
-    fftvol = EMAN2_cppwrap.EMData()
-    weight = EMAN2_cppwrap.EMData()
+    fftvol = EMAN2.cppwrap.EMData()
+    weight = EMAN2.cppwrap.EMData()
     params = {
         "npad": npad,
         "symmetry": symmetry,
@@ -689,7 +689,7 @@ def recons3d_4nn_ctf(
     }
     if xysize == -1 and zsize == -1:
         params["size"] = size
-        r = EMAN2_cppwrap.Reconstructors.get("nn4_ctf", params)
+        r = EMAN2.cppwrap.Reconstructors.get("nn4_ctf", params)
     else:
         if xysize != -1 and zsize != -1:
             rx = old_div(float(xysize), size)
@@ -708,7 +708,7 @@ def recons3d_4nn_ctf(
         params["xratio"] = rx
         params["yratio"] = ry
         params["zratio"] = rz
-        r = EMAN2_cppwrap.Reconstructors.get("nn4_ctf_rect", params)
+        r = EMAN2.cppwrap.Reconstructors.get("nn4_ctf_rect", params)
     r.setup()
 
     if isinstance(stack_name, (bytes,str)) :
@@ -762,7 +762,7 @@ def recons3d_4nn_ctf_MPI(
         dopad = False
     prjlist.goToPrev()
 
-    fftvol = EMAN2_cppwrap.EMData()
+    fftvol = EMAN2.cppwrap.EMData()
 
     if smearstep > 0.0:
         # if myid == 0:  print "  Setting smear in prepare_recons_ctf"
@@ -783,7 +783,7 @@ def recons3d_4nn_ctf_MPI(
         # if myid == 0:  print "  Smear  ",smear
         fftvol.set_attr("smear", smear)
 
-    weight = EMAN2_cppwrap.EMData()
+    weight = EMAN2.cppwrap.EMData()
     if xysize == -1 and zsize == -1:
         params = {
             "size": imgsize,
@@ -794,7 +794,7 @@ def recons3d_4nn_ctf_MPI(
             "fftvol": fftvol,
             "weight": weight,
         }
-        r = EMAN2_cppwrap.Reconstructors.get("nn4_ctf", params)
+        r = EMAN2.cppwrap.Reconstructors.get("nn4_ctf", params)
     else:
         if xysize != -1 and zsize != -1:
             rx = old_div(float(xysize), imgsize)
@@ -821,7 +821,7 @@ def recons3d_4nn_ctf_MPI(
             "yratio": ry,
             "zratio": rz,
         }
-        r = EMAN2_cppwrap.Reconstructors.get("nn4_ctf_rect", params)
+        r = EMAN2.cppwrap.Reconstructors.get("nn4_ctf_rect", params)
     r.setup()
 
     # if not (finfo is None):

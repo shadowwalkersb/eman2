@@ -122958,7 +122958,7 @@ class Test_ornq_vpp(unittest.TestCase):
 """
 # Adnan helper functions to run the reference tests
 from ..libpy import sparx_utilities as ut
-import EMAN2_cppwrap as e2cpp
+import EMAN2.cppwrap as e2cpp
 
 #I commented the following lines of codeto avoid conflict when I run the other tests
 #from ..libpy_py3 import sphire_filter as fu

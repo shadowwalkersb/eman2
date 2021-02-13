@@ -48,7 +48,7 @@ from past.utils import old_div
 #
 # ========================================================================================
 
-import EMAN2_cppwrap
+import EMAN2.cppwrap
 import EMAN2db
 import numpy
 import operator
@@ -1182,7 +1182,7 @@ def run():
                         tokens_line[relion_dict["_rlnNormCorrection"][idx_col] - 1]
                     )
 
-                    relion_trans3d = EMAN2_cppwrap.Transform(
+                    relion_trans3d = EMAN2.cppwrap.Transform(
                         {
                             "phi": relion_rot,
                             "theta": relion_tilt,
@@ -2085,7 +2085,7 @@ def run():
                             "sphire_local_particle_id"
                         ]
                         assert os.path.exists(relion_local_stack_path)
-                        n_img_relion_local_stack = EMAN2_cppwrap.EMUtil.get_image_count(
+                        n_img_relion_local_stack = EMAN2.cppwrap.EMUtil.get_image_count(
                             relion_local_stack_path
                         )
                         assert (

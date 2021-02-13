@@ -39,7 +39,7 @@ from past.utils import old_div
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
 #
 #
-import EMAN2_cppwrap
+import EMAN2.cppwrap
 import mpi
 import numpy
 import optparse
@@ -73,8 +73,8 @@ def compute_average(mlist, radius, CTF):
         )
         avge = sp_morphology.cosinemask(sp_fundamentals.fft(avge), radius)
         avgo = sp_morphology.cosinemask(sp_fundamentals.fft(avgo), radius)
-        sumavge = EMAN2_cppwrap.Util.divn_img(sp_fundamentals.fft(avge), ctf_2_sume)
-        sumavgo = EMAN2_cppwrap.Util.divn_img(sp_fundamentals.fft(avgo), ctf_2_sumo)
+        sumavge = EMAN2.cppwrap.Util.divn_img(sp_fundamentals.fft(avge), ctf_2_sume)
+        sumavgo = EMAN2.cppwrap.Util.divn_img(sp_fundamentals.fft(avgo), ctf_2_sumo)
         frc = sp_statistics.fsc(
             sp_fundamentals.fft(sumavgo), sp_fundamentals.fft(sumavge)
         )
@@ -82,11 +82,11 @@ def compute_average(mlist, radius, CTF):
         for ifreq in range(1, len(frc[0])):
             frc[1][ifreq] = max(0.0, frc[1][ifreq])
             frc[1][ifreq] = old_div(2.0 * frc[1][ifreq], (1.0 + frc[1][ifreq]))
-        sumavg = EMAN2_cppwrap.Util.addn_img(
+        sumavg = EMAN2.cppwrap.Util.addn_img(
             sp_fundamentals.fft(avgo), sp_fundamentals.fft(avge)
         )
-        sumctf2 = EMAN2_cppwrap.Util.addn_img(ctf_2_sume, ctf_2_sumo)
-        EMAN2_cppwrap.Util.div_img(sumavg, sumctf2)
+        sumctf2 = EMAN2.cppwrap.Util.addn_img(ctf_2_sume, ctf_2_sumo)
+        EMAN2.cppwrap.Util.div_img(sumavg, sumctf2)
         return sp_fundamentals.fft(sumavg), frc, params_list
     else:
         avge, avgo, params_list = sp_statistics.sum_oe(
@@ -154,7 +154,7 @@ def apply_enhancement(avg, B_start, pixel_size, user_defined_Bfactor):
     else:
         guinierline = sp_fundamentals.rot_avg_table(
             sp_morphology.power(
-                EMAN2_cppwrap.periodogram(sp_fundamentals.fft(avg)), 0.5
+                EMAN2.cppwrap.periodogram(sp_fundamentals.fft(avg)), 0.5
             )
         )
         freq_max = old_div(1.0, (2.0 * pixel_size))
@@ -511,7 +511,7 @@ def run():
     # navg = min(Tracker["constants"]["navg"]*Blockdata["nproc"], EMUtil.get_image_count(os.path.join(Tracker["constants"]["isac_dir"], "class_averages.hdf")))
     navg = min(
         Tracker["constants"]["navg"],
-        EMAN2_cppwrap.EMUtil.get_image_count(
+        EMAN2.cppwrap.EMUtil.get_image_count(
             os.path.join(Tracker["constants"]["isac_dir"], "class_averages.hdf")
         ),
     )
@@ -629,7 +629,7 @@ def run():
     FH_list = [[0, 0.0, 0.0] for im in range(navg)]
     for iavg in range(image_start, image_end):
 
-        mlist = EMAN2_cppwrap.EMData.read_images(
+        mlist = EMAN2.cppwrap.EMData.read_images(
             Tracker["constants"]["orgstack"], list_dict[iavg]
         )
 

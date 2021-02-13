@@ -40,7 +40,7 @@ from past.utils import old_div
 #
 
 import EMAN2
-import EMAN2_cppwrap
+import EMAN2.cppwrap
 import EMAN2.jsondb
 import glob
 import matplotlib
@@ -597,9 +597,9 @@ def run():
 
         instack = args[0]
         outstack = args[1]
-        nima = EMAN2_cppwrap.EMUtil.get_image_count(instack)
+        nima = EMAN2.cppwrap.EMUtil.get_image_count(instack)
         for i in range(nima):
-            img = EMAN2_cppwrap.EMData()
+            img = EMAN2.cppwrap.EMData()
             img.read_image(instack, i)
             try:
                 ctf = img.get_attr("ctf")
@@ -628,7 +628,7 @@ def run():
                 ip = 0
 
             params = {
-                "filter_type": EMAN2_cppwrap.Processor.fourier_filter_types.CTF_,
+                "filter_type": EMAN2.cppwrap.Processor.fourier_filter_types.CTF_,
                 "defocus": dz,
                 "Cs": cs,
                 "voltage": voltage,
@@ -642,7 +642,7 @@ def run():
                 "azz": azz,
             }
 
-            tmp = EMAN2_cppwrap.Processor.EMFourierFilter(img, params)
+            tmp = EMAN2.cppwrap.Processor.EMFourierFilter(img, params)
             tmp.set_attr_dict({"ctf": ctf})
 
             tmp.write_image(outstack, i)
@@ -657,7 +657,7 @@ def run():
         outstack = args[1]
         sub_rate = float(options.ratio)
 
-        nima = EMAN2_cppwrap.EMUtil.get_image_count(instack)
+        nima = EMAN2.cppwrap.EMUtil.get_image_count(instack)
         for i in range(nima):
             sp_fundamentals.resample(
                 sp_utilities.get_im(instack, i), sub_rate
@@ -682,7 +682,7 @@ def run():
             sp_global_def.ERROR("Two files needed on input!")
             return
 
-        nima = EMAN2_cppwrap.EMUtil.get_image_count(args[0])
+        nima = EMAN2.cppwrap.EMUtil.get_image_count(args[0])
         m = []
         for k in range(nima):
             m += sp_utilities.get_im(args[0], k).get_attr("members")
@@ -715,16 +715,16 @@ def run():
                     )
                     return
 
-            n = EMAN2_cppwrap.EMUtil.get_image_count(args[0])
+            n = EMAN2.cppwrap.EMUtil.get_image_count(args[0])
             p = sp_utilities.model_blank(wn, wn)
 
             for i in range(n):
                 d = sp_utilities.get_im(args[0], i)
-                st = EMAN2_cppwrap.Util.infomask(d, None, True)
+                st = EMAN2.cppwrap.Util.infomask(d, None, True)
                 d -= st[0]
                 if nargs == 3:
                     d *= mask
-                p += EMAN2_cppwrap.periodogram(sp_utilities.pad(d, wn, wn, 1, 0.0))
+                p += EMAN2.cppwrap.periodogram(sp_utilities.pad(d, wn, wn, 1, 0.0))
             p = old_div(p, n)
             p.write_image(args[1])
 
@@ -750,7 +750,7 @@ def run():
             fl = -1.0
             aa = 0.0
 
-        nimage = EMAN2_cppwrap.EMUtil.get_image_count(img_stack)
+        nimage = EMAN2.cppwrap.EMUtil.get_image_count(img_stack)
 
         for i in range(nimage):
             img = sp_fundamentals.fft(sp_utilities.get_im(img_stack, i))
@@ -776,7 +776,7 @@ def run():
         im = sp_utilities.get_im(args[0])
         ndim = im.get_ndim()
         if ndim == 1:
-            t = EMAN2_cppwrap.periodogram(im)
+            t = EMAN2.cppwrap.periodogram(im)
             t = [t[i] for i in range(t.get_xsize())]
         else:
             t = sp_fundamentals.rops_table(im)
@@ -904,7 +904,7 @@ def run():
         nangle = len(angles)
 
         modelvol = []
-        nvlms = EMAN2_cppwrap.EMUtil.get_image_count(inpstr)
+        nvlms = EMAN2.cppwrap.EMUtil.get_image_count(inpstr)
         for k in range(nvlms):
             modelvol.append(sp_utilities.get_im(inpstr, k))
 
@@ -1049,7 +1049,7 @@ def run():
             root = root[:-7]
             name = name[:-4]
             fil = "bdb:" + os.path.join(root, name)
-            sourcemic = EMAN2_cppwrap.EMUtil.get_all_attributes(
+            sourcemic = EMAN2.cppwrap.EMUtil.get_all_attributes(
                 fil, "ptcl_source_image"
             )
             nn = len(sourcemic)
@@ -1289,7 +1289,7 @@ def run():
                 )
                 return
 
-            nimage = EMAN2_cppwrap.EMUtil.get_image_count(input_path_list[0])
+            nimage = EMAN2.cppwrap.EMUtil.get_image_count(input_path_list[0])
             if options.mask != None:
                 try:
                     m = sp_utilities.get_im(options.mask)
@@ -1310,7 +1310,7 @@ def run():
                     e1 *= m
                 if options.B_enhance == 0.0 or options.B_enhance == -1.0:
                     guinierline = sp_fundamentals.rot_avg_table(
-                        sp_morphology.power(EMAN2_cppwrap.periodogram(e1), 0.5)
+                        sp_morphology.power(EMAN2.cppwrap.periodogram(e1), 0.5)
                     )
                     if options.B_stop == 0.0:
                         freq_max = old_div(1.0, (2.0 * options.pixel_size))
@@ -1876,13 +1876,13 @@ def run():
                             )
                         else:
                             fsc_true[1][ifreq] = 0.0
-                    EMAN2_cppwrap.Util.add_img(map1, map2)
+                    EMAN2.cppwrap.Util.add_img(map1, map2)
                     del map2
-                    EMAN2_cppwrap.Util.mul_scalar(map1, 0.5)
+                    EMAN2.cppwrap.Util.mul_scalar(map1, 0.5)
 
                 outtext = [["Squaredfreq"], ["LogOrig"]]
                 guinierline = sp_fundamentals.rot_avg_table(
-                    sp_morphology.power(EMAN2_cppwrap.periodogram(map1), 0.5)
+                    sp_morphology.power(EMAN2.cppwrap.periodogram(map1), 0.5)
                 )
                 for ig in range(len(guinierline)):
                     x = old_div(
@@ -1904,13 +1904,13 @@ def run():
                             + " (--combinemaps option for 3-D)"
                         )
                     map1 = sp_fundamentals.fft(
-                        EMAN2_cppwrap.Util.divide_mtf(
+                        EMAN2.cppwrap.Util.divide_mtf(
                             sp_fundamentals.fft(map1), mtf_core[1], mtf_core[0]
                         )
                     )
                     outtext.append(["LogMTFdiv"])
                     guinierline = sp_fundamentals.rot_avg_table(
-                        sp_morphology.power(EMAN2_cppwrap.periodogram(map1), 0.5)
+                        sp_morphology.power(EMAN2.cppwrap.periodogram(map1), 0.5)
                     )
                     for ig in range(len(guinierline)):
                         outtext[-1].append("%10.6f" % numpy.log(guinierline[ig]))
@@ -1930,7 +1930,7 @@ def run():
                         )  # fsc already matched to full dataset
                     map1 = sp_filter.filt_table(map1, fil)
                     guinierline = sp_fundamentals.rot_avg_table(
-                        sp_morphology.power(EMAN2_cppwrap.periodogram(map1), 0.5)
+                        sp_morphology.power(EMAN2.cppwrap.periodogram(map1), 0.5)
                     )
                     outtext.append(["LogFSCadj"])
                     for ig in range(len(guinierline)):
@@ -1955,7 +1955,7 @@ def run():
                             options.pixel_size,
                         )
                         guinierline = sp_fundamentals.rot_avg_table(
-                            sp_morphology.power(EMAN2_cppwrap.periodogram(map1), 0.5)
+                            sp_morphology.power(EMAN2.cppwrap.periodogram(map1), 0.5)
                         )
                         logguinierline = []
                         spfreq = []
@@ -2084,7 +2084,7 @@ def run():
 
                     map1 = (sp_filter.filt_gaussinv(map1, sigma_of_inverse))
                     guinierline = sp_fundamentals.rot_avg_table(
-                        sp_morphology.power(EMAN2_cppwrap.periodogram(map1), 0.5)
+                        sp_morphology.power(EMAN2.cppwrap.periodogram(map1), 0.5)
                     )
                     outtext.append([" LogBfacapplied"])
                     last_non_zero = -999.0
@@ -2293,7 +2293,7 @@ def run():
                     output_stack_name = (
                         "window_" + input_file_name_root + ".hdf"
                     )  # Only hdf file is output.
-            nimage = EMAN2_cppwrap.EMUtil.get_image_count(inputstack)
+            nimage = EMAN2.cppwrap.EMUtil.get_image_count(inputstack)
             for i in range(nimage):
                 im = sp_utilities.get_im(inputstack, i)
                 if i == 0:
@@ -2306,7 +2306,7 @@ def run():
                     newz = im.get_zsize()
                     if newz > 1:
                         newz = options.box
-                im = EMAN2_cppwrap.Util.window(
+                im = EMAN2.cppwrap.Util.window(
                     im, options.box, options.box, newz, 0, 0, 0
                 )
                 im.write_image(output_stack_name, i)
@@ -2334,7 +2334,7 @@ def run():
                     output_stack_name = (
                         "pad_" + input_file_name_root + ".hdf"
                     )  # Only hdf file is output.
-            nimage = EMAN2_cppwrap.EMUtil.get_image_count(inputstack)
+            nimage = EMAN2.cppwrap.EMUtil.get_image_count(inputstack)
             for i in range(nimage):
                 im = sp_utilities.get_im(inputstack, i)
                 if i == 0:
@@ -2387,8 +2387,8 @@ def run():
             subtrahend_stack = args[1]
             result_stack = args[2]
 
-            nimages = EMAN2_cppwrap.EMUtil.get_image_count(minuend_stack)
-            mimages = EMAN2_cppwrap.EMUtil.get_image_count(subtrahend_stack)
+            nimages = EMAN2.cppwrap.EMUtil.get_image_count(minuend_stack)
+            mimages = EMAN2.cppwrap.EMUtil.get_image_count(subtrahend_stack)
 
             if nimages != mimages:
                 sp_global_def.ERROR(
@@ -2406,11 +2406,11 @@ def run():
                             mask = sp_utilities.model_circle(
                                 radius, image.get_xsize(), image.get_ysize()
                             )
-                        st = EMAN2_cppwrap.Util.infomask(image, mask, False)
+                        st = EMAN2.cppwrap.Util.infomask(image, mask, False)
                         image -= st[0]
                         image = old_div(image, st[1])
 
-                    ssimage = EMAN2_cppwrap.Util.subn_img(image, simage)
+                    ssimage = EMAN2.cppwrap.Util.subn_img(image, simage)
 
                     try:
                         ctf = image.get_attr("ctf")

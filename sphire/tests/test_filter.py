@@ -24859,7 +24859,7 @@ class Test_filterlocal(unittest.TestCase):
 """
 import numpy
 
-import EMAN2_cppwrap as e2cpp
+import EMAN2.cppwrap as e2cpp
 
 from ..libpy_py3 import sphire_filter as fu
 from .sparx_lib import sparx_filter as oldfu

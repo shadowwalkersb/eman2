@@ -45,7 +45,7 @@ from past.utils import old_div
 #  04/18/2017 - Introduce symclass to handle angles in a unified manner
 #  01/21/2018 - Rationalize the code, particularly restart
 #  07/21/2018 - Full size reconstruction after delta change
-import EMAN2_cppwrap
+import EMAN2.cppwrap
 import json
 import math
 import mpi
@@ -800,11 +800,11 @@ def assign_particles_to_groups(
     #
     if not asubset:
         try:
-            stmp = EMAN2_cppwrap.EMUtil.get_all_attributes(
+            stmp = EMAN2.cppwrap.EMUtil.get_all_attributes(
                 Tracker["constants"]["stack"], name_tag
             )
             if Tracker["constants"]["CTF"]:
-                defstmp = EMAN2_cppwrap.EMUtil.get_all_attributes(
+                defstmp = EMAN2.cppwrap.EMUtil.get_all_attributes(
                     Tracker["constants"]["stack"], "ctf"
                 )
             else:
@@ -813,7 +813,7 @@ def assign_particles_to_groups(
                 defstmp[i] = round(defstmp[i].defocus, 4)
         except:
             if Tracker["constants"]["CTF"]:
-                stmp = EMAN2_cppwrap.EMUtil.get_all_attributes(
+                stmp = EMAN2.cppwrap.EMUtil.get_all_attributes(
                     Tracker["constants"]["stack"], "ctf"
                 )
                 for i in range(len(stmp)):
@@ -825,14 +825,14 @@ def assign_particles_to_groups(
                 )
     else:
         try:
-            stmp_junk = EMAN2_cppwrap.EMUtil.get_all_attributes(
+            stmp_junk = EMAN2.cppwrap.EMUtil.get_all_attributes(
                 Tracker["constants"]["stack"], name_tag
             )
             stmp = [None] * len(asubset)
             for isub in range(len(asubset)):
                 stmp[isub] = stmp_junk[asubset[isub]]
             if Tracker["constants"]["CTF"]:
-                defstmp_junk = EMAN2_cppwrap.EMUtil.get_all_attributes(
+                defstmp_junk = EMAN2.cppwrap.EMUtil.get_all_attributes(
                     Tracker["constants"]["stack"], "ctf"
                 )
                 defstmp = [None] * len(asubset)
@@ -842,7 +842,7 @@ def assign_particles_to_groups(
                 defstmp = [-1.0] * len(asubset)
         except:
             if Tracker["constants"]["CTF"]:
-                stmp_junk = EMAN2_cppwrap.EMUtil.get_all_attributes(
+                stmp_junk = EMAN2.cppwrap.EMUtil.get_all_attributes(
                     Tracker["constants"]["stack"], "ctf"
                 )
                 stmp = [None] * len(asubset)
@@ -1108,7 +1108,7 @@ def find_assignments_of_refangles_to_angles(normals_set, ancor_angle, an):
     ancordir = sp_utilities.angles_to_normals(
         Blockdata["symclass"].symmetry_neighbors([ancor_angle[:3]])
     )
-    ltemp = EMAN2_cppwrap.Util.cone_dirs_f(normals_set[u3:u5], ancordir, an)
+    ltemp = EMAN2.cppwrap.Util.cone_dirs_f(normals_set[u3:u5], ancordir, an)
     ###ltemp = cone_dirs_f( normals_set[u3:u5], ancordir, an )#Util.cone_dirs_f( normals_set[u3:u5], ancordir, an )
     # print(" us ",Blockdata["myid"],u1,u3,u5,m,"  ltemp ",ltemp)
     return [qtemp + u3 for qtemp in ltemp]
@@ -1153,14 +1153,14 @@ def find_nearest_k_refangles_to_angles(normals_set, ancor_angle, delta, howmany)
 
     if Blockdata["symclass"].sym == "c1":
         ancordir = sp_utilities.getfvec(ancor_angle[0], ancor_angle[1])
-        ltemp = EMAN2_cppwrap.Util.nearest_fang_select(
+        ltemp = EMAN2.cppwrap.Util.nearest_fang_select(
             normals_set[u3:u5], ancordir[0], ancordir[1], ancordir[2], howmany
         )
     else:
         ancordir = sp_utilities.angles_to_normals(
             Blockdata["symclass"].symmetry_neighbors([ancor_angle])
         )
-        ltemp = EMAN2_cppwrap.Util.nearest_fang_sym(
+        ltemp = EMAN2.cppwrap.Util.nearest_fang_sym(
             ancordir, normals_set[u3:u5], len(ancordir), howmany
         )
     return [qtemp + u3 for qtemp in ltemp]
@@ -1265,8 +1265,8 @@ def compute_sigma(projdata, params, first_procid, dryrun=False, myid=-1, mpi_com
             temp = sp_morphology.cosinemask(
                 stmp, radius=Tracker["constants"]["radius"], s=0.0
             )
-            EMAN2_cppwrap.Util.add_img(tavg, temp)
-            sig = EMAN2_cppwrap.Util.rotavg_fourier(temp)
+            EMAN2.cppwrap.Util.add_img(tavg, temp)
+            sig = EMAN2.cppwrap.Util.rotavg_fourier(temp)
             # sig = rops(pad(((cyclic_shift( projdata[i], int(sx), int(round(sy)) ) - st[0])/st[1]), mx,mx,1,0.0))
             # sig = rops(pad(((cyclic_shift(projdata, int(round(params[i][-2])), int(round(params[i][-1])) ) - st[0])/st[1])*invg, mx,mx,1,0.0))
             for k in range(nv):
@@ -1279,10 +1279,10 @@ def compute_sigma(projdata, params, first_procid, dryrun=False, myid=-1, mpi_com
         sp_utilities.reduce_EMData_to_root(tocp, myid, Blockdata["main_node"], mpi_comm)
         sp_utilities.reduce_EMData_to_root(tavg, myid, Blockdata["main_node"], mpi_comm)
         if myid == Blockdata["main_node"]:
-            EMAN2_cppwrap.Util.mul_scalar(
+            EMAN2.cppwrap.Util.mul_scalar(
                 tavg, old_div(1.0, float(sum(Tracker["nima_per_chunk"])))
             )
-            sig = EMAN2_cppwrap.Util.rotavg_fourier(tavg)
+            sig = EMAN2.cppwrap.Util.rotavg_fourier(tavg)
             # for k in range(1,nv):  sxprint("  BACKG  ",k,tsd.get_value_at(k,0)/tocp[0] ,sig[k],tsd.get_value_at(k,0)/tocp[0] - sig[k])
             tmp1 = [0.0] * nv
             tmp2 = [0.0] * nv
@@ -1363,7 +1363,7 @@ def getindexdata(
     """Multiline Comment6"""
 
     if original_data == None or small_memory:
-        original_data = EMAN2_cppwrap.EMData.read_images(
+        original_data = EMAN2.cppwrap.EMData.read_images(
             Tracker["constants"]["stack"], partids
         )
         for im in range(len(original_data)):
@@ -1533,14 +1533,14 @@ def get_shrink_data(
 
         #  Apply varadj
         if not nonorm:
-            EMAN2_cppwrap.Util.mul_scalar(
+            EMAN2.cppwrap.Util.mul_scalar(
                 data[im], old_div(Tracker["avgvaradj"][procid], wnorm)
             )
             # print(Tracker["avgvaradj"][procid]/wnorm)
 
         #  FT
         data[im] = sp_fundamentals.fft(data[im])
-        sig = EMAN2_cppwrap.Util.rotavg_fourier(data[im])
+        sig = EMAN2.cppwrap.Util.rotavg_fourier(data[im])
         Blockdata["accumulatepw"][procid][im] = sig[old_div(len(sig), 2) :] + [0.0]
 
         if Tracker["constants"]["CTF"]:
@@ -1879,13 +1879,13 @@ def print_dict(dict, theme):
 def stepone(tvol, tweight):
     global Tracker, Blockdata
     tvol.set_attr("is_complex", 1)
-    ovol = EMAN2_cppwrap.Util.shrinkfvol(tvol, 2)
-    owol = EMAN2_cppwrap.Util.shrinkfvol(tweight, 2)
+    ovol = EMAN2.cppwrap.Util.shrinkfvol(tvol, 2)
+    owol = EMAN2.cppwrap.Util.shrinkfvol(tweight, 2)
     if Tracker["constants"]["symmetry"] != "c1":
         ovol = ovol.symfvol(Tracker["constants"]["symmetry"], -1)
         owol = owol.symfvol(Tracker["constants"]["symmetry"], -1)
     # print(info(ovol,Comment = " shrank ovol"))
-    return EMAN2_cppwrap.Util.divn_cbyr(ovol, owol)
+    return EMAN2.cppwrap.Util.divn_cbyr(ovol, owol)
 
 
 def steptwo_mpi(tvol, tweight, treg, cfsc=None, regularized=True, color=0):
@@ -1929,7 +1929,7 @@ def steptwo_mpi(tvol, tweight, treg, cfsc=None, regularized=True, color=0):
             #  Do not regularize first four
             for i in range(5):
                 treg[i] = 0.0
-            EMAN2_cppwrap.Util.reg_weights(tweight, treg, it)
+            EMAN2.cppwrap.Util.reg_weights(tweight, treg, it)
             del it
         else:
             limitres = 2 * min(
@@ -2013,7 +2013,7 @@ def steptwo_mpi(tvol, tweight, treg, cfsc=None, regularized=True, color=0):
         tvol.set_attr("npad", 2)
         tvol.div_sinc(1)
         tvol.del_attr("npad")
-        tvol = EMAN2_cppwrap.Util.window(
+        tvol = EMAN2.cppwrap.Util.window(
             tvol,
             Tracker["constants"]["nnxo"],
             Tracker["constants"]["nnxo"],
@@ -2099,7 +2099,7 @@ def calculate_2d_params_for_centering(kwargs):
             number_of_images_in_stack, Blockdata["nproc"], Blockdata["myid"]
         )
 
-        original_images = EMAN2_cppwrap.EMData.read_images(
+        original_images = EMAN2.cppwrap.EMData.read_images(
             command_line_provided_stack_filename, list(range(image_start, image_end))
         )
         #  We assume the target radius will be 29, and xr = 1.
@@ -2296,7 +2296,7 @@ def ali3D_polar_ccc(
     n_fine_shifts = 4
 
     nima = len(original_data)
-    mask = EMAN2_cppwrap.Util.unrollmask(Tracker["nxinit"], Tracker["nxinit"])
+    mask = EMAN2.cppwrap.Util.unrollmask(Tracker["nxinit"], Tracker["nxinit"])
     for j in range(old_div(Tracker["nxinit"], 2), Tracker["nxinit"]):
         mask[0, j] = 1.0
     mask2D = sp_utilities.model_circle(
@@ -2364,7 +2364,7 @@ def ali3D_polar_ccc(
         )
 
         odo = sp_projection.prep_vol(odo, npad=2, interpolation_method=1)
-        ndo = EMAN2_cppwrap.EMNumPy.em2numpy(odo)
+        ndo = EMAN2.cppwrap.EMNumPy.em2numpy(odo)
         nxvol = odo.get_xsize()
         nyvol = odo.get_ysize()
         nzvol = odo.get_zsize()
@@ -2407,7 +2407,7 @@ def ali3D_polar_ccc(
         del odo, ndo
 
     # volprep = EMNumPy.assign_numpy_to_emdata(volbuf)
-    emnumpy1 = EMAN2_cppwrap.EMNumPy()
+    emnumpy1 = EMAN2.cppwrap.EMNumPy()
     volprep = emnumpy1.register_numpy_to_emdata(volbuf)
     volprep.set_attr_dict(
         {
@@ -2419,7 +2419,7 @@ def ali3D_polar_ccc(
             "npad": 2,
         }
     )
-    crefim = EMAN2_cppwrap.Util.Polar2Dm(
+    crefim = EMAN2.cppwrap.Util.Polar2Dm(
         sp_utilities.model_blank(Tracker["nxpolar"], Tracker["nxpolar"]),
         cnx,
         cnx,
@@ -2460,7 +2460,7 @@ def ali3D_polar_ccc(
     buffer = buffer.reshape(lenbigbuf, size_of_one_image)
     # bigbuffer = EMNumPy.assign_numpy_to_emdata(buffer)
 
-    emnumpy2 = EMAN2_cppwrap.EMNumPy()
+    emnumpy2 = EMAN2.cppwrap.EMNumPy()
     bigbuffer = emnumpy2.register_numpy_to_emdata(buffer)
 
     #  end of setup
@@ -2506,7 +2506,7 @@ def ali3D_polar_ccc(
             )
 
             odo = sp_projection.prep_vol(odo, npad=2, interpolation_method=1)
-            ndo = EMAN2_cppwrap.EMNumPy.em2numpy(odo)
+            ndo = EMAN2.cppwrap.EMNumPy.em2numpy(odo)
             nxvol = odo.get_xsize()
             nyvol = odo.get_ysize()
             nzvol = odo.get_zsize()
@@ -2556,7 +2556,7 @@ def ali3D_polar_ccc(
             del odo, ndoinit
 
         # volinit = EMNumPy.assign_numpy_to_emdata(volbufinit)
-        emnumpy4 = EMAN2_cppwrap.EMNumPy()
+        emnumpy4 = EMAN2.cppwrap.EMNumPy()
         volinit = emnumpy4.register_numpy_to_emdata(volbufinit)
         volinit.set_attr_dict(
             {
@@ -2589,10 +2589,10 @@ def ali3D_polar_ccc(
         temp = sp_projection.prgl(
             volprep, [coarse_angles[i][0], coarse_angles[i][1], 0.0, 0.0, 0.0], 1, True
         )
-        crefim = EMAN2_cppwrap.Util.Polar2Dm(temp, cnx, cnx, numr, mode)
-        EMAN2_cppwrap.Util.Normalize_ring(crefim, numr, 0)
-        EMAN2_cppwrap.Util.Frngs(crefim, numr)
-        EMAN2_cppwrap.Util.Applyws(crefim, numr, wr)
+        crefim = EMAN2.cppwrap.Util.Polar2Dm(temp, cnx, cnx, numr, mode)
+        EMAN2.cppwrap.Util.Normalize_ring(crefim, numr, 0)
+        EMAN2.cppwrap.Util.Frngs(crefim, numr)
+        EMAN2.cppwrap.Util.Applyws(crefim, numr, wr)
         bigbuffer.insert_clip(crefim, (0, i))
 
     mpi.mpi_barrier(Blockdata["shared_comm"])
@@ -2730,7 +2730,7 @@ def ali3D_polar_ccc(
         #  This will get it to real space
         # dataimage = fpol(Util.mulnclreal(Util.mulnclreal(fdecimate(dataimage, Tracker["nxinit"], Tracker["nxinit"], 1, False), Util.muln_img(bckgn, ctfs)), mask ), Tracker["nxpolar"], Tracker["nxpolar"],1, True)
         dataimage = sp_fundamentals.fpol(
-            EMAN2_cppwrap.Util.mulnclreal(
+            EMAN2.cppwrap.Util.mulnclreal(
                 sp_fundamentals.fdecimate(
                     dataimage, Tracker["nxinit"], Tracker["nxinit"], 1, False
                 ),
@@ -2761,7 +2761,7 @@ def ali3D_polar_ccc(
             )  # keepfirst = (n_coarse_ang *  n_coarse_psi * n_coarse_shifts)/10
 
             xod2 = sp_helix_sphire.np.asarray(
-                EMAN2_cppwrap.Util.multiref_Crosrng_msg_stack_stepsi(
+                EMAN2.cppwrap.Util.multiref_Crosrng_msg_stack_stepsi(
                     dataimage,
                     bigbuffer,
                     coarse_shifts_shrank,
@@ -2806,12 +2806,12 @@ def ali3D_polar_ccc(
                         False,
                     )
                     nrmref = numpy.sqrt(
-                        EMAN2_cppwrap.Util.innerproduct(temp, temp, None)
+                        EMAN2.cppwrap.Util.innerproduct(temp, temp, None)
                     )
                     # Util.mul_scalar(temp, 1.0/nrmref)
 
                 xod1[iln] = old_div(
-                    EMAN2_cppwrap.Util.innerproduct(data[ishift], temp, None), nrmref
+                    EMAN2.cppwrap.Util.innerproduct(data[ishift], temp, None), nrmref
                 )
                 # peak
                 ##xod2[iln] = hashparams
@@ -2847,7 +2847,7 @@ def ali3D_polar_ccc(
             # Tracker["keepfirst"] = min(200,nang)#min(max(lxod1/25,200),lxod1)
 
             xod2 = sp_helix_sphire.np.asarray(
-                EMAN2_cppwrap.Util.multiref_Crosrng_msg_stack_stepsi(
+                EMAN2.cppwrap.Util.multiref_Crosrng_msg_stack_stepsi(
                     dataimage,
                     bigbuffer,
                     coarse_shifts_shrank,
@@ -2896,10 +2896,10 @@ def ali3D_polar_ccc(
                     )
                     temp.set_attr("is_complex", 0)
                     nrmref = numpy.sqrt(
-                        EMAN2_cppwrap.Util.innerproduct(temp, temp, None)
+                        EMAN2.cppwrap.Util.innerproduct(temp, temp, None)
                     )
                 peak = old_div(
-                    EMAN2_cppwrap.Util.innerproduct(data[ishift], temp, None), nrmref
+                    EMAN2.cppwrap.Util.innerproduct(data[ishift], temp, None), nrmref
                 )
                 xod1[iln] = peak
                 ##xod2[iln] = hashparams
@@ -3017,7 +3017,7 @@ def ali3D_polar_ccc(
                     False,
                 )
                 temp.set_attr("is_complex", 0)
-                nrmref = numpy.sqrt(EMAN2_cppwrap.Util.innerproduct(temp, temp, None))
+                nrmref = numpy.sqrt(EMAN2.cppwrap.Util.innerproduct(temp, temp, None))
                 johi += 1
             while ipsiandiang == old_div(cod2[iln], 1000):
                 hashparams = cod2[iln]
@@ -3029,7 +3029,7 @@ def ali3D_polar_ccc(
                     data[ishift].set_attr("is_complex", 0)
 
                 cod1[iln] = old_div(
-                    EMAN2_cppwrap.Util.innerproduct(data[ishift], temp, None), nrmref
+                    EMAN2.cppwrap.Util.innerproduct(data[ishift], temp, None), nrmref
                 )
                 iln += 1
                 if iln == lit:
@@ -3153,7 +3153,7 @@ def ali3D_primary_polar(
     n_fine_shifts = 4
 
     nima = len(original_data)
-    mask = EMAN2_cppwrap.Util.unrollmask(Tracker["nxinit"], Tracker["nxinit"])
+    mask = EMAN2.cppwrap.Util.unrollmask(Tracker["nxinit"], Tracker["nxinit"])
     for j in range(old_div(Tracker["nxinit"], 2), Tracker["nxinit"]):
         mask[0, j] = 1.0
     mask2D = sp_utilities.model_circle(
@@ -3247,7 +3247,7 @@ def ali3D_primary_polar(
         )
 
         odo = sp_projection.prep_vol(odo, npad=2, interpolation_method=1)
-        ndo = EMAN2_cppwrap.EMNumPy.em2numpy(odo)
+        ndo = EMAN2.cppwrap.EMNumPy.em2numpy(odo)
         nxvol = odo.get_xsize()
         nyvol = odo.get_ysize()
         nzvol = odo.get_zsize()
@@ -3289,7 +3289,7 @@ def ali3D_primary_polar(
         del odo, ndo
 
     # volprep = EMNumPy.assign_numpy_to_emdata(volbuf)
-    emnumpy1 = EMAN2_cppwrap.EMNumPy()
+    emnumpy1 = EMAN2.cppwrap.EMNumPy()
     volprep = emnumpy1.register_numpy_to_emdata(volbuf)
     volprep.set_attr_dict(
         {
@@ -3301,7 +3301,7 @@ def ali3D_primary_polar(
             "npad": 2,
         }
     )
-    crefim = EMAN2_cppwrap.Util.Polar2Dm(
+    crefim = EMAN2.cppwrap.Util.Polar2Dm(
         sp_utilities.model_blank(Tracker["nxpolar"], Tracker["nxpolar"]),
         cnx,
         cnx,
@@ -3340,7 +3340,7 @@ def ali3D_primary_polar(
     buffer = buffer.reshape(lenbigbuf, size_of_one_image)
     # bigbuffer = EMNumPy.assign_numpy_to_emdata(buffer)
 
-    emnumpy2 = EMAN2_cppwrap.EMNumPy()
+    emnumpy2 = EMAN2.cppwrap.EMNumPy()
     bigbuffer = emnumpy2.register_numpy_to_emdata(buffer)
 
     #  end of setup
@@ -3386,7 +3386,7 @@ def ali3D_primary_polar(
             )
 
             odo = sp_projection.prep_vol(odo, npad=2, interpolation_method=1)
-            ndo = EMAN2_cppwrap.EMNumPy.em2numpy(odo)
+            ndo = EMAN2.cppwrap.EMNumPy.em2numpy(odo)
             nxvol = odo.get_xsize()
             nyvol = odo.get_ysize()
             nzvol = odo.get_zsize()
@@ -3436,7 +3436,7 @@ def ali3D_primary_polar(
             del odo, ndoinit
 
         # volinit = EMNumPy.assign_numpy_to_emdata(volbufinit)
-        emnumpy4 = EMAN2_cppwrap.EMNumPy()
+        emnumpy4 = EMAN2.cppwrap.EMNumPy()
         volinit = emnumpy4.register_numpy_to_emdata(volbufinit)
         volinit.set_attr_dict(
             {
@@ -3467,9 +3467,9 @@ def ali3D_primary_polar(
         temp = sp_projection.prgl(
             volprep, [coarse_angles[i][0], coarse_angles[i][1], 0.0, 0.0, 0.0], 1, True
         )
-        crefim = EMAN2_cppwrap.Util.Polar2Dm(temp, cnx, cnx, numr, mode)
-        EMAN2_cppwrap.Util.Frngs(crefim, numr)
-        EMAN2_cppwrap.Util.Applyws(crefim, numr, wr)
+        crefim = EMAN2.cppwrap.Util.Polar2Dm(temp, cnx, cnx, numr, mode)
+        EMAN2.cppwrap.Util.Frngs(crefim, numr)
+        EMAN2.cppwrap.Util.Applyws(crefim, numr, wr)
         bigbuffer.insert_clip(crefim, (0, i))
 
     mpi.mpi_barrier(Blockdata["shared_comm"])
@@ -3595,26 +3595,26 @@ def ali3D_primary_polar(
 
         #  Apply varadj
         if not nonorm:
-            EMAN2_cppwrap.Util.mul_scalar(
+            EMAN2.cppwrap.Util.mul_scalar(
                 dataimage, old_div(Tracker["avgvaradj"][procid], wnorm)
             )
 
         ###  FT
         dataimage = sp_fundamentals.fft(dataimage)
-        sig = EMAN2_cppwrap.Util.rotavg_fourier(dataimage)
+        sig = EMAN2.cppwrap.Util.rotavg_fourier(dataimage)
         accumulatepw[im] = sig[old_div(len(sig), 2) :] + [0.0]
 
         #  We have to make sure the shifts are within correct range, shrinkage or not
         # set_params_proj(dataimage,[phi,theta,psi,max(min(sx*shrinkage,txm),txl),max(min(sy*shrinkage,txm),txl)])
         if Blockdata["bckgnoise"]:
             temp = Blockdata["bckgnoise"][particle_group]
-            bckgn = EMAN2_cppwrap.Util.unroll1dpw(
+            bckgn = EMAN2.cppwrap.Util.unroll1dpw(
                 Tracker["nxinit"],
                 Tracker["nxinit"],
                 [temp[i] for i in range(temp.get_xsize())],
             )
         else:
-            bckgn = EMAN2_cppwrap.Util.unroll1dpw(
+            bckgn = EMAN2.cppwrap.Util.unroll1dpw(
                 Tracker["nxinit"], Tracker["nxinit"], [1.0] * 600
             )
         bckgnoise = bckgn.copy()
@@ -3648,9 +3648,9 @@ def ali3D_primary_polar(
         # dataimage = fpol(Util.mulnclreal(Util.mulnclreal(fdecimate(dataimage, Tracker["nxinit"], Tracker["nxinit"], 1, False), Util.muln_img(bckgn, ctfs)), mask ), Tracker["nxpolar"], Tracker["nxpolar"],1, True)
         #  Here we can reuse dataml to save time.  It was not normalized, but it does not matter as dataimage is for POLAR.  PAP 08/06/2018
         dataimage = sp_fundamentals.fpol(
-            EMAN2_cppwrap.Util.mulnclreal(
-                EMAN2_cppwrap.Util.mulnclreal(
-                    dataml, EMAN2_cppwrap.Util.muln_img(bckgn, ctfs)
+            EMAN2.cppwrap.Util.mulnclreal(
+                EMAN2.cppwrap.Util.mulnclreal(
+                    dataml, EMAN2.cppwrap.Util.muln_img(bckgn, ctfs)
                 ),
                 mask,
             ),
@@ -3679,7 +3679,7 @@ def ali3D_primary_polar(
             )  # keepfirst = (n_coarse_ang *  n_coarse_psi * n_coarse_shifts)/10
 
             xod2 = sp_helix_sphire.np.asarray(
-                EMAN2_cppwrap.Util.multiref_Crosrng_msg_stack_stepsi(
+                EMAN2.cppwrap.Util.multiref_Crosrng_msg_stack_stepsi(
                     dataimage,
                     bigbuffer,
                     coarse_shifts_shrank,
@@ -3724,7 +3724,7 @@ def ali3D_primary_polar(
                         False,
                     )
                     temp.set_attr("is_complex", 0)
-                xod1[iln] = -EMAN2_cppwrap.Util.sqed(
+                xod1[iln] = -EMAN2.cppwrap.Util.sqed(
                     data[ishift], temp, ctfa, bckgnoise
                 )  # peak
                 ##xod2[iln] = hashparams
@@ -3774,7 +3774,7 @@ def ali3D_primary_polar(
             # Tracker["keepfirst"] = min(200,nang)#min(max(lxod1/25,200),lxod1)
 
             xod2 = sp_helix_sphire.np.asarray(
-                EMAN2_cppwrap.Util.multiref_Crosrng_msg_stack_stepsi(
+                EMAN2.cppwrap.Util.multiref_Crosrng_msg_stack_stepsi(
                     dataimage,
                     bigbuffer,
                     coarse_shifts_shrank,
@@ -3822,7 +3822,7 @@ def ali3D_primary_polar(
                         False,
                     )
                     temp.set_attr("is_complex", 0)
-                peak = -EMAN2_cppwrap.Util.sqed(data[ishift], temp, ctfa, bckgnoise)
+                peak = -EMAN2.cppwrap.Util.sqed(data[ishift], temp, ctfa, bckgnoise)
                 xod1[iln] = peak
                 ##xod2[iln] = hashparams
 
@@ -3960,7 +3960,7 @@ def ali3D_primary_polar(
                     data[ishift].set_attr("is_complex", 0)
 
                 ##[peak,varadj] = Util.sqednorm(data[ishift], temp, ctfa, bckgnoise)
-                fofa = EMAN2_cppwrap.Util.sqednormbckg(
+                fofa = EMAN2.cppwrap.Util.sqednormbckg(
                     data[ishift], temp, ctfa, bckgnoise, indx, tfrac, tcount
                 )
                 cod1[iln] = -fofa[-2]  # -peak
@@ -4218,7 +4218,7 @@ def ali3D_polar(
     n_fine_shifts = 4
 
     nima = len(original_data)
-    mask = EMAN2_cppwrap.Util.unrollmask(Tracker["nxinit"], Tracker["nxinit"])
+    mask = EMAN2.cppwrap.Util.unrollmask(Tracker["nxinit"], Tracker["nxinit"])
     for j in range(old_div(Tracker["nxinit"], 2), Tracker["nxinit"]):
         mask[0, j] = 1.0
     mask2D = sp_utilities.model_circle(
@@ -4286,7 +4286,7 @@ def ali3D_polar(
         )
 
         odo = sp_projection.prep_vol(odo, npad=2, interpolation_method=1)
-        ndo = EMAN2_cppwrap.EMNumPy.em2numpy(odo)
+        ndo = EMAN2.cppwrap.EMNumPy.em2numpy(odo)
         nxvol = odo.get_xsize()
         nyvol = odo.get_ysize()
         nzvol = odo.get_zsize()
@@ -4328,7 +4328,7 @@ def ali3D_polar(
         del odo, ndo
 
     # volprep = EMNumPy.assign_numpy_to_emdata(volbuf)
-    emnumpy1 = EMAN2_cppwrap.EMNumPy()
+    emnumpy1 = EMAN2.cppwrap.EMNumPy()
     volprep = emnumpy1.register_numpy_to_emdata(volbuf)
     volprep.set_attr_dict(
         {
@@ -4341,7 +4341,7 @@ def ali3D_polar(
         }
     )
 
-    crefim = EMAN2_cppwrap.Util.Polar2Dm(
+    crefim = EMAN2.cppwrap.Util.Polar2Dm(
         sp_utilities.model_blank(Tracker["nxpolar"], Tracker["nxpolar"]),
         cnx,
         cnx,
@@ -4380,7 +4380,7 @@ def ali3D_polar(
     buffer = buffer.reshape(lenbigbuf, size_of_one_image)
     # bigbuffer = EMNumPy.assign_numpy_to_emdata(buffer)
 
-    emnumpy2 = EMAN2_cppwrap.EMNumPy()
+    emnumpy2 = EMAN2.cppwrap.EMNumPy()
     bigbuffer = emnumpy2.register_numpy_to_emdata(buffer)
 
     #  end of setup
@@ -4426,7 +4426,7 @@ def ali3D_polar(
             )
 
             odo = sp_projection.prep_vol(odo, npad=2, interpolation_method=1)
-            ndo = EMAN2_cppwrap.EMNumPy.em2numpy(odo)
+            ndo = EMAN2.cppwrap.EMNumPy.em2numpy(odo)
             nxvol = odo.get_xsize()
             nyvol = odo.get_ysize()
             nzvol = odo.get_zsize()
@@ -4476,7 +4476,7 @@ def ali3D_polar(
             del odo, ndoinit
 
         # volinit = EMNumPy.assign_numpy_to_emdata(volbufinit)
-        emnumpy4 = EMAN2_cppwrap.EMNumPy()
+        emnumpy4 = EMAN2.cppwrap.EMNumPy()
         volinit = emnumpy4.register_numpy_to_emdata(volbufinit)
         volinit.set_attr_dict(
             {
@@ -4509,9 +4509,9 @@ def ali3D_polar(
         temp = sp_projection.prgl(
             volprep, [coarse_angles[i][0], coarse_angles[i][1], 0.0, 0.0, 0.0], 1, True
         )
-        crefim = EMAN2_cppwrap.Util.Polar2Dm(temp, cnx, cnx, numr, mode)
-        EMAN2_cppwrap.Util.Frngs(crefim, numr)
-        EMAN2_cppwrap.Util.Applyws(crefim, numr, wr)
+        crefim = EMAN2.cppwrap.Util.Polar2Dm(temp, cnx, cnx, numr, mode)
+        EMAN2.cppwrap.Util.Frngs(crefim, numr)
+        EMAN2.cppwrap.Util.Applyws(crefim, numr, wr)
         bigbuffer.insert_clip(crefim, (0, i))
 
     mpi.mpi_barrier(Blockdata["shared_comm"])
@@ -4632,26 +4632,26 @@ def ali3D_polar(
 
         #  Apply varadj
         if not nonorm:
-            EMAN2_cppwrap.Util.mul_scalar(
+            EMAN2.cppwrap.Util.mul_scalar(
                 dataimage, old_div(Tracker["avgvaradj"][procid], wnorm)
             )
 
         ###  FT
         dataimage = sp_fundamentals.fft(dataimage)
-        sig = EMAN2_cppwrap.Util.rotavg_fourier(dataimage)
+        sig = EMAN2.cppwrap.Util.rotavg_fourier(dataimage)
         accumulatepw[im] = sig[old_div(len(sig), 2) :] + [0.0]
 
         #  We have to make sure the shifts are within correct range, shrinkage or not
         # set_params_proj(dataimage,[phi,theta,psi,max(min(sx*shrinkage,txm),txl),max(min(sy*shrinkage,txm),txl)])
         if Blockdata["bckgnoise"]:
             temp = Blockdata["bckgnoise"][dataimage.get_attr("particle_group")]
-            bckgn = EMAN2_cppwrap.Util.unroll1dpw(
+            bckgn = EMAN2.cppwrap.Util.unroll1dpw(
                 Tracker["nxinit"],
                 Tracker["nxinit"],
                 [temp[i] for i in range(temp.get_xsize())],
             )
         else:
-            bckgn = EMAN2_cppwrap.Util.unroll1dpw(
+            bckgn = EMAN2.cppwrap.Util.unroll1dpw(
                 Tracker["nxinit"], Tracker["nxinit"], [1.0] * 600
             )
         bckgnoise = bckgn.copy()
@@ -4685,9 +4685,9 @@ def ali3D_polar(
         # dataimage = fpol(Util.mulnclreal(Util.mulnclreal(fdecimate(dataimage, Tracker["nxinit"], Tracker["nxinit"], 1, False), Util.muln_img(bckgn, ctfs)), mask ), Tracker["nxpolar"], Tracker["nxpolar"],1, True)
         #  Here we can reuse dataml to save time.  It was not normalized, but it does not matter as dataimage is for POLAR.  PAP 08/06/2018
         dataimage = sp_fundamentals.fpol(
-            EMAN2_cppwrap.Util.mulnclreal(
-                EMAN2_cppwrap.Util.mulnclreal(
-                    dataml, EMAN2_cppwrap.Util.muln_img(bckgn, ctfs)
+            EMAN2.cppwrap.Util.mulnclreal(
+                EMAN2.cppwrap.Util.mulnclreal(
+                    dataml, EMAN2.cppwrap.Util.muln_img(bckgn, ctfs)
                 ),
                 mask,
             ),
@@ -4716,7 +4716,7 @@ def ali3D_polar(
             )  # keepfirst = (n_coarse_ang *  n_coarse_psi * n_coarse_shifts)/10
 
             xod2 = sp_helix_sphire.np.asarray(
-                EMAN2_cppwrap.Util.multiref_Crosrng_msg_stack_stepsi(
+                EMAN2.cppwrap.Util.multiref_Crosrng_msg_stack_stepsi(
                     dataimage,
                     bigbuffer,
                     coarse_shifts_shrank,
@@ -4761,7 +4761,7 @@ def ali3D_polar(
                         False,
                     )
                     temp.set_attr("is_complex", 0)
-                xod1[iln] = -EMAN2_cppwrap.Util.sqed(
+                xod1[iln] = -EMAN2.cppwrap.Util.sqed(
                     data[ishift], temp, ctfa, bckgnoise
                 )  # peak
                 ##xod2[iln] = hashparams
@@ -4812,7 +4812,7 @@ def ali3D_polar(
             # Tracker["keepfirst"] = min(200,nang)#min(max(lxod1/25,200),lxod1)
 
             xod2 = sp_helix_sphire.np.asarray(
-                EMAN2_cppwrap.Util.multiref_Crosrng_msg_stack_stepsi(
+                EMAN2.cppwrap.Util.multiref_Crosrng_msg_stack_stepsi(
                     dataimage,
                     bigbuffer,
                     coarse_shifts_shrank,
@@ -4860,7 +4860,7 @@ def ali3D_polar(
                         False,
                     )
                     temp.set_attr("is_complex", 0)
-                peak = -EMAN2_cppwrap.Util.sqed(data[ishift], temp, ctfa, bckgnoise)
+                peak = -EMAN2.cppwrap.Util.sqed(data[ishift], temp, ctfa, bckgnoise)
                 xod1[iln] = peak
                 ##xod2[iln] = hashparams
 
@@ -5002,7 +5002,7 @@ def ali3D_polar(
                     data[ishift] = sp_fundamentals.fshift(dataml, xx, yy)
                     data[ishift].set_attr("is_complex", 0)
 
-                [peak, varadj] = EMAN2_cppwrap.Util.sqednorm(
+                [peak, varadj] = EMAN2.cppwrap.Util.sqednorm(
                     data[ishift], temp, ctfa, bckgnoise
                 )
                 cod1[iln] = -peak
@@ -5221,7 +5221,7 @@ def ali3D_primary_local_polar(
     n_fine_shifts = 4
 
     nima = len(original_data)
-    mask = EMAN2_cppwrap.Util.unrollmask(Tracker["nxinit"], Tracker["nxinit"])
+    mask = EMAN2.cppwrap.Util.unrollmask(Tracker["nxinit"], Tracker["nxinit"])
     for j in range(old_div(Tracker["nxinit"], 2), Tracker["nxinit"]):
         mask[0, j] = 1.0
     mask2D = sp_utilities.model_circle(
@@ -5318,7 +5318,7 @@ def ali3D_primary_local_polar(
         )
 
         odo = sp_projection.prep_vol(odo, npad=2, interpolation_method=1)
-        ndo = EMAN2_cppwrap.EMNumPy.em2numpy(odo)
+        ndo = EMAN2.cppwrap.EMNumPy.em2numpy(odo)
         nxvol = odo.get_xsize()
         nyvol = odo.get_ysize()
         nzvol = odo.get_zsize()
@@ -5360,7 +5360,7 @@ def ali3D_primary_local_polar(
         del odo, ndo
 
     # volprep = EMNumPy.assign_numpy_to_emdata(volbuf)
-    emnumpy1 = EMAN2_cppwrap.EMNumPy()
+    emnumpy1 = EMAN2.cppwrap.EMNumPy()
     volprep = emnumpy1.register_numpy_to_emdata(volbuf)
     volprep.set_attr_dict(
         {
@@ -5414,7 +5414,7 @@ def ali3D_primary_local_polar(
             )
 
             odo = sp_projection.prep_vol(odo, npad=2, interpolation_method=1)
-            ndo = EMAN2_cppwrap.EMNumPy.em2numpy(odo)
+            ndo = EMAN2.cppwrap.EMNumPy.em2numpy(odo)
             nxvol = odo.get_xsize()
             nyvol = odo.get_ysize()
             nzvol = odo.get_zsize()
@@ -5464,7 +5464,7 @@ def ali3D_primary_local_polar(
             del odo, ndoinit
 
         # volinit = EMNumPy.assign_numpy_to_emdata(volbufinit)
-        emnumpy4 = EMAN2_cppwrap.EMNumPy()
+        emnumpy4 = EMAN2.cppwrap.EMNumPy()
         volinit = emnumpy4.register_numpy_to_emdata(volbufinit)
         volinit.set_attr_dict(
             {
@@ -5486,7 +5486,7 @@ def ali3D_primary_local_polar(
     #  START CONES
     #  This has to be systematically done per node
     #
-    crefim = EMAN2_cppwrap.Util.Polar2Dm(
+    crefim = EMAN2.cppwrap.Util.Polar2Dm(
         sp_utilities.model_blank(Tracker["nxpolar"], Tracker["nxpolar"]),
         cnx,
         cnx,
@@ -5712,7 +5712,7 @@ def ali3D_primary_local_polar(
     buffer = buffer.reshape(lenbigbuf, size_of_one_image)
     # bigbuffer = EMNumPy.assign_numpy_to_emdata(buffer)
 
-    emnumpy2 = EMAN2_cppwrap.EMNumPy()
+    emnumpy2 = EMAN2.cppwrap.EMNumPy()
     bigbuffer = emnumpy2.register_numpy_to_emdata(buffer)
 
     #  end of CONES setup
@@ -5811,9 +5811,9 @@ def ali3D_primary_local_polar(
                     1,
                     True,
                 )
-                crefim = EMAN2_cppwrap.Util.Polar2Dm(temp, cnx, cnx, numr, mode)
-                EMAN2_cppwrap.Util.Frngs(crefim, numr)
-                EMAN2_cppwrap.Util.Applyws(crefim, numr, wr)
+                crefim = EMAN2.cppwrap.Util.Polar2Dm(temp, cnx, cnx, numr, mode)
+                EMAN2.cppwrap.Util.Frngs(crefim, numr)
+                EMAN2.cppwrap.Util.Applyws(crefim, numr, wr)
                 bigbuffer.insert_clip(crefim, (0, i))
 
             mpi.mpi_barrier(Blockdata["shared_comm"])
@@ -5907,26 +5907,26 @@ def ali3D_primary_local_polar(
 
                     #  Apply varadj
                     if not nonorm:
-                        EMAN2_cppwrap.Util.mul_scalar(
+                        EMAN2.cppwrap.Util.mul_scalar(
                             dataimage, old_div(Tracker["avgvaradj"][procid], wnorm)
                         )
 
                     ###  FT
                     dataimage = sp_fundamentals.fft(dataimage)
-                    sig = EMAN2_cppwrap.Util.rotavg_fourier(dataimage)
+                    sig = EMAN2.cppwrap.Util.rotavg_fourier(dataimage)
                     accumulatepw[im] = sig[old_div(len(sig), 2) :] + [0.0]
 
                     #  We have to make sure the shifts are within correct range, shrinkage or not
                     # set_params_proj(dataimage,[phi,theta,psi,max(min(sx*shrinkage,txm),txl),max(min(sy*shrinkage,txm),txl)])
                     if Blockdata["bckgnoise"]:
                         temp = Blockdata["bckgnoise"][particle_group]
-                        bckgn = EMAN2_cppwrap.Util.unroll1dpw(
+                        bckgn = EMAN2.cppwrap.Util.unroll1dpw(
                             Tracker["nxinit"],
                             Tracker["nxinit"],
                             [temp[i] for i in range(temp.get_xsize())],
                         )
                     else:
-                        bckgn = EMAN2_cppwrap.Util.unroll1dpw(
+                        bckgn = EMAN2.cppwrap.Util.unroll1dpw(
                             Tracker["nxinit"], Tracker["nxinit"], [1.0] * 600
                         )
                     bckgnoise = bckgn.copy()
@@ -5967,9 +5967,9 @@ def ali3D_primary_local_polar(
                     # dataimage = fpol(Util.mulnclreal(Util.mulnclreal(fdecimate(dataimage, Tracker["nxinit"], Tracker["nxinit"], 1, False), Util.muln_img(bckgn, ctfs)), mask ), Tracker["nxpolar"], Tracker["nxpolar"],1, True)
                     #  Here we can reuse dataml to save time.  It was not normalized, but it does not matter as dataimage is for POLAR.  PAP 08/06/2018
                     dataimage = sp_fundamentals.fpol(
-                        EMAN2_cppwrap.Util.mulnclreal(
-                            EMAN2_cppwrap.Util.mulnclreal(
-                                dataml, EMAN2_cppwrap.Util.muln_img(bckgn, ctfs)
+                        EMAN2.cppwrap.Util.mulnclreal(
+                            EMAN2.cppwrap.Util.mulnclreal(
+                                dataml, EMAN2.cppwrap.Util.muln_img(bckgn, ctfs)
                             ),
                             mask,
                         ),
@@ -6007,7 +6007,7 @@ def ali3D_primary_local_polar(
                         )  # 150#lang*m_coarse_psi*len(coarse_shifts_shrank)  #500#min(200,nlocal_angles)#min(max(lxod1/25,200),lxod1)
                         ###if( Blockdata["myid"] == 18 and lima<5):  sxprint(" START   nlocal_angles* m_coarse_psi*len(coarse_shifts_shrank",nlocal_angles,coarse_delta,len(coarse_shifts_shrank),keepfirst)
                         # if( Blockdata["myid"] == Blockdata["main_node"] ):
-                        lxod1 = EMAN2_cppwrap.Util.multiref_Crosrng_msg_stack_stepsi_local(
+                        lxod1 = EMAN2.cppwrap.Util.multiref_Crosrng_msg_stack_stepsi_local(
                             dataimage,
                             bigbuffer,
                             coarse_shifts_shrank,
@@ -6075,7 +6075,7 @@ def ali3D_primary_local_polar(
                                 ###   if( Blockdata["myid"] == Blockdata["main_node"] ):  sxprint("  SELECTEDSTEPTWO  ",iln,refang[iang][0],refang[iang][1],refang[iang][2]+ipsi*Tracker["delta"],ishift,xod1[iln])
                                 temp.set_attr("is_complex", 0)
                             ##junk = time()
-                            xod1[iln] = -EMAN2_cppwrap.Util.sqed(
+                            xod1[iln] = -EMAN2.cppwrap.Util.sqed(
                                 data[ishift], temp, ctfa, bckgnoise
                             )
                             ##eat += time()-junk
@@ -6151,7 +6151,7 @@ def ali3D_primary_local_polar(
                             old_div(keepfirst * Tracker["keepfirst"], 100),
                             min(keepfirst, 3),
                         )
-                        lxod1 = EMAN2_cppwrap.Util.multiref_Crosrng_msg_stack_stepsi_local(
+                        lxod1 = EMAN2.cppwrap.Util.multiref_Crosrng_msg_stack_stepsi_local(
                             dataimage,
                             bigbuffer,
                             coarse_shifts_shrank,
@@ -6222,7 +6222,7 @@ def ali3D_primary_local_polar(
                                 ##eat += time()-junk
                                 temp.set_attr("is_complex", 0)
                             ##junk = time()
-                            peak = -EMAN2_cppwrap.Util.sqed(
+                            peak = -EMAN2.cppwrap.Util.sqed(
                                 data[ishift], temp, ctfa, bckgnoise
                             )
                             ##eat += time()-junk
@@ -6423,7 +6423,7 @@ def ali3D_primary_local_polar(
                                 data[ishift].set_attr("is_complex", 0)
                             ##junk = time()
                             # [peak,varadj] = Util.sqednorm(data[ishift], temp, ctfa, bckgnoise)
-                            fofa = EMAN2_cppwrap.Util.sqednormbckg(
+                            fofa = EMAN2.cppwrap.Util.sqednormbckg(
                                 data[ishift], temp, ctfa, bckgnoise, indx, tfrac, tcount
                             )
                             cod1[iln] = -fofa[-2]  # -peak
@@ -6729,7 +6729,7 @@ def ali3D_local_polar(
     n_fine_shifts = 4
 
     nima = len(original_data)
-    mask = EMAN2_cppwrap.Util.unrollmask(Tracker["nxinit"], Tracker["nxinit"])
+    mask = EMAN2.cppwrap.Util.unrollmask(Tracker["nxinit"], Tracker["nxinit"])
     for j in range(old_div(Tracker["nxinit"], 2), Tracker["nxinit"]):
         mask[0, j] = 1.0
     mask2D = sp_utilities.model_circle(
@@ -6804,7 +6804,7 @@ def ali3D_local_polar(
         )
 
         odo = sp_projection.prep_vol(odo, npad=2, interpolation_method=1)
-        ndo = EMAN2_cppwrap.EMNumPy.em2numpy(odo)
+        ndo = EMAN2.cppwrap.EMNumPy.em2numpy(odo)
         nxvol = odo.get_xsize()
         nyvol = odo.get_ysize()
         nzvol = odo.get_zsize()
@@ -6846,7 +6846,7 @@ def ali3D_local_polar(
         del odo, ndo
 
     # volprep = EMNumPy.assign_numpy_to_emdata(volbuf)
-    emnumpy1 = EMAN2_cppwrap.EMNumPy()
+    emnumpy1 = EMAN2.cppwrap.EMNumPy()
     volprep = emnumpy1.register_numpy_to_emdata(volbuf)
     volprep.set_attr_dict(
         {
@@ -6900,7 +6900,7 @@ def ali3D_local_polar(
             )
 
             odo = sp_projection.prep_vol(odo, npad=2, interpolation_method=1)
-            ndo = EMAN2_cppwrap.EMNumPy.em2numpy(odo)
+            ndo = EMAN2.cppwrap.EMNumPy.em2numpy(odo)
             nxvol = odo.get_xsize()
             nyvol = odo.get_ysize()
             nzvol = odo.get_zsize()
@@ -6950,7 +6950,7 @@ def ali3D_local_polar(
             del odo, ndoinit
 
         # volinit = EMNumPy.assign_numpy_to_emdata(volbufinit)
-        emnumpy4 = EMAN2_cppwrap.EMNumPy()
+        emnumpy4 = EMAN2.cppwrap.EMNumPy()
         volinit = emnumpy4.register_numpy_to_emdata(volbufinit)
         volinit.set_attr_dict(
             {
@@ -6974,7 +6974,7 @@ def ali3D_local_polar(
     #  START CONES
     #  This has to be systematically done per node
     #
-    crefim = EMAN2_cppwrap.Util.Polar2Dm(
+    crefim = EMAN2.cppwrap.Util.Polar2Dm(
         sp_utilities.model_blank(Tracker["nxpolar"], Tracker["nxpolar"]),
         cnx,
         cnx,
@@ -7201,7 +7201,7 @@ def ali3D_local_polar(
     buffer = buffer.reshape(lenbigbuf, size_of_one_image)
     # bigbuffer = EMNumPy.assign_numpy_to_emdata(buffer)
 
-    emnumpy2 = EMAN2_cppwrap.EMNumPy()
+    emnumpy2 = EMAN2.cppwrap.EMNumPy()
     bigbuffer = emnumpy2.register_numpy_to_emdata(buffer)
 
     #  end of CONES setup
@@ -7295,9 +7295,9 @@ def ali3D_local_polar(
                     1,
                     True,
                 )
-                crefim = EMAN2_cppwrap.Util.Polar2Dm(temp, cnx, cnx, numr, mode)
-                EMAN2_cppwrap.Util.Frngs(crefim, numr)
-                EMAN2_cppwrap.Util.Applyws(crefim, numr, wr)
+                crefim = EMAN2.cppwrap.Util.Polar2Dm(temp, cnx, cnx, numr, mode)
+                EMAN2.cppwrap.Util.Frngs(crefim, numr)
+                EMAN2.cppwrap.Util.Applyws(crefim, numr, wr)
                 bigbuffer.insert_clip(crefim, (0, i))
 
             mpi.mpi_barrier(Blockdata["shared_comm"])
@@ -7393,13 +7393,13 @@ def ali3D_local_polar(
 
                     #  Apply varadj
                     if not nonorm:
-                        EMAN2_cppwrap.Util.mul_scalar(
+                        EMAN2.cppwrap.Util.mul_scalar(
                             dataimage, old_div(Tracker["avgvaradj"][procid], wnorm)
                         )
 
                     ###  FT
                     dataimage = sp_fundamentals.fft(dataimage)
-                    sig = EMAN2_cppwrap.Util.rotavg_fourier(dataimage)
+                    sig = EMAN2.cppwrap.Util.rotavg_fourier(dataimage)
                     accumulatepw[im] = sig[old_div(len(sig), 2) :] + [0.0]
 
                     #  We have to make sure the shifts are within correct range, shrinkage or not
@@ -7408,13 +7408,13 @@ def ali3D_local_polar(
                         temp = Blockdata["bckgnoise"][
                             dataimage.get_attr("particle_group")
                         ]
-                        bckgn = EMAN2_cppwrap.Util.unroll1dpw(
+                        bckgn = EMAN2.cppwrap.Util.unroll1dpw(
                             Tracker["nxinit"],
                             Tracker["nxinit"],
                             [temp[i] for i in range(temp.get_xsize())],
                         )
                     else:
-                        bckgn = EMAN2_cppwrap.Util.unroll1dpw(
+                        bckgn = EMAN2.cppwrap.Util.unroll1dpw(
                             Tracker["nxinit"], Tracker["nxinit"], [1.0] * 600
                         )
                     bckgnoise = bckgn.copy()
@@ -7455,9 +7455,9 @@ def ali3D_local_polar(
                     # dataimage = fpol(Util.mulnclreal(Util.mulnclreal(fdecimate(dataimage, Tracker["nxinit"], Tracker["nxinit"], 1, False), Util.muln_img(bckgn, ctfs)), mask ), Tracker["nxpolar"], Tracker["nxpolar"],1, True)
                     #  Here we can reuse dataml to save time.  It was not normalized, but it does not matter as dataimage is for POLAR.  PAP 08/06/2018
                     dataimage = sp_fundamentals.fpol(
-                        EMAN2_cppwrap.Util.mulnclreal(
-                            EMAN2_cppwrap.Util.mulnclreal(
-                                dataml, EMAN2_cppwrap.Util.muln_img(bckgn, ctfs)
+                        EMAN2.cppwrap.Util.mulnclreal(
+                            EMAN2.cppwrap.Util.mulnclreal(
+                                dataml, EMAN2.cppwrap.Util.muln_img(bckgn, ctfs)
                             ),
                             mask,
                         ),
@@ -7494,7 +7494,7 @@ def ali3D_local_polar(
                         )  # 150#lang*m_coarse_psi*len(coarse_shifts_shrank)  #500#min(200,nlocal_angles)#min(max(lxod1/25,200),lxod1)
                         ###if( Blockdata["myid"] == 18 and lima<5):  sxprint(" START   nlocal_angles* m_coarse_psi*len(coarse_shifts_shrank",nlocal_angles,coarse_delta,len(coarse_shifts_shrank),keepfirst)
                         # if( Blockdata["myid"] == Blockdata["main_node"] ):
-                        lxod1 = EMAN2_cppwrap.Util.multiref_Crosrng_msg_stack_stepsi_local(
+                        lxod1 = EMAN2.cppwrap.Util.multiref_Crosrng_msg_stack_stepsi_local(
                             dataimage,
                             bigbuffer,
                             coarse_shifts_shrank,
@@ -7562,7 +7562,7 @@ def ali3D_local_polar(
                                 ###   if( Blockdata["myid"] == Blockdata["main_node"] ):  sxprint("  SELECTEDSTEPTWO  ",iln,refang[iang][0],refang[iang][1],refang[iang][2]+ipsi*Tracker["delta"],ishift,xod1[iln])
                                 temp.set_attr("is_complex", 0)
                             ##junk = time()
-                            xod1[iln] = -EMAN2_cppwrap.Util.sqed(
+                            xod1[iln] = -EMAN2.cppwrap.Util.sqed(
                                 data[ishift], temp, ctfa, bckgnoise
                             )
                             ##eat += time()-junk
@@ -7636,7 +7636,7 @@ def ali3D_local_polar(
                             old_div(keepfirst * Tracker["keepfirst"], 100),
                             min(keepfirst, 3),
                         )
-                        lxod1 = EMAN2_cppwrap.Util.multiref_Crosrng_msg_stack_stepsi_local(
+                        lxod1 = EMAN2.cppwrap.Util.multiref_Crosrng_msg_stack_stepsi_local(
                             dataimage,
                             bigbuffer,
                             coarse_shifts_shrank,
@@ -7707,7 +7707,7 @@ def ali3D_local_polar(
                                 ##eat += time()-junk
                                 temp.set_attr("is_complex", 0)
                             ##junk = time()
-                            peak = -EMAN2_cppwrap.Util.sqed(
+                            peak = -EMAN2.cppwrap.Util.sqed(
                                 data[ishift], temp, ctfa, bckgnoise
                             )
                             ##eat += time()-junk
@@ -7906,7 +7906,7 @@ def ali3D_local_polar(
                                 data[ishift] = sp_fundamentals.fshift(dataml, xx, yy)
                                 data[ishift].set_attr("is_complex", 0)
                             ##junk = time()
-                            [peak, varadj] = EMAN2_cppwrap.Util.sqednorm(
+                            [peak, varadj] = EMAN2.cppwrap.Util.sqednorm(
                                 data[ishift], temp, ctfa, bckgnoise
                             )
                             ##eat += time()-junk
@@ -8151,9 +8151,9 @@ def cerrs(params, ctfs, particle_groups):
         )
         ctfs[itry].apix = old_div(ctfs[itry].apix, shrinkage)
         ct = sp_morphology.ctf_img_real(Tracker["nxinit"], ctfs[itry])
-        EMAN2_cppwrap.Util.mul_img(ct, ct)
-        ctfsbckgnoise = EMAN2_cppwrap.Util.muln_img(
-            EMAN2_cppwrap.Util.unroll1dpw(
+        EMAN2.cppwrap.Util.mul_img(ct, ct)
+        ctfsbckgnoise = EMAN2.cppwrap.Util.muln_img(
+            EMAN2.cppwrap.Util.unroll1dpw(
                 Tracker["nxinit"],
                 Tracker["nxinit"],
                 [Blockdata["bckgnoise"][i, particle_groups[itry]] for i in range(lb)],
@@ -8239,7 +8239,7 @@ def cerrs(params, ctfs, particle_groups):
                         F1, xshift * shrinkage, yshift * shrinkage
                     )
 
-                peak = EMAN2_cppwrap.Util.sqedac(F1, F2, ctfsbckgnoise)
+                peak = EMAN2.cppwrap.Util.sqedac(F1, F2, ctfsbckgnoise)
 
             if imode == 0:
                 acc_rot += ang_error
@@ -8752,8 +8752,8 @@ def recons3d_trl_struct_MPI_nosmearing(
         do_ctf = 1
     else:
         do_ctf = 0
-    fftvol = EMAN2_cppwrap.EMData()
-    weight = EMAN2_cppwrap.EMData()
+    fftvol = EMAN2.cppwrap.EMData()
+    weight = EMAN2.cppwrap.EMData()
     try:
         qt = prjlist[0].get_attr("qt")
     except:
@@ -8769,7 +8769,7 @@ def recons3d_trl_struct_MPI_nosmearing(
         "weight": weight,
         "do_ctf": do_ctf,
     }
-    r = EMAN2_cppwrap.Reconstructors.get("nn4_ctfw", params)
+    r = EMAN2.cppwrap.Reconstructors.get("nn4_ctfw", params)
     r.setup()
     shrink = old_div(float(Tracker["nxinit"]), float(Tracker["constants"]["nnxo"]))
     for im in range(len(prjlist)):
@@ -8796,7 +8796,7 @@ def recons3d_trl_struct_MPI_nosmearing(
         prjlist[im] = sp_fundamentals.fshift(prjlist[im], s2x, s2y)
         r.insert_slice(
             prjlist[im],
-            EMAN2_cppwrap.Transform(
+            EMAN2.cppwrap.Transform(
                 {"type": "spider", "phi": phi, "theta": theta, "psi": psi}
             ),
             1.0,
@@ -8922,7 +8922,7 @@ def update_memory_estimation():
                 Blockdata["no_of_processes_per_group"] * 2.0
             )  # reasonable approximation
         try:
-            total_stack = EMAN2_cppwrap.EMUtil.get_image_count(
+            total_stack = EMAN2.cppwrap.EMUtil.get_image_count(
                 Tracker["constants"]["stack"]
             )
         except:
@@ -9148,7 +9148,7 @@ def rec3d_make_maps(compute_fsc=True, regularized=True):
                         "tweight_1_%03d.hdf" % (Tracker["mainiteration"]),
                     )
                 )
-                EMAN2_cppwrap.Util.fuse_low_freq(
+                EMAN2.cppwrap.Util.fuse_low_freq(
                     tvol0,
                     tvol1,
                     tweight0,
@@ -9205,7 +9205,7 @@ def rec3d_make_maps(compute_fsc=True, regularized=True):
                         "tweight_1_%03d.hdf" % (Tracker["mainiteration"]),
                     )
                 )
-                EMAN2_cppwrap.Util.fuse_low_freq(
+                EMAN2.cppwrap.Util.fuse_low_freq(
                     tvol0,
                     tvol1,
                     tweight0,
@@ -9439,7 +9439,7 @@ def rec3d_make_maps(compute_fsc=True, regularized=True):
                             ),
                         )
                     )
-                    EMAN2_cppwrap.Util.fuse_low_freq(
+                    EMAN2.cppwrap.Util.fuse_low_freq(
                         tvol0,
                         tvol1,
                         tweight0,
@@ -9530,7 +9530,7 @@ def rec3d_make_maps(compute_fsc=True, regularized=True):
                         ),
                     )
                 )
-                EMAN2_cppwrap.Util.fuse_low_freq(
+                EMAN2.cppwrap.Util.fuse_low_freq(
                     tvol0,
                     tvol1,
                     tweight0,
@@ -10282,7 +10282,7 @@ def refinement_one_iteration(
                     "chunk_1_%03d.txt" % (Tracker["mainiteration"]),
                 )
             )
-            ctfs = EMAN2_cppwrap.EMUtil.get_all_attributes(
+            ctfs = EMAN2.cppwrap.EMUtil.get_all_attributes(
                 Tracker["constants"]["stack"], "ctf"
             )
             ctfs = [ctfs[i] for i in li]
@@ -10465,7 +10465,7 @@ def get_image_statistics(image, mask, invert):
             angle=image.get_attr("segment_angle"),
         )
 
-    return EMAN2_cppwrap.Util.infomask(image, mask2d, invert)
+    return EMAN2.cppwrap.Util.infomask(image, mask2d, invert)
 
 
 def calculate_prior_values(
@@ -11254,7 +11254,7 @@ mpirun -np 64 --hostfile four_nodes.txt  sxmeridien.py --local_refinement  vton3
             # Initialization of orgstack
             Tracker["constants"]["stack"] = orgstack
             if Blockdata["myid"] == Blockdata["main_node"]:
-                total_stack = EMAN2_cppwrap.EMUtil.get_image_count(
+                total_stack = EMAN2.cppwrap.EMUtil.get_image_count(
                     Tracker["constants"]["stack"]
                 )
             else:
@@ -11354,7 +11354,7 @@ mpirun -np 64 --hostfile four_nodes.txt  sxmeridien.py --local_refinement  vton3
                 sp_utilities.write_text_file(l1, partids[0])
                 sp_utilities.write_text_file(l2, partids[1])
                 if options.initialshifts:
-                    tp_list = EMAN2_cppwrap.EMUtil.get_all_attributes(
+                    tp_list = EMAN2.cppwrap.EMUtil.get_all_attributes(
                         Tracker["constants"]["stack"], "xform.projection"
                     )
                     for i in range(len(tp_list)):
@@ -12175,7 +12175,7 @@ mpirun -np 64 --hostfile four_nodes.txt  sxmeridien.py --local_refinement  vton3
             # Initialization of orgstack
             Tracker["constants"]["stack"] = orgstack
             if Blockdata["myid"] == Blockdata["main_node"]:
-                total_stack = EMAN2_cppwrap.EMUtil.get_image_count(
+                total_stack = EMAN2.cppwrap.EMUtil.get_image_count(
                     Tracker["constants"]["stack"]
                 )
             else:
@@ -12204,7 +12204,7 @@ mpirun -np 64 --hostfile four_nodes.txt  sxmeridien.py --local_refinement  vton3
                 l1, l2 = assign_particles_to_groups(minimum_group_size=10)
                 sp_utilities.write_text_file(l1, partids[0])
                 sp_utilities.write_text_file(l2, partids[1])
-                tp_list = EMAN2_cppwrap.EMUtil.get_all_attributes(
+                tp_list = EMAN2.cppwrap.EMUtil.get_all_attributes(
                     Tracker["constants"]["stack"], "xform.projection"
                 )
                 for i in range(len(tp_list)):

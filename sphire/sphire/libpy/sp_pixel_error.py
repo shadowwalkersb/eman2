@@ -70,7 +70,7 @@ from past.utils import old_div
 # file of header() or sxheader.py.
 # Per previous discussion, I decided not to support two stacks of images.
 
-import EMAN2_cppwrap
+import EMAN2.cppwrap
 import math
 import numpy
 from . import sp_global_def
@@ -105,23 +105,23 @@ def max_3D_pixel_error(t1, t2, r=1.0):
 		t.set_trans(Vec2f(-tx, -ty))
 	Note the function is symmetric in t1, t2.
 	"""
-    dummy = EMAN2_cppwrap.Transform()
+    dummy = EMAN2.cppwrap.Transform()
     if type(dummy) != type(t1):
-        t = EMAN2_cppwrap.Transform(
+        t = EMAN2.cppwrap.Transform(
             {"type": "spider", "phi": t1[0], "theta": t1[1], "psi": t1[2]}
         )
-        t.set_trans(EMAN2_cppwrap.Vec2f(-t1[3], -t1[4]))
+        t.set_trans(EMAN2.cppwrap.Vec2f(-t1[3], -t1[4]))
     else:
         t = t1
     if type(dummy) != type(t2):
-        u = EMAN2_cppwrap.Transform(
+        u = EMAN2.cppwrap.Transform(
             {"type": "spider", "phi": t2[0], "theta": t2[1], "psi": t2[2]}
         )
-        u.set_trans(EMAN2_cppwrap.Vec2f(-t2[3], -t2[4]))
+        u.set_trans(EMAN2.cppwrap.Vec2f(-t2[3], -t2[4]))
     else:
         u = t2
 
-    return EMAN2_cppwrap.EMData().max_3D_pixel_error(t, u, r)
+    return EMAN2.cppwrap.EMData().max_3D_pixel_error(t, u, r)
 
 
 def angle_ave(angle1):
@@ -362,7 +362,7 @@ def multi_align_stability(
                  old_div(d *d , 4.0)  * (1 - old_div(sqrtP, L)) + sqerr(sx) + sqerr(sy),
             )
             # Get ave transform params
-            H = EMAN2_cppwrap.Transform({"type": "2D"})
+            H = EMAN2.cppwrap.Transform({"type": "2D"})
             H.set_matrix(
                 [
                     old_div(sum_cosa, sqrtP),
@@ -381,7 +381,7 @@ def multi_align_stability(
             )
             dd = H.get_params("2D")
             #  We are using here mirror of the LAST SET.
-            H = EMAN2_cppwrap.Transform(
+            H = EMAN2.cppwrap.Transform(
                 {
                     "type": "2D",
                     "alpha": dd["alpha"],
@@ -486,7 +486,7 @@ def multi_align_stability(
     ali_params_cleaned_list = []
     for params in ali_params_cleaned:
         ali_params_cleaned_list.extend(params)
-    results = EMAN2_cppwrap.Util.multi_align_error(args, ali_params_cleaned_list, d)
+    results = EMAN2.cppwrap.Util.multi_align_error(args, ali_params_cleaned_list, d)
     ps_lp = results[:-1]
 
     # Negative val can happen in some rare cases, it should be due to rounding errors,
