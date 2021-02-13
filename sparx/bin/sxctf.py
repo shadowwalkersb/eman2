@@ -49,7 +49,7 @@ import sys
 import weakref
 from eman2_gui.emapplication import EMApp
 
-from Simplex import Simplex
+from EMAN2.Simplex import Simplex
 
 debug=False
 logid=None

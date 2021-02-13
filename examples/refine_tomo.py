@@ -4,7 +4,7 @@ from past.utils import old_div
 from builtins import range
 from EMAN2 import *
 import numpy as np
-from Simplex import Simplex
+from EMAN2.Simplex import Simplex
 from multiprocessing import Process, Queue
 import time
 import gc

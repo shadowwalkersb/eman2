@@ -6,7 +6,7 @@ from builtins import range
 from builtins import object
 import matplotlib
 #matplotlib.use('Agg')
-#from Simplex import Simplex
+#from EMAN2.Simplex import Simplex
 from EMAN2 import *
 import numpy as np
 import matplotlib.pyplot as plt

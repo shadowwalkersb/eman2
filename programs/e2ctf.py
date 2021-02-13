@@ -47,7 +47,7 @@ from numpy import array,arange
 import numpy
 import threading
 
-from Simplex import Simplex
+from EMAN2.Simplex import Simplex
 
 debug=False
 logid=None

@@ -42,7 +42,7 @@ import math
 import random
 import traceback
 import numpy as np
-from Simplex import Simplex
+from EMAN2.Simplex import Simplex
 
 def get_usage():
 	progname = os.path.basename(sys.argv[0])

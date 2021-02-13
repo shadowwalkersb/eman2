@@ -33,7 +33,7 @@ from past.utils import old_div
 from builtins import range
 from builtins import object
 from EMAN2 import *
-from Simplex import Simplex
+from EMAN2.Simplex import Simplex
 import numpy as np
 import sys
 import os
