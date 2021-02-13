@@ -10,7 +10,7 @@ import mpi
 import random
 import argparse
 import shutil
-import EMAN2db
+import EMAN2.db
 import numpy as np
 import tqdm
 import sys
@@ -1226,7 +1226,7 @@ def project3d_MPI(volfile, projparams, outdir, ctfdoc, orig_part_bdb,
     part_counter= 0
     
     if do_inmem:
-        new_bdb_dict= EMAN2db.db_open_dict(mpi_bdb_name)
+        new_bdb_dict= EMAN2.db.db_open_dict(mpi_bdb_name)
         aligned_stack_obj= EMAN2.EMData(idim, idim, num_angles-1)
     
     # Show progress bar only for one process (or none)
@@ -1281,7 +1281,7 @@ def project3d_MPI(volfile, projparams, outdir, ctfdoc, orig_part_bdb,
     # End angles loop
     
     if do_inmem: aligned_stack_obj.write_image(mpi_mrc_stack_file)
-    EMAN2db.db_close_dict(mpi_bdb_name)
+    EMAN2.db.db_close_dict(mpi_bdb_name)
     
     # Split input stack so that subtraction can be parallelized
     if RUNNING_UNDER_MPI:
@@ -1375,7 +1375,7 @@ def subtract_stack_MPI(minuend_stack, subtrahend_stack, combined_diffimg_bdb_ste
         safe_exit("Can't process mpi_subtrahend_stack")
     assert nimages == mimages, 'ERROR!! Two input stacks have different number of images %s %s' % (nimages, mimages)
     
-    new_bdb_dict= EMAN2db.db_open_dict(mpi_diff_bdb_obj.bdb_name)
+    new_bdb_dict= EMAN2.db.db_open_dict(mpi_diff_bdb_obj.bdb_name)
     
     disableTF= my_mpi_proc_id !=0 or verbosity<=1
     
@@ -1431,7 +1431,7 @@ def subtract_stack_MPI(minuend_stack, subtrahend_stack, combined_diffimg_bdb_ste
             mimage.get_attr("ptcl_source_image"), simage.get_attr("ptcl_source_image") )
     # End particle loop
     
-    EMAN2db.db_close_dict(mpi_diff_bdb_obj.bdb_name)
+    EMAN2.db.db_close_dict(mpi_diff_bdb_obj.bdb_name)
     
     dimages= EMAN2.EMUtil.get_image_count(mpi_diff_bdb_obj.bdb_name)
     if dimages != nimages:
@@ -1515,7 +1515,7 @@ def merge_bdbs(input_bdb_dir, input_stem_template, num_files, output_bdb_obj, ve
     out_eman2db_dir= os.path.abspath(output_bdb_obj.eman2db_dir)
     
     # Open new database
-    new_bdb_dict= EMAN2db.db_open_dict(output_bdb_obj.bdb_name)
+    new_bdb_dict= EMAN2.db.db_open_dict(output_bdb_obj.bdb_name)
 
     img_counter= 0  # initialize
     
@@ -1528,7 +1528,7 @@ def merge_bdbs(input_bdb_dir, input_stem_template, num_files, output_bdb_obj, ve
         input_bdb_obj= BdbNames(input_bdb_stem, input_bdb_dir)
         input_bdb_name= input_bdb_obj.bdb_name
         
-        input_bdb_dict= EMAN2db.db_open_dict(input_bdb_name, ro=True)  
+        input_bdb_dict= EMAN2.db.db_open_dict(input_bdb_name, ro=True)  
         
         # Get number of particles
         bdb_numparts= len(input_bdb_dict)
@@ -1557,12 +1557,12 @@ def merge_bdbs(input_bdb_dir, input_stem_template, num_files, output_bdb_obj, ve
         # End particle loop
         
         # Clean up
-        EMAN2db.db_close_dict(input_bdb_name)
+        EMAN2.db.db_close_dict(input_bdb_name)
         del input_bdb_obj
     # End BDB loop
     
     # Close new database
-    EMAN2db.db_close_dict(output_bdb_obj.bdb_name)
+    EMAN2.db.db_close_dict(output_bdb_obj.bdb_name)
     numoutimgs= EMAN2.EMUtil.get_image_count(output_bdb_obj.bdb_name)
     assert numoutimgs == img_counter, "Uh oh!! merge_bdbs: %s != %s" % (numoutimgs, img_counter)
     if verbosity>=1 : 

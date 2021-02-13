@@ -41,7 +41,7 @@ from past.utils import old_div
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
 #
 import EMAN2.cppwrap
-import EMAN2db
+import EMAN2.db
 import glob
 import inspect
 import math
@@ -1372,7 +1372,7 @@ def cter_mrk(
 
         is_not_found_input_image_file = False
         if input_image_path[: len("bdb:")].lower() == "bdb:":
-            if not EMAN2db.db_check_dict(input_image_path):
+            if not EMAN2.db.db_check_dict(input_image_path):
                 is_not_found_input_image_file = True
         else:
             if not os.path.exists(input_image_path):
@@ -1973,10 +1973,10 @@ def cter_mrk(
                 % (img_type, img_name, ifi, numFM, img_type.lower())
             )
 
-        if EMAN2db.db_check_dict(img_name) == False:
+        if EMAN2.db.db_check_dict(img_name) == False:
             img_basename_root = os.path.splitext(os.path.basename(img_name))[0]
         else:
-            path, dictname, keys = EMAN2db.db_parse_path(img_name)
+            path, dictname, keys = EMAN2.db.db_parse_path(img_name)
             img_basename_root = dictname
 
         nimi = len(pw2)
@@ -2871,7 +2871,7 @@ def cter_pap(
 
         is_not_found_input_image_file = False
         if input_image_path[: len("bdb:")].lower() == "bdb:":
-            if not EMAN2db.db_check_dict(input_image_path):
+            if not EMAN2.db.db_check_dict(input_image_path):
                 is_not_found_input_image_file = True
         else:
             if not os.path.exists(input_image_path):
@@ -3469,10 +3469,10 @@ def cter_pap(
                 % (img_type, img_name, ifi, numFM, img_type.lower())
             )
 
-        if EMAN2db.db_check_dict(img_name) == False:
+        if EMAN2.db.db_check_dict(img_name) == False:
             img_basename_root = os.path.splitext(os.path.basename(img_name))[0]
         else:
-            path, dictname, keys = EMAN2db.db_parse_path(img_name)
+            path, dictname, keys = EMAN2.db.db_parse_path(img_name)
             img_basename_root = dictname
 
         nimi = len(pw2)
@@ -5309,7 +5309,7 @@ def cter_vpp(
 
         is_not_found_input_image_file = False
         if input_image_path[: len("bdb:")].lower() == "bdb:":
-            if not EMAN2db.db_check_dict(input_image_path):
+            if not EMAN2.db.db_check_dict(input_image_path):
                 is_not_found_input_image_file = True
         else:
             if not os.path.exists(input_image_path):
@@ -5906,10 +5906,10 @@ def cter_vpp(
                 % (img_type, img_name, ifi, img_type.lower())
             )
 
-        if EMAN2db.db_check_dict(img_name) == False:
+        if EMAN2.db.db_check_dict(img_name) == False:
             img_basename_root = os.path.splitext(os.path.basename(img_name))[0]
         else:
-            path, dictname, keys = EMAN2db.db_parse_path(img_name)
+            path, dictname, keys = EMAN2.db.db_parse_path(img_name)
             img_basename_root = dictname
 
         #  VPP code starts here  03/08/2017

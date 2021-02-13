@@ -49,7 +49,7 @@ from past.utils import old_div
 # ========================================================================================
 
 import EMAN2.cppwrap
-import EMAN2db
+import EMAN2.db
 import numpy
 import operator
 import optparse
@@ -2071,7 +2071,7 @@ def run():
                     file_path_local_bdb_stack = "bdb:{}#{}_ptcls".format(
                         dir_path_local_bdb_stacks, micrograph_baseroot
                     )
-                    local_bdb_stack = EMAN2db.db_open_dict(file_path_local_bdb_stack)
+                    local_bdb_stack = EMAN2.db.db_open_dict(file_path_local_bdb_stack)
 
                     for sphire_header_id, sphire_header in enumerate(
                         sphire_header_dict[micrograph_dirname][micrograph_basename]
@@ -2243,7 +2243,7 @@ def run():
 
                         # Write the particle image to local stack file
                         local_bdb_stack[sphire_header_id] = img_particles_dict
-                    EMAN2db.db_close_dict(file_path_local_bdb_stack)
+                    EMAN2.db.db_close_dict(file_path_local_bdb_stack)
 
                 # # NOTE: Toshio Moriya 2018/07/09
                 # # Unfortunately, the following method does not work maybe because of synchronization problem of subprocess...

@@ -15921,16 +15921,16 @@ class Test_disable_bdb_cache(unittest.TestCase):
         self.assertEqual(str(cm_new.exception), str(cm_old.exception))
 
     def test_disable_bdb_cache(self):
-        import EMAN2db
+        import EMAN2.db
 
-        EMAN2db.BDB_CACHE_DISABLE = False
-        self.assertFalse(EMAN2db.BDB_CACHE_DISABLE)
+        EMAN2.db.BDB_CACHE_DISABLE = False
+        self.assertFalse(EMAN2.db.BDB_CACHE_DISABLE)
         fu.disable_bdb_cache()
-        self.assertTrue(EMAN2db.BDB_CACHE_DISABLE)
-        EMAN2db.BDB_CACHE_DISABLE = False
-        self.assertFalse(EMAN2db.BDB_CACHE_DISABLE)
+        self.assertTrue(EMAN2.db.BDB_CACHE_DISABLE)
+        EMAN2.db.BDB_CACHE_DISABLE = False
+        self.assertFalse(EMAN2.db.BDB_CACHE_DISABLE)
         oldfu.disable_bdb_cache()
-        self.assertTrue(EMAN2db.BDB_CACHE_DISABLE)
+        self.assertTrue(EMAN2.db.BDB_CACHE_DISABLE)
 
 
 class Test_getvec(unittest.TestCase):

@@ -45,7 +45,7 @@ import os
 import EMAN2
 import datetime
 import operator
-import EMAN2db
+import EMAN2.db
 import argparse
 import math
 import tqdm
@@ -2104,7 +2104,7 @@ def separate_by_class(num_classes, stack2split, classdoc_template, class_init_bd
         mpi_ave_stack_obj= EMAN2.EMData(montage_xdim, shrunk_size, (mpi_end-mpi_start) )
         mpi_ave_bdb_template= outdir + "/" + MPI_STACK_PREFIX + digit_pattern  # The '/' will make makerelpath easier to use
         mpi_ave_bdb_name= "bdb:" + mpi_ave_bdb_template.format(myid)
-        mpi_ave_bdb_dict= EMAN2db.db_open_dict(mpi_ave_bdb_name)
+        mpi_ave_bdb_dict= EMAN2.db.db_open_dict(mpi_ave_bdb_name)
     
     for class_num in tqdm.tqdm(range(mpi_start, mpi_end), unit='class', disable=disable_class, file=sys.stdout):
         class_mpi_idx= class_num - mpi_start
@@ -2301,7 +2301,7 @@ def separate_by_class(num_classes, stack2split, classdoc_template, class_init_bd
     
     if do_align:
         mpi_ave_stack_obj.write_image(mpi_ave_stack_path)
-        EMAN2db.db_close_dict(mpi_ave_bdb_name)
+        EMAN2.db.db_close_dict(mpi_ave_bdb_name)
     
     quick_barrier()
     
@@ -2814,7 +2814,7 @@ def copy_header_attr(bdb_name, source_tag, destination_tag):
     
     rotation_list= EMAN2.EMUtil.get_all_attributes(bdb_name, source_tag)
     num_imgs= EMAN2.EMUtil.get_image_count(bdb_name)
-    local_bdb_stack= EMAN2db.db_open_dict(bdb_name)
+    local_bdb_stack= EMAN2.db.db_open_dict(bdb_name)
     
     # Loop through particles
     for idx in range(num_imgs):
@@ -2825,7 +2825,7 @@ def copy_header_attr(bdb_name, source_tag, destination_tag):
     # End particle loop
     
     # Close BDB
-    EMAN2db.db_close_dict(local_bdb_stack)
+    EMAN2.db.db_close_dict(local_bdb_stack)
 
 def avg_optional_ctf(bdb_or_list, ctf_method=None, pws_docfile=None, do_align=True):
     """
@@ -3256,7 +3256,7 @@ def align_filter_shrink(input_bdb_name, output_stack_path, output_bdb_name, alig
     # Initialize stack & BDB
     aligned_stack_obj= EMAN2.EMData(box_size, box_size, num_imgs) 
     assert output_bdb_name[:4] == 'bdb:', "align_filter_shrink, %s does not start with 'bdb:'"
-    new_bdb_dict= EMAN2db.db_open_dict(output_bdb_name)
+    new_bdb_dict= EMAN2.db.db_open_dict(output_bdb_name)
     
     # If we pretend the BDB file is in a subdirectory by substituting a '/' for the "#", then makerelpath is easy
     output_bdb_stem= output_bdb_name[4:].replace("#",'/')
@@ -3307,7 +3307,7 @@ def align_filter_shrink(input_bdb_name, output_stack_path, output_bdb_name, alig
     # End image-loop
         
     aligned_stack_obj.write_image(output_stack_path)
-    EMAN2db.db_close_dict(output_bdb_name)
+    EMAN2.db.db_close_dict(output_bdb_name)
     if verbosity>=3 : 
         mesg= "  Wrote %s images to '%s' from '%s'" % (num_imgs, output_bdb_name, input_bdb_name)
         print_log_msg(mesg, log, is_main)
@@ -3379,7 +3379,7 @@ def sort_merge_bdbs(input_bdb_stem_template, num_bdbs, output_bdb_dir, output_bd
     out_eman2db_dir= os.path.abspath(output_bdb_obj.eman2db_dir)
     
     # Open new database
-    new_bdb_dict= EMAN2db.db_open_dict(output_bdb_obj.bdb_name)
+    new_bdb_dict= EMAN2.db.db_open_dict(output_bdb_obj.bdb_name)
 
     img_counter= 0
     disableTF= verbosity>=3 or verbosity<2 or num_bdbs==1
@@ -3387,7 +3387,7 @@ def sort_merge_bdbs(input_bdb_stem_template, num_bdbs, output_bdb_dir, output_bd
     # Loop through BDBs
     for bdb_num in tqdm.tqdm(range(num_bdbs), unit='bdb', disable=disableTF, file=sys.stdout):
         input_bdb_name= "bdb:" + input_bdb_stem_template.format(bdb_num)
-        input_bdb_dict= EMAN2db.db_open_dict(input_bdb_name, ro=True)  
+        input_bdb_dict= EMAN2.db.db_open_dict(input_bdb_name, ro=True)  
         
         # Get number of particles
         bdb_numparts= len(input_bdb_dict)
@@ -3429,11 +3429,11 @@ def sort_merge_bdbs(input_bdb_stem_template, num_bdbs, output_bdb_dir, output_bd
         # End particle loop
         
         # Close database
-        EMAN2db.db_close_dict(input_bdb_name)
+        EMAN2.db.db_close_dict(input_bdb_name)
     # End BDB loop
     
     # Close new database
-    EMAN2db.db_close_dict(output_bdb_obj.bdb_name)
+    EMAN2.db.db_close_dict(output_bdb_obj.bdb_name)
     numoutimgs= EMAN2.EMUtil.get_image_count(output_bdb_obj.bdb_name)
     assert numoutimgs == img_counter, "Uh oh!! %s: %s != %s" % (output_bdb_obj.bdb_name, numoutimgs, img_counter)
     if verbosity>=2 : print_log_msg("Wrote %s images to '%s'\n" % (numoutimgs, output_bdb_obj.bdb_name), log)

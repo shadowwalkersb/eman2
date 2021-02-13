@@ -231,14 +231,14 @@ if __name__ == '__main__':
 
 #def rundcserver(port,verbose):
 	#"""Launches a DCServer. If port is <1 or None, will autodetermine. Does not return."""
-	#import EMAN2db
+	#import EMAN2.db
 	## The following was causing issues with the multithreaded parallelism server. Seems like we need to insure the server and the customer
 	## are running on the same physical computer !!!
-##	EMAN2db.BDB_CACHE_DISABLE=1	# this diables caching on the server so the customer knows it can freely write to local database files
+##	EMAN2.db.BDB_CACHE_DISABLE=1	# this diables caching on the server so the customer knows it can freely write to local database files
 	#server=runEMDCServer(port,verbose)			# never returns
 
 #def killdcclients(server,port,verbose):
-	#import EMAN2db
+	#import EMAN2.db
 	#server=runEMDCServer(port,verbose,True)			# never returns
 
 #def rundcclients(host,port,verbose):
@@ -310,11 +310,11 @@ if __name__ == '__main__':
 	#QtCore.QAbstractTableModel=dummy
 	
 #def runservmon():
-	#import EMAN2db
+	#import EMAN2.db
 	## we changed the meaning of the variable to disable writing to cache altogether, pap 9-01
-	#EMAN2db.BDB_CACHE_DISABLE=1
+	#EMAN2.db.BDB_CACHE_DISABLE=1
 
-	#queue=EMAN2db.EMTaskQueue(".",ro=True)
+	#queue=EMAN2.db.EMTaskQueue(".",ro=True)
 
 ##	activedata=TaskData(queue.active)
 ##	completedata=TaskData(queue.complete)

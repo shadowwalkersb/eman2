@@ -48,7 +48,7 @@ import socket
 import subprocess
 from EMAN2.cppwrap import *
 from EMAN2_meta import *
-import EMAN2db, EMAN2.jsondb
+import EMAN2.db, EMAN2.jsondb
 import argparse, copy
 import glob
 import random
@@ -78,7 +78,7 @@ except: pass
 # if it fails, it sets db to None. Applications can then alter their
 # behavior appropriately
 #try:
-#import EMAN2db
+#import EMAN2.db
 from EMAN2.db import EMAN2DB,db_open_dict,db_close_dict,db_remove_dict,db_list_dicts,db_check_dict,db_parse_path,db_convert_path,db_get_image_info,e2gethome, e2getcwd
 from EMAN2.jsondb import JSDict,js_open_dict,js_close_dict,js_remove_dict,js_list_dicts,js_check_dict,js_one_key
 #except:
@@ -247,7 +247,7 @@ is complete. If the process is killed, 'end' may never be set."""
 #	hist.flush()
 	hist.close()
 
-	#if EMAN2db.BDB_CACHE_DISABLE :
+	#if EMAN2.db.BDB_CACHE_DISABLE :
 		#print "Note: Cache disabled"
 
 	return n
@@ -255,7 +255,7 @@ is complete. If the process is killed, 'end' may never be set."""
 def E2progress(n,progress):
 	"""Updates the progress fraction (0.0-1.0) for a running job. Negative values may optionally be
 set to indicate an error exit."""
-#	if EMAN2db.BDB_CACHE_DISABLE : return		# THIS MUST REMAIN DISABLED NOW THAT THE CACHE IS DISABLED PERMANENTLY !!!
+#	if EMAN2.db.BDB_CACHE_DISABLE : return		# THIS MUST REMAIN DISABLED NOW THAT THE CACHE IS DISABLED PERMANENTLY !!!
 
 	try:
 		hist=open(".eman2log.txt","r+")
@@ -271,7 +271,7 @@ set to indicate an error exit."""
 def E2end(n):
 	"""E2end(n)
 This function is called to log the end of the current job. n is returned by E2init"""
-#	if EMAN2db.BDB_CACHE_DISABLE : return		# THIS MUST REMAIN DISABLED NOW THAT THE CACHE IS DISABLED PERMANENTLY !!!
+#	if EMAN2.db.BDB_CACHE_DISABLE : return		# THIS MUST REMAIN DISABLED NOW THAT THE CACHE IS DISABLED PERMANENTLY !!!
 
 	try:
 		hist=open(".eman2log.txt","r+")

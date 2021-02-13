@@ -42,7 +42,7 @@ Create substacks based on errors estimated with CTF Refinement in SPHIRE
 """
 import argparse
 import numpy as np
-import EMAN2db
+import EMAN2.db
 import EMAN2
 from ..libpy import sp_ctf_refine_io
 from ..libpy import sp_global_def
@@ -114,8 +114,8 @@ def run():
 
 	# Write stack
 	number_of_particles = EMAN2.EMUtil.get_image_count(path_stack)
-	local_bdb_stack = EMAN2db.db_open_dict(path_output)
-	sp_global_def.write_command(EMAN2db.db_parse_path(path_output)[0])
+	local_bdb_stack = EMAN2.db.db_open_dict(path_output)
+	sp_global_def.write_command(EMAN2.db.db_parse_path(path_output)[0])
 	num_particles_relevant = 0
 	for particle_index in range(number_of_particles):
 
@@ -135,7 +135,7 @@ def run():
 		elif mode == "EXTRACT" and relevant_selection[particle_index]:
 			local_bdb_stack[num_particles_relevant - 1] = particle_header
 
-	EMAN2db.db_close_dict(local_bdb_stack)
+	EMAN2.db.db_close_dict(local_bdb_stack)
 	sp_global_def.sxprint("Particles updated/extracted", num_particles_relevant)
 
 def _main_():

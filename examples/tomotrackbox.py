@@ -43,7 +43,7 @@ import weakref
 from eman2_gui.emshape import EMShape
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtCore import Qt
-#import EMAN2db
+#import EMAN2.db
 
 reconmodes=["gauss_2","gauss_3","gauss_5"]
 

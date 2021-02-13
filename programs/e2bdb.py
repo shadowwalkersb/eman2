@@ -94,7 +94,7 @@ e2bdb.py <database> --dump    Gives a mechanism to dump all of the metadata in a
 	parser.add_argument("--step",type=str,default="0,1",help="Specify <init>,<step>[,<max>]. Processes only a subset of the input data. For example, 0,2 would process only the even numbered particles")
 	(options, args) = parser.parse_args()
 
-	if options.nocache : EMAN2db.BDB_CACHE_DISABLE=True
+	if options.nocache : EMAN2.db.BDB_CACHE_DISABLE=True
 
 	if options.cleanup : 
 		db_cleanup(options.force)

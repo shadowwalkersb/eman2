@@ -41,7 +41,7 @@ Place, Suite 330, Boston, MA  02111-1307 USA
 """
 import EMAN2
 import EMAN2.cppwrap
-import EMAN2db
+import EMAN2.db
 import datetime
 import errno
 import fractions
@@ -90,14 +90,14 @@ def makerelpath(p1, p2):
 
 def make_v_stack_header(path, vstack_path, verbose=False):
     if vstack_path.startswith("bdb:"):
-        vspath = EMAN2db.db_parse_path(vstack_path)[0]
+        vspath = EMAN2.db.db_parse_path(vstack_path)[0]
         if vspath == "." or vspath == "./":
-            vspath = EMAN2db.e2getcwd()
+            vspath = EMAN2.db.e2getcwd()
         vspath = os.path.join(vspath, "EMAN2DB/")
     else:
         vspath = vstack_path
         if vspath == "." or vspath == "./":
-            vspath = EMAN2db.e2getcwd()
+            vspath = EMAN2.db.e2getcwd()
 
     if path.lower()[:4] == "bdb:" and not "#" in path:
         uu = os.path.split(path)
@@ -114,14 +114,14 @@ def make_v_stack_header(path, vstack_path, verbose=False):
     else:
         if not "#" in path and path[-1] != "/":
             path += "#"
-        dbs = EMAN2db.db_list_dicts(path)
+        dbs = EMAN2.db.db_list_dicts(path)
 
     dbs.sort()
 
     step = [0, 1]
     vstack_list = []
     for db in dbs:
-        dct, keys = EMAN2db.db_open_dict(path + db, ro=True, with_keys=True)
+        dct, keys = EMAN2.db.db_open_dict(path + db, ro=True, with_keys=True)
         if len(step) == 2:
             if keys == None:
                 vals = list(range(step[0], len(dct), step[1]))
@@ -2217,7 +2217,7 @@ def recv_attr_dict_bdb(
     if comm == -1:
         comm = mpi.MPI_COMM_WORLD
 
-    DB = EMAN2db.db_open_dict(stack)
+    DB = EMAN2.db.db_open_dict(stack)
     TransType = type(EMAN2.cppwrap.Transform())
     # prepare keys for float/int
     value = get_arb_params(data[0], list_params)
@@ -2406,7 +2406,7 @@ def write_headers(filename, data, lima):
     ftp = file_type(filename)
     if ftp == "bdb":
         #  For unknown reasons this does not work on Linux, but works on Mac ??? Really?
-        DB = EMAN2db.db_open_dict(filename)
+        DB = EMAN2.db.db_open_dict(filename)
         for i in range(len(lima)):
             DB.set_header(lima[i], data[i])
         DB.close()
@@ -2432,7 +2432,7 @@ def write_header(filename, data, lima):
 
     ftp = file_type(filename)
     if ftp == "bdb":
-        DB = EMAN2db.db_open_dict(filename)
+        DB = EMAN2.db.db_open_dict(filename)
         DB.set_header(lima, data)
     elif ftp == "hdf":
         data.write_image(filename, lima, EMAN2.cppwrap.EMUtil.ImageType.IMAGE_HDF, True)
@@ -2626,13 +2626,13 @@ def delete_bdb(name):
 	  Delete bdb stack
 	"""
 
-    a = EMAN2db.db_open_dict(name)
-    EMAN2db.db_remove_dict(name)
+    a = EMAN2.db.db_open_dict(name)
+    EMAN2.db.db_remove_dict(name)
 
 
 def disable_bdb_cache():
 
-    EMAN2db.BDB_CACHE_DISABLE = True
+    EMAN2.db.BDB_CACHE_DISABLE = True
 
 
 """Multiline Comment16"""

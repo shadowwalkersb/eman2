@@ -1976,7 +1976,7 @@ def cter_mrk(input_image_path, output_directory, selection_list = None, wn = 512
 		output_directory  : output directory
 	"""
 	from   EMAN2 import periodogram
-	from   EMAN2db import db_check_dict, db_parse_path
+	from   EMAN2.db import db_check_dict, db_parse_path
 	from   applications import MPI_start_end
 	from   utilities import read_text_file, write_text_file, get_im, model_blank, model_circle, amoeba, generate_ctf
 	from   utilities import if_error_then_all_processes_exit_program
@@ -3031,7 +3031,7 @@ def cter_pap(input_image_path, output_directory, selection_list = None, wn = 512
 		output_directory  : output directory
 	"""
 	from   EMAN2 import periodogram
-	from   EMAN2db import db_check_dict, db_parse_path
+	from   EMAN2.db import db_check_dict, db_parse_path
 	from   applications import MPI_start_end
 	from   utilities import read_text_file, write_text_file, get_im, model_blank, model_circle, amoeba, generate_ctf
 	from   utilities import if_error_then_all_processes_exit_program
@@ -5430,7 +5430,7 @@ def cter_vpp(input_image_path, output_directory, selection_list = None, wn = 512
 		output_directory  : output directory
 	"""
 	from   EMAN2 import periodogram
-	from   EMAN2db import db_check_dict, db_parse_path
+	from   EMAN2.db import db_check_dict, db_parse_path
 	from   applications import MPI_start_end
 	from   utilities import read_text_file, write_text_file, get_im, model_blank, model_circle, amoeba, generate_ctf
 	from   utilities import if_error_then_all_processes_exit_program

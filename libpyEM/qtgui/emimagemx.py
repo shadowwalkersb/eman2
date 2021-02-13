@@ -42,7 +42,7 @@ from OpenGL.GLU import *
 from .valslider import ValSlider
 from math import *
 from EMAN2 import *
-#import EMAN2db
+#import EMAN2.db
 from EMAN2.db import db_open_dict, db_check_dict
 from EMAN2.jsondb import js_open_dict, js_check_dict
 import EMAN2
@@ -808,7 +808,7 @@ class EMImageMXWidget(EMGLWidget, EMGLProjectionViewMatrices):
 			return # the list is empty
 
 		global HOMEDB
-		HOMEDB = EMAN2db.EMAN2DB.open_db()
+		HOMEDB = EMAN2.db.EMAN2DB.open_db()
 		HOMEDB.open_dict("display_preferences")
 		db = HOMEDB.display_preferences
 		#auto_contrast = db.get("display_stack_auto_contrast", dfl = True)
@@ -3057,7 +3057,7 @@ class EMDataListCache(EMMXDataCache):
 	FILE_MODE = 'file_mode'
 	def __init__(self,object,cache_size=256,start_idx=0,soft_delete=False):
 		EMMXDataCache.__init__(self)
-		#DB = EMAN2db.EMAN2DB.open_db(".")
+		#DB = EMAN2.db.EMAN2DB.open_db(".")
 		self.xsize = -1
 		self.ysize = -1
 		self.keys = None

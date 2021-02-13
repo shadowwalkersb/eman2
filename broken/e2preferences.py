@@ -29,14 +29,14 @@
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston MA 02111-1307 USA
 #
 #
-import EMAN2db
+import EMAN2.db
 from eman2_gui.emdatastorage import ParamDef
 
 from eman2_gui.emsprworkflow import WorkFlowTask
 from eman2_gui.emapplication import get_application
 
 global HOMEDB
-HOMEDB=EMAN2db.EMAN2DB.open_db()
+HOMEDB=EMAN2.db.EMAN2DB.open_db()
 
 class EMPreferencesTask(WorkFlowTask):
 	task_idle = QtCore.pyqtSignal()

@@ -37,7 +37,7 @@ from past.utils import old_div
 
 
 import EMAN2.cppwrap
-import EMAN2db
+import EMAN2.db
 import glob
 import inspect
 import mpi
@@ -1841,7 +1841,7 @@ For negative staining data, use --skip_invert.
 
         # Release the data base of local stack from this process
         # so that the subprocess can access to the data base
-        EMAN2db.db_close_dict(local_stack_path)
+        EMAN2.db.db_close_dict(local_stack_path)
 
     # ------------------------------------------------------------------------------------
     # Print out summary of processing

@@ -1253,7 +1253,7 @@ class DBDict(object):
         self.key_translation_dict = {}
 
     def __str__(self):
-        return "<EMAN2db DBDict instance: %s>" % self.name
+        return "<EMAN2.db DBDict instance: %s>" % self.name
 
     def __del__(self):
         self.close()

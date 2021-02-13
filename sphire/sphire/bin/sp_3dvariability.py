@@ -42,7 +42,7 @@ from past.utils import old_div
 #
 import EMAN2
 import EMAN2.cppwrap
-import EMAN2db
+import EMAN2.db
 import mpi
 import numpy
 import optparse
@@ -300,7 +300,7 @@ def run():
                 "e2bdb.py  " + stack + "  --makevstack=bdb:" + Qfile
             )
             # DB = db_open_dict("bdb:Q%1d"%k)
-            DB = EMAN2db.db_open_dict("bdb:" + Qfile)
+            DB = EMAN2.db.db_open_dict("bdb:" + Qfile)
             for i in range(na):
                 ut = qt[i] * ts[k]
                 DB.set_attr(i, "xform.projection", ut)

@@ -36,7 +36,7 @@ from builtins import object
 from time import time
 from math import ceil
 from copy import copy
-import EMAN2db
+import EMAN2.db
 from EMAN2.db import db_open_dict, db_close_dict, db_remove_dict, db_check_dict
 from EMAN2 import *
 import traceback
@@ -50,7 +50,7 @@ class EMProjectDB(object):
 		""" Implementation of the singleton interface """
 
 		def __init__(self):
-			DB = EMAN2db.EMAN2DB.open_db(".")
+			DB = EMAN2.db.EMAN2DB.open_db(".")
 			DB.open_dict("e2boxer.cache")
 			self.project_db = DB["e2boxer.cache"]
 			self.memory_db = {}
@@ -71,7 +71,7 @@ class EMProjectDB(object):
 			
 		def close(self):
 			#self.project_db.close()
-			DB = EMAN2db.EMAN2DB.open_db(".")
+			DB = EMAN2.db.EMAN2DB.open_db(".")
 			DB.close_dict("e2boxer.cache")
 			
 		def set_key_entry(self,key,entry):

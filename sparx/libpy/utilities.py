@@ -3459,12 +3459,12 @@ def delete_bdb(name):
 	db_remove_dict(name)
 
 def disable_bdb_cache():
-	import EMAN2db
-	EMAN2db.BDB_CACHE_DISABLE = True
+	import EMAN2.db
+	EMAN2.db.BDB_CACHE_DISABLE = True
 
 def enable_bdb_cache():
-	import EMAN2db
-	EMAN2db.BDB_CACHE_DISABLE = False
+	import EMAN2.db
+	EMAN2.db.BDB_CACHE_DISABLE = False
 
 
 

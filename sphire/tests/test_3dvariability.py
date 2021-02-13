@@ -7,7 +7,7 @@ from os import path
 from sphire.tests.test_module import ABSOLUTE_OLDBIN_PATH,ABSOLUTE_BIN_PATH,remove_dir,ABSOLUTE_PATH_TO_SPHIRE_DEMO_RESULTS_FOLDER_NEW
 import unittest
 from sp_utilities import get_im
-import EMAN2db
+import EMAN2.db
 try:
     # python 3.4+ should use builtin unittest.mock not mock package
     from unittest.mock import patch
@@ -237,8 +237,8 @@ class Test_run(unittest.TestCase):
         subprocess.run(args=[testargs_new], shell=True, capture_output=True)
         subprocess.run(args=[testargs_old], shell=True, capture_output=True)
 
-        newimg = EMAN2db.EMData()
-        oldimg = EMAN2db.EMData()
+        newimg = EMAN2.db.EMData()
+        oldimg = EMAN2.db.EMData()
         newimg.read_image(fsp=path.join(new_output_folder, 'given_file.hdf'))
         oldimg.read_image(fsp=path.join(old_output_folder, 'given_file.hdf'))
 

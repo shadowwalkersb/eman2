@@ -41,7 +41,7 @@ from past.utils import old_div
 
 
 import EMAN2.cppwrap
-import EMAN2db
+import EMAN2.db
 import EMAN2
 import mpi
 import numpy
@@ -129,7 +129,7 @@ def ali2d_MPI(
 
     if myid == main_node:
         if ftp == "bdb":
-            dummy = EMAN2db.db_open_dict(stack, True)
+            dummy = EMAN2.db.db_open_dict(stack, True)
         # horatio active_refactoring Jy51i1EwmLD4tWZ9_00000_1
         # active = EMUtil.get_all_attributes(stack, 'active')
         # list_of_particles = []
@@ -2021,7 +2021,7 @@ def cpy(ins_list, ous):
     oextension = sp_utilities.file_type(ous)
 
     if oextension == "bdb":
-        DB = EMAN2db.db_open_dict(ous)
+        DB = EMAN2.db.db_open_dict(ous)
 
     # iterate over all images in the list, even if it's only one...
     for ins in image_list:
@@ -2037,7 +2037,7 @@ def cpy(ins_list, ous):
 
         elif iextension == "bdb" and oextension == "bdb":
 
-            OB = EMAN2db.db_open_dict(ins)
+            OB = EMAN2.db.db_open_dict(ins)
             for i in range(nima):
                 DB[gl_index] = OB[i]
                 gl_index += 1
@@ -2045,7 +2045,7 @@ def cpy(ins_list, ous):
 
         elif iextension == "bdb":
 
-            DB = EMAN2db.db_open_dict(ins)
+            DB = EMAN2.db.db_open_dict(ins)
             for i in range(nima):
                 a = DB[i]
                 a.write_image(ous, gl_index)
@@ -2812,7 +2812,7 @@ def header(
     nimage = EMAN2.cppwrap.EMUtil.get_image_count(stack)
     ext = sp_utilities.file_type(stack)
     if ext == "bdb":
-        DB = EMAN2db.db_open_dict(stack)
+        DB = EMAN2.db.db_open_dict(stack)
     for i in range(nimage):
         if fimport != None:
             if fidx:

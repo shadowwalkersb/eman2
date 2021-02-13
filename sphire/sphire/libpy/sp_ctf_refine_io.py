@@ -45,7 +45,7 @@ IO stuff for CTF Refinement with error assessment in SPHIRE
 """
 # pylint: disable=C0330
 import EMAN2
-import EMAN2db
+import EMAN2.db
 import numpy
 import os
 from . import sp_global_def
@@ -113,7 +113,7 @@ def write_virtual_bdb_stack(
     if number_of_particles is None:
         number_of_particles = EMAN2.EMUtil.get_image_count(origin_stack_path)
 
-    local_bdb_stack = EMAN2db.db_open_dict(output_stack_path)
+    local_bdb_stack = EMAN2.db.db_open_dict(output_stack_path)
     particle_headers = sp_utilities.make_v_stack_header(
         origin_stack_path, output_stack_path
     )
@@ -123,7 +123,7 @@ def write_virtual_bdb_stack(
         particle_header["ctf"] = refined_ctfs[particle_index]
         local_bdb_stack[particle_index] = particle_header
 
-    EMAN2db.db_close_dict(local_bdb_stack)
+    EMAN2.db.db_close_dict(local_bdb_stack)
     sp_global_def.sxprint("Write results to virtual stack done")
 
 

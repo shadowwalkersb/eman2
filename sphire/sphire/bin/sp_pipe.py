@@ -40,7 +40,7 @@ from past.utils import old_div
 # ========================================================================================
 # Python Standard Libraries
 import EMAN2.cppwrap
-import EMAN2db
+import EMAN2.db
 import argparse
 import glob
 import inspect
@@ -293,7 +293,7 @@ def isac_substack(args):
 
     # Check error conditions of arguments
     args.input_bdb_stack_path = args.input_bdb_stack_path.strip()
-    if not EMAN2db.db_check_dict(args.input_bdb_stack_path, readonly=True):
+    if not EMAN2.db.db_check_dict(args.input_bdb_stack_path, readonly=True):
         sp_global_def.ERROR(
             "Input BDB image stack file does not exist. Please check the file path and restart the program.",
             where=subcommand_name,
@@ -2575,7 +2575,7 @@ def restacking(args):
     sp_global_def.BATCH = True
 
     # Check error conditions of arguments
-    if not EMAN2db.db_check_dict(args.input_bdb_stack_path, readonly=True):
+    if not EMAN2.db.db_check_dict(args.input_bdb_stack_path, readonly=True):
         sp_global_def.ERROR(
             "Input BDB image stack file does not exist. Please check the input stack path and restart the program.",
             where=subcommand_name,
@@ -3966,7 +3966,7 @@ def desymmetrize(args):
             % (args.input_bdb_stack_path),
             where=subcommand_name,
         )  # action=1 - fatal error, exit
-    if not EMAN2db.db_check_dict(args.input_bdb_stack_path, readonly=True):
+    if not EMAN2.db.db_check_dict(args.input_bdb_stack_path, readonly=True):
         sp_global_def.ERROR(
             "Input BDB image stack file %s does not exist. Please check the file path and restart the program."
             % (args.input_bdb_stack_path),
@@ -4014,7 +4014,7 @@ def desymmetrize(args):
     )
 
     # Extract file path from the input BDB dictionary
-    input_bdb_full_path, input_bdb_dictname, input_bdb_keys = EMAN2db.db_parse_path(
+    input_bdb_full_path, input_bdb_dictname, input_bdb_keys = EMAN2.db.db_parse_path(
         args.input_bdb_stack_path
     )
     cwd = os.getcwd()
@@ -4030,7 +4030,7 @@ def desymmetrize(args):
     # Open the input BDB dictionary
     #
     # NOTE: EMData.read_images() or get_im() of utilities works as well
-    input_bdb_stack = EMAN2db.db_open_dict(
+    input_bdb_stack = EMAN2.db.db_open_dict(
         args.input_bdb_stack_path, ro=True
     )  # Read only
 

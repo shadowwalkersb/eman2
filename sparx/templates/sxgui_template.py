@@ -52,7 +52,7 @@ import re
 # ========================================================================================
 # Helper Functions
 # 
-# This function is added here because db_convert_path in EMAN2db.py has a bug.
+# This function is added here because db_convert_path in EMAN2.db.py has a bug.
 # 
 def translate_to_bdb_path(std_path):
 	'''
