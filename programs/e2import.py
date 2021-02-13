@@ -34,7 +34,7 @@ from past.utils import old_div
 from builtins import range
 import os, shutil, glob
 from EMAN2 import *
-from EMAN2star import StarFile
+from EMAN2.star import StarFile
 import numpy as np
 
 def main():

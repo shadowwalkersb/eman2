@@ -3,7 +3,7 @@ from past.utils import old_div
 import os
 import sys
 from EMAN2 import *
-from EMAN2star import *
+from EMAN2.star import *
 
 def main():
 

@@ -35,7 +35,7 @@
 
 from past.utils import old_div
 from EMAN2 import *
-from EMAN2star import StarFile
+from EMAN2.star import StarFile
 from math import *
 import os
 import sys
