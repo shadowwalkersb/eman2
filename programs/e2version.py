@@ -33,10 +33,10 @@
 import os
 import sys
 import platform
-import EMAN2_meta
+import EMAN2.meta
 
 
-FULLVERSIONSTRING = EMAN2_meta.FULLVERSIONSTRING
+FULLVERSIONSTRING = EMAN2.meta.FULLVERSIONSTRING
 
 def main():
 	print(FULLVERSIONSTRING)

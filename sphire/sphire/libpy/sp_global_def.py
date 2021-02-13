@@ -41,7 +41,7 @@ Suite 330, Boston, MA  02111-1307 USA
 
 # --------------------------------------------------------------------[ header ]
 import EMAN2.cppwrap
-import EMAN2_meta
+import EMAN2.meta
 import inspect
 import mpi
 import random
@@ -313,7 +313,7 @@ CACHE_DISABLE = False
 # ________________________________________ System settings: please do not change
 #test_sphire_v_string = sphire.__init__.version
 
-SPARXVERSION = "SPHIRE v"+sphire.__version__+" (GitHub: " + EMAN2_meta.DATESTAMP + ")"
+SPARXVERSION = "SPHIRE v"+sphire.__version__+" (GitHub: " + EMAN2.meta.DATESTAMP + ")"
 SPARX_MPI_TAG_UNIVERSAL = 123456
 SPARX_DOCUMENTATION_WEBSITE = "http://sparx-em.org/sparxwiki/"
 

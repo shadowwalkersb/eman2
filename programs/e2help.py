@@ -35,7 +35,7 @@
 
 from builtins import range
 from EMAN2 import *
-from EMAN2_meta import EMANVERSION, FULLVERSIONSTRING
+from EMAN2.meta import EMANVERSION, FULLVERSIONSTRING
 from math import *
 import os
 import sys

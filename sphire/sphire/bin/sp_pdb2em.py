@@ -51,7 +51,7 @@ from past.utils import old_div
 
 
 import EMAN2.cppwrap
-import EMAN2_meta
+import EMAN2.meta
 import math
 import optparse
 from ..libpy import sp_global_def
@@ -81,7 +81,7 @@ def run():
 Converts a pdb file into an electron density map. 0,0,0 in PDB space will 
 map to the center of the volume."""
 
-    parser = optparse.OptionParser(usage=usage, version=EMAN2_meta.EMANVERSION)
+    parser = optparse.OptionParser(usage=usage, version=EMAN2.meta.EMANVERSION)
 
     parser.add_option("--apix", "-A", type="float", help="Angstrom/voxel", default=1.0)
     parser.add_option(

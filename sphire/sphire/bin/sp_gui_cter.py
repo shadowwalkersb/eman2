@@ -39,7 +39,7 @@ from past.utils import old_div
 
 import EMAN2
 import EMAN2.cppwrap
-import EMAN2_meta
+import EMAN2.meta
 import PyQt5
 import PyQt5.QtCore
 import PyQt5.QtWidgets
@@ -3320,7 +3320,7 @@ class SXGuiCter(PyQt5.QtWidgets.QWidget):
         # Write lines to check consistency upon loading
         file_out.write("# @@@@@ gui_cter thresholds - ")
         file_out.write(
-            EMAN2_meta.EMANVERSION + " (GITHUB: " + EMAN2_meta.DATESTAMP + ")"
+            EMAN2.meta.EMANVERSION + " (GITHUB: " + EMAN2.meta.DATESTAMP + ")"
         )
         file_out.write(" @@@@@ \n")
         file_out.write(

@@ -49,7 +49,7 @@ If you are just getting started with EMAN2, here are some tips:
 """
 
 from EMAN2 import *
-from EMAN2_meta import FULLVERSIONSTRING
+from EMAN2.meta import FULLVERSIONSTRING
 from eman2_gui.emapplication import EMApp
 import os, json, re, glob, signal
 import subprocess

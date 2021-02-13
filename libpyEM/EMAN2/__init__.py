@@ -47,7 +47,7 @@ import zlib
 import socket
 import subprocess
 from EMAN2.cppwrap import *
-from EMAN2_meta import *
+from EMAN2.meta import *
 import EMAN2.db, EMAN2.jsondb
 import argparse, copy
 import glob

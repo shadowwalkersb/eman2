@@ -80,7 +80,7 @@ IS_LOGFILE_OPEN = False
 '''   SYSTEM FUNCTIONS - please do not change the text below '''
 global SPARXVERSION
 
-from EMAN2_meta import DATESTAMP
+from EMAN2.meta import DATESTAMP
 
 SPARXVERSION = "SPARX v5.0" + ' (GITHUB: ' + DATESTAMP +')'
 

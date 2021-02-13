@@ -2,7 +2,7 @@
 
 set -xe
 
-GITHASH=$(python -c "from EMAN2_meta import GITHASH; print(GITHASH)")
+GITHASH=$(python -c "from EMAN2.meta import GITHASH; print(GITHASH)")
 
 if [ ! -z "$JENKINS_HOME" ];then
     THIS_COMMIT_HASH="$GIT_COMMIT_SHORT"
