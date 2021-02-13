@@ -58,8 +58,7 @@ if(ENABLE_OPENGL)
 	target_link_libraries(pyMarchingCubes2 EMAN::OpenGL)
 endif()
 
-file(GLOB empythonlibs "${CMAKE_CURRENT_SOURCE_DIR}/*.py")
-install(FILES ${empythonlibs}
+install(DIRECTORY EMAN2
 		DESTINATION ${SP_DIR}
 		COMPONENT PythonFiles
 		)
