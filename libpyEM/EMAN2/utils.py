@@ -211,7 +211,7 @@ def mid_points(length,segment,step):
 	Author: Jesus Montoya, jgalaz@gmail.com, September 2019
 	"""
 	points=[int(round(p+segment/2.0)) for p in range(0,length,step) if (p+segment/2.0)<(length-(segment/2.0))]
-	#print("\n(EMAN2_utils)(mid_points) lenpoints={}".format(len(points)))
+	#print("\n(EMAN2.utils)(mid_points) lenpoints={}".format(len(points)))
 	return points
 
 
@@ -224,24 +224,24 @@ def tile_grid(nx,ny,tilesize,overlap=True,pad=False,verbose=False):
 	ny=int(ny)
 	tilesize=int(tilesize)
 	if verbose:
-		print("\n(EMAN2_utils)(tile_grid) nx={}, ny={}, tilesize={}".format(nx,ny,tilesize))
+		print("\n(EMAN2.utils)(tile_grid) nx={}, ny={}, tilesize={}".format(nx,ny,tilesize))
 
 	step = tilesize
 	if overlap:
 		step = int(round(tilesize/2.0))
 	
 	if verbose:
-		print("\n(EMAN2_utils)(tile_grid) step={}".format(step))
+		print("\n(EMAN2.utils)(tile_grid) step={}".format(step))
 
 	xs = np.array(mid_points(nx,tilesize,step))
 	ys = np.array(mid_points(ny,tilesize,step))
 	
 	if verbose:
-		print("\n(EMAN2_utils)(tile_grid) step={}, lenx={}, leny={}".format(step,len(xs),len(ys)))
+		print("\n(EMAN2.utils)(tile_grid) step={}, lenx={}, leny={}".format(step,len(xs),len(ys)))
 
 	xx, yy = np.meshgrid(xs, ys)
 	if verbose:
-		print("\n(EMAN2_utils)(tile_grid) lenxx={}, lenyy={}".format(len(xx),len(yy)))
+		print("\n(EMAN2.utils)(tile_grid) lenxx={}, lenyy={}".format(len(xx),len(yy)))
 		print("\nlast element is {}".format(xx[len(xx)-1][len(yy)-1],yy[len(xx)-1][len(yy)-1]))
 	
 	coords = [ [xx[i][j],yy[i][j]] for i in range(0,len(xx)) for j in range(0,len(yy)) ]
@@ -259,7 +259,7 @@ def get_tiles(img,tilesize,overlap=False,pad=False,verbose=False):
 	"""
 	coords = tile_grid(img['nx'],img['ny'],tilesize,overlap,pad)
 	if verbose:
-		print("\n(EMAN2_utils)(get_tiles) returned n={} coords; for example, coords[0]={}, of type={}".format(len(coords),coords[0],type(coords)))
+		print("\n(EMAN2.utils)(get_tiles) returned n={} coords; for example, coords[0]={}, of type={}".format(len(coords),coords[0],type(coords)))
 	tiles = [ clip2d(img,tilesize,c) for c in coords ]
 	return tiles
 
@@ -274,7 +274,7 @@ def tile_grid_rot(nx,ny,tilesize,rot,overlap=True,verbose=False):
 	newny = int(round(nx*math.sin(math.radians(rot))+ny*math.sin(math.radians(90-rot))))
 	
 	if verbose:
-		print("\n(EMAN2_utils)(tile_grid_rot) newnx={}, newny={}".format(newnx,newny))
+		print("\n(EMAN2.utils)(tile_grid_rot) newnx={}, newny={}".format(newnx,newny))
 	#h=np.hypot(nx,ny)
 	#nxny_angle = math.atan(float(ny)/float(nx))
 	#newnx=h*math.cos(math.radians(rot+nxny_angle))+2*ny*math.sin(math.radians(rot))
@@ -308,7 +308,7 @@ def incoherent_sum_from_file(f,checkcorners=False,verbose=False):
 
 	n=EMUtil.get_image_count(f)
 	if verbose:
-		print("\n(EMAN2_utils)(incoherent_sum) file={} has n={} images".format(f,n))
+		print("\n(EMAN2.utils)(incoherent_sum) file={} has n={} images".format(f,n))
 
 	imghdr = img=EMData(f,0,True)
 	nx=img['nx']
@@ -319,17 +319,17 @@ def incoherent_sum_from_file(f,checkcorners=False,verbose=False):
 		img=EMData(f,i)
 		
 		if not img['sigma']:
-			print("\n(EMAN2_utils)(incoherent_sum) WARNING: SKIPPING image n={} in file={} because it seems to be empty; mean={}, sigma={}".format(i,f,img['mean'],img['sigma']))	
+			print("\n(EMAN2.utils)(incoherent_sum) WARNING: SKIPPING image n={} in file={} because it seems to be empty; mean={}, sigma={}".format(i,f,img['mean'],img['sigma']))	
 			continue
 		
 		if checkcorners:
 			ret=check_corners( img )
 			if not ret:
-				print("\n(EMAN2_utils)(incoherent_sum) WARNING: SKIPPING image n={} in file={} because it seems to have at least one 'bad' corner with too many empty pixels".format(i,f))	
+				print("\n(EMAN2.utils)(incoherent_sum) WARNING: SKIPPING image n={} in file={} because it seems to have at least one 'bad' corner with too many empty pixels".format(i,f))	
 				continue
 		
 		if verbose:
-			print("\n(EMAN2_utils)(incoherent_sum) processing image {}/{} images".format(i,n))
+			print("\n(EMAN2.utils)(incoherent_sum) processing image {}/{} images".format(i,n))
 			
 		img.process_inplace("normalize.edgemean")
 		fft = img.do_fft()
@@ -355,7 +355,7 @@ def incoherent_sum_from_file(f,checkcorners=False,verbose=False):
 	#fftcumulative.set_attr("is_intensity", 1)
 	
 	if verbose:
-		print("\n(EMAN2_utils)(incoherent_sum_from_file) finished incoherent sum of images in file={}".format(f))
+		print("\n(EMAN2.utils)(incoherent_sum_from_file) finished incoherent sum of images in file={}".format(f))
 
 	return fftcumulative
 
@@ -373,16 +373,16 @@ def incoherent_sum_from_imglist(imglist,checkcorners=False,verbose=False):
 		img=imglist[i]
 		
 		if not img['sigma']:
-			print("\n(EMAN2_utils)(incoherent_sum) WARNING: SKIPPING image n={} because it seems to be empty; mean={}, sigma={}".format(i,img['mean'],img['sigma']))	
+			print("\n(EMAN2.utils)(incoherent_sum) WARNING: SKIPPING image n={} because it seems to be empty; mean={}, sigma={}".format(i,img['mean'],img['sigma']))	
 			continue
 		
 		if checkcorners:
 			ret=check_corners( img )
 			if not ret:
-				print("\n(EMAN2_utils)(incoherent_sum) WARNING: SKIPPING image n={} because it seems to have at least one 'bad' corner with too many empty pixels".format(i))	
+				print("\n(EMAN2.utils)(incoherent_sum) WARNING: SKIPPING image n={} because it seems to have at least one 'bad' corner with too many empty pixels".format(i))	
 				continue
 		if verbose:
-			print("\n(EMAN2_utils)(incoherent_sum) processing image {}/{} images".format(i,n))
+			print("\n(EMAN2.utils)(incoherent_sum) processing image {}/{} images".format(i,n))
 			
 		img.process_inplace("normalize.edgemean")
 		fft = img.do_fft()
@@ -403,7 +403,7 @@ def incoherent_sum_from_imglist(imglist,checkcorners=False,verbose=False):
 	#fftcumulative.process_inplace("math.sqrt")
 	#fftcumulative["is_intensity"]=0				# These 2 steps are done so the 2-D display of the FFT looks better. Things would still work properly in 1-D without it
 	if verbose:
-		print("\n(EMAN2_utils)(incoherent_sum_from_imglist) finished incoherent sum of n={} images".format(n))
+		print("\n(EMAN2.utils)(incoherent_sum_from_imglist) finished incoherent sum of n={} images".format(n))
 
 	return fftcumulative
 
@@ -415,7 +415,7 @@ def post_proc_fft_avg(fftimg,n,nx,verbose=False):
 	fftimg.process_inplace("math.sqrt")
 	fftimg.process_inplace('xform.phaseorigin.tocenter')
 	if verbose:
-		print("\n(EMAN2_utils)(post_proc_fft_avg) adjusted phase origin to center")
+		print("\n(EMAN2.utils)(post_proc_fft_avg) adjusted phase origin to center")
 	fftimg["is_intensity"]=0
 
 	return fftimg
@@ -431,10 +431,10 @@ def check_corners( img, percent_of_side_length=0.1, verbose=False ):
 	nz = img['nz']
 
 	if nz < 32 and verbose:
-		print("\n(EMAN2_utils)(check_corners) Image will be treated as 2D because nz<32, nz={}".format(nz))
+		print("\n(EMAN2.utils)(check_corners) Image will be treated as 2D because nz<32, nz={}".format(nz))
 
 	if nx <32 or ny <32:
-		print("\n(EMAN2_utils)(check_corners) ERROR: this function requires images 32x32 pixels or larger.")
+		print("\n(EMAN2.utils)(check_corners) ERROR: this function requires images 32x32 pixels or larger.")
 		sys.exit(1)
 
 	cornernx = round( nx * percent_of_side_length)
@@ -448,7 +448,7 @@ def check_corners( img, percent_of_side_length=0.1, verbose=False ):
 	
 	if nz > 32:
 		if verbose:
-			print("\n(EMAN2_utils)(check_corners) image is 3D; nx={}, ny={}, nz={}".format(nx,ny,nz))
+			print("\n(EMAN2.utils)(check_corners) image is 3D; nx={}, ny={}, nz={}".format(nx,ny,nz))
 
 		cornernz = round( nz * percent_of_side_length)
 
@@ -461,7 +461,7 @@ def check_corners( img, percent_of_side_length=0.1, verbose=False ):
 		corner8 = img.get_clip( Region(0,ny-cornerny,nz-cornernz, cornernx,cornerny,cornernz))
 		
 		if not corner5['sigma'] or not corner6['sigma'] or not corner7['sigma'] or not corner8['sigma']:
-			print("\n(EMAN2_utils)(check_corners) found at least one bad corner exceeding percent_of_side_length={}".format(percent_of_side_length))
+			print("\n(EMAN2.utils)(check_corners) found at least one bad corner exceeding percent_of_side_length={}".format(percent_of_side_length))
 			return 0 
 	elif nz > 1:
 		corner1 = img.get_clip( Region(0,0,0, cornernx,cornerny,1))
@@ -470,7 +470,7 @@ def check_corners( img, percent_of_side_length=0.1, verbose=False ):
 		corner4 = img.get_clip( Region(0,ny-cornerny,0, cornernx,cornerny,1))
 	
 		if not corner1['sigma'] or not corner2['sigma'] or not corner3['sigma'] or not corner4['sigma']:
-			print("\n(EMAN2_utils)(check_corners) found at least one bad corner exceeding percent_of_side_length={}".format(percent_of_side_length))
+			print("\n(EMAN2.utils)(check_corners) found at least one bad corner exceeding percent_of_side_length={}".format(percent_of_side_length))
 			return 0
 	else:
 		corner1 = img.get_clip( Region(0,0, cornernx,cornerny))
@@ -479,7 +479,7 @@ def check_corners( img, percent_of_side_length=0.1, verbose=False ):
 		corner4 = img.get_clip( Region(0,ny-cornerny, cornernx,cornerny))
 
 		if not corner1['sigma'] or not corner2['sigma'] or not corner3['sigma'] or not corner4['sigma']:
-			print("\n(EMAN2_utils)(check_corners)found at least one bad corner exceeding percent_of_side_length={}".format(percent_of_side_length))
+			print("\n(EMAN2.utils)(check_corners)found at least one bad corner exceeding percent_of_side_length={}".format(percent_of_side_length))
 			return 0
 
 	return 1
@@ -491,7 +491,7 @@ def remove_blank_lines(f,spaces_too=False,verbose=False):
 	"""
 	stem,extension = os.path.splitext(f)
 	if verbose:
-		print('\n(EMAN2_utils)(remove_blank_lines) stem={},extension={}'.format(stem, extension))
+		print('\n(EMAN2.utils)(remove_blank_lines) stem={},extension={}'.format(stem, extension))
 	newf = f.replace(extension,'_clean' + extension)
 	with open(f,'rw') as ff:
 		g=open(newf,'w')
@@ -605,7 +605,7 @@ def fileisimage(f):
 		a=EMData(f,0,True)
 		isimage=True
 	except:
-		print("\n(EMAN2_utils)(fileisimage) file={} is NOT a valid image file readable by EMAN2".format(f))
+		print("\n(EMAN2.utils)(fileisimage) file={} is NOT a valid image file readable by EMAN2".format(f))
 	return isimage
 
 
@@ -629,7 +629,7 @@ def makepath(options, stem='e2dir'):
 	"""
 	if not options.path:
 		if options.verbose:
-			print("\n(EMAN2_utils)(makepath), stem={}".format(stem))
+			print("\n(EMAN2.utils)(makepath), stem={}".format(stem))
 	
 	elif options.path:
 		stem=options.path
@@ -661,7 +661,7 @@ def checkinput(options):
 			print("\ntrying to read input from sys.argv[1]={}".format(options.input))
 			EMData(options.input,0,True)
 		except:
-			print("\n(EMAN2_utils)(checkinput) ERROR: input file {} seems to have an invalid format or doesn't exist; verify that the filename is correct.".format( options.input ))
+			print("\n(EMAN2.utils)(checkinput) ERROR: input file {} seems to have an invalid format or doesn't exist; verify that the filename is correct.".format( options.input ))
 			#parser.print_help()
 			sys.exit(1)
 	else:
@@ -669,7 +669,7 @@ def checkinput(options):
 			print("\ntrying to read input from --input={}".format(options.input))
 			EMData(options.input,0,True)
 		except:
-			print("\n(EMAN2_utils)(checkinput) ERROR: --input file {} seems to have an invalid format or doesn't exist; verify that the filename is correct.".format( options.input ))
+			print("\n(EMAN2.utils)(checkinput) ERROR: --input file {} seems to have an invalid format or doesn't exist; verify that the filename is correct.".format( options.input ))
 			sys.exit(1)
 	return options
 	
@@ -680,7 +680,7 @@ def runcmd(options,cmd,cmdsfilepath=''):
 	Author: Jesus Montoya, jgalaz@gmail.com
 	"""
 	if options.verbose > 9:
-		print("\n(EMAN2_utils)(runcmd) running command {}".format(cmd))
+		print("\n(EMAN2.utils)(runcmd) running command {}".format(cmd))
 	
 	runcmdbasic(cmd)
 	
@@ -688,7 +688,7 @@ def runcmd(options,cmd,cmdsfilepath=''):
 		with open(cmdsfilepath,'a') as cmdfile: cmdfile.write( cmd + '\n')
 
 	if options.verbose > 8:
-		print("\n(EMAN2_utils)(runcmd) done")
+		print("\n(EMAN2.utils)(runcmd) done")
 
 	return 1
 
@@ -710,7 +710,7 @@ def origin2zero(img):
 	sets the 'origin_' parameters in image headers to zero
 	Author: Jesus Montoya, jgalaz@gmail.com
 	"""
-	#print("\n(EMAN2_utils)(origin2zero)")
+	#print("\n(EMAN2.utils)(origin2zero)")
 
 	img['origin_x'] = 0
 	img['origin_y'] = 0
@@ -728,7 +728,7 @@ def clip3d( vol, size, center=None ):
 	"""
 
 	#if options.verbose:
-	#	print("\n(EMAN2_utils)(clip3d) starting")
+	#	print("\n(EMAN2.utils)(clip3d) starting")
 	
 	volxc = old_div(vol['nx'],2)
 	volyc = old_div(vol['ny'],2)
@@ -743,7 +743,7 @@ def clip3d( vol, size, center=None ):
 	volclip = vol.get_clip( Rvol )
 	
 	#if options.verbose:
-	#	print("\n(EMAN2_utils)(clip3d) done")
+	#	print("\n(EMAN2.utils)(clip3d) done")
 	
 	return volclip
 
@@ -755,7 +755,7 @@ def clip2d( img, size, center=None ):
 	"""
 
 	#if options.verbose:
-	#	print("\n(EMAN2_utils)(clip2d)")
+	#	print("\n(EMAN2.utils)(clip2d)")
 
 	imgxc = old_div(img['nx'],2)
 	imgyc = old_div(img['ny'],2)
@@ -786,7 +786,7 @@ def textwriter(data,options,name,invert=0,xvals=None,onlydata=False):
 		pass
 
 	if options.verbose:
-		print("(EMAN2_utils)(textwriter) writing the following file {}".format(name))
+		print("(EMAN2.utils)(textwriter) writing the following file {}".format(name))
 	
 	with open(name,'w') as f:
 		lines=[]
@@ -807,7 +807,7 @@ def textwriter(data,options,name,invert=0,xvals=None,onlydata=False):
 		
 
 		#remove empty lines that somehow creep into files
-		print('\n\n\n(EMAN2_utils)(textwriter) REMOVING EMPTY LINES')
+		print('\n\n\n(EMAN2.utils)(textwriter) REMOVING EMPTY LINES')
 		newlines=[]
 		for line in lines:
 			newline = line.replace('\n','').replace(' ','')
@@ -919,7 +919,7 @@ def sptOptionsParser( options, program='' ):
 	Author: Jesus Montoya, jgalaz@gmail.com
 	"""
 	
-	print("\n(EMAN2_utils)(sptOptionsParser) parsing options")
+	print("\n(EMAN2.utils)(sptOptionsParser) parsing options")
 	if program:
 		print("from program {}".format(program))
 	
