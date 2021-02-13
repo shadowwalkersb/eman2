@@ -32,7 +32,7 @@ Author: Jesus Galaz - whoknows-2012, Last update: 07/Nov/2017
 #from optparse import OptionParser
 from builtins import range
 from EMAN2 import *
-from EMAN2_utils import *
+from EMAN2.utils import *
 import sys
 import EMAN2
 import heapq
@@ -167,7 +167,7 @@ def main():
 	'''#
 	#Make a directory where to store the results
 	'''#
-	from EMAN2_utils import makepath
+	from EMAN2.utils import makepath
 	options = makepath(options,'orthoprjs')
 	
 

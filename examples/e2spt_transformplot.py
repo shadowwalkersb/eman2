@@ -116,7 +116,7 @@ def main():
 
 	if len( orientations ) > 2:
 
-		from EMAN2_utils import makepath
+		from EMAN2.utils import makepath
 		options = makepath(options,'spttransformplot')
 		
 		for i in orientations:

@@ -30,7 +30,7 @@
 
 from past.utils import old_div
 from builtins import range
-from EMAN2_utils import *
+from EMAN2.utils import *
 from EMAN2 import *
 from operator import itemgetter	
 import sys

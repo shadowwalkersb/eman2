@@ -29,7 +29,7 @@ Author: Jesus Galaz - 10/August/2018, Last update: 10/August/2018
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  2111-1307 USA
 '''
 from EMAN2 import *
-from EMAN2_utils import *
+from EMAN2.utils import *
 import os
 
 def main():

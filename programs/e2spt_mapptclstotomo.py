@@ -3,7 +3,7 @@ from builtins import range
 # Muyuan Chen 2018-08
 from EMAN2 import *
 import numpy as np
-from EMAN2_utils import *
+from EMAN2.utils import *
 
 def main():
 	

@@ -4,7 +4,7 @@ from past.utils import old_div
 from builtins import range
 from EMAN2 import *
 import numpy as np
-from EMAN2_utils import *
+from EMAN2.utils import *
 import scipy.spatial.distance as scidist
 from time import time
 from scipy.interpolate import interp1d

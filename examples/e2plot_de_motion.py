@@ -119,7 +119,7 @@ def main():
 				options.highestangle = anglesin[0]
 			options.tiltstep = int(round( old_div(( math.fabs(anglesin[0]) + math.fabs(anglesin[-1]) ),len(anglesin)) ))
 
-	from EMAN2_utils import makepath
+	from EMAN2.utils import makepath
 	options = makepath(options)
 
 	#print "apix is", options.apix

@@ -34,7 +34,7 @@ from past.utils import old_div
 import sys, os
 
 from EMAN2 import *
-from EMAN2_utils import runcmd
+from EMAN2.utils import runcmd
 
 import shutil
 
@@ -124,7 +124,7 @@ def main():
 	if options.verbose:
 		print("\n(e2tomo_icongpu)(icongpufunc) making directory {} to store reconstruction results".format(options.path))
 	
-	from EMAN2_utils import makepath
+	from EMAN2.utils import makepath
 	options = makepath(options)
 
 	cmdsfilepath = options.path + '/cmds.txt'

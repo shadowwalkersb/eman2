@@ -2,7 +2,7 @@
 # Muyuan Chen 2020-01
 from builtins import range
 from EMAN2 import *
-from EMAN2_utils import *
+from EMAN2.utils import *
 import numpy as np
 import weakref
 import OpenGL

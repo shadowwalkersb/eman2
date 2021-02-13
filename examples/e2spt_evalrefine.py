@@ -12,7 +12,7 @@ from eman2_gui.emapplication import get_application, EMApp
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg
 from matplotlib.figure import Figure
 import matplotlib.pyplot as plt
-from EMAN2_utils import *
+from EMAN2.utils import *
 
 
 def main():

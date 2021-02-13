@@ -35,7 +35,7 @@
 
 from past.utils import old_div
 from EMAN2 import *
-from EMAN2_utils import *
+from EMAN2.utils import *
 import math
 import numpy
 f#rom copy import deepcopy

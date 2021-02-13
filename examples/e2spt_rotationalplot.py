@@ -169,7 +169,7 @@ def main():
 	logger = E2init(sys.argv, options.ppid)
 	
 		
-	from EMAN2_utils import makepath
+	from EMAN2.utils import makepath
 	options = makepath(options,'rotplot')
 	
 	

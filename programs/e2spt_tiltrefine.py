@@ -9,7 +9,7 @@ import queue
 import threading
 from EMAN2.jsondb import JSTask
 import re
-from EMAN2_utils import make_path
+from EMAN2.utils import make_path
 from shutil import copy2
 
 def do_copy(a,b):

@@ -5,7 +5,7 @@ from builtins import range
 from builtins import object
 from EMAN2 import *
 import numpy as np
-from EMAN2_utils import *
+from EMAN2.utils import *
 from sklearn.decomposition import PCA
 import os
 import json

@@ -244,7 +244,7 @@ def main():
 						datadict.update({k:[xaxis,yaxis]})
 					k+=1
 
-	from EMAN2_utils import makepath
+	from EMAN2.utils import makepath
 	options = makepath(options)
 
 	fig,ax=resetplot()

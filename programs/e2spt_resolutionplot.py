@@ -31,7 +31,7 @@
 #
 from past.utils import old_div
 from builtins import range
-from EMAN2_utils import *
+from EMAN2.utils import *
 from EMAN2 import *
 import os
 import sys
@@ -110,7 +110,7 @@ def main():
 	else:
 		options.cutoff = None
 
-	from EMAN2_utils import makepath
+	from EMAN2.utils import makepath
 	options = makepath(options,'sptres')
 
 	print('\n\nafter making path, options.path is', options.path)

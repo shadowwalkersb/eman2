@@ -99,7 +99,7 @@ def main():
 	else:
 		height = int(old_div(box,2.0))
 
-	from EMAN2_utils import makepath
+	from EMAN2.utils import makepath
 	options = makepath( options, 'cylmask_R' +str(radius)+'_H'+str(height))
 	
 	logger = E2init(sys.argv, options.ppid)

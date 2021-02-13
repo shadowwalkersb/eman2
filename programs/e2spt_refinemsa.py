@@ -31,7 +31,7 @@
 from sys import argv
 import os
 from EMAN2 import *
-from EMAN2_utils import *
+from EMAN2.utils import *
 
 current = os.getcwd()
 filesindir = os.listdir(current)

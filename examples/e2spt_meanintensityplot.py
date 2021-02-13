@@ -89,7 +89,7 @@ def main():
 		options.normproc=parsemodopt(options.normproc)
 	'''
 	print("\n options should NOT be parsed, e.g., options.mask={}".format(options.mask))
-	from EMAN2_utils import sptOptionsParser
+	from EMAN2.utils import sptOptionsParser
 	options = sptOptionsParser( options, 'e2spt_meanintensityplot')
 
 	print("\n options should be parsed, e.g., options.mask={}".format(options.mask))
@@ -97,7 +97,7 @@ def main():
 	datafiles = options.input.split(',')
 	
 	
-	from EMAN2_utils import makepath
+	from EMAN2.utils import makepath
 	options = makepath( options, 'meanintensityplot')
 	
 	
@@ -110,7 +110,7 @@ def main():
 	means = []
 	stds = []
 	
-	from EMAN2_utils import writeParameters
+	from EMAN2.utils import writeParameters
 	cmdwp = writeParameters(options,'e2spt_meanintensityplot.py', 'sptmeanintensity')
 	
 	for datafile in datafiles:

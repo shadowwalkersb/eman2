@@ -34,7 +34,7 @@ standard_library.install_aliases()
 from builtins import range
 import os, sys, subprocess
 from EMAN2 import *
-from EMAN2_utils import *
+from EMAN2.utils import *
 import math
 import numpy as np
 from scipy.optimize import curve_fit
@@ -90,7 +90,7 @@ def main():
 	
 	import matplotlib.pyplot as plt
 	
-	from EMAN2_utils import makepath, runcmd, sptOptionsParser
+	from EMAN2.utils import makepath, runcmd, sptOptionsParser
 	options = makepath(options,'spt_radialplot')
 	
 	if not options.input:

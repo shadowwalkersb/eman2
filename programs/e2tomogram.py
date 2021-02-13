@@ -9,7 +9,7 @@ import numpy as np
 from scipy.optimize import minimize
 import scipy.spatial.distance as scidist
 import scipy.ndimage as sciimg
-from EMAN2_utils import *
+from EMAN2.utils import *
 import queue
 from sklearn.decomposition import PCA
 

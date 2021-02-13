@@ -2,7 +2,7 @@
 # Muyuan Chen 2018-04
 from past.utils import old_div
 from EMAN2 import *
-from EMAN2_utils import natural_sort
+from EMAN2.utils import natural_sort
 import os
 import numpy as np
 from PyQt5 import QtCore, QtGui, QtWidgets

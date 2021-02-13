@@ -30,7 +30,7 @@ from builtins import range
 from sys import argv
 import os
 from EMAN2 import *
-from EMAN2_utils import *
+from EMAN2.utils import *
 
 def main():
 	progname = os.path.basename(sys.argv[0])

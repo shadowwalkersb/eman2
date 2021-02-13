@@ -4,7 +4,7 @@
 from builtins import range
 from EMAN2 import *
 import numpy as np
-from EMAN2_utils import *
+from EMAN2.utils import *
 
 def main():
 	

@@ -32,7 +32,7 @@
 from past.utils import old_div
 from builtins import range
 from EMAN2 import *
-from EMAN2_utils import *
+from EMAN2.utils import *
 import os
 import sys
 from EMAN2.jsondb import JSTask,jsonclasses
@@ -240,7 +240,7 @@ def main():
 	'''
 	#from e2spt_classaverage import sptmakepath
 	#options = sptmakepath(options,'spt_bt')
-	from EMAN2_utils import makepath
+	from EMAN2.utils import makepath
 	options = makepath(options,'spt_bt')
 	optionsUnparsed.path = options.path	
 	

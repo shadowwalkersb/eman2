@@ -32,7 +32,7 @@ Author: Jesus Galaz-Montoya - 2011, Last update: 15/sep/2020
 from past.utils import old_div
 from builtins import range
 from EMAN2 import *
-from EMAN2_utils import *
+from EMAN2.utils import *
 import shutil
 from EMAN2.jsondb import JSTask,jsonclasses
 
@@ -134,7 +134,7 @@ def main():
 	#	options.reconstructor = parsemodopt(options.reconstructor)
 	
 	
-	#function imported from EMAN2_utils
+	#function imported from EMAN2.utils
 	options = sptOptionsParser( options )
 
 	if options.input and options.randstack:
@@ -149,7 +149,7 @@ def main():
 	Make the directory where to create the database where the results will be stored
 	'''
 	
-	#functions imported from EMAN2_utils
+	#functions imported from EMAN2.utils
 	options = makepath(options,'sptsim')
 	writeParameters( options, 'e2spt_simulation.py', 'sptsim' )
 	

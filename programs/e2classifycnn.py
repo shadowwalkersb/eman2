@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # Muyuan Chen 2020-03
 from EMAN2 import *
-from EMAN2_utils import *
+from EMAN2.utils import *
 import numpy as np
 import weakref
 import OpenGL

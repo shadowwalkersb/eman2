@@ -37,7 +37,7 @@ from past.utils import old_div
 from builtins import range
 from EMAN2 import *
 from EMAN2.jsondb import JSTask,jsonclasses
-from EMAN2_utils import *
+from EMAN2.utils import *
 import math
 import numpy
 from copy import deepcopy
@@ -311,7 +311,7 @@ def main():
 
 	if not options.resume:
 		#options = sptmakepath(options,'spt')
-		from EMAN2_utils import makepath
+		from EMAN2.utils import makepath
 		options = makepath(options,'sptir')	
 	else:
 		if rootpath not in options.resume:
@@ -468,7 +468,7 @@ def main():
 	'''
 	Parse parameters such that "None" or "none" are adequately interpreted to turn off an option
 	'''
-	from EMAN2_utils import sptOptionsParser
+	from EMAN2.utils import sptOptionsParser
 	options = sptOptionsParser( options )
 
 	print("after parsing options, options.goldstandardoff is", options.goldstandardoff, type(options.goldstandardoff))
@@ -486,7 +486,7 @@ def main():
 	'''
 	Store parameters in parameters.txt file inside --path
 	'''
-	from EMAN2_utils import writeParameters
+	from EMAN2.utils import writeParameters
 	cmdwp = writeParameters(options,'e2spt_classaverage.py', 'sptclassavg')
 
 	if nptcl<1 : 

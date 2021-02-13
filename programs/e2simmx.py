@@ -42,7 +42,7 @@ import os
 import sys
 import traceback
 import random
-from EMAN2_utils import cmponetomany
+from EMAN2.utils import cmponetomany
 
 a = EMUtil.ImageType.IMAGE_UNKNOWN
 

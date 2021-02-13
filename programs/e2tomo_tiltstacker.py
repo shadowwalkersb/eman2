@@ -27,7 +27,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  2111-1307 USA
 from builtins import range
-from EMAN2_utils import *
+from EMAN2.utils import *
 from EMAN2 import *
 import sys
 import math

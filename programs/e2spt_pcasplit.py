@@ -35,7 +35,7 @@ from builtins import range
 
 from EMAN2 import *
 
-from EMAN2_utils import make_path
+from EMAN2.utils import make_path
 import numpy as np
 import matplotlib.pyplot as plt
 import sklearn.decomposition as skdc

@@ -7,7 +7,7 @@ import sys
 from scipy.optimize import minimize
 from scipy.optimize import fmin
 from joblib import Parallel, delayed 
-from EMAN2_utils import *
+from EMAN2.utils import *
 
 def main():
 	parser = EMArgumentParser()

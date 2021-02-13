@@ -7,7 +7,7 @@ from EMAN2 import *
 import numpy as np
 import queue
 import threading
-from EMAN2_utils import *
+from EMAN2.utils import *
 from EMAN2.jsondb import JSTask
 import os
 import sys
