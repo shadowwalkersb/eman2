@@ -1,9 +1,0 @@
-glob
-numpy
-optparse
-os
-sp_global_def
-sp_utilities
-subprocess
-sys
-time
