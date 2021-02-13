@@ -43,7 +43,7 @@ import glob
 import shutil
 
 from EMAN2 import *
-from EMAN2db import *
+from EMAN2.db import *
 from sparx import *
 from applications import MPI_start_end
 from inspect import currentframe, getframeinfo

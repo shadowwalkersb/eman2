@@ -3110,7 +3110,7 @@ def recv_attr_dict_bdb(main_node, stack, data, list_params, image_start, image_e
 	from  utilities import  get_arb_params, set_arb_params
 	from  mpi 	import mpi_recv
 	from  mpi 	import MPI_FLOAT, MPI_INT, MPI_COMM_WORLD
-	from EMAN2db import db_open_dict
+	from EMAN2.db import db_open_dict
 	#  bdb version!
 	# This is done on the main node, so for images from the main node, simply write headers
 
@@ -3301,7 +3301,7 @@ def write_headers(filename, data, lima):
 	  WARNING: this function will open and close DB library!
 	"""
 	from utilities import file_type
-	from EMAN2db import db_open_dict
+	from EMAN2.db import db_open_dict
 
 	ftp = file_type(filename)
 	if ftp == "bdb":
@@ -3327,7 +3327,7 @@ def write_header(filename, data, lima):
 	  WARNING: this function assums DB library is opened and will NOT close it!
 	"""
 	from utilities import file_type
-	from EMAN2db import db_open_dict
+	from EMAN2.db import db_open_dict
 
 	ftp = file_type(filename)
 	if ftp == "bdb":
@@ -3454,7 +3454,7 @@ def delete_bdb(name):
 	"""
 	  Delete bdb stack
 	"""
-	from EMAN2db import db_open_dict, db_remove_dict
+	from EMAN2.db import db_open_dict, db_remove_dict
 	a = db_open_dict(name)
 	db_remove_dict(name)
 

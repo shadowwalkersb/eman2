@@ -85,7 +85,7 @@ def ali2d(stack, outdir, maskfile=None, ir=1, ou=-1, rs=1, xr="4 2 1 1", yr="-1"
 	
 
 	if file_type(stack) == "bdb":
-		from EMAN2db import db_open_dict
+		from EMAN2.db import db_open_dict
 		dummy = db_open_dict(stack, True)
 	# horatio active_refactoring Jy51i1EwmLD4tWZ9_00000_1
 	# active = EMUtil.get_all_attributes(stack, 'active')
@@ -474,7 +474,7 @@ def ali2d_MPI(stack, outdir, maskfile=None, ir=1, ou=-1, rs=1, xr="4 2 1 1", yr=
 
 	if myid == main_node:
 		if ftp == "bdb":
-			from EMAN2db import db_open_dict
+			from EMAN2.db import db_open_dict
 			dummy = db_open_dict(stack, True)
 		# horatio active_refactoring Jy51i1EwmLD4tWZ9_00000_1
 		# active = EMUtil.get_all_attributes(stack, 'active')
@@ -1250,7 +1250,7 @@ def ORGali2d_c(stack, outdir, maskfile=None, ir=1, ou=-1, rs=1, xr="4 2 1 1", yr
 	print_msg("Inner radius                : %i\n"%(first_ring))
 
 	if(file_type(stack) == "bdb"):
-		from EMAN2db import db_open_dict
+		from EMAN2.db import db_open_dict
 		dummy = db_open_dict(stack, True)
 	active = EMUtil.get_all_attributes(stack, 'active')
 	list_of_particles = []
@@ -1482,7 +1482,7 @@ def ORGali2d_c_MPI(stack, outdir, maskfile=None, ir=1, ou=-1, rs=1, xr="4 2 1 1"
 	
 	if myid == main_node:
        		if(file_type(stack) == "bdb"):
-			from EMAN2db import db_open_dict
+			from EMAN2.db import db_open_dict
 			dummy = db_open_dict(stack, True)
 		active = EMUtil.get_all_attributes(stack, 'active')
 		list_of_particles = []
@@ -2852,7 +2852,7 @@ def ali2d_rag(stack, maskfile = None, ir = 1, ou = -1, rs = 1, maxit = 10, check
 	from utilities import write_header, file_type
 	ext = file_type(stack)
 	if(ext == "bdb"):
-		from EMAN2db import EMAN2DB
+		from EMAN2.db import EMAN2DB
 		DB = EMAN2DB()
 		DB = EMAN2DB.open_db(ipath)
 	temp = EMData()
@@ -3122,7 +3122,7 @@ def ali2d_rac(stack, maskfile = None, ir = 1, ou = -1, rs = 1, nclass = 2, maxit
 	from utilities import write_header, file_type
 	ext = file_type(stack)
 	if(ext == "bdb"):
-		from EMAN2db import EMAN2DB
+		from EMAN2.db import EMAN2DB
 		DB = EMAN2DB()
 		DB = EMAN2DB.open_db(ipath)
 	temp = EMData()
@@ -3570,7 +3570,7 @@ def ali2d_cross_res(stack, outdir, maskfile=None, ir=1, ou=-1, rs=1, xr="4 2 1 1
 	from utilities import write_header, file_type
 	ext = file_type(stack)
 	if(ext == "bdb"):
-		from EMAN2db import EMAN2DB
+		from EMAN2.db import EMAN2DB
 		DB = EMAN2DB()
 		DB = EMAN2DB.open_db(ipath)
 	for im in range(nima):
@@ -3932,7 +3932,7 @@ def Xali3d_MPI_chunks(stack, ref_vol, outdir, maskfile = None, ir = 1, ou = -1, 
 
 	if myid == main_node:
        		if file_type(stack) == "bdb":
-			from EMAN2db import db_open_dict
+			from EMAN2.db import db_open_dict
 			dummy = db_open_dict(stack, True)
 		active = EMUtil.get_all_attributes(stack, 'active')
 		list_of_particles = []
@@ -4451,7 +4451,7 @@ def ali3d_MPI(stack, ref_vol, outdir, maskfile = None, ir = 1, ou = -1, rs = 1,
 
 	if myid == main_node:
 		if file_type(stack) == "bdb":
-			from EMAN2db import db_open_dict
+			from EMAN2.db import db_open_dict
 			dummy = db_open_dict(stack, True)
 		# horatio active_refactoring Jy51i1EwmLD4tWZ9_00000_1
 		# active = EMUtil.get_all_attributes(stack, 'active')
@@ -5100,7 +5100,7 @@ def sali3d_base(stack, ref_vol = None, Tracker = None, rangle = 0.0, rshift = 0.
 			if( ( terminate or (Iter == max_iter) ) and (myid == main_node) ):
 				if( type(stack) is types.StringType ):
 					from EMAN2 import Vec2f, Transform
-					from EMAN2db import db_open_dict
+					from EMAN2.db import db_open_dict
 					DB = db_open_dict(stack)
 					for im in xrange(len(params)):
 						t = Transform({"type":"spider","phi":params[im][0],"theta":params[im][1],"psi":params[im][2]})
@@ -5581,7 +5581,7 @@ def sali3d_base_horatio_01(stack, ref_vol = None, Tracker = None, rangle = 0.0, 
 			if( ( terminate or (Iter == max_iter) ) and (myid == main_node) ):
 				if( type(stack) is types.StringType ):
 					from EMAN2 import Vec2f, Transform
-					from EMAN2db import db_open_dict
+					from EMAN2.db import db_open_dict
 					DB = db_open_dict(stack)
 					for im in xrange(len(params)):
 						t = Transform({"type":"spider","phi":params[im][0],"theta":params[im][1],"psi":params[im][2]})
@@ -5687,7 +5687,7 @@ def slocal_ali3d_base(stack, templatevol, Tracker, mpi_comm = None, log= None, c
 	if( type(stack) is bytes ):
 		if myid == main_node:
 			if(file_type(stack) == "bdb"):
-				from EMAN2db import db_open_dict
+				from EMAN2.db import db_open_dict
 				dummy = db_open_dict(stack, True)
 
 			nima = EMUtil.get_image_count(stack)
@@ -6050,7 +6050,7 @@ def slocal_ali3d_base(stack, templatevol, Tracker, mpi_comm = None, log= None, c
 		"""
 		if( type(stack) is types.StringType ):
 			from EMAN2 import Vec2f, Transform
-			from EMAN2db import db_open_dict
+			from EMAN2.db import db_open_dict
 			DB = db_open_dict(stack)
 			for im in xrange(len(params)):
 				t = Transform({"type":"spider","phi":params[im][0],"theta":params[im][1],"psi":params[im][2]})
@@ -6200,7 +6200,7 @@ def ali3dlocal_MPI(stack, ref_vol, outdir, maskfile = None, ir = 1, ou = -1, rs 
 
 	if myid == main_node:
 		if file_type(stack) == "bdb":
-			from EMAN2db import db_open_dict
+			from EMAN2.db import db_open_dict
 			dummy = db_open_dict(stack, True)
 		# horatio active_refactoring Jy51i1EwmLD4tWZ9_00000_1
 		# active = EMUtil.get_all_attributes(stack, 'active')
@@ -6556,7 +6556,7 @@ def ali3dpsi_MPI(stack, ref_vol, outdir, maskfile = None, ir = 1, ou = -1, rs = 
 
 	if myid == main_node:
 		if file_type(stack) == "bdb":
-			from EMAN2db import db_open_dict
+			from EMAN2.db import db_open_dict
 			dummy = db_open_dict(stack, True)
 		# horatio active_refactoring Jy51i1EwmLD4tWZ9_00000_1
 		# active = EMUtil.get_all_attributes(stack, 'active')
@@ -6814,7 +6814,7 @@ def Xali3d_shc0MPI(stack, ref_vol, outdir, maskfile = None, ir = 1, ou = -1, rs 
 
 	if myid == main_node:
 		if file_type(stack) == "bdb":
-			from EMAN2db import db_open_dict
+			from EMAN2.db import db_open_dict
 			dummy = db_open_dict(stack, True)
 		active = EMUtil.get_all_attributes(stack, 'active')
 		list_of_particles = []
@@ -7235,7 +7235,7 @@ def ali3d_shcMPI(stack, ref_vol, outdir, maskfile = None, ir = 1, ou = -1, rs = 
 
 	if myid == main_node:
 		if file_type(stack) == "bdb":
-			from EMAN2db import db_open_dict
+			from EMAN2.db import db_open_dict
 			dummy = db_open_dict(stack, True)
 		# horatio active_refactoring Jy51i1EwmLD4tWZ9_00000_1
 		# active = EMUtil.get_all_attributes(stack, 'active')
@@ -9559,7 +9559,7 @@ def local_ali3dm_MPI_(stack, refvol, outdir, maskfile, ou=-1,  delta=2, ts=0.25,
 
 	if(myid == main_node):
 		if(file_type(stack) == "bdb"):
-			from EMAN2db import db_open_dict
+			from EMAN2.db import db_open_dict
 			dummy = db_open_dict(stack, True)
 		# horatio active_refactoring Jy51i1EwmLD4tWZ9_00000_1
 		# active = EMUtil.get_all_attributes(stack, "active")
@@ -9966,7 +9966,7 @@ def local_ali3dm_MPI(stack, refvol, outdir, maskfile, ou=-1,  delta=2, ts=0.25, 
 
 	if(myid == main_node):
 		if(file_type(stack) == "bdb"):
-			from EMAN2db import db_open_dict
+			from EMAN2.db import db_open_dict
 			dummy = db_open_dict(stack, True)
 		# horatio active_refactoring Jy51i1EwmLD4tWZ9_00000_1
 		# active = EMUtil.get_all_attributes(stack, "active")
@@ -10557,7 +10557,7 @@ def local_ali3d_MPI(stack, outdir, maskfile, ou = -1,  delta = 2, ts=0.25, cente
 
 	if myid == main_node:
 		if(file_type(stack) == "bdb"):
-			from EMAN2db import db_open_dict
+			from EMAN2.db import db_open_dict
 			dummy = db_open_dict(stack, True)
 		# horatio active_refactoring Jy51i1EwmLD4tWZ9_00000_1
 		# active = EMUtil.get_all_attributes(stack, 'active')
@@ -10924,7 +10924,7 @@ def local_ali3d_MPI_scipy_minimization(stack, outdir, maskfile, ou = -1,  delta 
 
 	if myid == main_node:
 		if(file_type(stack) == "bdb"):
-			from EMAN2db import db_open_dict
+			from EMAN2.db import db_open_dict
 			dummy = db_open_dict(stack, True)
 			
 		nima = EMUtil.get_image_count(stack)
@@ -11317,7 +11317,7 @@ def local_ali3d_base_MPI(stack, templatevol, ali3d_options, shrinkage = 1.0,
 	if( type(stack) is bytes ):
 		if myid == main_node:
 			if(file_type(stack) == "bdb"):
-				from EMAN2db import db_open_dict
+				from EMAN2.db import db_open_dict
 				dummy = db_open_dict(stack, True)
 			# horatio active_refactoring Jy51i1EwmLD4tWZ9_00000_1
 			# active = EMUtil.get_all_attributes(stack, 'active')
@@ -11691,7 +11691,7 @@ def local_ali3d_base_MPI(stack, templatevol, ali3d_options, shrinkage = 1.0,
 		"""
 		if( type(stack) is types.StringType ):
 			from EMAN2 import Vec2f, Transform
-			from EMAN2db import db_open_dict
+			from EMAN2.db import db_open_dict
 			DB = db_open_dict(stack)
 			for im in xrange(len(params)):
 				t = Transform({"type":"spider","phi":params[im][0],"theta":params[im][1],"psi":params[im][2]})
@@ -12138,7 +12138,7 @@ def ihrsr_MPI(stack, ref_vol, outdir, maskfile, ir, ou, rs, xr, ynumber,\
 
 	if myid == main_node:
 		if(file_type(stack) == "bdb"):
-			from EMAN2db import db_open_dict
+			from EMAN2.db import db_open_dict
 			dummy = db_open_dict(stack, True)
 		# horatio active_refactoring Jy51i1EwmLD4tWZ9_00000_1
 		# active = EMUtil.get_all_attributes(stack, 'active')
@@ -12901,7 +12901,7 @@ def gchelix_MPI(stack, ref_vol, outdir, maskfile, ir, ou, rs, xr, ynumber,\
 
 	if myid == main_node:
        		if(file_type(stack) == "bdb"):
-			from EMAN2db import db_open_dict
+			from EMAN2.db import db_open_dict
 			dummy = db_open_dict(stack, True)
 		active = EMUtil.get_all_attributes(stack, 'active')
 		list_of_particles = []
@@ -13676,7 +13676,7 @@ def cpy(ins_list, ous):
 	oextension = file_type(ous)	
 
 	if oextension == "bdb":
-		from EMAN2db import db_open_dict
+		from EMAN2.db import db_open_dict
 		DB = db_open_dict(ous)
 
 	# iterate over all images in the list, even if it's only one...
@@ -13687,7 +13687,7 @@ def cpy(ins_list, ous):
 		iextension = file_type(ins)
 
 		if iextension == "bdb":
-			from EMAN2db import db_open_dict
+			from EMAN2.db import db_open_dict
 
 		if nima == 1 and oextension == "spi":
 			get_im(ins).write_image(ous, 0, EMUtil.ImageType.IMAGE_SINGLE_SPIDER)
@@ -16179,7 +16179,7 @@ def header(stack, params, zero=False, one=False, set = 0.0, randomize=False, ran
 	nimage = EMUtil.get_image_count(stack)
 	ext = file_type(stack)
 	if ext == "bdb":
-		from EMAN2db import db_open_dict
+		from EMAN2.db import db_open_dict
 		DB = db_open_dict(stack)
 	for i in range(nimage):
 		if fimport != None:
@@ -17719,7 +17719,7 @@ def plot_projs_distrib(stack, outplot, wnx = 256):
 	if ext == 'txt' :
 		agls = read_text_row(stack)
 	elif ext == 'bdb' :
-		from EMAN2db import db_open_dict
+		from EMAN2.db import db_open_dict
 		N  = EMUtil.get_image_count(stack)
 		DB = db_open_dict(stack)
 		agls = []
@@ -19807,7 +19807,7 @@ def sali3d_base_old(stack, ref_vol = None, Tracker = None, mpi_comm = None, log 
 			if( ( terminate or (Iter == max_iter) ) and (myid == main_node) ):
 				if( type(stack) is types.StringType ):
 					from EMAN2 import Vec2f, Transform
-					from EMAN2db import db_open_dict
+					from EMAN2.db import db_open_dict
 					DB = db_open_dict(stack)
 					for im in xrange(len(params)):
 						t = Transform({"type":"spider","phi":params[im][0],"theta":params[im][1],"psi":params[im][2]})
@@ -19923,7 +19923,7 @@ def slocal_ali3d_base_old(stack, templatevol, Tracker, mpi_comm = None, log= Non
 	if( type(stack) is bytes ):
 		if myid == main_node:
 			if(file_type(stack) == "bdb"):
-				from EMAN2db import db_open_dict
+				from EMAN2.db import db_open_dict
 				dummy = db_open_dict(stack, True)
 
 			nima = EMUtil.get_image_count(stack)
@@ -20282,7 +20282,7 @@ def slocal_ali3d_base_old(stack, templatevol, Tracker, mpi_comm = None, log= Non
 		"""
 		if( type(stack) is types.StringType ):
 			from EMAN2 import Vec2f, Transform
-			from EMAN2db import db_open_dict
+			from EMAN2.db import db_open_dict
 			DB = db_open_dict(stack)
 			for im in xrange(len(params)):
 				t = Transform({"type":"spider","phi":params[im][0],"theta":params[im][1],"psi":params[im][2]})

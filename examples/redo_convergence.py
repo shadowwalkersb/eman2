@@ -39,7 +39,7 @@ from math import *
 from os import *
 
 import EMAN2fsc
-from EMAN2db import db_open_dict
+from EMAN2.db import db_open_dict
 from EMAN2 import *
 
 if len(sys.argv)>1 : dirs=sys.argv[1:]

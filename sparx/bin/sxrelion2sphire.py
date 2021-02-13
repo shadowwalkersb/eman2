@@ -57,7 +57,7 @@ import os
 import sys
 from operator import itemgetter
 import shutil
-from EMAN2db import db_check_dict
+from EMAN2.db import db_check_dict
 
 from optparse import OptionParser
 import global_def

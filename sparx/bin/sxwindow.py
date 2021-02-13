@@ -41,7 +41,7 @@ import json
 import shutil
 
 from EMAN2 import *
-from EMAN2db import *
+from EMAN2.db import *
 from EMAN2.jsondb import *
 from sparx import *
 from applications import MPI_start_end

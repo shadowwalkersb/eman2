@@ -118,7 +118,7 @@ def shiftali_MPI(stack, maskfile=None, maxit=100, CTF=False, snr=1.0, Fourvar=Fa
 
 	if myid == main_node:
 		if ftp == "bdb":
-			from EMAN2db import db_open_dict
+			from EMAN2.db import db_open_dict
 			dummy = db_open_dict(stack, True)
 		nima = EMUtil.get_image_count(stack)
 	else:

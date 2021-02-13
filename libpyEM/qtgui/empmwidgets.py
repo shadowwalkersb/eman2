@@ -37,7 +37,7 @@
 
 from past.utils import old_div
 from builtins import range
-from EMAN2db import db_check_dict
+from EMAN2.db import db_check_dict
 import sys, math, weakref
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtCore import Qt

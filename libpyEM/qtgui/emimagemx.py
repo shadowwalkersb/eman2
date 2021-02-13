@@ -43,7 +43,7 @@ from .valslider import ValSlider
 from math import *
 from EMAN2 import *
 #import EMAN2db
-from EMAN2db import db_open_dict, db_check_dict
+from EMAN2.db import db_open_dict, db_check_dict
 from EMAN2.jsondb import js_open_dict, js_check_dict
 import EMAN2
 import copy

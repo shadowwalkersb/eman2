@@ -1472,7 +1472,7 @@ def main(args):
 			for i in range(Blockdata["total_nima"]):  aligned_images[i].write_image(Blockdata["stack_ali2d"],i)
 			del aligned_images
 			#  It has to be explicitly closed
-			from EMAN2db import db_open_dict
+			from EMAN2.db import db_open_dict
 			DB = db_open_dict(Blockdata["stack_ali2d"])
 			DB.close()
 	

@@ -123,7 +123,7 @@ def main():
 
 	#  This is code for handling symmetries by the above program.  To be incorporated. PAP 01/27/2015
 
-	from EMAN2db import db_open_dict
+	from EMAN2.db import db_open_dict
 
 	# Set up global variables related to bdb cache 
 	if global_def.CACHE_DISABLE:

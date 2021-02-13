@@ -34,7 +34,7 @@ from builtins import range
 from math import *
 import os
 import sys
-from EMAN2db import db_check_dict
+from EMAN2.db import db_check_dict
 from EMAN2 import *
 
 def main():

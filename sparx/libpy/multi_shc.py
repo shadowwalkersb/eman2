@@ -1992,7 +1992,7 @@ def ali3d_multishc_soft(stack, ref_vol, ali3d_options, mpi_comm = None, log = No
 	if( type(stack) is bytes ):
 		if myid == main_node:
 			if file_type(stack) == "bdb":
-				from EMAN2db import db_open_dict
+				from EMAN2.db import db_open_dict
 				dummy = db_open_dict(stack, True)
 			# horatio active_refactoring Jy51i1EwmLD4tWZ9_00000_1
 			# active = EMUtil.get_all_attributes(stack, 'active')
@@ -3246,7 +3246,7 @@ def ali3d_base(stack, ref_vol = None, ali3d_options = None, shrinkage = 1.0, mpi
 			if( ( terminate or (Iter == max_iter) ) and (myid == main_node) ):
 				if( type(stack) is types.StringType ):
 					from EMAN2 import Vec2f, Transform
-					from EMAN2db import db_open_dict
+					from EMAN2.db import db_open_dict
 					DB = db_open_dict(stack)
 					for im in xrange(len(params)):
 						t = Transform({"type":"spider","phi":params[im][0],"theta":params[im][1],"psi":params[im][2]})

@@ -34,7 +34,7 @@ from builtins import range
 from builtins import object
 from EMAN2 import file_exists,EMData,E2init,E2progress,E2end,EMANVERSION,check_eman2_type_string,numbered_bdb,Transform,EMUtil,launch_childprocess,EMArgumentParser
 import EMAN2
-from EMAN2db import EMTask,db_open_dict
+from EMAN2.db import EMTask,db_open_dict
 
 
 tomo_ave_path_root = "tomo_ave" # this  string is used for making output directories automatically
@@ -691,7 +691,7 @@ class EMTomoAlignTask(object):
 		Called to perform class averaging 
 		May boot strap the original average, iteratively refines averages, aligns final average to ref 
 		'''
-		from EMAN2db import db_open_dict
+		from EMAN2.db import db_open_dict
 		progress_callback(0)
 		
 		probe = self.data["probe"]
@@ -778,7 +778,7 @@ class EMTomoAlignTaskDC(EMTask):
 		Called to perform class averaging 
 		May boot strap the original average, iteratively refines averages, aligns final average to ref 
 		'''
-		from EMAN2db import db_open_dict
+		from EMAN2.db import db_open_dict
 		progress_callback(0)
 		
 		cache_name=self.data["probe"][1]

@@ -148,8 +148,8 @@ class SXmpi_run(object):
 # ----------------------------------------------------------------------------------------
 def isac_substack(args):
 	from utilities import get_im, read_text_row, write_text_row, write_text_file, combine_params2, cmdexecute
-	from EMAN2db import db_check_dict
-	# from EMAN2db import db_open_dict, db_check_dict
+	from EMAN2.db import db_check_dict
+	# from EMAN2.db import db_open_dict, db_check_dict
 	# from e2bdb import makerelpath
 	
 	# Define the name of this subcommand
@@ -1519,7 +1519,7 @@ def organize_micrographs(args):
 ### 	# import glob
 ### 	# import traceback
 ### 	# import math
-### 	from EMAN2db   import db_check_dict
+### 	from EMAN2.db   import db_check_dict
 ### 	from utilities import get_im, get_params_proj
 ### 	
 ### 	# ========================================================================================
@@ -1721,7 +1721,7 @@ def restacking(args):
 	# import glob
 	# import traceback
 	# import math
-	from EMAN2db   import db_check_dict
+	from EMAN2.db   import db_check_dict
 	from utilities import get_im, get_params_proj
 	
 	# ========================================================================================
@@ -2604,7 +2604,7 @@ def moon_eliminator(args):
 # ----------------------------------------------------------------------------------------
 def desymmetrize(args):
 	from utilities import read_text_file, write_text_file
-	from EMAN2db import db_check_dict, db_parse_path, db_open_dict
+	from EMAN2.db import db_check_dict, db_parse_path, db_open_dict
 	
 	# To make the execution exit upon fatal error by ERROR in global_def.py
 	global_def.BATCH = True 

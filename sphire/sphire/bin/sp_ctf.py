@@ -51,7 +51,7 @@ from ..libpy.sp_global_def import sxprint, ERROR
 from ..libpy.sp_global_def import *
 
 from EMAN2 import *
-from EMAN2db import db_open_dict, db_check_dict
+from EMAN2.db import db_open_dict, db_check_dict
 from ..libpy.sp_sparx import *
 from optparse import OptionParser
 from OpenGL import GL,GLUT

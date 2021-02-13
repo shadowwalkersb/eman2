@@ -41,7 +41,7 @@ Place, Suite 330, Boston, MA  02111-1307 USA
 
 import EMAN2
 import EMAN2.cppwrap
-from EMAN2db import db_open_dict
+from EMAN2.db import db_open_dict
 import ctypes
 import mpi
 import numpy

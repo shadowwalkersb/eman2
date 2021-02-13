@@ -329,7 +329,7 @@ def main():
 		total_stack = bcast_number_to_all(total_stack, source_node = main_node)
 		"""
 		if myid==main_node:
-	   		from EMAN2db import db_open_dict	
+	   		from EMAN2.db import db_open_dict	
 	   		OB = db_open_dict(orgstack)
 	   		DB = db_open_dict(Tracker["constants"]["stack"]) 
 			for i in xrange(total_stack):

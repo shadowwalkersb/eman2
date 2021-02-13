@@ -34,7 +34,7 @@ from __future__ import division
 from past.utils import old_div
 from builtins import range
 from EMAN2 import get_image_directory, Transform, Region, EMANVERSION, EMData, E2init, E2end, EMArgumentParser
-from EMAN2db import db_open_dict, db_check_dict, db_close_dict
+from EMAN2.db import db_open_dict, db_check_dict, db_close_dict
 from math import *
 import sys
 import os

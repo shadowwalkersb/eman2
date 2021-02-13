@@ -2272,7 +2272,7 @@ def k_means_locasg2glbasg(ASG, LUT, N):
 # # k-means open and prepare images, only unstable objects (active = 1)
 # def k_means_list_active(stack):
 # 	from utilities     import file_type
-# 	from EMAN2db import db_open_dict
+# 	from EMAN2.db import db_open_dict
 # 	
 # 	N    = EMUtil.get_image_count(stack)
 # 
@@ -5494,7 +5494,7 @@ def k_means_cuda_headlog(stackname, outname, method, N, K, maskname, maxit, T0, 
 # k-means, prepare to open images later
 def k_means_cuda_init_open_im(stack, maskname):
 	from utilities import get_image, get_im, model_blank, file_type
-	from EMAN2db import db_open_dict
+	from EMAN2.db import db_open_dict
 
 	ext = file_type(stack)
 	if ext == 'txt': TXT = True
@@ -7108,7 +7108,7 @@ def k_means_stab_export(PART, stack, outdir, th_nobj, CTF = False):
 # TODO this function need to be removed (not used)
 def k_means_stab_init_tag(stack):
 	from utilities import file_type, write_header
-	from EMAN2db import db_open_dict
+	from EMAN2.db import db_open_dict
 	
 	N   = EMUtil.get_image_count(stack)
 	ext = file_type(stack)
@@ -7177,7 +7177,7 @@ def k_means_asg_locasg2glbpart(ASG, LUT):
 # # Update information to the header of the stack file
 # def k_means_stab_update_tag(stack, STB_PART, lrej):
 # 	from utilities import file_type, write_header
-# 	from EMAN2db import db_open_dict
+# 	from EMAN2.db import db_open_dict
 # 
 # 	N  = EMUtil.get_image_count(stack)
 # 	# prepare for active images

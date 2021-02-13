@@ -35,7 +35,7 @@ from past.utils import old_div
 from builtins import range
 from builtins import object
 from EMAN2 import *
-from EMAN2db import db_open_dict, db_close_dict, db_remove_dict
+from EMAN2.db import db_open_dict, db_close_dict, db_remove_dict
 from PyQt5 import QtCore
 from eman2_gui.emapplication import EMApp
 from eman2_gui.emimagemx import EMImageMXWidget

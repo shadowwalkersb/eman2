@@ -272,7 +272,7 @@ class SXmpi_run(object):
 
 
 def isac_substack(args):
-    # from EMAN2db import db_open_dict, db_check_dict
+    # from EMAN2.db import db_open_dict, db_check_dict
     # from e2bdb import makerelpath
 
     # Define the name of this subcommand
@@ -2291,7 +2291,7 @@ def organize_micrographs(args):
 ### 	# import glob
 ### 	# import traceback
 ### 	# import math
-### 	from EMAN2db   import db_check_dict
+### 	from EMAN2.db   import db_check_dict
 ### 	from utilities import get_im, get_params_proj
 ###
 ### 	# ========================================================================================

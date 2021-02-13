@@ -38,7 +38,7 @@ from .emsprworkflow import *
 from .emform import *
 from .emsave import EMFileTypeValidator
 from .emapplication import error, EMErrorMessageDisplay
-from EMAN2db import db_open_dict
+from EMAN2.db import db_open_dict
 	
 class EMBaseTomoChooseFilteredPtclsTask(WorkFlowTask):
 	"""Choose the data""" 

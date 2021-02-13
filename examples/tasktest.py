@@ -34,7 +34,7 @@
 # This program implements, via various options, the parallelism system for EMAN2
 
 from builtins import range
-from EMAN2db import EMTask
+from EMAN2.db import EMTask
 from EMAN2 import *
 from EMAN2.par import *
 from math import *

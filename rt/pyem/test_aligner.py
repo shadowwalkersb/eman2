@@ -32,7 +32,7 @@
 
 from builtins import range
 from EMAN2 import *
-from EMAN2db import *
+from EMAN2.db import *
 import unittest,os,sys
 import testlib
 from math import *
