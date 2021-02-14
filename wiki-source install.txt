@@ -224,10 +224,11 @@ For debugging and reporting, see [[#debug_and_report|Debugging and Reporting]].
 
 Please, include the output of the following items when reporting a problem.
 
- 1. If '''make test''' fails, run the verbose tests.
-
+ 1. Make sure you have activated your environment and run
  {{{#!highlight bash
-make test-verbose
+conda info -a
+conda list
+conda list --explicit
 }}}
 
  1. In the source directory, run
@@ -236,16 +237,17 @@ git status
 git log -1
 }}}
 
- 1. {{{#!highlight bash
-conda info -a
-conda list
-conda list --explicit
-}}}
-
  1. In the build directory, run
  {{{#!highlight bash
 cmake . -LA
 }}}
+
+ 1. If '''make test''' fails, run the verbose tests.
+
+ {{{#!highlight bash
+make test-verbose
+}}}
+
 
 
 === Alternatively... ===
@@ -257,23 +259,25 @@ script filename.txt
 
 conda activate eman2
 
-cd <source-dir>
-git status
-git log -1
-
-cd <build-dir>
-rm CMakeCache.txt
-cmake <source-dir>
-make clean
-make -j
-make install
-make test-verbose
-
 conda info -a
 conda list
 conda list --explicit
 
+cd <source-dir>
+
+git status
+git log -1
+
+cd <build-dir>
+
+rm CMakeCache.txt
+cmake <source-dir>
 cmake . -LA
+
+make clean
+make -j
+make install
+make test-verbose
 
 conda deactivate
 
