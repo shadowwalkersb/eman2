@@ -59,9 +59,6 @@ source <miniconda-path>/etc/profile.d/conda.csh
 
 # <shell-name> is bash, fish, powershell, tcsh, xonsh or zsh
 conda init <shell-name>
-
-# We suggest the following, meaning you will need to use ''conda activate'' after logging in before using EMAN2
-conda config --set auto_activate_base False
 }}}
 
  As it says after you run this command, you will need to close and reopen your shell/terminal for it to take effect. This command modified your shell initialization so the ''conda activate'' command can be used properly. For more information on conda-init and activation, see [[https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#activating-an-environment|Environment Activation]].
@@ -76,6 +73,9 @@ For differences between login- and non-login shells and order of reading the sta
 
  1. '''Configure and update conda.'''
  {{{#!highlight bash
+# We suggest the following, meaning you will need to use ''conda activate'' after logging in before using EMAN2
+conda config --set auto_activate_base False
+
 # Automatic conda updates may cause things to break, so we suggest making all package upgrades explicitly
 # The current version verified to work with EMAN is '''conda 4.9.1'''
 conda config --set auto_update_conda False
