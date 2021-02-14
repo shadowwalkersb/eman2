@@ -60,7 +60,7 @@ source <miniconda-path>/etc/profile.d/conda.csh
 # <shell-name> is bash, fish, powershell, tcsh, xonsh or zsh
 conda init <shell-name>
 
-# we suggest the following, meaning you will need to use ''conda activate'' after logging in before using EMAN2
+# We suggest the following, meaning you will need to use ''conda activate'' after logging in before using EMAN2
 conda config --set auto_activate_base False
 }}}
 
@@ -146,7 +146,7 @@ git fetch --all --prune
 git checkout master
 }}}
  1. Ensure you have OpenGL
-  * EMAN2 uses OpenGL (via !PyQt) for all of its graphics. OpenGL installation depends on OS variant and, for example, whether you are using proprietary NVidia drivers under Linux. You will need to have OpenGL set up on your machine as a whole before continuing. On the Mac, you should already have this with XCode. On Linux with an NVidia driver you will likely also need to install the Mesa header files. If you aren't sure how to set up OpenGL, Google can probably help.
+  * EMAN2 uses OpenGL (via !PyQt) for all of its graphics. OpenGL installation depends on OS variant and, for example, whether you are using proprietary NVidia drivers under Linux. You will need to have OpenGL set up on your machine as a whole before continuing. On Mac, you should already have this with XCode. On Linux with an NVidia driver you will likely also need to install the Mesa header files. If you aren't sure how to set up OpenGL, Google can probably help.
  1. '''Build EMAN'''
   1. '''CMake'''
   {{{#!highlight bash
