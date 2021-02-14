@@ -222,37 +222,7 @@ For debugging and reporting, see [[#debug_and_report|Debugging and Reporting]].
 <<Anchor(debug_and_report)>>
 == Debugging and Reporting ==
 
-Please, include the output of the following items when reporting a problem.
-
- 1. Make sure you have activated your environment and run
- {{{#!highlight bash
-conda info -a
-conda list
-conda list --explicit
-}}}
-
- 1. In the source directory, run
- {{{#!highlight bash
-git status
-git log -1
-}}}
-
- 1. In the build directory, run
- {{{#!highlight bash
-cmake . -LA
-}}}
-
- 1. If '''make test''' fails, run the verbose tests.
-
- {{{#!highlight bash
-make test-verbose
-}}}
-
-
-
-=== Alternatively... ===
-
-It could be better to record the session via '''script''' command. This, also, records the commands.
+Please, provide the output of the following items when reporting a problem. Record the session via '''script''' command. This, also, records the commands.
 
  1. {{{#!highlight bash
 script filename.txt
