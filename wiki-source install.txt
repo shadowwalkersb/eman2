@@ -67,11 +67,11 @@ conda config --set auto_activate_base False
  As it says after you run this command, you will need to close and reopen your shell/terminal for it to take effect. This command modified your shell initialization so the ''conda activate'' command can be used properly. For more information on conda-init and activation, see [[https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#activating-an-environment|Environment Activation]].
 
  {{{#!wiki caution
-'''MacOS''' Users (bash only)
+'''macOS''' Users (bash only)
 
-On MacOS, this modifies ''~/.bash_profile''. If you have a ''~/.profile'' startup file, creation of ''~/.bash_profile'' will prevent ''~/.profile'' from being read. A simple solution is to ''source .profile'' within ''.bash_profile''.
+On macOS, this modifies ''~/.bash_profile''. If you have a ''~/.profile'' startup file, creation of ''~/.bash_profile'' will prevent ''~/.profile'' from being read. A simple solution is to ''source .profile'' within ''.bash_profile''.
 
-For differences between login- and non-login shells and order of reading the startup files on Mac OSX, see, [[https://www.anintegratedworld.com/basics-of-osx-bashrc-v-profile-v-bash_profile/]].
+For differences between login- and non-login shells and order of reading the startup files on macOS, see, [[https://www.anintegratedworld.com/basics-of-osx-bashrc-v-profile-v-bash_profile/]].
 }}}
 
  1. '''Configure and update conda.'''
@@ -95,9 +95,9 @@ conda create -n eman2 eman-deps-dev -c cryoem -c defaults -c conda-forge
  If you wish to see the list of conda dependencies that '''eman-deps''' (current version is '''24.1''') is built from, look [[https://github.com/cryoem/eman-deps-feedstock/blob/master/recipe/meta.yaml|here]].
 
  {{{{#!wiki caution
-'''MacOS Big Sur Users'''
+'''macOS Big Sur Users'''
 
-The new Big Sur MacOS release (fall 2020) broke some things in Python, which are only now (Dec 2020) getting fixed. These fixes have not yet made their way into Anaconda. If you experience an error similar to "Unable to load OpenGL library", install a patched pyopengl package from cryoem channel (as of 1/13/2021).
+The new Big Sur macOS release (fall 2020) broke some things in Python, which are only now (Dec 2020) getting fixed. These fixes have not yet made their way into Anaconda. If you experience an error similar to "Unable to load OpenGL library", install a patched pyopengl package from cryoem channel (as of 1/13/2021).
 
 {{{#!shell
 conda install pyopengl -c cryoem
