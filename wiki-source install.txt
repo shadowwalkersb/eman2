@@ -239,11 +239,6 @@ git log -1
  1. {{{#!highlight bash
 conda info -a
 conda list
-
-
-# This is not always needed.
-# It will print urls of packages and should be needed
-# only if the previous output is not sufficient.
 conda list --explicit
 }}}
 
@@ -255,7 +250,7 @@ cmake . -LA
 
 === Alternatively... ===
 
-It could be better to record the session via '''script'''. This, also, records the commands.
+It could be better to record the session via '''script''' command. This, also, records the commands.
 
  1. {{{#!highlight bash
 script filename.txt
