@@ -123,6 +123,9 @@ change this line to:
 
 }}}}
 
+ 1. Ensure you have '''OpenGL''':
+  EMAN2 uses OpenGL (via !PyQt) for all of its graphics. OpenGL installation depends on OS variant and, for example, whether you are using proprietary NVidia drivers under Linux. You will need to have OpenGL set up on your machine as a whole before continuing. On Mac, you should already have this with XCode. On Linux with an NVidia driver you will likely also need to install the Mesa header files. If you aren't sure how to set up OpenGL, Google can probably help.
+
  1. '''Get EMAN code''' from [[https://github.com/cryoem/eman2|GitHub:cryoem/eman2]].
  {{{#!highlight bash
 cd <path-where-you-want-eman2-source>   # eg - $HOME/src
@@ -145,8 +148,6 @@ cd <source-directory>  # <path-where-you-want-eman2-source>/eman2
 git fetch --all --prune
 git checkout master
 }}}
- 1. Ensure you have OpenGL
-  * EMAN2 uses OpenGL (via !PyQt) for all of its graphics. OpenGL installation depends on OS variant and, for example, whether you are using proprietary NVidia drivers under Linux. You will need to have OpenGL set up on your machine as a whole before continuing. On Mac, you should already have this with XCode. On Linux with an NVidia driver you will likely also need to install the Mesa header files. If you aren't sure how to set up OpenGL, Google can probably help.
  1. '''Build EMAN'''
   1. '''CMake'''
   {{{#!highlight bash
