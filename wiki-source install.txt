@@ -7,12 +7,18 @@
 
 {{{#!html
 <h1 style="margin-bottom:5px;"> Building EMAN2/SPARX/SPHIRE from Source </h1>
+
+<p style="font-size:110%; text-align:center; margin-top:5px; margin-left:20px; margin-right:20px;"> 
+<i>
+Standard instructions for establishing a build and runtime environment for EMAN/SPARX/SPHIRE on Linux and macOS
+</i>
+</p>
 }}}
 
 
 ''The EMAN2 source lives on [[https://github.com/cryoem/eman2|GitHub]], downloading the source is part of the instructions below. '''Do not download it yet!''' ''
 
-These are the standard instructions for establishing a build and runtime environment for EMAN2/SPARX/SPHIRE on Linux and Mac. While the instructions look long, in reality it should only take 10-15 minutes to complete the entire process (with a decent network connection). We use [[https://docs.conda.io/en/latest/|Conda]] for a working environment and most of the dependencies. [[https://www.anaconda.com/distribution/|Anaconda distribution]] has become ubiquitous for Python and R-based scientific computing and education over the last decade. While it may be possible to build the system without using Conda, we do not recommend doing this, and cannot provide support for a non-conda approach. If you follow the instructions below, you should have a painless source build very quickly.
+While the instructions look long, in reality it should only take 10-15 minutes to complete the entire process (with a decent network connection). We use [[https://docs.conda.io/en/latest/|Conda]] for a working environment and most of the dependencies. [[https://www.anaconda.com/distribution/|Anaconda distribution]] has become ubiquitous for Python and R-based scientific computing and education over the last decade. While it may be possible to build the system without using Conda, we do not recommend doing this, and cannot provide support for a non-conda approach. If you follow the instructions below, you should have a painless source build very quickly.
 
 
 Note that even with a source build it may be difficult to get this working on systems with very old operating system installs. We normally try to support OS versions as much as 5-7 years old. Please report any problems.
