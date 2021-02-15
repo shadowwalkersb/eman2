@@ -2,8 +2,6 @@
 ## page was renamed from EMAN2/COMPILE_EMAN2_ANACONDA
 ## page was renamed from EMAN2/COMPILE_EMAN2_ANACONDA-DRAFT
 
-<<TableOfContents()>>
-
 
 {{{#!html
 <h1 style="margin-bottom:5px;"> Building EMAN2/SPARX/SPHIRE from Source </h1>
@@ -25,6 +23,9 @@ Standard instructions for establishing a build and runtime environment for EMAN/
  * Note that even with a source build it may be difficult to get this working on systems with very old operating system installs. We normally try to support OS versions as much as 5-7 years old. Please report any problems.
 
  * '''GPU Support (Linux Only!):''' For features which support the GPU, please complete the standard source install instructions below, then follow the [[EMAN2/Install/BinaryInstallAnaconda/2.31#Using_the_GPU|GPU instructions]] from the binary installation page.
+
+
+<<TableOfContents()>>
 
 == Initial Setup and Build (one time) ==
 
