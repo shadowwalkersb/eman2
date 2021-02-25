@@ -26,7 +26,7 @@ We make use of the [[https://docs.conda.io/projects/conda/en/latest/user-guide/t
 
 === Initial Setup and Build (one time) ===
 
- 1. '''Remove/deactivate other Anaconda installations.''' If you do not have Anaconda/Miniconda (or another copy of EMAN2/SPARX/SPHIRE) already installed in your account, skip to step 2. If you DO have Anaconda or Miniconda installed in your account, you must ensure that any existing install you have is not active in your shell (not in PATH, no LD_LIBRARY_PATH, PYTHONPATH or PYTHONHOME set). While it may also be possible to set up an environment for EMAN2 in your existing Anaconda install, you will need to know what you're doing, and adapt these instructions to your situation.
+ 1. '''Remove/disable other Anaconda/Miniconda/EMAN installations.''' If you do not have Anaconda/Miniconda (or another copy of EMAN2/SPARX/SPHIRE) already installed in your account, skip to step [[#install_miniconda|2]]. If you DO have Anaconda or Miniconda installed in your account, you must ensure that any existing install you have is not active in your shell (not in PATH, no LD_LIBRARY_PATH, PYTHONPATH or PYTHONHOME set). While it may also be possible to set up an environment for EMAN2 in your existing Anaconda install, you will need to know what you're doing, and adapt these instructions to your situation.
  {{{#!highlight bash
 echo $PATH
 # make sure no Anaconda/Miniconda/EMAN2 entries
@@ -37,7 +37,8 @@ echo $PYTHONPATH
 # to see if they cause any issues
 }}}
 
- 1. '''Download and install''' '''''this specific version (4.8.3) of''''' '''Miniconda''': [[https://repo.anaconda.com/miniconda/Miniconda3-py37_4.8.3-Linux-x86_64.sh|Linux]] or [[https://repo.anaconda.com/miniconda/Miniconda3-py37_4.8.3-MacOSX-x86_64.sh|MacOSX]]
+ <<Anchor(install_miniconda)>> 
+ 1. '''Download and install''' '''''this specific version (4.8.3) of''''' '''Miniconda''': [[https://repo.anaconda.com/miniconda/Miniconda3-py37_4.8.3-Linux-x86_64.sh|Linux]] or [[https://repo.anaconda.com/miniconda/Miniconda3-py37_4.8.3-MacOSX-x86_64.sh|macOS]]
 
  {{{#!highlight bash
 bash <Miniconda-installer>
