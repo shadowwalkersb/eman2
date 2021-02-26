@@ -222,7 +222,7 @@ For debugging and reporting, see [[#debug_and_report|Debugging and Reporting]].
 <<Anchor(debug_and_report)>>
 == Debugging and Reporting ==
 
-Please, provide the output of the following items when reporting a problem. Record the session via '''script''' command. This, also, records the commands.
+Please, provide the output of the following commands when reporting a problem. Record the session via '''script''' command. This, also, records the commands.
 
  1. {{{#!highlight bash
 script filename.txt
