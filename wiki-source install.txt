@@ -14,7 +14,7 @@ Standard instructions for establishing a build and runtime environment for EMAN/
 }}}
 
 
- * While the instructions look long, in reality it should only take 10-15 minutes to complete the entire process (with a decent network connection).
+ * Time: 10-15 minutes (with a decent network connection).
 
  * We use [[https://docs.conda.io/en/latest/|Conda]] for a working environment and most of the dependencies. [[https://www.anaconda.com/distribution/|Anaconda distribution]] has become ubiquitous for Python and R-based scientific computing and education over the last decade.
 
