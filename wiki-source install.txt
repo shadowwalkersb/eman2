@@ -151,9 +151,9 @@ cd <source-directory>  # <path-where-you-want-eman2-source>/eman2
 git fetch --all --prune
 git checkout master
 }}}
- 1. '''Build EMAN'''
-  1. '''CMake'''
-  {{{#!highlight bash
+
+ 1. '''CMake'''
+ {{{#!highlight bash
 cd <build-directory>
 # on Mac:
 cmake <source-directory>   # - eg $HOME/src/eman2, optionally add -DCMAKE_VERBOSE_MAKEFILE
