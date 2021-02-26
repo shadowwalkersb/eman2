@@ -16,8 +16,6 @@ Standard instructions for establishing a build and runtime environment for EMAN/
 }}}
 
 
-''The EMAN2 source lives on [[https://github.com/cryoem/eman2|GitHub]], downloading the source is part of the instructions below. '''Do not download it yet!''' ''
-
 While the instructions look long, in reality it should only take 10-15 minutes to complete the entire process (with a decent network connection). We use [[https://docs.conda.io/en/latest/|Conda]] for a working environment and most of the dependencies. [[https://www.anaconda.com/distribution/|Anaconda distribution]] has become ubiquitous for Python and R-based scientific computing and education over the last decade. While it may be possible to build the system without using Conda, we do not recommend doing this, and cannot provide support for a non-conda approach. If you follow the instructions below, you should have a painless source build very quickly.
 
 
