@@ -161,20 +161,20 @@ cmake <source-directory>   # - eg $HOME/src/eman2, optionally add -DCMAKE_VERBOS
 # on Linux:
 cmake <source-directory> -DENABLE_OPTIMIZE_MACHINE=ON  # - eg $HOME/src/eman2, optionally add -DCMAKE_VERBOSE_MAKEFILE
 }}}
-   * '''cmake-gui'''
-    * If you use '''cmake-gui''', since conda is not in PATH anymore, cmake will fail to find the environment directory. In that case set CONDA_PREFIX to your conda environment directory manually.
-    * Make sure to delete any cmake variables that cmake already found, variables like *_LIBRARY or similar, *_INCLUDE_PATH or similar, CONDA_EXECUTABLE, CMAKE_INSTALL_PREFIX and any variables that are expected to contain conda environment related values.
-    * Configure and generate.
-   * '''ccmake'''
-    * If you use '''ccmake''', you may get an error related to OpenGL. If this happens try quitting ccmake and running it again.
+  * '''cmake-gui'''
+   * If you use '''cmake-gui''', since conda is not in PATH anymore, cmake will fail to find the environment directory. In that case set CONDA_PREFIX to your conda environment directory manually.
+   * Make sure to delete any cmake variables that cmake already found, variables like *_LIBRARY or similar, *_INCLUDE_PATH or similar, CONDA_EXECUTABLE, CMAKE_INSTALL_PREFIX and any variables that are expected to contain conda environment related values.
+   * Configure and generate.
+  * '''ccmake'''
+   * If you use '''ccmake''', you may get an error related to OpenGL. If this happens try quitting ccmake and running it again.
 
-  1. '''Make'''
-  {{{#!highlight bash
+ 1. '''Make'''
+ {{{#!highlight bash
 make -j 8
 make install
 }}}
 
-  Note that the '''make -j 8''' above will compile using 8 threads. On some machines omitting the 8 will compile faster and cause no problems, and if you have more than 8 threads on your machine, you can increase the number.
+ Note that the '''make -j 8''' above will compile using 8 threads. On some machines omitting the 8 will compile faster and cause no problems, and if you have more than 8 threads on your machine, you can increase the number.
 
  1. '''Test your installation.''' We do NOT recommend this for end-users. A failure does NOT necessarily indicate an installation problem. These commands are mostly provided for developers actively changing the code to detect harmful changes before committing them. Sometimes the system will have a failing test, and still be absolutely fine.
  {{{#!highlight bash
