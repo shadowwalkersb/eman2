@@ -18,7 +18,7 @@ Standard instructions for establishing a build and runtime environment for EMAN/
 
  * We use [[https://docs.conda.io/en/latest/|Conda]] for a working environment and most of the dependencies. [[https://www.anaconda.com/distribution/|Anaconda distribution]] has become ubiquitous for Python and R-based scientific computing and education over the last decade.
 
- * We make use of the [[https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html|environment]] system in [[https://docs.conda.io/en/latest/|conda]], the package manager, to isolate EMAN2 dependencies from other conda packages you may have installed. If you need to install other packages you wish to use in concert with EMAN2, you will need to install them within the EMAN2 environment. Be warned that sometimes installing another package may trigger a version change in one of EMAN2's dependencies, which may or may not be a problem, depending on which dependency it is. We strongly suggest getting the base EMAN2 installed and working first, before trying to install any additional packages within the same conda environment.
+ * We make use of the [[https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html|environment]] system in [[https://docs.conda.io/en/latest/|conda]], the package manager, to isolate EMAN dependencies from other conda packages you may have installed. If you need to install other packages you wish to use in concert with EMAN, you will need to install them within the EMAN environment. Be warned that sometimes installing another package may trigger a version change in one of EMAN's dependencies, which may or may not be a problem, depending on which dependency it is. We strongly suggest getting the base EMAN installed and working first, before trying to install any additional packages within the same conda environment.
 
  * Note that even with a source build it may be difficult to get this working on systems with very old operating system installs. We normally try to support OS versions as much as 5-7 years old. Please report any problems.
 
@@ -32,7 +32,7 @@ Standard instructions for establishing a build and runtime environment for EMAN/
  1. '''Remove/disable other Anaconda/Miniconda/EMAN installations.''' If you do not have Anaconda/Miniconda (or another copy of EMAN2/SPARX/SPHIRE) already installed in your account, skip to step [[#install_miniconda|2]]. If you DO have Anaconda or Miniconda installed in your account, you must ensure that any existing install you have is not active in your shell (not in PATH, no LD_LIBRARY_PATH, PYTHONPATH or PYTHONHOME set).
  {{{#!highlight bash
 echo $PATH
-# make sure no Anaconda/Miniconda/EMAN2 entries
+# make sure no Anaconda/Miniconda/EMAN entries
 echo $LD_LIBRARY_PATH
 echo $PYTHONPATH
 # ideally, both return nothing. If it set to something it is possible that it may interfere with Anaconda
@@ -76,7 +76,7 @@ For differences between login- and non-login shells and order of reading the sta
 
  1. '''Configure and update conda.'''
  {{{#!highlight bash
-# We suggest the following, meaning you will need to use ''conda activate'' after logging in before using EMAN2
+# We suggest the following, meaning you will need to use ''conda activate'' after logging in before using EMAN
 conda config --set auto_activate_base False
 
 # Automatic conda updates may cause things to break, so we suggest making all package upgrades explicitly
@@ -127,7 +127,7 @@ change this line to:
 }}}}
 
  1. Ensure you have '''OpenGL''':
-  EMAN2 uses OpenGL (via !PyQt) for all of its graphics. OpenGL installation depends on OS variant and, for example, whether you are using proprietary NVidia drivers under Linux. You will need to have OpenGL set up on your machine as a whole before continuing. On Mac, you should already have this with XCode. On Linux with an NVidia driver you will likely also need to install the Mesa header files. If you aren't sure how to set up OpenGL, Google can probably help.
+  EMAN uses OpenGL (via !PyQt) for all of its graphics. OpenGL installation depends on OS variant and, for example, whether you are using proprietary NVidia drivers under Linux. You will need to have OpenGL set up on your machine as a whole before continuing. On Mac, you should already have this with XCode. On Linux with an NVidia driver you will likely also need to install the Mesa header files. If you aren't sure how to set up OpenGL, Google can probably help.
 
  1. '''Get EMAN code''' from [[https://github.com/cryoem/eman2|GitHub:cryoem/eman2]].
  {{{#!highlight bash
@@ -151,7 +151,7 @@ conda activate eman
 
  1. '''Update and Checkout source code'''. Periodically you should update your source using standard git techniques.
  {{{#!highlight bash
-cd <source-directory>  # <path-where-you-want-eman2-source>/eman2
+cd <source-directory>  # <path-where-you-want-eman-source>/eman2
 git fetch --all --prune
 git checkout master
 git pull
