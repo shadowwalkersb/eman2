@@ -16,7 +16,7 @@ Standard instructions for establishing a build and runtime environment for EMAN/
 
  * While the instructions look long, in reality it should only take 10-15 minutes to complete the entire process (with a decent network connection).
 
- * We use [[https://docs.conda.io/en/latest/|Conda]] for a working environment and most of the dependencies. [[https://www.anaconda.com/distribution/|Anaconda distribution]] has become ubiquitous for Python and R-based scientific computing and education over the last decade. While it may be possible to build the system without using Conda, we do not recommend doing this, and cannot provide support for a non-conda approach. If you follow the instructions below, you should have a painless source build very quickly.
+ * We use [[https://docs.conda.io/en/latest/|Conda]] for a working environment and most of the dependencies. [[https://www.anaconda.com/distribution/|Anaconda distribution]] has become ubiquitous for Python and R-based scientific computing and education over the last decade.
 
  * We make use of the [[https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html|environment]] system in [[https://docs.conda.io/en/latest/|conda]], the package manager, to isolate EMAN2 dependencies from other conda packages you may have installed. If you need to install other packages you wish to use in concert with EMAN2, you will need to install them within the EMAN2 environment. Be warned that sometimes installing another package may trigger a version change in one of EMAN2's dependencies, which may or may not be a problem, depending on which dependency it is. We strongly suggest getting the base EMAN2 installed and working first, before trying to install any additional packages within the same conda environment.
 
@@ -29,7 +29,7 @@ Standard instructions for establishing a build and runtime environment for EMAN/
 
 == Initial Setup (one time) ==
 
- 1. '''Remove/disable other Anaconda/Miniconda/EMAN installations.''' If you do not have Anaconda/Miniconda (or another copy of EMAN2/SPARX/SPHIRE) already installed in your account, skip to step [[#install_miniconda|2]]. If you DO have Anaconda or Miniconda installed in your account, you must ensure that any existing install you have is not active in your shell (not in PATH, no LD_LIBRARY_PATH, PYTHONPATH or PYTHONHOME set). While it may also be possible to set up an environment for EMAN2 in your existing Anaconda install, you will need to know what you're doing, and adapt these instructions to your situation.
+ 1. '''Remove/disable other Anaconda/Miniconda/EMAN installations.''' If you do not have Anaconda/Miniconda (or another copy of EMAN2/SPARX/SPHIRE) already installed in your account, skip to step [[#install_miniconda|2]]. If you DO have Anaconda or Miniconda installed in your account, you must ensure that any existing install you have is not active in your shell (not in PATH, no LD_LIBRARY_PATH, PYTHONPATH or PYTHONHOME set).
  {{{#!highlight bash
 echo $PATH
 # make sure no Anaconda/Miniconda/EMAN2 entries
