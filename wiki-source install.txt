@@ -90,10 +90,10 @@ conda config --set channel_priority flexible
 conda update --all -n base
 }}}
 
- 1. '''Create a new environment''' with EMAN2 dependencies. ''eman2'' below is the name of the environment. You may make this whatever you like, as long as you remember to use the same name when doing ''conda activate''. Note that this name will appear as part of your prompt when activated, so you may want to keep it short.
+ 1. '''Create a new environment''' with EMAN dependencies. ''eman'' below is the name of the environment. You may make this whatever you like, as long as you remember to use the same name when doing ''conda activate''. Note that this name will appear as part of your prompt when activated, so you may want to keep it short.
  
  {{{#!highlight bash
-conda create -n eman2 eman-deps-dev -c cryoem -c defaults -c conda-forge
+conda create -n eman eman-deps-dev -c cryoem -c defaults -c conda-forge
 }}}
  If you wish to see the list of conda dependencies that '''eman-deps''' (current version is '''24.1''') is built from, look [[https://github.com/cryoem/eman-deps-feedstock/blob/master/recipe/meta.yaml|here]].
 
@@ -131,13 +131,13 @@ change this line to:
 
  1. '''Get EMAN code''' from [[https://github.com/cryoem/eman2|GitHub:cryoem/eman2]].
  {{{#!highlight bash
-cd <path-where-you-want-eman2-source>   # eg - $HOME/src
-git clone https://github.com/cryoem/eman2.git # this will create an eman2 folder containing the current source code from the master branch
+cd <path-where-you-want-eman-source>   # eg - $HOME/src
+git clone https://github.com/cryoem/eman2.git # this will create an eman folder containing the current source code from the master branch
 }}}
 
  1. '''Create a build directory''' (out-of-source builds are recommended).
  {{{#!highlight bash
-mkdir <build-directory> # eg- $HOME/src/eman2-build
+mkdir <build-directory-for-eman> # eg- $HOME/src/eman-build
 }}}
 
 == Build and Install: Daily development, Update code, etc. ==
@@ -146,7 +146,7 @@ When you start a new shell, these are the steps you will need to take before run
 
  1. '''Activate''' your environment. If you used a different name above, use it here too.
  {{{#!highlight bash
-conda activate eman2
+conda activate eman
 }}}
 
  1. '''Update and Checkout source code'''. Periodically you should update your source using standard git techniques.
@@ -187,7 +187,7 @@ make test          # if everything passes you are fine, if there are failures, p
 make test-verbose  # verbose test output to help to identify specific failures
 }}}
 
- 1. '''Other Environments'''. To switch to another conda environment (stop working with EMAN2), first deactivate your current environment.
+ 1. '''Other Environments'''. To switch to another conda environment (stop working with EMAN), first deactivate your current environment.
  {{{#!highlight bash
 conda deactivate
 }}}
@@ -206,7 +206,7 @@ Please, provide the output of the following commands when reporting a problem. R
  1. {{{#!highlight bash
 script filename.txt
 
-conda activate eman2
+conda activate eman
 
 conda info -a
 conda list
