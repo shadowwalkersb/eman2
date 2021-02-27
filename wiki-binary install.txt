@@ -20,7 +20,7 @@
 
 <<Anchor(Linux)>>
 
-== MacOS and Linux ==
+== macOS and Linux ==
 
 {{{#!wiki note
 The neural network code in EMAN2 works best on GPUs, which are available only on the Linux installations. It can still run on Mac, but will be quite slow.
@@ -66,7 +66,7 @@ e2display.py test.hdf
 === Notes ===
 
  1. '''Linux users:''' The new neural network based routines are much faster running on a GPU. If you have an NVidia graphics card, see [[#GPU|''Using the GPU'']] section below.
- 1. '''Mac users (Big Sur):''' Big Sur (MacOS 11) includes new security features which require you to give software permission to access specific folders. This can cause problems for many open-source software packages launched from the command line. The easiest solution is Preferences -> Security & Privacy -> Privacy -> Full Disk Access, and give Terminal full access. This will not solve every problem, and you need to be aware of potential security risks in doing this, but for most scientific users it is a good solution.
+ 1. '''Mac users (Big Sur):''' Big Sur (macOS 11) includes new security features which require you to give software permission to access specific folders. This can cause problems for many open-source software packages launched from the command line. The easiest solution is Preferences -> Security & Privacy -> Privacy -> Full Disk Access, and give Terminal full access. This will not solve every problem, and you need to be aware of potential security risks in doing this, but for most scientific users it is a good solution.
  1. '''Mac users (Apple Silicon, M1):''' Anaconda does not yet fully support native M1 software, so you will need to install the normal Mac build. The installer will say that you appear not to be running on a 64 bit machine, and ask if you wish to install anyway. Say YES. Performance is excellent even though it isn't a native build.  
 
 === Troubleshooting and Tips ===
