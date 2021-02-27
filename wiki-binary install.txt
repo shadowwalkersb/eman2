@@ -1,0 +1,198 @@
+{{{#!html
+  <h1>Binary Installation Instructions - Continuous Build</h1>
+}}}
+
+
+<<TableOfContents()>>
+
+
+= Download =
+
+ * [[https://cryoem.bcm.edu/cryoem/downloads/view_eman2_version/25|Continuous Build]].
+
+ * [[http://cryoem.bcm.edu/cryoem/downloads/view_eman2_versions|Download older EMAN2 versions]], instructions for older versions are [[https://blake.bcm.edu/emanwiki/EMAN2/Install#Binary_Installation_.28most_users_should_do_this.29|here]].
+
+  Official releases are in reverse chronological order. The [[https://cryoem.bcm.edu/cryoem/downloads/view_eman2_version/25|Continuous Build]] is rebuilt daily and any time a developer makes a change they think users should have access to. It is normally reasonably stable, and will contain the latest pre-publication features. Alternatively, the highest numbered version will contain a stable and tested release.
+
+
+
+= Install =
+
+<<Anchor(Linux)>>
+
+== MacOS and Linux ==
+
+{{{#!wiki note
+The neural network code in EMAN2 works best on GPUs, which are available only on the Linux installations. It can still run on Mac, but will be quite slow.
+}}}
+
+ 1. '''Cleanup:''' If you have previously installed EMAN2:
+  * Please remove or rename any existing installed EMAN2 folder you might have.
+  * Please remove any existing EMAN2 entries from PATH.
+  * LD_LIBRARY_PATH, DYLD_LIBRARY_PATH, PYTHONPATH and PYTHONHOME are NO LONGER USED, and should be removed if you have them set.
+  * If you have any of these shell variables set for use with other software, it may be necessary to remove those settings as well. If the tests below fail after installation, this is the first thing to check.
+ 1. '''Download:''' [[https://cryoem.bcm.edu/cryoem/static/software/continuous_build/eman2_sphire_sparx.linux.unstable.sh|Linux]] / [[https://cryoem.bcm.edu/cryoem/static/software/continuous_build/eman2_sphire_sparx.mac.unstable.sh|Mac]] binary.
+ 1. '''Install:'''
+ {{{#!highlight bash
+bash <path-to-EMAN2-installer>
+}}}
+  * You will be prompted for a location to install EMAN2. Note that you cannot rename this folder after installation! You must reinstall if you wish to move the installation.
+  * You will be asked if you want to initialize EMAN2.
+  * EMAN2 initialization will add a block of code to your ''.profile/.bashrc'' file. After initialization open your ''.profile/.bashrc'' file and confirm that a block like the following has been added
+  {{{#!highlight bash
+# added by EMAN2 2.9 installer
+# >>> conda init >>>
+# !! Contents within this block are managed by 'conda init' !!
+...
+...
+...
+unset __conda_setup
+# <<< conda init <<<
+}}}
+  If you have any other similar looking blocks before the last one, remove them to avoid any potential conflicts.
+  * If you use a different shell, such as tcsh or zsh, you may need to edit the appropriate file yourself.
+  * You should not normally need to reinstall OpenMPI. The copy of OpenMPI/Pydusa now distributed with the binaries should work on Macs/Linux workstations in most cases.
+  * Don't forget to restart your shell if you changed the .profile/.bashrc or other scripts.
+  * '''Mac users:''' If you don't understand what the .profile instructions are talking about, this may help: https://stackoverflow.com/questions/7501678/set-environment-variables-on-mac-os-x-lion
+ 1. '''Test:''' Run these programs to see if the install worked:
+ {{{#!highlight bash
+e2version.py
+e2speedtest.py
+e2display.py
+e2proc2d.py :64:64:1 test.hdf --process mask.sharp:outer_radius=24
+e2display.py test.hdf
+}}}
+
+=== Notes ===
+
+ 1. '''Linux users:''' The new neural network based routines are much faster running on a GPU. If you have an NVidia graphics card, see [[#GPU|''Using the GPU'']] section below.
+ 1. '''Mac users (Big Sur):''' Big Sur (MacOS 11) includes new security features which require you to give software permission to access specific folders. This can cause problems for many open-source software packages launched from the command line. The easiest solution is Preferences -> Security & Privacy -> Privacy -> Full Disk Access, and give Terminal full access. This will not solve every problem, and you need to be aware of potential security risks in doing this, but for most scientific users it is a good solution.
+ 1. '''Mac users (Apple Silicon, M1):''' Anaconda does not yet fully support native M1 software, so you will need to install the normal Mac build. The installer will say that you appear not to be running on a 64 bit machine, and ask if you wish to install anyway. Say YES. Performance is excellent even though it isn't a native build.  
+
+=== Troubleshooting and Tips ===
+
+ 1. If you have problems with any of these programs, the first thing to check is whether you have PYTHONPATH, PYTHONHOME, LD_LIBRARY_PATH or DYLD_LIBRARY_PATH set in your shell. While used in previous versions of EMAN, variables are no longer used, and in some cases may interfere with Anaconda. If they are set to make some other software package work, but they interfere with the programs above, you will have to unset them, and set them only when you need the other software.
+ 1. Specifically, if only the last command fails and you are using an Nvidia graphics card, it is likely caused by a graphics card driver incompatibility. Updating the Nvidia driver usually fixes the problem. On recent Ubuntu systems, running ''apt-get install nvidia-current'' works. On other systems, you may need to follow the installation guide from Nvidia.
+ 1. You will find that when you open a new shell, you will see (base) added to your command prompt. This indicates that Anaconda, the environment EMAN2 now uses for distribution, is active, and you can run EMAN2/SPARX/SPHIRE commands. 
+  * If this causes issues for other software, you can type {{{conda deactivate}}} and EMAN2 commands will no longer work (but any software that doesn't like Anaconda will work).
+  * Alternatively, you can type {{{conda config --set auto_activate_base False}}}, which will prevent Anaconda from being activated automatically when you open new shells. In that case you will need to do a {{{conda activate}}} before running EMAN2/SPARX/SPHIRE commands.
+
+
+== Windows ==
+We provide 64 bit Windows binaries for EMAN2, however, please see the [[#Windows-WSL]] option below for what may be a better alternative. Notes:
+
+ * SPARX/SPHIRE are not supported.
+ * EMAN2 functionality may not be complete using this first approach. You may get more complete functionality, but with some additional effort using the Linux/Bash shell approach below.
+ * Even for EMAN2, Windows support remains somewhat marginal, and is provided primarily for utility functions and basic GUI tools, like micrograph evaluation and particle picking. Complete refinements may not work well under Windows. You are welcome to ask questions in the mailing list, but there may be limited help we can provide because we simply don't have Windows machines around for testing.
+
+=== Native Win7/10 64 bit ===
+ 1. Download [[https://cryoem.bcm.edu/cryoem/static/software/continuous_build/eman2_sphire_sparx.win.unstable.exe|eman2.9_sphire1.4_sparx.win64.exe]].
+ 1. Launch the installer.
+  1. '''Select Installation Type:''' Just Me
+  1. '''Choose Installation Location:''' Select a location with NO space in path
+  1. '''Advanced Installation Options:''' Don't add EMAN2 to PATH environment variable.
+ 1. Open Anaconda Prompt by clicking Windows '''Start Menu -> Anaconda3 (64-bit) -> Anaconda Prompt''' or '''Start Menu -> Anaconda3 (64-bit) -> Anaconda Prompt(installation-folder-name)'''.
+ 1. In most cases you will want to install: [[https://bitbucket.org/vinay.sajip/pylauncher/downloads/|Python Launcher]]  ([[https://bitbucket.org/vinay.sajip/pylauncher/downloads/launchwin-1.0.1.6.msi|launchwin-1.0.1.6.msi]]).
+ 1. Run these programs to see if the install worked:
+ {{{
+e2version.py
+e2speedtest.py
+e2display.py
+e2proc2d.py :64:64:1 test.hdf --process mask.sharp:outer_radius=24
+}}}
+
+
+<<Anchor(Windows-WSL)>>
+=== Windows 10 - Linux/Bash shell (As of 12/15/2020) ===
+Windows 10 includes an embedded Ubuntu Linux environment. It is possible to run the EMAN2 '''Linux binaries''' within this Win10 environment, but you will need to install some additional dependencies to do so. Also, you will effectively be running at a Linux command prompt, so you will have to become a bit familiar with Linux to do this, but it does avoid installing an additional operating system on your machine.
+
+{{{#!wiki note
+https://docs.microsoft.com/en-us/windows/wsl/install-win10.
+}}}
+
+ 1. Click "Start" and type "Turn Windows Features on or off".
+   * Enable "Windows Subsystem for Linux".
+   * Enable "Virtual Machine Platform".
+
+ {{attachment:Windows Features.png||width=600}}
+
+ 1. Install Ubuntu from "Microsoft Store".
+
+ {{attachment:Windows Store - Ubuntu.png||width=600}}
+
+ 1. Run "Ubuntu" from Start Menu.
+
+ 1. Install OpenGL.
+ {{{#!highlight bash
+sudo apt update
+sudo apt install libsm-dev libxrender-dev build-essential libgl1-mesa-dev mesa-utils mesa-common-dev libglu1-mesa libglu1-mesa-dev mesa-utils
+sudo apt autoremove
+}}}
+
+ 1. Install [[https://sourceforge.net/projects/xming/|Xming X Server for Windows]].
+  * Don't forget the fonts and Mesa (OpenGL) modules! If it seems to work, but the letters are black boxes, or you have other visual artifacts, the problem is probably with OpenGL support.
+
+ 1. Download and install [[https://cryoem.bcm.edu/cryoem/static/software/continuous_build/eman2_sphire_sparx.linux.unstable.sh|eman2_sphire_sparx.linux.unstable.sh]], [[#Linux]].
+ {{{#!wiki note
+Make sure to follow the instructions for shell initialization using `conda-init`.
+}}}
+
+ 1. Start X Server and set environment variables.
+ {{{#!highlight bash
+export DISPLAY=:0
+glxinfo | grep OpenGL
+}}}
+
+ {{attachment:OpenGL output.png||width=700}}
+
+
+ 1. Run these programs to see if the install worked:
+ {{{#!highlight bash
+e2version.py
+e2speedtest.py
+e2display.py
+e2proc2d.py :64:64:1 test.hdf --process mask.sharp:outer_radius=24
+}}}
+
+ {{attachment:Windows e2display.png||width=700}}
+
+
+
+<<Anchor(GPU)>>
+
+= Using the GPU (Linux only) =
+Currently, the GPU is only used for neural network operations in tomogram annotation and in particle picking. It provides a ~10 fold or more speed up in neural network training. The new GPU developments are currently based on [[http://www.tensorflow.org|TensorFlow]]. From about 2006-2012 EMAN2 had its own internal CUDA code, which could be compiled into the C++ library. This has been deprecated, and likely no longer works, though the code is still present. We are working on a new GPU support strategy moving forward.
+
+Many machines will have CUDA installed already, and if CUDA is an appropriate version, this should work fine with the !TensorFlow version shipped with EMAN2. However, if you are running newer versions of CUDA there may be problems. You can test compatibility quickly with:
+{{{
+# Make sure you have your environment set to run EMAN2 programs
+e2version.py
+# The above command should work and return your current version. If it does, then run:
+python -c "import tensorflow"
+}}}
+
+If this command does not return an error, then you should be able to run deep learning software within EMAN2. If it does raise an error, then you will need to debug the problem:
+
+ * If you do not have CUDA installed at all (and you are on a Linux machine with an NVidia GPU):
+   * Installation depends on linux distribution, try your package manager for CUDA and/or CUDA-toolkit, for example, on Ubuntu 16.10:
+
+   {{{
+apt-get install nvidia-cuda-toolkit
+}}}
+ * If the version of CUDA you have installed is incompatible, then you will need to get a compatible tensorflow installed in your Anaconda environment. Here is one possible suggestion:
+ {{{
+conda remove tensorflow-gpu tensorflow-gpu-base
+pip install cython
+pip install tensorflow
+# read any messages carefully, if there are errors you may need other installations
+}}}
+ {{{
+[dnn]
+enabled=False
+}}}
+
+ . If you get a very long string of errors a few seconds after trying to train a network, and see references to "narrowing" in the errors, this probably means your C++ compiler is newer than Theano expects. You can try adding the following to your .theanorc file:
+ {{{
+[gcc]
+cxxflags = -Wno-narrowing
+}}}
