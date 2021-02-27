@@ -27,7 +27,7 @@ Standard instructions for establishing a build and runtime environment for EMAN/
 
 <<TableOfContents()>>
 
-== Initial Setup and Build (one time) ==
+== Initial Setup (one time) ==
 
  1. '''Remove/disable other Anaconda/Miniconda/EMAN installations.''' If you do not have Anaconda/Miniconda (or another copy of EMAN2/SPARX/SPHIRE) already installed in your account, skip to step [[#install_miniconda|2]]. If you DO have Anaconda or Miniconda installed in your account, you must ensure that any existing install you have is not active in your shell (not in PATH, no LD_LIBRARY_PATH, PYTHONPATH or PYTHONHOME set). While it may also be possible to set up an environment for EMAN2 in your existing Anaconda install, you will need to know what you're doing, and adapt these instructions to your situation.
  {{{#!highlight bash
@@ -140,16 +140,21 @@ git clone https://github.com/cryoem/eman2.git # this will create an eman2 folder
 mkdir <build-directory> # eg- $HOME/src/eman2-build
 }}}
 
+== Build and Install: Daily development, Update code, etc. ==
+
+When you start a new shell, these are the steps you will need to take before running EMAN programs or compiling the system:
+
  1. '''Activate''' your environment. If you used a different name above, use it here too.
  {{{#!highlight bash
 conda activate eman2
 }}}
 
- 1. '''Checkout source code''' and pull from the remote.
+ 1. '''Update and Checkout source code'''. Periodically you should update your source using standard git techniques.
  {{{#!highlight bash
 cd <source-directory>  # <path-where-you-want-eman2-source>/eman2
 git fetch --all --prune
 git checkout master
+git pull
 }}}
 
  1. '''CMake'''
@@ -180,36 +185,6 @@ make install
  {{{#!highlight bash
 make test          # if everything passes you are fine, if there are failures, please ask. A failure does not necessarily mean a bad build, it may be a problem with the test.
 make test-verbose  # verbose test output to help to identify specific failures
-}}}
-
-
-{{{#!wiki note
-For debugging and reporting, see [[#debug_and_report|Debugging and Reporting]].
-}}}
-
-
-
-
-== EMAN Daily Development (updating code, etc) ==
-When you start a new shell, these are the steps you will need to take before running EMAN2 programs or compiling the system:
-
- 1. '''Activate''' your environment. If you used a different name above, use it here too.
- {{{#!highlight bash
-conda activate eman2
-}}}
-
- 1. '''Update'''. Periodically you should update your source using standard git techniques. If you are not modifying EMAN, just compiling from source, you just need to periodically:
- {{{#!highlight bash
-cd <source-directory>  # <path-where-you-want-eman2-source>/eman2
-git pull
-}}}
-
- 1. '''Build EMAN'''
- {{{#!highlight bash
-cd <build-directory>
-make -j
-# if there are build problems, before reporting them, try rerunning cmake (above) first
-make install
 }}}
 
  1. '''Other Environments'''. To switch to another conda environment (stop working with EMAN2), first deactivate your current environment.
