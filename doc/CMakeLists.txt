@@ -1,5 +1,4 @@
 IF(ENABLE_AUTODOC)
-    ADD_SUBDIRECTORY(latex)
     ADD_SUBDIRECTORY(modular_class_html)
     ADD_SUBDIRECTORY(doxygen)
 ENDIF()
@@ -9,5 +8,5 @@ INSTALL(FILES ${static_html}
   DESTINATION    doc
 )
 
-INSTALL(FILES INSTALL EMAN2.0.big.jpg 
+INSTALL(FILES EMAN2.0.big.jpg 
     DESTINATION examples)
