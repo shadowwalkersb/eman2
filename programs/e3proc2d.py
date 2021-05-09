@@ -422,7 +422,7 @@ def main():
 				isthreed = True
 
 		if not isthreed:
-			if nimg <= n1 or n1 < 0:
+			if not (nimg > n1 >= 0):
 				n1 = nimg - 1
 		else:
 			if plane in xyplanes:
@@ -432,7 +432,7 @@ def main():
 			elif plane in yzplanes:
 				n1 = tomo_nx-1
 
-			if options.last >= 0 and options.last < n1:
+			if 0 <= options.last < n1:
 				n1 = options.last
 			elif options.last > n1:
 				print('The value for --last is greater than the number of images in the input stack.')

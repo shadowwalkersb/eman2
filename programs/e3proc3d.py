@@ -277,7 +277,7 @@ def main():
 	n1 = options.last
 	if infile[0]==":" : nimg=1
 	else : nimg = EMUtil.get_image_count(infile)
-	if n1 > nimg or n1<0: n1=nimg-1
+	if not (0 <= n1 <= nimg ): n1 = nimg-1
 
 	# If the output file exists and has exactly one image we delete the file later if writing compressed
 	try:
@@ -341,7 +341,7 @@ def main():
 	for append_option in append_options:
 		index_d[append_option] = 0
 
-	if(n0 < 0 or n0 > nimg):
+	if not (0 <= n0 <= nimg):
 		print("Your first index is out of range, changed to zero")
 		n0 = 0
 
@@ -657,7 +657,7 @@ def main():
 					print('clip option takes 1, 3 or 6 arguments. --clip=x[,y,z[,xc,yc,zc]]')
 					return
 
-				if not (xc>=0 and yc>=0 and zc>=0 and xc<x and yc<y and zc<z):
+				if not (0 <= xc < x and 0 <= yc < y and 0 <= zc < z):
 					xc = old_div(x,2)
 					yc = old_div(y,2)
 					zc = old_div(z,2)
