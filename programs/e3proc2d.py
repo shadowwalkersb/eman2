@@ -239,6 +239,9 @@ def main():
 
 	(options, args) = parser.parse_args()
 
+	if options.parallel:
+		parser.error("Parallelism not supported. Please use e2proc2dpar.py")
+
 	if len(args) < 2:
 		print("usage: " + usage)
 		print("Please run '" + progname + " -h' for detailed options")
@@ -355,9 +358,6 @@ def main():
 
 			if out3d and not inp3d:
 				options.twod2threed = True
-
-		if options.parallel:
-			parser.error("Parallelism not supported. Please use e2proc2dpar.py")
 
 		if options.average or options.avgseq > 0:
 			averager = parsemodopt(options.averager)
