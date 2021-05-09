@@ -231,7 +231,7 @@ def main():
 	eer_input_group.add_argument("--eer4x", action="store_true", help="Render EER file on 16k grid.")
 
 	# Parallelism
-	parser.add_argument("--parallel",type=str,help="Run in parallel, specify type:n=<proc>:option:option",default=None)
+	parser.add_argument("--parallel",action="store_true")
 
 	append_options = ["anisotropic","clip", "process", "meanshrink", "medianshrink", "fouriershrink", "scale", "randomize", "rotate", "translate","add", "headertransform"]
 
@@ -357,9 +357,7 @@ def main():
 				options.twod2threed = True
 
 		if options.parallel:
-			r = doparallel(sys.argv,options.parallel,args)
-			E2end(logid)
-			sys.exit(r)
+			parser.error("Parallelism not supported. Please use e2proc2dpar.py")
 
 		if options.average or options.avgseq > 0:
 			averager = parsemodopt(options.averager)
@@ -1114,8 +1112,6 @@ def main():
 
 	E2end(logid)
 
-def doparallel(argv,parallel,args):
-	print("Parallelism not supported. Please use e2proc2dpar.py")
 
 if __name__ == "__main__":
 	main()
