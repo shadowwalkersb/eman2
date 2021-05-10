@@ -207,7 +207,7 @@ def main():
 	parser.add_argument("--rotavg", action="store_true", help="Compute the 1-D rotational average of each image as a final step before writing the output", default=False)
 	parser.add_argument("--rotate", type=float, action="append", help="Rotate clockwise (in degrees)")
 	parser.add_argument("--rfp",  action="store_true", help="this is an experimental option")
-	parser.add_argument("--fp",  type=int, help="This generates rotational/translational 'footprints' for each input particle, the number indicates which algorithm to use (0-6)")
+	parser.add_argument("--fp",  type=int, choices=range(7), help="This generates rotational/translational 'footprints' for each input particle, the number indicates which algorithm to use (0-6)")
 	parser.add_argument("--scale", metavar="f", type=float, action="append", help="Scale by specified scaling factor. Clip must also be specified to change the dimensions of the output map.")
 	parser.add_argument("--anisotropic", type=str,action="append", help="Anisotropic scaling, stretches on one axis and compresses the orthogonal axis. Specify amount,angle. See e2evalrefine")
 	parser.add_argument("--selfcl", metavar="steps mode", type=int, nargs=2, help="Output file will be a 180x180 self-common lines map for each image.")
