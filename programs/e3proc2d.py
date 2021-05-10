@@ -174,7 +174,7 @@ def main():
 
 	parser.add_argument("--apix", type=float, help="A/pixel for S scaling")
 	parser.add_argument("--average", action="store_true", help="Averages all input images (without alignment) and writes a single output image")
-	parser.add_argument("--avgseq", type=int,default=0, help="Averages sets of N sequential frames. eg - if N=4 and the input contains 100 images, the output would be 25 images")
+	parser.add_argument("--avgseq", metavar="N", type=int, default=0, help="Averages sets of N sequential frames. eg - if N=4 and the input contains 100 images, the output would be 25 images")
 	parser.add_argument("--averager",type=str,help="If --average is specified, this is the averager to use (e2help.py averager). Default=mean",default="mean")
 	parser.add_argument("--calcsf", metavar="outputfile", type=str, help="calculate a radial structure factor for the image and write it to the output file, must specify apix. divide into <n> angular bins")
 	parser.add_argument("--calccont", action="store_true", help="Compute the low resolution azimuthal contrast of each image and put it in the header as eval_contrast_lowres. Larger values imply more 'interesting' images.")
