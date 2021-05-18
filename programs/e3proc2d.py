@@ -200,8 +200,6 @@ def main():
 	parser.add_argument("--compressbits", type=int,help="HDF only. Bits to keep for compression. -1 for no compression",default=-1)
 	parser.add_argument("--outmode", type=str, default="float", help="All EMAN2 programs write images with 4-byte floating point values when possible by default. This allows specifying an alternate format when supported (float, int8, int16, int32, uint8, uint16, uint32). Values are rescaled to fill MIN-MAX range.")
 	parser.add_argument("--outnorescale", action="store_true", default=False, help="If specified, floating point values will not be rescaled when writing data as integers. Values outside of range are truncated.")
-	parser.add_argument("--mrc16bit",  action="store_true", help="(deprecated, use --outmode instead) output as 16 bit MRC file")
-	parser.add_argument("--mrc8bit",  action="store_true", help="(deprecated, use --outmode instead) output as 8 bit MRC file")
 	parser.add_argument("--fixintscaling", type=str, default=None, help="When writing to an 8 or 16 bit integer format the data must be scaled. 'noscale' will assume the pixel values are already correct, 'full' will insure the full range of values are included in the output, 'sane' will pick a good range, a number will set the range to mean+=sigma*number")
 	parser.add_argument("--multfile", type=str, action="append", help="Multiplies the volume by another volume of identical size. This can be used to apply masks, etc.")
 
@@ -261,14 +259,6 @@ def main():
 		print('The --step option contains both a step size and the first image to step from.')
 		print('Please use only the --step option rather than --step and --first.')
 		sys.exit(1)
-
-	if options.mrc16bit:
-		print("Deprecated option mrc16bit, please use outmode=int16")
-		options.outmode = "int16"
-
-	if options.mrc8bit:
-		print("Deprecated option mrc8bit, please use outmode=int8|uint8")
-		options.outmode = "int8"
 
 	if options.outmode not in file_mode_map:
 		print("Invalid output mode, please specify one of :\n",str(list(file_mode_map.keys())).translate(None,'"[]'))

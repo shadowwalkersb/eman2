@@ -108,8 +108,6 @@ def main():
 	parser.add_option("--medianshrink", metavar="n", type="int", action="append", help="Downsamples the volume by a factor of n by computing the local median")
 	parser.add_option("--meanshrink", metavar="n", type="int", action="append", help="Downsamples the volume by a factor of n by computing the local average")
 	parser.add_option("--meanshrinkbig", metavar="n", type="int", default=0, help="Downsamples the volume by a factor of n without reading the entire volume into RAM. The output file (after shrinking) must fit into RAM. If specified, this must be the ONLY option on the command line. Any other options will be ignored. Output data type will match input data type. Works only on single image files, not stack files.")
-	parser.add_option("--mrc16bit",  action="store_true", default=False, help="(deprecated, use --outmode instead) output as 16 bit MRC file")
-	parser.add_option("--mrc8bit",  action="store_true", default=False, help="(deprecated, use --outmode instead) output as 8 bit MRC file")
 	parser.add_option("--mult", metavar="f", type="float", help="Scales the densities by a fixed number in the output")
 	parser.add_option("--multfile", type="string", action="append", help="Multiplies the volume by another volume of identical size. This can be used to apply masks, etc.")
 
@@ -154,13 +152,6 @@ def main():
 	if options.step and options.first:
 		print('Invalid options. You used --first and --step. The --step option contains both a step size and the first image to step from. Please use only the --step option rather than --step and --first')
 		sys.exit(1)
-
-	if options.mrc16bit:
-		print("Deprecated option mrc16bit, please use outmode=int16")
-		options.outmode="int16"
-	if options.mrc8bit:
-		print("Deprecated option mrc8bit, please use outmode=int8")
-		options.outmode="int8"
 
 	if options.outmode not in file_mode_map :
 		print("Invalid output mode, please specify one of :\n",str(list(file_mode_map.keys())).translate(None,'"[]'))
