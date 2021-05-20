@@ -31,4 +31,13 @@
 from EMAN2 import EMArgumentParser
 
 
+proc2d_opts = {'--add', '--addfile', '--apix', '--average', '--averager',
+               '--calcsf', '--clip', '--compressbits',
+               '--first', '--fouriershrink', '--last',
+               '--meanshrink', '--medianshrink',
+               '--mult', '--multfile',
+               '--outmode', '--outnorescale', '--outtype',
+               '--ppid', '--process', '--scale', '--step',
+               '--swap', '--unstacking'}
+
 parser = EMArgumentParser(allow_abbrev=False)
