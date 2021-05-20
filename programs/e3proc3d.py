@@ -345,9 +345,9 @@ def main():
 		print("Your first index is out of range, changed to zero")
 		n0 = 0
 
-	if(n1 == -1):
+	if n1 == -1:
 		n1 = nimg-1
-	elif(n1 > nimg-1):
+	elif n1 > nimg-1:
 		print("Your last index is out of range, changed to %d" % (nimg-1))
 		n1 = nimg-1
 
@@ -406,7 +406,7 @@ def main():
 
 		for option1 in optionlist:
 			if option1 == "origin":
-				if(len(options.origin)==3):
+				if len(options.origin) == 3:
 					(originx, originy, originz) = options.origin
 				else:
 					print('')
@@ -714,7 +714,7 @@ def main():
 				index_d[option1] += 1
 
 			elif option1 == "fftclip":
-				if(len(options.fftclip)==3):
+				if len(options.fftclip) == 3:
 					(fnx, fny, fnz) = options.fftclip
 				else:
 					print('fftclip option takes either 3 arguments. --fftclip=x,y,z')
@@ -784,7 +784,7 @@ def parse_infile(infile, first, last, step, apix=None):
 
 	nimg = EMUtil.get_image_count(infile)
 
-	if (nimg > 1):
+	if nimg > 1:
 		#print "it appears %s contains %d image" % (infile, nimg)
 		d = EMData(infile,nimg-1)	# we read the last image, since it should always exist
 
@@ -796,7 +796,7 @@ def parse_infile(infile, first, last, step, apix=None):
 		if not apix:
 			apix = apixdata
 
-		if (z == 1):
+		if z == 1:
 			print("the images are 2D - I will now make a 3D image out of the 2D images")
 			data = []
 			return_data = EMData()
