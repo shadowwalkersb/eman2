@@ -428,7 +428,7 @@ def main():
 			elif option1 == "calcfsc" :
 				datafsc=EMData(options.calcfsc)
 				fsc = data.calc_fourier_shell_correlation(datafsc)
-				third = old_div(len(fsc),3)
+				third = len(fsc) // 3
 				xaxis = fsc[0:third]
 				fsc = fsc[third:2*third]
 				saxis = [old_div(x,apix) for x in xaxis]
@@ -533,8 +533,8 @@ def main():
 					print("Error: please specify D symmetry as alignctod")
 					sys.exit(1)
 				nsym=int(options.alignctod[0][1:])
-				angrange=old_div(360.0,nsym)		# probably more than necessary, but we'll do it anyway...
-				astep=360.0/pi*atan(old_div(2.0,data["nx"]))
+				angrange=360.0/nsym		# probably more than necessary, but we'll do it anyway...
+				astep=360.0/pi*atan(2.0/data["nx"])
 				nstep=int(old_div(angrange,astep))
 
 				best=(1e23,0)
@@ -553,8 +553,8 @@ def main():
 					best=min(best,(c,az))
 					if options.verbose: print(azi,az,c,best)
 
-				print("alignctod, rotate:",old_div(best[1],2.0))
-				data.process_inplace("xform",{"transform":Transform({"type":"eman","az":old_div(best[1],2.0)})})	# 1/2 the angle to get it on the 2-fold
+				print("alignctod, rotate:",best[1]/2.0)
+				data.process_inplace("xform",{"transform":Transform({"type":"eman","az":best[1]/2.0})})	# 1/2 the angle to get it on the 2-fold
 
 			elif option1 == "align":
 				if alignref==None :

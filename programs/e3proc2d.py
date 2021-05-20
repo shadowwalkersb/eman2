@@ -816,10 +816,10 @@ def main():
 					d.process_inplace("xform",{"transform":xform})
 
 				elif option1 == "selfcl":
-					scl = old_div(options.selfcl[0], 2)
-					sclmd = options.selfcl[1]
 					sc = EMData()
 
+					scl = options.selfcl[0] // 2
+					sclmd = options.selfcl[1]
 					if sclmd == 0:
 						sc.common_lines_real(d, d, scl, true)
 					else:
@@ -868,7 +868,7 @@ def main():
 					curve=[old_div(i,(dataf["nx"]*dataf["ny"]*dataf["nz"])) for i in curve]
 					outfile2 = sfout
 
-					sf_dx = old_div(1.0, (d["apix_x"] * ny))
+					sf_dx = 1.0 / (d["apix_x"] * ny)
 					Util.save_data(0, sf_dx, curve, outfile2)
 
 				elif option1 == "interlv":
