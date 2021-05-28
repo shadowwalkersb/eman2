@@ -720,23 +720,36 @@ class EMArgumentParser(argparse.ArgumentParser):
 
 	def parse_args(self):
 		""" Masquerade as optparser parse options """
-		# newline = '\n'
-		# tab = '\t'
-		# delim = '@'
-		# re_type = re.compile(r"<class '(\w+)'>")
-		# re_repl = r'\1'
-		# for k in self._option_string_actions.values():
-		# 	dd = vars(k)
-		# 	if str(dd["option_strings"]) == "['-h', '--help']" or str(dd["option_strings"]) == "['--version']":
-		# 		continue
-		# 	print(f'{Path(sys.argv[0]).name} {delim} {dd["option_strings"]} {delim} '
-		# 		  f'{dd["default"]} {delim} '
-		# 		  f'{re.sub(re_type, re_repl, str(dd["type"]))} {delim} '
-		# 		  f'{dd["help"].replace(newline," ").replace(tab, " ")} {delim} '
-		# 		  )
-		# sys.exit(0)
-		parsedargs = argparse.ArgumentParser.parse_args(self)
-		return (parsedargs, parsedargs.positionalargs)
+		result = []
+		newline = '\n'
+		tab = '\t'
+		del1 = "<class "
+		del2 = ">"
+		delim = '@'
+		re_type = re.compile(r"<class '(\w+)'>")
+		re_repl = r'\1'
+		for k in self._option_string_actions.values():
+			dd = vars(k)
+			# print(f'{Path(sys.argv[0]).name}: {vars(k).keys()}')
+			# print(f'{re.search(re_type, str(dd["type"]))} {delim} ')
+			# print(f'{re.sub(re_type, re_repl, str(dd["type"]))} {delim} ')
+			if str(dd["option_strings"]) == "['-h', '--help']" or str(dd["option_strings"]) == "['--version']":
+				continue
+			print(f'{Path(sys.argv[0]).name} {delim} {dd["option_strings"]} {delim} '
+				  f'{dd["default"]} {delim} '
+				  # f'{dd["type"]} {delim} '
+				  f'{re.sub(re_type, re_repl, str(dd["type"]))} {delim} '
+				  # f'{dd["type"].replace(del1,"").replace(del2, "")} : '
+				  f'{dd["help"].replace(newline," ").replace(tab, " ")} {delim} '
+				  )
+			# result.append(vars(k))
+		# parsedargs = argparse.ArgumentParser.parse_args(self)
+		# pprint(vars(parsedargs))
+		# return result
+		# print(self._option_string_actions.values())
+		# self.error(self)
+		sys.exit(0)
+		# return (parsedargs, parsedargs.positionalargs)
 
 	def add_pos_argument(self, **kwargs):
 		""" Add a position argument, needed only for the GUI """
