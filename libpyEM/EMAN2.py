@@ -669,6 +669,9 @@ def commandoptions(options,exclude=[]):
 
 from pprint import pprint
 from pathlib import Path
+import re
+
+
 class EMArgumentParser(argparse.ArgumentParser):
 	""" subclass of argparser to masquerade as optparser and run the GUI """
 	def __init__(self, prog=None,usage=None,description=None,epilog=None,version=None,parents=[],formatter_class=argparse.HelpFormatter,prefix_chars='-',fromfile_prefix_chars=None,argument_default=None,conflict_handler='error',add_help=True,allow_abbrev=True):
@@ -687,14 +690,18 @@ class EMArgumentParser(argparse.ArgumentParser):
 		newline = '\n'
 		tab = '\t'
 		delim = '@'
+		re_type = re.compile(r"<class '(\w+)'>")
+		re_repl = r'\1'
 		for k in self._option_string_actions.values():
 			dd = vars(k)
+			if str(dd["option_strings"]) == "['-h', '--help']" or str(dd["option_strings"]) == "['--version']":
+				continue
 			print(f'{Path(sys.argv[0]).name} {delim} {dd["option_strings"]} {delim} '
 				  f'{dd["default"]} {delim} '
-				  f'{dd["type"]} {delim} '
+				  f'{re.sub(re_type, re_repl, str(dd["type"]))} {delim} '
 				  f'{dd["help"].replace(newline," ").replace(tab, " ")} {delim} '
 				  )
-		self.error(self)
+		sys.exit(0)
 		# return (parsedargs, parsedargs.positionalargs)
 
 	def add_pos_argument(self, **kwargs):
