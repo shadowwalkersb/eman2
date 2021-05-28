@@ -686,12 +686,13 @@ class EMArgumentParser(argparse.ArgumentParser):
 		""" Masquerade as optparser parse options """
 		newline = '\n'
 		tab = '\t'
+		delim = '@'
 		for k in self._option_string_actions.values():
 			dd = vars(k)
-			print(f'{Path(sys.argv[0]).name} : {dd["option_strings"]} : '
-				  f'{dd["dest"]} : '
-				  f'{dd["type"]} : '
-				  f'{dd["help"].replace(newline," ").replace(tab, " ")} : '
+			print(f'{Path(sys.argv[0]).name} {delim} {dd["option_strings"]} {delim} '
+				  f'{dd["default"]} {delim} '
+				  f'{dd["type"]} {delim} '
+				  f'{dd["help"].replace(newline," ").replace(tab, " ")} {delim} '
 				  )
 		self.error(self)
 		# return (parsedargs, parsedargs.positionalargs)
