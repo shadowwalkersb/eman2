@@ -667,6 +667,8 @@ def commandoptions(options,exclude=[]):
 	return " ".join(opts)
 
 
+from pprint import pprint
+from pathlib import Path
 class EMArgumentParser(argparse.ArgumentParser):
 	""" subclass of argparser to masquerade as optparser and run the GUI """
 	def __init__(self, prog=None,usage=None,description=None,epilog=None,version=None,parents=[],formatter_class=argparse.HelpFormatter,prefix_chars='-',fromfile_prefix_chars=None,argument_default=None,conflict_handler='error',add_help=True,allow_abbrev=True):
@@ -682,8 +684,17 @@ class EMArgumentParser(argparse.ArgumentParser):
 
 	def parse_args(self):
 		""" Masquerade as optparser parse options """
-		parsedargs = argparse.ArgumentParser.parse_args(self)
-		return (parsedargs, parsedargs.positionalargs)
+		newline = '\n'
+		tab = '\t'
+		for k in self._option_string_actions.values():
+			dd = vars(k)
+			print(f'{Path(sys.argv[0]).name} : {dd["option_strings"]} : '
+				  f'{dd["dest"]} : '
+				  f'{dd["type"]} : '
+				  f'{dd["help"].replace(newline," ").replace(tab, " ")} : '
+				  )
+		self.error(self)
+		# return (parsedargs, parsedargs.positionalargs)
 
 	def add_pos_argument(self, **kwargs):
 		""" Add a position argument, needed only for the GUI """

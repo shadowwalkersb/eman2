@@ -42,11 +42,12 @@ def main():
 	add_bin_path_to_sys_path()
 
 	with open('opts.txt', 'w') as fout:
+		fout.write("prog @ option @ default @ type @ help @ \n")
 		options = []
 		c=0
 		for prog in progs:
 			fout.write(get_parser_options(prog))
-			print(prog)
+			print(c, prog)
 			c += 1
 			# if c>1:
 			# 	break
