@@ -773,9 +773,14 @@ class EMArgumentParser(argparse.ArgumentParser):
 			if "nosharedb" in kwargs: del kwargs["nosharedb"]
 			if "returnNone" in kwargs: del kwargs["returnNone"]
 
-		if not kwargs["overwrite_common"]:
-			opt = args[0]
-			kwargs[opt] = self.common_options[opt]
+		if "overwrite_common" in kwargs:
+			if not kwargs["overwrite_common"]:
+				opt = args[0][2:]
+				val = self.common_options[opt]
+				kwargs['default'] = val[0]
+				kwargs['type'] = val[1]
+				kwargs['help'] = val[2]
+			del kwargs["overwrite_common"]
 
 		argparse.ArgumentParser.add_argument(self, *args, **kwargs)
 
