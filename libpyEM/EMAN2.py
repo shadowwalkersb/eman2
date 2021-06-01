@@ -674,6 +674,15 @@ import re
 
 class EMArgumentParser(argparse.ArgumentParser):
 	""" subclass of argparser to masquerade as optparser and run the GUI """
+
+	common_options = {
+		'ppid' : [-1, int, 'New PPID help'],
+		'path' : [None, str, 'New path help'],
+		'threads' : [4, int, 'New number of threads help'],
+		'sym' : ['c1', str, "New symmetry help"],
+	}
+
+
 	def __init__(self, prog=None,
 				 usage=None,
 				 description=None,
@@ -763,6 +772,10 @@ class EMArgumentParser(argparse.ArgumentParser):
 			if "dirbasename" in kwargs: del kwargs["dirbasename"]
 			if "nosharedb" in kwargs: del kwargs["nosharedb"]
 			if "returnNone" in kwargs: del kwargs["returnNone"]
+
+		if not kwargs["overwrite_common"]:
+			opt = args[0]
+			kwargs[opt] = self.common_options[opt]
 
 		argparse.ArgumentParser.add_argument(self, *args, **kwargs)
 
