@@ -676,7 +676,7 @@ class EMArgumentParser(argparse.ArgumentParser):
 	""" subclass of argparser to masquerade as optparser and run the GUI """
 
 	common_options = {
-		'ppid' : [-1, int, 'New PPID help'],
+		'ppid' : [-1, int, 'Set the PID of the parent process, used for cross platform PPID'],
 		'path' : [None, str, 'New path help'],
 		'threads' : [4, int, 'New number of threads help'],
 		'sym' : ['c1', str, "New symmetry help"],
