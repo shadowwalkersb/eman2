@@ -720,6 +720,21 @@ class EMArgumentParser(argparse.ArgumentParser):
 
 	def parse_args(self):
 		""" Masquerade as optparser parse options """
+		# newline = '\n'
+		# tab = '\t'
+		# delim = '@'
+		# re_type = re.compile(r"<class '(\w+)'>")
+		# re_repl = r'\1'
+		# for k in self._option_string_actions.values():
+		# 	dd = vars(k)
+		# 	if str(dd["option_strings"]) == "['-h', '--help']" or str(dd["option_strings"]) == "['--version']":
+		# 		continue
+		# 	print(f'{Path(sys.argv[0]).name} {delim} {dd["option_strings"]} {delim} '
+		# 		  f'{dd["default"]} {delim} '
+		# 		  f'{re.sub(re_type, re_repl, str(dd["type"]))} {delim} '
+		# 		  f'{dd["help"].replace(newline," ").replace(tab, " ")} {delim} '
+		# 		  )
+		# sys.exit(0)
 		parsedargs = argparse.ArgumentParser.parse_args(self)
 		return (parsedargs, parsedargs.positionalargs)
 
@@ -734,6 +749,7 @@ class EMArgumentParser(argparse.ArgumentParser):
 		self.optionslist.append(copy.deepcopy(kwargs))
 
 	def add_argument(self, *args, **kwargs):
+		pprint(f'{args} {kwargs}')
 
 		if "guitype" in kwargs:
 			if args[0][:2] == "--":
@@ -761,8 +777,12 @@ class EMArgumentParser(argparse.ArgumentParser):
 
 		if "overwrite_common" in kwargs:
 			if not kwargs["overwrite_common"]:
+				pprint(args)
 				opt = args[0][2:]
+				pprint(self.common_options)
 				val = self.common_options[opt]
+				pprint(val)
+				pprint(kwargs)
 				kwargs['default'] = val[0]
 				kwargs['type'] = val[1]
 				kwargs['help'] = val[2]
