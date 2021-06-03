@@ -7430,11 +7430,19 @@ for i in data:
     dict[i["option"]] = i
 
 import ast
+import sys
 
 
 with open('pdict.txt', 'w') as fout:
     for k,v in dict.items():
         del v['count']
         del v['option']
-        fout.write(f"'{ast.literal_eval(k)[0]}' : "
-                   f"{v}\n")
+        fout.write(f"'{ast.literal_eval(k)[0]}' : ""{")
+        key = 'default'
+        fout.write(f"'{key}': {v[key]}, ")
+        key = 'type'
+        fout.write(f"'{key}': {v[key]}, ")
+        key = 'help'
+        val = f"'{v[key]}'"
+        fout.write(f"'{key}': {val}, ")
+        fout.write("},\n")
