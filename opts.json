@@ -1,7 +1,6 @@
 [
  {
    "count": 169,
-   "prog": "e2RCTboxer.py ",
    "option": " ['--ppid'] ",
    "default": "-1",
    "type": " int ",
@@ -9,7 +8,6 @@
  },
  {
    "count": 140,
-   "prog": "e2RCTboxer.py ",
    "option": " ['--verbose', '-v'] ",
    "default": "0",
    "type": " int ",
@@ -17,7 +15,6 @@
  },
  {
    "count": 60,
-   "prog": "e2a2d_align.py ",
    "option": " ['--path'] ",
    "default": " None ",
    "type": " str ",
@@ -25,7 +22,6 @@
  },
  {
    "count": 55,
-   "prog": "e2align3d.py ",
    "option": " ['--sym'] ",
    "default": " c1 ",
    "type": " str ",
@@ -33,7 +29,6 @@
  },
  {
    "count": 55,
-   "prog": "e2a2d_align.py ",
    "option": " ['--threads'] ",
    "default": "4",
    "type": " int ",
@@ -41,7 +36,6 @@
  },
  {
    "count": 49,
-   "prog": "e2classaverage.py ",
    "option": " ['--parallel'] ",
    "default": " None ",
    "type": " None ",
@@ -49,7 +43,6 @@
  },
  {
    "count": 42,
-   "prog": "e2basis.py ",
    "option": " ['--mask'] ",
    "default": "-2",
    "type": " int ",
@@ -57,7 +50,6 @@
  },
  {
    "count": 41,
-   "prog": "e2boxer.py ",
    "option": " ['--apix'] ",
    "default": "-1",
    "type": " float ",
@@ -65,7 +57,6 @@
  },
  {
    "count": 31,
-   "prog": "e2classaverage.py ",
    "option": " ['--input'] ",
    "default": " None ",
    "type": " str ",
@@ -73,7 +64,6 @@
  },
  {
    "count": 31,
-   "prog": "e2a2d_align.py ",
    "option": " ['--iter'] ",
    "default": "0",
    "type": " int ",
@@ -81,7 +71,6 @@
  },
  {
    "count": 30,
-   "prog": "e2RCTboxer.py ",
    "option": " ['--shrink'] ",
    "default": "0",
    "type": " int ",
@@ -89,7 +78,6 @@
  },
  {
    "count": 28,
-   "prog": "e2align2d.py ",
    "option": " ['--output'] ",
    "default": " None ",
    "type": " str ",
@@ -97,7 +85,6 @@
  },
  {
    "count": 18,
-   "prog": "e2ctffind3util.py ",
    "option": " ['--maxres'] ",
    "default": "0",
    "type": " float ",
@@ -105,7 +92,6 @@
  },
  {
    "count": 17,
-   "prog": "e2a2d_align.py ",
    "option": " ['--align'] ",
    "default": " rotate_translate_tree ",
    "type": " str ",
@@ -113,7 +99,6 @@
  },
  {
    "count": 17,
-   "prog": "e2classaverage.py ",
    "option": " ['--keep'] ",
    "default": "1",
    "type": " float ",
@@ -121,7 +106,6 @@
  },
  {
    "count": 16,
-   "prog": "e2boxer_old.py ",
    "option": " ['--debug'] ",
    "default": " False ",
    "type": " None ",
@@ -129,7 +113,6 @@
  },
  {
    "count": 16,
-   "prog": "e2align3d.py ",
    "option": " ['--preprocess'] ",
    "default": " None ",
    "type": " str ",
@@ -137,7 +120,6 @@
  },
  {
    "count": 16,
-   "prog": "e2a2d_stat.py ",
    "option": " ['--ref'] ",
    "default": " None ",
    "type": " str ",
@@ -145,7 +127,6 @@
  },
  {
    "count": 15,
-   "prog": "e2boxer.py ",
    "option": " ['--compressbits'] ",
    "default": "6",
    "type": " int ",
@@ -153,7 +134,6 @@
  },
  {
    "count": 14,
-   "prog": "e2proc2d.py ",
    "option": " ['--clip'] ",
    "default": " None ",
    "type": " str ",
@@ -161,7 +141,6 @@
  },
  {
    "count": 14,
-   "prog": "e2RCTboxer.py ",
    "option": " ['--invert'] ",
    "default": " False ",
    "type": " None ",
@@ -169,7 +148,6 @@
  },
  {
    "count": 14,
-   "prog": "e2classaverage.py ",
    "option": " ['--normproc'] ",
    "default": " normalize.edgemean ",
    "type": " str ",
@@ -177,7 +155,6 @@
  },
  {
    "count": 13,
-   "prog": "e2a2d_align.py ",
    "option": " ['--cmp'] ",
    "default": " ccc ",
    "type": " str ",
@@ -185,7 +162,6 @@
  },
  {
    "count": 13,
-   "prog": "e2boxer.py ",
    "option": " ['--cs'] ",
    "default": "-1",
    "type": " float ",
@@ -193,7 +169,6 @@
  },
  {
    "count": 13,
-   "prog": "e2erasefiducials.py ",
    "option": " ['--lowpass'] ",
    "default": "1.11",
    "type": " float ",
@@ -201,7 +176,6 @@
  },
  {
    "count": 13,
-   "prog": "e2rct.py ",
    "option": " ['--maxshift'] ",
    "default": "2",
    "type": " int ",
@@ -209,7 +183,6 @@
  },
  {
    "count": 13,
-   "prog": "e2boxer.py ",
    "option": " ['--voltage'] ",
    "default": "-1",
    "type": " float ",
@@ -217,7 +190,6 @@
  },
  {
    "count": 12,
-   "prog": "e2a2d_align.py ",
    "option": " ['--aligncmp'] ",
    "default": " ccc ",
    "type": " str ",
@@ -225,7 +197,6 @@
  },
  {
    "count": 12,
-   "prog": "e2RCTboxer.py ",
    "option": " ['--boxsize'] ",
    "default": "-1",
    "type": " int ",
@@ -233,7 +204,6 @@
  },
  {
    "count": 12,
-   "prog": "e2refine_easy.py ",
    "option": " ['--breaksym'] ",
    "default": " False ",
    "type": " None ",
@@ -241,7 +211,6 @@
  },
  {
    "count": 12,
-   "prog": "e2a2d_stat.py ",
    "option": " ['--gui'] ",
    "default": " False ",
    "type": " None ",
@@ -249,7 +218,6 @@
  },
  {
    "count": 12,
-   "prog": "e2ctffind3util.py ",
    "option": " ['--minres'] ",
    "default": "0",
    "type": " float ",
@@ -257,7 +225,6 @@
  },
  {
    "count": 12,
-   "prog": "e2gmm_refine.py ",
    "option": " ['--niter'] ",
    "default": "10",
    "type": " int ",
@@ -265,7 +232,6 @@
  },
  {
    "count": 12,
-   "prog": "e2a2d_align.py ",
    "option": " ['--saveali'] ",
    "default": " False ",
    "type": " None ",
@@ -273,7 +239,6 @@
  },
  {
    "count": 12,
-   "prog": "e2match.py ",
    "option": " ['--threshold'] ",
    "default": "  ",
    "type": " str ",
@@ -281,7 +246,6 @@
  },
  {
    "count": 11,
-   "prog": "e2classaverage.py ",
    "option": " ['--averager'] ",
    "default": " mean ",
    "type": " str ",
@@ -289,7 +253,6 @@
  },
  {
    "count": 11,
-   "prog": "e2match.py ",
    "option": " ['--highpass'] ",
    "default": "  ",
    "type": " str ",
@@ -297,7 +260,6 @@
  },
  {
    "count": 11,
-   "prog": "e2fsc_local.py ",
    "option": " ['--setsf'] ",
    "default": "  ",
    "type": " str ",
@@ -305,7 +267,6 @@
  },
  {
    "count": 11,
-   "prog": "e2erasefiducials.py ",
    "option": " ['--subset'] ",
    "default": "0",
    "type": " int ",
@@ -313,7 +274,6 @@
  },
  {
    "count": 9,
-   "prog": "e2boxer.py ",
    "option": " ['--ac'] ",
    "default": "10",
    "type": " float ",
@@ -321,7 +281,6 @@
  },
  {
    "count": 9,
-   "prog": "e2bdb.py ",
    "option": " ['--exclude'] ",
    "default": " None ",
    "type": " str ",
@@ -329,7 +288,6 @@
  },
  {
    "count": 9,
-   "prog": "e2bdb.py ",
    "option": " ['--force'] ",
    "default": " False ",
    "type": " None ",
@@ -337,7 +295,6 @@
  },
  {
    "count": 9,
-   "prog": "e2a2d_align.py ",
    "option": " ['--ralign'] ",
    "default": " None ",
    "type": " str ",
@@ -345,7 +302,6 @@
  },
  {
    "count": 8,
-   "prog": "e2basis.py ",
    "option": " ['--maskfile'] ",
    "default": " None ",
    "type": " str ",
@@ -353,7 +309,6 @@
  },
  {
    "count": 8,
-   "prog": "e2make3d.py ",
    "option": " ['--pad'] ",
    "default": " None ",
    "type": " str ",
@@ -361,7 +316,6 @@
  },
  {
    "count": 8,
-   "prog": "e2a2d_align.py ",
    "option": " ['--raligncmp'] ",
    "default": " ccc ",
    "type": " str ",
@@ -369,7 +323,6 @@
  },
  {
    "count": 7,
-   "prog": "e2bdb.py ",
    "option": " ['--check'] ",
    "default": " False ",
    "type": " None ",
@@ -377,7 +330,6 @@
  },
  {
    "count": 7,
-   "prog": "e2refine_easy.py ",
    "option": " ['--mass'] ",
    "default": "0",
    "type": " float ",
@@ -385,7 +337,6 @@
  },
  {
    "count": 7,
-   "prog": "e2a2d_stat.py ",
    "option": " ['--mode'] ",
    "default": " score ",
    "type": " str ",
@@ -393,7 +344,6 @@
  },
  {
    "count": 7,
-   "prog": "e2classifykmeans.py ",
    "option": " ['--ncls'] ",
    "default": "-1",
    "type": " int ",
@@ -401,7 +351,6 @@
  },
  {
    "count": 7,
-   "prog": "e2make3d.py ",
    "option": " ['--postprocess'] ",
    "default": " None ",
    "type": " str ",
@@ -409,7 +358,6 @@
  },
  {
    "count": 7,
-   "prog": "e2classifyligand.py ",
    "option": " ['--process'] ",
    "default": " None ",
    "type": " str ",
@@ -417,7 +365,6 @@
  },
  {
    "count": 7,
-   "prog": "e2ptclvsmap.py ",
    "option": " ['--simcmp'] ",
    "default": " optsub:maxres=12 ",
    "type": " str ",
@@ -425,7 +372,6 @@
  },
  {
    "count": 7,
-   "prog": "e2spt_ctf_old.py ",
    "option": " ['--tltfile'] ",
    "default": "  ",
    "type": " str ",
@@ -433,7 +379,6 @@
  },
  {
    "count": 7,
-   "prog": "e2fsc_real_local.py ",
    "option": " ['--tophat'] ",
    "default": " False ",
    "type": " None ",
@@ -441,7 +386,6 @@
  },
  {
    "count": 6,
-   "prog": "e2classaverage.py ",
    "option": " ['--center'] ",
    "default": " xform.center ",
    "type": " str ",
@@ -449,7 +393,6 @@
  },
  {
    "count": 6,
-   "prog": "e2classaverage.py ",
    "option": " ['--keepsig'] ",
    "default": " False ",
    "type": " None ",
@@ -457,7 +400,6 @@
  },
  {
    "count": 6,
-   "prog": "e2spt_boxer_convnet.py ",
    "option": " ['--label'] ",
    "default": " tomobox ",
    "type": " str ",
@@ -465,7 +407,6 @@
  },
  {
    "count": 6,
-   "prog": "e2match.py ",
    "option": " ['--mirror'] ",
    "default": " False ",
    "type": " None ",
@@ -473,7 +414,6 @@
  },
  {
    "count": 6,
-   "prog": "e2basis.py ",
    "option": " ['--nbasis'] ",
    "default": "-1",
    "type": " int ",
@@ -481,7 +421,6 @@
  },
  {
    "count": 6,
-   "prog": "e2ctf.py ",
    "option": " ['--phaseplate'] ",
    "default": " False ",
    "type": " None ",
@@ -489,7 +428,6 @@
  },
  {
    "count": 6,
-   "prog": "e2spt_binarytree.py ",
    "option": " ['--plots'] ",
    "default": " False ",
    "type": " None ",
@@ -497,7 +435,6 @@
  },
  {
    "count": 6,
-   "prog": "e2classaverage.py ",
    "option": " ['--prefilt'] ",
    "default": " False ",
    "type": " None ",
@@ -505,7 +442,6 @@
  },
  {
    "count": 6,
-   "prog": "e2spt_binarytree.py ",
    "option": " ['--radius'] ",
    "default": "0",
    "type": " float ",
@@ -513,7 +449,6 @@
  },
  {
    "count": 6,
-   "prog": "e2ptclvsmap.py ",
    "option": " ['--simalign'] ",
    "default": " rotate_translate_flip ",
    "type": " str ",
@@ -521,7 +456,6 @@
  },
  {
    "count": 6,
-   "prog": "e2bdb.py ",
    "option": " ['--step'] ",
    "default": " 0,1 ",
    "type": " str ",
@@ -529,7 +463,6 @@
  },
  {
    "count": 5,
-   "prog": "e2refine2d.py ",
    "option": " ['--classalign'] ",
    "default": " rotate_translate_tree ",
    "type": " str ",
@@ -537,7 +470,6 @@
  },
  {
    "count": 5,
-   "prog": "e2refine2d.py ",
    "option": " ['--classaligncmp'] ",
    "default": " ccc ",
    "type": " str ",
@@ -545,7 +477,6 @@
  },
  {
    "count": 5,
-   "prog": "e2refine2d.py ",
    "option": " ['--classaverager'] ",
    "default": " ctf.weight.autofilt ",
    "type": " str ",
@@ -553,7 +484,6 @@
  },
  {
    "count": 5,
-   "prog": "e2refine2d.py ",
    "option": " ['--classcmp'] ",
    "default": " ccc ",
    "type": " str ",
@@ -561,7 +491,6 @@
  },
  {
    "count": 5,
-   "prog": "e2refine2d.py ",
    "option": " ['--classiter'] ",
    "default": "5",
    "type": " int ",
@@ -569,7 +498,6 @@
  },
  {
    "count": 5,
-   "prog": "e2refine2d.py ",
    "option": " ['--classkeep'] ",
    "default": "0.85",
    "type": " float ",
@@ -577,7 +505,6 @@
  },
  {
    "count": 5,
-   "prog": "e2refine2d.py ",
    "option": " ['--classkeepsig'] ",
    "default": " False ",
    "type": " None ",
@@ -585,7 +512,6 @@
  },
  {
    "count": 5,
-   "prog": "e2classaverage.py ",
    "option": " ['--classmx'] ",
    "default": " None ",
    "type": " str ",
@@ -593,7 +519,6 @@
  },
  {
    "count": 5,
-   "prog": "e2refine2d.py ",
    "option": " ['--classnormproc'] ",
    "default": " normalize.edgemean ",
    "type": " str ",
@@ -601,7 +526,6 @@
  },
  {
    "count": 5,
-   "prog": "e2refine2d.py ",
    "option": " ['--classralign'] ",
    "default": " None ",
    "type": " str ",
@@ -609,7 +533,6 @@
  },
  {
    "count": 5,
-   "prog": "e2refine2d.py ",
    "option": " ['--classraligncmp'] ",
    "default": " ccc ",
    "type": " str ",
@@ -617,7 +540,6 @@
  },
  {
    "count": 5,
-   "prog": "e2refinetorelion2d.py ",
    "option": " ['--defocus'] ",
    "default": "10000",
    "type": " float ",
@@ -625,7 +547,6 @@
  },
  {
    "count": 5,
-   "prog": "e2ctf.py ",
    "option": " ['--defocusmax'] ",
    "default": "4",
    "type": " float ",
@@ -633,7 +554,6 @@
  },
  {
    "count": 5,
-   "prog": "e2ctf.py ",
    "option": " ['--defocusmin'] ",
    "default": "0.6",
    "type": " float ",
@@ -641,7 +561,6 @@
  },
  {
    "count": 5,
-   "prog": "e2spt_align.py ",
    "option": " ['--goldcontinue'] ",
    "default": " False ",
    "type": " None ",
@@ -649,7 +568,6 @@
  },
  {
    "count": 5,
-   "prog": "e2gmm_refine.py ",
    "option": " ['--learnrate'] ",
    "default": "0.0001",
    "type": " float ",
@@ -657,7 +575,6 @@
  },
  {
    "count": 5,
-   "prog": "e2spt_refine.py ",
    "option": " ['--maskalign'] ",
    "default": " None ",
    "type": " str ",
@@ -665,7 +582,6 @@
  },
  {
    "count": 5,
-   "prog": "e2spt_align.py ",
    "option": " ['--maxang'] ",
    "default": "30",
    "type": " float ",
@@ -673,7 +589,6 @@
  },
  {
    "count": 5,
-   "prog": "e2spt_average.py ",
    "option": " ['--maxtilt'] ",
    "default": "90",
    "type": " float ",
@@ -681,7 +596,6 @@
  },
  {
    "count": 5,
-   "prog": "e2gmm_refine.py ",
    "option": " ['--model'] ",
    "default": "  ",
    "type": " str ",
@@ -689,7 +603,6 @@
  },
  {
    "count": 5,
-   "prog": "e2proc2d.py ",
    "option": " ['--mult'] ",
    "default": " None ",
    "type": " float ",
@@ -697,7 +610,6 @@
  },
  {
    "count": 5,
-   "prog": "e2classaverage.py ",
    "option": " ['--nofilecheck'] ",
    "default": " False ",
    "type": " None ",
@@ -705,7 +617,6 @@
  },
  {
    "count": 5,
-   "prog": "e2initialmodel.py ",
    "option": " ['--orientgen'] ",
    "default": " eman:delta=9.0:inc_mirror=0:perturb=1 ",
    "type": " str ",
@@ -713,7 +624,6 @@
  },
  {
    "count": 5,
-   "prog": "e2proc2d.py ",
    "option": " ['--outmode'] ",
    "default": " float ",
    "type": " str ",
@@ -721,7 +631,6 @@
  },
  {
    "count": 5,
-   "prog": "e2spt_binarytree.py ",
    "option": " ['--preavgproc1'] ",
    "default": "  ",
    "type": " str ",
@@ -729,7 +638,6 @@
  },
  {
    "count": 5,
-   "prog": "e2spt_binarytree.py ",
    "option": " ['--preavgproc2'] ",
    "default": "  ",
    "type": " str ",
@@ -737,7 +645,6 @@
  },
  {
    "count": 5,
-   "prog": "e2spa_align.py ",
    "option": " ['--ptclin'] ",
    "default": " None ",
    "type": " str ",
@@ -745,7 +652,6 @@
  },
  {
    "count": 5,
-   "prog": "e2ptcltrace.py ",
    "option": " ['--refine'] ",
    "default": " None ",
    "type": " None ",
@@ -753,7 +659,6 @@
  },
  {
    "count": 5,
-   "prog": "e2cmmtomrc.py ",
    "option": " ['--res'] ",
    "default": "2.8",
    "type": " float ",
@@ -761,7 +666,6 @@
  },
  {
    "count": 5,
-   "prog": "e2spt_binarytree.py ",
    "option": " ['--savesteps'] ",
    "default": " False ",
    "type": " None ",
@@ -769,7 +673,6 @@
  },
  {
    "count": 5,
-   "prog": "e2proc2d.py ",
    "option": " ['--scale'] ",
    "default": " None ",
    "type": " float ",
@@ -777,7 +680,6 @@
  },
  {
    "count": 5,
-   "prog": "e2align3d.py ",
    "option": " ['--search'] ",
    "default": "10",
    "type": " int ",
@@ -785,7 +687,6 @@
  },
  {
    "count": 5,
-   "prog": "e2ptclvsmap.py ",
    "option": " ['--simaligncmp'] ",
    "default": " ccc ",
    "type": " str ",
@@ -793,7 +694,6 @@
  },
  {
    "count": 5,
-   "prog": "e2ptclvsmap.py ",
    "option": " ['--simralign'] ",
    "default": " None ",
    "type": " str ",
@@ -801,7 +701,6 @@
  },
  {
    "count": 5,
-   "prog": "e2ptclvsmap.py ",
    "option": " ['--simraligncmp'] ",
    "default": " ccc ",
    "type": " str ",
@@ -809,7 +708,6 @@
  },
  {
    "count": 5,
-   "prog": "e2spt_refine.py ",
    "option": " ['--smooth'] ",
    "default": "40",
    "type": " float ",
@@ -817,7 +715,6 @@
  },
  {
    "count": 5,
-   "prog": "e2spt_autoboxer.py ",
    "option": " ['--tiltrange'] ",
    "default": "60",
    "type": " float ",
@@ -825,7 +722,6 @@
  },
  {
    "count": 5,
-   "prog": "e2spt_ctf_old.py ",
    "option": " ['--tiltseries'] ",
    "default": "  ",
    "type": " str ",
@@ -833,7 +729,6 @@
  },
  {
    "count": 5,
-   "prog": "e2ddd_external.py ",
    "option": " ['--tomo'] ",
    "default": " False ",
    "type": " None ",
@@ -841,7 +736,6 @@
  },
  {
    "count": 5,
-   "prog": "e2spt_align.py ",
    "option": " ['--transonly'] ",
    "default": " False ",
    "type": " None ",
@@ -849,7 +743,6 @@
  },
  {
    "count": 5,
-   "prog": "e2spt_binarytree.py ",
    "option": " ['--tweak'] ",
    "default": " False ",
    "type": " None ",
@@ -857,7 +750,6 @@
  },
  {
    "count": 5,
-   "prog": "e2rct.py ",
    "option": " ['--verbose'] ",
    "default": "0",
    "type": " int ",
@@ -865,7 +757,6 @@
  },
  {
    "count": 5,
-   "prog": "e2spt_binarytree.py ",
    "option": " ['--weighbyscore'] ",
    "default": " False ",
    "type": " None ",
@@ -873,7 +764,6 @@
  },
  {
    "count": 5,
-   "prog": "e2spt_binarytree.py ",
    "option": " ['--weighbytiltaxis'] ",
    "default": "  ",
    "type": " str ",
@@ -881,7 +771,6 @@
  },
  {
    "count": 4,
-   "prog": "e2buildsets.py ",
    "option": " ['--allparticles'] ",
    "default": " False ",
    "type": " None ",
@@ -889,7 +778,6 @@
  },
  {
    "count": 4,
-   "prog": "e2refinetorelion2d.py ",
    "option": " ['--ampcont'] ",
    "default": "0.1",
    "type": " float ",
@@ -897,7 +785,6 @@
  },
  {
    "count": 4,
-   "prog": "e2ctf.py ",
    "option": " ['--astigmatism'] ",
    "default": " False ",
    "type": " None ",
@@ -905,7 +792,6 @@
  },
  {
    "count": 4,
-   "prog": "e2spt_binarytree.py ",
    "option": " ['--autocenter'] ",
    "default": "  ",
    "type": " str ",
@@ -913,7 +799,6 @@
  },
  {
    "count": 4,
-   "prog": "e2refine_easy.py ",
    "option": " ['--automask3d'] ",
    "default": " None ",
    "type": " str ",
@@ -921,7 +806,6 @@
  },
  {
    "count": 4,
-   "prog": "e2initialmodel.py ",
    "option": " ['--automaskexpand'] ",
    "default": "-1",
    "type": " int ",
@@ -929,7 +813,6 @@
  },
  {
    "count": 4,
-   "prog": "e2classifykmeans.py ",
    "option": " ['--average'] ",
    "default": " False ",
    "type": " None ",
@@ -937,7 +820,6 @@
  },
  {
    "count": 4,
-   "prog": "e2cmmtomrc.py ",
    "option": " ['--box'] ",
    "default": "0",
    "type": " int ",
@@ -945,7 +827,6 @@
  },
  {
    "count": 4,
-   "prog": "e2spt_extractfromseg.py ",
    "option": " ['--boxsz'] ",
    "default": "32",
    "type": " int ",
@@ -953,7 +834,6 @@
  },
  {
    "count": 4,
-   "prog": "e2classesbyref.py ",
    "option": " ['--classes'] ",
    "default": " None ",
    "type": " str ",
@@ -961,7 +841,6 @@
  },
  {
    "count": 4,
-   "prog": "e2refine2d.py ",
    "option": " ['--classrefsf'] ",
    "default": " False ",
    "type": " None ",
@@ -969,7 +848,6 @@
  },
  {
    "count": 4,
-   "prog": "e2fsc.py ",
    "option": " ['--cutoff'] ",
    "default": "0.143",
    "type": " float ",
@@ -977,7 +855,6 @@
  },
  {
    "count": 4,
-   "prog": "e2classaverage.py ",
    "option": " ['--even'] ",
    "default": " False ",
    "type": " None ",
@@ -985,7 +862,6 @@
  },
  {
    "count": 4,
-   "prog": "e2spt_binarytree.py ",
    "option": " ['--falign'] ",
    "default": " None ",
    "type": " str ",
@@ -993,7 +869,6 @@
  },
  {
    "count": 4,
-   "prog": "e2spt_binarytree.py ",
    "option": " ['--faligncmp'] ",
    "default": " ccc.tomo.thresh ",
    "type": " str ",
@@ -1001,7 +876,6 @@
  },
  {
    "count": 4,
-   "prog": "e2ctf_auto.py ",
    "option": " ['--fromscratch'] ",
    "default": " False ",
    "type": " None ",
@@ -1009,7 +883,6 @@
  },
  {
    "count": 4,
-   "prog": "e2spt_binarytree.py ",
    "option": " ['--highpassfine'] ",
    "default": "  ",
    "type": " str ",
@@ -1017,7 +890,6 @@
  },
  {
    "count": 4,
-   "prog": "e2ctf2eman1.py ",
    "option": " ['--last'] ",
    "default": "-1",
    "type": " int ",
@@ -1025,7 +897,6 @@
  },
  {
    "count": 4,
-   "prog": "e2make3d.py ",
    "option": " ['--lowmem'] ",
    "default": " False ",
    "type": " None ",
@@ -1033,7 +904,6 @@
  },
  {
    "count": 4,
-   "prog": "e2spt_binarytree.py ",
    "option": " ['--lowpassfine'] ",
    "default": "  ",
    "type": " str ",
@@ -1041,7 +911,6 @@
  },
  {
    "count": 4,
-   "prog": "e2refine_easy.py ",
    "option": " ['--m3dpostprocess'] ",
    "default": " None ",
    "type": " str ",
@@ -1049,7 +918,6 @@
  },
  {
    "count": 4,
-   "prog": "e2spt_average.py ",
    "option": " ['--maxalt'] ",
    "default": "180",
    "type": " float ",
@@ -1057,7 +925,6 @@
  },
  {
    "count": 4,
-   "prog": "e2proc2d.py ",
    "option": " ['--multfile'] ",
    "default": " None ",
    "type": " str ",
@@ -1065,7 +932,6 @@
  },
  {
    "count": 4,
-   "prog": "e2euler_refine.py ",
    "option": " ['--no_wt'] ",
    "default": " False ",
    "type": " None ",
@@ -1073,7 +939,6 @@
  },
  {
    "count": 4,
-   "prog": "e2basis.py ",
    "option": " ['--normproj'] ",
    "default": " False ",
    "type": " None ",
@@ -1081,7 +946,6 @@
  },
  {
    "count": 4,
-   "prog": "e2spt_binarytree.py ",
    "option": " ['--npeakstorefine'] ",
    "default": "4",
    "type": " int ",
@@ -1089,7 +953,6 @@
  },
  {
    "count": 4,
-   "prog": "e2make3d.py ",
    "option": " ['--outsize'] ",
    "default": " None ",
    "type": " str ",
@@ -1097,7 +960,6 @@
  },
  {
    "count": 4,
-   "prog": "e2spt_ctf_old.py ",
    "option": " ['--pad2d'] ",
    "default": "0",
    "type": " float ",
@@ -1105,7 +967,6 @@
  },
  {
    "count": 4,
-   "prog": "e2spt_ctf_old.py ",
    "option": " ['--pad3d'] ",
    "default": "0",
    "type": " float ",
@@ -1113,7 +974,6 @@
  },
  {
    "count": 4,
-   "prog": "e2spt_binarytree.py ",
    "option": " ['--precision'] ",
    "default": "1",
    "type": " float ",
@@ -1121,7 +981,6 @@
  },
  {
    "count": 4,
-   "prog": "e2classaverage.py ",
    "option": " ['--prectf'] ",
    "default": " False ",
    "type": " None ",
@@ -1129,7 +988,6 @@
  },
  {
    "count": 4,
-   "prog": "e2spt_binarytree.py ",
    "option": " ['--preprocessfine'] ",
    "default": "  ",
    "type": " str ",
@@ -1137,7 +995,6 @@
  },
  {
    "count": 4,
-   "prog": "e2spt_binarytree.py ",
    "option": " ['--procfinelikecoarse'] ",
    "default": " False ",
    "type": " None ",
@@ -1145,7 +1002,6 @@
  },
  {
    "count": 4,
-   "prog": "e2spa_align.py ",
    "option": " ['--ptclout'] ",
    "default": " None ",
    "type": " str ",
@@ -1153,7 +1009,6 @@
  },
  {
    "count": 4,
-   "prog": "e2spt_binarytree.py ",
    "option": " ['--randomizewedge'] ",
    "default": " False ",
    "type": " None ",
@@ -1161,7 +1016,6 @@
  },
  {
    "count": 4,
-   "prog": "e2make3d.py ",
    "option": " ['--recon'] ",
    "default": " fourier ",
    "type": " None ",
@@ -1169,7 +1023,6 @@
  },
  {
    "count": 4,
-   "prog": "e2spt_ctf_old.py ",
    "option": " ['--reconstructor'] ",
    "default": " fourier:mode=gauss_2 ",
    "type": " str ",
@@ -1177,7 +1030,6 @@
  },
  {
    "count": 4,
-   "prog": "e2spt_align.py ",
    "option": " ['--refinentry'] ",
    "default": "8",
    "type": " int ",
@@ -1185,7 +1037,6 @@
  },
  {
    "count": 4,
-   "prog": "e2refine_postprocess.py ",
    "option": " ['--restarget'] ",
    "default": "-1",
    "type": " float ",
@@ -1193,7 +1044,6 @@
  },
  {
    "count": 4,
-   "prog": "e2refine2d.py ",
    "option": " ['--resume'] ",
    "default": " False ",
    "type": " None ",
@@ -1201,7 +1051,6 @@
  },
  {
    "count": 4,
-   "prog": "e2spt_binarytree.py ",
    "option": " ['--saveallalign'] ",
    "default": " False ",
    "type": " None ",
@@ -1209,7 +1058,6 @@
  },
  {
    "count": 4,
-   "prog": "e2spt_binarytree.py ",
    "option": " ['--searchfine'] ",
    "default": "2",
    "type": " int ",
@@ -1217,7 +1065,6 @@
  },
  {
    "count": 4,
-   "prog": "e2classesbyref.py ",
    "option": " ['--sep'] ",
    "default": "1",
    "type": " int ",
@@ -1225,7 +1072,6 @@
  },
  {
    "count": 4,
-   "prog": "e2spt_binarytree.py ",
    "option": " ['--shrinkfine'] ",
    "default": "1",
    "type": " int ",
@@ -1233,7 +1079,6 @@
  },
  {
    "count": 4,
-   "prog": "e2RCTboxer.py ",
    "option": " ['--suffix'] ",
    "default": " _ptcls ",
    "type": " str ",
@@ -1241,7 +1086,6 @@
  },
  {
    "count": 4,
-   "prog": "e2spt_ctf_old.py ",
    "option": " ['--tilesize'] ",
    "default": "512",
    "type": " int ",
@@ -1249,7 +1093,6 @@
  },
  {
    "count": 4,
-   "prog": "e2rct.py ",
    "option": " ['--tiltaxis'] ",
    "default": " False ",
    "type": " None ",
@@ -1257,7 +1100,6 @@
  },
  {
    "count": 3,
-   "prog": "e2proc2d.py ",
    "option": " ['--add'] ",
    "default": " None ",
    "type": " float ",
@@ -1265,7 +1107,6 @@
  },
  {
    "count": 3,
-   "prog": "e2spt_average_multi.py ",
    "option": " ['--applysym'] ",
    "default": " c1 ",
    "type": " str ",
@@ -1273,7 +1114,6 @@
  },
  {
    "count": 3,
-   "prog": "e2spt_binarytree.py ",
    "option": " ['--autocentermask'] ",
    "default": "  ",
    "type": " str ",
@@ -1281,7 +1121,6 @@
  },
  {
    "count": 3,
-   "prog": "e2spt_binarytree.py ",
    "option": " ['--autocenterpreprocess'] ",
    "default": " False ",
    "type": " None ",
@@ -1289,7 +1128,6 @@
  },
  {
    "count": 3,
-   "prog": "e2classaverage.py ",
    "option": " ['--automask'] ",
    "default": " False ",
    "type": " None ",
@@ -1297,7 +1135,6 @@
  },
  {
    "count": 3,
-   "prog": "e2spt_ctf_old.py ",
    "option": " ['--bfactor'] ",
    "default": "1000",
    "type": " int ",
@@ -1305,7 +1142,6 @@
  },
  {
    "count": 3,
-   "prog": "e2classifytree.py ",
    "option": " ['--cmpdiff'] ",
    "default": " False ",
    "type": " None ",
@@ -1313,7 +1149,6 @@
  },
  {
    "count": 3,
-   "prog": "e2ctf.py ",
    "option": " ['--constbfactor'] ",
    "default": "-1",
    "type": " float ",
@@ -1321,7 +1156,6 @@
  },
  {
    "count": 3,
-   "prog": "e2erasefiducials.py ",
    "option": " ['--coords'] ",
    "default": "  ",
    "type": " str ",
@@ -1329,7 +1163,6 @@
  },
  {
    "count": 3,
-   "prog": "e2spt_autoboxer.py ",
    "option": " ['--cshrink'] ",
    "default": "0",
    "type": " int ",
@@ -1337,7 +1170,6 @@
  },
  {
    "count": 3,
-   "prog": "e2align3d.py ",
    "option": " ['--cuda'] ",
    "default": " False ",
    "type": " None ",
@@ -1345,7 +1177,6 @@
  },
  {
    "count": 3,
-   "prog": "e2ctf.py ",
    "option": " ['--curdefocusfix'] ",
    "default": " False ",
    "type": " None ",
@@ -1353,7 +1184,6 @@
  },
  {
    "count": 3,
-   "prog": "e2align3d.py ",
    "option": " ['--delta'] ",
    "default": "30",
    "type": " float ",
@@ -1361,7 +1191,6 @@
  },
  {
    "count": 3,
-   "prog": "e2boxer.py ",
    "option": " ['--device'] ",
    "default": " cpu ",
    "type": " str ",
@@ -1369,7 +1198,6 @@
  },
  {
    "count": 3,
-   "prog": "e2a2d_masks.py ",
    "option": " ['--extract'] ",
    "default": " False ",
    "type": " None ",
@@ -1377,7 +1205,6 @@
  },
  {
    "count": 3,
-   "prog": "e2ctf.py ",
    "option": " ['--extrapad'] ",
    "default": " False ",
    "type": " None ",
@@ -1385,7 +1212,6 @@
  },
  {
    "count": 3,
-   "prog": "e2spt_binarytree.py ",
    "option": " ['--filterbyfsc'] ",
    "default": " False ",
    "type": " None ",
@@ -1393,7 +1219,6 @@
  },
  {
    "count": 3,
-   "prog": "e2ctf2eman1.py ",
    "option": " ['--first'] ",
    "default": "-1",
    "type": " int ",
@@ -1401,7 +1226,6 @@
  },
  {
    "count": 3,
-   "prog": "e2proc2d.py ",
    "option": " ['--fp'] ",
    "default": " None ",
    "type": " int ",
@@ -1409,7 +1233,6 @@
  },
  {
    "count": 3,
-   "prog": "e2spt_align.py ",
    "option": " ['--goldstandard'] ",
    "default": "0",
    "type": " float ",
@@ -1417,7 +1240,6 @@
  },
  {
    "count": 3,
-   "prog": "e2classifycnn.py ",
    "option": " ['--gpuid'] ",
    "default": "  ",
    "type": " str ",
@@ -1425,7 +1247,6 @@
  },
  {
    "count": 3,
-   "prog": "e2proclst.py ",
    "option": " ['--include'] ",
    "default": " None ",
    "type": " str ",
@@ -1433,7 +1254,6 @@
  },
  {
    "count": 3,
-   "prog": "e2euler_refine.py ",
    "option": " ['--input_model'] ",
    "default": " None ",
    "type": " None ",
@@ -1441,7 +1261,6 @@
  },
  {
    "count": 3,
-   "prog": "e2classesbyref.py ",
    "option": " ['--invartype'] ",
    "default": " auto ",
    "type": " None ",
@@ -1449,7 +1268,6 @@
  },
  {
    "count": 3,
-   "prog": "e2bdb.py ",
    "option": " ['--list'] ",
    "default": " None ",
    "type": " str ",
@@ -1457,7 +1275,6 @@
  },
  {
    "count": 3,
-   "prog": "e2tomo_drawcontour.py ",
    "option": " ['--load'] ",
    "default": " None ",
    "type": " str ",
@@ -1465,7 +1282,6 @@
  },
  {
    "count": 3,
-   "prog": "e2spt_evalsubtlt.py ",
    "option": " ['--loadali3d'] ",
    "default": " None ",
    "type": " str ",
@@ -1473,7 +1289,6 @@
  },
  {
    "count": 3,
-   "prog": "e2spa_align.py ",
    "option": " ['--localrefine'] ",
    "default": " False ",
    "type": " None ",
@@ -1481,7 +1296,6 @@
  },
  {
    "count": 3,
-   "prog": "e2refine_easy.py ",
    "option": " ['--m3dkeep'] ",
    "default": "0.8",
    "type": " float ",
@@ -1489,7 +1303,6 @@
  },
  {
    "count": 3,
-   "prog": "e2refine_easy.py ",
    "option": " ['--m3dkeepsig'] ",
    "default": " False ",
    "type": " None ",
@@ -1497,7 +1310,6 @@
  },
  {
    "count": 3,
-   "prog": "e2refine_easy.py ",
    "option": " ['--m3dpreprocess'] ",
    "default": " None ",
    "type": " str ",
@@ -1505,7 +1317,6 @@
  },
  {
    "count": 3,
-   "prog": "e2spt_binarytree.py ",
    "option": " ['--matchimgs'] ",
    "default": " False ",
    "type": " None ",
@@ -1513,7 +1324,6 @@
  },
  {
    "count": 3,
-   "prog": "e2proc2d.py ",
    "option": " ['--meanshrink'] ",
    "default": " None ",
    "type": " float ",
@@ -1521,7 +1331,6 @@
  },
  {
    "count": 3,
-   "prog": "e2proc2d.py ",
    "option": " ['--medianshrink'] ",
    "default": " None ",
    "type": " int ",
@@ -1529,7 +1338,6 @@
  },
  {
    "count": 3,
-   "prog": "e2bdb.py ",
    "option": " ['--merge'] ",
    "default": " False ",
    "type": " None ",
@@ -1537,7 +1345,6 @@
  },
  {
    "count": 3,
-   "prog": "e2spt_average.py ",
    "option": " ['--minalt'] ",
    "default": "0",
    "type": " float ",
@@ -1545,7 +1352,6 @@
  },
  {
    "count": 3,
-   "prog": "e2buildsets.py ",
    "option": " ['--minptcl'] ",
    "default": "0",
    "type": " int ",
@@ -1553,7 +1359,6 @@
  },
  {
    "count": 3,
-   "prog": "e2buildsets.py ",
    "option": " ['--minqual'] ",
    "default": "0",
    "type": " int ",
@@ -1561,7 +1366,6 @@
  },
  {
    "count": 3,
-   "prog": "e2classesbyref.py ",
    "option": " ['--nbasisfp'] ",
    "default": "12",
    "type": " int ",
@@ -1569,7 +1373,6 @@
  },
  {
    "count": 3,
-   "prog": "e2spt_autoboxer.py ",
    "option": " ['--nkeep'] ",
    "default": "0",
    "type": " int ",
@@ -1577,7 +1380,6 @@
  },
  {
    "count": 3,
-   "prog": "e2ddd_movie.py ",
    "option": " ['--noali'] ",
    "default": " False ",
    "type": " None ",
@@ -1585,7 +1387,6 @@
  },
  {
    "count": 3,
-   "prog": "e2spt_intrafsc.py ",
    "option": " ['--nolog'] ",
    "default": " False ",
    "type": " None ",
@@ -1593,7 +1394,6 @@
  },
  {
    "count": 3,
-   "prog": "e2RCTboxer.py ",
    "option": " ['--norm'] ",
    "default": " normalize.edgemean ",
    "type": " str ",
@@ -1601,7 +1401,6 @@
  },
  {
    "count": 3,
-   "prog": "e2spt_refinemulti_new.py ",
    "option": " ['--nref'] ",
    "default": "-1",
    "type": " int ",
@@ -1609,7 +1408,6 @@
  },
  {
    "count": 3,
-   "prog": "e2classaverage.py ",
    "option": " ['--odd'] ",
    "default": " False ",
    "type": " None ",
@@ -1617,7 +1415,6 @@
  },
  {
    "count": 3,
-   "prog": "e2project3d.py ",
    "option": " ['--prethreshold'] ",
    "default": " False ",
    "type": " None ",
@@ -1625,7 +1422,6 @@
  },
  {
    "count": 3,
-   "prog": "e2project3d.py ",
    "option": " ['--projector'] ",
    "default": " standard ",
    "type": " None ",
@@ -1633,7 +1429,6 @@
  },
  {
    "count": 3,
-   "prog": "e2initialmodel_sgd.py ",
    "option": " ['--ptcls'] ",
    "default": " None ",
    "type": " str ",
@@ -1641,7 +1436,6 @@
  },
  {
    "count": 3,
-   "prog": "e2spt_align.py ",
    "option": " ['--rand180'] ",
    "default": " False ",
    "type": " None ",
@@ -1649,7 +1443,6 @@
  },
  {
    "count": 3,
-   "prog": "e2proc2d.py ",
    "option": " ['--randomize'] ",
    "default": " None ",
    "type": " str ",
@@ -1657,7 +1450,6 @@
  },
  {
    "count": 3,
-   "prog": "e2spt_align.py ",
    "option": " ['--randphi'] ",
    "default": " False ",
    "type": " None ",
@@ -1665,7 +1457,6 @@
  },
  {
    "count": 3,
-   "prog": "e2compress.py ",
    "option": " ['--range'] ",
    "default": " None ",
    "type": " str ",
@@ -1673,7 +1464,6 @@
  },
  {
    "count": 3,
-   "prog": "e2import.py ",
    "option": " ['--rawtlt'] ",
    "default": " None ",
    "type": " None ",
@@ -1681,7 +1471,6 @@
  },
  {
    "count": 3,
-   "prog": "e2spt_average.py ",
    "option": " ['--replace'] ",
    "default": " None ",
    "type": " str ",
@@ -1689,7 +1478,6 @@
  },
  {
    "count": 3,
-   "prog": "e2proc2d.py ",
    "option": " ['--rotate'] ",
    "default": " None ",
    "type": " float ",
@@ -1697,7 +1485,6 @@
  },
  {
    "count": 3,
-   "prog": "e2spt_classaverage.py ",
    "option": " ['--savepreproc'] ",
    "default": " False ",
    "type": " None ",
@@ -1705,7 +1492,6 @@
  },
  {
    "count": 3,
-   "prog": "e2proc2d.py ",
    "option": " ['--selfcl'] ",
    "default": " None ",
    "type": " int ",
@@ -1713,7 +1499,6 @@
  },
  {
    "count": 3,
-   "prog": "e2refine_easy.py ",
    "option": " ['--shrinks1'] ",
    "default": "0",
    "type": " int ",
@@ -1721,7 +1506,6 @@
  },
  {
    "count": 3,
-   "prog": "e2refine_easy.py ",
    "option": " ['--simmask'] ",
    "default": " None ",
    "type": " str ",
@@ -1729,7 +1513,6 @@
  },
  {
    "count": 3,
-   "prog": "e2spt_average.py ",
    "option": " ['--simthr'] ",
    "default": "-0.1",
    "type": " float ",
@@ -1737,7 +1520,6 @@
  },
  {
    "count": 3,
-   "prog": "e2spt_align.py ",
    "option": " ['--skipali'] ",
    "default": " False ",
    "type": " None ",
@@ -1745,7 +1527,6 @@
  },
  {
    "count": 3,
-   "prog": "e2refinemultinoali.py ",
    "option": " ['--symcopy'] ",
    "default": " False ",
    "type": " None ",
@@ -1753,7 +1534,6 @@
  },
  {
    "count": 3,
-   "prog": "e2initialmodel_sgd.py ",
    "option": " ['--targetres'] ",
    "default": "20",
    "type": " float ",
@@ -1761,7 +1541,6 @@
  },
  {
    "count": 3,
-   "prog": "e2spt_autoboxer.py ",
    "option": " ['--tiltangles'] ",
    "default": "  ",
    "type": " str ",
@@ -1769,7 +1548,6 @@
  },
  {
    "count": 3,
-   "prog": "e2proc2d.py ",
    "option": " ['--translate'] ",
    "default": " None ",
    "type": " str ",
@@ -1777,7 +1555,6 @@
  },
  {
    "count": 3,
-   "prog": "e2spt_align_subtlt.py ",
    "option": " ['--use3d'] ",
    "default": " False ",
    "type": " None ",
@@ -1785,7 +1562,6 @@
  },
  {
    "count": 3,
-   "prog": "e2RCTboxer.py ",
    "option": " ['--write_ptcls'] ",
    "default": " False ",
    "type": " None ",
@@ -1793,7 +1569,6 @@
  },
  {
    "count": 2,
-   "prog": "e2boxer.py ",
    "option": " ['--allmicrographs'] ",
    "default": " False ",
    "type": " None ",
@@ -1801,7 +1576,6 @@
  },
  {
    "count": 2,
-   "prog": "e2spt_tomoctf.py ",
    "option": " ['--alltiltseries'] ",
    "default": " False ",
    "type": " None ",
@@ -1809,7 +1583,6 @@
  },
  {
    "count": 2,
-   "prog": "e2refine_easy.py ",
    "option": " ['--ampcorrect'] ",
    "default": " auto ",
    "type": " None ",
@@ -1817,7 +1590,6 @@
  },
  {
    "count": 2,
-   "prog": "e2spt_tiltstacker.py ",
    "option": " ['--anglesindxinfilename'] ",
    "default": " None ",
    "type": " int ",
@@ -1825,7 +1597,6 @@
  },
  {
    "count": 2,
-   "prog": "e2proc2d.py ",
    "option": " ['--anisotropic'] ",
    "default": " None ",
    "type": " str ",
@@ -1833,7 +1604,6 @@
  },
  {
    "count": 2,
-   "prog": "e2project3d.py ",
    "option": " ['--append'] ",
    "default": " False ",
    "type": " None ",
@@ -1841,7 +1611,6 @@
  },
  {
    "count": 2,
-   "prog": "e2ctf.py ",
    "option": " ['--autofit'] ",
    "default": " False ",
    "type": " None ",
@@ -1849,7 +1618,6 @@
  },
  {
    "count": 2,
-   "prog": "e2refine_easy.py ",
    "option": " ['--automask3d2'] ",
    "default": " None ",
    "type": " str ",
@@ -1857,7 +1625,6 @@
  },
  {
    "count": 2,
-   "prog": "e2initialmodel_sgd.py ",
    "option": " ['--batchsize'] ",
    "default": "10",
    "type": " int ",
@@ -1865,7 +1632,6 @@
  },
  {
    "count": 2,
-   "prog": "e2procpdb.py ",
    "option": " ['--beta'] ",
    "default": "0",
    "type": " float ",
@@ -1873,7 +1639,6 @@
  },
  {
    "count": 2,
-   "prog": "e2a2d_stat.py ",
    "option": " ['--bins'] ",
    "default": "100",
    "type": " int ",
@@ -1881,7 +1646,6 @@
  },
  {
    "count": 2,
-   "prog": "e2spt_align.py ",
    "option": " ['--breaksymsym'] ",
    "default": " None ",
    "type": " str ",
@@ -1889,7 +1653,6 @@
  },
  {
    "count": 2,
-   "prog": "e2pdb2mrc.py ",
    "option": " ['--chains'] ",
    "default": " None ",
    "type": " str ",
@@ -1897,7 +1660,6 @@
  },
  {
    "count": 2,
-   "prog": "e2refine_easy.py ",
    "option": " ['--classautomask'] ",
    "default": " False ",
    "type": " None ",
@@ -1905,7 +1667,6 @@
  },
  {
    "count": 2,
-   "prog": "e2simmx.py ",
    "option": " ['--colmasks'] ",
    "default": " None ",
    "type": " str ",
@@ -1913,7 +1674,6 @@
  },
  {
    "count": 2,
-   "prog": "e2refinetorelion2d.py ",
    "option": " ['--ctfcorrect'] ",
    "default": " False ",
    "type": " None ",
@@ -1921,7 +1681,6 @@
  },
  {
    "count": 2,
-   "prog": "e2ctf.py ",
    "option": " ['--curdefocushint'] ",
    "default": " False ",
    "type": " None ",
@@ -1929,7 +1688,6 @@
  },
  {
    "count": 2,
-   "prog": "e2spt_align_subtlt.py ",
    "option": " ['--curve'] ",
    "default": " False ",
    "type": " None ",
@@ -1937,7 +1695,6 @@
  },
  {
    "count": 2,
-   "prog": "e2ddd_external.py ",
    "option": " ['--dark'] ",
    "default": " None ",
    "type": " str ",
@@ -1945,7 +1702,6 @@
  },
  {
    "count": 2,
-   "prog": "e2refinetorelion2d.py ",
    "option": " ['--dataphaseflipped'] ",
    "default": " False ",
    "type": " None ",
@@ -1953,7 +1709,6 @@
  },
  {
    "count": 2,
-   "prog": "e2ctf2eman1.py ",
    "option": " ['--dfmax'] ",
    "default": "5",
    "type": " float ",
@@ -1961,7 +1716,6 @@
  },
  {
    "count": 2,
-   "prog": "e2ctf2eman1.py ",
    "option": " ['--dfmin'] ",
    "default": "0.5",
    "type": " float ",
@@ -1969,7 +1723,6 @@
  },
  {
    "count": 2,
-   "prog": "e2spt_extract.py ",
    "option": " ['--dotest'] ",
    "default": " False ",
    "type": " None ",
@@ -1977,7 +1730,6 @@
  },
  {
    "count": 2,
-   "prog": "e2bdb.py ",
    "option": " ['--dump'] ",
    "default": " False ",
    "type": " None ",
@@ -1985,7 +1737,6 @@
  },
  {
    "count": 2,
-   "prog": "e2pathwalker.py ",
    "option": " ['--edgefile'] ",
    "default": " None ",
    "type": " str ",
@@ -1993,7 +1744,6 @@
  },
  {
    "count": 2,
-   "prog": "e2buildsets.py ",
    "option": " ['--excludebad'] ",
    "default": " False ",
    "type": " None ",
@@ -2001,7 +1751,6 @@
  },
  {
    "count": 2,
-   "prog": "e2import.py ",
    "option": " ['--extension'] ",
    "default": " dm3 ",
    "type": " str ",
@@ -2009,7 +1758,6 @@
  },
  {
    "count": 2,
-   "prog": "e2classifykmeans.py ",
    "option": " ['--fastseed'] ",
    "default": " False ",
    "type": " None ",
@@ -2017,7 +1765,6 @@
  },
  {
    "count": 2,
-   "prog": "e2spt_sgd.py ",
    "option": " ['--filterto'] ",
    "default": "0.02",
    "type": " float ",
@@ -2025,7 +1772,6 @@
  },
  {
    "count": 2,
-   "prog": "e2proc2d.py ",
    "option": " ['--fixintscaling'] ",
    "default": " None ",
    "type": " str ",
@@ -2033,7 +1779,6 @@
  },
  {
    "count": 2,
-   "prog": "e2classaverage.py ",
    "option": " ['--focused'] ",
    "default": " None ",
    "type": " str ",
@@ -2041,7 +1786,6 @@
  },
  {
    "count": 2,
-   "prog": "e2RCTboxer.py ",
    "option": " ['--format'] ",
    "default": " hdf ",
    "type": " None ",
@@ -2049,7 +1793,6 @@
  },
  {
    "count": 2,
-   "prog": "e2proc2d.py ",
    "option": " ['--fouriershrink'] ",
    "default": " None ",
    "type": " float ",
@@ -2057,7 +1800,6 @@
  },
  {
    "count": 2,
-   "prog": "e2ddd_external.py ",
    "option": " ['--gain'] ",
    "default": " None ",
    "type": " str ",
@@ -2065,7 +1807,6 @@
  },
  {
    "count": 2,
-   "prog": "e2fsc.py ",
    "option": " ['--gauss'] ",
    "default": " False ",
    "type": " None ",
@@ -2073,7 +1814,6 @@
  },
  {
    "count": 2,
-   "prog": "e2ddd_external.py ",
    "option": " ['--groupby'] ",
    "default": " None ",
    "type": " int ",
@@ -2081,7 +1821,6 @@
  },
  {
    "count": 2,
-   "prog": "e2ctf.py ",
    "option": " ['--highdensity'] ",
    "default": " False ",
    "type": " None ",
@@ -2089,7 +1828,6 @@
  },
  {
    "count": 2,
-   "prog": "e2spt_tiltstacker.py ",
    "option": " ['--highesttilt'] ",
    "default": "0",
    "type": " float ",
@@ -2097,7 +1835,6 @@
  },
  {
    "count": 2,
-   "prog": "e2spt_ctf_old.py ",
    "option": " ['--icethickness'] ",
    "default": "0",
    "type": " int ",
@@ -2105,7 +1842,6 @@
  },
  {
    "count": 2,
-   "prog": "e2spt_ctf_old.py ",
    "option": " ['--icethicknessauto'] ",
    "default": " False ",
    "type": " None ",
@@ -2113,7 +1849,6 @@
  },
  {
    "count": 2,
-   "prog": "e2refinetorelion2d.py ",
    "option": " ['--ignoretofirstpeak'] ",
    "default": " False ",
    "type": " None ",
@@ -2121,7 +1856,6 @@
  },
  {
    "count": 2,
-   "prog": "e2spt_boxer_old.py ",
    "option": " ['--inmemory'] ",
    "default": " False ",
    "type": " None ",
@@ -2129,7 +1863,6 @@
  },
  {
    "count": 2,
-   "prog": "e2proc2d.py ",
    "option": " ['--inplace'] ",
    "default": " False ",
    "type": " None ",
@@ -2137,7 +1870,6 @@
  },
  {
    "count": 2,
-   "prog": "e2spt_intrafsc.py ",
    "option": " ['--inputstem'] ",
    "default": "  ",
    "type": " str ",
@@ -2145,7 +1877,6 @@
  },
  {
    "count": 2,
-   "prog": "e2refine_easy.py ",
    "option": " ['--invar'] ",
    "default": " False ",
    "type": " None ",
@@ -2153,7 +1884,6 @@
  },
  {
    "count": 2,
-   "prog": "e2plotEulers.py ",
    "option": " ['--iteration'] ",
    "default": "0",
    "type": " int ",
@@ -2161,7 +1891,6 @@
  },
  {
    "count": 2,
-   "prog": "e2make3dpar.py ",
    "option": " ['--iterative'] ",
    "default": " False ",
    "type": " None ",
@@ -2169,7 +1898,6 @@
  },
  {
    "count": 2,
-   "prog": "e2spt_binarytree.py ",
    "option": " ['--iterstop'] ",
    "default": "0",
    "type": " int ",
@@ -2177,7 +1905,6 @@
  },
  {
    "count": 2,
-   "prog": "e2make3d.py ",
    "option": " ['--keepabs'] ",
    "default": " False ",
    "type": " None ",
@@ -2185,7 +1912,6 @@
  },
  {
    "count": 2,
-   "prog": "e2spt_average.py ",
    "option": " ['--listfile'] ",
    "default": " None ",
    "type": " str ",
@@ -2193,7 +1919,6 @@
  },
  {
    "count": 2,
-   "prog": "e2spt_evalsubtlt.py ",
    "option": " ['--loadali2d'] ",
    "default": " None ",
    "type": " str ",
@@ -2201,7 +1926,6 @@
  },
  {
    "count": 2,
-   "prog": "e2spt_classify.py ",
    "option": " ['--localfilter'] ",
    "default": " False ",
    "type": " None ",
@@ -2209,7 +1933,6 @@
  },
  {
    "count": 2,
-   "prog": "e2fsc.py ",
    "option": " ['--localsize'] ",
    "default": "-1",
    "type": " int ",
@@ -2217,7 +1940,6 @@
  },
  {
    "count": 2,
-   "prog": "e2spt_tiltstacker.py ",
    "option": " ['--lowesttilt'] ",
    "default": "0",
    "type": " float ",
@@ -2225,7 +1947,6 @@
  },
  {
    "count": 2,
-   "prog": "e2refinemulti.py ",
    "option": " ['--m3dsetsf'] ",
    "default": " None ",
    "type": " str ",
@@ -2233,7 +1954,6 @@
  },
  {
    "count": 2,
-   "prog": "e2spt_average_multi.py ",
    "option": " ['--maskclass'] ",
    "default": " None ",
    "type": " str ",
@@ -2241,7 +1961,6 @@
  },
  {
    "count": 2,
-   "prog": "e2buildsets.py ",
    "option": " ['--maxdf'] ",
    "default": "20",
    "type": " float ",
@@ -2249,7 +1968,6 @@
  },
  {
    "count": 2,
-   "prog": "e2ddd_external.py ",
    "option": " ['--mdoc'] ",
    "default": " None ",
    "type": " str ",
@@ -2257,7 +1975,6 @@
  },
  {
    "count": 2,
-   "prog": "e2classifykmeans.py ",
    "option": " ['--minchange'] ",
    "default": "-1",
    "type": " int ",
@@ -2265,7 +1982,6 @@
  },
  {
    "count": 2,
-   "prog": "e2buildsets.py ",
    "option": " ['--mindf'] ",
    "default": "0",
    "type": " float ",
@@ -2273,7 +1989,6 @@
  },
  {
    "count": 2,
-   "prog": "e2buildsets.py ",
    "option": " ['--minhisnr'] ",
    "default": "0",
    "type": " float ",
@@ -2281,7 +1996,6 @@
  },
  {
    "count": 2,
-   "prog": "e2buildsets.py ",
    "option": " ['--minlosnr'] ",
    "default": "0",
    "type": " float ",
@@ -2289,7 +2003,6 @@
  },
  {
    "count": 2,
-   "prog": "e2classesbyref.py ",
    "option": " ['--msamode'] ",
    "default": " None ",
    "type": " str ",
@@ -2297,7 +2010,6 @@
  },
  {
    "count": 2,
-   "prog": "e2tomoseg_buildtrainset.py ",
    "option": " ['--ncopy'] ",
    "default": "10",
    "type": " int ",
@@ -2305,7 +2017,6 @@
  },
  {
    "count": 2,
-   "prog": "e2refinemulti.py ",
    "option": " ['--nmodels'] ",
    "default": "2",
    "type": " int ",
@@ -2313,7 +2024,6 @@
  },
  {
    "count": 2,
-   "prog": "e2classify.py ",
    "option": " ['--noalign'] ",
    "default": " False ",
    "type": " None ",
@@ -2321,7 +2031,6 @@
  },
  {
    "count": 2,
-   "prog": "e2spt_preproc.py ",
    "option": " ['--nopath'] ",
    "default": " False ",
    "type": " None ",
@@ -2329,7 +2038,6 @@
  },
  {
    "count": 2,
-   "prog": "e2proc2d.py ",
    "option": " ['--norefs'] ",
    "default": " False ",
    "type": " None ",
@@ -2337,7 +2045,6 @@
  },
  {
    "count": 2,
-   "prog": "e2basis.py ",
    "option": " ['--normalize'] ",
    "default": " normalize.unitlen ",
    "type": " str ",
@@ -2345,7 +2052,6 @@
  },
  {
    "count": 2,
-   "prog": "e2spt_tiltstacker.py ",
    "option": " ['--normalizeimod'] ",
    "default": " False ",
    "type": " None ",
@@ -2353,7 +2059,6 @@
  },
  {
    "count": 2,
-   "prog": "e2spt_refinemulti_old.py ",
    "option": " ['--notmatchimgs'] ",
    "default": " False ",
    "type": " None ",
@@ -2361,7 +2066,6 @@
  },
  {
    "count": 2,
-   "prog": "e2spt_tempmatch.py ",
    "option": " ['--nptcl'] ",
    "default": "500",
    "type": " int ",
@@ -2369,7 +2073,6 @@
  },
  {
    "count": 2,
-   "prog": "e2spt_autoboxer.py ",
    "option": " ['--nslices'] ",
    "default": "61",
    "type": " int ",
@@ -2377,7 +2080,6 @@
  },
  {
    "count": 2,
-   "prog": "e2refinetorelion2d.py ",
    "option": " ['--offsetrange'] ",
    "default": "10",
    "type": " float ",
@@ -2385,7 +2087,6 @@
  },
  {
    "count": 2,
-   "prog": "e2refinetorelion2d.py ",
    "option": " ['--offsetstep'] ",
    "default": "2",
    "type": " float ",
@@ -2393,7 +2094,6 @@
  },
  {
    "count": 2,
-   "prog": "e2project3d.py ",
    "option": " ['--outfile'] ",
    "default": " e2proj.hdf ",
    "type": " None ",
@@ -2401,7 +2101,6 @@
  },
  {
    "count": 2,
-   "prog": "e2fsc.py ",
    "option": " ['--outfilt'] ",
    "default": " res143_filtered.hdf ",
    "type": " str ",
@@ -2409,7 +2108,6 @@
  },
  {
    "count": 2,
-   "prog": "e2fsc.py ",
    "option": " ['--outfilte'] ",
    "default": " None ",
    "type": " str ",
@@ -2417,7 +2115,6 @@
  },
  {
    "count": 2,
-   "prog": "e2fsc.py ",
    "option": " ['--outfilto'] ",
    "default": " None ",
    "type": " str ",
@@ -2425,7 +2122,6 @@
  },
  {
    "count": 2,
-   "prog": "e2spt_ctf_old.py ",
    "option": " ['--outputstem'] ",
    "default": "  ",
    "type": " str ",
@@ -2433,7 +2129,6 @@
  },
  {
    "count": 2,
-   "prog": "e2proc2d.py ",
    "option": " ['--outtype'] ",
    "default": " None ",
    "type": " str ",
@@ -2441,7 +2136,6 @@
  },
  {
    "count": 2,
-   "prog": "e2fsc_local.py ",
    "option": " ['--overwrite'] ",
    "default": " False ",
    "type": " None ",
@@ -2449,7 +2143,6 @@
  },
  {
    "count": 2,
-   "prog": "e2spt_tiltrefine.py ",
    "option": " ['--padby'] ",
    "default": "1.5",
    "type": " float ",
@@ -2457,7 +2150,6 @@
  },
  {
    "count": 2,
-   "prog": "e2make3d.py ",
    "option": " ['--padvol'] ",
    "default": " None ",
    "type": " str ",
@@ -2465,7 +2157,6 @@
  },
  {
    "count": 2,
-   "prog": "e2refinetorelion2d.py ",
    "option": " ['--particle_mask_diameter'] ",
    "default": "-1",
    "type": " float ",
@@ -2473,7 +2164,6 @@
  },
  {
    "count": 2,
-   "prog": "e2classifyligand.py ",
    "option": " ['--postfix'] ",
    "default": "  ",
    "type": " str ",
@@ -2481,7 +2171,6 @@
  },
  {
    "count": 2,
-   "prog": "e2spt_extract.py ",
    "option": " ['--postxf'] ",
    "default": " None ",
    "type": " str ",
@@ -2489,7 +2178,6 @@
  },
  {
    "count": 2,
-   "prog": "e2ctf.py ",
    "option": " ['--proctag'] ",
    "default": " proc ",
    "type": " None ",
@@ -2497,7 +2185,6 @@
  },
  {
    "count": 2,
-   "prog": "e2spa_refine.py ",
    "option": " ['--ptcl'] ",
    "default": "  ",
    "type": " str ",
@@ -2505,7 +2192,6 @@
  },
  {
    "count": 2,
-   "prog": "e2proc2d.py ",
    "option": " ['--radon'] ",
    "default": " False ",
    "type": " None ",
@@ -2513,7 +2199,6 @@
  },
  {
    "count": 2,
-   "prog": "e2refinetofrealign.py ",
    "option": " ['--randomizemodel'] ",
    "default": "0",
    "type": " None ",
@@ -2521,7 +2206,6 @@
  },
  {
    "count": 2,
-   "prog": "e2ddd_movie.py ",
    "option": " ['--realign'] ",
    "default": " False ",
    "type": " None ",
@@ -2529,7 +2213,6 @@
  },
  {
    "count": 2,
-   "prog": "e2spt_refine.py ",
    "option": " ['--reference', '--ref'] ",
    "default": "  ",
    "type": " None ",
@@ -2537,7 +2220,6 @@
  },
  {
    "count": 2,
-   "prog": "e2rct.py ",
    "option": " ['--reference'] ",
    "default": " None ",
    "type": " str ",
@@ -2545,7 +2227,6 @@
  },
  {
    "count": 2,
-   "prog": "e2spt_tiltrefine.py ",
    "option": " ['--refineastep'] ",
    "default": "1",
    "type": " float ",
@@ -2553,7 +2234,6 @@
  },
  {
    "count": 2,
-   "prog": "e2spt_classaverage.py ",
    "option": " ['--refpreprocess'] ",
    "default": " False ",
    "type": " None ",
@@ -2561,7 +2241,6 @@
  },
  {
    "count": 2,
-   "prog": "e2spt_classaverage.py ",
    "option": " ['--refrandphase'] ",
    "default": "0",
    "type": " float ",
@@ -2569,7 +2248,6 @@
  },
  {
    "count": 2,
-   "prog": "e2evalrefine.py ",
    "option": " ['--resolution_all'] ",
    "default": " False ",
    "type": " None ",
@@ -2577,7 +2255,6 @@
  },
  {
    "count": 2,
-   "prog": "e2evalrefine.py ",
    "option": " ['--resolution_vsref'] ",
    "default": " None ",
    "type": " str ",
@@ -2585,7 +2262,6 @@
  },
  {
    "count": 2,
-   "prog": "e2classaverage.py ",
    "option": " ['--resultmx'] ",
    "default": " None ",
    "type": " str ",
@@ -2593,7 +2269,6 @@
  },
  {
    "count": 2,
-   "prog": "e2procjson.py ",
    "option": " ['--retype'] ",
    "default": " None ",
    "type": " str ",
@@ -2601,7 +2276,6 @@
  },
  {
    "count": 2,
-   "prog": "e2proc2d.py ",
    "option": " ['--rfp'] ",
    "default": " False ",
    "type": " None ",
@@ -2609,7 +2283,6 @@
  },
  {
    "count": 2,
-   "prog": "e2spt_extract.py ",
    "option": " ['--rmbeadthr'] ",
    "default": "-1",
    "type": " float ",
@@ -2617,7 +2290,6 @@
  },
  {
    "count": 2,
-   "prog": "e2spt_refine.py ",
    "option": " ['--scipy'] ",
    "default": " False ",
    "type": " None ",
@@ -2625,7 +2297,6 @@
  },
  {
    "count": 2,
-   "prog": "e2make3dpar.py ",
    "option": " ['--seedmap'] ",
    "default": " None ",
    "type": " str ",
@@ -2633,7 +2304,6 @@
  },
  {
    "count": 2,
-   "prog": "e2buildsets.py ",
    "option": " ['--setname'] ",
    "default": " all ",
    "type": " str ",
@@ -2641,7 +2311,6 @@
  },
  {
    "count": 2,
-   "prog": "e2ctf.py ",
    "option": " ['--sf'] ",
    "default": " auto ",
    "type": " str ",
@@ -2649,7 +2318,6 @@
  },
  {
    "count": 2,
-   "prog": "e2bdb.py ",
    "option": " ['--short'] ",
    "default": " False ",
    "type": " None ",
@@ -2657,7 +2325,6 @@
  },
  {
    "count": 2,
-   "prog": "e2spt_refine_new.py ",
    "option": " ['--smoothN'] ",
    "default": "15",
    "type": " int ",
@@ -2665,7 +2332,6 @@
  },
  {
    "count": 2,
-   "prog": "e2ctf.py ",
    "option": " ['--snrfilt'] ",
    "default": " False ",
    "type": " None ",
@@ -2673,7 +2339,6 @@
  },
  {
    "count": 2,
-   "prog": "e2refinetorelion2d.py ",
    "option": " ['--solventmask'] ",
    "default": "  ",
    "type": " str ",
@@ -2681,7 +2346,6 @@
  },
  {
    "count": 2,
-   "prog": "e2classextract.py ",
    "option": " ['--sort'] ",
    "default": " False ",
    "type": " None ",
@@ -2689,7 +2353,6 @@
  },
  {
    "count": 2,
-   "prog": "e2refine_easy.py ",
    "option": " ['--speed'] ",
    "default": "5",
    "type": " int ",
@@ -2697,7 +2360,6 @@
  },
  {
    "count": 2,
-   "prog": "e2spt_tiltstacker.py ",
    "option": " ['--stackregardless'] ",
    "default": " False ",
    "type": " None ",
@@ -2705,7 +2367,6 @@
  },
  {
    "count": 2,
-   "prog": "e2make3d.py ",
    "option": " ['--start'] ",
    "default": " None ",
    "type": " str ",
@@ -2713,7 +2374,6 @@
  },
  {
    "count": 2,
-   "prog": "e2spt_average.py ",
    "option": " ['--symalimasked'] ",
    "default": " None ",
    "type": " str ",
@@ -2721,7 +2381,6 @@
  },
  {
    "count": 2,
-   "prog": "e2spt_align.py ",
    "option": " ['--test180'] ",
    "default": " False ",
    "type": " None ",
@@ -2729,7 +2388,6 @@
  },
  {
    "count": 2,
-   "prog": "e2refinetofrealign.py ",
    "option": " ['--thresh'] ",
    "default": "0",
    "type": " float ",
@@ -2737,7 +2395,6 @@
  },
  {
    "count": 2,
-   "prog": "e2rct.py ",
    "option": " ['--tiltdata'] ",
    "default": " None ",
    "type": " str ",
@@ -2745,7 +2402,6 @@
  },
  {
    "count": 2,
-   "prog": "e2buildstacks.py ",
    "option": " ['--tilts'] ",
    "default": " False ",
    "type": " None ",
@@ -2753,7 +2409,6 @@
  },
  {
    "count": 2,
-   "prog": "e2ddd_external.py ",
    "option": " ['--tiltseries_name'] ",
    "default": "  ",
    "type": " str ",
@@ -2761,7 +2416,6 @@
  },
  {
    "count": 2,
-   "prog": "e2spt_tiltstacker.py ",
    "option": " ['--tiltstep'] ",
    "default": "0",
    "type": " float ",
@@ -2769,7 +2423,6 @@
  },
  {
    "count": 2,
-   "prog": "e2evalrefine.py ",
    "option": " ['--timing'] ",
    "default": " False ",
    "type": " None ",
@@ -2777,7 +2430,6 @@
  },
  {
    "count": 2,
-   "prog": "e2evalrefine.py ",
    "option": " ['--timingbypath'] ",
    "default": " False ",
    "type": " None ",
@@ -2785,7 +2437,6 @@
  },
  {
    "count": 2,
-   "prog": "e2make3d.py ",
    "option": " ['--tlt'] ",
    "default": " None ",
    "type": " str ",
@@ -2793,7 +2444,6 @@
  },
  {
    "count": 2,
-   "prog": "e2spt_extract.py ",
    "option": " ['--tltkeep'] ",
    "default": "1",
    "type": " float ",
@@ -2801,7 +2451,6 @@
  },
  {
    "count": 2,
-   "prog": "e2spt_autoboxer.py ",
    "option": " ['--tomogram'] ",
    "default": "  ",
    "type": " str ",
@@ -2809,7 +2458,6 @@
  },
  {
    "count": 2,
-   "prog": "e2spt_recompute.py ",
    "option": " ['--tomograms'] ",
    "default": "  ",
    "type": " str ",
@@ -2817,7 +2465,6 @@
  },
  {
    "count": 2,
-   "prog": "e2proc3d_huge.py ",
    "option": " ['--trans'] ",
    "default": "0",
    "type": " str ",
@@ -2825,7 +2472,6 @@
  },
  {
    "count": 2,
-   "prog": "e2refine_easy.py ",
    "option": " ['--treeclassify'] ",
    "default": " False ",
    "type": " None ",
@@ -2833,7 +2479,6 @@
  },
  {
    "count": 2,
-   "prog": "e2refine_easy.py ",
    "option": " ['--treeincomplete'] ",
    "default": "0",
    "type": " int ",
@@ -2841,7 +2486,6 @@
  },
  {
    "count": 2,
-   "prog": "e2basis.py ",
    "option": " ['--txtout'] ",
    "default": " False ",
    "type": " None ",
@@ -2849,7 +2493,6 @@
  },
  {
    "count": 2,
-   "prog": "e2rct.py ",
    "option": " ['--untiltdata'] ",
    "default": " None ",
    "type": " str ",
@@ -2857,7 +2500,6 @@
  },
  {
    "count": 2,
-   "prog": "e2classaverage.py ",
    "option": " ['--usefilt'] ",
    "default": " None ",
    "type": " None ",
@@ -2865,7 +2507,6 @@
  },
  {
    "count": 2,
-   "prog": "e2evalimage.py ",
    "option": " ['--usefoldername'] ",
    "default": " False ",
    "type": " None ",
@@ -2873,7 +2514,6 @@
  },
  {
    "count": 2,
-   "prog": "e2spt_average.py ",
    "option": " ['--wedgesigma'] ",
    "default": "3",
    "type": " float ",
@@ -2881,7 +2521,6 @@
  },
  {
    "count": 2,
-   "prog": "e2ctf.py ",
    "option": " ['--wiener'] ",
    "default": " False ",
    "type": " None ",
@@ -2889,7 +2528,6 @@
  },
  {
    "count": 2,
-   "prog": "e2boxer.py ",
    "option": " ['--write_dbbox'] ",
    "default": " False ",
    "type": " None ",
@@ -2897,7 +2535,6 @@
  },
  {
    "count": 2,
-   "prog": "e2proc2d.py ",
    "option": " ['--writejunk'] ",
    "default": " False ",
    "type": " None ",
@@ -2905,7 +2542,6 @@
  },
  {
    "count": 1,
-   "prog": "e2proc2d.py ",
    "option": " ['--addfile'] ",
    "default": " None ",
    "type": " str ",
@@ -2913,7 +2549,6 @@
  },
  {
    "count": 1,
-   "prog": "e2procheader.py ",
    "option": " ['--addfilename'] ",
    "default": " False ",
    "type": " None ",
@@ -2921,7 +2556,6 @@
  },
  {
    "count": 1,
-   "prog": "e2initialmodel_sgd.py ",
    "option": " ['--addnoise'] ",
    "default": "3",
    "type": " float ",
@@ -2929,7 +2563,6 @@
  },
  {
    "count": 1,
-   "prog": "e2pdb2mrc.py ",
    "option": " ['--addpdbbfactor'] ",
    "default": " False ",
    "type": " None ",
@@ -2937,7 +2570,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_trajfromrefine.py ",
    "option": " ['--ali2d'] ",
    "default": " None ",
    "type": " str ",
@@ -2945,7 +2577,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_trajfromrefine.py ",
    "option": " ['--ali3dnew'] ",
    "default": " None ",
    "type": " str ",
@@ -2953,7 +2584,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_trajfromrefine.py ",
    "option": " ['--ali3dold'] ",
    "default": " None ",
    "type": " str ",
@@ -2961,7 +2591,6 @@
  },
  {
    "count": 1,
-   "prog": "e2ddd_movie.py ",
    "option": " ['--align_frames'] ",
    "default": " False ",
    "type": " None ",
@@ -2969,7 +2598,6 @@
  },
  {
    "count": 1,
-   "prog": "e2rct.py ",
    "option": " ['--aligngran'] ",
    "default": "10",
    "type": " float ",
@@ -2977,7 +2605,6 @@
  },
  {
    "count": 1,
-   "prog": "e2refine2d_bispec.py ",
    "option": " ['--alignsort'] ",
    "default": " False ",
    "type": " None ",
@@ -2985,7 +2612,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_subtlt_local.py ",
    "option": " ['--aliptcls2d'] ",
    "default": "  ",
    "type": " str ",
@@ -2993,7 +2619,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_subtlt_local.py ",
    "option": " ['--aliptcls3d'] ",
    "default": "  ",
    "type": " str ",
@@ -3001,7 +2626,6 @@
  },
  {
    "count": 1,
-   "prog": "e2classifyligand.py ",
    "option": " ['--alistacks'] ",
    "default": "-10000000000",
    "type": " float ",
@@ -3009,7 +2633,6 @@
  },
  {
    "count": 1,
-   "prog": "e2bdb.py ",
    "option": " ['--all'] ",
    "default": " False ",
    "type": " None ",
@@ -3017,7 +2640,6 @@
  },
  {
    "count": 1,
-   "prog": "e2ddd_movie.py ",
    "option": " ['--allali'] ",
    "default": " False ",
    "type": " None ",
@@ -3025,7 +2647,6 @@
  },
  {
    "count": 1,
-   "prog": "e2procjson.py ",
    "option": " ['--allinfo'] ",
    "default": " False ",
    "type": " None ",
@@ -3033,7 +2654,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_extract.py ",
    "option": " ['--alltomograms'] ",
    "default": " False ",
    "type": " None ",
@@ -3041,7 +2661,6 @@
  },
  {
    "count": 1,
-   "prog": "e2procpdb.py ",
    "option": " ['--alpha'] ",
    "default": "0",
    "type": " float ",
@@ -3049,7 +2668,6 @@
  },
  {
    "count": 1,
-   "prog": "e2procpdb.py ",
    "option": " ['--alt'] ",
    "default": "0",
    "type": " float ",
@@ -3057,7 +2675,6 @@
  },
  {
    "count": 1,
-   "prog": "e2make3dpar.py ",
    "option": " ['--altedgemask'] ",
    "default": " False ",
    "type": " None ",
@@ -3065,7 +2682,6 @@
  },
  {
    "count": 1,
-   "prog": "e2refinetorelion3d.py ",
    "option": " ['--amplitudecontrast'] ",
    "default": "0.07",
    "type": " float ",
@@ -3073,7 +2689,6 @@
  },
  {
    "count": 1,
-   "prog": "e2gmm_refine.py ",
    "option": " ['--ampreg'] ",
    "default": "0",
    "type": " float ",
@@ -3081,7 +2696,6 @@
  },
  {
    "count": 1,
-   "prog": "e2classvsproj.py ",
    "option": " ['--ang'] ",
    "default": "10",
    "type": " float ",
@@ -3089,7 +2703,6 @@
  },
  {
    "count": 1,
-   "prog": "e2ptclvsmap.py ",
    "option": " ['--angstep'] ",
    "default": "9",
    "type": " float ",
@@ -3097,7 +2710,6 @@
  },
  {
    "count": 1,
-   "prog": "e2procpdb.py ",
    "option": " ['--animorph'] ",
    "default": " None ",
    "type": " str ",
@@ -3105,7 +2717,6 @@
  },
  {
    "count": 1,
-   "prog": "e2evalrefine.py ",
    "option": " ['--anisotropy'] ",
    "default": "-1",
    "type": " int ",
@@ -3113,7 +2724,6 @@
  },
  {
    "count": 1,
-   "prog": "e2bdb.py ",
    "option": " ['--appendvstack'] ",
    "default": " None ",
    "type": " str ",
@@ -3121,7 +2731,6 @@
  },
  {
    "count": 1,
-   "prog": "e2ctfsim.py ",
    "option": " ['--apply'] ",
    "default": " None ",
    "type": " str ",
@@ -3129,7 +2738,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_simulation.py ",
    "option": " ['--applyctf'] ",
    "default": " False ",
    "type": " None ",
@@ -3137,7 +2745,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_simulation.py ",
    "option": " ['--applyfocusdepth'] ",
    "default": " False ",
    "type": " None ",
@@ -3145,7 +2752,6 @@
  },
  {
    "count": 1,
-   "prog": "e2tomoseg_convnet.py ",
    "option": " ['--applying'] ",
    "default": " False ",
    "type": " None ",
@@ -3153,7 +2759,6 @@
  },
  {
    "count": 1,
-   "prog": "e2tomo_mwfill.py ",
    "option": " ['--applyto'] ",
    "default": " None ",
    "type": " str ",
@@ -3161,7 +2766,6 @@
  },
  {
    "count": 1,
-   "prog": "e2segment3d.py ",
    "option": " ['--asymunit'] ",
    "default": " False ",
    "type": " None ",
@@ -3169,7 +2773,6 @@
  },
  {
    "count": 1,
-   "prog": "e2ssehunter.py ",
    "option": " ['--atoms'] ",
    "default": " none ",
    "type": " str ",
@@ -3177,7 +2780,6 @@
  },
  {
    "count": 1,
-   "prog": "e2ssehunter.py ",
    "option": " ['--atomswt'] ",
    "default": "1",
    "type": " float ",
@@ -3185,7 +2787,6 @@
  },
  {
    "count": 1,
-   "prog": "e2pathwalker.py ",
    "option": " ['--atomtype'] ",
    "default": " CA ",
    "type": " str ",
@@ -3193,7 +2794,6 @@
  },
  {
    "count": 1,
-   "prog": "e2refinetorelion3d.py ",
    "option": " ['--auto_healpix'] ",
    "default": "1.8",
    "type": " str ",
@@ -3201,7 +2801,6 @@
  },
  {
    "count": 1,
-   "prog": "e2boxer_old.py ",
    "option": " ['--autoboxer'] ",
    "default": " None ",
    "type": " str ",
@@ -3209,7 +2808,6 @@
  },
  {
    "count": 1,
-   "prog": "e2tomogram.py ",
    "option": " ['--autoclipxy'] ",
    "default": " False ",
    "type": " None ",
@@ -3217,7 +2815,6 @@
  },
  {
    "count": 1,
-   "prog": "e2ctf.py ",
    "option": " ['--autohp'] ",
    "default": " False ",
    "type": " None ",
@@ -3225,7 +2822,6 @@
  },
  {
    "count": 1,
-   "prog": "e2proc2dmulti.py ",
    "option": " ['--autoinvert'] ",
    "default": " False ",
    "type": " None ",
@@ -3233,7 +2829,6 @@
  },
  {
    "count": 1,
-   "prog": "e2boxer.py ",
    "option": " ['--autopick'] ",
    "default": " None ",
    "type": " str ",
@@ -3241,7 +2836,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_resolutionplot.py ",
    "option": " ['--averagefscs'] ",
    "default": " False ",
    "type": " None ",
@@ -3249,7 +2843,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_intrafsc.py ",
    "option": " ['--averagehalves'] ",
    "default": " False ",
    "type": " None ",
@@ -3257,7 +2850,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_wedge.py ",
    "option": " ['--averagestats'] ",
    "default": " False ",
    "type": " None ",
@@ -3265,7 +2857,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_mapptclstotomo.py ",
    "option": " ['--avg'] ",
    "default": "  ",
    "type": " str ",
@@ -3273,7 +2864,6 @@
  },
  {
    "count": 1,
-   "prog": "e2symsearch3d.py ",
    "option": " ['--avgiter'] ",
    "default": "1",
    "type": " int ",
@@ -3281,7 +2871,6 @@
  },
  {
    "count": 1,
-   "prog": "e2rct.py ",
    "option": " ['--avgrcts'] ",
    "default": " False ",
    "type": " None ",
@@ -3289,7 +2878,6 @@
  },
  {
    "count": 1,
-   "prog": "e2proc2d.py ",
    "option": " ['--avgseq'] ",
    "default": "0",
    "type": " int ",
@@ -3297,7 +2885,6 @@
  },
  {
    "count": 1,
-   "prog": "e2classifykmeans.py ",
    "option": " ['--axes'] ",
    "default": " None ",
    "type": " str ",
@@ -3305,7 +2892,6 @@
  },
  {
    "count": 1,
-   "prog": "e2procpdb.py ",
    "option": " ['--az'] ",
    "default": "0",
    "type": " float ",
@@ -3313,7 +2899,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_autoboxer.py ",
    "option": " ['--backgroundstack'] ",
    "default": " None ",
    "type": " str ",
@@ -3321,7 +2906,6 @@
  },
  {
    "count": 1,
-   "prog": "e2ddd_movie.py ",
    "option": " ['--bad_columns'] ",
    "default": "  ",
    "type": " str ",
@@ -3329,7 +2913,6 @@
  },
  {
    "count": 1,
-   "prog": "e2ddd_movie.py ",
    "option": " ['--bad_rows'] ",
    "default": "  ",
    "type": " str ",
@@ -3337,7 +2920,6 @@
  },
  {
    "count": 1,
-   "prog": "e2classifyligand.py ",
    "option": " ['--badgroup'] ",
    "default": " False ",
    "type": " None ",
@@ -3345,7 +2927,6 @@
  },
  {
    "count": 1,
-   "prog": "e2tomogram.py ",
    "option": " ['--badone'] ",
    "default": " False ",
    "type": " None ",
@@ -3353,7 +2934,6 @@
  },
  {
    "count": 1,
-   "prog": "e2classifyligand.py ",
    "option": " ['--badqualsig'] ",
    "default": "0.5",
    "type": " float ",
@@ -3361,7 +2941,6 @@
  },
  {
    "count": 1,
-   "prog": "e2classifyligand.py ",
    "option": " ['--badsepsig'] ",
    "default": "0.25",
    "type": " float ",
@@ -3369,7 +2948,6 @@
  },
  {
    "count": 1,
-   "prog": "e2basis.py ",
    "option": " ['--basislist'] ",
    "default": " None ",
    "type": " str ",
@@ -3377,7 +2955,6 @@
  },
  {
    "count": 1,
-   "prog": "e2refine2d_bispec.py ",
    "option": " ['--basisrefs'] ",
    "default": " None ",
    "type": " str ",
@@ -3385,7 +2962,6 @@
  },
  {
    "count": 1,
-   "prog": "e2tomoseg_convnet.py ",
    "option": " ['--batch'] ",
    "default": "20",
    "type": " int ",
@@ -3393,7 +2969,6 @@
  },
  {
    "count": 1,
-   "prog": "e2gmm_refine.py ",
    "option": " ['--batchsz'] ",
    "default": "32",
    "type": " int ",
@@ -3401,7 +2976,6 @@
  },
  {
    "count": 1,
-   "prog": "e2speedtest.py ",
    "option": " ['--best'] ",
    "default": " False ",
    "type": " None ",
@@ -3409,7 +2983,6 @@
  },
  {
    "count": 1,
-   "prog": "e2ddd_movie.py ",
    "option": " ['--bestali'] ",
    "default": " False ",
    "type": " None ",
@@ -3417,7 +2990,6 @@
  },
  {
    "count": 1,
-   "prog": "e2ctf2eman1.py ",
    "option": " ['--bf'] ",
    "default": "0",
    "type": " float ",
@@ -3425,7 +2997,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_tomoctf.py ",
    "option": " ['--bgcurve'] ",
    "default": " None ",
    "type": " str ",
@@ -3433,7 +3004,6 @@
  },
  {
    "count": 1,
-   "prog": "e2ctf.py ",
    "option": " ['--bgmask'] ",
    "default": "0",
    "type": " int ",
@@ -3441,7 +3011,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_tiltstacker.py ",
    "option": " ['--bidirectional'] ",
    "default": " False ",
    "type": " None ",
@@ -3449,7 +3018,6 @@
  },
  {
    "count": 1,
-   "prog": "e2ddd_external.py ",
    "option": " ['--binby'] ",
    "default": " None ",
    "type": " int ",
@@ -3457,7 +3025,6 @@
  },
  {
    "count": 1,
-   "prog": "e2speedtest.py ",
    "option": " ['--bispec'] ",
    "default": " False ",
    "type": " None ",
@@ -3465,7 +3032,6 @@
  },
  {
    "count": 1,
-   "prog": "e2compress.py ",
    "option": " ['--bits'] ",
    "default": "10",
    "type": " int ",
@@ -3473,7 +3039,6 @@
  },
  {
    "count": 1,
-   "prog": "e2classaverage.py ",
    "option": " ['--bootstrap'] ",
    "default": " False ",
    "type": " None ",
@@ -3481,7 +3046,6 @@
  },
  {
    "count": 1,
-   "prog": "e2import.py ",
    "option": " ['--box_type'] ",
    "default": " boxes ",
    "type": " None ",
@@ -3489,7 +3053,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_boxer.py ",
    "option": " ['--box2d'] ",
    "default": " False ",
    "type": " None ",
@@ -3497,7 +3060,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_boxer.py ",
    "option": " ['--box3d'] ",
    "default": " False ",
    "type": " None ",
@@ -3505,7 +3067,6 @@
  },
  {
    "count": 1,
-   "prog": "e2tomoseg_buildtrainset.py ",
    "option": " ['--boxes_negative'] ",
    "default": " None ",
    "type": " str ",
@@ -3513,7 +3074,6 @@
  },
  {
    "count": 1,
-   "prog": "e2tomoseg_buildtrainset.py ",
    "option": " ['--boxing'] ",
    "default": " False ",
    "type": " None ",
@@ -3521,7 +3081,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_extract.py ",
    "option": " ['--boxsz_unbin'] ",
    "default": "-1",
    "type": " int ",
@@ -3529,7 +3088,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_boxer_old.py ",
    "option": " ['--bruteaverage'] ",
    "default": " False ",
    "type": " None ",
@@ -3537,7 +3095,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_refinemulti_old.py ",
    "option": " ['--btref'] ",
    "default": "0",
    "type": " int ",
@@ -3545,7 +3102,6 @@
  },
  {
    "count": 1,
-   "prog": "e2tilefile.py ",
    "option": " ['--build'] ",
    "default": " None ",
    "type": " str ",
@@ -3553,7 +3109,6 @@
  },
  {
    "count": 1,
-   "prog": "e2tilefile.py ",
    "option": " ['--buildpspec'] ",
    "default": " None ",
    "type": " float ",
@@ -3561,7 +3116,6 @@
  },
  {
    "count": 1,
-   "prog": "e2tomoseg_buildtrainset.py ",
    "option": " ['--buildset'] ",
    "default": " False ",
    "type": " None ",
@@ -3569,7 +3123,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_tiltrefine.py ",
    "option": " ['--buildsetonly'] ",
    "default": " False ",
    "type": " None ",
@@ -3577,7 +3130,6 @@
  },
  {
    "count": 1,
-   "prog": "e2tomogram.py ",
    "option": " ['--bxsz'] ",
    "default": "32",
    "type": " int ",
@@ -3585,7 +3137,6 @@
  },
  {
    "count": 1,
-   "prog": "e2stacksort.py ",
    "option": " ['--byheader'] ",
    "default": " None ",
    "type": " str ",
@@ -3593,7 +3144,6 @@
  },
  {
    "count": 1,
-   "prog": "e2stacksort.py ",
    "option": " ['--bykurtosis'] ",
    "default": " False ",
    "type": " None ",
@@ -3601,7 +3151,6 @@
  },
  {
    "count": 1,
-   "prog": "e2stacksort.py ",
    "option": " ['--byptcl'] ",
    "default": " False ",
    "type": " None ",
@@ -3609,7 +3158,6 @@
  },
  {
    "count": 1,
-   "prog": "e2tomogram.py ",
    "option": " ['--bytile'] ",
    "default": " False ",
    "type": " None ",
@@ -3617,7 +3165,6 @@
  },
  {
    "count": 1,
-   "prog": "e2proc2d.py ",
    "option": " ['--calccont'] ",
    "default": " False ",
    "type": " None ",
@@ -3625,7 +3172,6 @@
  },
  {
    "count": 1,
-   "prog": "e2proc2d.py ",
    "option": " ['--calcsf'] ",
    "default": " None ",
    "type": " str ",
@@ -3633,7 +3179,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_autoboxer.py ",
    "option": " ['--carbonstack'] ",
    "default": " None ",
    "type": " str ",
@@ -3641,7 +3186,6 @@
  },
  {
    "count": 1,
-   "prog": "e2rct.py ",
    "option": " ['--careject'] ",
    "default": " None ",
    "type": " str ",
@@ -3649,7 +3193,6 @@
  },
  {
    "count": 1,
-   "prog": "e2refine2d.py ",
    "option": " ['--centeracf'] ",
    "default": " False ",
    "type": " None ",
@@ -3657,7 +3200,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_subtilt_old.py ",
    "option": " ['--centerzerotilt'] ",
    "default": " False ",
    "type": " None ",
@@ -3665,7 +3207,6 @@
  },
  {
    "count": 1,
-   "prog": "e2pathwalker.py ",
    "option": " ['--chain'] ",
    "default": " None ",
    "type": " str ",
@@ -3673,7 +3214,6 @@
  },
  {
    "count": 1,
-   "prog": "e2bdb.py ",
    "option": " ['--checkctf'] ",
    "default": " False ",
    "type": " None ",
@@ -3681,7 +3221,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_tomoctf.py ",
    "option": " ['--checkhand'] ",
    "default": " False ",
    "type": " None ",
@@ -3689,7 +3228,6 @@
  },
  {
    "count": 1,
-   "prog": "e2segment3d.py ",
    "option": " ['--chimeraout'] ",
    "default": " None ",
    "type": " str ",
@@ -3697,7 +3235,6 @@
  },
  {
    "count": 1,
-   "prog": "e2ctf.py ",
    "option": " ['--chunk'] ",
    "default": " None ",
    "type": " str ",
@@ -3705,7 +3242,6 @@
  },
  {
    "count": 1,
-   "prog": "e2rct.py ",
    "option": " ['--classavg'] ",
    "default": " None ",
    "type": " str ",
@@ -3713,7 +3249,6 @@
  },
  {
    "count": 1,
-   "prog": "e2ctf.py ",
    "option": " ['--classify'] ",
    "default": "0",
    "type": " int ",
@@ -3721,7 +3256,6 @@
  },
  {
    "count": 1,
-   "prog": "e2classesbyref.py ",
    "option": " ['--classinfo'] ",
    "default": " None ",
    "type": " str ",
@@ -3729,7 +3263,6 @@
  },
  {
    "count": 1,
-   "prog": "e2classextract.py ",
    "option": " ['--classlist'] ",
    "default": " None ",
    "type": " str ",
@@ -3737,7 +3270,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_pcasplit.py ",
    "option": " ['--clean'] ",
    "default": " False ",
    "type": " None ",
@@ -3745,7 +3277,6 @@
  },
  {
    "count": 1,
-   "prog": "e2bdb.py ",
    "option": " ['--cleanup'] ",
    "default": " False ",
    "type": " None ",
@@ -3753,7 +3284,6 @@
  },
  {
    "count": 1,
-   "prog": "e2tomogram.py ",
    "option": " ['--clipz'] ",
    "default": "-1",
    "type": " int ",
@@ -3761,7 +3291,6 @@
  },
  {
    "count": 1,
-   "prog": "e2classifykmeans.py ",
    "option": " ['--clsfiles'] ",
    "default": " False ",
    "type": " None ",
@@ -3769,7 +3298,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spa_make3d.py ",
    "option": " ['--clsid'] ",
    "default": " None ",
    "type": " str ",
@@ -3777,7 +3305,6 @@
  },
  {
    "count": 1,
-   "prog": "e2classifykmeans.py ",
    "option": " ['--clsmx'] ",
    "default": " None ",
    "type": " str ",
@@ -3785,7 +3312,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_hac.py ",
    "option": " ['--clusters'] ",
    "default": "1",
    "type": " int ",
@@ -3793,7 +3319,6 @@
  },
  {
    "count": 1,
-   "prog": "e2ssehunter.py ",
    "option": " ['--coeff'] ",
    "default": " none ",
    "type": " str ",
@@ -3801,7 +3326,6 @@
  },
  {
    "count": 1,
-   "prog": "e2ssehunter.py ",
    "option": " ['--coeffwt'] ",
    "default": "1",
    "type": " float ",
@@ -3809,7 +3333,6 @@
  },
  {
    "count": 1,
-   "prog": "e2tiltvalidate.py ",
    "option": " ['--colorzaxis'] ",
    "default": " False ",
    "type": " None ",
@@ -3817,7 +3340,6 @@
  },
  {
    "count": 1,
-   "prog": "e2compress.py ",
    "option": " ['--compresslevel'] ",
    "default": " None ",
    "type": " int ",
@@ -3825,7 +3347,6 @@
  },
  {
    "count": 1,
-   "prog": "e2ctf.py ",
    "option": " ['--computesf'] ",
    "default": " False ",
    "type": " None ",
@@ -3833,7 +3354,6 @@
  },
  {
    "count": 1,
-   "prog": "e2stackanim.py ",
    "option": " ['--contrast'] ",
    "default": "1",
    "type": " float ",
@@ -3841,7 +3361,6 @@
  },
  {
    "count": 1,
-   "prog": "e2gmm_refine.py ",
    "option": " ['--conv'] ",
    "default": " False ",
    "type": " None ",
@@ -3849,7 +3368,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_subtilt_old.py ",
    "option": " ['--coords2d'] ",
    "default": "  ",
    "type": " str ",
@@ -3857,7 +3375,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_subtilt_old.py ",
    "option": " ['--coords3d'] ",
    "default": "  ",
    "type": " str ",
@@ -3865,7 +3382,6 @@
  },
  {
    "count": 1,
-   "prog": "e2tomogram.py ",
    "option": " ['--correctrot'] ",
    "default": " False ",
    "type": " None ",
@@ -3873,7 +3389,6 @@
  },
  {
    "count": 1,
-   "prog": "e2proclst.py ",
    "option": " ['--create'] ",
    "default": " None ",
    "type": " str ",
@@ -3881,7 +3396,6 @@
  },
  {
    "count": 1,
-   "prog": "e2boxer_old.py ",
    "option": " ['--cter'] ",
    "default": " False ",
    "type": " None ",
@@ -3889,7 +3403,6 @@
  },
  {
    "count": 1,
-   "prog": "e2ctf2eman1.py ",
    "option": " ['--ctfcoverage'] ",
    "default": " False ",
    "type": " None ",
@@ -3897,7 +3410,6 @@
  },
  {
    "count": 1,
-   "prog": "e2rawdata.py ",
    "option": " ['--ctfest'] ",
    "default": " False ",
    "type": " None ",
@@ -3905,7 +3417,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_subtilt_from_imod.py ",
    "option": " ['--ctffile'] ",
    "default": " None ",
    "type": " str ",
@@ -3913,7 +3424,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_ctf_old.py ",
    "option": " ['--ctfparamsfile'] ",
    "default": "  ",
    "type": " str ",
@@ -3921,7 +3431,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_tiltrefine_oneiter.py ",
    "option": " ['--ctfweight'] ",
    "default": " False ",
    "type": " None ",
@@ -3929,7 +3438,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_extract.py ",
    "option": " ['--curves_overlap'] ",
    "default": "0.5",
    "type": " float ",
@@ -3937,7 +3445,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_extract.py ",
    "option": " ['--curves'] ",
    "default": "-1",
    "type": " int ",
@@ -3945,7 +3452,6 @@
  },
  {
    "count": 1,
-   "prog": "e2fsc_local.py ",
    "option": " ['--cut'] ",
    "default": "0.2",
    "type": " float ",
@@ -3953,7 +3459,6 @@
  },
  {
    "count": 1,
-   "prog": "e2ssehunter.py ",
    "option": " ['--da'] ",
    "default": "5",
    "type": " float ",
@@ -3961,7 +3466,6 @@
  },
  {
    "count": 1,
-   "prog": "e2import.py ",
    "option": " ['--darkrefs'] ",
    "default": "  ",
    "type": " None ",
@@ -3969,7 +3473,6 @@
  },
  {
    "count": 1,
-   "prog": "e2tiltvalidate.py ",
    "option": " ['--datalabels'] ",
    "default": " False ",
    "type": " None ",
@@ -3977,7 +3480,6 @@
  },
  {
    "count": 1,
-   "prog": "e2tiltvalidate.py ",
    "option": " ['--datalabelscolor'] ",
    "default": " #00ff00 ",
    "type": " str ",
@@ -3985,7 +3487,6 @@
  },
  {
    "count": 1,
-   "prog": "e2helixboxer.py ",
    "option": " ['--db-add-hcoords'] ",
    "default": " None ",
    "type": " str ",
@@ -3993,7 +3494,6 @@
  },
  {
    "count": 1,
-   "prog": "e2helixboxer.py ",
    "option": " ['--db-set-hcoords'] ",
    "default": " None ",
    "type": " str ",
@@ -4001,7 +3501,6 @@
  },
  {
    "count": 1,
-   "prog": "e2boxer_old.py ",
    "option": " ['--dbls'] ",
    "default": " None ",
    "type": " str ",
@@ -4009,7 +3508,6 @@
  },
  {
    "count": 1,
-   "prog": "e2classaverage.py ",
    "option": " ['--dbpath'] ",
    "default": " . ",
    "type": " None ",
@@ -4017,7 +3515,6 @@
  },
  {
    "count": 1,
-   "prog": "e2ddd_movie.py ",
    "option": " ['--de64'] ",
    "default": " False ",
    "type": " None ",
@@ -4025,7 +3522,6 @@
  },
  {
    "count": 1,
-   "prog": "e2classaverage.py ",
    "option": " ['--decayedge'] ",
    "default": " False ",
    "type": " None ",
@@ -4033,7 +3529,6 @@
  },
  {
    "count": 1,
-   "prog": "e2gmm_analysis.py ",
    "option": " ['--decoder'] ",
    "default": " None ",
    "type": " str ",
@@ -4041,7 +3536,6 @@
  },
  {
    "count": 1,
-   "prog": "e2gmm_refine.py ",
    "option": " ['--decoderout'] ",
    "default": " None ",
    "type": " str ",
@@ -4049,7 +3543,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_subtilt_from_imod.py ",
    "option": " ['--defcol'] ",
    "default": "2",
    "type": " int ",
@@ -4057,7 +3550,6 @@
  },
  {
    "count": 1,
-   "prog": "e2ddd_external.py ",
    "option": " ['--defect_file'] ",
    "default": " None ",
    "type": " str ",
@@ -4065,7 +3557,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_ctf_old.py ",
    "option": " ['--defocilist'] ",
    "default": "  ",
    "type": " str ",
@@ -4073,7 +3564,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_ctf_old.py ",
    "option": " ['--defocusbottom'] ",
    "default": " False ",
    "type": " None ",
@@ -4081,7 +3571,6 @@
  },
  {
    "count": 1,
-   "prog": "e2ctffind3util.py ",
    "option": " ['--defocusstep'] ",
    "default": "0",
    "type": " float ",
@@ -4089,7 +3578,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_ctf_old.py ",
    "option": " ['--defocustop'] ",
    "default": " False ",
    "type": " None ",
@@ -4097,7 +3585,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_ctf_old.py ",
    "option": " ['--defocusvariationlimit'] ",
    "default": "0.1",
    "type": " float ",
@@ -4105,7 +3592,6 @@
  },
  {
    "count": 1,
-   "prog": "e2bdb.py ",
    "option": " ['--delete'] ",
    "default": " False ",
    "type": " None ",
@@ -4113,7 +3599,6 @@
  },
  {
    "count": 1,
-   "prog": "e2proclst.py ",
    "option": " ['--dereforig'] ",
    "default": " None ",
    "type": " str ",
@@ -4121,7 +3606,6 @@
  },
  {
    "count": 1,
-   "prog": "e2ddd_external.py ",
    "option": " ['--device_num'] ",
    "default": "0",
    "type": " str ",
@@ -4129,7 +3613,6 @@
  },
  {
    "count": 1,
-   "prog": "e2ctf2eman1.py ",
    "option": " ['--df'] ",
    "default": " False ",
    "type": " None ",
@@ -4137,7 +3620,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_tomoctf.py ",
    "option": " ['--dfrange'] ",
    "default": " 2.0,7.0,0.02 ",
    "type": " str ",
@@ -4145,7 +3627,6 @@
  },
  {
    "count": 1,
-   "prog": "e2ctf2eman1.py ",
    "option": " ['--dfval'] ",
    "default": "0",
    "type": " float ",
@@ -4153,7 +3634,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_autoboxer.py ",
    "option": " ['--dilutionfactor'] ",
    "default": "4",
    "type": " int ",
@@ -4161,7 +3641,6 @@
  },
  {
    "count": 1,
-   "prog": "e2tilefile.py ",
    "option": " ['--display'] ",
    "default": "  ",
    "type": " str ",
@@ -4169,7 +3648,6 @@
  },
  {
    "count": 1,
-   "prog": "e2pathwalker.py ",
    "option": " ['--dmax'] ",
    "default": "10",
    "type": " float ",
@@ -4177,7 +3655,6 @@
  },
  {
    "count": 1,
-   "prog": "e2pathwalker.py ",
    "option": " ['--dmin'] ",
    "default": "2",
    "type": " float ",
@@ -4185,7 +3662,6 @@
  },
  {
    "count": 1,
-   "prog": "e2boxer_old.py ",
    "option": " ['--do_ctf'] ",
    "default": " None ",
    "type": " str ",
@@ -4193,7 +3669,6 @@
  },
  {
    "count": 1,
-   "prog": "e2tiltvalidate.py ",
    "option": " ['--docontourplot'] ",
    "default": " False ",
    "type": " None ",
@@ -4201,7 +3676,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_classaverage.py ",
    "option": " ['--donotaverage'] ",
    "default": " False ",
    "type": " None ",
@@ -4209,7 +3683,6 @@
  },
  {
    "count": 1,
-   "prog": "e2tomopreproc.py ",
    "option": " ['--dontcleanup'] ",
    "default": " False ",
    "type": " None ",
@@ -4217,7 +3690,6 @@
  },
  {
    "count": 1,
-   "prog": "e2align3d.py ",
    "option": " ['--dotrans'] ",
    "default": "1",
    "type": " int ",
@@ -4225,7 +3697,6 @@
  },
  {
    "count": 1,
-   "prog": "e2align3d.py ",
    "option": " ['--dphi'] ",
    "default": "30",
    "type": " float ",
@@ -4233,7 +3704,6 @@
  },
  {
    "count": 1,
-   "prog": "e2tomogram.py ",
    "option": " ['--dryrun'] ",
    "default": " False ",
    "type": " None ",
@@ -4241,7 +3711,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_tempmatch.py ",
    "option": " ['--dthr'] ",
    "default": "-1",
    "type": " float ",
@@ -4249,7 +3718,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_simulation.py ",
    "option": " ['--dualaxis'] ",
    "default": " False ",
    "type": " None ",
@@ -4257,7 +3725,6 @@
  },
  {
    "count": 1,
-   "prog": "e2procpdb.py ",
    "option": " ['--e0'] ",
    "default": "0",
    "type": " float ",
@@ -4265,7 +3732,6 @@
  },
  {
    "count": 1,
-   "prog": "e2procpdb.py ",
    "option": " ['--e1'] ",
    "default": "0",
    "type": " float ",
@@ -4273,7 +3739,6 @@
  },
  {
    "count": 1,
-   "prog": "e2procpdb.py ",
    "option": " ['--e2'] ",
    "default": "0",
    "type": " float ",
@@ -4281,7 +3746,6 @@
  },
  {
    "count": 1,
-   "prog": "e2procpdb.py ",
    "option": " ['--e3'] ",
    "default": "0",
    "type": " float ",
@@ -4289,7 +3753,6 @@
  },
  {
    "count": 1,
-   "prog": "e2refinetorelion2d.py ",
    "option": " ['--echo'] ",
    "default": " False ",
    "type": " None ",
@@ -4297,7 +3760,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_subtilt_from_imod.py ",
    "option": " ['--edf'] ",
    "default": "  ",
    "type": " str ",
@@ -4305,7 +3767,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_extractfromseg.py ",
    "option": " ['--edge'] ",
    "default": "4",
    "type": " int ",
@@ -4313,7 +3774,6 @@
  },
  {
    "count": 1,
-   "prog": "e2rawdata.py ",
    "option": " ['--edgenorm'] ",
    "default": " False ",
    "type": " None ",
@@ -4321,7 +3781,6 @@
  },
  {
    "count": 1,
-   "prog": "e2proc2d.py ",
    "option": " ['--eer2x'] ",
    "default": " False ",
    "type": " None ",
@@ -4329,7 +3788,6 @@
  },
  {
    "count": 1,
-   "prog": "e2proc2d.py ",
    "option": " ['--eer4x'] ",
    "default": " False ",
    "type": " None ",
@@ -4337,7 +3795,6 @@
  },
  {
    "count": 1,
-   "prog": "e2pathwalker.py ",
    "option": " ['--end'] ",
    "default": " None ",
    "type": " int ",
@@ -4345,7 +3802,6 @@
  },
  {
    "count": 1,
-   "prog": "e2proclst.py ",
    "option": " ['--eosplit'] ",
    "default": " False ",
    "type": " None ",
@@ -4353,7 +3809,6 @@
  },
  {
    "count": 1,
-   "prog": "e2tomopreproc.py ",
    "option": " ['--erasegold'] ",
    "default": "  ",
    "type": " None ",
@@ -4361,7 +3816,6 @@
  },
  {
    "count": 1,
-   "prog": "e2eulerxplor.py ",
    "option": " ['--eulerdata'] ",
    "default": " None ",
    "type": " str ",
@@ -4369,7 +3823,6 @@
  },
  {
    "count": 1,
-   "prog": "e2tiltvalidate.py ",
    "option": " ['--eulerfile'] ",
    "default": " None ",
    "type": " str ",
@@ -4377,7 +3830,6 @@
  },
  {
    "count": 1,
-   "prog": "e2refine_easy.py ",
    "option": " ['--eulerrefine'] ",
    "default": " False ",
    "type": " None ",
@@ -4385,7 +3837,6 @@
  },
  {
    "count": 1,
-   "prog": "e2evalrefine.py ",
    "option": " ['--evalclassdetail'] ",
    "default": " False ",
    "type": " None ",
@@ -4393,7 +3844,6 @@
  },
  {
    "count": 1,
-   "prog": "e2evalrefine.py ",
    "option": " ['--evalclassqual'] ",
    "default": " False ",
    "type": " None ",
@@ -4401,7 +3851,6 @@
  },
  {
    "count": 1,
-   "prog": "e2gmm_refine.py ",
    "option": " ['--evalmodel'] ",
    "default": "  ",
    "type": " str ",
@@ -4409,7 +3858,6 @@
  },
  {
    "count": 1,
-   "prog": "e2evalrefine.py ",
    "option": " ['--evalptclqual'] ",
    "default": " False ",
    "type": " None ",
@@ -4417,7 +3865,6 @@
  },
  {
    "count": 1,
-   "prog": "e2gmm_refine.py ",
    "option": " ['--evalsize'] ",
    "default": "-1",
    "type": " int ",
@@ -4425,7 +3872,6 @@
  },
  {
    "count": 1,
-   "prog": "e2classextract.py ",
    "option": " ['--evenoddmerge'] ",
    "default": " False ",
    "type": " None ",
@@ -4433,7 +3879,6 @@
  },
  {
    "count": 1,
-   "prog": "e2boxer_old.py ",
    "option": " ['--exclude_bad'] ",
    "default": " False ",
    "type": " None ",
@@ -4441,7 +3886,6 @@
  },
  {
    "count": 1,
-   "prog": "e2boxer_old.py ",
    "option": " ['--exclude_edges'] ",
    "default": " False ",
    "type": " None ",
@@ -4449,7 +3893,6 @@
  },
  {
    "count": 1,
-   "prog": "e2tomo_tiltstacker.py ",
    "option": " ['--exclude_extremes'] ",
    "default": " False ",
    "type": " None ",
@@ -4457,7 +3900,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_subtilt_old.py ",
    "option": " ['--excludeedge'] ",
    "default": "0",
    "type": " float ",
@@ -4465,7 +3907,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_ctf_old.py ",
    "option": " ['--excludeedges'] ",
    "default": " False ",
    "type": " None ",
@@ -4473,7 +3914,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_hac.py ",
    "option": " ['--exclusive_class_min'] ",
    "default": "0",
    "type": " int ",
@@ -4481,7 +3921,6 @@
  },
  {
    "count": 1,
-   "prog": "e2bdb.py ",
    "option": " ['--exlist'] ",
    "default": " None ",
    "type": " str ",
@@ -4489,7 +3928,6 @@
  },
  {
    "count": 1,
-   "prog": "e2emx.py ",
    "option": " ['--export_whole_project'] ",
    "default": " False ",
    "type": " None ",
@@ -4497,7 +3935,6 @@
  },
  {
    "count": 1,
-   "prog": "e2ddd_movie.py ",
    "option": " ['--ext'] ",
    "default": " hdf ",
    "type": " str ",
@@ -4505,7 +3942,6 @@
  },
  {
    "count": 1,
-   "prog": "e2proc2d.py ",
    "option": " ['--extractboxes'] ",
    "default": " False ",
    "type": " None ",
@@ -4513,7 +3949,6 @@
  },
  {
    "count": 1,
-   "prog": "e2procjson.py ",
    "option": " ['--extractkey'] ",
    "default": " None ",
    "type": " str ",
@@ -4521,7 +3956,6 @@
  },
  {
    "count": 1,
-   "prog": "e2evalrefine.py ",
    "option": " ['--extractorientptcl'] ",
    "default": " None ",
    "type": " str ",
@@ -4529,7 +3963,6 @@
  },
  {
    "count": 1,
-   "prog": "e2bdb.py ",
    "option": " ['--extractplots'] ",
    "default": " False ",
    "type": " None ",
@@ -4537,7 +3970,6 @@
  },
  {
    "count": 1,
-   "prog": "e2procjson.py ",
    "option": " ['--extractspt'] ",
    "default": " False ",
    "type": " None ",
@@ -4545,7 +3977,6 @@
  },
  {
    "count": 1,
-   "prog": "e2align3d.py ",
    "option": " ['--famps'] ",
    "default": "1",
    "type": " float ",
@@ -4553,7 +3984,6 @@
  },
  {
    "count": 1,
-   "prog": "e2refinetofrealign.py ",
    "option": " ['--fbeaut'] ",
    "default": " False ",
    "type": " None ",
@@ -4561,7 +3991,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_extractfromseg.py ",
    "option": " ['--featurename'] ",
    "default": "  ",
    "type": " str ",
@@ -4569,7 +3998,6 @@
  },
  {
    "count": 1,
-   "prog": "e2refinetofrealign.py ",
    "option": " ['--ffilt'] ",
    "default": " False ",
    "type": " None ",
@@ -4577,7 +4005,6 @@
  },
  {
    "count": 1,
-   "prog": "e2proc2d.py ",
    "option": " ['--fftavg'] ",
    "default": " None ",
    "type": " str ",
@@ -4585,7 +4012,6 @@
  },
  {
    "count": 1,
-   "prog": "e2ddd_particles.py ",
    "option": " ['--filefilt'] ",
    "default": " None ",
    "type": " str ",
@@ -4593,7 +4019,6 @@
  },
  {
    "count": 1,
-   "prog": "e2make3dpar.py ",
    "option": " ['--fillangle'] ",
    "default": "0",
    "type": " float ",
@@ -4601,7 +4026,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_wedgefill.py ",
    "option": " ['--fillimage'] ",
    "default": "  ",
    "type": " str ",
@@ -4609,7 +4033,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_wedgefill.py ",
    "option": " ['--fillwithnoise'] ",
    "default": " False ",
    "type": " None ",
@@ -4617,7 +4040,6 @@
  },
  {
    "count": 1,
-   "prog": "e2simmx.py ",
    "option": " ['--fillzero'] ",
    "default": " False ",
    "type": " None ",
@@ -4625,7 +4047,6 @@
  },
  {
    "count": 1,
-   "prog": "e2bdb.py ",
    "option": " ['--filt'] ",
    "default": " None ",
    "type": " str ",
@@ -4633,7 +4054,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_refinemsa.py ",
    "option": " ['--filter'] ",
    "default": "0",
    "type": " int ",
@@ -4641,7 +4061,6 @@
  },
  {
    "count": 1,
-   "prog": "e2ptclvsmap.py ",
    "option": " ['--filterout'] ",
    "default": " False ",
    "type": " None ",
@@ -4649,7 +4068,6 @@
  },
  {
    "count": 1,
-   "prog": "e2bdb.py ",
    "option": " ['--filtexclude'] ",
    "default": " None ",
    "type": " str ",
@@ -4657,7 +4075,6 @@
  },
  {
    "count": 1,
-   "prog": "e2simmx2stage.py ",
    "option": " ['--finalstage'] ",
    "default": " False ",
    "type": " None ",
@@ -4665,7 +4082,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_ctf_old.py ",
    "option": " ['--firstfitglobal'] ",
    "default": " False ",
    "type": " None ",
@@ -4673,7 +4089,6 @@
  },
  {
    "count": 1,
-   "prog": "e2ddd_movie.py ",
    "option": " ['--fixbadpixels'] ",
    "default": " False ",
    "type": " None ",
@@ -4681,7 +4096,6 @@
  },
  {
    "count": 1,
-   "prog": "e2pathwalker.py ",
    "option": " ['--fixed'] ",
    "default": " None ",
    "type": " str ",
@@ -4689,7 +4103,6 @@
  },
  {
    "count": 1,
-   "prog": "e2ctf.py ",
    "option": " ['--fixnegbg'] ",
    "default": " False ",
    "type": " None ",
@@ -4697,7 +4110,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_align.py ",
    "option": " ['--flcf'] ",
    "default": " False ",
    "type": " None ",
@@ -4705,7 +4117,6 @@
  },
  {
    "count": 1,
-   "prog": "e2tomogram.py ",
    "option": " ['--flip'] ",
    "default": " False ",
    "type": " None ",
@@ -4713,7 +4124,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_sgd.py ",
    "option": " ['--fourier'] ",
    "default": " False ",
    "type": " None ",
@@ -4721,7 +4131,6 @@
  },
  {
    "count": 1,
-   "prog": "e2ddd_particles.py ",
    "option": " ['--frac'] ",
    "default": " None ",
    "type": " str ",
@@ -4729,7 +4138,6 @@
  },
  {
    "count": 1,
-   "prog": "e2ddd_movie.py ",
    "option": " ['--frames'] ",
    "default": " False ",
    "type": " None ",
@@ -4737,7 +4145,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_ctf_old.py ",
    "option": " ['--framexsize'] ",
    "default": "0",
    "type": " int ",
@@ -4745,7 +4152,6 @@
  },
  {
    "count": 1,
-   "prog": "e2tomoseg_convnet.py ",
    "option": " ['--from_trained'] ",
    "default": " None ",
    "type": " str ",
@@ -4753,7 +4159,6 @@
  },
  {
    "count": 1,
-   "prog": "e2procxml.py ",
    "option": " ['--fsctxt2xml'] ",
    "default": " FSC Plot ",
    "type": " str ",
@@ -4761,7 +4166,6 @@
  },
  {
    "count": 1,
-   "prog": "e2procxml.py ",
    "option": " ['--fscxml2txt'] ",
    "default": " False ",
    "type": " None ",
@@ -4769,7 +4173,6 @@
  },
  {
    "count": 1,
-   "prog": "e2refinetofrealign.py ",
    "option": " ['--fstat'] ",
    "default": " False ",
    "type": " None ",
@@ -4777,7 +4180,6 @@
  },
  {
    "count": 1,
-   "prog": "e2pdb2mrc.py ",
    "option": " ['--full'] ",
    "default": " False ",
    "type": " None ",
@@ -4785,7 +4187,6 @@
  },
  {
    "count": 1,
-   "prog": "e2initialmodel_sgd.py ",
    "option": " ['--fullcov'] ",
    "default": " False ",
    "type": " None ",
@@ -4793,7 +4194,6 @@
  },
  {
    "count": 1,
-   "prog": "e2display.py ",
    "option": " ['--fullrange'] ",
    "default": " False ",
    "type": " None ",
@@ -4801,7 +4201,6 @@
  },
  {
    "count": 1,
-   "prog": "e2ddd_movie.py ",
    "option": " ['--gain_darkcorrected'] ",
    "default": " False ",
    "type": " None ",
@@ -4809,7 +4208,6 @@
  },
  {
    "count": 1,
-   "prog": "e2import.py ",
    "option": " ['--gainrefs'] ",
    "default": "  ",
    "type": " None ",
@@ -4817,7 +4215,6 @@
  },
  {
    "count": 1,
-   "prog": "e2procpdb.py ",
    "option": " ['--gamma'] ",
    "default": "0",
    "type": " float ",
@@ -4825,7 +4222,6 @@
  },
  {
    "count": 1,
-   "prog": "e2boxer_old.py ",
    "option": " ['--gauss_autoboxer'] ",
    "default": " None ",
    "type": " str ",
@@ -4833,7 +4229,6 @@
  },
  {
    "count": 1,
-   "prog": "e2erasefiducials.py ",
    "option": " ['--goldsize'] ",
    "default": "30",
    "type": " float ",
@@ -4841,7 +4236,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_autoboxer.py ",
    "option": " ['--goldstack'] ",
    "default": "  ",
    "type": " str ",
@@ -4849,7 +4243,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_classaverage.py ",
    "option": " ['--goldstandardoff'] ",
    "default": " False ",
    "type": " None ",
@@ -4857,7 +4250,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_autoboxer.py ",
    "option": " ['--goldthreshtomo'] ",
    "default": " False ",
    "type": " None ",
@@ -4865,7 +4257,6 @@
  },
  {
    "count": 1,
-   "prog": "e2ddd_movie.py ",
    "option": " ['--goodali'] ",
    "default": " False ",
    "type": " None ",
@@ -4873,7 +4264,6 @@
  },
  {
    "count": 1,
-   "prog": "e2tomo_icongpu.py ",
    "option": " ['--gpus'] ",
    "default": "-1",
    "type": " str ",
@@ -4881,7 +4271,6 @@
  },
  {
    "count": 1,
-   "prog": "e2gmm_refine.py ",
    "option": " ['--gradin'] ",
    "default": "  ",
    "type": " str ",
@@ -4889,7 +4278,6 @@
  },
  {
    "count": 1,
-   "prog": "e2gmm_refine.py ",
    "option": " ['--gradout'] ",
    "default": "  ",
    "type": " str ",
@@ -4897,7 +4285,6 @@
  },
  {
    "count": 1,
-   "prog": "e2refinetorelion3d.py ",
    "option": " ['--greyscale'] ",
    "default": " False ",
    "type": " None ",
@@ -4905,7 +4292,6 @@
  },
  {
    "count": 1,
-   "prog": "e2helixboxer.py ",
    "option": " ['--gridding'] ",
    "default": " False ",
    "type": " None ",
@@ -4913,7 +4299,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_simulation.py ",
    "option": " ['--gridholesize'] ",
    "default": "1",
    "type": " float ",
@@ -4921,7 +4306,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_autoboxer.py ",
    "option": " ['--gridoffset'] ",
    "default": "  ",
    "type": " str ",
@@ -4929,7 +4313,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_autoboxer.py ",
    "option": " ['--gridradius'] ",
    "default": "0",
    "type": " int ",
@@ -4937,7 +4320,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_hac.py ",
    "option": " ['--groups'] ",
    "default": "1",
    "type": " int ",
@@ -4945,7 +4327,6 @@
  },
  {
    "count": 1,
-   "prog": "e2buildstacks.py ",
    "option": " ['--guess'] ",
    "default": " False ",
    "type": " None ",
@@ -4953,7 +4334,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_refinemulti_old.py ",
    "option": " ['--hacref'] ",
    "default": "0",
    "type": " int ",
@@ -4961,7 +4341,6 @@
  },
  {
    "count": 1,
-   "prog": "e2proc2d.py ",
    "option": " ['--headertransform'] ",
    "default": " None ",
    "type": " int ",
@@ -4969,7 +4348,6 @@
  },
  {
    "count": 1,
-   "prog": "e2refinetorelion3d.py ",
    "option": " ['--healpix'] ",
    "default": "7.5",
    "type": " str ",
@@ -4977,7 +4355,6 @@
  },
  {
    "count": 1,
-   "prog": "e2helixboxer.py ",
    "option": " ['--helix-coords', '-X'] ",
    "default": " None ",
    "type": " str ",
@@ -4985,7 +4362,6 @@
  },
  {
    "count": 1,
-   "prog": "e2helixboxer.py ",
    "option": " ['--helix-images', '-x'] ",
    "default": " None ",
    "type": " str ",
@@ -4993,7 +4369,6 @@
  },
  {
    "count": 1,
-   "prog": "e2helixboxer.py ",
    "option": " ['--helix-length', '-l'] ",
    "default": "-1",
    "type": " int ",
@@ -5001,7 +4376,6 @@
  },
  {
    "count": 1,
-   "prog": "e2helixboxer.py ",
    "option": " ['--helix-width', '-w'] ",
    "default": "-1",
    "type": " int ",
@@ -5009,7 +4383,6 @@
  },
  {
    "count": 1,
-   "prog": "e2segment3d.py ",
    "option": " ['--helixfile'] ",
    "default": " None ",
    "type": " str ",
@@ -5017,7 +4390,6 @@
  },
  {
    "count": 1,
-   "prog": "e2ssehunter.py ",
    "option": " ['--helixlength'] ",
    "default": "16.2",
    "type": " float ",
@@ -5025,7 +4397,6 @@
  },
  {
    "count": 1,
-   "prog": "e2pdb2mrc.py ",
    "option": " ['--het'] ",
    "default": " False ",
    "type": " None ",
@@ -5033,7 +4404,6 @@
  },
  {
    "count": 1,
-   "prog": "e2gmm_refine.py ",
    "option": " ['--heter'] ",
    "default": " False ",
    "type": " None ",
@@ -5041,7 +4411,6 @@
  },
  {
    "count": 1,
-   "prog": "e2tomopreproc.py ",
    "option": " ['--highpasspix'] ",
    "default": "0",
    "type": " int ",
@@ -5049,7 +4418,6 @@
  },
  {
    "count": 1,
-   "prog": "e2tomo_icongpu.py ",
    "option": " ['--highpasspixels'] ",
    "default": "4",
    "type": " int ",
@@ -5057,7 +4425,6 @@
  },
  {
    "count": 1,
-   "prog": "e2ctf_auto.py ",
    "option": " ['--hires'] ",
    "default": " False ",
    "type": " None ",
@@ -5065,7 +4432,6 @@
  },
  {
    "count": 1,
-   "prog": "e2display.py ",
    "option": " ['--hist'] ",
    "default": " False ",
    "type": " None ",
@@ -5073,7 +4439,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_classify_byproj.py ",
    "option": " ['--hp'] ",
    "default": "-1",
    "type": " float ",
@@ -5081,7 +4446,6 @@
  },
  {
    "count": 1,
-   "prog": "e2tomo_icongpu.py ",
    "option": " ['--iconpreproc'] ",
    "default": " False ",
    "type": " None ",
@@ -5089,7 +4453,6 @@
  },
  {
    "count": 1,
-   "prog": "e2refinefromfrealign.py ",
    "option": " ['--icosahedral_symmetry'] ",
    "default": " False ",
    "type": " None ",
@@ -5097,7 +4460,6 @@
  },
  {
    "count": 1,
-   "prog": "e2filtertool.py ",
    "option": " ['--idx'] ",
    "default": "-1",
    "type": " int ",
@@ -5105,7 +4467,6 @@
  },
  {
    "count": 1,
-   "prog": "e2classaverage.py ",
    "option": " ['--idxcache'] ",
    "default": " False ",
    "type": " None ",
@@ -5113,7 +4474,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_ctf_old.py ",
    "option": " ['--imagestem'] ",
    "default": "  ",
    "type": " str ",
@@ -5121,7 +4481,6 @@
  },
  {
    "count": 1,
-   "prog": "e2symbest.py ",
    "option": " ['--imask'] ",
    "default": " None ",
    "type": " int ",
@@ -5129,7 +4488,6 @@
  },
  {
    "count": 1,
-   "prog": "e2refinetofrealign.py ",
    "option": " ['--imem'] ",
    "default": "1",
    "type": " str ",
@@ -5137,7 +4495,6 @@
  },
  {
    "count": 1,
-   "prog": "e2match.py ",
    "option": " ['--img2match'] ",
    "default": "  ",
    "type": " str ",
@@ -5145,7 +4502,6 @@
  },
  {
    "count": 1,
-   "prog": "e2match.py ",
    "option": " ['--img2process'] ",
    "default": "  ",
    "type": " str ",
@@ -5153,7 +4509,6 @@
  },
  {
    "count": 1,
-   "prog": "e2ddd_external.py ",
    "option": " ['--imod_rotflipgain'] ",
    "default": "0",
    "type": " int ",
@@ -5161,7 +4516,6 @@
  },
  {
    "count": 1,
-   "prog": "e2import.py ",
    "option": " ['--import_boxes'] ",
    "default": " False ",
    "type": " None ",
@@ -5169,7 +4523,6 @@
  },
  {
    "count": 1,
-   "prog": "e2import.py ",
    "option": " ['--import_eman1'] ",
    "default": " False ",
    "type": " None ",
@@ -5177,7 +4530,6 @@
  },
  {
    "count": 1,
-   "prog": "e2emx.py ",
    "option": " ['--import_emx'] ",
    "default": " None ",
    "type": " str ",
@@ -5185,7 +4537,6 @@
  },
  {
    "count": 1,
-   "prog": "e2import.py ",
    "option": " ['--import_movies'] ",
    "default": " False ",
    "type": " None ",
@@ -5193,7 +4544,6 @@
  },
  {
    "count": 1,
-   "prog": "e2import.py ",
    "option": " ['--import_particles'] ",
    "default": " False ",
    "type": " None ",
@@ -5201,7 +4551,6 @@
  },
  {
    "count": 1,
-   "prog": "e2import.py ",
    "option": " ['--import_tiltseries'] ",
    "default": " False ",
    "type": " None ",
@@ -5209,7 +4558,6 @@
  },
  {
    "count": 1,
-   "prog": "e2import.py ",
    "option": " ['--import_tomos'] ",
    "default": " False ",
    "type": " None ",
@@ -5217,7 +4565,6 @@
  },
  {
    "count": 1,
-   "prog": "e2import.py ",
    "option": " ['--importation'] ",
    "default": " copy ",
    "type": " None ",
@@ -5225,7 +4572,6 @@
  },
  {
    "count": 1,
-   "prog": "e2ctffind3util.py ",
    "option": " ['--importctffind3'] ",
    "default": " False ",
    "type": " None ",
@@ -5233,7 +4579,6 @@
  },
  {
    "count": 1,
-   "prog": "e2ctffind3util.py ",
    "option": " ['--importctffind4'] ",
    "default": " False ",
    "type": " None ",
@@ -5241,7 +4586,6 @@
  },
  {
    "count": 1,
-   "prog": "e2ctffind3util.py ",
    "option": " ['--importrelionstar'] ",
    "default": " False ",
    "type": " None ",
@@ -5249,7 +4593,6 @@
  },
  {
    "count": 1,
-   "prog": "e2evalrefine.py ",
    "option": " ['--includeprojs'] ",
    "default": " False ",
    "type": " None ",
@@ -5257,7 +4600,6 @@
  },
  {
    "count": 1,
-   "prog": "e2classifytree.py ",
    "option": " ['--incomplete'] ",
    "default": "0",
    "type": " int ",
@@ -5265,7 +4607,6 @@
  },
  {
    "count": 1,
-   "prog": "e2boxer_old.py ",
    "option": " ['--indir'] ",
    "default": " . ",
    "type": " str ",
@@ -5273,7 +4614,6 @@
  },
  {
    "count": 1,
-   "prog": "e2pdb2mrc.py ",
    "option": " ['--info'] ",
    "default": " False ",
    "type": " None ",
@@ -5281,7 +4621,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_ctf_old.py ",
    "option": " ['--infodir'] ",
    "default": "  ",
    "type": " str ",
@@ -5289,7 +4628,6 @@
  },
  {
    "count": 1,
-   "prog": "e2simmx.py ",
    "option": " ['--init'] ",
    "default": " False ",
    "type": " None ",
@@ -5297,7 +4635,6 @@
  },
  {
    "count": 1,
-   "prog": "e2refine2d.py ",
    "option": " ['--initial'] ",
    "default": " None ",
    "type": " str ",
@@ -5305,7 +4642,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_refinemulti_old.py ",
    "option": " ['--inixforms'] ",
    "default": "  ",
    "type": " str ",
@@ -5313,7 +4649,6 @@
  },
  {
    "count": 1,
-   "prog": "e2refinetorelion2d.py ",
    "option": " ['--inplaneang'] ",
    "default": " None ",
    "type": " float ",
@@ -5321,7 +4656,6 @@
  },
  {
    "count": 1,
-   "prog": "e2classextract.py ",
    "option": " ['--input_set'] ",
    "default": " None ",
    "type": " str ",
@@ -5329,7 +4663,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_classaverage.py ",
    "option": " ['--inputaliparams'] ",
    "default": "  ",
    "type": " str ",
@@ -5337,7 +4670,6 @@
  },
  {
    "count": 1,
-   "prog": "e2refine_easy.py ",
    "option": " ['--inputavg'] ",
    "default": " None ",
    "type": " str ",
@@ -5345,7 +4677,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_isr.py ",
    "option": " ['--inputdir'] ",
    "default": "  ",
    "type": " str ",
@@ -5353,7 +4684,6 @@
  },
  {
    "count": 1,
-   "prog": "e2tomo_stackframes.py ",
    "option": " ['--inputstring'] ",
    "default": " .mrc ",
    "type": " str ",
@@ -5361,7 +4691,6 @@
  },
  {
    "count": 1,
-   "prog": "e2refinetorelion3d.py ",
    "option": " ['--intensitycorrection'] ",
    "default": " False ",
    "type": " None ",
@@ -5369,7 +4698,6 @@
  },
  {
    "count": 1,
-   "prog": "e2proc2d.py ",
    "option": " ['--interlv'] ",
    "default": " None ",
    "type": " str ",
@@ -5377,7 +4705,6 @@
  },
  {
    "count": 1,
-   "prog": "e2refinetofrealign.py ",
    "option": " ['--interp'] ",
    "default": "0",
    "type": " str ",
@@ -5385,7 +4712,6 @@
  },
  {
    "count": 1,
-   "prog": "e2ddd_movie.py ",
    "option": " ['--invert_gain'] ",
    "default": " False ",
    "type": " None ",
@@ -5393,7 +4719,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_subtilt_old.py ",
    "option": " ['--invertangles'] ",
    "default": " False ",
    "type": " None ",
@@ -5401,7 +4726,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_autoboxer.py ",
    "option": " ['--inverttemplate'] ",
    "default": " False ",
    "type": " None ",
@@ -5409,7 +4733,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_autoboxer.py ",
    "option": " ['--inverttomo'] ",
    "default": " False ",
    "type": " None ",
@@ -5417,7 +4740,6 @@
  },
  {
    "count": 1,
-   "prog": "e2pathwalker.py ",
    "option": " ['--iterations'] ",
    "default": "1",
    "type": " int ",
@@ -5425,7 +4747,6 @@
  },
  {
    "count": 1,
-   "prog": "e2make3dpar.py ",
    "option": " ['--itermask'] ",
    "default": " None ",
    "type": " str ",
@@ -5433,7 +4754,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_refine_new.py ",
    "option": " ['--iters'] ",
    "default": " p,p,p,t,r,p,r,d ",
    "type": " str ",
@@ -5441,7 +4761,6 @@
  },
  {
    "count": 1,
-   "prog": "e2pathwalker.py ",
    "option": " ['--json'] ",
    "default": "1",
    "type": " int ",
@@ -5449,7 +4768,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_extract.py ",
    "option": " ['--jsonali'] ",
    "default": "  ",
    "type": " str ",
@@ -5457,7 +4775,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_evalrefine.py ",
    "option": " ['--jsonortcmp'] ",
    "default": " False ",
    "type": " None ",
@@ -5465,7 +4782,6 @@
  },
  {
    "count": 1,
-   "prog": "e2ddd_movie.py ",
    "option": " ['--k2'] ",
    "default": " False ",
    "type": " None ",
@@ -5473,7 +4789,6 @@
  },
  {
    "count": 1,
-   "prog": "e2boxer_old.py ",
    "option": " ['--kboot'] ",
    "default": "16",
    "type": " int ",
@@ -5481,7 +4796,6 @@
  },
  {
    "count": 1,
-   "prog": "e2refinevariance.py ",
    "option": " ['--keep3d'] ",
    "default": " False ",
    "type": " None ",
@@ -5489,7 +4803,6 @@
  },
  {
    "count": 1,
-   "prog": "e2erasefiducials.py ",
    "option": " ['--keepdust'] ",
    "default": " False ",
    "type": " None ",
@@ -5497,7 +4810,6 @@
  },
  {
    "count": 1,
-   "prog": "e2tomoseg_convnet.py ",
    "option": " ['--ksize'] ",
    "default": " 15,15,15 ",
    "type": " str ",
@@ -5505,7 +4817,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_classify_byproj.py ",
    "option": " ['--layers'] ",
    "default": "2",
    "type": " int ",
@@ -5513,7 +4824,6 @@
  },
  {
    "count": 1,
-   "prog": "e2refinetorelion3d.py ",
    "option": " ['--limit_tilt'] ",
    "default": "-91",
    "type": " int ",
@@ -5521,7 +4831,6 @@
  },
  {
    "count": 1,
-   "prog": "e2procjson.py ",
    "option": " ['--listkeys'] ",
    "default": " False ",
    "type": " None ",
@@ -5529,7 +4838,6 @@
  },
  {
    "count": 1,
-   "prog": "e2procjson.py ",
    "option": " ['--listoptions'] ",
    "default": " False ",
    "type": " None ",
@@ -5537,7 +4845,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spa_make3d.py ",
    "option": " ['--listsel'] ",
    "default": " None ",
    "type": " str ",
@@ -5545,7 +4852,6 @@
  },
  {
    "count": 1,
-   "prog": "e2parallel.py ",
    "option": " ['--loadmodule'] ",
    "default": "  ",
    "type": " str ",
@@ -5553,7 +4859,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_tiltrefine.py ",
    "option": " ['--localnorm'] ",
    "default": " False ",
    "type": " None ",
@@ -5561,7 +4866,6 @@
  },
  {
    "count": 1,
-   "prog": "e2fsc_real_local.py ",
    "option": " ['--localsizea'] ",
    "default": "50",
    "type": " int ",
@@ -5569,7 +4873,6 @@
  },
  {
    "count": 1,
-   "prog": "e2bdb.py ",
    "option": " ['--long'] ",
    "default": " False ",
    "type": " None ",
@@ -5577,7 +4880,6 @@
  },
  {
    "count": 1,
-   "prog": "e2ctf_auto.py ",
    "option": " ['--lores'] ",
    "default": " False ",
    "type": " None ",
@@ -5585,7 +4887,6 @@
  },
  {
    "count": 1,
-   "prog": "e2speedtest.py ",
    "option": " ['--low'] ",
    "default": " False ",
    "type": " None ",
@@ -5593,7 +4894,6 @@
  },
  {
    "count": 1,
-   "prog": "e2tomopreproc.py ",
    "option": " ['--lowpassfrac'] ",
    "default": "0",
    "type": " float ",
@@ -5601,7 +4901,6 @@
  },
  {
    "count": 1,
-   "prog": "e2tomo_icongpu.py ",
    "option": " ['--lowpassresolution'] ",
    "default": "100",
    "type": " float ",
@@ -5609,7 +4908,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_classify_byproj.py ",
    "option": " ['--lp'] ",
    "default": "-1",
    "type": " float ",
@@ -5617,7 +4915,6 @@
  },
  {
    "count": 1,
-   "prog": "e2initialmodel_sgd.py ",
    "option": " ['--lrdecay'] ",
    "default": "1",
    "type": " float ",
@@ -5625,7 +4922,6 @@
  },
  {
    "count": 1,
-   "prog": "e2refinevariance.py ",
    "option": " ['--m3diter'] ",
    "default": "4",
    "type": " int ",
@@ -5633,7 +4929,6 @@
  },
  {
    "count": 1,
-   "prog": "e2refine_easy.py ",
    "option": " ['--m3dold'] ",
    "default": " False ",
    "type": " None ",
@@ -5641,7 +4936,6 @@
  },
  {
    "count": 1,
-   "prog": "e2bdb.py ",
    "option": " ['--makevstack'] ",
    "default": " None ",
    "type": " str ",
@@ -5649,7 +4943,6 @@
  },
  {
    "count": 1,
-   "prog": "e2pathwalker.py ",
    "option": " ['--mapfile'] ",
    "default": " None ",
    "type": " str ",
@@ -5657,7 +4950,6 @@
  },
  {
    "count": 1,
-   "prog": "e2refinemulti.py ",
    "option": " ['--mapfragment'] ",
    "default": " False ",
    "type": " None ",
@@ -5665,7 +4957,6 @@
  },
  {
    "count": 1,
-   "prog": "e2pathwalker.py ",
    "option": " ['--mapthresh'] ",
    "default": "0",
    "type": " float ",
@@ -5673,7 +4964,6 @@
  },
  {
    "count": 1,
-   "prog": "e2pathwalker.py ",
    "option": " ['--mapweight'] ",
    "default": "1000",
    "type": " float ",
@@ -5681,7 +4971,6 @@
  },
  {
    "count": 1,
-   "prog": "e2tomopreproc.py ",
    "option": " ['--maskbyangle'] ",
    "default": " False ",
    "type": " None ",
@@ -5689,7 +4978,6 @@
  },
  {
    "count": 1,
-   "prog": "e2tomopreproc.py ",
    "option": " ['--maskbyanglefalloff'] ",
    "default": "4",
    "type": " int ",
@@ -5697,7 +4985,6 @@
  },
  {
    "count": 1,
-   "prog": "e2tomopreproc.py ",
    "option": " ['--maskbyanglesigma'] ",
    "default": "2",
    "type": " float ",
@@ -5705,7 +4992,6 @@
  },
  {
    "count": 1,
-   "prog": "e2extractsubparticles.py ",
    "option": " ['--masked'] ",
    "default": " False ",
    "type": " None ",
@@ -5713,7 +4999,6 @@
  },
  {
    "count": 1,
-   "prog": "e2align3d.py ",
    "option": " ['--maskfoff'] ",
    "default": "0.1",
    "type": " float ",
@@ -5721,7 +5006,6 @@
  },
  {
    "count": 1,
-   "prog": "e2initialmodel.py ",
    "option": " ['--maskproc'] ",
    "default": " None ",
    "type": " str ",
@@ -5729,7 +5013,6 @@
  },
  {
    "count": 1,
-   "prog": "e2align3d.py ",
    "option": " ['--maskrad'] ",
    "default": "-1",
    "type": " int ",
@@ -5737,7 +5020,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_stat.py ",
    "option": " ['--maskref'] ",
    "default": " None ",
    "type": " str ",
@@ -5745,7 +5027,6 @@
  },
  {
    "count": 1,
-   "prog": "e2refinetorelion2d.py ",
    "option": " ['--maskzeroes'] ",
    "default": " False ",
    "type": " None ",
@@ -5753,7 +5034,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_extractfromseg.py ",
    "option": " ['--massthresh'] ",
    "default": "20",
    "type": " float ",
@@ -5761,7 +5041,6 @@
  },
  {
    "count": 1,
-   "prog": "e2bdb.py ",
    "option": " ['--match'] ",
    "default": " None ",
    "type": " str ",
@@ -5769,7 +5048,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_wedgefill.py ",
    "option": " ['--matchto'] ",
    "default": " False ",
    "type": " None ",
@@ -5777,7 +5055,6 @@
  },
  {
    "count": 1,
-   "prog": "e2procpdb.py ",
    "option": " ['--matrix'] ",
    "default": " 0,0,0,0,0,0,0,0,0,0,0,0 ",
    "type": " str ",
@@ -5785,7 +5062,6 @@
  },
  {
    "count": 1,
-   "prog": "e2ssematch.py ",
    "option": " ['--maxbad'] ",
    "default": "2",
    "type": " int ",
@@ -5793,7 +5069,6 @@
  },
  {
    "count": 1,
-   "prog": "e2buildsets.py ",
    "option": " ['--maxbfactor'] ",
    "default": "5000",
    "type": " float ",
@@ -5801,7 +5076,6 @@
  },
  {
    "count": 1,
-   "prog": "e2gmm_refine.py ",
    "option": " ['--maxboxsz'] ",
    "default": "64",
    "type": " int ",
@@ -5809,7 +5083,6 @@
  },
  {
    "count": 1,
-   "prog": "e2refinetorelion3d.py ",
    "option": " ['--maxmemory'] ",
    "default": " None ",
    "type": " float ",
@@ -5817,7 +5090,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_hac.py ",
    "option": " ['--maxmergenum'] ",
    "default": "0",
    "type": " int ",
@@ -5825,7 +5097,6 @@
  },
  {
    "count": 1,
-   "prog": "e2ssematch.py ",
    "option": " ['--maxpairerr'] ",
    "default": "10",
    "type": " float ",
@@ -5833,7 +5104,6 @@
  },
  {
    "count": 1,
-   "prog": "e2tiltvalidate.py ",
    "option": " ['--maxtiltangle'] ",
    "default": "180",
    "type": " float ",
@@ -5841,7 +5111,6 @@
  },
  {
    "count": 1,
-   "prog": "e2ddd_external.py ",
    "option": " ['--mc2_flipgain'] ",
    "default": "0",
    "type": " int ",
@@ -5849,7 +5118,6 @@
  },
  {
    "count": 1,
-   "prog": "e2ddd_external.py ",
    "option": " ['--mc2_patchX'] ",
    "default": " None ",
    "type": " int ",
@@ -5857,7 +5125,6 @@
  },
  {
    "count": 1,
-   "prog": "e2ddd_external.py ",
    "option": " ['--mc2_patchY'] ",
    "default": " None ",
    "type": " int ",
@@ -5865,7 +5132,6 @@
  },
  {
    "count": 1,
-   "prog": "e2ddd_external.py ",
    "option": " ['--mc2_rotgain'] ",
    "default": "0",
    "type": " int ",
@@ -5873,7 +5139,6 @@
  },
  {
    "count": 1,
-   "prog": "e2basis.py ",
    "option": " ['--mean1'] ",
    "default": " False ",
    "type": " None ",
@@ -5881,7 +5146,6 @@
  },
  {
    "count": 1,
-   "prog": "e2proclst.py ",
    "option": " ['--mergeeo'] ",
    "default": " False ",
    "type": " None ",
@@ -5889,7 +5153,6 @@
  },
  {
    "count": 1,
-   "prog": "e2refine_postprocess.py ",
    "option": " ['--mergelowres'] ",
    "default": "-1",
    "type": " float ",
@@ -5897,7 +5160,6 @@
  },
  {
    "count": 1,
-   "prog": "e2proclst.py ",
    "option": " ['--mergesort'] ",
    "default": " None ",
    "type": " str ",
@@ -5905,7 +5167,6 @@
  },
  {
    "count": 1,
-   "prog": "e2boxer_old.py ",
    "option": " ['--micsuffix'] ",
    "default": "  ",
    "type": " str ",
@@ -5913,7 +5174,6 @@
  },
  {
    "count": 1,
-   "prog": "e2gmm_analysis.py ",
    "option": " ['--midinput'] ",
    "default": " None ",
    "type": " str ",
@@ -5921,7 +5181,6 @@
  },
  {
    "count": 1,
-   "prog": "e2gmm_refine.py ",
    "option": " ['--midout'] ",
    "default": "  ",
    "type": " str ",
@@ -5929,7 +5188,6 @@
  },
  {
    "count": 1,
-   "prog": "e2ctf_auto.py ",
    "option": " ['--midres'] ",
    "default": " False ",
    "type": " None ",
@@ -5937,7 +5195,6 @@
  },
  {
    "count": 1,
-   "prog": "e2buildsets.py ",
    "option": " ['--minbfactor'] ",
    "default": "0",
    "type": " float ",
@@ -5945,7 +5202,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_extract.py ",
    "option": " ['--mindist'] ",
    "default": "10",
    "type": " float ",
@@ -5953,7 +5209,6 @@
  },
  {
    "count": 1,
-   "prog": "e2ssematch.py ",
    "option": " ['--minhelix'] ",
    "default": "6",
    "type": " int ",
@@ -5961,7 +5216,6 @@
  },
  {
    "count": 1,
-   "prog": "e2classifykmeans.py ",
    "option": " ['--mininclass'] ",
    "default": "2",
    "type": " int ",
@@ -5969,7 +5223,6 @@
  },
  {
    "count": 1,
-   "prog": "e2rct.py ",
    "option": " ['--minproj'] ",
    "default": "1",
    "type": " int ",
@@ -5977,7 +5230,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spa_align.py ",
    "option": " ['--minrespx'] ",
    "default": "4",
    "type": " int ",
@@ -5985,7 +5237,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_hac.py ",
    "option": " ['--minscore'] ",
    "default": "0",
    "type": " float ",
@@ -5993,7 +5244,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_ctf_old.py ",
    "option": " ['--mintiles'] ",
    "default": "0",
    "type": " int ",
@@ -6001,7 +5251,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_tiltstacker.py ",
    "option": " ['--mirroraxis'] ",
    "default": "  ",
    "type": " str ",
@@ -6009,7 +5258,6 @@
  },
  {
    "count": 1,
-   "prog": "e2ctf_auto.py ",
    "option": " ['--missingonly'] ",
    "default": " False ",
    "type": " None ",
@@ -6017,7 +5265,6 @@
  },
  {
    "count": 1,
-   "prog": "e2gmm_refine.py ",
    "option": " ['--modelout'] ",
    "default": "  ",
    "type": " str ",
@@ -6025,7 +5272,6 @@
  },
  {
    "count": 1,
-   "prog": "e2refinemultinoali.py ",
    "option": " ['--models', '--model'] ",
    "default": " None ",
    "type": " str ",
@@ -6033,7 +5279,6 @@
  },
  {
    "count": 1,
-   "prog": "e2refinemulti.py ",
    "option": " ['--models'] ",
    "default": " None ",
    "type": " str ",
@@ -6041,7 +5286,6 @@
  },
  {
    "count": 1,
-   "prog": "e2tomogram.py ",
    "option": " ['--moretile'] ",
    "default": " False ",
    "type": " None ",
@@ -6049,7 +5293,6 @@
  },
  {
    "count": 1,
-   "prog": "e2rawdata.py ",
    "option": " ['--moverawdata'] ",
    "default": " False ",
    "type": " None ",
@@ -6057,7 +5300,6 @@
  },
  {
    "count": 1,
-   "prog": "e2boxer_old.py ",
    "option": " ['--MPI'] ",
    "default": " False ",
    "type": " None ",
@@ -6065,7 +5307,6 @@
  },
  {
    "count": 1,
-   "prog": "e2proc2d.py ",
    "option": " ['--mraprep'] ",
    "default": " False ",
    "type": " None ",
@@ -6073,7 +5314,6 @@
  },
  {
    "count": 1,
-   "prog": "e2proc2d.py ",
    "option": " ['--mrc16bit'] ",
    "default": " False ",
    "type": " None ",
@@ -6081,7 +5321,6 @@
  },
  {
    "count": 1,
-   "prog": "e2proc2d.py ",
    "option": " ['--mrc8bit'] ",
    "default": " False ",
    "type": " None ",
@@ -6089,7 +5328,6 @@
  },
  {
    "count": 1,
-   "prog": "e2a2d_stat.py ",
    "option": " ['--multicmp'] ",
    "default": " False ",
    "type": " None ",
@@ -6097,7 +5335,6 @@
  },
  {
    "count": 1,
-   "prog": "e2procpdb.py ",
    "option": " ['--n1'] ",
    "default": "0",
    "type": " float ",
@@ -6105,7 +5342,6 @@
  },
  {
    "count": 1,
-   "prog": "e2procpdb.py ",
    "option": " ['--n2'] ",
    "default": "0",
    "type": " float ",
@@ -6113,7 +5349,6 @@
  },
  {
    "count": 1,
-   "prog": "e2procpdb.py ",
    "option": " ['--n3'] ",
    "default": "0",
    "type": " float ",
@@ -6121,7 +5356,6 @@
  },
  {
    "count": 1,
-   "prog": "e2refine2d.py ",
    "option": " ['--naliref'] ",
    "default": "5",
    "type": " int ",
@@ -6129,7 +5363,6 @@
  },
  {
    "count": 1,
-   "prog": "e2iminfo.py ",
    "option": " ['--nameonly'] ",
    "default": " False ",
    "type": " None ",
@@ -6137,7 +5370,6 @@
  },
  {
    "count": 1,
-   "prog": "e2boxer_old.py ",
    "option": " ['--nameroot'] ",
    "default": "  ",
    "type": " str ",
@@ -6145,7 +5377,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_sgd.py ",
    "option": " ['--nbatch'] ",
    "default": "10",
    "type": " int ",
@@ -6153,7 +5384,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_autoboxer.py ",
    "option": " ['--nbins'] ",
    "default": "0",
    "type": " int ",
@@ -6161,7 +5391,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_pcasplit.py ",
    "option": " ['--nclass'] ",
    "default": "2",
    "type": " int ",
@@ -6169,7 +5398,6 @@
  },
  {
    "count": 1,
-   "prog": "e2refine_postprocess.py ",
    "option": " ['--ncmult'] ",
    "default": "1.05",
    "type": " float ",
@@ -6177,7 +5405,6 @@
  },
  {
    "count": 1,
-   "prog": "e2refinetorelion3d.py ",
    "option": " ['--nearest_neighbor'] ",
    "default": " False ",
    "type": " None ",
@@ -6185,7 +5412,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_tiltstacker.py ",
    "option": " ['--negativetiltseries'] ",
    "default": " False ",
    "type": " None ",
@@ -6193,7 +5419,6 @@
  },
  {
    "count": 1,
-   "prog": "e2enrich.py ",
    "option": " ['--nenrich'] ",
    "default": "54",
    "type": " int ",
@@ -6201,7 +5426,6 @@
  },
  {
    "count": 1,
-   "prog": "e2tomoseg_convnet.py ",
    "option": " ['--nettag'] ",
    "default": "  ",
    "type": " str ",
@@ -6209,7 +5433,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_mapptclstotomo.py ",
    "option": " ['--new'] ",
    "default": " False ",
    "type": " None ",
@@ -6217,7 +5440,6 @@
  },
  {
    "count": 1,
-   "prog": "e2extractsubparticles.py ",
    "option": " ['--newbox'] ",
    "default": "-1",
    "type": " int ",
@@ -6225,7 +5447,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_extract.py ",
    "option": " ['--newlabel'] ",
    "default": "  ",
    "type": " str ",
@@ -6233,7 +5454,6 @@
  },
  {
    "count": 1,
-   "prog": "e2display.py ",
    "option": " ['--newwidget'] ",
    "default": " False ",
    "type": " None ",
@@ -6241,7 +5461,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_trajfromrefine.py ",
    "option": " ['--nframe'] ",
    "default": "5",
    "type": " int ",
@@ -6249,7 +5468,6 @@
  },
  {
    "count": 1,
-   "prog": "e2tomo_stackframes.py ",
    "option": " ['--nframes'] ",
    "default": "0",
    "type": " int ",
@@ -6257,7 +5475,6 @@
  },
  {
    "count": 1,
-   "prog": "e2stacksort.py ",
    "option": " ['--ninput'] ",
    "default": "0",
    "type": " int ",
@@ -6265,7 +5482,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_tiltrefine.py ",
    "option": " ['--niters'] ",
    "default": "4",
    "type": " int ",
@@ -6273,7 +5489,6 @@
  },
  {
    "count": 1,
-   "prog": "e2tomoseg_convnet.py ",
    "option": " ['--nkernel'] ",
    "default": " 40,40,1 ",
    "type": " str ",
@@ -6281,7 +5496,6 @@
  },
  {
    "count": 1,
-   "prog": "e2gmm_refine.py ",
    "option": " ['--nmid'] ",
    "default": "4",
    "type": " int ",
@@ -6289,7 +5503,6 @@
  },
  {
    "count": 1,
-   "prog": "e2tomoseg_convnet.py ",
    "option": " ['--nnet'] ",
    "default": " None ",
    "type": " str ",
@@ -6297,7 +5510,6 @@
  },
  {
    "count": 1,
-   "prog": "e2boxer.py ",
    "option": " ['--no_ctf'] ",
    "default": " False ",
    "type": " None ",
@@ -6305,7 +5517,6 @@
  },
  {
    "count": 1,
-   "prog": "e2bdb.py ",
    "option": " ['--nocache'] ",
    "default": " False ",
    "type": " None ",
@@ -6313,7 +5524,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_resolutionplot.py ",
    "option": " ['--nocolor'] ",
    "default": " False ",
    "type": " None ",
@@ -6321,7 +5531,6 @@
  },
  {
    "count": 1,
-   "prog": "e2proclst.py ",
    "option": " ['--nocomments'] ",
    "default": " False ",
    "type": " None ",
@@ -6329,7 +5538,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_extract.py ",
    "option": " ['--noctf'] ",
    "default": " False ",
    "type": " None ",
@@ -6337,7 +5545,6 @@
  },
  {
    "count": 1,
-   "prog": "e2classextract.py ",
    "option": " ['--noderef'] ",
    "default": " False ",
    "type": " None ",
@@ -6345,7 +5552,6 @@
  },
  {
    "count": 1,
-   "prog": "e2classifytree.py ",
    "option": " ['--nodes'] ",
    "default": " nodes.hdf ",
    "type": " str ",
@@ -6353,7 +5559,6 @@
  },
  {
    "count": 1,
-   "prog": "e2maskbyclass.py ",
    "option": " ['--nofullresok'] ",
    "default": " False ",
    "type": " None ",
@@ -6361,7 +5566,6 @@
  },
  {
    "count": 1,
-   "prog": "e2refine_easy.py ",
    "option": " ['--nogoldfinal'] ",
    "default": " False ",
    "type": " None ",
@@ -6369,7 +5573,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_tiltrefine.py ",
    "option": " ['--nogs'] ",
    "default": " False ",
    "type": " None ",
@@ -6377,7 +5580,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_wedge.py ",
    "option": " ['--nogui'] ",
    "default": " False ",
    "type": " None ",
@@ -6385,7 +5587,6 @@
  },
  {
    "count": 1,
-   "prog": "e2pathwalker.py ",
    "option": " ['--noise'] ",
    "default": "0",
    "type": " float ",
@@ -6393,7 +5594,6 @@
  },
  {
    "count": 1,
-   "prog": "e2ctf2eman1.py ",
    "option": " ['--noisemax'] ",
    "default": "-1",
    "type": " float ",
@@ -6401,7 +5601,6 @@
  },
  {
    "count": 1,
-   "prog": "e2ctf2eman1.py ",
    "option": " ['--noisemin'] ",
    "default": "-1",
    "type": " float ",
@@ -6409,7 +5608,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_average_multi.py ",
    "option": " ['--nolstout'] ",
    "default": " False ",
    "type": " None ",
@@ -6417,7 +5615,6 @@
  },
  {
    "count": 1,
-   "prog": "e2refinemultinoali.py ",
    "option": " ['--nomask'] ",
    "default": " False ",
    "type": " None ",
@@ -6425,7 +5622,6 @@
  },
  {
    "count": 1,
-   "prog": "e2msa.py ",
    "option": " ['--nomean'] ",
    "default": " False ",
    "type": " None ",
@@ -6433,7 +5629,6 @@
  },
  {
    "count": 1,
-   "prog": "e2msa.py ",
    "option": " ['--nomeansub'] ",
    "default": " False ",
    "type": " None ",
@@ -6441,7 +5636,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_intrafsc.py ",
    "option": " ['--nonewpath'] ",
    "default": " False ",
    "type": " None ",
@@ -6449,7 +5643,6 @@
  },
  {
    "count": 1,
-   "prog": "e2ctf.py ",
    "option": " ['--nonorm'] ",
    "default": " False ",
    "type": " None ",
@@ -6457,7 +5650,6 @@
  },
  {
    "count": 1,
-   "prog": "e2compress.py ",
    "option": " ['--nooutliers'] ",
    "default": " False ",
    "type": " None ",
@@ -6465,7 +5657,6 @@
  },
  {
    "count": 1,
-   "prog": "e2scannereval.py ",
    "option": " ['--nopad'] ",
    "default": " False ",
    "type": " None ",
@@ -6473,7 +5664,6 @@
  },
  {
    "count": 1,
-   "prog": "e2symsearch3d.py ",
    "option": " ['--nopreprocprefft'] ",
    "default": " False ",
    "type": " None ",
@@ -6481,7 +5671,6 @@
  },
  {
    "count": 1,
-   "prog": "e2make3dpar.py ",
    "option": " ['--noradcor'] ",
    "default": " False ",
    "type": " None ",
@@ -6489,7 +5678,6 @@
  },
  {
    "count": 1,
-   "prog": "e2refine_easy.py ",
    "option": " ['--norandomphase'] ",
    "default": " False ",
    "type": " None ",
@@ -6497,7 +5685,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_extract.py ",
    "option": " ['--norewrite'] ",
    "default": " False ",
    "type": " None ",
@@ -6505,7 +5692,6 @@
  },
  {
    "count": 1,
-   "prog": "e2classifykmeans.py ",
    "option": " ['--normavg'] ",
    "default": " False ",
    "type": " None ",
@@ -6513,7 +5699,6 @@
  },
  {
    "count": 1,
-   "prog": "e2basis.py ",
    "option": " ['--normcomponent'] ",
    "default": " False ",
    "type": " None ",
@@ -6521,7 +5706,6 @@
  },
  {
    "count": 1,
-   "prog": "e2fsc_real_local.py ",
    "option": " ['--normin'] ",
    "default": " normalize.edgemean ",
    "type": " str ",
@@ -6529,7 +5713,6 @@
  },
  {
    "count": 1,
-   "prog": "e2plotEulers.py ",
    "option": " ['--norticklabels'] ",
    "default": " False ",
    "type": " None ",
@@ -6537,7 +5720,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_simulation.py ",
    "option": " ['--nosim'] ",
    "default": " False ",
    "type": " None ",
@@ -6545,7 +5727,6 @@
  },
  {
    "count": 1,
-   "prog": "e2refinemulti.py ",
    "option": " ['--nosingle'] ",
    "default": " False ",
    "type": " None ",
@@ -6553,7 +5734,6 @@
  },
  {
    "count": 1,
-   "prog": "e2ctf.py ",
    "option": " ['--nosmooth'] ",
    "default": " False ",
    "type": " None ",
@@ -6561,7 +5741,6 @@
  },
  {
    "count": 1,
-   "prog": "e2plotEulers.py ",
    "option": " ['--nothetaticklabels'] ",
    "default": " False ",
    "type": " None ",
@@ -6569,7 +5748,6 @@
  },
  {
    "count": 1,
-   "prog": "e2tomogram.py ",
    "option": " ['--notmp'] ",
    "default": " False ",
    "type": " None ",
@@ -6577,7 +5755,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_simulation.py ",
    "option": " ['--notrandomize'] ",
    "default": " False ",
    "type": " None ",
@@ -6585,7 +5762,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_pcasplit.py ",
    "option": " ['--nowedgefill'] ",
    "default": " False ",
    "type": " None ",
@@ -6593,7 +5769,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_ctf_old.py ",
    "option": " ['--nozcorrection'] ",
    "default": " False ",
    "type": " None ",
@@ -6601,7 +5776,6 @@
  },
  {
    "count": 1,
-   "prog": "e2tomogram.py ",
    "option": " ['--npk'] ",
    "default": "20",
    "type": " int ",
@@ -6609,7 +5783,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_simulation.py ",
    "option": " ['--nptcls'] ",
    "default": "10",
    "type": " int ",
@@ -6617,7 +5790,6 @@
  },
  {
    "count": 1,
-   "prog": "e2gmm_refine.py ",
    "option": " ['--npts'] ",
    "default": "-1",
    "type": " int ",
@@ -6625,7 +5797,6 @@
  },
  {
    "count": 1,
-   "prog": "e2tomo_mwfill.py ",
    "option": " ['--nsample'] ",
    "default": "2000",
    "type": " int ",
@@ -6633,7 +5804,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_binarytree.py ",
    "option": " ['--nseedlimit'] ",
    "default": "0",
    "type": " int ",
@@ -6641,7 +5811,6 @@
  },
  {
    "count": 1,
-   "prog": "e2erasefiducials.py ",
    "option": " ['--nsigmas'] ",
    "default": "3",
    "type": " float ",
@@ -6649,7 +5818,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_align.py ",
    "option": " ['--nsoln'] ",
    "default": "1",
    "type": " int ",
@@ -6657,7 +5825,6 @@
  },
  {
    "count": 1,
-   "prog": "e2align3d.py ",
    "option": " ['--nsolns'] ",
    "default": "1",
    "type": " int ",
@@ -6665,7 +5832,6 @@
  },
  {
    "count": 1,
-   "prog": "e2stacksort.py ",
    "option": " ['--nsort'] ",
    "default": "0",
    "type": " int ",
@@ -6673,7 +5839,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_trajfromrefine.py ",
    "option": " ['--nstd'] ",
    "default": "2",
    "type": " float ",
@@ -6681,7 +5846,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_subtilt_old.py ",
    "option": " ['--ntiltslow'] ",
    "default": "0",
    "type": " int ",
@@ -6689,7 +5853,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_subtilt_old.py ",
    "option": " ['--ntiltslowneg'] ",
    "default": "0",
    "type": " int ",
@@ -6697,7 +5860,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_subtilt_old.py ",
    "option": " ['--ntiltslowpos'] ",
    "default": "0",
    "type": " int ",
@@ -6705,7 +5867,6 @@
  },
  {
    "count": 1,
-   "prog": "e2initialmodel_sgd.py ",
    "option": " ['--ntry'] ",
    "default": "10",
    "type": " int ",
@@ -6713,7 +5874,6 @@
  },
  {
    "count": 1,
-   "prog": "e2proclst.py ",
    "option": " ['--numaslist'] ",
    "default": " None ",
    "type": " str ",
@@ -6721,7 +5881,6 @@
  },
  {
    "count": 1,
-   "prog": "e2refinetorelion2d.py ",
    "option": " ['--numclasses'] ",
    "default": "8",
    "type": " int ",
@@ -6729,7 +5888,6 @@
  },
  {
    "count": 1,
-   "prog": "e2refinetorelion2d.py ",
    "option": " ['--numiter'] ",
    "default": "25",
    "type": " int ",
@@ -6737,7 +5895,6 @@
  },
  {
    "count": 1,
-   "prog": "e2speedtest.py ",
    "option": " ['--old'] ",
    "default": " False ",
    "type": " None ",
@@ -6745,7 +5902,6 @@
  },
  {
    "count": 1,
-   "prog": "e2refinemultinoali.py ",
    "option": " ['--oldpath'] ",
    "default": " None ",
    "type": " str ",
@@ -6753,7 +5909,6 @@
  },
  {
    "count": 1,
-   "prog": "e2procpdb.py ",
    "option": " ['--omega'] ",
    "default": "0",
    "type": " float ",
@@ -6761,7 +5916,6 @@
  },
  {
    "count": 1,
-   "prog": "e2pdb2mrc.py ",
    "option": " ['--omit'] ",
    "default": "0",
    "type": " float ",
@@ -6769,7 +5923,6 @@
  },
  {
    "count": 1,
-   "prog": "e2classaverage.py ",
    "option": " ['--oneclass'] ",
    "default": " None ",
    "type": " int ",
@@ -6777,7 +5930,6 @@
  },
  {
    "count": 1,
-   "prog": "e2classifykmeans.py ",
    "option": " ['--onein'] ",
    "default": " False ",
    "type": " None ",
@@ -6785,7 +5937,6 @@
  },
  {
    "count": 1,
-   "prog": "e2classifykmeans.py ",
    "option": " ['--oneinali'] ",
    "default": " False ",
    "type": " None ",
@@ -6793,7 +5944,6 @@
  },
  {
    "count": 1,
-   "prog": "e2basis.py ",
    "option": " ['--oneout'] ",
    "default": " False ",
    "type": " None ",
@@ -6801,7 +5951,6 @@
  },
  {
    "count": 1,
-   "prog": "e2refinetorelion3d.py ",
    "option": " ['--onlyflipphase'] ",
    "default": " False ",
    "type": " None ",
@@ -6809,7 +5958,6 @@
  },
  {
    "count": 1,
-   "prog": "e2ctf.py ",
    "option": " ['--onlynew'] ",
    "default": " False ",
    "type": " None ",
@@ -6817,7 +5965,6 @@
  },
  {
    "count": 1,
-   "prog": "e2ctf.py ",
    "option": " ['--onlynoinvar'] ",
    "default": " False ",
    "type": " None ",
@@ -6825,7 +5972,6 @@
  },
  {
    "count": 1,
-   "prog": "e2ddd_movie.py ",
    "option": " ['--optalpha'] ",
    "default": "0.1",
    "type": " float ",
@@ -6833,7 +5979,6 @@
  },
  {
    "count": 1,
-   "prog": "e2ddd_movie.py ",
    "option": " ['--optbox'] ",
    "default": "512",
    "type": " int ",
@@ -6841,7 +5986,6 @@
  },
  {
    "count": 1,
-   "prog": "e2ddd_movie.py ",
    "option": " ['--optccf'] ",
    "default": " robust ",
    "type": " str ",
@@ -6849,7 +5993,6 @@
  },
  {
    "count": 1,
-   "prog": "e2ddd_movie.py ",
    "option": " ['--optstep'] ",
    "default": "448",
    "type": " int ",
@@ -6857,7 +6000,6 @@
  },
  {
    "count": 1,
-   "prog": "e2classextract.py ",
    "option": " ['--orientclassn'] ",
    "default": " None ",
    "type": " str ",
@@ -6865,7 +6007,6 @@
  },
  {
    "count": 1,
-   "prog": "e2classextract.py ",
    "option": " ['--orientcls'] ",
    "default": " None ",
    "type": " str ",
@@ -6873,7 +6014,6 @@
  },
  {
    "count": 1,
-   "prog": "e2classextract.py ",
    "option": " ['--orientedparticles'] ",
    "default": " None ",
    "type": " str ",
@@ -6881,7 +6021,6 @@
  },
  {
    "count": 1,
-   "prog": "e2classifykmeans.py ",
    "option": " ['--original'] ",
    "default": " None ",
    "type": " str ",
@@ -6889,7 +6028,6 @@
  },
  {
    "count": 1,
-   "prog": "e2relionsubsettoset.py ",
    "option": " ['--origname'] ",
    "default": " False ",
    "type": " None ",
@@ -6897,7 +6035,6 @@
  },
  {
    "count": 1,
-   "prog": "e2extractsubparticles.py ",
    "option": " ['--outermask'] ",
    "default": " None ",
    "type": " str ",
@@ -6905,7 +6042,6 @@
  },
  {
    "count": 1,
-   "prog": "e2classifykmeans.py ",
    "option": " ['--outlierclass'] ",
    "default": " False ",
    "type": " None ",
@@ -6913,7 +6049,6 @@
  },
  {
    "count": 1,
-   "prog": "e2proc2d.py ",
    "option": " ['--outnorescale'] ",
    "default": " False ",
    "type": " None ",
@@ -6921,7 +6056,6 @@
  },
  {
    "count": 1,
-   "prog": "e2compress.py ",
    "option": " ['--outpath'] ",
    "default": " None ",
    "type": " str ",
@@ -6929,7 +6063,6 @@
  },
  {
    "count": 1,
-   "prog": "e2ctf_auto.py ",
    "option": " ['--outputonly'] ",
    "default": " False ",
    "type": " None ",
@@ -6937,7 +6070,6 @@
  },
  {
    "count": 1,
-   "prog": "e2tomoseg_convnet.py ",
    "option": " ['--outtag'] ",
    "default": "  ",
    "type": " str ",
@@ -6945,7 +6077,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_isr.py ",
    "option": " ['--outxsize'] ",
    "default": "0",
    "type": " int ",
@@ -6953,7 +6084,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_isr.py ",
    "option": " ['--outysize'] ",
    "default": "0",
    "type": " int ",
@@ -6961,7 +6091,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_isr.py ",
    "option": " ['--outzsize'] ",
    "default": "0",
    "type": " int ",
@@ -6969,7 +6098,6 @@
  },
  {
    "count": 1,
-   "prog": "e2fsc.py ",
    "option": " ['--overlap'] ",
    "default": "4",
    "type": " int ",
@@ -6977,7 +6105,6 @@
  },
  {
    "count": 1,
-   "prog": "e2ctf.py ",
    "option": " ['--oversamp'] ",
    "default": "1",
    "type": " int ",
@@ -6985,7 +6112,6 @@
  },
  {
    "count": 1,
-   "prog": "e2erasefiducials.py ",
    "option": " ['--oversample'] ",
    "default": "4",
    "type": " int ",
@@ -6993,7 +6119,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_extract.py ",
    "option": " ['--padtwod'] ",
    "default": "2",
    "type": " float ",
@@ -7001,7 +6126,6 @@
  },
  {
    "count": 1,
-   "prog": "e2classifyligand.py ",
    "option": " ['--pairmask'] ",
    "default": " False ",
    "type": " None ",
@@ -7009,7 +6133,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_refine_new.py ",
    "option": " ['--parallel', '-P'] ",
    "default": " thread:4 ",
    "type": " str ",
@@ -7017,7 +6140,6 @@
  },
  {
    "count": 1,
-   "prog": "e2procheader.py ",
    "option": " ['--params'] ",
    "default": " None ",
    "type": " str ",
@@ -7025,7 +6147,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_refinemulti_noali.py ",
    "option": " ['--parm'] ",
    "default": "  ",
    "type": " str ",
@@ -7033,7 +6154,6 @@
  },
  {
    "count": 1,
-   "prog": "e2tomoseg_buildtrainset.py ",
    "option": " ['--particles_label'] ",
    "default": " None ",
    "type": " str ",
@@ -7041,7 +6161,6 @@
  },
  {
    "count": 1,
-   "prog": "e2tomoseg_buildtrainset.py ",
    "option": " ['--particles_raw'] ",
    "default": " None ",
    "type": " str ",
@@ -7049,7 +6168,6 @@
  },
  {
    "count": 1,
-   "prog": "e2gmm_refine.py ",
    "option": " ['--pas'] ",
    "default": "110",
    "type": " str ",
@@ -7057,7 +6175,6 @@
  },
  {
    "count": 1,
-   "prog": "e2tomogram.py ",
    "option": " ['--patchtrack'] ",
    "default": "-1",
    "type": " int ",
@@ -7065,7 +6182,6 @@
  },
  {
    "count": 1,
-   "prog": "e2refinemultinoali.py ",
    "option": " ['--path', '--newpath'] ",
    "default": " None ",
    "type": " str ",
@@ -7073,7 +6189,6 @@
  },
  {
    "count": 1,
-   "prog": "e2display.py ",
    "option": " ['--pdb'] ",
    "default": " None ",
    "type": " str ",
@@ -7081,7 +6196,6 @@
  },
  {
    "count": 1,
-   "prog": "e2pdbviewer.py ",
    "option": " ['--pdbfiles'] ",
    "default": " None ",
    "type": " str ",
@@ -7089,7 +6203,6 @@
  },
  {
    "count": 1,
-   "prog": "e2segment3d.py ",
    "option": " ['--pdbout'] ",
    "default": " None ",
    "type": " str ",
@@ -7097,7 +6210,6 @@
  },
  {
    "count": 1,
-   "prog": "e2ctf.py ",
    "option": " ['--phaseflip'] ",
    "default": " False ",
    "type": " None ",
@@ -7105,7 +6217,6 @@
  },
  {
    "count": 1,
-   "prog": "e2ctf.py ",
    "option": " ['--phasefliphp'] ",
    "default": " False ",
    "type": " None ",
@@ -7113,7 +6224,6 @@
  },
  {
    "count": 1,
-   "prog": "e2ctf.py ",
    "option": " ['--phaseflipproc'] ",
    "default": " None ",
    "type": " None ",
@@ -7121,7 +6231,6 @@
  },
  {
    "count": 1,
-   "prog": "e2ctf.py ",
    "option": " ['--phaseflipproc2'] ",
    "default": " None ",
    "type": " None ",
@@ -7129,7 +6238,6 @@
  },
  {
    "count": 1,
-   "prog": "e2ctf.py ",
    "option": " ['--phaseflipproc3'] ",
    "default": " None ",
    "type": " None ",
@@ -7137,7 +6245,6 @@
  },
  {
    "count": 1,
-   "prog": "e2ctf.py ",
    "option": " ['--phaseflipproc4'] ",
    "default": " None ",
    "type": " None ",
@@ -7145,7 +6252,6 @@
  },
  {
    "count": 1,
-   "prog": "e2ctf.py ",
    "option": " ['--phaseflipproc5'] ",
    "default": " None ",
    "type": " None ",
@@ -7153,7 +6259,6 @@
  },
  {
    "count": 1,
-   "prog": "e2ctf.py ",
    "option": " ['--phaseflipsmall'] ",
    "default": " False ",
    "type": " None ",
@@ -7161,7 +6266,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_ctf_old.py ",
    "option": " ['--phaseflipstrips'] ",
    "default": " False ",
    "type": " None ",
@@ -7169,7 +6273,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_ctf_old.py ",
    "option": " ['--phaseflipwhole'] ",
    "default": " False ",
    "type": " None ",
@@ -7177,7 +6280,6 @@
  },
  {
    "count": 1,
-   "prog": "e2procpdb.py ",
    "option": " ['--phi'] ",
    "default": "0",
    "type": " float ",
@@ -7185,7 +6287,6 @@
  },
  {
    "count": 1,
-   "prog": "e2align3d.py ",
    "option": " ['--phi0'] ",
    "default": "0",
    "type": " float ",
@@ -7193,7 +6294,6 @@
  },
  {
    "count": 1,
-   "prog": "e2align3d.py ",
    "option": " ['--phi1'] ",
    "default": "359",
    "type": " float ",
@@ -7201,7 +6301,6 @@
  },
  {
    "count": 1,
-   "prog": "e2stackanim.py ",
    "option": " ['--pingpong'] ",
    "default": " False ",
    "type": " None ",
@@ -7209,7 +6308,6 @@
  },
  {
    "count": 1,
-   "prog": "e2tomogram.py ",
    "option": " ['--pk_maxval'] ",
    "default": "-5",
    "type": " float ",
@@ -7217,7 +6315,6 @@
  },
  {
    "count": 1,
-   "prog": "e2tomogram.py ",
    "option": " ['--pk_mindist'] ",
    "default": "0.125",
    "type": " float ",
@@ -7225,7 +6322,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_refine.py ",
    "option": " ['--pkeep'] ",
    "default": "0.8",
    "type": " float ",
@@ -7233,7 +6329,6 @@
  },
  {
    "count": 1,
-   "prog": "e2tomogram.py ",
    "option": " ['--pkkeep'] ",
    "default": "0.9",
    "type": " float ",
@@ -7241,7 +6336,6 @@
  },
  {
    "count": 1,
-   "prog": "e2proc2d.py ",
    "option": " ['--plane'] ",
    "default": " xy ",
    "type": " str ",
@@ -7249,7 +6343,6 @@
  },
  {
    "count": 1,
-   "prog": "e2tiltvalidate.py ",
    "option": " ['--planethres'] ",
    "default": "360",
    "type": " float ",
@@ -7257,7 +6350,6 @@
  },
  {
    "count": 1,
-   "prog": "e2display.py ",
    "option": " ['--plot'] ",
    "default": " False ",
    "type": " None ",
@@ -7265,7 +6357,6 @@
  },
  {
    "count": 1,
-   "prog": "e2display.py ",
    "option": " ['--plot3d'] ",
    "default": " False ",
    "type": " None ",
@@ -7273,7 +6364,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_resolutionplot.py ",
    "option": " ['--plotonly'] ",
    "default": " None ",
    "type": " str ",
@@ -7281,7 +6371,6 @@
  },
  {
    "count": 1,
-   "prog": "e2classifyligand.py ",
    "option": " ['--plotout'] ",
    "default": " plot_ligand.txt ",
    "type": " str ",
@@ -7289,7 +6378,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_align_subtlt.py ",
    "option": " ['--plst'] ",
    "default": " None ",
    "type": " str ",
@@ -7297,7 +6385,6 @@
  },
  {
    "count": 1,
-   "prog": "e2plotEulers.py ",
    "option": " ['--pointwidth'] ",
    "default": "1",
    "type": " float ",
@@ -7305,7 +6392,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_resolutionplot.py ",
    "option": " ['--polydegree'] ",
    "default": " None ",
    "type": " int ",
@@ -7313,7 +6399,6 @@
  },
  {
    "count": 1,
-   "prog": "e2tomoseg_convnet.py ",
    "option": " ['--poolsz'] ",
    "default": " 2,1,1 ",
    "type": " str ",
@@ -7321,7 +6406,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_extract.py ",
    "option": " ['--postmask'] ",
    "default": "  ",
    "type": " str ",
@@ -7329,7 +6413,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_extract.py ",
    "option": " ['--postproc'] ",
    "default": "  ",
    "type": " str ",
@@ -7337,7 +6420,6 @@
  },
  {
    "count": 1,
-   "prog": "e2tomogram.py ",
    "option": " ['--posz'] ",
    "default": " False ",
    "type": " None ",
@@ -7345,7 +6427,6 @@
  },
  {
    "count": 1,
-   "prog": "e2align3d.py ",
    "option": " ['--prec'] ",
    "default": "0.01",
    "type": " float ",
@@ -7353,7 +6434,6 @@
  },
  {
    "count": 1,
-   "prog": "e2tomo_tiltstacker.py ",
    "option": " ['--precheckfiles'] ",
    "default": " False ",
    "type": " None ",
@@ -7361,7 +6441,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_simulation.py ",
    "option": " ['--preferredside'] ",
    "default": " None ",
    "type": " float ",
@@ -7369,7 +6448,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_simulation.py ",
    "option": " ['--preferredtop'] ",
    "default": " None ",
    "type": " float ",
@@ -7377,7 +6455,6 @@
  },
  {
    "count": 1,
-   "prog": "e2tomopreproc.py ",
    "option": " ['--prenadmaxite'] ",
    "default": "0",
    "type": " int ",
@@ -7385,7 +6462,6 @@
  },
  {
    "count": 1,
-   "prog": "e2tomopreproc.py ",
    "option": " ['--prenadminite'] ",
    "default": "0",
    "type": " int ",
@@ -7393,7 +6469,6 @@
  },
  {
    "count": 1,
-   "prog": "e2tomopreproc.py ",
    "option": " ['--prenadsigma'] ",
    "default": "0",
    "type": " int ",
@@ -7401,7 +6476,6 @@
  },
  {
    "count": 1,
-   "prog": "e2refinetorelion3d.py ",
    "option": " ['--print_symmetry'] ",
    "default": " False ",
    "type": " None ",
@@ -7409,7 +6483,6 @@
  },
  {
    "count": 1,
-   "prog": "e2ptcltrace.py ",
    "option": " ['--printbad'] ",
    "default": "180",
    "type": " float ",
@@ -7417,7 +6490,6 @@
  },
  {
    "count": 1,
-   "prog": "e2tomoseg_preproc.py ",
    "option": " ['--proc1'] ",
    "default": " filter.lowpass.gauss:cutoff_abs=.25 ",
    "type": " None ",
@@ -7425,7 +6497,6 @@
  },
  {
    "count": 1,
-   "prog": "e2tomoseg_preproc.py ",
    "option": " ['--proc2'] ",
    "default": " filter.highpass.gauss:cutoff_pixels=5 ",
    "type": " None ",
@@ -7433,7 +6504,6 @@
  },
  {
    "count": 1,
-   "prog": "e2tomoseg_preproc.py ",
    "option": " ['--proc3'] ",
    "default": " normalize ",
    "type": " None ",
@@ -7441,7 +6511,6 @@
  },
  {
    "count": 1,
-   "prog": "e2tomoseg_preproc.py ",
    "option": " ['--proc4'] ",
    "default": " threshold.clampminmax.nsigma:nsigma=3 ",
    "type": " None ",
@@ -7449,7 +6518,6 @@
  },
  {
    "count": 1,
-   "prog": "e2tomoseg_preproc.py ",
    "option": " ['--proc5'] ",
    "default": "  ",
    "type": " None ",
@@ -7457,7 +6525,6 @@
  },
  {
    "count": 1,
-   "prog": "e2ddd_external.py ",
    "option": " ['--program'] ",
    "default": " imod_alignframes ",
    "type": " str ",
@@ -7465,7 +6532,6 @@
  },
  {
    "count": 1,
-   "prog": "e2msa.py ",
    "option": " ['--projin'] ",
    "default": " None ",
    "type": " str ",
@@ -7473,7 +6539,6 @@
  },
  {
    "count": 1,
-   "prog": "e2gmm_refine.py ",
    "option": " ['--projs'] ",
    "default": "  ",
    "type": " str ",
@@ -7481,7 +6546,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_autoboxer.py ",
    "option": " ['--pruneccc'] ",
    "default": " False ",
    "type": " None ",
@@ -7489,7 +6553,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_autoboxer.py ",
    "option": " ['--pruneprj'] ",
    "default": " False ",
    "type": " None ",
@@ -7497,7 +6560,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_ctf_old.py ",
    "option": " ['--prunetest'] ",
    "default": "0.1",
    "type": " float ",
@@ -7505,7 +6567,6 @@
  },
  {
    "count": 1,
-   "prog": "e2procpdb.py ",
    "option": " ['--psi'] ",
    "default": "0",
    "type": " float ",
@@ -7513,7 +6574,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_tomoctf.py ",
    "option": " ['--psrange'] ",
    "default": " 10,15,5 ",
    "type": " str ",
@@ -7521,7 +6581,6 @@
  },
  {
    "count": 1,
-   "prog": "e2helixboxer.py ",
    "option": " ['--ptcl-coords', '-P'] ",
    "default": " None ",
    "type": " str ",
@@ -7529,7 +6588,6 @@
  },
  {
    "count": 1,
-   "prog": "e2helixboxer.py ",
    "option": " ['--ptcl-images-stack-mode'] ",
    "default": " multiple ",
    "type": " str ",
@@ -7537,7 +6595,6 @@
  },
  {
    "count": 1,
-   "prog": "e2helixboxer.py ",
    "option": " ['--ptcl-images', '-p'] ",
    "default": " None ",
    "type": " str ",
@@ -7545,7 +6602,6 @@
  },
  {
    "count": 1,
-   "prog": "e2helixboxer.py ",
    "option": " ['--ptcl-length'] ",
    "default": "-1",
    "type": " int ",
@@ -7553,7 +6609,6 @@
  },
  {
    "count": 1,
-   "prog": "e2helixboxer.py ",
    "option": " ['--ptcl-norm-edge-mean'] ",
    "default": " False ",
    "type": " None ",
@@ -7561,7 +6616,6 @@
  },
  {
    "count": 1,
-   "prog": "e2helixboxer.py ",
    "option": " ['--ptcl-not-rotated'] ",
    "default": " False ",
    "type": " None ",
@@ -7569,7 +6623,6 @@
  },
  {
    "count": 1,
-   "prog": "e2helixboxer.py ",
    "option": " ['--ptcl-overlap'] ",
    "default": "-1",
    "type": " int ",
@@ -7577,7 +6630,6 @@
  },
  {
    "count": 1,
-   "prog": "e2helixboxer.py ",
    "option": " ['--ptcl-width'] ",
    "default": "-1",
    "type": " int ",
@@ -7585,7 +6637,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_autoboxer.py ",
    "option": " ['--ptclradius'] ",
    "default": "0",
    "type": " int ",
@@ -7593,7 +6644,6 @@
  },
  {
    "count": 1,
-   "prog": "e2gmm_refine.py ",
    "option": " ['--ptclsin'] ",
    "default": "  ",
    "type": " str ",
@@ -7601,7 +6651,6 @@
  },
  {
    "count": 1,
-   "prog": "e2boxer.py ",
    "option": " ['--ptclsize'] ",
    "default": "-1",
    "type": " int ",
@@ -7609,7 +6658,6 @@
  },
  {
    "count": 1,
-   "prog": "e2gmm_refine.py ",
    "option": " ['--ptclsout'] ",
    "default": "  ",
    "type": " str ",
@@ -7617,7 +6665,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_autoboxer.py ",
    "option": " ['--ptclstack'] ",
    "default": "  ",
    "type": " str ",
@@ -7625,7 +6672,6 @@
  },
  {
    "count": 1,
-   "prog": "e2procpdb.py ",
    "option": " ['--q'] ",
    "default": "0",
    "type": " float ",
@@ -7633,7 +6679,6 @@
  },
  {
    "count": 1,
-   "prog": "e2tiltvalidate.py ",
    "option": " ['--quaternion'] ",
    "default": " False ",
    "type": " None ",
@@ -7641,7 +6686,6 @@
  },
  {
    "count": 1,
-   "prog": "e2pdb2mrc.py ",
    "option": " ['--quick'] ",
    "default": " False ",
    "type": " None ",
@@ -7649,7 +6693,6 @@
  },
  {
    "count": 1,
-   "prog": "e2pdb2mrc.py ",
    "option": " ['--quiet'] ",
    "default": " False ",
    "type": " None ",
@@ -7657,7 +6700,6 @@
  },
  {
    "count": 1,
-   "prog": "e2tiltvalidate.py ",
    "option": " ['--radcut'] ",
    "default": "-1",
    "type": " float ",
@@ -7665,7 +6707,6 @@
  },
  {
    "count": 1,
-   "prog": "e2refinemulti.py ",
    "option": " ['--randclassify'] ",
    "default": " False ",
    "type": " None ",
@@ -7673,7 +6714,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_average_multi.py ",
    "option": " ['--randnclass'] ",
    "default": "-1",
    "type": " int ",
@@ -7681,7 +6721,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_extractfromseg.py ",
    "option": " ['--random'] ",
    "default": "-1",
    "type": " int ",
@@ -7689,7 +6728,6 @@
  },
  {
    "count": 1,
-   "prog": "e2proc2d.py ",
    "option": " ['--randomn'] ",
    "default": "0",
    "type": " int ",
@@ -7697,7 +6735,6 @@
  },
  {
    "count": 1,
-   "prog": "e2refinemultinoali.py ",
    "option": " ['--randomphase'] ",
    "default": "0",
    "type": " float ",
@@ -7705,7 +6742,6 @@
  },
  {
    "count": 1,
-   "prog": "e2initialmodel.py ",
    "option": " ['--randorient'] ",
    "default": " False ",
    "type": " None ",
@@ -7713,7 +6749,6 @@
  },
  {
    "count": 1,
-   "prog": "e2refinemulti.py ",
    "option": " ['--randphase'] ",
    "default": " False ",
    "type": " None ",
@@ -7721,7 +6756,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_simulation.py ",
    "option": " ['--randstack'] ",
    "default": "  ",
    "type": " str ",
@@ -7729,7 +6763,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_refinemulti_noali.py ",
    "option": " ['--randsym'] ",
    "default": " False ",
    "type": " None ",
@@ -7737,7 +6770,6 @@
  },
  {
    "count": 1,
-   "prog": "e2ddd_movie.py ",
    "option": " ['--rangeali'] ",
    "default": "  ",
    "type": " str ",
@@ -7745,7 +6777,6 @@
  },
  {
    "count": 1,
-   "prog": "e2refinetofrealign.py ",
    "option": " ['--rclas'] ",
    "default": "10",
    "type": " float ",
@@ -7753,7 +6784,6 @@
  },
  {
    "count": 1,
-   "prog": "e2align3d.py ",
    "option": " ['--rcmp'] ",
    "default": " ccc ",
    "type": " str ",
@@ -7761,7 +6791,6 @@
  },
  {
    "count": 1,
-   "prog": "e2basis.py ",
    "option": " ['--recalcmean'] ",
    "default": " False ",
    "type": " None ",
@@ -7769,7 +6798,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_classaverage.py ",
    "option": " ['--recompute'] ",
    "default": " False ",
    "type": " None ",
@@ -7777,7 +6805,6 @@
  },
  {
    "count": 1,
-   "prog": "e2tomogram.py ",
    "option": " ['--reconmode'] ",
    "default": " trilinear ",
    "type": " str ",
@@ -7785,7 +6812,6 @@
  },
  {
    "count": 1,
-   "prog": "e2maskbyclass.py ",
    "option": " ['--redobispec'] ",
    "default": " False ",
    "type": " None ",
@@ -7793,7 +6819,6 @@
  },
  {
    "count": 1,
-   "prog": "e2maskbyclass.py ",
    "option": " ['--redoharmonic'] ",
    "default": " False ",
    "type": " None ",
@@ -7801,7 +6826,6 @@
  },
  {
    "count": 1,
-   "prog": "e2enrich.py ",
    "option": " ['--redoinvar'] ",
    "default": " None ",
    "type": " None ",
@@ -7809,7 +6833,6 @@
  },
  {
    "count": 1,
-   "prog": "e2ddd_movie.py ",
    "option": " ['--ref_label'] ",
    "default": "  ",
    "type": " str ",
@@ -7817,7 +6840,6 @@
  },
  {
    "count": 1,
-   "prog": "e2euler_refine.py ",
    "option": " ['--ref_volume'] ",
    "default": " None ",
    "type": " None ",
@@ -7825,7 +6847,6 @@
  },
  {
    "count": 1,
-   "prog": "e2classifyligand.py ",
    "option": " ['--ref1'] ",
    "default": " None ",
    "type": " str ",
@@ -7833,7 +6854,6 @@
  },
  {
    "count": 1,
-   "prog": "e2classifyligand.py ",
    "option": " ['--ref2'] ",
    "default": " None ",
    "type": " str ",
@@ -7841,7 +6861,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_refinemulti_old.py ",
    "option": " ['--refgenmethod'] ",
    "default": " bt ",
    "type": " str ",
@@ -7849,7 +6868,6 @@
  },
  {
    "count": 1,
-   "prog": "e2procheader.py ",
    "option": " ['--refheader'] ",
    "default": " None ",
    "type": " str ",
@@ -7857,7 +6875,6 @@
  },
  {
    "count": 1,
-   "prog": "e2proclst.py ",
    "option": " ['--refile'] ",
    "default": " None ",
    "type": " str ",
@@ -7865,7 +6882,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_subtlt_local.py ",
    "option": " ['--refine_defocus'] ",
    "default": " False ",
    "type": " None ",
@@ -7873,7 +6889,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_subtlt_local.py ",
    "option": " ['--refine_rot'] ",
    "default": " False ",
    "type": " None ",
@@ -7881,7 +6896,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_subtlt_local.py ",
    "option": " ['--refine_trans'] ",
    "default": " False ",
    "type": " None ",
@@ -7889,7 +6903,6 @@
  },
  {
    "count": 1,
-   "prog": "e2ctf.py ",
    "option": " ['--refinebysnr'] ",
    "default": " False ",
    "type": " None ",
@@ -7897,7 +6910,6 @@
  },
  {
    "count": 1,
-   "prog": "e2emx.py ",
    "option": " ['--refinedefocus'] ",
    "default": " False ",
    "type": " None ",
@@ -7905,7 +6917,6 @@
  },
  {
    "count": 1,
-   "prog": "e2classextract.py ",
    "option": " ['--refinemulti'] ",
    "default": " False ",
    "type": " None ",
@@ -7913,7 +6924,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_classaverage.py ",
    "option": " ['--refinemultireftag'] ",
    "default": "  ",
    "type": " str ",
@@ -7921,7 +6931,6 @@
  },
  {
    "count": 1,
-   "prog": "e2emx.py ",
    "option": " ['--refitdefocus'] ",
    "default": " False ",
    "type": " None ",
@@ -7929,7 +6938,6 @@
  },
  {
    "count": 1,
-   "prog": "e2align2d.py ",
    "option": " ['--refn'] ",
    "default": "0",
    "type": " int ",
@@ -7937,7 +6945,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_classify.py ",
    "option": " ['--refs'] ",
    "default": " None ",
    "type": " str ",
@@ -7945,7 +6952,6 @@
  },
  {
    "count": 1,
-   "prog": "e2refinetorelion2d.py ",
    "option": " ['--regparam'] ",
    "default": "1",
    "type": " float ",
@@ -7953,7 +6959,6 @@
  },
  {
    "count": 1,
-   "prog": "e2procjson.py ",
    "option": " ['--remaplstkeys'] ",
    "default": " False ",
    "type": " None ",
@@ -7961,7 +6966,6 @@
  },
  {
    "count": 1,
-   "prog": "e2procjson.py ",
    "option": " ['--removekey'] ",
    "default": " None ",
    "type": " str ",
@@ -7969,7 +6973,6 @@
  },
  {
    "count": 1,
-   "prog": "e2import.py ",
    "option": " ['--removesub'] ",
    "default": " None ",
    "type": " str ",
@@ -7977,7 +6980,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_tiltstacker.py ",
    "option": " ['--replacestring'] ",
    "default": "  ",
    "type": " str ",
@@ -7985,7 +6987,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_tiltrefine.py ",
    "option": " ['--reprj_clip'] ",
    "default": "-1",
    "type": " int ",
@@ -7993,7 +6994,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_tiltrefine.py ",
    "option": " ['--reprj_offset'] ",
    "default": "  ",
    "type": " str ",
@@ -8001,7 +7001,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_tiltrefine.py ",
    "option": " ['--reproject'] ",
    "default": " False ",
    "type": " None ",
@@ -8009,7 +7008,6 @@
  },
  {
    "count": 1,
-   "prog": "e2classaverage.py ",
    "option": " ['--resample'] ",
    "default": " False ",
    "type": " None ",
@@ -8017,7 +7015,6 @@
  },
  {
    "count": 1,
-   "prog": "e2refinetofrealign.py ",
    "option": " ['--reshigh'] ",
    "default": "25",
    "type": " float ",
@@ -8025,7 +7022,6 @@
  },
  {
    "count": 1,
-   "prog": "e2refinevariance.py ",
    "option": " ['--reslimit'] ",
    "default": "10",
    "type": " float ",
@@ -8033,7 +7029,6 @@
  },
  {
    "count": 1,
-   "prog": "e2refinetofrealign.py ",
    "option": " ['--reslow'] ",
    "default": "200",
    "type": " float ",
@@ -8041,7 +7036,6 @@
  },
  {
    "count": 1,
-   "prog": "e2evalrefine.py ",
    "option": " ['--resolution'] ",
    "default": " False ",
    "type": " None ",
@@ -8049,7 +7043,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_tiltstacker.py ",
    "option": " ['--restack'] ",
    "default": "  ",
    "type": " str ",
@@ -8057,7 +7050,6 @@
  },
  {
    "count": 1,
-   "prog": "e2bdb.py ",
    "option": " ['--restore'] ",
    "default": " None ",
    "type": " str ",
@@ -8065,7 +7057,6 @@
  },
  {
    "count": 1,
-   "prog": "e2ddd_movie.py ",
    "option": " ['--reverse_dark'] ",
    "default": " False ",
    "type": " None ",
@@ -8073,7 +7064,6 @@
  },
  {
    "count": 1,
-   "prog": "e2ddd_movie.py ",
    "option": " ['--reverse_gain'] ",
    "default": " False ",
    "type": " None ",
@@ -8081,7 +7071,6 @@
  },
  {
    "count": 1,
-   "prog": "e2stacksort.py ",
    "option": " ['--reverse'] ",
    "default": " False ",
    "type": " None ",
@@ -8089,7 +7078,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_tempmatch.py ",
    "option": " ['--rmedge'] ",
    "default": " False ",
    "type": " None ",
@@ -8097,7 +7085,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_tempmatch.py ",
    "option": " ['--rmgold'] ",
    "default": " False ",
    "type": " None ",
@@ -8105,7 +7092,6 @@
  },
  {
    "count": 1,
-   "prog": "e2procpdb.py ",
    "option": " ['--rot'] ",
    "default": " None ",
    "type": " str ",
@@ -8113,7 +7099,6 @@
  },
  {
    "count": 1,
-   "prog": "e2ddd_movie.py ",
    "option": " ['--rotate_dark'] ",
    "default": "0",
    "type": " str ",
@@ -8121,7 +7106,6 @@
  },
  {
    "count": 1,
-   "prog": "e2ddd_movie.py ",
    "option": " ['--rotate_gain'] ",
    "default": "0",
    "type": " str ",
@@ -8129,7 +7113,6 @@
  },
  {
    "count": 1,
-   "prog": "e2proc2d.py ",
    "option": " ['--rotavg'] ",
    "default": " False ",
    "type": " None ",
@@ -8137,7 +7120,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_autoboxer.py ",
    "option": " ['--rotsearch'] ",
    "default": " False ",
    "type": " None ",
@@ -8145,7 +7127,6 @@
  },
  {
    "count": 1,
-   "prog": "e2ddd_movie.py ",
    "option": " ['--round'] ",
    "default": " float ",
    "type": " None ",
@@ -8153,7 +7134,6 @@
  },
  {
    "count": 1,
-   "prog": "e2refinetofrealign.py ",
    "option": " ['--rrec'] ",
    "default": "10",
    "type": " float ",
@@ -8161,7 +7141,6 @@
  },
  {
    "count": 1,
-   "prog": "e2symbest.py ",
    "option": " ['--rtp'] ",
    "default": " False ",
    "type": " None ",
@@ -8169,7 +7148,6 @@
  },
  {
    "count": 1,
-   "prog": "e2ctffind3util.py ",
    "option": " ['--runctffind3'] ",
    "default": " False ",
    "type": " None ",
@@ -8177,7 +7155,6 @@
  },
  {
    "count": 1,
-   "prog": "e2ctffind3util.py ",
    "option": " ['--runctffind4'] ",
    "default": " False ",
    "type": " None ",
@@ -8185,7 +7162,6 @@
  },
  {
    "count": 1,
-   "prog": "e2filtertool.py ",
    "option": " ['--safemode'] ",
    "default": " False ",
    "type": " None ",
@@ -8193,7 +7169,6 @@
  },
  {
    "count": 1,
-   "prog": "e2fsc_real_local.py ",
    "option": " ['--sampfscs'] ",
    "default": " False ",
    "type": " None ",
@@ -8201,7 +7176,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_average_multi.py ",
    "option": " ['--sample'] ",
    "default": "-1",
    "type": " int ",
@@ -8209,7 +7183,6 @@
  },
  {
    "count": 1,
-   "prog": "e2ctfsim.py ",
    "option": " ['--samples'] ",
    "default": "256",
    "type": " int ",
@@ -8217,7 +7190,6 @@
  },
  {
    "count": 1,
-   "prog": "e2helixboxer.py ",
    "option": " ['--save-ext'] ",
    "default": " hdf ",
    "type": " str ",
@@ -8225,7 +7197,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_ctf_old.py ",
    "option": " ['--save2d'] ",
    "default": " False ",
    "type": " None ",
@@ -8233,7 +7204,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_ctf_old.py ",
    "option": " ['--save3d'] ",
    "default": " False ",
    "type": " None ",
@@ -8241,7 +7211,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_classaverage.py ",
    "option": " ['--saveallpeaks'] ",
    "default": " False ",
    "type": " None ",
@@ -8249,7 +7218,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_subtilt_old.py ",
    "option": " ['--saveanglestacks'] ",
    "default": "  ",
    "type": " str ",
@@ -8257,7 +7225,6 @@
  },
  {
    "count": 1,
-   "prog": "e2tomo_ctfraw.py ",
    "option": " ['--savefft'] ",
    "default": " False ",
    "type": " None ",
@@ -8265,7 +7232,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_ctf_old.py ",
    "option": " ['--saveffts'] ",
    "default": " False ",
    "type": " None ",
@@ -8273,7 +7239,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_intrafsc.py ",
    "option": " ['--savehalftiltseries'] ",
    "default": " False ",
    "type": " None ",
@@ -8281,7 +7246,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_intrafsc.py ",
    "option": " ['--savehalfvolumes'] ",
    "default": " False ",
    "type": " None ",
@@ -8289,7 +7253,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_simulation.py ",
    "option": " ['--savemissingtilts'] ",
    "default": " False ",
    "type": " None ",
@@ -8297,7 +7260,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_simulation.py ",
    "option": " ['--savenoise'] ",
    "default": " False ",
    "type": " None ",
@@ -8305,7 +7267,6 @@
  },
  {
    "count": 1,
-   "prog": "e2make3dpar.py ",
    "option": " ['--savenorm'] ",
    "default": " None ",
    "type": " str ",
@@ -8313,7 +7274,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_simulation.py ",
    "option": " ['--saveorthostack'] ",
    "default": " False ",
    "type": " None ",
@@ -8321,7 +7281,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_tiltrefine_oneiter.py ",
    "option": " ['--savepath'] ",
    "default": " False ",
    "type": " None ",
@@ -8329,7 +7288,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_autoboxer.py ",
    "option": " ['--savepreprocessed'] ",
    "default": " False ",
    "type": " None ",
@@ -8337,7 +7295,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_simulation.py ",
    "option": " ['--saveprjs'] ",
    "default": " False ",
    "type": " None ",
@@ -8345,7 +7302,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_simulation.py ",
    "option": " ['--saverandstack'] ",
    "default": " True ",
    "type": " None ",
@@ -8353,7 +7309,6 @@
  },
  {
    "count": 1,
-   "prog": "e2classvsproj.py ",
    "option": " ['--savesim'] ",
    "default": " None ",
    "type": " str ",
@@ -8361,7 +7316,6 @@
  },
  {
    "count": 1,
-   "prog": "e2tvrecon.py ",
    "option": " ['--savesinograms'] ",
    "default": " False ",
    "type": " None ",
@@ -8369,7 +7323,6 @@
  },
  {
    "count": 1,
-   "prog": "e2tvrecon.py ",
    "option": " ['--saveslices'] ",
    "default": " False ",
    "type": " None ",
@@ -8377,7 +7330,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_ctf_old.py ",
    "option": " ['--savestriptiles'] ",
    "default": " False ",
    "type": " None ",
@@ -8385,7 +7337,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_simulation.py ",
    "option": " ['--savetlt'] ",
    "default": " False ",
    "type": " None ",
@@ -8393,7 +7344,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_isr.py ",
    "option": " ['--savevols'] ",
    "default": " False ",
    "type": " None ",
@@ -8401,7 +7351,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_align.py ",
    "option": " ['--scipytest'] ",
    "default": " False ",
    "type": " None ",
@@ -8409,7 +7358,6 @@
  },
  {
    "count": 1,
-   "prog": "e2a2d_average.py ",
    "option": " ['--scorebands'] ",
    "default": "0",
    "type": " int ",
@@ -8417,7 +7365,6 @@
  },
  {
    "count": 1,
-   "prog": "e2a2d_average.py ",
    "option": " ['--scorebandsali'] ",
    "default": "0",
    "type": " int ",
@@ -8425,7 +7372,6 @@
  },
  {
    "count": 1,
-   "prog": "e2a2d_average.py ",
    "option": " ['--scorebestset'] ",
    "default": "0",
    "type": " int ",
@@ -8433,7 +7379,6 @@
  },
  {
    "count": 1,
-   "prog": "e2a2d_average.py ",
    "option": " ['--scoreprogressive'] ",
    "default": "0",
    "type": " int ",
@@ -8441,7 +7386,6 @@
  },
  {
    "count": 1,
-   "prog": "e2parallel.py ",
    "option": " ['--scratchdir'] ",
    "default": " /tmp ",
    "type": " str ",
@@ -8449,7 +7393,6 @@
  },
  {
    "count": 1,
-   "prog": "e2make3dpar.py ",
    "option": " ['--seedweight'] ",
    "default": "1",
    "type": " float ",
@@ -8457,7 +7400,6 @@
  },
  {
    "count": 1,
-   "prog": "e2make3dpar.py ",
    "option": " ['--seedweightmap'] ",
    "default": " None ",
    "type": " str ",
@@ -8465,7 +7407,6 @@
  },
  {
    "count": 1,
-   "prog": "e2tomoseg_buildtrainset.py ",
    "option": " ['--segment'] ",
    "default": " False ",
    "type": " None ",
@@ -8473,7 +7414,6 @@
  },
  {
    "count": 1,
-   "prog": "e2segment3d.py ",
    "option": " ['--segout'] ",
    "default": " None ",
    "type": " str ",
@@ -8481,7 +7421,6 @@
  },
  {
    "count": 1,
-   "prog": "e2proc2d.py ",
    "option": " ['--select'] ",
    "default": " None ",
    "type": " str ",
@@ -8489,7 +7428,6 @@
  },
  {
    "count": 1,
-   "prog": "e2stacksort.py ",
    "option": " ['--seqali'] ",
    "default": " False ",
    "type": " None ",
@@ -8497,7 +7435,6 @@
  },
  {
    "count": 1,
-   "prog": "e2stacksort.py ",
    "option": " ['--seqalicen'] ",
    "default": " False ",
    "type": " None ",
@@ -8505,7 +7442,6 @@
  },
  {
    "count": 1,
-   "prog": "e2display.py ",
    "option": " ['--server'] ",
    "default": " False ",
    "type": " None ",
@@ -8513,7 +7449,6 @@
  },
  {
    "count": 1,
-   "prog": "e2display.py ",
    "option": " ['--serverport'] ",
    "default": "31980",
    "type": " int ",
@@ -8521,7 +7456,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_simulation.py ",
    "option": " ['--set2tiltaxis'] ",
    "default": " False ",
    "type": " None ",
@@ -8529,7 +7463,6 @@
  },
  {
    "count": 1,
-   "prog": "e2procjson.py ",
    "option": " ['--setoption'] ",
    "default": " None ",
    "type": " str ",
@@ -8537,7 +7470,6 @@
  },
  {
    "count": 1,
-   "prog": "e2proc2d.py ",
    "option": " ['--setsfpairs'] ",
    "default": " False ",
    "type": " None ",
@@ -8545,7 +7477,6 @@
  },
  {
    "count": 1,
-   "prog": "e2classaverage.py ",
    "option": " ['--setsfref'] ",
    "default": " False ",
    "type": " None ",
@@ -8553,7 +7484,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_structfac.py ",
    "option": " ['--sfout'] ",
    "default": " sf.txt ",
    "type": " str ",
@@ -8561,7 +7491,6 @@
  },
  {
    "count": 1,
-   "prog": "e2match.py ",
    "option": " ['--sharpfiltres'] ",
    "default": "0",
    "type": " float ",
@@ -8569,7 +7498,6 @@
  },
  {
    "count": 1,
-   "prog": "e2segment3d.py ",
    "option": " ['--shifttocenter'] ",
    "default": " False ",
    "type": " None ",
@@ -8577,7 +7505,6 @@
  },
  {
    "count": 1,
-   "prog": "e2refinevariance.py ",
    "option": " ['--shrink3d'] ",
    "default": "0",
    "type": " int ",
@@ -8585,7 +7512,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_average_multi.py ",
    "option": " ['--shrinkcompare'] ",
    "default": "0",
    "type": " int ",
@@ -8593,7 +7519,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_autoboxer.py ",
    "option": " ['--shrinktomo'] ",
    "default": "0",
    "type": " int ",
@@ -8601,7 +7526,6 @@
  },
  {
    "count": 1,
-   "prog": "e2classifykmeans.py ",
    "option": " ['--sigma'] ",
    "default": " False ",
    "type": " None ",
@@ -8609,7 +7533,6 @@
  },
  {
    "count": 1,
-   "prog": "e2gmm_refine.py ",
    "option": " ['--sigmareg'] ",
    "default": "0.5",
    "type": " float ",
@@ -8617,7 +7540,6 @@
  },
  {
    "count": 1,
-   "prog": "e2compress.py ",
    "option": " ['--sigrange'] ",
    "default": " None ",
    "type": " str ",
@@ -8625,7 +7547,6 @@
  },
  {
    "count": 1,
-   "prog": "e2msa.py ",
    "option": " ['--simmx'] ",
    "default": " None ",
    "type": " str ",
@@ -8633,7 +7554,6 @@
  },
  {
    "count": 1,
-   "prog": "e2speedtest.py ",
    "option": " ['--simpleout'] ",
    "default": " False ",
    "type": " None ",
@@ -8641,7 +7561,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_simulation.py ",
    "option": " ['--simref'] ",
    "default": " False ",
    "type": " None ",
@@ -8649,7 +7568,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_autoboxer.py ",
    "option": " ['--simtemplatesn'] ",
    "default": "0",
    "type": " int ",
@@ -8657,7 +7575,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_average_multi.py ",
    "option": " ['--simthr2'] ",
    "default": "0",
    "type": " float ",
@@ -8665,7 +7582,6 @@
  },
  {
    "count": 1,
-   "prog": "e2classify.py ",
    "option": " ['--simvec'] ",
    "default": " False ",
    "type": " None ",
@@ -8673,7 +7589,6 @@
  },
  {
    "count": 1,
-   "prog": "e2display.py ",
    "option": " ['--singleimage'] ",
    "default": " False ",
    "type": " None ",
@@ -8681,7 +7596,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_resolutionplot.py ",
    "option": " ['--singleplot'] ",
    "default": " False ",
    "type": " None ",
@@ -8689,7 +7603,6 @@
  },
  {
    "count": 1,
-   "prog": "e2speedtest.py ",
    "option": " ['--size'] ",
    "default": "192",
    "type": " int ",
@@ -8697,7 +7610,6 @@
  },
  {
    "count": 1,
-   "prog": "e2tomo_icongpu.py ",
    "option": " ['--sizez'] ",
    "default": "0",
    "type": " int ",
@@ -8705,7 +7617,6 @@
  },
  {
    "count": 1,
-   "prog": "e2ssehunter.py ",
    "option": " ['--skeleton'] ",
    "default": " none ",
    "type": " str ",
@@ -8713,7 +7624,6 @@
  },
  {
    "count": 1,
-   "prog": "e2ssehunter.py ",
    "option": " ['--skeletonwt'] ",
    "default": "1",
    "type": " float ",
@@ -8721,7 +7631,6 @@
  },
  {
    "count": 1,
-   "prog": "e2ssematch.py ",
    "option": " ['--skelpath'] ",
    "default": " None ",
    "type": " str ",
@@ -8729,7 +7638,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_extract.py ",
    "option": " ['--skip3d'] ",
    "default": " False ",
    "type": " None ",
@@ -8737,7 +7645,6 @@
  },
  {
    "count": 1,
-   "prog": "e2tomo_icongpu.py ",
    "option": " ['--skipgolderasing'] ",
    "default": " False ",
    "type": " None ",
@@ -8745,7 +7652,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_tiltrefine_oneiter.py ",
    "option": " ['--skipm3d'] ",
    "default": " False ",
    "type": " None ",
@@ -8753,7 +7659,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_average.py ",
    "option": " ['--skippostp'] ",
    "default": " False ",
    "type": " None ",
@@ -8761,7 +7666,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_ctf_old.py ",
    "option": " ['--skipstripping'] ",
    "default": "  ",
    "type": " str ",
@@ -8769,7 +7673,6 @@
  },
  {
    "count": 1,
-   "prog": "e2speedtest.py ",
    "option": " ['--slow'] ",
    "default": " False ",
    "type": " None ",
@@ -8777,7 +7680,6 @@
  },
  {
    "count": 1,
-   "prog": "e2bdb.py ",
    "option": " ['--smalldump'] ",
    "default": " False ",
    "type": " None ",
@@ -8785,7 +7687,6 @@
  },
  {
    "count": 1,
-   "prog": "e2project3d.py ",
    "option": " ['--smear'] ",
    "default": "0",
    "type": " int ",
@@ -8793,7 +7694,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_resolutionplot.py ",
    "option": " ['--smooththresh'] ",
    "default": "100",
    "type": " float ",
@@ -8801,7 +7701,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_simulation.py ",
    "option": " ['--snr'] ",
    "default": " None ",
    "type": " float ",
@@ -8809,7 +7708,6 @@
  },
  {
    "count": 1,
-   "prog": "e2pathwalker.py ",
    "option": " ['--solver'] ",
    "default": " None ",
    "type": " str ",
@@ -8817,7 +7715,6 @@
  },
  {
    "count": 1,
-   "prog": "e2proctxt.py ",
    "option": " ['--sortcomment'] ",
    "default": " False ",
    "type": " None ",
@@ -8825,7 +7722,6 @@
  },
  {
    "count": 1,
-   "prog": "e2ctf.py ",
    "option": " ['--sortdefocus'] ",
    "default": " False ",
    "type": " None ",
@@ -8833,7 +7729,6 @@
  },
  {
    "count": 1,
-   "prog": "e2proc2d.py ",
    "option": " ['--split'] ",
    "default": " None ",
    "type": " int ",
@@ -8841,7 +7736,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_buildsets.py ",
    "option": " ['--spliteo'] ",
    "default": " False ",
    "type": " None ",
@@ -8849,7 +7743,6 @@
  },
  {
    "count": 1,
-   "prog": "e2classifyligand.py ",
    "option": " ['--splitparticles'] ",
    "default": " False ",
    "type": " None ",
@@ -8857,7 +7750,6 @@
  },
  {
    "count": 1,
-   "prog": "e2make3dpar.py ",
    "option": " ['--sqrt_wt'] ",
    "default": " False ",
    "type": " None ",
@@ -8865,7 +7757,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_refinemulti_old.py ",
    "option": " ['--ssaref'] ",
    "default": "0",
    "type": " int ",
@@ -8873,7 +7764,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_refine_new.py ",
    "option": " ['--ssnrwt'] ",
    "default": " False ",
    "type": " None ",
@@ -8881,7 +7771,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_recompute.py ",
    "option": " ['--stacks'] ",
    "default": "  ",
    "type": " str ",
@@ -8889,7 +7778,6 @@
  },
  {
    "count": 1,
-   "prog": "e2rct.py ",
    "option": " ['--stagetilt'] ",
    "default": "0",
    "type": " float ",
@@ -8897,7 +7785,6 @@
  },
  {
    "count": 1,
-   "prog": "e2refine_easy.py ",
    "option": " ['--startfrom'] ",
    "default": " None ",
    "type": " str ",
@@ -8905,7 +7792,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spa_refine.py ",
    "option": " ['--startiter'] ",
    "default": "0",
    "type": " int ",
@@ -8913,7 +7799,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_refine_new.py ",
    "option": " ['--startres'] ",
    "default": "-1",
    "type": " float ",
@@ -8921,7 +7806,6 @@
  },
  {
    "count": 1,
-   "prog": "e2make3d.py ",
    "option": " ['--startweight'] ",
    "default": "1",
    "type": " float ",
@@ -8929,7 +7813,6 @@
  },
  {
    "count": 1,
-   "prog": "e2procheader.py ",
    "option": " ['--stem'] ",
    "default": " None ",
    "type": " str ",
@@ -8937,7 +7820,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_tiltstacker.py ",
    "option": " ['--stem2stack'] ",
    "default": "  ",
    "type": " str ",
@@ -8945,7 +7827,6 @@
  },
  {
    "count": 1,
-   "prog": "e2procheader.py ",
    "option": " ['--stemval'] ",
    "default": " None ",
    "type": " str ",
@@ -8953,7 +7834,6 @@
  },
  {
    "count": 1,
-   "prog": "e2symsearch3d.py ",
    "option": " ['--steps'] ",
    "default": "10",
    "type": " int ",
@@ -8961,7 +7841,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_tomoctf.py ",
    "option": " ['--stepx'] ",
    "default": "20",
    "type": " int ",
@@ -8969,7 +7848,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_tomoctf.py ",
    "option": " ['--stepy'] ",
    "default": "40",
    "type": " int ",
@@ -8977,7 +7855,6 @@
  },
  {
    "count": 1,
-   "prog": "e2classaverage.py ",
    "option": " ['--storebad'] ",
    "default": " False ",
    "type": " None ",
@@ -8985,7 +7862,6 @@
  },
  {
    "count": 1,
-   "prog": "e2ctf.py ",
    "option": " ['--storeparm'] ",
    "default": " False ",
    "type": " None ",
@@ -8993,7 +7869,6 @@
  },
  {
    "count": 1,
-   "prog": "e2proc3d_huge.py ",
    "option": " ['--streaksubtract'] ",
    "default": " None ",
    "type": " str ",
@@ -9001,7 +7876,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_ctf_old.py ",
    "option": " ['--stripstep'] ",
    "default": "0",
    "type": " int ",
@@ -9009,7 +7883,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_refinemulti_noali.py ",
    "option": " ['--strucfac'] ",
    "default": " None ",
    "type": " str ",
@@ -9017,7 +7890,6 @@
  },
  {
    "count": 1,
-   "prog": "e2tvrecon.py ",
    "option": " ['--subpix'] ",
    "default": "1",
    "type": " int ",
@@ -9025,7 +7897,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_refinemulti_old.py ",
    "option": " ['--subset4ref'] ",
    "default": " None ",
    "type": " int ",
@@ -9033,7 +7904,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_autoboxer.py ",
    "option": " ['--subsettrans'] ",
    "default": "0",
    "type": " int ",
@@ -9041,7 +7911,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_ctf_old.py ",
    "option": " ['--subtiltsdir'] ",
    "default": "  ",
    "type": " str ",
@@ -9049,7 +7918,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_subtilt_old.py ",
    "option": " ['--subtractbackground'] ",
    "default": " False ",
    "type": " None ",
@@ -9057,7 +7925,6 @@
  },
  {
    "count": 1,
-   "prog": "e2pathwalker.py ",
    "option": " ['--subunit'] ",
    "default": "1",
    "type": " int ",
@@ -9065,7 +7932,6 @@
  },
  {
    "count": 1,
-   "prog": "e2extractsubparticles.py ",
    "option": " ['--subunitmask'] ",
    "default": " None ",
    "type": " str ",
@@ -9073,7 +7939,6 @@
  },
  {
    "count": 1,
-   "prog": "e2proc2d.py ",
    "option": " ['--swap'] ",
    "default": " False ",
    "type": " None ",
@@ -9081,7 +7946,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_refine.py ",
    "option": " ['--symalimask'] ",
    "default": " None ",
    "type": " str ",
@@ -9089,7 +7953,6 @@
  },
  {
    "count": 1,
-   "prog": "e2symsearch3d.py ",
    "option": " ['--symmetrize'] ",
    "default": " False ",
    "type": " None ",
@@ -9097,7 +7960,6 @@
  },
  {
    "count": 1,
-   "prog": "e2refinetorelion3d.py ",
    "option": " ['--symmgroup'] ",
    "default": " C ",
    "type": " None ",
@@ -9105,7 +7967,6 @@
  },
  {
    "count": 1,
-   "prog": "e2refinetorelion3d.py ",
    "option": " ['--symmnumber'] ",
    "default": "1",
    "type": " int ",
@@ -9113,7 +7974,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_refinemulti_old.py ",
    "option": " ['--syms'] ",
    "default": "  ",
    "type": " str ",
@@ -9121,7 +7981,6 @@
  },
  {
    "count": 1,
-   "prog": "e2tomo_tiltstacker.py ",
    "option": " ['--tag'] ",
    "default": " None ",
    "type": " str ",
@@ -9129,7 +7988,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_classify.py ",
    "option": " ['--tarres'] ",
    "default": "20",
    "type": " float ",
@@ -9137,7 +7995,6 @@
  },
  {
    "count": 1,
-   "prog": "e2parallel.py ",
    "option": " ['--taskin'] ",
    "default": " None ",
    "type": " str ",
@@ -9145,7 +8002,6 @@
  },
  {
    "count": 1,
-   "prog": "e2parallel.py ",
    "option": " ['--taskout'] ",
    "default": " None ",
    "type": " str ",
@@ -9153,7 +8009,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_autoboxer.py ",
    "option": " ['--template'] ",
    "default": " None ",
    "type": " str ",
@@ -9161,7 +8016,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_autoboxer.py ",
    "option": " ['--templatethreshold'] ",
    "default": "0",
    "type": " float ",
@@ -9169,7 +8023,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_simulation.py ",
    "option": " ['--terror'] ",
    "default": " None ",
    "type": " int ",
@@ -9177,7 +8030,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_autoboxer.py ",
    "option": " ['--test'] ",
    "default": " False ",
    "type": " None ",
@@ -9185,7 +8037,6 @@
  },
  {
    "count": 1,
-   "prog": "e2procpdb.py ",
    "option": " ['--theta'] ",
    "default": "0",
    "type": " float ",
@@ -9193,7 +8044,6 @@
  },
  {
    "count": 1,
-   "prog": "e2tomo_icongpu.py ",
    "option": " ['--thickness'] ",
    "default": "0",
    "type": " int ",
@@ -9201,7 +8051,6 @@
  },
  {
    "count": 1,
-   "prog": "e2proc2d.py ",
    "option": " ['--threed2threed'] ",
    "default": " False ",
    "type": " None ",
@@ -9209,7 +8058,6 @@
  },
  {
    "count": 1,
-   "prog": "e2proc2d.py ",
    "option": " ['--threed2twod'] ",
    "default": " False ",
    "type": " None ",
@@ -9217,7 +8065,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_tiltrefine_oneiter.py ",
    "option": " ['--threedout'] ",
    "default": " None ",
    "type": " str ",
@@ -9225,7 +8072,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spa_make3d.py ",
    "option": " ['--tidrange'] ",
    "default": " -1,-1 ",
    "type": " str ",
@@ -9233,7 +8079,6 @@
  },
  {
    "count": 1,
-   "prog": "e2tomo_ctfraw.py ",
    "option": " ['--tiltangle'] ",
    "default": " None ",
    "type": " float ",
@@ -9241,7 +8086,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_subtilt_old.py ",
    "option": " ['--tiltaxislocation'] ",
    "default": "-1",
    "type": " int ",
@@ -9249,7 +8093,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_subtilt_old.py ",
    "option": " ['--tiltaxisptcls'] ",
    "default": "-1",
    "type": " int ",
@@ -9257,7 +8100,6 @@
  },
  {
    "count": 1,
-   "prog": "e2tomogram.py ",
    "option": " ['--tltax'] ",
    "default": " None ",
    "type": " float ",
@@ -9265,7 +8107,6 @@
  },
  {
    "count": 1,
-   "prog": "e2tomogram.py ",
    "option": " ['--tltrange'] ",
    "default": " None ",
    "type": " str ",
@@ -9273,7 +8114,6 @@
  },
  {
    "count": 1,
-   "prog": "e2tomogram.py ",
    "option": " ['--tltstep'] ",
    "default": "2",
    "type": " float ",
@@ -9281,7 +8121,6 @@
  },
  {
    "count": 1,
-   "prog": "e2tomogram.py ",
    "option": " ['--tmppath'] ",
    "default": " None ",
    "type": " str ",
@@ -9289,7 +8128,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_subtilt_old.py ",
    "option": " ['--tomosides'] ",
    "default": "  ",
    "type": " str ",
@@ -9297,7 +8135,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_subtilt_old.py ",
    "option": " ['--track'] ",
    "default": " False ",
    "type": " None ",
@@ -9305,7 +8142,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_subtilt_old.py ",
    "option": " ['--trackytoo'] ",
    "default": " False ",
    "type": " None ",
@@ -9313,7 +8149,6 @@
  },
  {
    "count": 1,
-   "prog": "e2tomo_mwfill.py ",
    "option": " ['--train'] ",
    "default": " None ",
    "type": " str ",
@@ -9321,7 +8156,6 @@
  },
  {
    "count": 1,
-   "prog": "e2tomoseg_convnet.py ",
    "option": " ['--training'] ",
    "default": " False ",
    "type": " None ",
@@ -9329,7 +8163,6 @@
  },
  {
    "count": 1,
-   "prog": "e2tomoseg_convnet.py ",
    "option": " ['--trainout'] ",
    "default": " False ",
    "type": " None ",
@@ -9337,7 +8170,6 @@
  },
  {
    "count": 1,
-   "prog": "e2tomoseg_buildtrainset.py ",
    "option": " ['--trainset_output'] ",
    "default": " None ",
    "type": " str ",
@@ -9345,7 +8177,6 @@
  },
  {
    "count": 1,
-   "prog": "e2tomoseg_convnet.py ",
    "option": " ['--trainset'] ",
    "default": " None ",
    "type": " None ",
@@ -9353,7 +8184,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_simulation.py ",
    "option": " ['--trange'] ",
    "default": " None ",
    "type": " int ",
@@ -9361,7 +8191,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_classaverage.py ",
    "option": " ['--translateonly'] ",
    "default": " False ",
    "type": " None ",
@@ -9369,7 +8198,6 @@
  },
  {
    "count": 1,
-   "prog": "e2initialmodel.py ",
    "option": " ['--tries'] ",
    "default": "10",
    "type": " int ",
@@ -9377,7 +8205,6 @@
  },
  {
    "count": 1,
-   "prog": "e2classifyligand.py ",
    "option": " ['--tstcls'] ",
    "default": "-1",
    "type": " int ",
@@ -9385,7 +8212,6 @@
  },
  {
    "count": 1,
-   "prog": "e2proc2d.py ",
    "option": " ['--twod2threed'] ",
    "default": " False ",
    "type": " None ",
@@ -9393,7 +8219,6 @@
  },
  {
    "count": 1,
-   "prog": "e2tomo_stackframes.py ",
    "option": " ['--twodstack'] ",
    "default": " False ",
    "type": " None ",
@@ -9401,7 +8226,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_simulation.py ",
    "option": " ['--txerror'] ",
    "default": " None ",
    "type": " int ",
@@ -9409,7 +8233,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_simulation.py ",
    "option": " ['--txrange'] ",
    "default": " None ",
    "type": " int ",
@@ -9417,7 +8240,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_simulation.py ",
    "option": " ['--tyerror'] ",
    "default": " None ",
    "type": " int ",
@@ -9425,7 +8247,6 @@
  },
  {
    "count": 1,
-   "prog": "e2procpdb.py ",
    "option": " ['--type'] ",
    "default": " eman ",
    "type": " str ",
@@ -9433,7 +8254,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_simulation.py ",
    "option": " ['--tyrange'] ",
    "default": " None ",
    "type": " int ",
@@ -9441,7 +8261,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_simulation.py ",
    "option": " ['--tzrange'] ",
    "default": " None ",
    "type": " int ",
@@ -9449,7 +8268,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_subtilt_from_imod.py ",
    "option": " ['--unbin'] ",
    "default": "-1",
    "type": " float ",
@@ -9457,7 +8275,6 @@
  },
  {
    "count": 1,
-   "prog": "e2boxer.py ",
    "option": " ['--unboxedonly'] ",
    "default": " False ",
    "type": " None ",
@@ -9465,7 +8282,6 @@
  },
  {
    "count": 1,
-   "prog": "e2refine_postprocess.py ",
    "option": " ['--underfilter'] ",
    "default": " False ",
    "type": " None ",
@@ -9473,7 +8289,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_tiltstacker.py ",
    "option": " ['--unstack'] ",
    "default": "  ",
    "type": " str ",
@@ -9481,7 +8296,6 @@
  },
  {
    "count": 1,
-   "prog": "e2proc2d.py ",
    "option": " ['--unstacking'] ",
    "default": " False ",
    "type": " None ",
@@ -9489,7 +8303,6 @@
  },
  {
    "count": 1,
-   "prog": "e2stacksort.py ",
    "option": " ['--useali'] ",
    "default": " False ",
    "type": " None ",
@@ -9497,7 +8310,6 @@
  },
  {
    "count": 1,
-   "prog": "e2refine_split.py ",
    "option": " ['--usebasis'] ",
    "default": "0",
    "type": " int ",
@@ -9505,7 +8317,6 @@
  },
  {
    "count": 1,
-   "prog": "e2ctf.py ",
    "option": " ['--useframedf'] ",
    "default": " False ",
    "type": " None ",
@@ -9513,7 +8324,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_recompute.py ",
    "option": " ['--useinverseali'] ",
    "default": " False ",
    "type": " None ",
@@ -9521,7 +8331,6 @@
  },
  {
    "count": 1,
-   "prog": "e2make3dpar.py ",
    "option": " ['--useseedasref'] ",
    "default": " False ",
    "type": " None ",
@@ -9529,7 +8338,6 @@
  },
  {
    "count": 1,
-   "prog": "e2make3dpar.py ",
    "option": " ['--usessnr'] ",
    "default": " False ",
    "type": " None ",
@@ -9537,7 +8345,6 @@
  },
  {
    "count": 1,
-   "prog": "e2parallel.py ",
    "option": " ['--usethreads'] ",
    "default": "-1",
    "type": " int ",
@@ -9545,7 +8352,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_recompute.py ",
    "option": " ['--usetomograms'] ",
    "default": " False ",
    "type": " None ",
@@ -9553,7 +8359,6 @@
  },
  {
    "count": 1,
-   "prog": "e2tomoseg_buildtrainset.py ",
    "option": " ['--validset'] ",
    "default": "0",
    "type": " float ",
@@ -9561,7 +8366,6 @@
  },
  {
    "count": 1,
-   "prog": "e2procheader.py ",
    "option": " ['--valtype'] ",
    "default": " str ",
    "type": " str ",
@@ -9569,7 +8373,6 @@
  },
  {
    "count": 1,
-   "prog": "e2refinetorelion2d.py ",
    "option": " ['--verbosity'] ",
    "default": "1",
    "type": " int ",
@@ -9577,7 +8380,6 @@
  },
  {
    "count": 1,
-   "prog": "e2refinevariance.py ",
    "option": " ['--volfiles'] ",
    "default": " False ",
    "type": " None ",
@@ -9585,7 +8387,6 @@
  },
  {
    "count": 1,
-   "prog": "e2tiltvalidate.py ",
    "option": " ['--volume'] ",
    "default": " None ",
    "type": " str ",
@@ -9593,7 +8394,6 @@
  },
  {
    "count": 1,
-   "prog": "e2classptcl.py ",
    "option": " ['--vstack'] ",
    "default": " False ",
    "type": " None ",
@@ -9601,7 +8401,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_tempmatch.py ",
    "option": " ['--vthr'] ",
    "default": "2",
    "type": " float ",
@@ -9609,7 +8408,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_wedge.py ",
    "option": " ['--wedgeangle'] ",
    "default": "60",
    "type": " float ",
@@ -9617,7 +8415,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_wedge.py ",
    "option": " ['--wedgef'] ",
    "default": "0.5",
    "type": " float ",
@@ -9625,7 +8422,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_wedge.py ",
    "option": " ['--wedgei'] ",
    "default": "0.05",
    "type": " float ",
@@ -9633,7 +8429,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_subtilt_from_imod.py ",
    "option": " ['--weight'] ",
    "default": " False ",
    "type": " None ",
@@ -9641,7 +8436,6 @@
  },
  {
    "count": 1,
-   "prog": "e2rct.py ",
    "option": " ['--weightrecons'] ",
    "default": " False ",
    "type": " None ",
@@ -9649,7 +8443,6 @@
  },
  {
    "count": 1,
-   "prog": "e2ctf.py ",
    "option": " ['--wholeimage'] ",
    "default": " False ",
    "type": " None ",
@@ -9657,7 +8450,6 @@
  },
  {
    "count": 1,
-   "prog": "e2ctffind3util.py ",
    "option": " ['--windowsize'] ",
    "default": "0",
    "type": " int ",
@@ -9665,7 +8457,6 @@
  },
  {
    "count": 1,
-   "prog": "e2fsc_local.py ",
    "option": " ['--winsize'] ",
    "default": "17",
    "type": " int ",
@@ -9673,7 +8464,6 @@
  },
  {
    "count": 1,
-   "prog": "e2buildsets.py ",
    "option": " ['--withflipped'] ",
    "default": " False ",
    "type": " None ",
@@ -9681,7 +8471,6 @@
  },
  {
    "count": 1,
-   "prog": "e2buildsets.py ",
    "option": " ['--withinvar'] ",
    "default": " False ",
    "type": " None ",
@@ -9689,7 +8478,6 @@
  },
  {
    "count": 1,
-   "prog": "e2boxer_old.py ",
    "option": " ['--wn'] ",
    "default": "256",
    "type": " int ",
@@ -9697,7 +8485,6 @@
  },
  {
    "count": 1,
-   "prog": "e2RCTboxer.py ",
    "option": " ['--write_boxes'] ",
    "default": " False ",
    "type": " None ",
@@ -9705,7 +8492,6 @@
  },
  {
    "count": 1,
-   "prog": "e2emx.py ",
    "option": " ['--writeimages'] ",
    "default": " False ",
    "type": " None ",
@@ -9713,7 +8499,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_sgd.py ",
    "option": " ['--writemovie'] ",
    "default": " False ",
    "type": " None ",
@@ -9721,7 +8506,6 @@
  },
  {
    "count": 1,
-   "prog": "e2initialmodel_sgd.py ",
    "option": " ['--writetmp'] ",
    "default": " False ",
    "type": " None ",
@@ -9729,7 +8513,6 @@
  },
  {
    "count": 1,
-   "prog": "e2tomogram.py ",
    "option": " ['--xdrift'] ",
    "default": " False ",
    "type": " None ",
@@ -9737,7 +8520,6 @@
  },
  {
    "count": 1,
-   "prog": "e2tileimage.py ",
    "option": " ['--xmax'] ",
    "default": "-1",
    "type": " int ",
@@ -9745,7 +8527,6 @@
  },
  {
    "count": 1,
-   "prog": "e2tileimage.py ",
    "option": " ['--xmin'] ",
    "default": "-1",
    "type": " int ",
@@ -9753,7 +8534,6 @@
  },
  {
    "count": 1,
-   "prog": "e2rawdata.py ",
    "option": " ['--xraypixel'] ",
    "default": " False ",
    "type": " None ",
@@ -9761,7 +8541,6 @@
  },
  {
    "count": 1,
-   "prog": "e2tileimage.py ",
    "option": " ['--xstep'] ",
    "default": "256",
    "type": " int ",
@@ -9769,7 +8548,6 @@
  },
  {
    "count": 1,
-   "prog": "e2procpdb.py ",
    "option": " ['--xtilt'] ",
    "default": "0",
    "type": " float ",
@@ -9777,7 +8555,6 @@
  },
  {
    "count": 1,
-   "prog": "e2projectupdate21.py ",
    "option": " ['--yes'] ",
    "default": " False ",
    "type": " None ",
@@ -9785,7 +8562,6 @@
  },
  {
    "count": 1,
-   "prog": "e2tileimage.py ",
    "option": " ['--ymax'] ",
    "default": "-1",
    "type": " int ",
@@ -9793,7 +8569,6 @@
  },
  {
    "count": 1,
-   "prog": "e2tileimage.py ",
    "option": " ['--ymin'] ",
    "default": "-1",
    "type": " int ",
@@ -9801,7 +8576,6 @@
  },
  {
    "count": 1,
-   "prog": "e2tileimage.py ",
    "option": " ['--ystep'] ",
    "default": "256",
    "type": " int ",
@@ -9809,7 +8583,6 @@
  },
  {
    "count": 1,
-   "prog": "e2procpdb.py ",
    "option": " ['--ytilt'] ",
    "default": "0",
    "type": " float ",
@@ -9817,7 +8590,6 @@
  },
  {
    "count": 1,
-   "prog": "e2tomogram.py ",
    "option": " ['--zeroid'] ",
    "default": "-1",
    "type": " int ",
@@ -9825,7 +8597,6 @@
  },
  {
    "count": 1,
-   "prog": "e2ctf.py ",
    "option": " ['--zerook'] ",
    "default": " False ",
    "type": " None ",
@@ -9833,7 +8604,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_subtilt_old.py ",
    "option": " ['--zerotiltindx'] ",
    "default": "-1",
    "type": " int ",
@@ -9841,7 +8611,6 @@
  },
  {
    "count": 1,
-   "prog": "e2spt_subtilt_old.py ",
    "option": " ['--zshift'] ",
    "default": " half ",
    "type": " str ",
@@ -9849,7 +8618,6 @@
  },
  {
    "count": 1,
-   "prog": "e2procpdb.py ",
    "option": " ['--ztilt'] ",
    "default": "0",
    "type": " float ",
@@ -9857,7 +8625,6 @@
  },
  {
    "count": 1,
-   "prog": "e2iminfo.py ",
    "option": " ['-a', '--all'] ",
    "default": " False ",
    "type": " None ",
@@ -9865,7 +8632,6 @@
  },
  {
    "count": 1,
-   "prog": "e2iminfo.py ",
    "option": " ['-C', '--check'] ",
    "default": " False ",
    "type": " None ",
@@ -9873,7 +8639,6 @@
  },
  {
    "count": 1,
-   "prog": "e2iminfo.py ",
    "option": " ['-c', '--count'] ",
    "default": " False ",
    "type": " None ",
@@ -9881,7 +8646,6 @@
  },
  {
    "count": 1,
-   "prog": "e2pathwalker.py ",
    "option": " ['-e', '--edge'] ",
    "default": " None ",
    "type": " None ",
@@ -9889,7 +8653,6 @@
  },
  {
    "count": 1,
-   "prog": "e2iminfo.py ",
    "option": " ['-E', '--euler'] ",
    "default": " False ",
    "type": " None ",
@@ -9897,7 +8660,6 @@
  },
  {
    "count": 1,
-   "prog": "e2iminfo.py ",
    "option": " ['-H', '--header'] ",
    "default": " False ",
    "type": " None ",
@@ -9905,7 +8667,6 @@
  },
  {
    "count": 1,
-   "prog": "e2iminfo.py ",
    "option": " ['-N', '--number'] ",
    "default": "-1",
    "type": " int ",
@@ -9913,7 +8674,6 @@
  },
  {
    "count": 1,
-   "prog": "e2iminfo.py ",
    "option": " ['-O', '--outliers'] ",
    "default": " False ",
    "type": " None ",
@@ -9921,7 +8681,6 @@
  },
  {
    "count": 1,
-   "prog": "e2iminfo.py ",
    "option": " ['-Q', '--quality'] ",
    "default": "-1",
    "type": " int ",
@@ -9929,7 +8688,6 @@
  },
  {
    "count": 1,
-   "prog": "e2iminfo.py ",
    "option": " ['-s', '--stat'] ",
    "default": " False ",
    "type": " None ",
