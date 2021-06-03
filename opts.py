@@ -7438,7 +7438,9 @@ with open('pdict.txt', 'w') as fout:
         del v['option']
         fout.write(f"'{ast.literal_eval(k)[0]}' : ""{")
         key = 'default'
-        fout.write(f"'{key}': {v[key]}, ")
+        if v['type'] == 'str': q = "'"
+        else: q = ""
+        fout.write(f"'{key}': {q}{v[key]}{q}, ")
         key = 'type'
         fout.write(f"'{key}': {v[key]}, ")
         key = 'help'
