@@ -7429,6 +7429,9 @@ dict = {}
 for i in data:
     dict[i["option"]] = i
 
+import ast
+
+
 with open('pdict.txt', 'w') as fout:
     for k,v in dict.items():
-        fout.write(f"{k} : {v}\n")
+        fout.write(f"'{ast.literal_eval(k)[0]}' : {v}\n")
