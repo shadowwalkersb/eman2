@@ -1,0 +1,1243 @@
+ count,prog , option , default , type , help 
+169,e2RCTboxer.py , ['--ppid'] ,-1, int ," Set the PID of the parent process, used for cross platform PPID "
+140,e2RCTboxer.py ," ['--verbose', '-v'] ",0, int ," verbose level [0-9], higher number means higher level of verboseness "
+60,e2a2d_align.py , ['--path'] , None , str , Path to a folder where results should be stored. Creates a new folder if none specified (default = m2d_XX) 
+55,e2align3d.py , ['--sym'] , c1 , str ," model symmetry (using sym, if present, speeds thing up a lot), default='c1' "
+55,e2a2d_align.py , ['--threads'] ,4, int , Number of alignment threads to run in parallel on a single computer 
+49,e2classaverage.py , ['--parallel'] , None , None , parallelism argument 
+42,e2basis.py , ['--mask'] ,-2, int , Mask radius 
+41,e2boxer.py , ['--apix'] ,-1, float , Angstroms per pixel for all images 
+31,e2classaverage.py , ['--input'] , None , str , The name of the input particle stack 
+31,e2a2d_align.py , ['--iter'] ,0, int , Iteration number within path. Default = start a new iteration 
+30,e2RCTboxer.py , ['--shrink'] ,0, int ," Shrink the images by an integer, uses math.meanshrink "
+28,e2align2d.py , ['--output'] , None , str , The name of the output class stack 
+18,e2ctffind3util.py , ['--maxres'] ,0, float , The highest resolution to be fitted (Angstroms) 
+17,e2a2d_align.py , ['--align'] , rotate_translate_tree , str , This is the aligner used to align particles to the previous class average. Default is None. 
+17,e2classaverage.py , ['--keep'] ,1, float , The fraction of particles to keep in each class. 
+16,e2boxer_old.py , ['--debug'] , False , None , debug mode 
+16,e2align3d.py , ['--preprocess'] , None , str , preprocess maps before alignment 
+16,e2a2d_stat.py , ['--ref'] , None , str , A reference image to be used in conjunction with --cmp and --multicmp 
+15,e2boxer.py , ['--compressbits'] ,6, int , Bits to keep when writing images with compression. 0->lossless floating point. Default 6 
+14,e2proc2d.py , ['--clip'] , None , str ," Specify the output size in pixels xsize,ysize[,xcenter,ycenter], images can be made larger or smaller. "
+14,e2RCTboxer.py , ['--invert'] , False , None , If writing outputt inverts pixel intensities 
+14,e2classaverage.py , ['--normproc'] , normalize.edgemean , str , Normalization processor applied to particles before alignment. Default is normalize.edgemean. If you want to turn this option off specify 'None' 
+13,e2a2d_align.py , ['--cmp'] , ccc , str ," The comparitor used to generate quality scores for the purpose of particle exclusion in classes, strongly linked to the keep argument. "
+13,e2boxer.py , ['--cs'] ,-1, float , Microscope Cs (spherical aberation) 
+13,e2erasefiducials.py , ['--lowpass'] ,1.11, float , Multiply lowpass filter frequency by this constant when filtering noise image. Default is 1.11. 
+13,e2rct.py , ['--maxshift'] ,2, int , Maximun amount to shift the images during alignment 
+13,e2boxer.py , ['--voltage'] ,-1, float , Microscope voltage in KV 
+12,e2a2d_align.py , ['--aligncmp'] , ccc , str , The comparitor used for the --align aligner. Default is dot. 
+12,e2RCTboxer.py , ['--boxsize'] ,-1, int , Box size in pixels 
+12,e2refine_easy.py , ['--breaksym'] , False , None ," If selected, reconstruction will be asymmetric with sym= specifying a known pseudosymmetry, not an imposed symmetry. "
+12,e2a2d_stat.py , ['--gui'] , False , None , If set will open an interactive plot with the results 
+12,e2ctffind3util.py , ['--minres'] ,0, float , The lowest resolution to be fitted (Angstroms) 
+12,e2gmm_refine.py , ['--niter'] ,10, int , number of iterations 
+12,e2a2d_align.py , ['--saveali'] , False , None , Save a stack file (aliptcls_XX.hdf) containing the aligned particles. 
+12,e2match.py , ['--threshold'] ,  , str , EMAN2 processor to be used   to threshold the img2process. See available thresholds by typing    e2help.py processors --verbose=10   at the command line. 
+11,e2classaverage.py , ['--averager'] , mean , str , The type of averager used to produce the class average. 
+11,e2match.py , ['--highpass'] ,  , str , A highpass filtering processor (as in e2proc3d.py) to be applied to the edited img2process. 
+11,e2fsc_local.py , ['--setsf'] ,  , str ,  
+11,e2erasefiducials.py , ['--subset'] ,0, int , Default=0 (not used). Apply algorithm to only a subset of images in each stack file. 
+9,e2boxer.py , ['--ac'] ,10, float ," Amplitude contrast (percentage, default=10) "
+9,e2bdb.py , ['--exclude'] , None , str , The name of a database containing a list of exclusion keys 
+9,e2bdb.py , ['--force'] , False , None , This will force an action that would normally fail due to failed checks. 
+9,e2a2d_align.py , ['--ralign'] , None , str , This is the second stage aligner used to refine the first alignment. This is usually the 'refine' aligner. 
+8,e2basis.py , ['--maskfile'] , None , str , File containing a mask to apply to the particles before normalization 
+8,e2make3d.py , ['--pad'] , None , str ," Will zero-pad images to the specifed size (x,y) or (x,x) prior to reconstruction. If not specified no padding occurs. "
+8,e2a2d_align.py , ['--raligncmp'] , ccc , str , The comparitor used by the second stage aligner. 
+7,e2bdb.py , ['--check'] , False , None , Check for self-consistency and errors in the structure of specified databases 
+7,e2refine_easy.py , ['--mass'] ,0, float ," The ~mass of the particle in kilodaltons, used to run normalize.bymass. Due to resolution effects, not always the true mass. "
+7,e2a2d_stat.py , ['--mode'] , score , str ," Which variable to histogram, score, coverage, alpha, tx, ty. default=score "
+7,e2classifykmeans.py , ['--ncls'] ,-1, int , Number of classes to generate 
+7,e2make3d.py , ['--postprocess'] , None , str ," postprocessor to be applied to the 3D volume once the reconstruction is completed. There can be more than one postprocessor, and they are applied in the order in which they are specified. See e2help.py processors for a complete list of available processors. "
+7,e2classifyligand.py , ['--process'] , None , str , A processor to apply to the particle data before classifying 
+7,e2ptclvsmap.py , ['--simcmp'] , optsub:maxres=12 , str , Default=auto. The name of a 'cmp' to be used in comparing the aligned images 
+7,e2spt_ctf_old.py , ['--tltfile'] ,  , str , File containing a list of    tilt angles corresponding to the tilt angles of images 0 to n of an aligned   tilt series 
+7,e2fsc_real_local.py , ['--tophat'] , False , None ," If set, the local filter is a tophat filter, otherwise a local Wiener filter is applied "
+6,e2classaverage.py , ['--center'] , xform.center , str ," If the default centering algorithm (xform.center) doesn't work well, you can specify one of the others here (e2help.py processor center), or the word 'nocenter' for no centering "
+6,e2classaverage.py , ['--keepsig'] , False , None , Causes the keep argument to be interpreted in standard deviations. 
+6,e2spt_boxer_convnet.py , ['--label'] , tomobox , str , Load previous contour segmentation. 
+6,e2match.py , ['--mirror'] , False , None , Will generate a mirrored copy of the edited img2process. 
+6,e2basis.py , ['--nbasis'] ,-1, int ," Will use the first n basis images from the input, excluding the mean if present "
+6,e2ctf.py , ['--phaseplate'] , False , None , Include phase/amplitude contrast in CTF estimation. For use with hole-less phase plates. 
+6,e2spt_binarytree.py , ['--plots'] , False , None , Default=False. Turn this option on to generatea plot of the ccc scores during each iteration. Running on a cluster or via ssh remotely might not support plotting. 
+6,e2classaverage.py , ['--prefilt'] , False , None , Filter each reference (c) to match the power spectrum of each particle (r) before alignment and comparison 
+6,e2spt_binarytree.py , ['--radius'] ,0, float ," Default=0 (which means it's not used by default). Hydrodynamic radius of the particle in Angstroms. This will be used to automatically calculate the angular steps to use in search of the best alignment. Make sure the apix is correct on the particles' headers, sine the radius will be converted from Angstroms to pixels. Then, the fine angular step is equal to 360/(2*pi*radius), and the coarse angular step 4 times that. "
+6,e2ptclvsmap.py , ['--simalign'] , rotate_translate_flip , str , Default=auto. The name of an 'aligner' to use prior to comparing the images 
+6,e2bdb.py , ['--step'] ," 0,1 ", str ," Specify <init>,<step>[,<max>]. Processes only a subset of the input data. For example, 0,2 would process only the even numbered particles "
+5,e2refine2d.py , ['--classalign'] , rotate_translate_tree , str ," If doing more than one iteration, this is the name and parameters of the 'aligner' used to align particles to the previous class average. "
+5,e2refine2d.py , ['--classaligncmp'] , ccc , str , This is the name and parameters of the comparitor used by the fist stage aligner  Default is dot. 
+5,e2refine2d.py , ['--classaverager'] , ctf.weight.autofilt , str , The averager used to generate the class averages. Default is 'mean'. 
+5,e2refine2d.py , ['--classcmp'] , ccc , str ," The name and parameters of the comparitor used to generate similarity scores, when class averaging. Default is ccc' "
+5,e2refine2d.py , ['--classiter'] ,5, int , Number of iterations to use when making class-averages (default=5) 
+5,e2refine2d.py , ['--classkeep'] ,0.85, float ," The fraction of particles to keep in each class, based on the similarity score generated by the --cmp argument (default=0.85). "
+5,e2refine2d.py , ['--classkeepsig'] , False , None , Change the keep ('--keep') criterion from fraction-based to sigma-based. 
+5,e2classaverage.py , ['--classmx'] , None , str ," The name of the classification matrix specifying how particles in 'input' should be grouped. If omitted, all particles will be averaged. "
+5,e2refine2d.py , ['--classnormproc'] , normalize.edgemean , str , Normalization applied during class averaging 
+5,e2refine2d.py , ['--classralign'] , None , str , The second stage aligner which refines the results of the first alignment in class averaging. Default is None. 
+5,e2refine2d.py , ['--classraligncmp'] , ccc , str , The comparitor used by the second stage aligner in class averageing. Default is dot:normalize=1. 
+5,e2refinetorelion2d.py , ['--defocus'] ,10000, float , (Expert Option) Defocus in A 
+5,e2ctf.py , ['--defocusmax'] ,4, float , Maximum autofit defocus 
+5,e2ctf.py , ['--defocusmin'] ,0.6, float , Minimum autofit defocus 
+5,e2spt_align.py , ['--goldcontinue'] , False , None , Will use even/odd refs corresponding to specified reference to continue refining without phase randomizing again 
+5,e2gmm_refine.py , ['--learnrate'] ,0.0001, float , learning rate for model training only. Default is 1e-4.  
+5,e2spt_refine.py , ['--maskalign'] , None , str ," Mask file applied to 3D alignment reference in each iteration. Not applied to the average, which will follow normal masking routine. "
+5,e2spt_align.py , ['--maxang'] ,30, float , Maximum angular difference for the refine mode. default is 30 
+5,e2spt_average.py , ['--maxtilt'] ,90, float , Explicitly zeroes data beyond specified tilt angle. Assumes tilt axis exactly on Y and zero tilt in X-Y plane. Default 90 (no limit). 
+5,e2gmm_refine.py , ['--model'] ,  , str , load from an existing model file 
+5,e2proc2d.py , ['--mult'] , None , float , Multiply image by a constant. mult=-1 to invert contrast. 
+5,e2classaverage.py , ['--nofilecheck'] , False , None , Turns file checking off in the check functionality - used by e2refine.py. 
+5,e2initialmodel.py , ['--orientgen'] , eman:delta=9.0:inc_mirror=0:perturb=1 , str , The type of orientation generator. Default is eman:delta=9.0:inc_mirror=0:perturb=1. See e2help.py orientgens 
+5,e2proc2d.py , ['--outmode'] , float , str ," All EMAN2 programs write images with 4-byte floating point values when possible by default. This allows specifying an alternate format when supported (float, int8, int16, int32, uint8, uint16, uint32). Values are rescaled to fill MIN-MAX range. "
+5,e2spt_binarytree.py , ['--preavgproc1'] ,  , str ," Default=None. A processor (see 'e2help.py processors -v 10' at the command line) to be applied to the raw particle after alignment but before averaging (for example, a threshold to exclude extreme values, or a highphass filter if you have phaseplate data.) "
+5,e2spt_binarytree.py , ['--preavgproc2'] ,  , str ," Default=None. A processor (see 'e2help.py processors -v 10' at the command line) to be applied to the raw particle after alignment but before averaging (for example, a threshold to exclude extreme values, or a highphass filter if you have phaseplate data.) "
+5,e2spa_align.py , ['--ptclin'] , None , str , particle input 
+5,e2ptcltrace.py , ['--refine'] , None , None , Specify a refinement directory as an alternative to providing classmx files. Even and odd subsets will be interleaved based on input set. 
+5,e2cmmtomrc.py , ['--res'] ,2.8, float ," Resolution in A, equivalent to Gaussian lowpass with 1/e width at 1/res "
+5,e2spt_binarytree.py , ['--savesteps'] , False , None ," Default=False. If set, will save the average after each iteration to class_#.hdf. Each class in a separate file. Appends to existing files. "
+5,e2proc2d.py , ['--scale'] , None , float , Scale by specified scaling factor. Clip must also be specified to change the dimensions of the output map. 
+5,e2align3d.py , ['--search'] ,10, int ," maximum extent of the translational search, default=10 "
+5,e2ptclvsmap.py , ['--simaligncmp'] , ccc , str , Default=auto. Name of the aligner along with its construction arguments 
+5,e2ptclvsmap.py , ['--simralign'] , None , str , Default=auto. The name and parameters of the second stage aligner which refines the results of the first alignment 
+5,e2ptclvsmap.py , ['--simraligncmp'] , ccc , str , Default=auto. The name and parameters of the comparitor used by the second stage aligner. 
+5,e2spt_refine.py , ['--smooth'] ,40, float , smoothing factor for subtlt. 
+5,e2spt_autoboxer.py , ['--tiltrange'] ,60, float ," Maximum angular value at which the highest tilt picture will be simulated. Projections will be simulated from -tiltrange to +titlrange. For example, if simulating a tilt series collected from -60 to 60 degrees, enter a --tiltrange value of 60. Note that this parameter will determine the size of the missing wedge. "
+5,e2spt_ctf_old.py , ['--tiltseries'] ,  , str , Aligned tilt series. File format must be MRC and must have .mrc or .st or .ali extension. 
+5,e2ddd_external.py , ['--tomo'] , False , None ," If checked, aligned frames will be placed in a tiltseries located in the 'tiltseries' directory. Otherwise, aligned sums will populate the 'micrographs_mrc' directory. "
+5,e2spt_align.py , ['--transonly'] , False , None ," translational alignment only, for prealigned particles "
+5,e2spt_binarytree.py , ['--tweak'] , False , None , WARNING: BUGGY. This will perform a final alignment with no downsampling [without using --shrink or --shrinkfine] if --shrinkfine > 1. 
+5,e2rct.py , ['--verbose'] ,0, int ," verbose level [0-9], higher number means higher level of verboseness "
+5,e2spt_binarytree.py , ['--weighbyscore'] , False , None , Default=False. This option will weigh the contribution of each subtomogram to the average by score/bestscore. 
+5,e2spt_binarytree.py , ['--weighbytiltaxis'] ,  , str ," Default=None. A,B, where A is an integer number and B a decimal. A represents the location of the tilt axis in the tomogram in pixels (eg.g, for a 4096x4096xZ tomogram, this value should be 2048), and B is the weight of the particles furthest from the tomogram. For example, --weighbytiltaxis=2048,0.5 means that praticles at the tilt axis (with an x coordinate of 2048) will have a weight of 1.0 during averaging, while the distance in the x coordinates of particles not-on the tilt axis will be used to weigh their contribution to the average, with particles at the edge(0+radius or 4096-radius) weighing 0.5, as specified by the value provided for B. "
+4,e2buildsets.py , ['--allparticles'] , False , None ," Will process all particle stacks stored in the particles subdirectory (if specified, list of files will be ignored) "
+4,e2refinetorelion2d.py , ['--ampcont'] ,0.1, float , (Expert Option) Amplitude Constrast. 10%% = .1 
+4,e2ctf.py , ['--astigmatism'] , False , None , Includes astigmatism in automatic fitting 
+4,e2spt_binarytree.py , ['--autocenter'] ,  , str ," Default=None. Autocenters each averaged pair during initial average generation with --btref and --hacref. Will also autocenter the average of all particles after each iteration of iterative refinement. Options are --autocenter=xform.centerofmass (self descriptive), or --autocenter=xform.centeracf, which applies auto-convolution on the average. "
+4,e2refine_easy.py , ['--automask3d'] , None , str ," Default=auto. Specify as a processor, eg - mask.auto3d:threshold=1.1:radius=30:nshells=5:nshellsgauss=5. "
+4,e2initialmodel.py , ['--automaskexpand'] ,-1, int ," Number of voxels of post-threshold expansion in the mask, for use when peripheral features are truncated. (default=shrunk boxsize/20) "
+4,e2classifykmeans.py , ['--average'] , False , None , Average the particles within each class 
+4,e2cmmtomrc.py , ['--box'] ,0, int , Box size in pixels 
+4,e2spt_extractfromseg.py , ['--boxsz'] ,32, int , Box size 
+4,e2classesbyref.py , ['--classes'] , None , str , Generate class-averages directly. No bad particle exclusion or iteration. Specify filename. 
+4,e2refine2d.py , ['--classrefsf'] , False , None , Use the setsfref option in class averaging to produce better filtered averages. 
+4,e2fsc.py , ['--cutoff'] ,0.143, float , fsc cutoff. default is 0.143 
+4,e2classaverage.py , ['--even'] , False , None , Used by EMAN2 when running eotests. Includes only even numbered particles in class averages. 
+4,e2spt_binarytree.py , ['--falign'] , None , str , Default=None. This is the second stage aligner used to fine-tune the first alignment. 
+4,e2spt_binarytree.py , ['--faligncmp'] , ccc.tomo.thresh , str , Default=ccc.tomo.thresh. The comparator used by the second stage aligner. 
+4,e2ctf_auto.py , ['--fromscratch'] , False , None ," Force refitting of CTF from scratch, ignoring any previous fits. "
+4,e2spt_binarytree.py , ['--highpassfine'] ,  , str , Default=None. A highpass filtering processor (see 'e2help.py processors -v 10' at the command line) to be applied to each volume prior to FINE alignment. Not applied to aligned particles before averaging. 
+4,e2ctf2eman1.py , ['--last'] ,-1, int , Last image to include in the plot. 
+4,e2make3d.py , ['--lowmem'] , False , None , Causes images to be loaded as needed to reduce memory usage at the cost of time. 
+4,e2spt_binarytree.py , ['--lowpassfine'] ,  , str , Default=None. A lowpass filtering processor (see 'e2help.py processors -v 10' at the command line) to be applied to each volume prior to FINE alignment. Not applied to aligned particles before averaging. 
+4,e2refine_easy.py , ['--m3dpostprocess'] , None , str ," Default=none. An arbitrary post-processor to run after all other automatic processing. Maps are autofiltered, so a low-pass filter should not normally be used here. "
+4,e2spt_average.py , ['--maxalt'] ,180, float , Maximum alignment altitude to include. Deafult=180 
+4,e2proc2d.py , ['--multfile'] , None , str ," Multiplies the volume by another volume of identical size. This can be used to apply masks, etc. "
+4,e2euler_refine.py , ['--no_wt'] , False , None ," This argument turns automatic weighting off causing all images to be weighted by 1. If this argument is not specified images inserted into the reconstructed volume are weighted by the number of particles that contributed to them (i.e. as in class averages), which is extracted from the image header (as the ptcl_repr attribute). "
+4,e2basis.py , ['--normproj'] , False , None ," Normalize the projections resulting from 'project', such that the length of each vector is 1 "
+4,e2spt_binarytree.py , ['--npeakstorefine'] ,4, int , Default=1. The number of best coarse alignments to refine in search of the best final alignment. Default=1. 
+4,e2make3d.py , ['--outsize'] , None , str ," Defines the dimensions (x,y,z) or (x,x,x) of the final volume written to disk, if ommitted, size will be based on unpadded input size "
+4,e2spt_ctf_old.py , ['--pad2d'] ,0, float , Padding factor to zero-pad   the 2d images in the tilt series prior to reconstruction.   (The final reconstructed subvolumes will be cropped to the original size). 
+4,e2spt_ctf_old.py , ['--pad3d'] ,0, float , Padding factor to zero-pad   the reconstruction volume. (The final reconstructed subvolumes will be cropped to    the original size). 
+4,e2spt_binarytree.py , ['--precision'] ,1, float ," Default=1.0. Precision in pixels to use when figuring out alignment parameters automatically using --radius. Precision would be the number of pixels that the the edge of the specimen is moved (rotationally) during the finest sampling, --falign. If precision is 1, then the precision of alignment will be that of the sampling (apix of your images) times the --shrinkfine factor specified. "
+4,e2classaverage.py , ['--prectf'] , False , None , Apply particle CTF to each reference before alignment 
+4,e2spt_binarytree.py , ['--preprocessfine'] ,  , str , Any processor (see 'e2help.py processors -v 10' at the command line) to be applied to each volume prior to FINE alignment. Not applied to aligned particles before averaging. 
+4,e2spt_binarytree.py , ['--procfinelikecoarse'] , False , None ," If you supply this parameters, particles for fine alignment will be preprocessed identically to particles for coarse alignment by default. If you supply this, but want specific parameters for preprocessing particles for also supply: fine alignment, nd supply fine alignment parameters, such as --lowpassfine, --highpassfine, etc; to preprocess the particles for FINE alignment differently than for COARSE alignment. "
+4,e2spa_align.py , ['--ptclout'] , None , str , particle output 
+4,e2spt_binarytree.py , ['--randomizewedge'] , False , None ," Default=False. This parameter is EXPERIMENTAL. It randomizes the position of the particles BEFORE alignment, to minimize missing wedge bias and artifacts during symmetric alignment where only a fraction of space is scanned "
+4,e2make3d.py , ['--recon'] , fourier , None , Reconstructor to use see e2help.py reconstructors -v. Default is fourier:mode=gauss_2 
+4,e2spt_ctf_old.py , ['--reconstructor'] , fourier:mode=gauss_2 , str ," Default=fourier:mode=gauss_2. The reconstructor to use to reconstruct the tilt series into a tomogram. Type 'e2help.py reconstructors' at the command line to see all options and parameters available. To specify the interpolation scheme for the fourier reconstruction, specify 'mode'. Options are 'nearest_neighbor', 'gauss_2', 'gauss_3', 'gauss_5', 'gauss_5_slow', 'gypergeom_5', 'experimental'. For example --reconstructor=fourier:mode=gauss_5  "
+4,e2spt_align.py , ['--refinentry'] ,8, int , number of tests for refine mode. default is 8 
+4,e2refine_postprocess.py , ['--restarget'] ,-1, float , The specified target resolution to avoid underfiltering artifacts. 
+4,e2refine2d.py , ['--resume'] , False , None ," This will cause a check of the files in the current directory, and the refinement will resume after the last completed iteration. It's ok to alter other parameters. "
+4,e2spt_binarytree.py , ['--saveallalign'] , False , None ," Default=False. If set, will save the alignment parameters after each iteration "
+4,e2spt_binarytree.py , ['--searchfine'] ,2, int ," ""Default=2. During FINE alignment translational search in X, Y and Z, in pixels. Default=2. This WILL overwrite any search: provided through --falign, EXCEPT if you provide --searchfine=2, which is the default. In general, just avoid providing search twice (through here and through the fine aligner --falign). If you do, just be careful to make them consistent to minimize misinterpretation and error. "
+4,e2classesbyref.py , ['--sep'] ,1, int , The number of classes a particle can contribute towards (default is 1) 
+4,e2spt_binarytree.py , ['--shrinkfine'] ,1, int , Default=1 (no shrinking). Optionally shrink the input volumes by an integer amount for refine alignment. 
+4,e2RCTboxer.py , ['--suffix'] , _ptcls , str , suffix which is appended to the names of output particle and coordinate files 
+4,e2spt_ctf_old.py , ['--tilesize'] ,512, int , Tile size to use for strips   when --autofit is provided. 
+4,e2rct.py , ['--tiltaxis'] , False , None , Do a tiltaxis correction(Takes into account variations in tilt axis from micrograph to micrograph. Only possible if e2RCTboxer was used for particle picking 
+3,e2proc2d.py , ['--add'] , None , float , Adds a constant 'f' to the densities 
+3,e2spt_average_multi.py , ['--applysym'] , c1 , str , Symmetry to apply to the structure after classification. 
+3,e2spt_binarytree.py , ['--autocentermask'] ,  , str , Default=None. Masking processor to apply before autocentering. See 'e2help.py processors -v 10' at the command line. 
+3,e2spt_binarytree.py , ['--autocenterpreprocess'] , False , None ," Default=False. This will apply a highpass filter at a frequency of half the box size times the apix, shrink by 2, and apply a low pass filter at half nyquist frequency to any computed average for autocentering purposes if --autocenter is provided. Default=False. "
+3,e2classaverage.py , ['--automask'] , False , None ," Applies a 2-D automask before centering. Can help with negative stain data, and other cases where centering is poor. "
+3,e2spt_ctf_old.py , ['--bfactor'] ,1000, int ," Default=1000. Bfactor or   temperature factor to use. Supply it to replace the value   in ctfparamsfile(s), or if ctfparamsfile(s) are lacking altogether. "
+3,e2classifytree.py , ['--cmpdiff'] , False , None , Compare using the difference of the two children 
+3,e2ctf.py , ['--constbfactor'] ,-1, float ," Set B-factor to fixed specified value, negative value autofits "
+3,e2erasefiducials.py , ['--coords'] ,  , str , Specify box file with x and y gold coordinates. Must follow standard box file format (x<tab>y<tab>xsize<ysize>) although box sizes are ignored. 
+3,e2spt_autoboxer.py , ['--cshrink'] ,0, int ," If the tomogram was PREVIOUSLY shrunk, --cshrink is the factor by which the tomogram supplied through --tomogram was shrunk with respect to                the raw (unshrunk) tomogram. This CAN work in conjuction with --shrinktomo, so be careful. If both parameters are specified,               the coordinates found by the autoboxer will be multiplied by BOTH factors. "
+3,e2align3d.py , ['--cuda'] , False , None , Use CUDA for the alignment step. 
+3,e2ctf.py , ['--curdefocusfix'] , False , None ," Fixes the defocus at the current determined value (if any) (+-.001 um), but recomputes SSNR, etc. "
+3,e2align3d.py , ['--delta'] ,30, float ," step size for the orientation generator, default=30.0 "
+3,e2boxer.py , ['--device'] , cpu , str ," For Convnet training only. Pick a device to use. chose from cpu, gpu, or gpuX (X=0,1,...) when multiple gpus are available. default is cpu "
+3,e2a2d_masks.py , ['--extract'] , False , None ," If set, will also produce a .txt file for plotting with all of the per-particle statistics "
+3,e2ctf.py , ['--extrapad'] , False , None ," If particles were boxed more tightly than EMAN requires, this will add some extra padding, but only to processed output particles "
+3,e2spt_binarytree.py , ['--filterbyfsc'] , False , None ," Default=False. If on, this parameter will use dynamic FSC filtering. --lowpass will be used to build initial references if no --ref supplied, then, the FSC between the even and odd initial references will be used to filter the data during preprocessing. If --ref is supplied, --lowpass will be used during the first iteration to align the particles against the reference. Thereafter, the FSC between the most current particle average and the original reference (--ref) will be used in the next iteration. "
+3,e2ctf2eman1.py , ['--first'] ,-1, int , First image to include in the plot. 
+3,e2proc2d.py , ['--fp'] , None , int ," This generates rotational/translational 'footprints' for each input particle, the number indicates which algorithm to use (0-6) "
+3,e2spt_align.py , ['--goldstandard'] ,0, float ," If specified, will phase randomize the even and odd references past the specified resolution (in A, not 1/A) "
+3,e2classifycnn.py , ['--gpuid'] ,  , str , Specify the gpu to use 
+3,e2proclst.py , ['--include'] , None , str ," only works if --create is supplied. comma-separated list of indexes to take from the input file(s) to INCLUDE in the created .lst file. if you have the list of indexes to include in a .txt file, you can provide it through --list. "
+3,e2euler_refine.py , ['--input_model'] , None , None ," If the class-averages have the model_id parameter (produced by e2refinemulti.py), this will use only class-averages with the specified model_id for the reconstruction. "
+3,e2classesbyref.py , ['--invartype'] , auto , None ," Which type of invariants to generate: (bispec,harmonic) "
+3,e2bdb.py , ['--list'] , None , str , Specify the name of a file with a list of images to use in creation of virtual stacks. Please see source for details. 
+3,e2tomo_drawcontour.py , ['--load'] , None , str , Load previous contour segmentation. 
+3,e2spt_evalsubtlt.py , ['--loadali3d'] , None , str , previous 3d alignment 
+3,e2spa_align.py , ['--localrefine'] , False , None , local refinement 
+3,e2refine_easy.py , ['--m3dkeep'] ,0.8, float , The fraction of slices to keep in e2make3d.py. Default=0.8 -> 80%% 
+3,e2refine_easy.py , ['--m3dkeepsig'] , False , None , Default=auto. The standard deviation alternative to the --m3dkeep argument 
+3,e2refine_easy.py , ['--m3dpreprocess'] , None , str , Default=auto. Normalization processor applied before 3D reconstruction 
+3,e2spt_binarytree.py , ['--matchimgs'] , False , None , Default=False. Applies filter.matchto to one image so that it matches the other's spectral profile during preprocessing for pair-wise alignment purposes. 
+3,e2proc2d.py , ['--meanshrink'] , None , float , Reduce an image size by an integral (1.5 also allowed) scaling factor using average. eg - 2 will reduce image size to 1/2. Clip is not required. 
+3,e2proc2d.py , ['--medianshrink'] , None , int ," Reduce an image size by an integral scaling factor, uses median filter. eg - 2 will reduce image size to 1/2. Clip is not required. "
+3,e2bdb.py , ['--merge'] , False , None , This will merge the contents of BDB 2-N into BDB 1 (including BDB 1's contents) 
+3,e2spt_average.py , ['--minalt'] ,0, float , Minimum alignment altitude to include. Default=0 
+3,e2buildsets.py , ['--minptcl'] ,0, int , Files with fewer than the specified number of particles will be skipped 
+3,e2buildsets.py , ['--minqual'] ,0, int , Files with a quality value lower than specified will be skipped 
+3,e2classesbyref.py , ['--nbasisfp'] ,12, int ," Only used in MSA mode. Number of MSA basis vectors to use when classifying particles, default=12 "
+3,e2spt_autoboxer.py , ['--nkeep'] ,0, int , Default=0 (not used). Total number of particles to keep right before writing the coordinates file and output stack. Supersedes --keep 
+3,e2ddd_movie.py , ['--noali'] , False , None , Average of non-aligned frames. 
+3,e2spt_intrafsc.py , ['--nolog'] , False , None , Default=False. Turn off recording of the command ran for this program onto the .eman2log.txt file 
+3,e2RCTboxer.py , ['--norm'] , normalize.edgemean , str ," Normalization processor to apply to written particle images. Should be normalize, normalize.edgemean,etc.Specifc ""None"" to turn this off "
+3,e2spt_refinemulti_new.py , ['--nref'] ,-1, int , duplicate the first ref N times with phase randomization at 2xres 
+3,e2classaverage.py , ['--odd'] , False , None , Used by EMAN2 when running eotests. Includes only odd numbered particles in class averages. 
+3,e2project3d.py , ['--prethreshold'] , False , None , Applies an automatic threshold to the volume before projecting 
+3,e2project3d.py , ['--projector'] , standard , None , Projector to use 
+3,e2initialmodel_sgd.py , ['--ptcls'] , None , str , Class average or particles input. 
+3,e2spt_align.py , ['--rand180'] , False , None , randomly add a 180 degree rotation during refine alignment 
+3,e2proc2d.py , ['--randomize'] , None , str ," Randomly rotate/translate the image. Specify: da,dxy,flip  da is a uniform distribution over +-da degrees, dxy is a uniform distribution on x/y, if flip is 1, random handedness changes will occur "
+3,e2spt_align.py , ['--randphi'] , False , None , randomize phi during refine alignment 
+3,e2compress.py , ['--range'] , None , str ," Specify <minval>,<maxval> representing the largest and smallest values to be saved in the output file. Automatic if unspecified. "
+3,e2import.py , ['--rawtlt'] , None , None ," Specify an imod/serialem rawtlt file, and imported tilt series will be sorted in tilt sequence instead of collection sequence, 'auto' will attempt to find a .tlt file automatically "
+3,e2spt_average.py , ['--replace'] , None , str , Replace the input subtomograms used for alignment with the specified file (used when the aligned particles were masked or filtered) 
+3,e2proc2d.py , ['--rotate'] , None , float , Rotate clockwise (in degrees) 
+3,e2spt_classaverage.py , ['--savepreproc'] , False , None , Default=False. Will save stacks of preprocessed particles (one for coarse alignment and one for fine alignment if preprocessing options are different). 
+3,e2proc2d.py , ['--selfcl'] , None , int , Output file will be a 180x180 self-common lines map for each image. 
+3,e2refine_easy.py , ['--shrinks1'] ,0, int , The level of shrinking to apply in the first stage of the two-stage classification process. Default=0 (autoselect) 
+3,e2refine_easy.py , ['--simmask'] , None , str , Default=auto. A file containing a single 0/1 image to apply as a mask before comparison but after alignment 
+3,e2spt_average.py , ['--simthr'] ,-0.1, float , Similarity is smaller for better 'quality' particles. Specify the highest value to include from e2spt_hist.py. Default -0.1 
+3,e2spt_align.py , ['--skipali'] , False , None , skip alignment. the program will do nothing. mostly for testing... 
+3,e2refinemultinoali.py , ['--symcopy'] , False , None , symcopy 
+3,e2initialmodel_sgd.py , ['--targetres'] ,20, float , Target resolution 
+3,e2spt_autoboxer.py , ['--tiltangles'] ,  , str , File in .tlt or .txt format containing the tilt angle of each tilt image in the tiltseries. 
+3,e2proc2d.py , ['--translate'] , None , str ," Translate by x,y pixels "
+3,e2spt_align_subtlt.py , ['--use3d'] , False , None , use projection of 3d particles instead of 2d sub tilt series 
+3,e2RCTboxer.py , ['--write_ptcls'] , False , None , Write particles to disk 
+2,e2boxer.py , ['--allmicrographs'] , False , None , Add all images from micrographs folder 
+2,e2spt_tomoctf.py , ['--alltiltseries'] , False , None ," Use all tilt series in the folder. Acceptable file extensions include hdf, mrc, mrcs, st. "
+2,e2refine_easy.py , ['--ampcorrect'] , auto , None , Will perform amplitude correction via the specified method.  'flatten' requires a target resolution better than 8 angstroms (experimental). 'none' will disable amplitude correction (experimental). 
+2,e2spt_tiltstacker.py , ['--anglesindxinfilename'] , None , int ," Default=None. The filename of the images will be split at any occurence of the following delimiters: '_', '-', '+', '[' , ']' , ',' , ' ' (the two last ones are a comma and a blank space). Provide the index (position) of the angle in the split filename. For example, if the filename of an image is ""my_specimen-oct-10-2015_-50_deg-from_k2 camera.mrc"", it will be split into ['my','specimen','oct','10','2015','','50','deg','from','k2','camera','mrc']. The angle '-50', is at position 6 (starting from 0). Therefore, you would provide --anglesindxinfilename=6, assuming all images to be stacked/processed are similarly named. No worries about the minus sign disappearing. The program will look at whether there's a minus sign immediately preceeding the position where the angle info is. "
+2,e2proc2d.py , ['--anisotropic'] , None , str ," Anisotropic scaling, stretches on one axis and compresses the orthogonal axis. Specify amount,angle. See e2evalrefine "
+2,e2project3d.py , ['--append'] , False , None , Append to the output file 
+2,e2ctf.py , ['--autofit'] , False , None , Runs automated CTF fitting on the input images 
+2,e2refine_easy.py , ['--automask3d2'] , None , str ," Default=none. If specified, this mask will be multiplied by the result of the first mask, eg - using mask.soft to mask out the center of a virus. "
+2,e2initialmodel_sgd.py , ['--batchsize'] ,10, int , Batch size of stochastic gradient desent. N particles are randomly selected to generate an initial model at each step. 
+2,e2procpdb.py , ['--beta'] ,0, float , beta in imagic convention. 
+2,e2a2d_stat.py , ['--bins'] ,100, int , Number of bins to use in the histogram 
+2,e2spt_align.py , ['--breaksymsym'] , None , str , the symmetry to use for breaksym. setting sym to c6 and this to c2 results in a c3 structure. default is the same as sym 
+2,e2pdb2mrc.py , ['--chains'] , None , str ," String list of chain identifiers to include, eg 'ABEFG' "
+2,e2refine_easy.py , ['--classautomask'] , False , None , This will apply an automask to the class-average during iterative alignment for better accuracy. The final class averages are unmasked. 
+2,e2simmx.py , ['--colmasks'] , None , str ," File containing one mask for each column (projection) image, to be used when refining row (particle) image alignments. "
+2,e2refinetorelion2d.py , ['--ctfcorrect'] , False , None , (T/F)Do CTF Correction? 
+2,e2ctf.py , ['--curdefocushint'] , False , None ," Rather than doing the defocus from scratch, use existing values in the project as a starting point "
+2,e2spt_align_subtlt.py , ['--curve'] , False , None , . 
+2,e2ddd_external.py , ['--dark'] , None , str , Use this dark reference. 
+2,e2refinetorelion2d.py , ['--dataphaseflipped'] , False , None , (T/F)Has the data been phase flipped already? 
+2,e2ctf2eman1.py , ['--dfmax'] ,5, float , Set maximum possible defocus value (positive is underfocus). 
+2,e2ctf2eman1.py , ['--dfmin'] ,0.5, float , Set minimum possible defocus value (positive is underfocus). 
+2,e2spt_extract.py , ['--dotest'] , False , None , only make 1 batch of subtomograms for testing 
+2,e2bdb.py , ['--dump'] , False , None ," List contents of an entire database, eg 'e2bdb.py -D refine_01#register "
+2,e2pathwalker.py , ['--edgefile'] , None , str ," Load fixed fragment file; one sequence of forced connections per line, separated by space. "
+2,e2buildsets.py , ['--excludebad'] , False , None , Exclude bad particles. 
+2,e2import.py , ['--extension'] , dm3 , str , Extension of the micrographs that the boxes match 
+2,e2classifykmeans.py , ['--fastseed'] , False , None ," Will seed the k-means loop quickly, but may produce lest consistent results. "
+2,e2spt_sgd.py , ['--filterto'] ,0.02, float , Fiter map to frequency after each iteration. Default is 0.02 
+2,e2proc2d.py , ['--fixintscaling'] , None , str ," When writing to an 8 or 16 bit integer format the data must be scaled. 'noscale' will assume the pixel values are already correct, 'full' will insure the full range of values are included in the output, 'sane' will pick a good range, a number will set the range to mean+=sigma*number "
+2,e2classaverage.py , ['--focused'] , None , str , Name of a reference projection file to read 1st iteration refine alignment references from. 
+2,e2RCTboxer.py , ['--format'] , hdf , None ," Format of the output particles images, should be hdf "
+2,e2proc2d.py , ['--fouriershrink'] , None , float , Reduce an image size by an arbitrary scaling factor by clipping in Fourier space. eg - 2 will reduce image size to 1/2. 
+2,e2ddd_external.py , ['--gain'] , None , str , Use this gain reference. 
+2,e2fsc.py , ['--gauss'] , False , None , use gaussian filter instead of tophat 
+2,e2ddd_external.py , ['--groupby'] , None , int ," Before alignment, sum raw frames in groups of X to increase signal to noise ratio. "
+2,e2ctf.py , ['--highdensity'] , False , None ," If particles are very close together, this will interfere with SSNR estimation. If set uses an alternative strategy, but may over-estimate SSNR. "
+2,e2spt_tiltstacker.py , ['--highesttilt'] ,0, float ," Highest tilt angle. If not supplied, it will be assumed to be 1* --tiltrange. "
+2,e2spt_ctf_old.py , ['--icethickness'] ,0, int ," This corresponds   to the Z dimension in pixels of the reconstructed raw tomogram (uncropped), at the same binning   (sampling) as the provided tiltseries, images or subtiltseries.   This value MUST be provided, only if --subtiltsdir is given.    "
+2,e2spt_ctf_old.py , ['--icethicknessauto'] , False , None ,"    If --subtiltsdir is provided (and if --icethickness is *not* provided), the thickness of the    specimen in Z will be calculated by computing the difference between the largest    and the smallest Z coordinate found in the header of the subtiltseries, plus the size of the specimen, calculated from --radius. "
+2,e2refinetorelion2d.py , ['--ignoretofirstpeak'] , False , None , (T/F)Ignore CTF's until the first peak? 
+2,e2spt_boxer_old.py , ['--inmemory'] , False , None ," Default=False. If on, this option will read the entire tomogram into memory. Much faster than reading 'from disk', but you must have enough RAM! "
+2,e2proc2d.py , ['--inplace'] , False , None ," Output overwrites input, USE SAME FILENAME, DO NOT 'clip' images. "
+2,e2spt_intrafsc.py , ['--inputstem'] ,  , str ," Default=None. Aligned tilt series. String common to all files to be processed, in the current folder. For example, if you have many subtiltseries named subt00.hdf, subt01.hdf, ...subt99.hdf, you would supply --stem=subt to have all these processed. "
+2,e2refine_easy.py , ['--invar'] , False , None ," Will use invariants for orientation determination, set invariant type in project (EXPERIMENTAL). "
+2,e2plotEulers.py , ['--iteration'] ,0, int , Refinement iteration to plot 
+2,e2make3dpar.py , ['--iterative'] , False , None , Uses iterative interpolation in Fourier space instead of single step gridding or interpolation. --mode and --usessnr are ignored with this option. 
+2,e2spt_binarytree.py , ['--iterstop'] ,0, int ," Default=0. (Not used). The program is called to convergence by default (all particles merge into one final average). To stop at an intermediate iteration, provide this parameter. For example, --iterstop=1, will only allow the algorithm to complete 1 iteration; --iterstop=2 will allow it to go through 2, etc. "
+2,e2make3d.py , ['--keepabs'] , False , None ," If set, keep will refer to the absolute quality of the class-average, not a local quality relative to other similar sized classes. "
+2,e2spt_average.py , ['--listfile'] , None , str ," Specify a filename containing a list of integer particle numbers to include in the average, one per line, first is 0. Additional exclusions may apply. "
+2,e2spt_evalsubtlt.py , ['--loadali2d'] , None , str , previous 2d alignment 
+2,e2spt_classify.py , ['--localfilter'] , False , None , use tophat local 
+2,e2fsc.py , ['--localsize'] ,-1, int , Size in pixels of the local region to compute the resolution in 
+2,e2spt_tiltstacker.py , ['--lowesttilt'] ,0, float ," Lowest tilt angle. If not supplied, it will be assumed to be -1* --tiltrange. "
+2,e2refinemulti.py , ['--m3dsetsf'] , None , str , Default=auto. Name of a file containing a structure factor to apply after refinement 
+2,e2spt_average_multi.py , ['--maskclass'] , None , str , Mask each reference before classification 
+2,e2buildsets.py , ['--maxdf'] ,20, float , Files with a defocus higher than specified will be skipped 
+2,e2ddd_external.py , ['--mdoc'] , None , str ," When an mdoc or idoc is provided, the raw files are automatically found within the input directory "
+2,e2classifykmeans.py , ['--minchange'] ,-1, int , Minimum number of particles that change group before deicding to terminate. Default = len(data)/(#cls*25) 
+2,e2buildsets.py , ['--mindf'] ,0, float , Files with a defocus lower than specified will be skipped 
+2,e2buildsets.py , ['--minhisnr'] ,0, float , Integrated SNR from 1/10-1/4 1/A must be larger than this 
+2,e2buildsets.py , ['--minlosnr'] ,0, float , Integrated SNR from 1/200-1/20 1/A must be larger than this 
+2,e2classesbyref.py , ['--msamode'] , None , str ," Enable MSA based classification, default=disabled, typically 'pca', see e2msa.py --mode option for full list "
+2,e2tomoseg_buildtrainset.py , ['--ncopy'] ,10, int , Number of copies for NEGATIVE samples. (number of copies of particles is calculated accordingly)  
+2,e2refinemulti.py , ['--nmodels'] ,2, int ," The total number of different maps to generate. Specify with --model, but not with --models "
+2,e2classify.py , ['--noalign'] , False , None , Ignore the alignments 
+2,e2spt_preproc.py , ['--nopath'] , False , None ," If supplied, this option will save results in the directory where the command is run. A directory to store the results will not be made. "
+2,e2proc2d.py , ['--norefs'] , False , None , Skip any input images which are marked as references (usually used with classes.*) 
+2,e2basis.py , ['--normalize'] , normalize.unitlen , str , Normalize the input images using the named processor. Specify 'tomean' for mean-based scaling. Specify None to disable. 
+2,e2spt_tiltstacker.py , ['--normalizeimod'] , False , None , Default=False. This will apply 'newstack -float 2' to the input stack. Requires IMOD. Does not apply to --unstack or --restack. 
+2,e2spt_refinemulti_old.py , ['--notmatchimgs'] , False , None , Default=True. This option prevents applying filter.match.to to one image so that it matches the other's spectral profile during preprocessing for alignment purposes. 
+2,e2spt_tempmatch.py , ['--nptcl'] ,500, int , maximum number of particles 
+2,e2spt_autoboxer.py , ['--nslices'] ,61, int ," This will determine the tilt step between slices, depending on tiltrange. For example, to simulate a 2 deg tilt step supply --nslices=61 --tiltrange=60. Recall that --tiltrange goes from - to + the supplied value, and that there is a central slice or projection at 0 deg, for symmetrical tilt series. "
+2,e2refinetorelion2d.py , ['--offsetrange'] ,10, float , Offset search range (pix) 
+2,e2refinetorelion2d.py , ['--offsetstep'] ,2, float , Offset search step (pix) 
+2,e2project3d.py , ['--outfile'] , e2proj.hdf , None , Output file. Default is 'e2proj.img' 
+2,e2fsc.py , ['--outfilt'] , res143_filtered.hdf , str , Output locally filtered average volume 
+2,e2fsc.py , ['--outfilte'] , None , str , Apply the local filter to the even map as well and write to specified file 
+2,e2fsc.py , ['--outfilto'] , None , str , Apply the local filter to the odd map as well and write to specified file 
+2,e2spt_ctf_old.py , ['--outputstem'] ,  , str ," Stem common to all   output image stacks. For example, if --outputstem=myvirus and --save2d is provided,    the phase-flipped images for each subtiltseries wille be saved to myvirus_subtiltptclXXXX.hdf.   If --save3d is provided, the stack of reconstructed subvolumes will be saved to myvirus_stack3d.hdf "
+2,e2proc2d.py , ['--outtype'] , None , str ," output image format, 'mrc', 'imagic', 'hdf', etc. if specify spidersingle will output single 2D image rather than 2D stack. "
+2,e2fsc_local.py , ['--overwrite'] , False , None , overwrite even/odd input 
+2,e2spt_tiltrefine.py , ['--padby'] ,1.5, float , pad by factor. default is 1.5 
+2,e2make3d.py , ['--padvol'] , None , str ," Defines the dimensions (x,y,z) or (x,x,x) of the reconstructed volume. If ommitted, implied value based on padded 2D images is used. "
+2,e2refinetorelion2d.py , ['--particle_mask_diameter'] ,-1, float , Diameter of the soft circular image mask (in Angstroms) 
+2,e2classifyligand.py , ['--postfix'] ,  , str , This string will be appended to each set name to help differentiate the results from multiple runs 
+2,e2spt_extract.py , ['--postxf'] , None , str ," a file listing post transforms (see http://eman2.org/e2tomo_more), or for simple symmetry, <sym>,<cx>,<cy>,<cz> where the coordinates specify the center of a single subunit "
+2,e2ctf.py , ['--proctag'] , proc , None , Tag added to the name of each particle when using the phaseflipproc options 
+2,e2spa_refine.py , ['--ptcl'] ,  , str , particle input 
+2,e2proc2d.py , ['--radon'] , False , None , Do Radon transform 
+2,e2refinetofrealign.py , ['--randomizemodel'] ,0, None , Optionally randomize the phases of the initial model to this resolution (in Angstroms) 
+2,e2ddd_movie.py , ['--realign'] , False , None , Align frames using previous alignment parameters. 
+2,e2spt_refine.py ," ['--reference', '--ref'] ",  , None ," 3D reference for iterative alignment/averaging. No reference is used by default. <name> or <name>,# "
+2,e2rct.py , ['--reference'] , None , str ," Reference used to align RCT recons to, needs to be aligned to symetry axis is --sym is specified "
+2,e2spt_tiltrefine.py , ['--refineastep'] ,1, float , Mean angular variation for refine alignment 
+2,e2spt_classaverage.py , ['--refpreprocess'] , False , None ," Default=False. This will preprocess the reference identically to the particles. It is off by default, but it is internally turned on when no reference is supplied. It should probably be off when using a crystal structure (with all positive densities) turned to EM density as an initial model, but it should be on when using an EM map. "
+2,e2spt_classaverage.py , ['--refrandphase'] ,0, float , Default=0 (off). Resolution to phase randomize the reference to (or the two copies of the reference if --goldstandardoff is NOT supplied [gold standard refinement is on by default]. 
+2,e2evalrefine.py , ['--resolution_all'] , False , None , generates resolution plot with the last iteration of all refine_xx directories 
+2,e2evalrefine.py , ['--resolution_vsref'] , None , str ," Computes the FSC between the last iteration of each refine_xx directory and a specified reference map. Map must be aligned, but will be rescaled if necessary. "
+2,e2classaverage.py , ['--resultmx'] , None , str ," Specify an output image to store the result matrix. This contains 5 images where row is particle number. Rows in the first image contain the class numbers and in the second image consist of 1s or 0s indicating whether or not the particle was included in the class. The corresponding rows in the third, fourth and fifth images are the refined x, y and angle (respectively) used in the final alignment, these are updated and accurate, even if the particle was excluded from the class. "
+2,e2procjson.py , ['--retype'] , None , str ," For JSON files where the keys are image name,# pairs, will change the __type value in the image name in all keys "
+2,e2proc2d.py , ['--rfp'] , False , None , this is an experimental option 
+2,e2spt_extract.py , ['--rmbeadthr'] ,-1, float , remove 2d particles with high contrast object beyond N sigma at 100A. Note that this may result in generating fewer particles than selected. Default is -1 (include all particles). 0.5 might be a good choice for removing gold beads but may need some testing... 
+2,e2spt_refine.py , ['--scipy'] , False , None , test scipy refinement 
+2,e2make3dpar.py , ['--seedmap'] , None , str ," If specified this volume will be used as a starting point for the reconstruction, filling any missing values in Fourier space. experimental. "
+2,e2buildsets.py , ['--setname'] , all , str , Name of the stack to build 
+2,e2ctf.py , ['--sf'] , auto , str , The name of a file containing a structure factor curve. Specify 'none' to use the built in generic structure factor. Default=auto 
+2,e2bdb.py , ['--short'] , False , None , Dense listing of names only 
+2,e2spt_refine_new.py , ['--smoothN'] ,15, int , number of neighboring particles used for smoothing. default 15 
+2,e2ctf.py , ['--snrfilt'] , False , None , Apply SNR filter as part of phase flipping. 
+2,e2refinetorelion2d.py , ['--solventmask'] ,  , str , Location of the mask to be used 
+2,e2classextract.py , ['--sort'] , False , None ," If set, output .lst file will be sorted. The default is to leave the output grouped by class-average. If (and only if) sorted, duplicate entries will be removed. "
+2,e2refine_easy.py , ['--speed'] ,5, int , (1-7) Balances speed vs precision. Larger values sacrifice a bit of potential resolution for significant speed increases. Set to 1 when really pushing resolution. Set to 7 for initial refinements. default=5 
+2,e2spt_tiltstacker.py , ['--stackregardless'] , False , None ," ""Stack images found with the common string provided through --stem2stack, even if the number of images does not match the predicted number of tilt angles. "
+2,e2make3d.py , ['--start'] , None , str , This is a starting model for FFT reconstruction 
+2,e2spt_average.py , ['--symalimasked'] , None , str , This will translationally realign each asymmetric unit to the specified (usually masked) reference  
+2,e2spt_align.py , ['--test180'] , False , None , Test for improved alignment with 180 degree rotations even during refine alignment 
+2,e2refinetofrealign.py , ['--thresh'] ,0, float , Phase Residual cutoff. Particles with a higher phase residual will not be included in the refinement  
+2,e2rct.py , ['--tiltdata'] , None , str , Name of the tilted dataset 
+2,e2buildstacks.py , ['--tilts'] , False , None , Write results to 'tiltseries' directory in current project. 
+2,e2ddd_external.py , ['--tiltseries_name'] ,  , str , Specify the name of the output tiltseries. A .mrc extension will be appended to the filename provided. 
+2,e2spt_tiltstacker.py , ['--tiltstep'] ,0, float , Step between tilts. Required if using --stem2stack. 
+2,e2evalrefine.py , ['--timing'] , False , None , Report on the time required for each step of each refinement run 
+2,e2evalrefine.py , ['--timingbypath'] , False , None , Report on the CPU time required in each refine_xx folder 
+2,e2make3d.py , ['--tlt'] , None , str , An imod tlt file containing alignment angles. If specified slices will be inserted using these angles in the IMOD convention 
+2,e2spt_extract.py , ['--tltkeep'] ,1, float , keep a fraction of tilt images with good score determined from tomogram reconstruction 
+2,e2spt_autoboxer.py , ['--tomogram'] ,  , str , Name of the tomogram. 
+2,e2spt_recompute.py , ['--tomograms'] ,  , str , Comma separated list of tomograms with REC extension from which all particles in --stacks came from. 
+2,e2proc3d_huge.py , ['--trans'] ,0, str ," Translate map by dx,dy,dz  "
+2,e2refine_easy.py , ['--treeclassify'] , False , None , Classify using a binary tree. 
+2,e2refine_easy.py , ['--treeincomplete'] ,0, int , Used only in binary tree classification. Incompleteness of the tree on each level.Default=0 
+2,e2basis.py , ['--txtout'] , False , None , Output will be a multicolumn text file suitable for plotting 
+2,e2rct.py , ['--untiltdata'] , None , str , Name of the tilted dataset 
+2,e2classaverage.py , ['--usefilt'] , None , None ," Specify a particle data file that has been low pass or Wiener filtered. Has a one to one correspondence with your particle data. If specified will be used to align particles to the running class average, however the original particle will be used to generate the actual final class average "
+2,e2evalimage.py , ['--usefoldername'] , False , None ," If you have the same image filename in multiple folders, and need to import into the same project, this will prepend the folder name on each image name "
+2,e2spt_average.py , ['--wedgesigma'] ,3, float , Threshold for identifying missing data in Fourier space in terms of standard deviation of each Fourier shell. Default 3.0 
+2,e2ctf.py , ['--wiener'] , False , None , Wiener filter (optionally phaseflipped) particles. 
+2,e2boxer.py , ['--write_dbbox'] , False , None , Export EMAN1 .box files 
+2,e2proc2d.py , ['--writejunk'] , False , None , Writes the image even if its sigma is 0. 
+1,e2proc2d.py , ['--addfile'] , None , str , Adds the volume to another volume of identical size 
+1,e2procheader.py , ['--addfilename'] , False , None , Adds the original filename of a file or stack to the header of each particle. This only works for .hdf files. 
+1,e2initialmodel_sgd.py , ['--addnoise'] ,3, float , Add noise on particles at each iteration. Stablize convergence for some reason. 
+1,e2pdb2mrc.py , ['--addpdbbfactor'] , False , None ," Use the bfactor/temperature factor as the atom blurring radius, equivalent to Gaussian lowpass with 1/e width at 1/bfactor "
+1,e2spt_trajfromrefine.py , ['--ali2d'] , None , str ,  
+1,e2spt_trajfromrefine.py , ['--ali3dnew'] , None , str ,  
+1,e2spt_trajfromrefine.py , ['--ali3dold'] , None , str ,  
+1,e2ddd_movie.py , ['--align_frames'] , False , None , Perform whole-frame alignment of the input stacks 
+1,e2rct.py , ['--aligngran'] ,10, float ," Fineness of global search in e2align3d.py, default=10.0 "
+1,e2refine2d_bispec.py , ['--alignsort'] , False , None , This will align and sort the final class-averages based on mutual similarity. 
+1,e2spt_subtlt_local.py , ['--aliptcls2d'] ,  , str , optional aliptcls input. the program can start search from the position from last run. 
+1,e2spt_subtlt_local.py , ['--aliptcls3d'] ,  , str , optional aliptcls input. 
+1,e2classifyligand.py , ['--alistacks'] ,-10000000000, float ," If sum of cmp results is less than the spefified value, will save the aligned particle to a per-class stack "
+1,e2bdb.py , ['--all'] , False , None , List per-particle info 
+1,e2ddd_movie.py , ['--allali'] , False , None , Average of all aligned frames. 
+1,e2procjson.py , ['--allinfo'] , False , None , Uses all of the .json files in info/ rather than specifying a list on the command line 
+1,e2spt_extract.py , ['--alltomograms'] , False , None , use all tomograms. 
+1,e2procpdb.py , ['--alpha'] ,0, float , alpha in imagic convention. 
+1,e2procpdb.py , ['--alt'] ,0, float , alt in eman convention. 
+1,e2make3dpar.py , ['--altedgemask'] , False , None ," If set, assumes tomographic data with a thin specimen, and masks out the +-X edges based on the alt Euler angle. "
+1,e2refinetorelion3d.py , ['--amplitudecontrast'] ,0.07, float , Amplitude Contrast value for the micrographs 
+1,e2gmm_refine.py , ['--ampreg'] ,0, float , regularizer for the Gaussian amplitudes in the first 1/2 of the iterations. Large values will encourage all Gaussians to have similar amplitudes. default = 0 
+1,e2classvsproj.py , ['--ang'] ,10, float , Angle between projections if 3Dmap provided 
+1,e2ptclvsmap.py , ['--angstep'] ,9, float , Angular separation of projections. Default 9.0 degrees. 
+1,e2procpdb.py , ['--animorph'] , None , str ," This will use a morph vector file (segment3d) to morph atom positions,#P [animorph=<n>,<apix>,<vecfile>] "
+1,e2evalrefine.py , ['--anisotropy'] ,-1, int , Specify a class-number (more particles better). Will use that class to evaluate magnification anisotropy in the data.  
+1,e2bdb.py , ['--appendvstack'] , None , str ," Appends to/creates a 'virtual' BDB stack with its own metadata, but the binary data taken from the (filtered) list of stacks "
+1,e2ctfsim.py , ['--apply'] , None , str , A 2-D image file which the CTF will be applied to in real-time 
+1,e2spt_simulation.py , ['--applyctf'] , False , None ," Default=False (off). If on, it applies ctf to the projections in the simulated tilt series based on defocus, cs, and voltage parameters. "
+1,e2spt_simulation.py , ['--applyfocusdepth'] , False , None ," Default=False (off). If on, this will assign different 'z-height' values to different particles "
+1,e2tomoseg_convnet.py , ['--applying'] , False , None , Applying the neural network on tomograms 
+1,e2tomo_mwfill.py , ['--applyto'] , None , str , apply to tomo 
+1,e2segment3d.py , ['--asymunit'] , False , None , Write points of only one asymmetrical unit. 
+1,e2ssehunter.py , ['--atoms'] , none , str , pseudoatoms file 
+1,e2ssehunter.py , ['--atomswt'] ,1, float , pseudoatom weight 
+1,e2pathwalker.py , ['--atomtype'] , CA , str , Load Atom Type. Default: 'CA'. Options: 'C' or 'all' 
+1,e2refinetorelion3d.py , ['--auto_healpix'] ,1.8, str , Local angular search value 
+1,e2boxer_old.py , ['--autoboxer'] , None , str ," A key of the swarm_boxers dict in the local directory, used by the workflow. "
+1,e2tomogram.py , ['--autoclipxy'] , False , None , Optimize the x-y shape of the tomogram to fit in the tilt images. only works in bytile reconstruction. useful for non square cameras. 
+1,e2ctf.py , ['--autohp'] , False , None ," Automatic high pass filter of the SNR only to remove initial sharp peak, phase-flipped data is not directly affected (default false) "
+1,e2proc2dmulti.py , ['--autoinvert'] , False , None , Automatically decides whether to invert each stack of images to make particles white (EMAN2 convention). Decision is made for an entire stack. Non-inverted images will NOT BET PROCESSED AT ALL ! 
+1,e2boxer.py , ['--autopick'] , None , str ," Perform automatic particle picking. Provide mode and parameter string, eg - auto_local:threshold=5.5 "
+1,e2spt_resolutionplot.py , ['--averagefscs'] , False , None , Default=False. Averages FSC curves if --input contains multiple images. 
+1,e2spt_intrafsc.py , ['--averagehalves'] , False , None , Default=False. This will average the even and odd volumes. 
+1,e2spt_wedge.py , ['--averagestats'] , False , None , Do not launch the GUI and set the average of the missing wedge statistics on all the volumes. 
+1,e2spt_mapptclstotomo.py , ['--avg'] ,  , str , 3D volume to insert. spt_xx/threed_xx if unspecified 
+1,e2symsearch3d.py , ['--avgiter'] ,1, int ," Default=1. If --keep is different from 1.0 and --average is on, the initial average will include all the particles, but then the percent specified byoptions.keep will be kept (the rest thrown away) and a new average will be computed. If --avgiter > 1, this new average will be compared again against all the particles. The procedure will be repeated for however many iterations --avgiter is given, or the process will stop automatically if in two consecutive rounds exactly the same particles are kept "
+1,e2rct.py , ['--avgrcts'] , False , None , If set recons from each CA will be alinged and averaged. 
+1,e2proc2d.py , ['--avgseq'] ,0, int ," Averages sets of N sequential frames. eg - if N=4 and the input contains 100 images, the output would be 25 images "
+1,e2classifykmeans.py , ['--axes'] , None , str ," Works only for 1-D input images. Specify a range, eg 0-5 to indicate which components to use from each vector. Inclusive. default=all "
+1,e2procpdb.py , ['--az'] ,0, float , az in eman convention. 
+1,e2spt_autoboxer.py , ['--backgroundstack'] , None , str ," Name of the stack containing a few boxes picked from regions of the tomogram where there where no particles,                 no gold, and no carbon. "
+1,e2ddd_movie.py , ['--bad_columns'] ,  , str , Comma separated list of camera defect columns 
+1,e2ddd_movie.py , ['--bad_rows'] ,  , str , Comma separated list of camera defect rows 
+1,e2classifyligand.py , ['--badgroup'] , False , None , Split the data into 4 groups rather than 2. The extra two groups contain particles more likely to be bad. 
+1,e2tomogram.py , ['--badone'] , False , None , Remove one bad tilt during coarse alignment. seem to work better with smaller maxshift... 
+1,e2classifyligand.py , ['--badqualsig'] ,0.5, float ," When identifying 'bad' particles, particles with similarities >mean+sigma*badqualsig will be considered bad. Default 0.5 "
+1,e2classifyligand.py , ['--badsepsig'] ,0.25, float ," When identifying 'bad' particles, if s1/s2 are the similarities to reference 1/2, then those where |s1-s2| < sigma*badsepsig will be excluded. Default 0.25  "
+1,e2basis.py , ['--basislist'] , None , str ," List of basis vectors to use, comma delimited. "
+1,e2refine2d_bispec.py , ['--basisrefs'] , None , str , Will use a set of existing class-averages/projections to generate the Eigenbasis for classification. This must be an image stack with the same dimensions as the particle data. 
+1,e2tomoseg_convnet.py , ['--batch'] ,20, int , Batch size for the stochastic gradient descent. Default is 20. 
+1,e2gmm_refine.py , ['--batchsz'] ,32, int , batch size 
+1,e2speedtest.py , ['--best'] , False , None , rtf_best alignment 
+1,e2ddd_movie.py , ['--bestali'] , False , None , Average of best aligned frames. 
+1,e2ctf2eman1.py , ['--bf'] ,0, float , Set constant B-factor (as defined in EMAN1) for all images. 
+1,e2spt_tomoctf.py , ['--bgcurve'] , None , str , load a curve of background power spectrum to substract for ctf estimation. 
+1,e2ctf.py , ['--bgmask'] ,0, int , Background is computed using a soft mask of the center/edge of each particle with the specified radius. Default radius is boxsize/2.6. 
+1,e2spt_tiltstacker.py , ['--bidirectional'] , False , None ," This will assume the first image is at 0 degrees and will stack images from --lowerend through 0, and then will stack the rest from 0+tiltstep throgh --upperend. If --negativetiltseries is supplied, images will be stacked from --upperend through 0, then from 0-tiltstep through --lowerend. "
+1,e2ddd_external.py , ['--binby'] , None , int ," The degree of binning for final image. Default is 1, i.e. no binning. Note that this option takes only integer values. "
+1,e2speedtest.py , ['--bispec'] , False , None , new rtf with usebispec 
+1,e2compress.py , ['--bits'] ,10, int ," Bits to retain in the output file, 0 or 2-16. 0 is lossless floating point compression. <0 will store completely uncompressed "
+1,e2classaverage.py , ['--bootstrap'] , False , None , Ignored. Present for historical reasons only. 
+1,e2import.py , ['--box_type'] , boxes , None ," Type of boxes to import, normally boxes, but for tilted data use tiltedboxes, and untiltedboxes for the tilted  particle partner "
+1,e2spt_boxer.py , ['--box2d'] , False , None , Boxing 2D particls from tomograms. 
+1,e2spt_boxer.py , ['--box3d'] , False , None , Boxing 3D particls from tomograms (default). 
+1,e2tomoseg_buildtrainset.py , ['--boxes_negative'] , None , str , Input boxes of negative samples 
+1,e2tomoseg_buildtrainset.py , ['--boxing'] , False , None , Boxing particles. 
+1,e2spt_extract.py , ['--boxsz_unbin'] ,-1, int , box size in unbinned tomogram 
+1,e2spt_boxer_old.py , ['--bruteaverage'] , False , None ," Default=False. If specified, this will generate an ""as is"" average of all the subvolumes (no alignment performed). This can be useful to see if, on average, particles correspond to the desired specimen and are reasonably centered. "
+1,e2spt_refinemulti_old.py , ['--btref'] ,0, int ," WARNING: MIGHT BE BUGGY OR NOT WORKING. Mulst supply references through --ref. Default=0 (internally turned on and set to 64). Size of the SUBSET of particles to use to build an initial reference by calling e2spt_binarytree.py. By default, the largest power of two smaller than the number of particles in --input will be used. For example, if you supply a stack with 150 subtomograms, the program will automatically select 128 as the limit to use because it's the largest power of 2 that is smaller than 150. But if you provide, say --btref=100, then the number of particles used will be 64, because it's the largest power of 2 that is still smaller than 100. "
+1,e2tilefile.py , ['--build'] , None , str , Build a new tile file from the specified image 
+1,e2tilefile.py , ['--buildpspec'] , None , float ," Builds 1D and 2D power spectra for the images when building, Value is A/pix for image. "
+1,e2tomoseg_buildtrainset.py , ['--buildset'] , False , None , Segment particles. 
+1,e2spt_tiltrefine.py , ['--buildsetonly'] , False , None , will only prepare particle set for the refinement but skip the actual refinement process. 
+1,e2tomogram.py , ['--bxsz'] ,32, int , Box size of the particles for tracking. Default is 32. Maybe helpful to use a larger one for fiducial-less cases.. 
+1,e2stacksort.py , ['--byheader'] , None , str , Uses the named header parameter to sort the images 
+1,e2stacksort.py , ['--bykurtosis'] , False , None ," Sort by image Kurtosis. No alignment, shrinking, etc. is performed "
+1,e2stacksort.py , ['--byptcl'] , False , None ," Sort in order of number of particles represented in each class-average. No alignment, shrinking, etc. is performed "
+1,e2tomogram.py , ['--bytile'] , False , None , make final tomogram by tiles..  
+1,e2proc2d.py , ['--calccont'] , False , None , Compute the low resolution azimuthal contrast of each image and put it in the header as eval_contrast_lowres. Larger values imply more 'interesting' images. 
+1,e2proc2d.py , ['--calcsf'] , None , str ," calculate a radial structure factor for the image and write it to the output file, must specify apix. divide into <n> angular bins "
+1,e2spt_autoboxer.py , ['--carbonstack'] , None , str , Name of the stack containing a few boxes picked from the grid hole (or carbon). 
+1,e2rct.py , ['--careject'] , None , str ," class averages to reject, default=None "
+1,e2refine2d.py , ['--centeracf'] , False , None , This option has been removed in favor of a new centering algorithm 
+1,e2spt_subtilt_old.py , ['--centerzerotilt'] , False , None ," Default=False. If specified, this option will center the zerotilt (or least tilted image) for each particle by using as a reference a sharp-circle of radius=box/2 or the value specified through --radius. "
+1,e2pathwalker.py , ['--chain'] , None , str , Load Chain. Default: load all chains 
+1,e2bdb.py , ['--checkctf'] , False , None ," Verifies that all images in the file contain CTF information, and gives some basic statistics "
+1,e2spt_tomoctf.py , ['--checkhand'] , False , None , Check the handedness of tomogram. 
+1,e2segment3d.py , ['--chimeraout'] , None , str , Name of file to write center of segments in UCSF Chimera marker format. 
+1,e2ctf.py , ['--chunk'] , None , str ," <chunksize>,<nchunk>. Will process files in groups of chunksize, and process the <nchunk>th group. eg - 100,3 will read files 300-399  "
+1,e2rct.py , ['--classavg'] , None , str , Name of classavg file created by e2refine2d.py 
+1,e2ctf.py , ['--classify'] ,0, int , Highly experimental ! Subclassify particles (hopefully by defocus) into n groups. 
+1,e2classesbyref.py , ['--classinfo'] , None , str , Store results in a classinfo_xx.json style file 
+1,e2classextract.py , ['--classlist'] , None , str , Filename of a text file containing a (comma or whitespace separated) list of class average numbers to operate on.  
+1,e2spt_pcasplit.py , ['--clean'] , False , None , remove outliers before PCA. 
+1,e2bdb.py , ['--cleanup'] , False , None , This option will clean up the database cache so files can safely be moved or accessed on another computer via NFS. 
+1,e2tomogram.py , ['--clipz'] ,-1, int ," Z thickness of the final tomogram output. default is -1, (5/16 of tomogram length) "
+1,e2classifykmeans.py , ['--clsfiles'] , False , None , Write EMAN 1 style cls files with members of each class 
+1,e2spa_make3d.py , ['--clsid'] , None , str , only reconstruct a class of particles 
+1,e2classifykmeans.py , ['--clsmx'] , None , str ," Standard EMAN2 output suitable for use with e2classaverage, etc. "
+1,e2spt_hac.py , ['--clusters'] ,1, int ," Number of clusters to group the data in after the 1st iteration, based on correlation. "
+1,e2ssehunter.py , ['--coeff'] , none , str , helix correlation file 
+1,e2ssehunter.py , ['--coeffwt'] ,1, float , helix correlation weight 
+1,e2tiltvalidate.py , ['--colorzaxis'] , False , None , Color scatter dots by Z axis 
+1,e2compress.py , ['--compresslevel'] , None , int ," Compression level to use when writing. No impact on image quality, but large impact on speed. Default = 1 "
+1,e2ctf.py , ['--computesf'] , False , None , Will determine the structure factor*envelope for the aggregate set of images 
+1,e2stackanim.py , ['--contrast'] ,1, float , Relative setting. Try 0.75 if images too bright. Default 1.0  
+1,e2gmm_refine.py , ['--conv'] , False , None , use convolutional network for heterogeneity analysis. 
+1,e2spt_subtilt_old.py , ['--coords2d'] ,  , str , File in .txt format containing the coordinates of particles determined from the aligned 0 tilt image in the supplied tiltseries. 
+1,e2spt_subtilt_old.py , ['--coords3d'] ,  , str , File in .txt format containing the coordinates of particles determined from the reconstructed tomogram of the supplied tiltseries. 
+1,e2tomogram.py , ['--correctrot'] , False , None , correct for global rotation and position sample flat in tomogram. 
+1,e2proclst.py , ['--create'] , None , str ," to use this option, the input files should be image files. Specify an .lst or .lsx file to create here (e.g., --create mylst.lst) with references to all of the images in the inputs. "
+1,e2boxer_old.py , ['--cter'] , False , None , CTF estimation using cter 
+1,e2ctf2eman1.py , ['--ctfcoverage'] , False , None , Create a map showing the integrated SNR for the combined data. 
+1,e2rawdata.py , ['--ctfest'] , False , None , Perform CTF fitting on the (tiled) frame 
+1,e2spt_subtilt_from_imod.py , ['--ctffile'] , None , str , Estimated CTF 
+1,e2spt_ctf_old.py , ['--ctfparamsfile'] ,  , str ," This should be a text file   with ctf parameters in the following format;   defocus=value voltage=value cs=value apix=value bfactor=value ampcont=value   A single space should separate each parameter from the next.   Do not write any unit symbols for the values; just the numerical value.   Defocus should be in microns, voltage in kV, apix in angstroms per pixel, and ampcont (amplitude contrast)   should be a decimal; for example, 0.1 for 10 percent amplitude contrast.   IF you want to use DIFFERENT PARAMETERS PER IMAGE, then the file must contain   multiple rows with the different values.   The first row will be used to phase flip the first image,   the second row to phase flip the second, etc. "
+1,e2spt_tiltrefine_oneiter.py , ['--ctfweight'] , False , None , weight by ctf 
+1,e2spt_extract.py , ['--curves_overlap'] ,0.5, float , fraction of overlap when generating particle along curves. default is 0.5 
+1,e2spt_extract.py , ['--curves'] ,-1, int , specify curve id to extract particles from saved curves.  
+1,e2fsc_local.py , ['--cut'] ,0.2, float ,  
+1,e2ssehunter.py , ['--da'] ,5, float , helix angular search step 
+1,e2import.py , ['--darkrefs'] ,  , None , Specify a comma separated list of dark refereence stacks/images to import. Files will be placed in movierefs_raw. See --importation for additional options. 
+1,e2tiltvalidate.py , ['--datalabels'] , False , None , Add data labels to the plot 
+1,e2tiltvalidate.py , ['--datalabelscolor'] , #00ff00 , str , Set the color of the data labels. Any vaild matplotlib color is ok 
+1,e2helixboxer.py , ['--db-add-hcoords'] , None , str , Append any unique helix coordinates to the database from the specified file (in EMAN1 *.box format). Use --helix-width to specify a width for all boxes. 
+1,e2helixboxer.py , ['--db-set-hcoords'] , None , str , Replaces the helix coordinates in the database with the coordinates from the specified file (in EMAN1 *.box format). Use --helix-width to specify a width for all boxes. 
+1,e2boxer_old.py , ['--dbls'] , None , str ," data base list storage, used by the workflow. You can ignore this argument. "
+1,e2classaverage.py , ['--dbpath'] , . , None , Ignored. Present for historical reasons. 
+1,e2ddd_movie.py , ['--de64'] , False , None ," Perform gain image correction on DE64 data. Note, these should not be normalized. "
+1,e2classaverage.py , ['--decayedge'] , False , None , Applies an edge decay to zero on the output class-averages. A very good idea if you plan on 3-D reconstruction. 
+1,e2gmm_analysis.py , ['--decoder'] , None , str , decoder input 
+1,e2gmm_refine.py , ['--decoderout'] , None , str , Save the trained decoder model. Filename should be .h5 or .tf 
+1,e2spt_subtilt_from_imod.py , ['--defcol'] ,2, int , Which column of ctf file is the defocus 
+1,e2ddd_external.py , ['--defect_file'] , None , str , Specify the camera defects file. 
+1,e2spt_ctf_old.py , ['--defocilist'] ,  , str , Text file containing   a single column of defocus values in microns. The file should have as many   defocus values as images in the tiltseries or subtiltseries supplied. 
+1,e2spt_ctf_old.py , ['--defocusbottom'] , False , None ," Assumes the signal for defocus measurement (e.g., carbon film) is at the top layer of the tomogram. "
+1,e2ctffind3util.py , ['--defocusstep'] ,0, float , The step width for grid search (microns) 
+1,e2spt_ctf_old.py , ['--defocustop'] , False , None ," Assumes the signal for defocus measurement (e.g., carbon film) is at the top layer of the tomogram. "
+1,e2spt_ctf_old.py , ['--defocusvariationlimit'] ,0.1, float , default=0.1. total variation in defocus (in micrometers) tolerated within a strip and still consider it a region of 'constant defocus'. 
+1,e2bdb.py , ['--delete'] , False , None , This will delete (or at least empty) the named database(s) 
+1,e2proclst.py , ['--dereforig'] , None , str , Extract the data_source and data_n parameters from each image in the file and create a new .lst file referencing the original image(s) 
+1,e2ddd_external.py , ['--device_num'] ,0, str ," When possible, use this device to process movie frames. Default is GPU. "
+1,e2ctf2eman1.py , ['--df'] , False , None , Calculate defocus from entire CCD frame. 
+1,e2spt_tomoctf.py , ['--dfrange'] ," 2.0,7.0,0.02 ", str ," Search range of defocus (start, end, step). default is 2., 7, 0.02 "
+1,e2ctf2eman1.py , ['--dfval'] ,0, float , Set constant defocus for all images (positive is underfocus). 
+1,e2spt_autoboxer.py , ['--dilutionfactor'] ,4, int ," Default=4. Determines how many particles will be pre-picked as putative particles. For example, if                 if the tomogram is broken up into subregions of volume V to look for particles in each                 and --dilutionfactor=1, then, the number of best-correlating subvolumes from the subregion                 that will be initially selected as potential particles will be n=V/(pv*D) where 'pv' is the volume of one particle                 calculated based on --particleradius or --boxsize, or the template's boxsize ['nx']; 'D' is the dilution factor;                 therefore, the larger D is, the fewer locations that will be initially picked as potential particles (before any pruning). "
+1,e2tilefile.py , ['--display'] ,  , str ," Displays a specific tile (level,x,y)) "
+1,e2pathwalker.py , ['--dmax'] ,10, float , Maximum Ca-Ca length 
+1,e2pathwalker.py , ['--dmin'] ,2, float , Mininum Ca-Ca length 
+1,e2boxer_old.py , ['--do_ctf'] , None , str , Name of file whose ctf estimation parameters (obtained via some previous run of Gauss autoboxer via the GUI) should be used for automatic ctf estimation. 
+1,e2tiltvalidate.py , ['--docontourplot'] , False , None , Compute a contour plot 
+1,e2spt_classaverage.py , ['--donotaverage'] , False , None ," Default=False. If e2spt_refinemulti.py is calling e2spt_classaverage.py, the latter need not average any particles, but rather only yield the alignment results. "
+1,e2tomopreproc.py , ['--dontcleanup'] , False , None ," If specified, intermediate files will be kept. "
+1,e2align3d.py , ['--dotrans'] ,1, int ," Do translational search, default=1 "
+1,e2align3d.py , ['--dphi'] ,30, float ," step size for the inplane angle phi, default=30.0 "
+1,e2tomogram.py , ['--dryrun'] , False , None , skip final reconstruction 
+1,e2spt_tempmatch.py , ['--dthr'] ,-1, float , distance threshold 
+1,e2spt_simulation.py , ['--dualaxis'] , False , None , Default=False. Simulate subtomograms made of two independent and orthogonal tilt series. 
+1,e2procpdb.py , ['--e0'] ,0, float , e0 in quaternion convention. 
+1,e2procpdb.py , ['--e1'] ,0, float , e1 in quaternion convention. 
+1,e2procpdb.py , ['--e2'] ,0, float , e2 in quaternion convention. 
+1,e2procpdb.py , ['--e3'] ,0, float , e3 in quaternion convention. 
+1,e2refinetorelion2d.py , ['--echo'] , False , None , Echo Relion Command to terminal only 
+1,e2spt_subtilt_from_imod.py , ['--edf'] ,  , str , IMOD .edf file name. 
+1,e2spt_extractfromseg.py , ['--edge'] ,4, int , mininmum distance to the edge of tomogram 
+1,e2rawdata.py , ['--edgenorm'] , False , None , Edge normalize 
+1,e2proc2d.py , ['--eer2x'] , False , None , Render EER file on 8k grid. 
+1,e2proc2d.py , ['--eer4x'] , False , None , Render EER file on 16k grid. 
+1,e2pathwalker.py , ['--end'] , None , int , End ATOM 
+1,e2proclst.py , ['--eosplit'] , False , None , Will generate _even and _odd .lst files for each specified input .lst file 
+1,e2tomopreproc.py , ['--erasegold'] ,  , None , Default=False. Runs erase_gold.py on the stack. 
+1,e2eulerxplor.py , ['--eulerdata'] , None , str ," File for Eulerdata, Ryan style, if none is given, data is read from the DB. "
+1,e2tiltvalidate.py , ['--eulerfile'] , None , str ," Euler angles file, to create tiltdistance from pre-aligned particles. Format is: imgnum, name, az, alt, phi "
+1,e2refine_easy.py , ['--eulerrefine'] , False , None , Refines Euler angles of class-averages before reconstruction 
+1,e2evalrefine.py , ['--evalclassdetail'] , False , None ," If specified with evalclassqual, will generate individual FRC curves for each class average in the even subset "
+1,e2evalrefine.py , ['--evalclassqual'] , False , None , Evaluates the class-average-projection agreement using the refine_xx folder name. 
+1,e2gmm_refine.py , ['--evalmodel'] ,  , str , generate model projection images to the given file name 
+1,e2evalrefine.py , ['--evalptclqual'] , False , None , Evaluates the particle-map agreement using the refine_xx folder name. This may be used to identify bad particles. 
+1,e2gmm_refine.py , ['--evalsize'] ,-1, int , Box size for the projections for evaluation. 
+1,e2classextract.py , ['--evenoddmerge'] , False , None ," with --orientedparticles, if cls_result_xx is specified, will include both _even and _odd particles in the output. "
+1,e2boxer_old.py , ['--exclude_bad'] , False , None , Don't generate output for any particles marked as exclude 
+1,e2boxer_old.py , ['--exclude_edges'] , False , None , Don't generate output for any particles extending outside the micrograph 
+1,e2tomo_tiltstacker.py , ['--exclude_extremes'] , False , None ," Default=False. Will exclude images with a mean value 3 standard deviations away from the ""mean of means"" of all images. "
+1,e2spt_subtilt_old.py , ['--excludeedge'] ,0, float ," Integer number of pixels away from the edge of each image in the tilt series to not extract particles from. For example, if you specify 100, and the images are 4096x4096 pixels, any particle with its center lying between 0 and 200 or 3896 and 4096 will nto be extracted. "
+1,e2spt_ctf_old.py , ['--excludeedges'] , False , None , Ignore 'excedent' (smaller than the width of a strip) at the edge of micrographs after dividing them into strips. 
+1,e2spt_hac.py , ['--exclusive_class_min'] ,0, int ," Default=0.0 (not used). The minimum multiplicity (number of particles that went into an average) to look for mutually exclusive classes/averages. Two classes are mutually exclusive when non of the members in one are present in the other. In HAC (hierarchical ascendant classification or ""all vs all"" alignments, classes MERGE, so a class from a later round will be composed of classes from earlier rounds. Some classes remain un-merged for many rounds. If set, this parameter will extract classes with a minimum number of particles (from whatever round/iteration they were generated in) whose members are not present in any other of the extracted classes. The mutually exclusive classes will be put into a separate sub-directory starting with the character 'me_classes'. "
+1,e2bdb.py , ['--exlist'] , None , str , Specify the name of a file with a list of images to exclude in creation of virtual stacks. Please see source for details. 
+1,e2emx.py , ['--export_whole_project'] , False , None ," This option will create an emx directory, where it will export the eman2 project into EMX format "
+1,e2ddd_movie.py , ['--ext'] , hdf , str , Save frames with this extension. Default is 'hdf'. 
+1,e2proc2d.py , ['--extractboxes'] , False , None , Extracts box locations from the image header to produce a set of .box files for only the particles in the .lst files 
+1,e2procjson.py , ['--extractkey'] , None , str ," This will extract a single named value from each specified file. Output will be multicolumn if the referenced label is an object, such as CTF. "
+1,e2evalrefine.py , ['--extractorientptcl'] , None , str ," Extracts the particles from a refinement with per-particle orientation information. If HDF output, will store as xform_align3d in header. "
+1,e2bdb.py , ['--extractplots'] , False , None ," If a database contains sets of plots, such as bdb:refine_xx#convergence.results, this will extract the plots as text files. "
+1,e2procjson.py , ['--extractspt'] , False , None , This will extract the parameters from a particle_parms JSON file in SPT projects as a multicolumn text file. 
+1,e2align3d.py , ['--famps'] ,1, float ," fraction of Fourier amps to exclude from recons. 0 means that this option is not used, default=0.0 "
+1,e2refinetofrealign.py , ['--fbeaut'] , False , None , (T/F)Apply extra real space symmetry averaging and masking to beautify final map prior to output 
+1,e2spt_extractfromseg.py , ['--featurename'] ,  , str , name of the current feature to extract 
+1,e2refinetofrealign.py , ['--ffilt'] , False , None , (T/F)Apply Single Particle Wiener filter to final reconstruction 
+1,e2proc2d.py , ['--fftavg'] , None , str , Incoherent Fourier average of all images and write a single power spectrum image 
+1,e2ddd_particles.py , ['--filefilt'] , None , str , Only processes image stacks where the filename contains the specified string. Mostly used for debugging. 
+1,e2make3dpar.py , ['--fillangle'] ,0, float , An angular range used for both alt & az over which the projection should be averaged. Generally the angular step used when making projections. 
+1,e2spt_wedgefill.py , ['--fillimage'] ,  , str ," the iamge to use to fill in the missing wedge of the images in --input. Ideally, this is the average of the aligned images in --input, or the reference the images in --input were aligned to. "
+1,e2spt_wedgefill.py , ['--fillwithnoise'] , False , None , this will fill the missing wedge with gaussian noise. --matchto will be turned on by default if this option is supplied. 
+1,e2simmx.py , ['--fillzero'] , False , None ," Checks the existing output file, and fills only matrix elements which are exactly zero. "
+1,e2bdb.py , ['--filt'] , None , str , Only include dictionary names containing the specified string 
+1,e2spt_refinemsa.py , ['--filter'] ,0, int ," Resolution (integer, in Angstroms) at which you want to apply a gaussian lowpass filter to the tomogram prior to loading it for boxing "
+1,e2ptclvsmap.py , ['--filterout'] , False , None , Filters output particles to match projections 
+1,e2bdb.py , ['--filtexclude'] , None , str , Exclude dictionary names containing the specified string 
+1,e2simmx2stage.py , ['--finalstage'] , False , None ," Assume that existing preliminary particle classifications are correct, and only recompute final local orientations "
+1,e2spt_ctf_old.py , ['--firstfitglobal'] , False , None , Default=False.   Supplying this option will tile the entire image first (for each tilt angle) and find the average   defocus. Then it will use that value to provide an educated 'guess' during stripe-by-stripe    fitting for each image. 
+1,e2ddd_movie.py , ['--fixbadpixels'] , False , None ," Tries to identify bad pixels in the dark/gain reference, and fills images in with sane values instead "
+1,e2pathwalker.py , ['--fixed'] , None , str , Same as --edgefile. 
+1,e2ctf.py , ['--fixnegbg'] , False , None , Will perform a final background correction to avoid slight negative values near zeroes 
+1,e2spt_align.py , ['--flcf'] , False , None , use slower aligner (experimental) 
+1,e2tomogram.py , ['--flip'] , False , None , Flip the tomogram by rotating the tilt axis. need --load existing alignment 
+1,e2spt_sgd.py , ['--fourier'] , False , None , gradient descent in fourier space 
+1,e2ddd_particles.py , ['--frac'] , None , str ," Processes a fraction of the data, used automatically by --threads. <n>,<ntot> "
+1,e2ddd_movie.py , ['--frames'] , False , None , Write corrected stack of frames. 
+1,e2spt_ctf_old.py , ['--framexsize'] ,0, int ," This correspond to the X   size in pixes of the images/frames in the raw tilt series; that is, the size of the entire frame   along the X axis (perpendicular to the direction of the tilt axis in the aligned tilt series).   It is used to calculate the distance of each particle (subtiltseries) to the tilt axis, since   this will induce different shifts in defocus in 3-D for the actual particles. Particles   right at the tilt axis don't move ""up"" or ""down"" as they are tilted.   This MUST be provided if --subtiltsdir is provided.   Othwerwise, it will be read from the header of the images provided. "
+1,e2tomoseg_convnet.py , ['--from_trained'] , None , str , Train from an existing network 
+1,e2procxml.py , ['--fsctxt2xml'] , FSC Plot , str ," Convert the input text FSC file into an xml file. The value provided is the title of the graph. For example: --fsctxt2xml=""My Graph Title"" "
+1,e2procxml.py , ['--fscxml2txt'] , False , None , Convert the input XML FSC file into a text file 
+1,e2refinetofrealign.py , ['--fstat'] , False , None ," (T/F)Calculate additional statistics in resolution table at end (QFACT, SSNR, CC, etc.). T Uses more than 50 percent more memory. "
+1,e2pdb2mrc.py , ['--full'] , False , None , Apply non-crystallographic symmetry to obtain 'full' structure. 
+1,e2initialmodel_sgd.py , ['--fullcov'] , False , None ," Assume the input particles covers most of the orientation of the model. This gives better performance when the model is relatively feature-less, but is more likely to fail when there are incorrect particles in the input. "
+1,e2display.py , ['--fullrange'] , False , None , A specialized flag that disables auto contrast for the display of particles stacks and 2D images only. 
+1,e2ddd_movie.py , ['--gain_darkcorrected'] , False , None , Do not dark correct gain image. False by default. 
+1,e2import.py , ['--gainrefs'] ,  , None , Specify a comma separated list of gain refereence stacks/images to import. Files will be placed in movierefs_raw. See --importation for additional options. 
+1,e2procpdb.py , ['--gamma'] ,0, float , gamma in imagic convention. 
+1,e2boxer_old.py , ['--gauss_autoboxer'] , None , str , Name of autoboxed file whose autoboxing parameters (obtained via some previous run of Gauss autoboxer via the GUI) should be used for automatic boxing. 
+1,e2erasefiducials.py , ['--goldsize'] ,30, float , Diameter (in pixels) of gold fiducials to erase. 
+1,e2spt_autoboxer.py , ['--goldstack'] ,  , str , Name of the stack containing a few gold particles picked from the tomogram. 
+1,e2spt_classaverage.py , ['--goldstandardoff'] , False , None ," Default=False. This will PREVENT splitting the dataset provided through --input into two groups, and the entire dataset will be refined together. If this parameter is NOT supplied (and thus the refinement is 'gold standard') and --ref is supplied, two copies of the reference will be generated and randomphase-lowpass filtered to the resolution specified through --refrandphase. "
+1,e2spt_autoboxer.py , ['--goldthreshtomo'] , False , None , Zero out all densities above mean of max and min. 
+1,e2ddd_movie.py , ['--goodali'] , False , None , Average of good aligned frames. 
+1,e2tomo_icongpu.py , ['--gpus'] ,-1, str ," default=-1 (all available GPUs will be used). To select specific GPUs to use, provide them as a comma-separated list of integers. "
+1,e2gmm_refine.py , ['--gradin'] ,  , str , reading from gradient output instead of recomputing 
+1,e2gmm_refine.py , ['--gradout'] ,  , str , gradient output 
+1,e2refinetorelion3d.py , ['--greyscale'] , False , None , Is the reference map in greyscale? 
+1,e2helixboxer.py , ['--gridding'] , False , None , Use a gridding method for rotation operations on particles. Requires particles to be square. 
+1,e2spt_simulation.py , ['--gridholesize'] ,1, float ," Default=1.0. Size of the carbon hole in micrometers for the simulated grid (this will determine the shifts in defocus for each particle at each tilt angle, depending on the position of the particle respect to the tilt axis; the tilt axis by convention goes parallel to Y through the middle of the tomogram. "
+1,e2spt_autoboxer.py , ['--gridoffset'] ,  , str ," x,y amount of pixels to translate the cylindrical mask if the carbon hole in your tomogram is off center.          The left bottom corner would be 0,0. Supply this parameter only if also supplying          --mask and the grid hole is not centered in the tomogram. "
+1,e2spt_autoboxer.py , ['--gridradius'] ,0, int , Radius of the grid in pixels. Supply this parameter only if also supplying --mask. 
+1,e2spt_hac.py , ['--groups'] ,1, int ," Default=0 (not used; data not split). This parameter will split the data into a user defined number of groups. For purposes of gold-standard FSC computation later, select --group=2. "
+1,e2buildstacks.py , ['--guess'] , False , None , Guess how to split micrographs into tilt series and the order of images in each tilt series from file names. Tilt angles must be incuded in file names. May and may not work depending on the file name format... 
+1,e2spt_refinemulti_old.py , ['--hacref'] ,0, int , WARNING: MIGHT BE BUGGY OR NOT WORKING. Mulst supply references through --ref. Default=0 (not used by default). Size of the SUBSET of particles to use to build an initial reference by calling e2spt_hac.py which does Hierarchical Ascendant Classification (HAC) or 'all vs all' alignments. 
+1,e2proc2d.py , ['--headertransform'] , None , int ," This will take the xform.align2d header value from each particle, and apply it. Pass 0 to perform the transform or 1 to perform the inverse. "
+1,e2refinetorelion3d.py , ['--healpix'] ,7.5, str , Angular Sampling Interval (Degrees) 
+1,e2helixboxer.py ," ['--helix-coords', '-X'] ", None , str ," Save coordinates for helices to the file specified, which will have the EMAN1 *.box format:   x1-w/2        y1-w/2        w        w        -1                    x2-w/2        y2-w/2        w        w        -2 "
+1,e2helixboxer.py ," ['--helix-images', '-x'] ", None , str , Save images of the helices. The file name specified will have helix numbers added to it. 
+1,e2helixboxer.py ," ['--helix-length', '-l'] ",-1, int , Helix length in pixels. Normally each filament can be an arbitrary length. This forces all new helices to a fixed size. 
+1,e2helixboxer.py ," ['--helix-width', '-w'] ",-1, int , Helix width in pixels. Overrides widths saved in the database or in an input file. 
+1,e2segment3d.py , ['--helixfile'] , None , str , Start with existing secondary structure. 
+1,e2ssehunter.py , ['--helixlength'] ,16.2, float , helix length om angstroms 
+1,e2pdb2mrc.py , ['--het'] , False , None , Include HET atoms in the map 
+1,e2gmm_refine.py , ['--heter'] , False , None , heterogeneity analysis. 
+1,e2tomopreproc.py , ['--highpasspix'] ,0, int , Default=0 (not used). Number of Fourier pixels to apply highpass filter at. The processor used is filter.highpass.gauss. 
+1,e2tomo_icongpu.py , ['--highpasspixels'] ,4, int , Default=4. Number of Fourier pixels to zero out during highpass filtering AFTER reconstruction (postprocessing). Provide 'None' or '0' to disactivate. 
+1,e2ctf_auto.py , ['--hires'] , False , None , Perform CTF processing for projects targeting 2-6 A resolution 
+1,e2display.py , ['--hist'] , False , None , Data file(s) should be plotted as a histogram rather than displayed in 2-D. 
+1,e2spt_classify_byproj.py , ['--hp'] ,-1, float ," Apply a high-pass filter at the specified resolution when generating projections. Specify as resolution in A, eg - 100 "
+1,e2tomo_icongpu.py , ['--iconpreproc'] , False , None ," default=False. If on, this will trigger a call to ICONPreProcess on the .st file supplied through --tiltseries. "
+1,e2refinefromfrealign.py , ['--icosahedral_symmetry'] , False , None , Does it have icosahedral symmetry? 
+1,e2filtertool.py , ['--idx'] ,-1, int , index for an image in a stack 
+1,e2classaverage.py , ['--idxcache'] , False , None , Ignored. Present for historical reasons. 
+1,e2spt_ctf_old.py , ['--imagestem'] ,  , str ," Default=None. If the images to apply ctf correction on are already unstacked and are individual mrc files, supply a common string to all of them. "
+1,e2symbest.py , ['--imask'] , None , int , Inside mask radius 
+1,e2refinetofrealign.py , ['--imem'] ,1, str ," Memory Usage: 0 - Least Memory, 3 - Most memory "
+1,e2match.py , ['--img2match'] ,  , str , Path to the image or stack of images which --img2process will match after processing. Not compulsory if --apix is provided. 
+1,e2match.py , ['--img2process'] ,  , str ," Path to the stack    that needs to be processed to match img2match. If you want to process multiple stacks    or files, just separate them by commas --imgs2process=vo1.mrc,vol2.hdf,file.pdb "
+1,e2ddd_external.py , ['--imod_rotflipgain'] ,0, int ," Rotates the gain 90 degress counter clockwise X times. If value is greater than 3, gain image is flipped about the y axis before rotation. "
+1,e2import.py , ['--import_boxes'] , False , None , Import boxes 
+1,e2import.py , ['--import_eman1'] , False , None , This will import a phase-flipped particle stack from EMAN1 
+1,e2emx.py , ['--import_emx'] , None , str , Import emx information and corresponding micrographs 
+1,e2import.py , ['--import_movies'] , False , None , Import DDD movies 
+1,e2import.py , ['--import_particles'] , False , None , Import particles 
+1,e2import.py , ['--import_tiltseries'] , False , None , Import tiltseries 
+1,e2import.py , ['--import_tomos'] , False , None , Import tomograms for segmentation and/or subtomogram averaging 
+1,e2import.py , ['--importation'] , copy , None ," Specify import mode: move, copy or link "
+1,e2ctffind3util.py , ['--importctffind3'] , False , None , Import ctffind3 data? 
+1,e2ctffind3util.py , ['--importctffind4'] , False , None , Import ctffind4 data? 
+1,e2ctffind3util.py , ['--importrelionstar'] , False , None , Import CTFFIND3 data in Relion STAR format. Put STAR files in 'ctffind3' folder 
+1,e2evalrefine.py , ['--includeprojs'] , False , None ," If specified with --evalptclqual, projections will be written to disk for easy comparison. "
+1,e2classifytree.py , ['--incomplete'] ,0, int , The degree of incomplete allowed in the tree on each level 
+1,e2boxer_old.py , ['--indir'] , . , str , Directory containing micrographs to be processed. 
+1,e2pdb2mrc.py , ['--info'] , False , None ," If this is specified, information on the PDB file is displayed, no conversion is performed. "
+1,e2spt_ctf_old.py , ['--infodir'] ,  , str ," Folder typically produced by e2evalimage.py or previous runs of this program containing info.json files, one per tilt image in a tilt series. Each .json file should contain the fitted ctf and all associated parameters for each tilt image. "
+1,e2simmx.py , ['--init'] , False , None , Initialize the output matrix file before performing 'range' calculations 
+1,e2refine2d.py , ['--initial'] , None , str ," File containing starting class-averages. If not specified, will generate starting averages automatically "
+1,e2spt_refinemulti_old.py , ['--inixforms'] ,  , str , Default=None. .json file containing a dict of transform to apply before reference generation 
+1,e2refinetorelion2d.py , ['--inplaneang'] , None , float , In-plane angular sampling 
+1,e2classextract.py , ['--input_set'] , None , str ," Normally the set used to create the class-averages is used as input. Use this with another version of the same set of particles, for example '__ctf_flip_proc' instead of '__ctf_flip'  "
+1,e2spt_classaverage.py , ['--inputaliparams'] ,  , str , Default=None. .json file containing a dict of transforms to apply to 'pre-align' the particles. 
+1,e2refine_easy.py , ['--inputavg'] , None , str , Optional file containing alternate version of the particles to use for reconstruction after alignment 
+1,e2spt_isr.py , ['--inputdir'] ,  , str , Alternative to --input and --inputstem. Path to a directory containing individual subtiltseries stacks. 
+1,e2tomo_stackframes.py , ['--inputstring'] , .mrc , str ," default=.mrc. String common to all images to be processed. E.g., with '.mrc' as the default, all files in the directory ending in '.mrc' (or containing this as part of the filename) will be analyzed. "
+1,e2refinetorelion3d.py , ['--intensitycorrection'] , False , None , (T/F)Perform intensity-scale corrections on image groups? 
+1,e2proc2d.py , ['--interlv'] , None , str , Specifies a 2nd input file. Output will be 2 files interleaved. 
+1,e2refinetofrealign.py , ['--interp'] ,0, str ," Type of interpolation: 0 - Nearest Neighbor, 1 - Trilinear Interpolation (More Time-Consuming) "
+1,e2ddd_movie.py , ['--invert_gain'] , False , None , Use reciprocal of input gain image 
+1,e2spt_subtilt_old.py , ['--invertangles'] , False , None ," Default=False. If True, this will multiple all angles by -1, in case the directionality is messed up. "
+1,e2spt_autoboxer.py , ['--inverttemplate'] , False , None , Multiply --template subsections by -1 to invert the contrast BEFORE looking for particles. 
+1,e2spt_autoboxer.py , ['--inverttomo'] , False , None , Multiply --tomogram subsections by -1 to invert the contrast BEFORE looking for particles. 
+1,e2pathwalker.py , ['--iterations'] ,1, int , Iterations 
+1,e2make3dpar.py , ['--itermask'] , None , str ," Used in iterative mode to define a mask to apply between iterations. The resulting reconstruction won't be masked per-se, but will be biased towards lower densities outside the mask. "
+1,e2spt_refine_new.py , ['--iters'] ," p,p,p,t,r,p,r,d ", str ," iterations. Types of refinement separated by comma. p - 3d particle translation-rotation. t - subtilt translation. r - subtilt translation-rotation. d - subtilt defocus. Default is p,p,p,t,r,p,r,d "
+1,e2pathwalker.py , ['--json'] ,1, int ," If writing output pdb, also write JSON metadata. Default: 1. Options: 0, 1 "
+1,e2spt_extract.py , ['--jsonali'] ,  , str , re-extract particles using a particle_param_xx json file from a spt alignment 
+1,e2spt_evalrefine.py , ['--jsonortcmp'] , False , None , Compare the particle orientations from two .json files. Provide the path to 2 json files as arguments to the command. 
+1,e2ddd_movie.py , ['--k2'] , False , None ," Perform gain image correction on gain images from a Gatan K2. Note, these are the reciprocal of typical DDD gain images. "
+1,e2boxer_old.py , ['--kboot'] ,16, int , kboot 
+1,e2refinevariance.py , ['--keep3d'] , False , None , Keep all of the individual 3-D models used to make the variance map. This make take substantial disk space. 
+1,e2erasefiducials.py , ['--keepdust'] , False , None , Do not remove 'dust' from mask (include objects smaller than gold fiducials). 
+1,e2tomoseg_convnet.py , ['--ksize'] ," 15,15,15 ", str ," Width of kernels of each layer, the numbers must be odd. Note the number of layers should be the same as the nkernel option.  "
+1,e2spt_classify_byproj.py , ['--layers'] ,2, int ," number of 1 pixel layers about the center to use for the projection in each direction (size in reduced image if --shrink used), ie 0->1, 1->3, 2->5. Default=2 "
+1,e2refinetorelion3d.py , ['--limit_tilt'] ,-91, int ," Limited tilt angle: positive for keeping side views, negative for keeping top views "
+1,e2procjson.py , ['--listkeys'] , False , None , Lists all of the keys in all of the specified info files 
+1,e2procjson.py , ['--listoptions'] , False , None , List all currently set user application preferences 
+1,e2spa_make3d.py , ['--listsel'] , None , str , only reconstruct particles of indices from the given list 
+1,e2parallel.py , ['--loadmodule'] ,  , str , load module 
+1,e2spt_tiltrefine.py , ['--localnorm'] , False , None , local normalization. do not use yet.... 
+1,e2fsc_real_local.py , ['--localsizea'] ,50, int , Size in Angstroms of the local region to compute the resolution in 
+1,e2bdb.py , ['--long'] , False , None , Long listing 
+1,e2ctf_auto.py , ['--lores'] , False , None , Perform CTF processing for projects targeting 15-30 A resolution 
+1,e2speedtest.py , ['--low'] , False , None , low level test 
+1,e2tomopreproc.py , ['--lowpassfrac'] ,0, float , Default=0.0 (not used). Fraction of Nyquist to lowpass at. The processor used is filter.lowpass.tanh 
+1,e2tomo_icongpu.py , ['--lowpassresolution'] ,100, float , Default=100. Resolution in angstroms to lowpass filter the tomogram AFTER reconstruction (postprocessing). Type 'None' or '0' to disactivate. 
+1,e2spt_classify_byproj.py , ['--lp'] ,-1, float ," Apply a low-pass filter at the specified resolution when generating projections. Specify the resolution in A, eg - 25 "
+1,e2initialmodel_sgd.py , ['--lrdecay'] ,1, float , Learning rate multiplier after each iteration. 
+1,e2refinevariance.py , ['--m3diter'] ,4, int , The number of times the 3D reconstruction should be iterated 
+1,e2refine_easy.py , ['--m3dold'] , False , None , Use the traditional e2make3d program instead of the new e2make3dpar program 
+1,e2bdb.py , ['--makevstack'] , None , str ," Creates a 'virtual' BDB stack with its own metadata, but the binary data taken from the (filtered) list of stacks "
+1,e2pathwalker.py , ['--mapfile'] , None , str , Density map file 
+1,e2refinemulti.py , ['--mapfragment'] , False , None , Generate initial maps by randomly removing portions of the input map rather than by phase randomizing. 
+1,e2pathwalker.py , ['--mapthresh'] ,0, float ," Density threshold, bonds on density lower than threshold is not prefered "
+1,e2pathwalker.py , ['--mapweight'] ,1000, float ," Weight of density, to balance between geometry and density score "
+1,e2tomopreproc.py , ['--maskbyangle'] , False , None , Default=False. Requires --tltfile. This will mask out from tilted images the info that isn't present at the 0 tilt angle. It uses the tomo.tiltedgemask processor (type 'e2help.py processors' at the commandline to read a description of the processor and its parameters). Provide --maskbyanglefalloff and --maskbyanglesigma to modify the default parameters. 
+1,e2tomopreproc.py , ['--maskbyanglefalloff'] ,4, int , Default=4. Number of pixels over which --maskbyangle will fall off to zero. 
+1,e2tomopreproc.py , ['--maskbyanglesigma'] ,2, float , Default=2.0. Number of sigmas for the width of the gaussian fall off in --maskbyangle and --maskbyanglefalloff 
+1,e2extractsubparticles.py , ['--masked'] , False , None ," If specified, each output subparticle will be masked based on the projection mask. Recommended. "
+1,e2align3d.py , ['--maskfoff'] ,0.1, float ," Fall offf of the Gaussian mask, default=0.1 "
+1,e2initialmodel.py , ['--maskproc'] , None , str ," Default=none. If specified, this mask will be performed after the built-in automask, eg - mask.soft to remove the core of a virus "
+1,e2align3d.py , ['--maskrad'] ,-1, int ," Mask the recon using a spherical Gaussian mask (-1 = None), default=-1.0 "
+1,e2spt_stat.py , ['--maskref'] , None , str , File containing the reference to compare the masked volumes with (required with --mask) 
+1,e2refinetorelion2d.py , ['--maskzeroes'] , False , None ," (T/F) For individual particles, the area outside a circle with the radius of the particle will be set to zeros prior to taking the Fourier transform "
+1,e2spt_extractfromseg.py , ['--massthresh'] ,20, float , Threshold of total mass of each continous object to be considered a particle.  
+1,e2bdb.py , ['--match'] , None , str , Only include dictionaries matching the provided Python regular expression 
+1,e2spt_wedgefill.py , ['--matchto'] , False , None , this will match the power spectrum of each image in --input to that --fillimage so that things are properly normalized. 
+1,e2procpdb.py , ['--matrix'] ," 0,0,0,0,0,0,0,0,0,0,0,0 ", str , transform matrix. 
+1,e2ssematch.py , ['--maxbad'] ,2, int , Maximumum number of unassigned helices 
+1,e2buildsets.py , ['--maxbfactor'] ,5000, float , Files with a B-factor higher than specified will be skipped 
+1,e2gmm_refine.py , ['--maxboxsz'] ,64, int , maximum fourier box size to use. 2 x target Fourier radius.  
+1,e2refinetorelion3d.py , ['--maxmemory'] , None , float , Maximum memory (in GB) available for each thread 
+1,e2spt_hac.py , ['--maxmergenum'] ,0, int ," Default=0 (which means this option is off by default and not used). This is the maximum number of particles ('multiplicity') that any two given averages can have to be allowed to merge. For example, if at some point (some given iteration in the algorithm) a particular average ""A"" is an average of 10 particles, and --maxmergenum=8, this average ""A"" will only be allowed to merge with other averages that have 8 particles or less in them. This maintains ""big classes"" in a mutually exclusive state. For example, if --maxmergenum=1, particles will merge pair-wise in the first round; but after that averages with more than one particle will NOT merge each other, because they will contain 2 or more particles, which exceeds 'maxmergenum'. So in subsequent iterations, the averages formed in the first iteration will continue to take up raw particles or new averages (between single raw particles) might emerge; but ""large averages"" never inter-merge "
+1,e2ssematch.py , ['--maxpairerr'] ,10, float ," Maximum error match between pairs of helices, default=50 "
+1,e2tiltvalidate.py , ['--maxtiltangle'] ,180, float , Maximum tiltangle permitted when finding tilt distances 
+1,e2ddd_external.py , ['--mc2_flipgain'] ,0, int ," A value of 1 flips gain image vertically, 2 flips gain image horizontally. Default is 0. "
+1,e2ddd_external.py , ['--mc2_patchX'] , None , int ," Use this many patches along X with MotionCor2. Default is 1, i.e. whole-frame alignment. "
+1,e2ddd_external.py , ['--mc2_patchY'] , None , int ," Use this many patches along Y with MotionCor2. Default is 1, i.e. whole-frame alignment. "
+1,e2ddd_external.py , ['--mc2_rotgain'] ,0, int , Rotates the gain 90 degress counter clockwise X times. Rotation is applied before flipping. 
+1,e2basis.py , ['--mean1'] , False , None ," Indicates that the first image in the basis set is actually the mean image, which should be subtracted prior to projection. Output from e2msa requires this flag. "
+1,e2proclst.py , ['--mergeeo'] , False , None , Merge even odd lst. 
+1,e2refine_postprocess.py , ['--mergelowres'] ,-1, float , merge low resolution information of the two subset. 
+1,e2proclst.py , ['--mergesort'] , None , str , Specify the output name here. This will merge all of the input .lst files into a single (resorted) output 
+1,e2boxer_old.py , ['--micsuffix'] ,  , str ," A string denoting micrograph type. For example 'mrc', 'hdf', 'ser' ... "
+1,e2gmm_analysis.py , ['--midinput'] , None , str , middle layer input 
+1,e2gmm_refine.py , ['--midout'] ,  , str , middle layer output 
+1,e2ctf_auto.py , ['--midres'] , False , None , Perform CTF processing for projects targeting 7-15 A resolution 
+1,e2buildsets.py , ['--minbfactor'] ,0, float , Files with a B-factor lower than specified will be skipped 
+1,e2spt_extract.py , ['--mindist'] ,10, float , minimum distance between particles in A. for reextraction only 
+1,e2ssematch.py , ['--minhelix'] ,6, int , Minimum residues in a helix 
+1,e2classifykmeans.py , ['--mininclass'] ,2, int , Try to eliminate classes with fewer than specified members. Default=2 
+1,e2rct.py , ['--minproj'] ,1, int ," Minimum number of projections/images in a class average, for a class average to be used for a reconstruction, default=auto "
+1,e2spa_align.py , ['--minrespx'] ,4, int , skip the first x pixel in fourier space 
+1,e2spt_hac.py , ['--minscore'] ,0, float ," Default=0.0 (which means this option is off by default and not used). Percent of the maximum score to use as a threshold for the minimum score to allow. For example, if the best pair in the first iteration yielded a score of -15.0, and you supply --minscore=0.9, any pair-wise alignments with a score worse than -15*0.9 = -13.5 will be forbidden. Remember that 'more negative' is 'better' in EMAN2. "
+1,e2spt_ctf_old.py , ['--mintiles'] ,0, int , Minimum number of 'good tiles' in strip to consider it. 
+1,e2spt_tiltstacker.py , ['--mirroraxis'] ,  , str ," Options are x or y, and the mirrored copy of the 2-D images will be generated before being put into the tilt series. "
+1,e2ctf_auto.py , ['--missingonly'] , False , None ," Operates only on images with missing __ctf_flip_invar files, for cases where a previous run failed before completion "
+1,e2gmm_refine.py , ['--modelout'] ,  , str , output trained model file. only used when --projs is provided 
+1,e2refinemultinoali.py ," ['--models', '--model'] ", None , str ," Comma separated list of reference maps used for classification. If a single map is provided, data will be split into two groups based on similarity to the single map. "
+1,e2refinemulti.py , ['--models'] , None , str , The map to use as a starting point for refinement 
+1,e2tomogram.py , ['--moretile'] , False , None ," Sample more tiles during reconstruction. Slower, but reduce boundary artifacts when the sample is thick "
+1,e2rawdata.py , ['--moverawdata'] , False , None , Move raw data to directory ./raw_micrographs after filtration 
+1,e2boxer_old.py , ['--MPI'] , False , None , use MPI version 
+1,e2proc2d.py , ['--mraprep'] , False , None , this is an experimental option 
+1,e2proc2d.py , ['--mrc16bit'] , False , None ," (deprecated, use --outmode instead) output as 16 bit MRC file "
+1,e2proc2d.py , ['--mrc8bit'] , False , None ," (deprecated, use --outmode instead) output as 8 bit MRC file "
+1,e2a2d_stat.py , ['--multicmp'] , False , None , If set will apply a range of different comparators to the aligned particle data and generate a multicolumn text file 
+1,e2procpdb.py , ['--n1'] ,0, float , n1. 
+1,e2procpdb.py , ['--n2'] ,0, float , n2. 
+1,e2procpdb.py , ['--n3'] ,0, float , n3. 
+1,e2refine2d.py , ['--naliref'] ,5, int , Number of alignment references to when determining particle orientations 
+1,e2iminfo.py , ['--nameonly'] , False , None , Only display the matching filenames. No other info. 
+1,e2boxer_old.py , ['--nameroot'] ,  , str , Prefix of micrographs to be processed. 
+1,e2spt_sgd.py , ['--nbatch'] ,10, int , Number of batches per iteration 
+1,e2spt_autoboxer.py , ['--nbins'] ,0, int ," Used for histogram plot. Default=0 (not used). Number of bins for histogram. If not provided, the optimal bin number will be automatically calculated based on bin-width, computed using Scott's normal reference rule, width = (3.5*std)/cuberoot(n), where 'std' is the standard deviation of the distribution of scores and n is the number of values considered. Then, bins will be nbins = (max(scores) - min(scores)) / width. "
+1,e2spt_pcasplit.py , ['--nclass'] ,2, int , Number of classes. Default is 2. 
+1,e2refine_postprocess.py , ['--ncmult'] ,1.05, float , Specify how much to multiply noise cutoff during flattening amplitude correction. Default is 1.05. 
+1,e2refinetorelion3d.py , ['--nearest_neighbor'] , False , None , Perform nearest-neighbor instead of linear Fourier-space interpolation 
+1,e2spt_tiltstacker.py , ['--negativetiltseries'] , False , None ," This indicates that the tilt series goes from -tiltrange to +tiltrange, or 0 to -tiltrange, then +tiltstep to +tiltrange if --bidirectional is specified. "
+1,e2enrich.py , ['--nenrich'] ,54, int , Number of additional particles to average with each particle. Default=5 
+1,e2tomoseg_convnet.py , ['--nettag'] ,  , str , Tag of the output neural net file. Will use the tag of good particles in training set by default. 
+1,e2spt_mapptclstotomo.py , ['--new'] , False , None , new pipeline format 
+1,e2extractsubparticles.py , ['--newbox'] ,-1, int , New box size for extracted regions 
+1,e2spt_extract.py , ['--newlabel'] ,  , str , Label of output particles. Same as original particle label by default. 
+1,e2display.py , ['--newwidget'] , False , None , Use the new 3D widgetD. Highly recommended!!!! 
+1,e2spt_trajfromrefine.py , ['--nframe'] ,5, int , number of frames in the trajectory 
+1,e2tomo_stackframes.py , ['--nframes'] ,0, int ," default=0 (not used). Number of expected frames per tilt angle, used to check whether errors occur in the stacking of images. "
+1,e2stacksort.py , ['--ninput'] ,0, int , Number of input particles to read (first n in the file) 
+1,e2spt_tiltrefine.py , ['--niters'] ,4, int , Run this many iterations. Default is 4. 
+1,e2tomoseg_convnet.py , ['--nkernel'] ," 40,40,1 ", str ," Number of kernels for each layer, from input to output. The number of kernels in the last layer must be 1.  "
+1,e2gmm_refine.py , ['--nmid'] ,4, int , size of the middle layer 
+1,e2tomoseg_convnet.py , ['--nnet'] , None , str , Trained network input (nnet_save_xx.hdf) 
+1,e2boxer.py , ['--no_ctf'] , False , None , Disable CTF determination 
+1,e2bdb.py , ['--nocache'] , False , None , Don't use the database cache for this operation 
+1,e2spt_resolutionplot.py , ['--nocolor'] , False , None ," Turns the ouput png(s) into grey scale figures. Instead of using different colors to distinguish between various curves on the same plot, this option will have the program automatically use different markers in black and white for each curve. "
+1,e2proclst.py , ['--nocomments'] , False , None , Removes the comments from each line of the lst file. 
+1,e2spt_extract.py , ['--noctf'] , False , None , skip ctf correction. 
+1,e2classextract.py , ['--noderef'] , False , None ," If particle file was .lst, normally the output .lst will reference the original image file. With this option, the output will reference the .lst file instead, creating a lst pointing to another lst. "
+1,e2classifytree.py , ['--nodes'] , nodes.hdf , str ,  
+1,e2maskbyclass.py , ['--nofullresok'] , False , None , Overrides the requirement that the class-averages be made from _fullres particle images. 
+1,e2refine_easy.py , ['--nogoldfinal'] , False , None ," If selected, the final iteration will turn off gold-standard behavior and both halves will be refined from the same model. Normally used with --tophat=local. "
+1,e2spt_tiltrefine.py , ['--nogs'] , False , None , Skip gold standard. This is not a great idea... 
+1,e2spt_wedge.py , ['--nogui'] , False , None , Do not launch the GUI and set the average of the missing wedge statistics on all the volumes. 
+1,e2pathwalker.py , ['--noise'] ,0, float , Add Gaussian Noise 
+1,e2ctf2eman1.py , ['--noisemax'] ,-1, float , Maximum resolution to examine for determining the noise parameters. 
+1,e2ctf2eman1.py , ['--noisemin'] ,-1, float , Minimum resolution to examine for determining the noise parameters. 
+1,e2spt_average_multi.py , ['--nolstout'] , False , None , Skip writting lst output. 
+1,e2refinemultinoali.py , ['--nomask'] , False , None , no mask 
+1,e2msa.py , ['--nomean'] , False , None , Suppress writing the average image as the first output image 
+1,e2msa.py , ['--nomeansub'] , False , None ," Suppress subtracting the mean from each input image, also implies --nomean "
+1,e2spt_intrafsc.py , ['--nonewpath'] , False , None ," Default=False. If True, a new --path directory will not be made. Therefore, whatever is sepcified in --path will be used as the output directory. Note that this poses the risk of overwriting data. "
+1,e2ctf.py , ['--nonorm'] , False , None , Suppress per image real-space normalization 
+1,e2compress.py , ['--nooutliers'] , False , None , will set --range to eliminate a few of the most extreme values from both ends of the histogram 
+1,e2scannereval.py , ['--nopad'] , False , None , No padding between boxes 
+1,e2symsearch3d.py , ['--nopreprocprefft'] , False , None ," Turns off all preprocessing that happens only once before alignment (--normproc, --mask, --maskfile, --clip, --threshold; i.e., all preprocessing excepting filters --highpass, --lowpass, --preprocess, and --shrink. "
+1,e2make3dpar.py , ['--noradcor'] , False , None , Normally a radial correction will be applied based on the --mode used. This option disables that correction. 
+1,e2refine_easy.py , ['--norandomphase'] , False , None , Suppress independent phase randomization of input map. Only appropriate if input map has been preprocessed in some suitable fashion. 
+1,e2spt_extract.py , ['--norewrite'] , False , None , skip existing files. do not rewrite. 
+1,e2classifykmeans.py , ['--normavg'] , False , None , Normalize averages 
+1,e2basis.py , ['--normcomponent'] , False , None ," Normalize the dot product for each component of the output vector. If the basis spans the input vector, then the projected vector length will be 1, otherwise it will be less than 1. "
+1,e2fsc_real_local.py , ['--normin'] , normalize.edgemean , str , Apply a real space normalization to each input before FSC. Default normalize.edgemean. Use 'none' to disable. 
+1,e2plotEulers.py , ['--norticklabels'] , False , None , Disable radius tick labels 
+1,e2spt_simulation.py , ['--nosim'] , False , None ," Default=False. If on, the program will generate stacks of ""perfect particles"" in different random orientations, but with no missing wedge, no noise, no ctf parameters, etc. The output randstack.hdf will be identical to simptcls.hdf "
+1,e2refinemulti.py , ['--nosingle'] , False , None , Normally the multi-model refinement will be followed by N single model refinements automatically. If this is set the job will finish after making the split data sets. 
+1,e2ctf.py , ['--nosmooth'] , False , None , Disable smoothing of the background (running-average of the log with adjustment at the zeroes of the CTF) 
+1,e2plotEulers.py , ['--nothetaticklabels'] , False , None , Disable Theta tick labels 
+1,e2tomogram.py , ['--notmp'] , False , None , Do not write temporary files. 
+1,e2spt_simulation.py , ['--notrandomize'] , False , None , Default=False. This will prevent the simulated particles from being rotated and translated into random orientations. 
+1,e2spt_pcasplit.py , ['--nowedgefill'] , False , None , Do not fill the missing wedge before classification. 
+1,e2spt_ctf_old.py , ['--nozcorrection'] , False , None ," If you    turn on this option and --subtiltsdir is provided, the position in Z of each subtomogram   will not be considered for CTF correction "
+1,e2tomogram.py , ['--npk'] ,20, int , Number of landmarks to use (such as gold fiducials). Default is 20. 
+1,e2spt_simulation.py , ['--nptcls'] ,10, int , Default=10. Number of simulated subtomograms to generate per reference model supplied. 
+1,e2gmm_refine.py , ['--npts'] ,-1, int , number of points to initialize.  
+1,e2tomo_mwfill.py , ['--nsample'] ,2000, int , number of samples 
+1,e2spt_binarytree.py , ['--nseedlimit'] ,0, int ," Maximum number of particles   to use. For example, if you supply a stack with 150 subtomograms, the program will   automatically select 128 as the limit to use because it's the largest power of 2 that is   smaller than 150. But if you provide, say --nseedlimit=100, then the number of particles   used will be 64, because it's the largest power of 2 that is still smaller than 100. "
+1,e2erasefiducials.py , ['--nsigmas'] ,3, float , Default=3.0. Number of standard deviations above the mean to determine pixels to mask out (erase). 
+1,e2spt_align.py , ['--nsoln'] ,1, int , number of solutions to keep at low resolution for the aligner 
+1,e2align3d.py , ['--nsolns'] ,1, int ," number of peaks in the global search to refine, default=1.0 "
+1,e2stacksort.py , ['--nsort'] ,0, int , Number of output particles to generate (mainly for reverse mode) 
+1,e2spt_trajfromrefine.py , ['--nstd'] ,2, float , build trajectories from -n x std to n x std of eigenvalues. default is 2 
+1,e2spt_subtilt_old.py , ['--ntiltslow'] ,0, int ," Default=0 (not used). If you supply an even number 1 will be added to it (for example, 4 will be turned into 5). If --ntiltslow>0, it specifies the number of tiltimages to keep in each subtiltseries, starting from the zero-tilt image and incorporating particles from right and left, one at a time. For example, in a tiltseries from -60 to 60 degress with a step size of 2 degrees, --ntiltslow=5 would keep tiltimages at angles 0,2,-2,-4,-4. "
+1,e2spt_subtilt_old.py , ['--ntiltslowneg'] ,0, int ," Default=0 (not used). If --ntiltslowneg>0, it specifies the number of tiltimages to keep in each subtiltseries, starting from the zero-tilt image and progressively incorporating particles from negatively tilted images only. For example, in a tiltseries from -60 to 60 degress with a step size of 2 degrees, --ntiltslowneg=5 would keep tiltimages at angles 0,-2,-4,-6,-8. "
+1,e2spt_subtilt_old.py , ['--ntiltslowpos'] ,0, int ," Default=0 (not used). If --ntiltslowpos>0, it specifies the number of tiltimages to keep in each subtiltseries, starting from the zero-tilt image and progressively incorporating particles from positively tilted images only. For example, in a tiltseries from -60 to 60 degress with a step size of 2 degrees, --ntiltslowpos=5 would keep tiltimages at angles 0,+2,+4,+6,+8. "
+1,e2initialmodel_sgd.py , ['--ntry'] ,10, int , The number of different initial models to generate in search of a good one 
+1,e2proclst.py , ['--numaslist'] , None , str , extract the particle indexes (numbers) only from an lst file into a text file (one number per line). 
+1,e2refinetorelion2d.py , ['--numclasses'] ,8, int , # of classes 
+1,e2refinetorelion2d.py , ['--numiter'] ,25, int , # of iterations to refine 
+1,e2speedtest.py , ['--old'] , False , None , old rtf+refine aligner 
+1,e2refinemultinoali.py , ['--oldpath'] , None , str ," Path to the original refinement (input, required) "
+1,e2procpdb.py , ['--omega'] ,0, float , omega. 
+1,e2pdb2mrc.py , ['--omit'] ,0, float , Randomly omit this percentage of atoms in the output map. 
+1,e2classaverage.py , ['--oneclass'] , None , int , Create only a single class-average. Specify the number. 
+1,e2classifykmeans.py , ['--onein'] , False , None ," Read 1-d input images from a single 2-D image (oneout in e2basis.py, default out e2msa.py) "
+1,e2classifykmeans.py , ['--oneinali'] , False , None ," Read 1-d input images from a single 2-D image where the first 4 elements on each row are da,dx,dy,flip "
+1,e2basis.py , ['--oneout'] , False , None , Output is a single 2-D image rather than a set of 1-D images 
+1,e2refinetorelion3d.py , ['--onlyflipphase'] , False , None , (T/F)Only flip phases? 
+1,e2ctf.py , ['--onlynew'] , False , None , Will skip any files for which __ctf_flip files already exist. 
+1,e2ctf.py , ['--onlynoinvar'] , False , None , Will skip any files for which __ctf_flip_invar files already exist. 
+1,e2ddd_movie.py , ['--optalpha'] ,0.1, float ," Penalization to apply during robust regression. Default is 0.1. If 0.0, unpenalized least squares will be performed (i.e., no trajectory smoothing). "
+1,e2ddd_movie.py , ['--optbox'] ,512, int , Box size to use during alignment optimization. Default is 512. 
+1,e2ddd_movie.py , ['--optccf'] , robust , str , Use this approach to determine relative frame translations. Note: 'robust' utilizes a bimodal Gaussian to robustly determine CCF peaks between pairs of frames in the presence of a fixed background. 
+1,e2ddd_movie.py , ['--optstep'] ,448, int , Step size to use during alignment optimization. Default is 448. 
+1,e2classextract.py , ['--orientclassn'] , None , str , Specify a comma separated list of class numbers to extract in oriented particles mode. 
+1,e2classextract.py , ['--orientcls'] , None , str , Filename of a cls_result_xx or classmx_xx file.  
+1,e2classextract.py , ['--orientedparticles'] , None , str , Filename of the set (.lst file) with the particles used for the --orientcls file 
+1,e2classifykmeans.py , ['--original'] , None , str ," If the input stack was derived from another stack, you can provide the name of the original stack here "
+1,e2relionsubsettoset.py , ['--origname'] , False , None , Adds the original STAR name as a comment on each image 
+1,e2extractsubparticles.py , ['--outermask'] , None , str ," Optional. If specified, this mask is projected into 2-D and used to mask out noise outside the subunit. If not specified a thresholded subunitmask is used. Only useful with --masked.  "
+1,e2classifykmeans.py , ['--outlierclass'] , False , None ," If selected, classes with fewer than mininclass particles will move permanently to an outlier class (the last class) "
+1,e2proc2d.py , ['--outnorescale'] , False , None ," If specified, floating point values will not be rescaled when writing data as integers. Values outside of range are truncated. "
+1,e2compress.py , ['--outpath'] , None , str , Specify a destination folder for the compressed files. This will avoid overwriting existing files. 
+1,e2ctf_auto.py , ['--outputonly'] , False , None ," Skips all of the initial steps, and just generates the final output, assuming previous steps completed successfully "
+1,e2tomoseg_convnet.py , ['--outtag'] ,  , str ," Tag of the segmentation output. When left empty, the segmentation will be saved to 'segmentations/<tomogram name>__<neural network tag>_seg.hdf'. When set, the output will be written to 'segmentations/<tomogram name>__<outtag>.hdf' "
+1,e2spt_isr.py , ['--outxsize'] ,0, int , Clip the output volume in x to this size. The default size is the nx size of the input images. 
+1,e2spt_isr.py , ['--outysize'] ,0, int , Clip the output volume in y to this size. The default size is the ny size of the input images. 
+1,e2spt_isr.py , ['--outzsize'] ,0, int , Clip the output volume in z to this size. The default size is the nx size of the input images. 
+1,e2fsc.py , ['--overlap'] ,4, int , Amount of oversampling to use in local resolution windows. Larger value -> larger output map 
+1,e2ctf.py , ['--oversamp'] ,1, int , Oversampling factor 
+1,e2erasefiducials.py , ['--oversample'] ,4, int , Oversample noise image to smooth transitions from regions with different noise. 
+1,e2spt_extract.py , ['--padtwod'] ,2, float , padding factor 
+1,e2classifyligand.py , ['--pairmask'] , False , None , Will use the ref1/ref2 pair to generate a mask which is applied after subtracting ref1 from the particle 
+1,e2spt_refine_new.py ," ['--parallel', '-P'] ", thread:4 , str ," Run in parallel, specify type:<option>=<value>:<option>=<value>. See http://blake.bcm.edu/emanwiki/EMAN2/Parallel "
+1,e2procheader.py , ['--params'] , None , str , Comma separated pairs of parameter:value. The parameter will be changed to the value specified. 
+1,e2spt_refinemulti_noali.py , ['--parm'] ,  , str ," particle_parms_xx.json file from spt_refine, this provides both the input particles and alignment parameters "
+1,e2tomoseg_buildtrainset.py , ['--particles_label'] , None , str , Input labels for particle file 
+1,e2tomoseg_buildtrainset.py , ['--particles_raw'] , None , str , Input raw particle file 
+1,e2gmm_refine.py , ['--pas'] ,110, str ," choose whether to adjust position, amplitude, sigma. use 3 digit 0/1 input. default is 110, i.e. only adjusting position and amplitude "
+1,e2tomogram.py , ['--patchtrack'] ,-1, int , use patch tracking before landmark based alignment. input 0/1/2 as the number of patch tracking iterations. 
+1,e2refinemultinoali.py ," ['--path', '--newpath'] ", None , str , Path to the classified results (output). Default = multinoali_XX 
+1,e2display.py , ['--pdb'] , None , str , <pdb file> Show PDB structure. 
+1,e2pdbviewer.py , ['--pdbfiles'] , None , str , Specify one or mode pdb files you   wish to view 
+1,e2segment3d.py , ['--pdbout'] , None , str , Name of file to write center of segments in PDB format. 
+1,e2ctf.py , ['--phaseflip'] , False , None , Perform phase flipping after CTF determination and writes to specified file. 
+1,e2ctf.py , ['--phasefliphp'] , False , None , Perform phase flipping with auto-high pass filter (deprecated) 
+1,e2ctf.py , ['--phaseflipproc'] , None , None , If specified _proc particles will be generated. Typical = filter.lowpass.gauss:cutoff_freq=.07 
+1,e2ctf.py , ['--phaseflipproc2'] , None , None , If specified _proc particles will be generated. Typical = filter.highpass.gauss:cutoff_freq=.005 
+1,e2ctf.py , ['--phaseflipproc3'] , None , None , If specified _proc particles will be generated. Typical = math.meanshrink:n=2 
+1,e2ctf.py , ['--phaseflipproc4'] , None , None , If specified _proc particles will be generated. 
+1,e2ctf.py , ['--phaseflipproc5'] , None , None , If specified _proc particles will be generated. 
+1,e2ctf.py , ['--phaseflipsmall'] , False , None , Produce an output set with 1/2 size particles for faster initial model work (deprecated) 
+1,e2spt_ctf_old.py , ['--phaseflipstrips'] , False , None ," This will   perform phase flipping on images of an aligned tilt series on a strip-by-strip basis,   assuming the supplied ctf parameters correspond to the proper values at the tilt axis,   either the same values for all images (--defocus,--ampcont,--cs,--apix,--voltage,--bfactor)   or a different set for each (--ctfparamsfile), taking into account the tilt angle for    each image (--tltfile), which should be supplied through an IMOD-like .tlt file. "
+1,e2spt_ctf_old.py , ['--phaseflipwhole'] , False , None , This    will perform phase flipping on the entire image for each image in an aligned tilt    series using the CTF parameters supplied. 
+1,e2procpdb.py , ['--phi'] ,0, float , phi. 
+1,e2align3d.py , ['--phi0'] ,0, float ," lower bound for the inplane angle phi, default=0.0 "
+1,e2align3d.py , ['--phi1'] ,359, float ," Upper bound for the inplane angle phi, default=359.0 "
+1,e2stackanim.py , ['--pingpong'] , False , None , Cycle through the sequence forwards then backwards 
+1,e2tomogram.py , ['--pk_maxval'] ,-5, float , Maximum Density value of landmarks (n sigma). Default is -5 
+1,e2tomogram.py , ['--pk_mindist'] ,0.125, float ," Minimum distance between landmarks, as fraction of micrograph length. Default is 0.125 "
+1,e2spt_refine.py , ['--pkeep'] ,0.8, float , fraction of particles to keep 
+1,e2tomogram.py , ['--pkkeep'] ,0.9, float , Fraction of landmarks to keep in the tracking. 
+1,e2proc2d.py , ['--plane'] , xy , str ," Change the plane of image processing, useful for processing 3D mrcs as 2D images. "
+1,e2tiltvalidate.py , ['--planethres'] ,360, float ," Maximum out of plane threshold for the tiltaxis. 0 = perfectly in plane, 1 = normal to plane "
+1,e2display.py , ['--plot'] , False , None , Data file(s) should be plotted rather than displayed in 2-D 
+1,e2display.py , ['--plot3d'] , False , None , Data file(s) should be plotted rather than displayed in 3-D 
+1,e2spt_resolutionplot.py , ['--plotonly'] , None , str ," FSC curves to plot in separate plots. Skips fsc curve generation. Provide .txt. files separated by commas --plotonly=file1.txt,file2.txt,file3.txt etc... "
+1,e2classifyligand.py , ['--plotout'] , plot_ligand.txt , str , Name of a text file for the classification plot. 
+1,e2spt_align_subtlt.py , ['--plst'] , None , str , list of 2d particle with alignment parameters. will reconstruct before alignment. 
+1,e2plotEulers.py , ['--pointwidth'] ,1, float , The relative scale of the points plotted. The absoule size is dpenedent on particle count 
+1,e2spt_resolutionplot.py , ['--polydegree'] , None , int , Degree of the polynomial to fit. 
+1,e2tomoseg_convnet.py , ['--poolsz'] ," 2,1,1 ", str , Pooling size for each layer. Note the number of layers should be the same as the nkernel option.  
+1,e2spt_extract.py , ['--postmask'] ,  , str , masking after 3d particle reconstruction. The mask is transformed if json  
+1,e2spt_extract.py , ['--postproc'] ,  , str , processor after 3d particle reconstruction 
+1,e2tomogram.py , ['--posz'] , False , None , auto positioning along z axis 
+1,e2align3d.py , ['--prec'] ,0.01, float ," Precision to determine what solutions are the 'same' used only statistics output, default=0.01 "
+1,e2tomo_tiltstacker.py , ['--precheckfiles'] , False , None ," ""Make sure that only valid images found by --input=* are processed -if unreadable or bad images are fed to the program, it might crash. "
+1,e2spt_simulation.py , ['--preferredside'] , None , float ," Default=None. Standard deviation in degrees to use to generate a set of orientations with a mean altitude equal to 90 degrees. Works in conjuction with --preferredtop, in which case half of the particles will be biased towards 'top' view orientations and half towards 'side' view orientations. "
+1,e2spt_simulation.py , ['--preferredtop'] , None , float ," Default=None. Standard deviation in degrees to use to generate a set of orientations with a mean altitude equal to 180 and 0 degrees (half of the particles will be oriented around mean alt=0, half around mean alat=180). Works in conjuction with --preferredside, in which case half of the particles will be biased towards 'top' view orientations and half towards 'side' view orientations. "
+1,e2tomopreproc.py , ['--prenadmaxite'] ,0, int , Default=0. Requires IMOD to be installed. Used to apply prenad filtering to a tiltseries. This is the --maxite parameter in IMOD's preNAD program (maximum number of iterations). 
+1,e2tomopreproc.py , ['--prenadminite'] ,0, int , Default=0. Requires IMOD to be installed. Used to apply prenad filtering to a tiltseries. This is the --minite parameter in IMOD's preNAD program (minimum number of iterations). 
+1,e2tomopreproc.py , ['--prenadsigma'] ,0, int , Default=0. Requires IMOD to be installed. Used to apply prenad filtering to a tiltseries. This is the --sigma parameter in IMOD's preNAD program (initial sigma for 'smoothing structure tensor'). 
+1,e2refinetorelion3d.py , ['--print_symmetry'] , False , None ," Print all symmetry transformation matrices, and exit "
+1,e2ptcltrace.py , ['--printbad'] ,180, float , Print the particle number if the orientation mismatch is larger than the specified angle in the last pair of files 
+1,e2tomoseg_preproc.py , ['--proc1'] , filter.lowpass.gauss:cutoff_abs=.25 , None , If specified _proctag files will be generated. Typical = filter.lowpass.gauss:cutoff_abs=.25 
+1,e2tomoseg_preproc.py , ['--proc2'] , filter.highpass.gauss:cutoff_pixels=5 , None , If specified _proctag tomograms will be generated. Typical = filter.highpass.gauss:cutoff_pixels=5 
+1,e2tomoseg_preproc.py , ['--proc3'] , normalize , None , If specified _proctag tomograms will be generated. 
+1,e2tomoseg_preproc.py , ['--proc4'] , threshold.clampminmax.nsigma:nsigma=3 , None , If specified _proctag tomograms will be generated. Typical = threshold.clampminmax.nsigma:nsigma=3 
+1,e2tomoseg_preproc.py , ['--proc5'] ,  , None , If specified _proctag tomograms will be generated. 
+1,e2ddd_external.py , ['--program'] , imod_alignframes , str ," Use this external program to align frames. Choose between imod_alignframes and ucsf_motioncor2. Note, programs must be accessible from your PATH environment variable. "
+1,e2msa.py , ['--projin'] , None , str ," When generating subspace projections, use this file instead of the input used for the MSA "
+1,e2gmm_refine.py , ['--projs'] ,  , str , projections with orientations (in hdf header or comment column of lst file) to train model 
+1,e2spt_autoboxer.py , ['--pruneccc'] , False , None , Pruned based on ccc mean and sigma. 
+1,e2spt_autoboxer.py , ['--pruneprj'] , False , None ," Generate a projection along the z-axis of potential particles, and compare to a projection of the template. "
+1,e2spt_ctf_old.py , ['--prunetest'] ,0.1, float ," Default=0.1.   Decimal number that indicates the percentage of --tilesize (in terms of side length)    to tolerate of 'bad' values (i.e., empty regions of constant density) at the corners,    and still include the tile for CTF fitting. For example, if --tilesize=256, and   --prunetest=0.1, a box of ~25-26 pixels each corner of every tile will be analyzed   and if the standard deviation of any of the corners is 0, the tile will be excluded.   To turn off this option supply --prunetest=-1.0. The program automatically adjusts    things so that the minimum size of regions at the corners to check will be 4x4 pixels. "
+1,e2procpdb.py , ['--psi'] ,0, float , psi in spider convention. 
+1,e2spt_tomoctf.py , ['--psrange'] ," 10,15,5 ", str ," phase shift range (start, end, step). default is 10, 15, 5 "
+1,e2helixboxer.py ," ['--ptcl-coords', '-P'] ", None , str , Save coordinates of the centers of particles to the specified formatted text file 
+1,e2helixboxer.py , ['--ptcl-images-stack-mode'] , multiple , str ," Options for saving particle images to stack files. 'single' uses one stack file, 'multiple' (default) uses one stack file per helix, 'none' uses a file for each particle and is always used when the output file format does not support image stacks. "
+1,e2helixboxer.py ," ['--ptcl-images', '-p'] ", None , str , Save images of the particles. The file name specified will have helix numbers (and particle numbers if the file type does not support image stacks) added to it. 
+1,e2helixboxer.py , ['--ptcl-length'] ,-1, int , Particle length in pixels 
+1,e2helixboxer.py , ['--ptcl-norm-edge-mean'] , False , None , Apply the normalize.edgemean processor to each particle. 
+1,e2helixboxer.py , ['--ptcl-not-rotated'] , False , None ," Particles are oriented as on the micrograph. They are square with length max(ptcl_length, ptcl_width). "
+1,e2helixboxer.py , ['--ptcl-overlap'] ,-1, int , Particle overlap in pixels 
+1,e2helixboxer.py , ['--ptcl-width'] ,-1, int , Particle width in pixels 
+1,e2spt_autoboxer.py , ['--ptclradius'] ,0, int , The estimated radius of the particle in pixels. 
+1,e2gmm_refine.py , ['--ptclsin'] ,  , str , particles input for alignment 
+1,e2boxer.py , ['--ptclsize'] ,-1, int ," Longest axis of particle in pixels (diameter, not radius) "
+1,e2gmm_refine.py , ['--ptclsout'] ,  , str , aligned particle output 
+1,e2spt_autoboxer.py , ['--ptclstack'] ,  , str ," Name of the stack containing a few sample particles picked from the tomogram, used to create an initial template.                with which to search for particles throughout the tomogram. "
+1,e2procpdb.py , ['--q'] ,0, float , q in sgirot convention. 
+1,e2tiltvalidate.py , ['--quaternion'] , False , None , Use Quaterions for tilt distance computation 
+1,e2pdb2mrc.py , ['--quick'] , False , None , Use a slight approximation to the Gaussian during insertion. Does not support B-factors. 
+1,e2pdb2mrc.py , ['--quiet'] , False , None , Verbose is the default 
+1,e2tiltvalidate.py , ['--radcut'] ,-1, float ," For use in the GUI, truncate the polar plot after R. -1 = no truncation "
+1,e2refinemulti.py , ['--randclassify'] , False , None , Generate initial maps by randomly assigning the particles in each class to each model after the first iteration. 
+1,e2spt_average_multi.py , ['--randnclass'] ,-1, int , split into N random classes. ignore refs 
+1,e2spt_extractfromseg.py , ['--random'] ,-1, int ," Specifying N will randomly seed N particles on density above threshold. default is -1, means only choosing peaks. Useful for non-globular particles "
+1,e2proc2d.py , ['--randomn'] ,0, int , Selects a random subset of N particles from the file to operate on. 
+1,e2refinemultinoali.py , ['--randomphase'] ,0, float , Randomize initial model to certain frequency. 
+1,e2initialmodel.py , ['--randorient'] , False , None ," Instead of seeding with a random volume, seeds by randomizing input orientations "
+1,e2refinemulti.py , ['--randphase'] , False , None , Generate initial maps by randomizing the phase of the given model. 
+1,e2spt_simulation.py , ['--randstack'] ,  , str , Default=None. If you already have a stack of particles (presumably in random orientations) you can supply it here. 
+1,e2spt_refinemulti_noali.py , ['--randsym'] , False , None , randomize symmetry unit assignment at the begining. seems to be helpful for high symmetry without obvious asymetrical features.. 
+1,e2ddd_movie.py , ['--rangeali'] ,  , str , Average frames 'n1-n2' 
+1,e2refinetofrealign.py , ['--rclas'] ,10, float , High resloution limit used for classification 
+1,e2align3d.py , ['--rcmp'] , ccc , str ," comparitor and params to use for the 3D refiner, default='ccc' "
+1,e2basis.py , ['--recalcmean'] , False , None , This will recompute the mean from the input set and subtract before projection. Useful if a different normalization is used than in the original basis file. 
+1,e2spt_classaverage.py , ['--recompute'] , False , None ," default=False. This parameter requires --classmx and will recompute averages (for example, even and odd) based on the classmx file and the alignment parameters specified therein for each particle. No refinements will follow. This is exclusively for recomputing averages. "
+1,e2tomogram.py , ['--reconmode'] , trilinear , str , Intepolation mode for reconstruction. default is trilinear. check e2help.py for details. Not recommended to change. 
+1,e2maskbyclass.py , ['--redobispec'] , False , None , Recomputes bispectra from masked particles 
+1,e2maskbyclass.py , ['--redoharmonic'] , False , None , Recomputes harmonic power from masked particles 
+1,e2enrich.py , ['--redoinvar'] , None , None , Recomputes invariants 
+1,e2ddd_movie.py , ['--ref_label'] ,  , str ," Optional: Specify a label for the averaged dark and gain references when using multiple, individual frames. A labeled will be written as movierefs/dark_<label>.hdf and movierefs/gain_<label>.hdf. Note: This option is ignored when using a single reference image/stack. "
+1,e2euler_refine.py , ['--ref_volume'] , None , None , The reference volume for orientation determination. 
+1,e2classifyligand.py , ['--ref1'] , None , str ," Rather than using a mask, ref1/ref2 permit using a pair of volumes for classification. "
+1,e2classifyligand.py , ['--ref2'] , None , str ," Rather than using a mask, ref1/ref2 permit using a pair of volumes for classification. "
+1,e2spt_refinemulti_old.py , ['--refgenmethod'] , bt , str ," Method for generating the initial reference(s). Options are 'bt', for binary tree (see e2spt_binarytree.py), 'hac', for hierarchical ascendant classification (see e2spt_hac.py), or 'ssa' for self-symmetry alignment (see e2symsearch3d.py). Default=bt "
+1,e2procheader.py , ['--refheader'] , None , str ," If supplied, the header of this image will be copied to the header of all images in --input. "
+1,e2proclst.py , ['--refile'] , None , str ," similar to retype, but replaces the full filename of the source image file with the provided string "
+1,e2spt_subtlt_local.py , ['--refine_defocus'] , False , None , do defocus refinement. need aliptcls input. doesn't work with refine_trans or rot yet.. 
+1,e2spt_subtlt_local.py , ['--refine_rot'] , False , None , do translational-rotational alignment. better to start from an existing translational alignment. 
+1,e2spt_subtlt_local.py , ['--refine_trans'] , False , None , do translational alignment. 
+1,e2ctf.py , ['--refinebysnr'] , False , None , Refines the defocus value by looking at the high resolution smoothed SNR. Requires good starting defocus. Important: also replaces the SNR with a smoothed version. 
+1,e2emx.py , ['--refinedefocus'] , False , None ," Will use EMAN2 CTF fitting to refine the defocus by SNR optimization (+-0.1 micron from the current values, no astigmatism adjustment) "
+1,e2classextract.py , ['--refinemulti'] , False , None ," Extracts particles based on the model_id header value in each class-average, normally produced by e2refinemulti "
+1,e2spt_classaverage.py , ['--refinemultireftag'] ,  , str , Default=''. DO NOT USE THIS PARAMETER. It is passed on from e2spt_refinemulti.py if needed. 
+1,e2emx.py , ['--refitdefocus'] , False , None ," Will use EMAN2 CTF fitting to refit the defocus values (+-0.1 micron, astigmatism unchanged) "
+1,e2align2d.py , ['--refn'] ,0, int , Number of the reference image in 'ref'. Default=0 
+1,e2spt_classify.py , ['--refs'] , None , str , 3D reference volumes 
+1,e2refinetorelion2d.py , ['--regparam'] ,1, float , Regularization Parameter T (weights experimental data vs. prior 
+1,e2procjson.py , ['--remaplstkeys'] , False , None ," For JSON files where the keys are image name,# pairs referencing a .lst file, will replace each key with the original image "
+1,e2procjson.py , ['--removekey'] , None , str , DANGER! This will remove all data associated with the named key from all listed .json files. 
+1,e2import.py , ['--removesub'] , None , str , If set will exclude the specified string from imported filenames 
+1,e2spt_tiltstacker.py , ['--replacestring'] ,  , str ," default=None. Comma separated strings to replace in the input filenames with an underscore. For example, if --stem2stack=data, and this triggers the program to find images named 'data[1].mrc', 'data[2].mrc', etc., supplying --replacestring=[,] will first change the filename of the images to 'data_1_.mrc, data_2_.mrc, etc. "
+1,e2spt_tiltrefine.py , ['--reprj_clip'] ,-1, int , clip after reprojection 
+1,e2spt_tiltrefine.py , ['--reprj_offset'] ,  , str , Offset translation before reprojection 
+1,e2spt_tiltrefine.py , ['--reproject'] , False , None , Reproject 3D particles into 2D particles. 
+1,e2classaverage.py , ['--resample'] , False , None ," If set, will perform bootstrap resampling on the particle data for use in making variance maps. "
+1,e2refinetofrealign.py , ['--reshigh'] ,25, float , Resolution of the data included in the alignment. This is the high resolution value. ex:25 
+1,e2refinevariance.py , ['--reslimit'] ,10, float , Low-pass filter the individual maps to target the variance to the specified resolution in A. Variance maps cannot be filtered as a post-processing operation. Default = 10 
+1,e2refinetofrealign.py , ['--reslow'] ,200, float , Resolution of the data included in the alignment. This is the low resolution value. ex:200 
+1,e2evalrefine.py , ['--resolution'] , False , None , generates a resolution and convergence plot for a single refinement run. 
+1,e2spt_tiltstacker.py , ['--restack'] ,  , str ," .hdf, or 3D .st, .mrc, .ali, or .mrcs stack file to restack. This option can be used with --include or --exclude to unstack only specific images. Recall that the FIRST image INDEX is 0 (but unstacked image will be numbered from 1). --exclude=1,5-7,10,12,15-19 will exclude images 1,5,6,7,10,12,15,16,17,18,19 "
+1,e2bdb.py , ['--restore'] , None , str , Write changes in the derived virtual stack back to the original stack 
+1,e2ddd_movie.py , ['--reverse_dark'] , False , None , Flip dark reference along y axis. Default is False. Transformation order is rotate then reverse. 
+1,e2ddd_movie.py , ['--reverse_gain'] , False , None , Flip gain reference along y axis (about x axis). Default is False. Transformation order is rotate then reverse. 
+1,e2stacksort.py , ['--reverse'] , False , None , Sort in order of least mutual similarity 
+1,e2spt_tempmatch.py , ['--rmedge'] , False , None , Remove particles on the edge. 
+1,e2spt_tempmatch.py , ['--rmgold'] , False , None , Remove particles near gold fiducial. 
+1,e2procpdb.py , ['--rot'] , None , str ," Rotate map. Specify az,alt,phi or convention:par=val:par=val:...  eg - mrc:psi=22:theta=15:omega=7 "
+1,e2ddd_movie.py , ['--rotate_dark'] ,0, str ," Rotate dark reference by 0, 90, 180, or 270 degrees. Default is 0. Transformation order is rotate then reverse. "
+1,e2ddd_movie.py , ['--rotate_gain'] ,0, str ," Rotate gain reference by 0, 90, 180, or 270 degrees. Default is 0. Transformation order is rotate then reverse. "
+1,e2proc2d.py , ['--rotavg'] , False , None , Compute the 1-D rotational average of each image as a final step before writing the output 
+1,e2spt_autoboxer.py , ['--rotsearch'] , False , None ," At each translation position, vary euler angles as well when searching for particles. "
+1,e2ddd_movie.py , ['--round'] , float , None ," If float (default), apply subpixel frame shifts. If integer, use integer shifts. "
+1,e2refinetofrealign.py , ['--rrec'] ,10, float , Resolution of reconstruction in angstroms. It is the resolution to which the reconstruction is calculated. 
+1,e2symbest.py , ['--rtp'] , False , None , make a rotational footprint 
+1,e2ctffind3util.py , ['--runctffind3'] , False , None , Run ctffind3 on the selected micrographs? 
+1,e2ctffind3util.py , ['--runctffind4'] , False , None , Run ctffind4 on the selected micrographs? 
+1,e2filtertool.py , ['--safemode'] , False , None , Safe mode without the timer... 
+1,e2fsc_real_local.py , ['--sampfscs'] , False , None ," If set, full fsc curves are stored for a range of specific locations within the volume "
+1,e2spt_average_multi.py , ['--sample'] ,-1, int , use only N samples. 
+1,e2ctfsim.py , ['--samples'] ,256, int , Number of samples in the plotted curve 
+1,e2helixboxer.py , ['--save-ext'] , hdf , str ," The default file extension to use when saving 'particle' images. This is simply a convenience for improved workflow. If a format other than HDF is used, metadata will be lost when saving. "
+1,e2spt_ctf_old.py , ['--save2d'] , False , None ," If on, the CTF   corrected subtiltseries will be saved as 2-D imag stacks [one per particle]. "
+1,e2spt_ctf_old.py , ['--save3d'] , False , None ," If on, the CTF   corrected subtiltseries will be reconstrcuted into subvolumes and save into a stack.   Options --reconstructor, --pad2d, --pad3d are used if --save3d is on. "
+1,e2spt_classaverage.py , ['--saveallpeaks'] , False , None ," Default=False. If set, this will save the alignment information and score for all examined peaks --npeakstorefine during coarse alignment. "
+1,e2spt_subtilt_old.py , ['--saveanglestacks'] ,  , str ," Default=None. Comma separated values of tilt angle indexes for which you want to save all particles as a stack. For example, if you want all particles from the 0 tilt image, you would provide the index for that image in the tilt series. In a tilt series with 61 images (1-61), the 0 tilt image is probably image number 31, so you would say --saveanglestakcs=31, and all the particles from the 0 tilt image would be put into a single HDF stack. "
+1,e2tomo_ctfraw.py , ['--savefft'] , False , None , Default=False. Saves the average of the ffts of the tiles for an image or its strips. 
+1,e2spt_ctf_old.py , ['--saveffts'] , False , None ," Saves   ffts of each average of tiles per strip, for all images. "
+1,e2spt_intrafsc.py , ['--savehalftiltseries'] , False , None ," Default=False. If this parameter is on, the odd and even subtiltseries will be saved. "
+1,e2spt_intrafsc.py , ['--savehalfvolumes'] , False , None ," Default=False. If this parameter is on, the odd and even volumes will be saved. "
+1,e2spt_simulation.py , ['--savemissingtilts'] , False , None , Default=False. Save tilt images corresponding to the missing wedge region. 
+1,e2spt_simulation.py , ['--savenoise'] , False , None ," Default=False. If on, it saves the noise stack for each particle. This can be useful for testing alignment under varying SNR, so that the same noise (just at a different ratio/level) is tested. "
+1,e2make3dpar.py , ['--savenorm'] , None , str ," If set, will save the normalization volume showing Fourier space filling to the specified file "
+1,e2spt_simulation.py , ['--saveorthostack'] , False , None ," Default=False. If on, --nptcls is ignored and you get 3 subtomograms (simulated from the model supplied) which are orthogonal to each other. "
+1,e2spt_tiltrefine_oneiter.py , ['--savepath'] , False , None , save alignment path in a json file for testing. 
+1,e2spt_autoboxer.py , ['--savepreprocessed'] , False , None , Default=False. Will save the intermediate steps of preprocessing of the tomogram. 
+1,e2spt_simulation.py , ['--saveprjs'] , False , None , Default=False. Save the projections (the 'tilt series') for each simulated subtomogram. 
+1,e2spt_simulation.py , ['--saverandstack'] , True , None ," Default=True. DEPREPCATED. [This option is on by default and there's no way to turn it off. The stack of randomly oriented particles before simulating the missing wedge WILL be saved]. Save the stack of randomly oriented particles, before subtomogram simulation (before the missing wedge and noise are added). "
+1,e2classvsproj.py , ['--savesim'] , None , str ," Save all of the similarity results to a text file. (ptcl#,proj#,alt,az,sim) "
+1,e2tvrecon.py , ['--savesinograms'] , False , None ," If provided,   this option will save the sinogram for each 2-D slice (along Y) in the reconstruction    to disk. "
+1,e2tvrecon.py , ['--saveslices'] , False , None ," If provided,   this option will save each reconstructed 2-D slice (along Y) to disk. "
+1,e2spt_ctf_old.py , ['--savestriptiles'] , False , None ," Saves   all tiles for all strips, for all images, in one stack per strip. "
+1,e2spt_simulation.py , ['--savetlt'] , False , None , Default=False. Save a text file with .tlt extension (as in IMOD) containing the tilt angles for the simulated tomogram and/or subtomograms. 
+1,e2spt_isr.py , ['--savevols'] , False , None , This option will save the reconstructed volumes at each iteration. 
+1,e2spt_align.py , ['--scipytest'] , False , None , test scipy optimizer. 
+1,e2a2d_average.py , ['--scorebands'] ,0, int ," If specified will generate averages over N bands of 'score' values, including only particles in each band. "
+1,e2a2d_average.py , ['--scorebandsali'] ,0, int ," If specified will generate averages over N bands of 'score' values, including only particles in each band, and iteratively realigning in each band. "
+1,e2a2d_average.py , ['--scorebestset'] ,0, int , Will extract the N particles with the best scores to make a new set 
+1,e2a2d_average.py , ['--scoreprogressive'] ,0, int ," If specified will generate progressive averages over N bands of 'score' values, including all particles starting with the best through the progressive bands. "
+1,e2parallel.py , ['--scratchdir'] , /tmp , str , Internal use only. Used by the MPI client 
+1,e2make3dpar.py , ['--seedweight'] ,1, float ," If seedmap specified, this is how strongly the seedmap will bias existing values. 1 is default, and is equivalent to a one particle weight. "
+1,e2make3dpar.py , ['--seedweightmap'] , None , str , Specify a full map of weights for the seed. This must be in the same format as the --savenorm output map. 
+1,e2tomoseg_buildtrainset.py , ['--segment'] , False , None , Segment particles. 
+1,e2segment3d.py , ['--segout'] , None , str , Output stack for individual segmented volumes 
+1,e2proc2d.py , ['--select'] , None , str , Works only on the images in named selection set from bdb:select 
+1,e2stacksort.py , ['--seqali'] , False , None , Align each particle to the previous particle before saving with rotate_translate_tree. No flip in alignment. Aligns stack #2 instead if provided. 
+1,e2stacksort.py , ['--seqalicen'] , False , None ," Align each particle to the previous particle before saving, with a postalignment recentering. No flip in alignment. Aligns stack #2 instead if provided. "
+1,e2display.py , ['--server'] , False , None , Launch a display server which can communicate with other EMAN3 programs 
+1,e2display.py , ['--serverport'] ,31980, int ," Specify the port to listen to, needed for multiple users on one machine, default=31980 "
+1,e2spt_simulation.py , ['--set2tiltaxis'] , False , None , Default=False. Simulate particles along the tilt axis only. 
+1,e2procjson.py , ['--setoption'] , None , str ," Set a single option in application preferences, eg - display2d.autocontrast:true "
+1,e2proc2d.py , ['--setsfpairs'] , False , None ," Applies the radial structure factor of the 1st image to the 2nd, the 3rd to the 4th, etc "
+1,e2classaverage.py , ['--setsfref'] , False , None , This will impose the 1-D structure factor of the reference on the class-average (recommended when a reference is available) 
+1,e2spt_structfac.py , ['--sfout'] , sf.txt , str , output 
+1,e2match.py , ['--sharpfiltres'] ,0, float ," If specified, the edited img2process will be sharply filtered to this resolution. "
+1,e2segment3d.py , ['--shifttocenter'] , False , None , Shift the output pdb to center of the density map 
+1,e2refinevariance.py , ['--shrink3d'] ,0, int , Shrink the class-averages and make a downsampled variance map 
+1,e2spt_average_multi.py , ['--shrinkcompare'] ,0, int , Shrink factor for classification only (for speed) 
+1,e2spt_autoboxer.py , ['--shrinktomo'] ,0, int , Requires IMOD. Default=0 (no shrinking). Integer factor by which the tomogram will be shrunk. 
+1,e2classifykmeans.py , ['--sigma'] , False , None ," with --average, this will also produce standard deviation images for each average "
+1,e2gmm_refine.py , ['--sigmareg'] ,0.5, float , regularizer for the sigma of gaussian width. Larger value means all Gaussian functions will have essentially the same width. Smaller value may help compensating local resolution difference. 
+1,e2compress.py , ['--sigrange'] , None , str ," Specify <minsig>,<maxsig>, eg- 4,4 Number of standard deviations below and above the mean to retain in the output. Default is not to truncate. 4-5 is usually safe. "
+1,e2msa.py , ['--simmx'] , None , str , Will use transformations from simmx on each particle prior to analysis 
+1,e2speedtest.py , ['--simpleout'] , False , None , Simpler 2 column output file (appends) 
+1,e2spt_simulation.py , ['--simref'] , False , None ," Default=False. This will make a simulated particle in the same orientation as the original --input, saved to its own separate file. "
+1,e2spt_autoboxer.py , ['--simtemplatesn'] ,0, int ," Number of orientations to simulate templates (that is, --template will be put into --simtemplatesn different orientations, and a 'subtomogram' will be simulated for each through projections by calling e2spt_simulation.py using the information in --angles or --tiltrange and --nslices. "
+1,e2spt_average_multi.py , ['--simthr2'] ,0, float , Simlarity score for the best matching final alignment. Scaling may be different due to resolution limit. Default 0 
+1,e2classify.py , ['--simvec'] , False , None ," Instead of using the class for the peak value, uses the pattern of similarities for each orientation for assignment. "
+1,e2display.py , ['--singleimage'] , False , None , Display a stack in a single image view 
+1,e2spt_resolutionplot.py , ['--singleplot'] , False , None ," It --plotonly provided, all FSC curves will be on the same plot/figure "
+1,e2speedtest.py , ['--size'] ,192, int ," Size of particles, 192 default for comparisons "
+1,e2tomo_icongpu.py , ['--sizez'] ,0, int ," Default=0 (not used). Output size in Z for the reconstructed tomogram. This should be the same as the --thickness value provided during tiltseries preprocessing, or larger (it's good to make sure the entire reconstruction will fit in the reconstruction volume without being too tight). If running a reconstruction of the .ali file and both --thickness and --sizez are provided, the latter will supersede the former. "
+1,e2ssehunter.py , ['--skeleton'] , none , str , skeleton file 
+1,e2ssehunter.py , ['--skeletonwt'] ,1, float , skeleton weight 
+1,e2ssematch.py , ['--skelpath'] , None , str , Optional (recommended) output from the e2skelpath.py program 
+1,e2spt_extract.py , ['--skip3d'] , False , None , do not make 3d particles. only generate 2d particles and 3d header.  
+1,e2tomo_icongpu.py , ['--skipgolderasing'] , False , None ," default=False. If on, this will call IMOD to generate a new aligned tiltseries after ICONPreProcess, and then ICON-GPU will be automatically called to perform the reconstruction. Typically, one would NOT use this option as it is useful to delete the gold fiducials prior to reconstruction. "
+1,e2spt_tiltrefine_oneiter.py , ['--skipm3d'] , False , None , skip make3d. only output aligned list 
+1,e2spt_average.py , ['--skippostp'] , False , None ," Skip post process steps (fsc, mask and filters) "
+1,e2spt_ctf_old.py , ['--skipstripping'] ,  , str ," Default=None. Comma-separated list of image indexes to exclude from strip-based fitting (in this case, only global defocus tiling the entire image wil be measured). "
+1,e2speedtest.py , ['--slow'] , False , None , rtf_slow alignment 
+1,e2bdb.py , ['--smalldump'] , False , None ," Lists contents of an entire database, but only list 2 items per dictionary to better see headers "
+1,e2project3d.py , ['--smear'] ,0, int ," Used in conjunction with --phitoo, this will rotationally smear between phi steps. The user must specify the amount of smearing (typically 2-10) "
+1,e2spt_resolutionplot.py , ['--smooththresh'] ,100, float , If --smooth is provided the curve will be smoothed only up to this resolution. Default is 100. 
+1,e2spt_simulation.py , ['--snr'] , None , float ," Default=None. Number smaller than 1.0 to make the final SNR in each tilt image. This will be calculated as SNR=sgima_signal/sigma_noise. 0.5 might be a good number assuming typical cryoEM-SPA images have SNR of 0.1 or less, and cryoET tilt series are collected with 4-6x the dose as cryoEM-SPA images. "
+1,e2pathwalker.py , ['--solver'] , None , str , Run TSP Solver: concorde or lkh 
+1,e2proctxt.py , ['--sortcomment'] , False , None , Sorts rows based on per-row comment (after #) before merging 
+1,e2ctf.py , ['--sortdefocus'] , False , None , Sorts the micrographs in order by defocus 
+1,e2proc2d.py , ['--split'] , None , int , Splits the input file into a set of n output files 
+1,e2spt_buildsets.py , ['--spliteo'] , False , None , split even/odd set so there is no overlap of particles from the two sets. 
+1,e2classifyligand.py , ['--splitparticles'] , False , None , Specify this to write new files containing the classified particles 
+1,e2make3dpar.py , ['--sqrt_wt'] , False , None , Normally class-averages are weighted into the reconstruction based on the number of particles in the average. This option causes the sqrt of the number of particles to be used instead. 
+1,e2spt_refinemulti_old.py , ['--ssaref'] ,0, int ," WARNING: MIGHT BE BUGGY OR NOT WORKING. Mulst supply references through --ref. Default=0 (not used by default). Size of the SUBSET of particles to use to build an initial reference by calling e2symsearch3d.py, which does self-symmetry alignments. You must provide --sym different than c1 for this to make any sense. "
+1,e2spt_refine_new.py , ['--ssnrwt'] , False , None , weight particles by SSNR accroding to references 
+1,e2spt_recompute.py , ['--stacks'] ,  , str , Comma separated list of HDF image stacks to process. 
+1,e2rct.py , ['--stagetilt'] ,0, float ," Amount of tiliting of the cryo stage, default=0, get the stage tilt from particle attributes. Only possible if e2RCTboxer was used for particle picking "
+1,e2refine_easy.py , ['--startfrom'] , None , str , Path to an existing refine_xx directory to continue refining from. Alternative to --input and --model. 
+1,e2spa_refine.py , ['--startiter'] ,0, int , iter 
+1,e2spt_refine_new.py , ['--startres'] ,-1, float , starting maximum resolution. required when goldstandard is not specified 
+1,e2make3d.py , ['--startweight'] ,1, float , This is the starting model weight 
+1,e2procheader.py , ['--stem'] , None , str ," Some parameters have common stems. For example, 'origin_x', 'origin_y', 'origin""x'. Supply the stem and all parameters containing it will be modified. "
+1,e2spt_tiltstacker.py , ['--stem2stack'] ,  , str ," String common to all the files to put into an .st stack, which is in .MRC format; for example, --stem2stack=.hdf will process all .hdf files in the current directory. If not specified, all valid EM imagefiles in the current directory will be put into an .st stack. "
+1,e2procheader.py , ['--stemval'] , None , str , New value for all parameters containing --stem. 
+1,e2symsearch3d.py , ['--steps'] ,10, int , Number of steps (for the MC). Default=10. 
+1,e2spt_tomoctf.py , ['--stepx'] ,20, int , Number of tiles to generate on x-axis (different defocus) 
+1,e2spt_tomoctf.py , ['--stepy'] ,40, int , Number of tiles to generate on y-axis (same defocus) 
+1,e2classaverage.py , ['--storebad'] , False , None ," Even if a class-average fails, write to the output. Forces 1->1 numbering in output "
+1,e2ctf.py , ['--storeparm'] , False , None ," Output files will include CTF info. CTF parameters are used from the database, rather than values that may be present in the input image header. Critical to use this when generating output ! "
+1,e2proc3d_huge.py , ['--streaksubtract'] , None , str , This will subtract the histogram peak value along a single axis in the volume. 
+1,e2spt_ctf_old.py , ['--stripstep'] ,0, int ," This will determine the   amount of strips and the overlap between them for defocus estimation. The default    is half the tilesize. For example, for a 4000x4000 pixels image, a tile size of   400 would yield 20, not 10 strips, by default. If --stripstep=1 were provided, the   image would be devided into 4000-400=3600 strips. The first strip would go from pixel   0 to pixel 400, the second strip from pixel 1 to pixel 401, the third from pixel 2   to 402, etc... up to the las strip going from pixel 3600 to 4000. "
+1,e2spt_refinemulti_noali.py , ['--strucfac'] , None , str , Structure factor file 
+1,e2tvrecon.py , ['--subpix'] ,1, int , Specify the number of linear    subdivisions used to compute the projection of one image pixel onto a detector pixel. 
+1,e2spt_refinemulti_old.py , ['--subset4ref'] , None , int ,"  Size of the subset of particles to use for generating each reference. Default=0, which means all particles in each subgroup will be used (for example, if --input has 100 particles and --nref is 10, 10 references will be generated using 10 particles for each). If --ref not provided, the program generates an --nref number of references from --input. "
+1,e2spt_autoboxer.py , ['--subsettrans'] ,0, int , Default=0 (not used). Subset of particles to keep/consider after translational alignment. 
+1,e2spt_ctf_old.py , ['--subtiltsdir'] ,  , str ," Provide a directory containing individual stacks, where each stack is a 'mini tilt series' or a 'subtilt series' for single particles. Then, each image for each particle in the dir will be phase-phlipped using the ctf parameters you provide. If each image in the subtilt series is at a different defocus, then the parameters should be provided through --ctfparamsfile, whith a different defocus value per row. (There should be as many rows as images in each subtiltseries). "
+1,e2spt_subtilt_old.py , ['--subtractbackground'] , False , None , (Experimental. Not working yet). This will extract a box from the tomogram much larger than the subtomogram. Projections will be generated. You MUST provide --tomogram for this. 
+1,e2pathwalker.py , ['--subunit'] ,1, int , Number of subunits. 
+1,e2extractsubparticles.py , ['--subunitmask'] , None , str ," Required. When applied to the 3-D volume, this mask contains the subunit being extracted. 'soft' edges are permitted "
+1,e2proc2d.py , ['--swap'] , False , None , Swap the byte order 
+1,e2spt_refine.py , ['--symalimask'] , None , str ," This will translationally realign each asymmetric unit to the previous map masked by the specified mask. While this invokes symalimasked in e2spt_average, this isn't the same, it is a mask, not a masked reference.  "
+1,e2symsearch3d.py , ['--symmetrize'] , False , None , Symmetrize volume after alignment. 
+1,e2refinetorelion3d.py , ['--symmgroup'] , C , None , Symmetry group 
+1,e2refinetorelion3d.py , ['--symmnumber'] ,1, int , Symmetry number 
+1,e2spt_refinemulti_old.py , ['--syms'] ,  , str ," List comma-separated symmetries to apply separately on the different references. For example, if you provide --syms=d8,d7 and provide 2 references via --nref=2 or supply two references via --refs=r1.hdf,r2.hdf, d8 symmetry will be applied to the first reference and d7 to the second after each iteration of refinement (the final average in one iteration becomes a reference for the next). "
+1,e2tomo_tiltstacker.py , ['--tag'] , None , str ," ""String to append to the beginning of the tiltseries output filename. The default is filename is 'stack.st'; if tag=xxx, the output will be 'xxx_stack.st'  "
+1,e2spt_classify.py , ['--tarres'] ,20, float , target resolution 
+1,e2parallel.py , ['--taskin'] , None , str , Internal use only. Used when executing local threaded tasks. 
+1,e2parallel.py , ['--taskout'] , None , str , Internal use only. Used when executing local threaded tasks. 
+1,e2spt_autoboxer.py , ['--template'] , None , str ," Default=None. Path to file containing the template    to search for particles throughout the tomogram. Alternatively, provide --template=sphere    to generate a spherical template from scratch. This requires also setting --boxsize and --ptclradius.   You can also provide --template=cylinder, which generates a solid or hollow cylinder,   depending on which of the following options you specify:   --template=cylinder:radius=r:height=h:radiusinner=ri:heightinner=hi.   radiusinner and heightinner MUST be specified together, and must be smaller   than radius and height; otherwise they will be defaulted to radius/2 and height/2. "
+1,e2spt_autoboxer.py , ['--templatethreshold'] ,0, float ," A binary threshold will be applied to the template which will zero out all the densities below the supplied value,              and will make the densities above the supplied value equal to one. "
+1,e2spt_simulation.py , ['--terror'] , None , int ," Default=None. Range of random translation error in pixels to perturb individual 2-D images in each subtiltseries by along x, y and z. The random translation perturbation will be picked between -terror and +terror. If set, this will overwrite --txerror, --tyerror and --tzerror. "
+1,e2spt_autoboxer.py , ['--test'] , False , None , N.A. 
+1,e2procpdb.py , ['--theta'] ,0, float , theta. 
+1,e2tomo_icongpu.py , ['--thickness'] ,0, int , default=0. Thickness of the specimen as seen in a preliminary weighted back projection reconstruction from IMOD (through how many slices in Z are there specimen densities?). 
+1,e2proc2d.py , ['--threed2threed'] , False , None ," Process 3D image as a stack of 2D slices, then output as a 3D image "
+1,e2proc2d.py , ['--threed2twod'] , False , None ," Process 3D image as a stack of 2D slices, then output as a 2D stack "
+1,e2spt_tiltrefine_oneiter.py , ['--threedout'] , None , str , map output 
+1,e2spa_make3d.py , ['--tidrange'] ," -1,-1 ", str , range of tilt id to include 
+1,e2tomo_ctfraw.py , ['--tiltangle'] , None , float , Default=None. Single 2D image or image stack to calculate CTF for. 
+1,e2spt_subtilt_old.py , ['--tiltaxislocation'] ,-1, int ," By default, the tilt axis will be assumed to run through the middle of the tomogram in X, parallel to the Y axis. For example, if the dimensions of the tomogram are 4096x3000x500, the tilt axis will be assumed to be at X=2048. Provide a different integer number to change the location of the tilt axis (it will still be assumed to be parallel to Y though). "
+1,e2spt_subtilt_old.py , ['--tiltaxisptcls'] ,-1, int ," Specifies the distance from the tilt axis to consider particles for extraction. By default, all particles will be extracted. However, if you provide, for example, --tiltaxisptls=10, only particles with centers -10 to 10 pixels away from the tilt axis will be extracted. "
+1,e2tomogram.py , ['--tltax'] , None , float , Angle of the tilt axis. Note the angle stored internally will have an opposite sign. The program will calculate one if this option is not provided. 
+1,e2tomogram.py , ['--tltrange'] , None , str ," Include only tilts between 'START' and 'STOP', i.e. -40.0,40.0. Default behavior is to include all tilts. "
+1,e2tomogram.py , ['--tltstep'] ,2, float , Step between tilts. Ignored when rawtlt is provided. Default is 2.0. 
+1,e2tomogram.py , ['--tmppath'] , None , str , Temporary path 
+1,e2spt_subtilt_old.py , ['--tomosides'] ,  , str ," Comma separated values for the tomogram dimensions. Alternatively, provide the path to the tomogram itself through --tomogram. "
+1,e2spt_subtilt_old.py , ['--track'] , False , None ," Default=False (not used). If supplied, this option will track particles from one tilt image to another. "
+1,e2spt_subtilt_old.py , ['--trackytoo'] , False , None ," Default=False (not used). In theory, particles should not drift in Y with tilt angle. Still, this option can turn Y tracking on. "
+1,e2tomo_mwfill.py , ['--train'] , None , str , train on tomo 
+1,e2tomoseg_convnet.py , ['--training'] , False , None , Doing training 
+1,e2tomoseg_convnet.py , ['--trainout'] , False , None , Output the result of the training set 
+1,e2tomoseg_buildtrainset.py , ['--trainset_output'] , None , str , output file name of the training set.Default is the input particle file name plus _trainset.hdf 
+1,e2tomoseg_convnet.py , ['--trainset'] , None , None , Training set. 
+1,e2spt_simulation.py , ['--trange'] , None , int ," Default=None. Maximum number of pixels to randomly translate each subtomogram in all X, Y and Z. The random translation will be picked between -transrage and +trange; --txrange, --tyrange and --tzrange overwrite --trange for each specified direction. "
+1,e2spt_classaverage.py , ['--translateonly'] , False , None ," Default=False. This will force the aligner to not do any rotations and thus serves for translational centering. Specify search values through --search, otherwise its default value will be used. "
+1,e2initialmodel.py , ['--tries'] ,10, int , The number of different initial models to generate in search of a good one 
+1,e2classifyligand.py , ['--tstcls'] ,-1, int , Will generate tst.hdf containing test images for a specified class-number 
+1,e2proc2d.py , ['--twod2threed'] , False , None ," Process a stack of 2D images, then output as a 3D image. "
+1,e2tomo_stackframes.py , ['--twodstack'] , False , None ," default=False (not used). Produces a stack of 2D images (Z number of images of X,Y size under the same ""virutal stack"" file name). By default, the output stack will be a 3D stack (a single image of size X,Y,Z, where Z is equal to the number of stacked frames). "
+1,e2spt_simulation.py , ['--txerror'] , None , int ," Default=None. Range of random translation error in pixels to perturb individual 2-D images in each subtiltseries by along x. The random translation perturbation will be picked between -txerror and +txerror. Default value is set by --terror, but --txerror will overwrite it if specified. "
+1,e2spt_simulation.py , ['--txrange'] , None , int ," Default=None. Maximum number of pixels to randomly translate each subtomogram in X. The random translation will be picked between -txrange and +txrange. Default value is set by --trange, but --txrange will overwrite it if specified. "
+1,e2spt_simulation.py , ['--tyerror'] , None , int ," Default=None. Range of random translation error in pixels to perturb individual 2-D images in each subtiltseries by along y. The random translation perturbation will be picked between -tyerror and +tyerror. Default value is set by --terror, but --tyerror will overwrite it if specified. "
+1,e2procpdb.py , ['--type'] , eman , str , convention type 
+1,e2spt_simulation.py , ['--tyrange'] , None , int ," Default=None. Maximum number of pixels to randomly translate each subtomogram in Y. The random translation will be picked between -tyrange and +tyrange. Default value is set by --trange, but --txrange will overwrite it if specified. "
+1,e2spt_simulation.py , ['--tzrange'] , None , int ," Default=None. Maximum number of pixels to randomly translate each subtomogram in Z. The random translation will be picked between -tzrange and +tzrange. Default value is set by --trange, but --txrange will overwrite it if specified. "
+1,e2spt_subtilt_from_imod.py , ['--unbin'] ,-1, float ," Unbin factor from input particles/tomogram to raw tilt. If unspecified, the program will calculate from the Apix of the header. "
+1,e2boxer.py , ['--unboxedonly'] , False , None , Only include image files without existing box locations 
+1,e2refine_postprocess.py , ['--underfilter'] , False , None , This will shift the computed Wiener filter to be about 10%% more resolution than has been achieved. 
+1,e2spt_tiltstacker.py , ['--unstack'] ,  , str ," .hdf, or 3D .st, .mrc, .ali, or .mrcs stack file to unstack. This option can be used with --include or --exclude to unstack only specific images. Recall that the FIRST image INDEX is 0 (but unstacked image will be numbered from 1). --exclude=1,5-7,10,12,15-19 will exclude images 1,5,6,7,10,12,15,16,17,18,19 "
+1,e2proc2d.py , ['--unstacking'] , False , None ," Process a stack of 2D images, then output as a series of numbered single image files "
+1,e2stacksort.py , ['--useali'] , False , None ," Save aligned particles to the output file, note that if used with shrink= this will store the reduced aligned particles "
+1,e2refine_split.py , ['--usebasis'] ,0, int ," Select which Eigenimage to use for separation. With novarimax, n=0 is highest energy. "
+1,e2ctf.py , ['--useframedf'] , False , None , Use defocus/astig from whole frame even if particle-based value is present 
+1,e2spt_recompute.py , ['--useinverseali'] , False , None ," ""Use the inverse of the value stored in xform.align3d in the header of each particle. "
+1,e2make3dpar.py , ['--useseedasref'] , False , None , use seed map as reference to weight the particles. 
+1,e2make3dpar.py , ['--usessnr'] , False , None ," Makes use of the class_ssnr header data to weight each slice during insertion, instead of the default behavior of just using the number of particles in the average as a global weight. "
+1,e2parallel.py , ['--usethreads'] ,-1, int , max thread to use. only used for producing occupancy in mpi mode. default is the same as threads/mpi option given 
+1,e2spt_recompute.py , ['--usetomograms'] , False , None ," ""Re-extract particles from the original tomogram. "
+1,e2tomoseg_buildtrainset.py , ['--validset'] ,0, float , Propotion of particles in validation set. Default is 0.2  
+1,e2procheader.py , ['--valtype'] , str , str ," Type of the value to enforce. It can be: str, float, int, list, or transform. "
+1,e2refinetorelion2d.py , ['--verbosity'] ,1, int , Set the level of verbosity for the code 
+1,e2refinevariance.py , ['--volfiles'] , False , None ," This will bypass the construction of the individual resampled models, and use files previously generated with the --keep3d options "
+1,e2tiltvalidate.py , ['--volume'] , None , str , 3D volume to validate 
+1,e2classptcl.py , ['--vstack'] , False , None , Will output to a bdb virtual stack instead of copying the image data. Input images must have been BDB for this to work. 
+1,e2spt_tempmatch.py , ['--vthr'] ,2, float , value threshold (n sigma) 
+1,e2spt_wedge.py , ['--wedgeangle'] ,60, float , Missing wedge angle 
+1,e2spt_wedge.py , ['--wedgef'] ,0.5, float , Missingwedge ending 
+1,e2spt_wedge.py , ['--wedgei'] ,0.05, float , Missingwedge begining 
+1,e2spt_subtilt_from_imod.py , ['--weight'] , False , None , Weight the particles by the variance of defocus. 
+1,e2rct.py , ['--weightrecons'] , False , None , Weight the reconstruction by particle numbers. 
+1,e2ctf.py , ['--wholeimage'] , False , None ," Display an additional curve using the whole micrograph, not just particles. "
+1,e2ctffind3util.py , ['--windowsize'] ,0, int , The amplitude contrast of the micrographs 
+1,e2fsc_local.py , ['--winsize'] ,17, int ,  
+1,e2buildsets.py , ['--withflipped'] , False , None , Only include images with phase-flipped counterparts! 
+1,e2buildsets.py , ['--withinvar'] , False , None , Only include images with _invar counterparts! 
+1,e2boxer_old.py , ['--wn'] ,256, int , Size of window to use (should be slightly larger than particle box size) 
+1,e2RCTboxer.py , ['--write_boxes'] , False , None , Write coordinate file (eman1 dbbox) files 
+1,e2emx.py , ['--writeimages'] , False , None ," If specified, micrographs and particles will be written to the emx directory. "
+1,e2spt_sgd.py , ['--writemovie'] , False , None , write all temporary files as a stack 
+1,e2initialmodel_sgd.py , ['--writetmp'] , False , None , Write output for each iteration 
+1,e2tomogram.py , ['--xdrift'] , False , None , apply extra correction for drifting along x axis 
+1,e2tileimage.py , ['--xmax'] ,-1, int ," Generate tiles in x-direction until this many pixels. If -1, will tile the entire image. "
+1,e2tileimage.py , ['--xmin'] ,-1, int ," Start tiling on this x-pixel. If -1, will start one boxsize inward. "
+1,e2rawdata.py , ['--xraypixel'] , False , None , Filter X-ray pixels 
+1,e2tileimage.py , ['--xstep'] ,256, int ," Step length in x-direction. If less than --boxsize, tiles will overlap. Default is 256. "
+1,e2procpdb.py , ['--xtilt'] ,0, float , xtilt in xyz convention. 
+1,e2projectupdate21.py , ['--yes'] , False , None ," This will skip the 'are you sure' question, and proceed with the conversion "
+1,e2tileimage.py , ['--ymax'] ,-1, int ," Generate tiles in y-direction until this many pixels. If -1, will tile the entire image. "
+1,e2tileimage.py , ['--ymin'] ,-1, int ," Start tiling on this y-pixel. If -1, will start one boxsize inward. "
+1,e2tileimage.py , ['--ystep'] ,256, int ," Step length in y-direction. If less than --boxsize, tiles will overlap. Default is 256. "
+1,e2procpdb.py , ['--ytilt'] ,0, float , ytilt in xyz convention. 
+1,e2tomogram.py , ['--zeroid'] ,-1, int , Index of the center tilt. Ignored when rawtlt is provided. 
+1,e2ctf.py , ['--zerook'] , False , None ," Normally particles with zero value on the edge are considered to be bad. This overrides that behavior, primarily for simulated data. "
+1,e2spt_subtilt_old.py , ['--zerotiltindx'] ,-1, int ," The default is the image at the middle of the stack. Since the stack might have more images to the left or the right of the actual 0-tilt (or lowest tilt) image, you can explicitly provide the index of the lowest tilt image here. This is used for tracking images. "
+1,e2spt_subtilt_old.py , ['--zshift'] , half , str ," By default, the tomogram will be shifted -half the ice thickness so that the middle of the tomogram is at z=0. Provide a positive or negative integer to shift the z position by a different amount "
+1,e2procpdb.py , ['--ztilt'] ,0, float , ztilt in xyz convention. 
+1,e2iminfo.py ," ['-a', '--all'] ", False , None , Show info for all images in file 
+1,e2iminfo.py ," ['-C', '--check'] ", False , None ," Checks to make sure all image numbers are populated with images, and that all images have valid CTF parameters "
+1,e2iminfo.py ," ['-c', '--count'] ", False , None , Just show a count of the number of particles in each file 
+1,e2pathwalker.py ," ['-e', '--edge'] ", None , None ," Forced edge: e.g. -e1,3 "
+1,e2iminfo.py ," ['-E', '--euler'] ", False , None , Show Euler angles from header 
+1,e2iminfo.py ," ['-H', '--header'] ", False , None , Show all header information 
+1,e2iminfo.py ," ['-N', '--number'] ",-1, int , Image number for single image info 
+1,e2iminfo.py ," ['-O', '--outliers'] ", False , None ," Statistics on number of outlier values, must be used with --stat "
+1,e2iminfo.py ," ['-Q', '--quality'] ",-1, int , Include only images with a single quality value (integer 0-9) 
+1,e2iminfo.py ," ['-s', '--stat'] ", False , None , Show statistical information about the image(s). 
