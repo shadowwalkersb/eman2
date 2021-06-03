@@ -7434,4 +7434,6 @@ import ast
 
 with open('pdict.txt', 'w') as fout:
     for k,v in dict.items():
-        fout.write(f"'{ast.literal_eval(k)[0]}' : {v}\n")
+        del v['count']
+        fout.write(f"'{ast.literal_eval(k)[0]}' : "
+                   f"{v}\n")
