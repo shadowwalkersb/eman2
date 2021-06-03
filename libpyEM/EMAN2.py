@@ -682,6 +682,26 @@ class EMArgumentParser(argparse.ArgumentParser):
 		'sym' : ['c1', str, "New symmetry help"],
 	}
 
+	opts = {
+		'--ppid' : {'default': -1, 'type': int, 'help': 'Set the PID of the parent process, used for cross platform PPID', },
+		'--verbose' : {'default': 0, 'type': int, 'help': 'verbose level [0-9], higher number means higher level of verboseness', },
+		'--path' : {'default': 'None', 'type': str, 'help': 'Path to a folder where results should be stored. Creates a new folder if none specified (default = m2d_XX)', },
+		'--sym' : {'default': 'c1', 'type': str, 'help': 'model symmetry (using sym, if present, speeds thing up a lot), default='c1'', },
+		'--threads' : {'default': 4, 'type': int, 'help': 'Number of alignment threads to run in parallel on a single computer', },
+		'--parallel' : {'default': None, 'type': None, 'help': 'parallelism argument', },
+		'--mask' : {'default': -2, 'type': int, 'help': 'Mask radius', },
+		'--apix' : {'default': -1, 'type': float, 'help': 'Angstroms per pixel for all images', },
+		'--input' : {'default': 'None', 'type': str, 'help': 'The name of the input particle stack', },
+		'--iter' : {'default': 0, 'type': int, 'help': 'Iteration number within path. Default = start a new iteration', },
+		'--shrink' : {'default': 0, 'type': int, 'help': 'Shrink the images by an integer, uses math.meanshrink', },
+		'--output' : {'default': 'None', 'type': str, 'help': 'The name of the output class stack', },
+		'--maxres' : {'default': 0, 'type': float, 'help': 'The highest resolution to be fitted (Angstroms)', },
+		'--align' : {'default': 'rotate_translate_tree', 'type': str, 'help': 'This is the aligner used to align particles to the previous class average. Default is None.', },
+		'--keep' : {'default': 1, 'type': float, 'help': 'The fraction of particles to keep in each class.', },
+		'--debug' : {'default': False, 'type': None, 'help': 'debug mode', },
+		'--preprocess' : {'default': 'None', 'type': str, 'help': 'preprocess maps before alignment', },
+	}
+
 
 	def __init__(self, prog=None,
 				 usage=None,
