@@ -7430,7 +7430,6 @@ for i in data:
     dict[i["option"]] = i
 
 import ast
-import sys
 
 
 with open('pdict.txt', 'w') as fout:
