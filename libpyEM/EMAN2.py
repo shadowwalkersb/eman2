@@ -676,7 +676,11 @@ class EMArgumentParser(argparse.ArgumentParser):
 		if not nargs:
 			self.add_argument("positionalargs", nargs="*")
 		else:
-			self.add_argument("inputfile", nargs=nargs, type=argparse.FileType('r'))
+			self.add_argument("infile", nargs=nargs, type=argparse.FileType('r'), help="Input file name")
+			# self.add_argument('inputs', nargs='+', type=argparse.FileType('r'),
+			# 					help='A list of .jpg or .jpeg files to serialize into a '
+			# 						 'request json')
+
 
 	def parse_args(self):
 		""" Masquerade as optparser parse options """
