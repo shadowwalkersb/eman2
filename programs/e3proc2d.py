@@ -225,7 +225,7 @@ def main():
 	'e2help.py processors -v 2' for a detailed list of available procesors
 	"""
 
-	parser = E3ArgumentParser(nargs=0,description=description,allow_abbrev=False)
+	parser = E3ArgumentParser(nargs=2,description=description,allow_abbrev=False)
 	print(dir(parser))
 
 	parser.add_argument("--apix", type=float, help="A/pixel for S scaling")
