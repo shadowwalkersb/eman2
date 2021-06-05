@@ -184,7 +184,6 @@ def main():
 	parser.add_argument("--process", metavar="processor_name:param1=value1:param2=value2", type=str, action="append", help="apply a processor named 'processorname' with all its parameters/values.")
 	parser.add_argument("--mult", metavar="k", type=float, help="Multiply image by a constant. mult=-1 to invert contrast.")
 	parser.add_argument("--add", metavar="f", type=float,action="append",help="Adds a constant 'f' to the densities")
-	parser.add_argument("--addfile", type=str, action="append",help="Adds the volume to another volume of identical size")
 	parser.add_argument("--first", metavar="n", type=int, default=0, help="the first image in the input to process [0 - n-1])")
 	parser.add_argument("--last", metavar="n", type=int, default=-1, help="the last image in the input to process")
 	parser.add_argument("--list", metavar="listfile", type=str, help="Works only on the image numbers in LIST file")
@@ -201,7 +200,6 @@ def main():
 	parser.add_argument("--outmode", type=str, default="float", help="All EMAN2 programs write images with 4-byte floating point values when possible by default. This allows specifying an alternate format when supported (float, int8, int16, int32, uint8, uint16, uint32). Values are rescaled to fill MIN-MAX range.")
 	parser.add_argument("--outnorescale", action="store_true", default=False, help="If specified, floating point values will not be rescaled when writing data as integers. Values outside of range are truncated.")
 	parser.add_argument("--fixintscaling", type=str, default=None, help="When writing to an 8 or 16 bit integer format the data must be scaled. 'noscale' will assume the pixel values are already correct, 'full' will insure the full range of values are included in the output, 'sane' will pick a good range, a number will set the range to mean+=sigma*number")
-	parser.add_argument("--multfile", type=str, action="append", help="Multiplies the volume by another volume of identical size. This can be used to apply masks, etc.")
 
 	parser.add_argument("--norefs", action="store_true", help="Skip any input images which are marked as references (usually used with classes.*)")
 	parser.add_argument("--outtype", metavar="image-type", type=str, help="output image format, 'mrc', 'imagic', 'hdf', etc. if specify spidersingle will output single 2D image rather than 2D stack.")
@@ -236,7 +234,7 @@ def main():
 	# Parallelism
 	parser.add_argument("--parallel",type=str,help="Run in parallel, specify type:n=<proc>:option:option",default=None)
 
-	append_options = ["anisotropic","clip", "process", "meanshrink", "medianshrink", "fouriershrink", "scale", "randomize", "rotate", "translate", "multfile","addfile","add", "headertransform"]
+	append_options = ["anisotropic","clip", "process", "meanshrink", "medianshrink", "fouriershrink", "scale", "randomize", "rotate", "translate","add", "headertransform"]
 
 	optionlist = get_optionlist(sys.argv[1:])
 
@@ -672,12 +670,6 @@ def main():
 					except:
 						boxesbad += 1
 
-				elif option1 == "addfile":
-					af=EMData(options.addfile[index_d[option1]],0)
-					d.add(af)
-					af = None
-					index_d[option1] += 1
-
 				elif option1 == "add":
 					d.add(options.add[index_d[option1]])
 					af = None
@@ -685,12 +677,6 @@ def main():
 
 				elif option1 == "mult":
 					d.mult(options.mult)
-
-				elif option1 == "multfile":
-					mf = EMData(options.multfile[index_d[option1]],0)
-					d.mult(mf)
-					mf = None
-					index_d[option1] += 1
 
 				elif option1 == "calccont":
 					dd = d.process("math.rotationalsubtract")
