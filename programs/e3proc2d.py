@@ -326,23 +326,23 @@ def main():
 			num_out_images = 2
 
 		is_inp3d = (num_inp_images == 1)
-		out3d = (num_out_images == 1)
+		is_out3d = (num_out_images == 1)
 
 		if options.verbose > 1:
-			print("input 3d, output 3d =", is_inp3d, out3d)
+			print("input 3d, output 3d =", is_inp3d, is_out3d)
 
 		opt3to3 = options.threed2threed
 		opt3to2 = options.threed2twod
 		opt2to3 = options.twod2threed
 
 		if not (options.threed2threed or options.threed2twod or options.twod2threed):
-			if is_inp3d and out3d:
+			if is_inp3d and is_out3d:
 				options.threed2threed = True
 
-			if is_inp3d and not out3d:
+			if is_inp3d and not is_out3d:
 				options.threed2twod = True
 
-			if out3d and not is_inp3d:
+			if is_out3d and not is_inp3d:
 				options.twod2threed = True
 
 		if options.average or options.avgseq > 0:
