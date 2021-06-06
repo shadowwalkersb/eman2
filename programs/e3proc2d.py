@@ -256,7 +256,7 @@ def main():
 
 	num_input_files = len(args) - 1
 	outpattern = args[num_input_files]
-	multiple_files = (num_input_files > 1)
+	is_multiple_files = (num_input_files > 1)
 
 	if options.extractboxes:
 		boxes={}
@@ -273,10 +273,10 @@ def main():
 			outfile = None
 			out_ext = None
 		else:
-			outfile = changed_file_name(infile, outpattern, inp_num, multiple_files)
+			outfile = changed_file_name(infile, outpattern, inp_num, is_multiple_files)
 			out_ext = os.path.splitext(outfile)[1]
 
-			if out_ext == "" and multiple_files:
+			if out_ext == "" and is_multiple_files:
 				out_ext = inp_ext
 				outfile = outfile + out_ext
 
