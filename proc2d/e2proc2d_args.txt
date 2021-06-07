@@ -1,4 +1,7 @@
 e2proc2d.py \
+--process s:s=l \
+--process=e:e=l \
+--process t:t=l \
 --apix 1.9 \
 --average \
 --avgseq 10 \
@@ -11,22 +14,12 @@ e2proc2d.py \
 --mult 2 \
 --add 3 \
 --addfile outputfile4 \
---list \
---select \
---randomn \
 --inplace \
---interlv \
---extractboxes \
 --meanshrink 4 \
 --medianshrink 5 \
 --fouriershrink 6 \
 --mraprep \
---compressbits \
---outmode \
 --outnorescale \
---mrc16bit \
---mrc8bit \
---fixintscaling \
 --multfile outputfile5 \
 --norefs \
 --outtype hdf \
@@ -40,20 +33,8 @@ e2proc2d.py \
 --anisotropic 12 \
 --selfcl 1 2 \
 --setsfpairs \
---split \
---verbose \
---plane \
---writejunk \
---swap \
---threed2threed \
---threed2twod \
 --twod2threed \
 --unstacking \
---ppid \
---step \
---process \
---first \
---last \
 --translate 3,4 \
 --headertransform 0 \
 stack_1.hdf \
