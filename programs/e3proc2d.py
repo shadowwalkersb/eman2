@@ -653,8 +653,7 @@ def main():
 					if d["apix_x"] <= 0: raise Exception("Error: 'calccont' requires an A/pix value, which is missing in the input images")
 
 					lopix = int(d["nx"]*d["apix_x"]/150.0)
-					hipix = int(d["nx"]*d["apix_x"]/25.0)
-					if hipix>old_div(d["ny"],2)-6: hipix=old_div(d["ny"],2)-6	# if A/pix is very large, this makes sure we get at least some info
+					hipix = min(int(d["nx"] * d["apix_x"] / 25.0), old_div(d["ny"], 2) - 6)  # if A/pix is very large, this makes sure we get at least some info
 
 					if lopix == hipix: lopix,hipix = 3,old_div(d["nx"],5)  # in case the A/pix value is drastically out of range
 
