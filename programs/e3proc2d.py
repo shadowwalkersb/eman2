@@ -194,7 +194,6 @@ def main():
 	parser.add_argument("--meanshrink", metavar="n", type=float, action="append", help="Reduce an image size by an integral (1.5 also allowed) scaling factor using average. eg - 2 will reduce image size to 1/2. Clip is not required.")
 	parser.add_argument("--medianshrink", metavar="n", type=int, action="append", help="Reduce an image size by an integral scaling factor, uses median filter. eg - 2 will reduce image size to 1/2. Clip is not required.")
 	parser.add_argument("--fouriershrink", metavar="n", type=float, action="append", help="Reduce an image size by an arbitrary scaling factor by clipping in Fourier space. eg - 2 will reduce image size to 1/2.")
-	parser.add_argument("--mraprep",  action="store_true", help="this is an experimental option")
 	parser.add_argument("--compressbits", type=int,help="HDF only. Bits to keep for compression. -1 for no compression",default=-1)
 	parser.add_argument("--outmode", type=str, choices=file_mode_map.keys(), default="float", help=f"All EMAN2 programs write images with 4-byte floating point values when possible by default. This allows specifying an alternate format when supported ({file_mode_map.keys()}). Values are rescaled to fill MIN-MAX range.")
 	parser.add_argument("--outnorescale", action="store_true", default=False, help="If specified, floating point values will not be rescaled when writing data as integers. Values outside of range are truncated.")
@@ -883,10 +882,6 @@ def main():
 
 							spiderformat = "%s%%0%dd.spi" % (nameprefix, int(math.log10(n1+1-n0))+1)
 							outfile = spiderformat % i
-
-					#elif options.mraprep:
-							#outfile = outfile + "%04d" % i + ".lst"
-							#options.outtype = "lst"
 
 					dont_scale = (options.fixintscaling == "noscale")
 
