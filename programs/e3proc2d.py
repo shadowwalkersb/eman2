@@ -289,6 +289,12 @@ def main():
 	parser.add_argument("--parallel",action="store_true")
 
 	options = parser.parse_args()
+	print(dir(options))
+	print("\n\noptions:\n", options)
+	for o in options.__dict__:
+		val = getattr(options, o)
+		if val:
+			print(o) #, val)
 	args = options.infile
 
 	if options.parallel:
