@@ -153,10 +153,6 @@ def main():
 		print('Invalid options. You used --first and --step. The --step option contains both a step size and the first image to step from. Please use only the --step option rather than --step and --first')
 		sys.exit(1)
 
-	if options.outmode not in file_mode_map :
-		print("Invalid output mode, please specify one of :\n",str(list(file_mode_map.keys())).translate(None,'"[]'))
-		sys.exit(1)
-
 	infile = args[0]
 	outfile = args[1]
 	is_new_file = not os.path.isfile(outfile)
