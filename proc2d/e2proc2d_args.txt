@@ -1,41 +1,7 @@
-e2proc2d.py \
+e3proc2d.py \
+--apix 1.9 \
 --process s:s=l \
 --process=e:e=l \
 --process t:t=l \
---apix 1.9 \
---average \
---avgseq 10 \
---averager mean \
---calcsf outputfile1 \
---calccont \
---clip 200,200 \
---exclude 0,1 \
---fftavg outputfile3 \
---mult 2 \
---add 3 \
---addfile outputfile4 \
---inplace \
---meanshrink 4 \
---medianshrink 5 \
---fouriershrink 6 \
---mraprep \
---outnorescale \
---multfile outputfile5 \
---norefs \
---outtype hdf \
---radon \
---randomize 1,1,1 \
---rotavg \
---rotate 7 \
---rfp \
---fp 9 \
---scale 11 \
---anisotropic 12 \
---selfcl 1 2 \
---setsfpairs \
---twod2threed \
---unstacking \
---translate 3,4 \
---headertransform 0 \
 stack_1.hdf \
 stack_1_out.hdf
