@@ -261,10 +261,6 @@ def main():
 		print("Please run '" + progname + " -h' for detailed options")
 		sys.exit(1)
 
-	if options.step and options.first:
-		print('Invalid options. You used --first and --step. The --step option contains both a step size and the first image to step from. Please use only the --step option rather than --step and --first')
-		sys.exit(1)
-
 	infile = args[0]
 	outfile = args[1]
 

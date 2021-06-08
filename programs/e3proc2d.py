@@ -294,17 +294,6 @@ def main():
 	if options.parallel:
 		parser.error("Parallelism not supported. Please use e2proc2dpar.py")
 
-	try : options.step = int(options.step.split(",")[0]),int(options.step.split(",")[1])	# convert strings to tuple
-	except:
-		print("Invalid --step specification")
-		sys.exit(1)
-
-	if options.step != (0,1) and options.first:
-		print('Invalid options. You used --first and --step.')
-		print('The --step option contains both a step size and the first image to step from.')
-		print('Please use only the --step option rather than --step and --first.')
-		sys.exit(1)
-
 	logid = E2init(sys.argv,options.ppid)
 
 	optionlist = deque(get_optionlist(sys.argv[1:]))
