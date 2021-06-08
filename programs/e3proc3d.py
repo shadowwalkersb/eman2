@@ -473,9 +473,9 @@ def main():
 				(filtername, param_dict) = parsemodopt(options.process[fi])
 				if not param_dict : param_dict={}
 
-				#Parse the options to convert the image file name to EMData object(for both plain image file and bdb file)
+				#Parse the options to convert the image file name to EMData object
 				for key in list(param_dict.keys()):
-					if str(param_dict[key]).find('bdb:')!=-1 or not str(param_dict[key]).isdigit():
+					if not str(param_dict[key]).isdigit():
 						try:
 							if  os.path.is_file(param_dict[key]) :
 								param_dict[key] = EMData(param_dict[key])
@@ -571,9 +571,9 @@ def main():
 				(alignername, param_dict) = parsemodopt(options.align[fi])
 				if not param_dict : param_dict={}
 
-				#Parse the options to convert the image file name to EMData object(for both plain image file and bdb file)
+				#Parse the options to convert the image file name to EMData object
 				for key in list(param_dict.keys()):
-					if str(param_dict[key]).find('bdb:')!=-1 or not str(param_dict[key]).isdigit():
+					if not str(param_dict[key]).isdigit():
 						try:
 							param_dict[key] = EMData(param_dict[key])
 						except:
