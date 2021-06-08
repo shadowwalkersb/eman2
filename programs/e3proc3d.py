@@ -28,10 +28,6 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  2111-1307 USA
 #
-# todo: verify the processors who have the same names in proc3d
-#	   and proc2d have the same implementation
-#
-# todo: lp, hp, tlp vs apix
 from past.utils import old_div
 from builtins import range
 from EMAN2 import *
@@ -173,11 +169,9 @@ def main():
 			sys.exit(1)
 		try: os.unlink(outfile)
 		except: pass
-#		map.process_inplace("normalize.bymass",{"thr":1,"mass":options.mass[0]})
 		map = EMData(infile,0)
 		seg = map.process("segment.kmeans",{"ampweight":1,"nseg":N+2,"thr":thr})  # +2 is arbitrary, to decrease the amount of excluded mass
 		for i in range(N):
-			#seg2=seg.process("threshold.binaryrange",{"low":i-1.1,"high":i-0.9})    # by subtracting 1, we don't remove anything from the first map
 			seg2 = seg.process("threshold.binaryrange",{"low":i-0.1,"high":i+0.1})    # by subtracting 1, we don't remove anything from the first map
 			seg2.process_inplace("math.linear",{"scale":-1.0,"shift":1.0})
 			map2 = map*seg2
@@ -215,8 +209,6 @@ def main():
 				tmp.process_inplace("math.meanshrink",{"n":shrink})
 				out.insert_clip(tmp,(0,old_div(y,shrink),old_div(z,shrink)))
 
-		#try: stype=tmp["datatype"]
-		#except: stype=EM_FLOAT
 		stype=EM_FLOAT
 		print("  %d/%d"%(nz,nz), end=' ')
 		print("\nWriting in data mode ",file_mode_imap[int(stype)])
@@ -387,14 +379,11 @@ def main():
 	# processors that only work out of place
 	oopprocs = {"misc.directional_sum"}
 
-	#print 'start.....'
 	img_index = 0
-	#print "datalst is", datlst
 	for data in datlst:
 		# if this is a list of images, we have header-only, and need to read the actual volume
 		if len(datlst) > 1:
 			data = EMData(data["source_path"],data["source_n"])
-			#print "Read image data from file %s for index %d" %(data["source_path"],data["source_n"])
 
 		if options.apix:
 			data.set_attr('apix_x', apix)
@@ -488,7 +477,6 @@ def main():
 				index_d[option1] += 1
 
 			elif option1 == "ralignzphi":
-#				print "ralignzphi ",options.ralignzphi[index_d[option1]]
 				zalignref = EMData(options.ralignzphi[index_d[option1]],0)
 				dang = 80.0/data["ny"]		# 1 pixel at ~3/4 radius
 				dzmax = old_div(data["ny"],20)			# max +-z shift
@@ -772,7 +760,6 @@ def main():
 
 #parse_file() will read the input image file and return a list of EMData() object
 def parse_infile(infile, first, last, step, apix=None):
-	#def parse_infile(infile, indxs):
 	if infile[0] == ":":
 		parm=infile.split(":")
 		if len(parm) == 4: parm.append(0)
@@ -787,7 +774,6 @@ def parse_infile(infile, first, last, step, apix=None):
 	nimg = EMUtil.get_image_count(infile)
 
 	if nimg > 1:
-		#print "it appears %s contains %d image" % (infile, nimg)
 		d = EMData(infile,nimg-1)	# we read the last image, since it should always exist
 
 		x = d.get_xsize()

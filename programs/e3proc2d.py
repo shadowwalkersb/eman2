@@ -569,17 +569,14 @@ def main():
 				if plane in xyplanes:
 					roi = Region(0,0,i,tomo_nx,tomo_ny,1)
 					d = threed.get_clip(roi)
-					#d.read_image(infile,0, HEADER_AND_DATA, roi)
 					d.set_size(tomo_nx,tomo_ny,1)
 				elif plane in xzplanes:
 					roi = Region(0,i,0,tomo_nx,1,tomo_nz)
 					d = threed.get_clip(roi)
-					#d.read_image(infile,0, HEADER_AND_DATA, roi)
 					d.set_size(tomo_nx,tomo_nz,1)
 				elif plane in yzplanes:
 					roi = Region(i,0,0,1,tomo_ny,tomo_nz)
 					d = threed.get_clip(roi)
-					#d.read_image(infile,0, HEADER_AND_DATA, roi)
 					d.set_size(tomo_ny,tomo_nz,1)
 
 			if not "outtype" in optionlist:
@@ -621,8 +618,6 @@ def main():
 
 					# Parse the options to convert the image file name to EMData object
 					for key in list(param_dict.keys()):
-						#print str(param_dict[key])
-
 						if not str(param_dict[key]).isdigit():
 							try:
 								param_dict[key] = EMData(param_dict[key])
@@ -655,7 +650,6 @@ def main():
 				elif option1 == "calccont":
 					dd = d.process("math.rotationalsubtract")
 					f = dd.do_fft()
-					#f = d.do_fft()
 
 					if d["apix_x"] <= 0: raise Exception("Error: 'calccont' requires an A/pix value, which is missing in the input images")
 
@@ -669,16 +663,13 @@ def main():
 					lo = old_div(sum(r[lopix:hipix]),(hipix-lopix))
 					hi = old_div(sum(r[hipix+1:-1]),(len(r)-hipix-2))
 
-#					print lopix, hipix, lo, hi
 					d["eval_contrast_lowres"] = old_div(lo,hi)
-	#				print lopix,hipix,lo,hi,lo/hi
 
 				elif option1 == "norefs" and d["ptcl_repr"] <= 0:
 					continue
 
 				elif option1 == "setsfpairs":
 					dataf = d.do_fft()
-	#				d.gimme_fft()
 					x0 = 0
 					step = 0.5
 
@@ -695,7 +686,6 @@ def main():
 
 							dataf.apply_radial_func(x0, step, sfcurve2)
 							d = dataf.do_ift()
-	#						dataf.gimme_fft();
 
 				elif option1 == "rfp":
 					d = d.make_rotational_footprint()
@@ -741,7 +731,6 @@ def main():
 
 					if tdx != 0.0 or tdy != 0.0:
 						d.translate(tdx,tdy,0.0)
-						#print(f"translate {tdx},{tdy}")
 
 					index_d[option1] += 1
 
@@ -853,7 +842,6 @@ def main():
 					df = d.do_fft()
 					df.mult(df.get_ysize())
 					fftavg.add_incoherent(df)
-	#				d.gimme_fft
 
 					continue
 
@@ -896,8 +884,6 @@ def main():
 							spiderformat = "%s%%0%dd.spi" % (nameprefix, int(math.log10(n1+1-n0))+1)
 							outfile = spiderformat % i
 
-					#if options.inplace:
-							#d.write_image(outfile, i)
 					#elif options.mraprep:
 							#outfile = outfile + "%04d" % i + ".lst"
 							#options.outtype = "lst"
@@ -944,7 +930,6 @@ def main():
 						average.add_image(d)
 						if count%options.avgseq == 0:
 							d=average.finish()
-#							print(f"{count} {d['ptcl_repr']}")
 
 					if not options.average and (options.avgseq<=1 or count%options.avgseq==0):	# skip writing the input image to output file
 						# write processed image to file
@@ -958,34 +943,21 @@ def main():
 
 							if dummy == 0:	# The "dummy" volume, as termed by Grant, only needs to be created once
 												# This dummy variable changes to dummy=1 after that happens.
-								#print "\n\n\n\nTOMO OPTION IS ON!"
-								#print "And this is i", i
-								#print "\n\n\n\nI will create DUMMY!!!"
-
 								z = nimg
-								#print "Z should be equal to nimg, lets see: nimg,z",nimg,z
 
 								if options.list:
 									f = open(options.list,'r')
 									lines = f.read().split(',')
-									#print "Lines are", lines
 
 									f.close()
 									z = len(lines)
 
-									#shift = nimg - z
-									#print "If --list, z should be the length of lines in list; lines,z", len(lines),z
 								elif options.exclude:
 									f = open(options.exclude,'r')
 									lines = f.read().split(',')
-									#print "lines are", lines
 
 									f.close()
 									z = nimg - len(lines)
-
-									#shift = len(lines)
-									#print "If --exclude, z should be z size of input minus lines in exclude;"
-									#print "nimg, len lines, zout", nimg, len(lines), z
 
 								out3d_img = EMData(d.get_xsize(), d.get_ysize(), z)
 
@@ -1001,16 +973,8 @@ def main():
 
 							if options.list or options.exclude:
 								if imagelist[i] != 0:
-									#if options.twod2threed:
-									#	region = Region(0, 0, imagelist[0:i].count(1), d.get_xsize(), d.get_ysize(), 1)
-									#elif options.threed2threed:
-
 									region = Region(0, 0, imagelist[0:i].count(1), d.get_xsize(), d.get_ysize(), 1)
 							else:
-								#if options.twod2threed:
-								#	region = Region(0, 0, i, d.get_xsize(), d.get_ysize(), 1)
-								#elif options.threed2threed:
-
 								region = Region(0, 0, i, d.get_xsize(), d.get_ysize(), 1)
 
 							d.write_image(outfile, 0, out_type, False, region, out_mode, not_swap)
@@ -1059,9 +1023,6 @@ def main():
 
 		if average:
 			avg = average.finish()
-	#		avg["ptcl_repr"] = (n1-n0+1)	# should be set by averager, and this may be wrong in avgseq mode
-	#		avg.mult(1.0/(n1-n0+1.0))
-	#		average.process_inplace("normalize");
 
 			if options.inplace:
 				if options.compressbits >= 0:
