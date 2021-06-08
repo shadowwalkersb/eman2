@@ -271,18 +271,14 @@ def main():
 	for infile in args[0 : num_input_files]:
 		inp_num = inp_num + 1
 
+		if infile[0]==":": inp_ext=".hdf"
+		else: inp_ext = os.path.splitext(infile)[1]
+
 		if outpattern.lower()=="none":
 			outfile = None
-
-			if infile[0]==":": inp_ext=".hdf"
-			else: inp_ext = os.path.splitext(infile)[1]
 			out_ext = None
-
 		else:
 			outfile = changed_file_name(infile, outpattern, inp_num, multiple_files)
-
-			if infile[0]==":": inp_ext=".hdf"
-			else: inp_ext = os.path.splitext(infile)[1]
 			out_ext = os.path.splitext(outfile)[1]
 
 			if out_ext == "" and multiple_files:
