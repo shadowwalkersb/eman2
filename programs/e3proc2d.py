@@ -244,8 +244,6 @@ def main():
 		print("Please run '" + progname + " -h' for detailed options")
 		sys.exit(1)
 
-	logid = E2init(sys.argv,options.ppid)
-
 	try : options.step = int(options.step.split(",")[0]),int(options.step.split(",")[1])	# convert strings to tuple
 	except:
 		print("Invalid --step specification")
@@ -256,6 +254,8 @@ def main():
 		print('The --step option contains both a step size and the first image to step from.')
 		print('Please use only the --step option rather than --step and --first.')
 		sys.exit(1)
+
+	logid = E2init(sys.argv,options.ppid)
 
 	num_input_files = len(args) - 1
 	outpattern = args[num_input_files]
