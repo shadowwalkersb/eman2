@@ -292,9 +292,12 @@ def main():
 	print(vars(parser._optionals))
 	print([s.partition('=')[0].lstrip('-') for s in sys.argv if s.startswith('-')])
 	# print(dir(options))
-	args = get_optionlist(sys.argv)
-	for i in range(len(args)):
-		print(args.pop(0))
+	args = deque(get_optionlist(sys.argv))
+	while args:
+		arg = args.pop()
+		val = getattr(options, arg)
+		val = val.pop(0) if isinstance(val, list) else val
+		print(arg, val)
 	print("\n\noptions:\n", vars(options))
 	for o in vars(options):
 		val = getattr(options, o)
