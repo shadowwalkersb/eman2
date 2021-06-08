@@ -639,12 +639,7 @@ def re_filter_list(listtofilter, regex, invert=False):
 	return returndict
 
 def get_optionlist(argv):
-	optionlist = []
-	for arg1 in argv:
-		if arg1[0] == "-":
-			argname = arg1.split("=")
-			optionlist.append(argname[0].lstrip("-"))
-	return optionlist
+	return [arg.partition("=")[0].lstrip("-") for arg in argv if arg.startswith("-")]
 
 def intvararg_callback(option, opt_str, value, parser):
 	v = [int(i) for i in value.split(',')]
