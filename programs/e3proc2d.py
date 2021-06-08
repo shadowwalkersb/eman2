@@ -384,22 +384,22 @@ def main():
 
 				threed_xsize = d.get_xsize()
 				threed_ysize = d.get_ysize()
-				isthreed = False
+				is_3d = False
 		elif infile[0]==":":
 			nimg=1
-			isthreed=False
+			is_3d=False
 		else:
 			nimg = EMUtil.get_image_count(infile)
 
 			# reads header only
-			isthreed = False
+			is_3d = False
 			plane = options.plane
 			[tomo_nx, tomo_ny, tomo_nz] = gimme_image_dimensions3D(infile)
 
 			if tomo_nz != 1:
-				isthreed = True
+				is_3d = True
 
-		if not isthreed:
+		if not is_3d:
 			if not (nimg > n1 >= 0):
 				n1 = nimg - 1
 		else:
@@ -465,7 +465,7 @@ def main():
 		dummy = 0										#JESUS
 
 		if options.verbose > 1:
-			print("input file, output file, is three-d =", infile, outfile, isthreed)
+			print("input file, output file, is three-d =", infile, outfile, is_3d)
 
 		count = 0
 		for i in range(n0, n1+1, options.step[1]):
@@ -486,7 +486,7 @@ def main():
 			if options.split and options.split > 1:
 				outfile = outfilename_no_ext + ".%02d." % (i % options.split) + outfilename_ext
 
-			if not isthreed:
+			if not is_3d:
 				if options.threed2threed or options.threed2twod:
 					d = EMData()
 					d.read_image(infile, 0, False, Region(0,0,i,threed_xsize,threed_ysize,1))
