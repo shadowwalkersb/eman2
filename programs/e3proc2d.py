@@ -208,7 +208,6 @@ def main():
 	parser.add_argument("--randomize", metavar="da,dxy,flip", type=parse_list_arg(float,float,int), action="append",help="Randomly rotate/translate the image. Specify: da,dxy,flip  da is a uniform distribution over +-da degrees, dxy is a uniform distribution on x/y, if flip is 1, random handedness changes will occur")
 	parser.add_argument("--rotavg", action="store_true", help="Compute the 1-D rotational average of each image as a final step before writing the output")
 	parser.add_argument("--rotate", type=float, action="append", help="Rotate clockwise (in degrees)")
-	parser.add_argument("--rfp",  action="store_true", help="this is an experimental option")
 	parser.add_argument("--fp",  type=int, choices=range(7), help="This generates rotational/translational 'footprints' for each input particle, the number indicates which algorithm to use (0-6)")
 	parser.add_argument("--scale", metavar="f", type=float, action="append", help="Scale by specified scaling factor. Clip must also be specified to change the dimensions of the output map.")
 	parser.add_argument("--anisotropic", metavar="amount,angle", type=parse_list_arg(float,float), action="append", help="Anisotropic scaling, stretches on one axis and compresses the orthogonal axis. Specify amount,angle. See e2evalrefine")
@@ -642,9 +641,6 @@ def main():
 
 							dataf.apply_radial_func(x0, step, sfcurve2)
 							d = dataf.do_ift()
-
-				elif option1 == "rfp":
-					d = d.make_rotational_footprint()
 
 				elif option1 == "fp":
 					d = d.make_footprint(options.fp)
