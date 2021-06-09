@@ -289,9 +289,14 @@ def main():
 	parser.add_argument("--parallel",action="store_true")
 
 	options = parser.parse_args()
-	print(dir(options))
-	print("\n\noptions:\n", options)
-	for o in options.__dict__:
+	print(vars(parser._optionals))
+	print([s.partition('=')[0].lstrip('-') for s in sys.argv if s.startswith('-')])
+	# print(dir(options))
+	args = get_optionlist(sys.argv)
+	for i in range(len(args)):
+		print(args.pop(0))
+	print("\n\noptions:\n", vars(options))
+	for o in vars(options):
 		val = getattr(options, o)
 		if val:
 			print(o) #, val)
