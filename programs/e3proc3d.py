@@ -41,6 +41,7 @@ import os.path
 from time import time
 from numpy import arange
 import traceback
+import ast
 
 
 def main():
@@ -85,12 +86,12 @@ def main():
 	parser.add_argument("--calcfsc", type=str, metavar="with input", help="Calculate a FSC curve between two models. Output is a txt file. This option is the name of the second volume.")
 	parser.add_argument("--calcsf", type=str, metavar="outputfile", help="Calculate a radial structure factor. Must specify apix.")
 	parser.add_argument("--calcradial", type=int,default=-1,help="Calculate the radial density by shell. Output file becomes a text file. 0 - mean amp, 2 - min, 3 - max, 4 - sigma")
-	parser.add_argument("--clip", metavar="x[,y,z[,xc,yc,zc]]", type=str, action="callback", callback=intvararg_callback, help="Make the output have this size by padding/clipping. 1, 3 or 6 arguments. ")
+	parser.add_argument("--clip", metavar="x[,y,z[,xc,yc,zc]]", type=ast.literal_eval, help="Make the output have this size by padding/clipping. 1, 3 or 6 arguments. ")
 	parser.add_argument("--compressbits", type=int,help="HDF only. Bits to keep for compression. -1 for no compression. This overrides --outmode and related options.",default=-1)
 	parser.add_argument("--nooutliers", type=int,help="With --compressbits, if set will truncate outlier values to preserve sigfigs for more useful values. default 1 (enabled)",default=1)
 	parser.add_argument("--diffmap", type=str, help="Will match the power spectrum of the specified file to the input file, then subtract it from the input file")
 
-	parser.add_argument("--fftclip", metavar="x, y, z", type=str, action="callback", callback=floatvararg_callback, help="Make the output have this size, rescaling by padding FFT.")
+	parser.add_argument("--fftclip", metavar="x, y, z", type=ast.literal_eval, help="Make the output have this size, rescaling by padding FFT.")
 	parser.add_argument("--filtertable", type=str, action="append",help="Applies a 2 column (S,amp) file as a filter in Fourier space, assumed 0 outside the defined range.")
 	parser.add_argument("--first", metavar="n", type=int, default=0, help="the first image in the input to process [0 - n-1])")
 	parser.add_argument("--fouriershrink", metavar="n", type=float, action="append", help="Reduce an image size by an arbitrary scaling factor by clipping in Fourier space. eg - 2 will reduce image size to 1/2.")
@@ -110,7 +111,7 @@ def main():
 	parser.add_argument("--mult", metavar="f", type=float, help="Scales the densities by a fixed number in the output")
 	parser.add_argument("--multfile", type=str, action="append", help="Multiplies the volume by another volume of identical size. This can be used to apply masks, etc.")
 
-	parser.add_argument("--origin", metavar="x, y, z", type=str, action="callback", callback=floatvararg_callback, help="Set the coordinates for the pixel (0,0,0) for Chimera. THIS HAS NO IMPACT ON IMAGE PROCESSING !")
+	parser.add_argument("--origin", metavar="x, y, z", type=ast.literal_eval, help="Set the coordinates for the pixel (0,0,0) for Chimera. THIS HAS NO IMPACT ON IMAGE PROCESSING !")
 	parser.add_argument("--outmode",type=str, default="float", help="All EMAN2 programs write images with 4-byte floating point values when possible by default. This allows specifying an alternate format when supported (int8, int16, int32, uint8, uint16, uint32). Values are rescaled to fill MIN-MAX range.")
 	parser.add_argument("--outnorescale",action="store_true",default=False,help="If specified, floating point values will not be rescaled when writing data as integers. Values outside of range are truncated.")
 	parser.add_argument("--outtype", metavar="image-type", type=str, help="Set output image format, mrc, imagic, hdf, etc")
