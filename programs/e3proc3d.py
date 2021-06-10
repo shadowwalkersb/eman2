@@ -82,7 +82,7 @@ def main():
 	parser.add_argument("--calcfsc", type=str, metavar="with input", help="Calculate a FSC curve between two models. Output is a txt file. This option is the name of the second volume.")
 	parser.add_argument("--calcsf", type=str, metavar="outputfile", help="Calculate a radial structure factor. Must specify apix.")
 	parser.add_argument("--calcradial", type=int,default=-1,help="Calculate the radial density by shell. Output file becomes a text file. 0 - mean amp, 2 - min, 3 - max, 4 - sigma")
-	parser.add_argument("--clip", metavar="x[,y,z[,xc,yc,zc]]", type=ast.literal_eval, help="Make the output have this size by padding/clipping. 1, 3 or 6 arguments. ")
+	parser.add_argument("--clip", metavar="x[,y,z[,xc,yc,zc]]", type=parse_list_arg([int],[int,int,int],[int,int,int,int,int,int]), help="Make the output have this size by padding/clipping. 1, 3 or 6 arguments. ")
 	parser.add_argument("--compressbits", type=int,help="HDF only. Bits to keep for compression. -1 for no compression. This overrides --outmode and related options.",default=-1)
 	parser.add_argument("--nooutliers", type=int,help="With --compressbits, if set will truncate outlier values to preserve sigfigs for more useful values. default 1 (enabled)",default=1)
 	parser.add_argument("--diffmap", type=str, help="Will match the power spectrum of the specified file to the input file, then subtract it from the input file")
@@ -618,9 +618,6 @@ def main():
 					xc = old_div(x,2)
 					yc = old_div(y,2)
 					zc = old_div(z,2)
-				else:
-					print('clip option takes 1, 3 or 6 arguments. --clip=x[,y,z[,xc,yc,zc]]')
-					return
 
 				if not (0 <= xc < x and 0 <= yc < y and 0 <= zc < z):
 					xc = old_div(x,2)
