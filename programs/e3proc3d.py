@@ -158,60 +158,60 @@ def main():
 
 	out_ext = os.path.splitext(outfile)[1]
 
-	if out_ext == ".lst" :
+	if out_ext == ".lst":
 		print("Output file extension may not be .lst: " + outfile)
 		sys.exit(1)
 
 	# this option uses one input map and produces a 3-D stack of output maps, so doesn't play with others
-	if options.fragmentize!=None :
+	if options.fragmentize != None:
 		try:
-			N,thr=options.fragmentize.split(":")
-			N=int(N)
-			thr=float(thr)
+			N,thr = options.fragmentize.split(":")
+			N = int(N)
+			thr = float(thr)
 		except:
 			print("ERROR: fragmentize requires <N>:<threshold>")
 			sys.exit(1)
 		try: os.unlink(outfile)
 		except: pass
 #		map.process_inplace("normalize.bymass",{"thr":1,"mass":options.mass[0]})
-		map=EMData(infile,0)
-		seg=map.process("segment.kmeans",{"ampweight":1,"nseg":N+2,"thr":thr})  # +2 is arbitrary, to decrease the amount of excluded mass
+		map = EMData(infile,0)
+		seg = map.process("segment.kmeans",{"ampweight":1,"nseg":N+2,"thr":thr})  # +2 is arbitrary, to decrease the amount of excluded mass
 		for i in range(N):
 			#seg2=seg.process("threshold.binaryrange",{"low":i-1.1,"high":i-0.9})    # by subtracting 1, we don't remove anything from the first map
-			seg2=seg.process("threshold.binaryrange",{"low":i-0.1,"high":i+0.1})    # by subtracting 1, we don't remove anything from the first map
+			seg2 = seg.process("threshold.binaryrange",{"low":i-0.1,"high":i+0.1})    # by subtracting 1, we don't remove anything from the first map
 			seg2.process_inplace("math.linear",{"scale":-1.0,"shift":1.0})
-			map2=map*seg2
+			map2 = map*seg2
 			map2.write_image(outfile,i)
-		seg=None                # free up memory
-		seg2=None
-		model2=None
+		seg = None                # free up memory
+		seg2 = None
+		model2 = None
 		print("Fragmentization complete! Exiting")
 		sys.exit(0)
 
 	# This is a specialized option which doesn't play nice with ANY other options in the command
 	# it will do piecewise shrinking of a map which is too large for RAM
-	if options.meanshrinkbig>0 :
+	if options.meanshrinkbig > 0:
 		print("Dedicated large-map shrinking mode. No other operations will be performed.")
-		hdr=EMData(infile,0,True)
-		shrink=options.meanshrinkbig
-		if shrink>10 : print("Shrinking by >10x is not recommended")
+		hdr = EMData(infile,0,True)
+		shrink = options.meanshrinkbig
+		if shrink > 10: print("Shrinking by >10x is not recommended")
 
-		nx,ny,nz=hdr["nx"],hdr["ny"],hdr["nz"]
-		nnx=old_div(nx,shrink)
-		nny=old_div(ny,shrink)
-		nnz=old_div(nz,shrink)
+		nx,ny,nz = hdr["nx"],hdr["ny"],hdr["nz"]
+		nnx = old_div(nx,shrink)
+		nny = old_div(ny,shrink)
+		nnz = old_div(nz,shrink)
 		print("%d x %d x %d --> %d x %d x %d    %1.1f GB of RAM required"%(nx,ny,nz,nnx,nny,nnz,old_div((nnx*nny*nnz*4+shrink*4*ny*shrink*4),1.0e9)))
 
-		out=EMData(nnx,nny,nnz)
+		out = EMData(nnx,nny,nnz)
 		out.to_zero()
-		ltime=0
-		for z in range(0,nz,shrink):
-			if time()-ltime>0.5 :
+		ltime = 0
+		for z in range(0, nz, shrink):
+			if time()-ltime > 0.5:
 				print("  %d/%d\r"%(z,nz), end=' ')
 				sys.stdout.flush()
-				ltime=time()
-			for y in range(0,ny,4*shrink):
-				tmp=EMData(infile,0,False,Region(0,y,z,nx,4*shrink,shrink))
+				ltime = time()
+			for y in range(0, ny, 4*shrink):
+				tmp = EMData(infile,0,False,Region(0,y,z,nx,4*shrink,shrink))
 				tmp.process_inplace("math.meanshrink",{"n":shrink})
 				out.insert_clip(tmp,(0,old_div(y,shrink),old_div(z,shrink)))
 
@@ -221,11 +221,11 @@ def main():
 		print("  %d/%d"%(nz,nz), end=' ')
 		print("\nWriting in data mode ",file_mode_imap[int(stype)])
 
-		if stype!=EM_FLOAT:
-			out["render_min"]=file_mode_range[stype][0]
-			out["render_max"]=file_mode_range[stype][1]
+		if stype != EM_FLOAT:
+			out["render_min"] = file_mode_range[stype][0]
+			out["render_max"] = file_mode_range[stype][1]
 
-		if options.compressbits>=0:
+		if options.compressbits >= 0:
 			out.write_compressed(outfile,0,options.compressbits,nooutliers=options.nooutliers,erase=erase)
 		else:
 			try: out.write_image(outfile,0,IMAGE_UNKNOWN,0,None,EMUtil.EMDataType(stype))
@@ -236,38 +236,38 @@ def main():
 		print("Complete !")
 		sys.exit(0)
 
-	if options.tomoprep>0:
+	if options.tomoprep > 0:
 		print("Tomography processing preparation mode. No other processing will be performed.")
 
-		if outfile[-4:]!=".hdf" :
+		if outfile[-4:]!=".hdf":
 			print("Preprocessed tomograms can only be in HDF format")
 			sys.exit(1)
 
-		hdr=EMData(infile,0,True)
-		nx,ny,nz=hdr["nx"],hdr["ny"],hdr["nz"]
+		hdr = EMData(infile,0,True)
+		nx,ny,nz = hdr["nx"],hdr["ny"],hdr["nz"]
 
 		# If this is a "y-short" tomogram convert it to z-short
-		if min(nx,ny,nz)==ny :
+		if min(nx,ny,nz) == ny:
 			# Create an empty file of the correct size
-			tmp=EMData()
+			tmp = EMData()
 			tmp.set_size(nx,nz,ny)
 			tmp.write_image(outfile,0,IMAGE_UNKNOWN,False,None,EM_UCHAR)
 
 			# Write the output volume slice by slice
 			for z in range(ny):
-				slice=EMData(infile,0,False,Region(0,z,0,nx,1,nz))
+				slice = EMData(infile,0,False,Region(0,z,0,nx,1,nz))
 				slice.write_image(outfile,0,IMAGE_UNKNOWN,False,Region(0,0,ny-z-1,nx,nz,1),EM_UCHAR)
 
 			# Write
 		else:
 			# Create an empty file of the correct size
-			tmp=EMData()
+			tmp = EMData()
 			tmp.set_size(nx,ny,nz)
 			tmp.write_image(outfile,0,IMAGE_UNKNOWN,False,None,EM_UCHAR)
 
 			# write the output volume slice by slice
 			for z in range(ny):
-				slice=EMData(infile,0,False,Region(0,0,z,nx,nz,1))
+				slice = EMData(infile,0,False,Region(0,0,z,nx,nz,1))
 				slice.write_image(outfile,0,IMAGE_UNKNOWN,False,Region(0,0,z,nx,nz,1),EM_UCHAR)
 
 		print("Complete !")
@@ -275,34 +275,34 @@ def main():
 
 	n0 = options.first
 	n1 = options.last
-	if infile[0]==":" : nimg=1
-	else : nimg = EMUtil.get_image_count(infile)
+	if infile[0] == ":": nimg = 1
+	else: nimg = EMUtil.get_image_count(infile)
 	if not (0 <= n1 <= nimg ): n1 = nimg-1
 
 	# If the output file exists and has exactly one image we delete the file later if writing compressed
 	try:
-		if EMUtil.get_image_count(outfile)==1 : erase=True
-		else: erase=False
+		if EMUtil.get_image_count(outfile) == 1: erase = True
+		else: erase = False
 	except:
-		erase=False
+		erase = False
 
 	if options.step != None:
-		n0=int(options.step.split(",")[0])
-		n2=int(options.step.split(",")[1])
-	else : n2=1
+		n0 = int(options.step.split(",")[0])
+		n2 = int(options.step.split(",")[1])
+	else: n2 = 1
 
-	if options.alignref : alignref=EMData(options.alignref,0)
-	else : alignref=None
+	if options.alignref: alignref = EMData(options.alignref,0)
+	else: alignref = None
 
-	if options.calcradial>=0 :
+	if options.calcradial >= 0:
 		print("Computing radial real-space distribution. All other options ignored!")
-		curves=[]
+		curves = []
 		for i in range(n0,n1+1,n2):
-			img=EMData(infile,i)
-			c=img.calc_radial_dist(old_div(img["nx"],2),0,1,options.calcradial)
+			img = EMData(infile,i)
+			c = img.calc_radial_dist(old_div(img["nx"],2),0,1,options.calcradial)
 			curves.append(c)
 
-		out=open(outfile,"w")
+		out = open(outfile,"w")
 		out.write("# {} mode {}".format(infile,options.calcradial))
 		for l in range(len(curves[0])):
 			out.write("\n{}".format(l))
@@ -313,25 +313,25 @@ def main():
 
 	if options.average:
 		print("Averaging particles from %d to %d stepping by %d. All other options ignored !"%(n0,n1,n2))
-		avg_dict=parsemodopt(options.averager)
+		avg_dict = parsemodopt(options.averager)
 		avgr = Averagers.get(avg_dict[0],avg_dict[1])
 
 		for i in range(n0,n1+1,n2):
-			a=EMData(infile,i)
+			a = EMData(infile,i)
 			if options.avg_byxf and a.has_attr("xform.align3d"):
 				a.process_inplace('normalize.edgemean')
 				a.transform(a["xform.align3d"])
 			avgr.add_image(a)
 			if options.verbose:
 				print("Added ptcl %d / %d" %( i+1, old_div((n1-n0),n2) + 1))
-		avg=avgr.finish()
+		avg = avgr.finish()
 
-		try :
-			avg["ptcl_repr"]=sum([i["ptcl_repr"] for i in ptcls])
+		try:
+			avg["ptcl_repr"] = sum([i["ptcl_repr"] for i in ptcls])
 		except:
 			pass
 
-		if options.compressbits>=0:
+		if options.compressbits >= 0:
 			avg.write_compressed(outfile,0,options.compressbits,nooutliers=options.nooutliers,erase=erase)
 		else:
 			avg.write_image(outfile,0)
@@ -356,7 +356,7 @@ def main():
 
 	datlst = parse_infile(infile, n0, n1, n2, options.apix)
 
-	logid=E2init(sys.argv,options.ppid)
+	logid = E2init(sys.argv,options.ppid)
 
 	x = datlst[0].get_xsize()
 	y = datlst[0].get_ysize()
@@ -374,26 +374,26 @@ def main():
 	origin_y = 0
 	origin_z = 0
 
-	apix = datlst[0]["apix_x"]	# default to apix_x from file
+	apix = datlst[0]["apix_x"]  # default to apix_x from file
 	if options.apix:
 		apix = options.apix
 
 	if not "outtype" in optionlist:
 		optionlist.append("outtype")
 
-	if options.verbose>0:
+	if options.verbose > 0:
 		print("%d images, processing %d-%d (step %d)......"%(nimg, n0, n1,n2))
 
 	# processors that only work out of place
-	oopprocs={"misc.directional_sum"}
+	oopprocs = {"misc.directional_sum"}
 
 	#print 'start.....'
 	img_index = 0
 	#print "datalst is", datlst
 	for data in datlst:
 		# if this is a list of images, we have header-only, and need to read the actual volume
-		if len(datlst)>1 :
-			data=EMData(data["source_path"],data["source_n"])
+		if len(datlst) > 1:
+			data = EMData(data["source_path"],data["source_n"])
 			#print "Read image data from file %s for index %d" %(data["source_path"],data["source_n"])
 
 		if options.apix:
@@ -401,8 +401,8 @@ def main():
 			data.set_attr('apix_y', apix)
 			data.set_attr('apix_z', apix)
 
-		if options.inputto1 : data.to_one()			# replace all voxel values with 1.0
-		if options.resetxf : data["xform.align3d"]=Transform()
+		if options.inputto1: data.to_one()			# replace all voxel values with 1.0
+		if options.resetxf: data["xform.align3d"]=Transform()
 
 		for option1 in optionlist:
 			if option1 == "origin":
@@ -415,18 +415,18 @@ def main():
 				data.set_xyz_origin(originx, originy, originz)
 
 			elif option1 == "matchto":
-				mt=EMData(options.matchto[0])
+				mt = EMData(options.matchto[0])
 				data.process_inplace("filter.matchto",{"to":mt})
-				mt=None
+				mt = None
 
 			elif option1 == "diffmap":
-				mt=EMData(options.diffmap)
+				mt = EMData(options.diffmap)
 				mt.process_inplace("filter.matchto",{"to":data})
 				data.sub(mt)
-				mt=None
+				mt = None
 
-			elif option1 == "calcfsc" :
-				datafsc=EMData(options.calcfsc)
+			elif option1 == "calcfsc":
+				datafsc = EMData(options.calcfsc)
 				fsc = data.calc_fourier_shell_correlation(datafsc)
 				third = len(fsc) // 3
 				xaxis = fsc[0:third]
@@ -439,46 +439,48 @@ def main():
 			elif option1 == "calcsf":
 				dataf = data.do_fft()
 				curve = dataf.calc_radial_dist(old_div(ny,2), 0, 1.0,True)
-				curve=[old_div(i,(dataf["nx"]*dataf["ny"]*dataf["nz"])) for i in curve]
+				curve = [old_div(i,(dataf["nx"]*dataf["ny"]*dataf["nz"])) for i in curve]
 				Util.save_data(0, 1.0/(apix*ny), curve, options.calcsf)
 
 			elif option1 == "setsf":
-				if options.verbose>1 : print("setsf -> ",options.setsf)
-				sf=XYData()
+				if options.verbose > 1: print("setsf -> ",options.setsf)
+				sf = XYData()
 				sf.read_file(options.setsf)
 				data.process_inplace("filter.setstrucfac",{"apix":data["apix_x"],"strucfac":sf})
+
 			elif option1 == "setisosf":
-				if options.verbose>1 : print("setisosf -> ",options.setsf)
-				sf=XYData()
+				if options.verbose > 1: print("setisosf -> ",options.setsf)
+				sf = XYData()
 				sf.read_file(options.setisosf)
 				data.process_inplace("filter.setisotropicpow",{"apix":data["apix_x"],"strucfac":sf})
+
 			elif option1 == "filtertable":
 				tf = options.filtertable[index_d[option1]]
-				if options.verbose>1 : print("Apply filter -> ",tf)
+				if options.verbose > 1: print("Apply filter -> ",tf)
 				xy = XYData()
 				xy.read_file(tf)
-				ny=data["ny"]
-				filt=[xy.get_yatx_smooth(old_div(i,(apix*ny)),1) for i in range(int(ceil(ny*sqrt(3.0)/2)))]
-				if options.verbose>1 : print(filt)
+				ny = data["ny"]
+				filt = [xy.get_yatx_smooth(old_div(i,(apix*ny)),1) for i in range(int(ceil(ny*sqrt(3.0)/2)))]
+				if options.verbose > 1: print(filt)
 				data.process_inplace("filter.radialtable",{"table":filt})
 
 			elif option1 == "process":
 				fi = index_d[option1]
-				if options.verbose>1 : print("process -> ",options.process[fi])
+				if options.verbose > 1: print("process -> ",options.process[fi])
 				(filtername, param_dict) = parsemodopt(options.process[fi])
-				if not param_dict : param_dict={}
+				if not param_dict: param_dict = {}
 
 				#Parse the options to convert the image file name to EMData object
 				for key in list(param_dict.keys()):
 					if not str(param_dict[key]).isdigit():
 						try:
-							if  os.path.is_file(param_dict[key]) :
+							if os.path.is_file(param_dict[key]):
 								param_dict[key] = EMData(param_dict[key])
 						except:
 							pass
 
-				if filtername in oopprocs : data=data.process(filtername,param_dict)
-				else :
+				if filtername in oopprocs: data=data.process(filtername,param_dict)
+				else:
 					try: data.process_inplace(filtername, param_dict)
 					except:
 						traceback.print_exc()
@@ -487,84 +489,84 @@ def main():
 
 			elif option1 == "ralignzphi":
 #				print "ralignzphi ",options.ralignzphi[index_d[option1]]
-				zalignref=EMData(options.ralignzphi[index_d[option1]],0)
+				zalignref = EMData(options.ralignzphi[index_d[option1]],0)
 				dang = 80.0/data["ny"]		# 1 pixel at ~3/4 radius
-				dzmax=old_div(data["ny"],20)			# max +-z shift
-				best=(1000,0,0,data)
+				dzmax = old_div(data["ny"],20)			# max +-z shift
+				best = (1000,0,0,data)
 
-				dsd=data.process("math.meanshrink",{"n":2})			# downsampled data
+				dsd = data.process("math.meanshrink",{"n":2})			# downsampled data
 				dsd.process_inplace("filter.lowpass.gauss",{"cutoff_abs":0.25})
 
-				dsr=zalignref.process("math.meanshrink",{"n":2})	# downsampled reference
+				dsr = zalignref.process("math.meanshrink",{"n":2})	# downsampled reference
 				dsr.process_inplace("filter.lowpass.gauss",{"cutoff_abs":0.25})
 
 				# coarse search on downsampled/filtered data
 				for it in range(3):
 					for z in range(best[1]-dzmax,best[1]+dzmax+1):
-						zimg=dsd.process("xform",{"transform":Transform({"type":"eman","tz":z,"phi":best[2]})})
-						tmp=(dsr.cmp("ccc",zimg),z,best[2],zimg)
-						if best[0]>tmp[0] : best=tmp
-					if options.verbose>1: print(best[:3])
+						zimg = dsd.process("xform",{"transform":Transform({"type":"eman","tz":z,"phi":best[2]})})
+						tmp = (dsr.cmp("ccc",zimg),z,best[2],zimg)
+						if best[0] > tmp[0]: best=tmp
+					if options.verbose > 1: print(best[:3])
 
 					for phi in arange(best[2]-20.0,best[2]+20.0,dang*2.0):
-						zimg=dsd.process("xform",{"transform":Transform({"type":"eman","tz":best[1],"phi":phi})})
-						tmp=(dsr.cmp("ccc",zimg),best[1],phi,zimg)
-						if best[0]>tmp[0]: best=tmp
-					if options.verbose>1: print(best[:3])
+						zimg = dsd.process("xform",{"transform":Transform({"type":"eman","tz":best[1],"phi":phi})})
+						tmp = dsr.cmp("ccc",zimg),best[1],phi,zimg
+						if best[0] > tmp[0]: best = tmp
+					if options.verbose > 1: print(best[:3])
 
 				# Fix best() for full sampling
-				zimg=data.process("xform",{"transform":Transform({"type":"eman","tz":best[1]*2,"phi":best[2]})})
-				best=(1000.0,best[1]*2,best[2],zimg)
+				zimg = data.process("xform",{"transform":Transform({"type":"eman","tz":best[1]*2,"phi":best[2]})})
+				best = (1000.0,best[1]*2,best[2],zimg)
 
 				# now we do a fine search only in the neighborhood on the original data
 				for z in range(best[1]-3,best[1]+4):
 					for phi in arange(best[2]-dang*3.0,best[2]+dang*3.5,dang):
-						zimg=data.process("xform",{"transform":Transform({"type":"eman","tz":z,"phi":phi})})
-						tmp=(zalignref.cmp("ccc",zimg),z,best[2],zimg)
-						if best[0]>tmp[0]: best=tmp
-				if options.verbose>1: print(best[:3])
+						zimg = data.process("xform",{"transform":Transform({"type":"eman","tz":z,"phi":phi})})
+						tmp = zalignref.cmp("ccc",zimg),z,best[2],zimg
+						if best[0] > tmp[0]: best = tmp
+				if options.verbose > 1: print(best[:3])
 
-				data=best[3]
-				data["xform.align3d"]=Transform({"type":"eman","tz":best[1],"phi":best[2]})
-				if options.verbose>0 : print("Alignment: tz = ",best[1],"  dphi=",best[2])
+				data = best[3]
+				data["xform.align3d"] = Transform({"type":"eman","tz":best[1],"phi":best[2]})
+				if options.verbose > 0: print("Alignment: tz = ",best[1],"  dphi=", best[2])
 
 			elif option1 == "alignctod":
-				if options.alignctod[0][0].lower()!="d" :
+				if options.alignctod[0][0].lower() != "d":
 					print("Error: please specify D symmetry as alignctod")
 					sys.exit(1)
-				nsym=int(options.alignctod[0][1:])
-				angrange=360.0/nsym		# probably more than necessary, but we'll do it anyway...
-				astep=360.0/pi*atan(2.0/data["nx"])
-				nstep=int(old_div(angrange,astep))
+				nsym = int(options.alignctod[0][1:])
+				angrange = 360.0 /nsym		# probably more than necessary, but we'll do it anyway...
+				astep = 360.0/pi*atan(2.0/data["nx"])
+				nstep = int(old_div(angrange,astep))
 
 				best=(1e23,0)
 				for azi in range(nstep):
-					az=azi*astep
-					datad=data.process("xform",{"transform":Transform({"type":"eman","alt":180.0,"az":az})})	# rotate 180, then about z
-					c=data.cmp("ccc",datad)
-					best=min(best,(c,az))
+					az = azi*astep
+					datad = data.process("xform",{"transform":Transform({"type":"eman","alt":180.0,"az":az})})	# rotate 180, then about z
+					c = data.cmp("ccc",datad)
+					best = min(best,(c,az))
 					if options.verbose: print(azi,az,c,best)
 
-				bcen=best[1]
+				bcen = best[1]
 				for azi in range(-4,5):
-					az=bcen+azi*astep/4.0
-					datad=data.process("xform",{"transform":Transform({"type":"eman","alt":180.0,"az":az})})	# rotate 180, then about z
-					c=data.cmp("ccc",datad)
-					best=min(best,(c,az))
+					az = bcen+azi*astep/4.0
+					datad = data.process("xform",{"transform":Transform({"type":"eman","alt":180.0,"az":az})})	# rotate 180, then about z
+					c = data.cmp("ccc",datad)
+					best = min(best,(c,az))
 					if options.verbose: print(azi,az,c,best)
 
 				print("alignctod, rotate:",best[1]/2.0)
 				data.process_inplace("xform",{"transform":Transform({"type":"eman","az":best[1]/2.0})})	# 1/2 the angle to get it on the 2-fold
 
 			elif option1 == "align":
-				if alignref==None :
+				if alignref == None:
 					print("Error, no alignment reference specified with --alignref")
 					sys.exit(1)
 
 				fi = index_d[option1]
-				if options.verbose>1 : print("align -> ",options.align[fi])
+				if options.verbose > 1: print("align -> ",options.align[fi])
 				(alignername, param_dict) = parsemodopt(options.align[fi])
-				if not param_dict : param_dict={}
+				if not param_dict: param_dict={}
 
 				#Parse the options to convert the image file name to EMData object
 				for key in list(param_dict.keys()):
@@ -576,80 +578,80 @@ def main():
 
 				# note we cannot really pass xform as string input...
 				if "xform.align3d" in param_dict:
-					if param_dict["xform.align3d"]=='none':
-						param_dict["xform.align3d"]=Transform()
+					if param_dict["xform.align3d"] == 'none':
+						param_dict["xform.align3d"] = Transform()
 
 				# For 'refine' aligners, we normally want to provide a starting alignment, presumably from the previous aligner. If we can't find one with start with identity matrix
 				if "refine" in alignername and "xform.align3d" not in param_dict:
 					try:
-						param_dict["xform.align3d"]=data["xform.align3d"]
+						param_dict["xform.align3d"] = data["xform.align3d"]
 						print(alignername," using xform.align3d from image")
 					except:
-						param_dict["xform.align3d"]=Transform()
+						param_dict["xform.align3d"] = Transform()
 						print(alignername," didn't find a starting transform, using identity matrix.")
 
 				# actual alignment
-				data=data.align(alignername,alignref, param_dict)
-				if options.verbose>0 : print("Final alignment:",data["xform.align3d"])
+				data = data.align(alignername,alignref, param_dict)
+				if options.verbose > 0: print("Final alignment:",data["xform.align3d"])
 				index_d[option1] += 1
 
 			elif option1 == "mult":
 				data.mult(options.mult)
 
 			elif option1 == "addfile":
-				af=EMData(options.addfile[index_d[option1]],0)
+				af = EMData(options.addfile[index_d[option1]],0)
 				data.add(af)
-				af=None
+				af = None
 				index_d[option1] += 1
 
 			elif option1 == "multfile":
 				mf=EMData(options.multfile[index_d[option1]],0)
 				data.mult(mf)
-				mf=None
+				mf = None
 				index_d[option1] += 1
 
 			elif option1 == "add":
 				data.add(options.add)
 
-			elif option1 == "icos5to2" :
-				xf=Transform.icos_5_to_2()
+			elif option1 == "icos5to2":
+				xf = Transform.icos_5_to_2()
 				data.process_inplace("xform",{"transform":xf})
 
-			elif option1 == "icos2to5" :
-				xf=Transform.icos_5_to_2()
+			elif option1 == "icos2to5":
+				xf = Transform.icos_5_to_2()
 				xf.invert()
 				data.process_inplace("xform",{"transform":xf})
 
 			elif option1 == "trans":
 				fi = index_d[option1]
-				dx,dy,dz=options.trans[fi].split(",")
+				dx,dy,dz = options.trans[fi].split(",")
 				data.translate(float(dx),float(dy),float(dz))
 				index_d[option1] += 1
 
 			elif option1 == "rot":
 				fi = index_d[option1]
-				if options.rot[fi].lower()=="header":
+				if options.rot[fi].lower() == "header":
 					data.transform(data["xform.align3d"])
 				else:
-					xform=parse_transform(options.rot[fi])
+					xform = parse_transform(options.rot[fi])
 					data.transform(xform)
 				index_d[option1] += 1
 
 			elif option1 == "clip":
-				x=data["nx"]
-				y=data["ny"]
-				z=data["nz"]
-				if(len(options.clip) == 6):
+				x = data["nx"]
+				y = data["ny"]
+				z = data["nz"]
+				if len(options.clip) == 6:
 					(nx, ny, nz, xc, yc, zc) = options.clip
-				elif(len(options.clip) == 3):
+				elif len(options.clip) == 3:
 					(nx, ny, nz) = options.clip
 					xc = old_div(x,2)
 					yc = old_div(y,2)
 					zc = old_div(z,2)
-				elif(len(options.clip) ==1):
+				elif len(options.clip) == 1:
 					nx = options.clip[0]
-					ny=nx
-					nz=nx
+					ny = nx
+					nz = nx
 					xc = old_div(x,2)
 					yc = old_div(y,2)
 					zc = old_div(z,2)
@@ -670,15 +672,15 @@ def main():
 				sym = options.sym[index_d[option1]]
 				xf = Transform()
 				xf.to_identity()
-				nsym=xf.get_nsym(sym)
-				avg_dict=parsemodopt(options.averager)
+				nsym = xf.get_nsym(sym)
+				avg_dict = parsemodopt(options.averager)
 				symavgr = Averagers.get(avg_dict[0],avg_dict[1])
 
 				for i in range(nsym):
-					ref=data.copy()
+					ref = data.copy()
 					ref.transform(xf.get_sym(sym,i))
 					symavgr.add_image(ref)
-				data=symavgr.finish()
+				data = symavgr.finish()
 
 			elif option1 == "scale":
 				scale_f = options.scale[index_d[option1]]
@@ -733,30 +735,30 @@ def main():
 				if not options.outtype:
 					options.outtype = "unknown"
 
-		if options.outmode not in ("float","compressed") :
-			if options.outnorescale :
+		if options.outmode not in ("float","compressed"):
+			if options.outnorescale:
 				# This sets the minimum and maximum values to the range for the specified type, which should result in no rescaling
-				outmode=file_mode_map[options.outmode]
-				data["render_min"]=file_mode_range[outmode][0]
-				data["render_max"]=file_mode_range[outmode][1]
+				outmode = file_mode_map[options.outmode]
+				data["render_min"] = file_mode_range[outmode][0]
+				data["render_max"] = file_mode_range[outmode][1]
 			else:
-				data["render_min"]=data["minimum"]
-				data["render_max"]=data["maximum"]
+				data["render_min"] = data["minimum"]
+				data["render_max"] = data["maximum"]
 				print("rescale output to range {} - {}".format(data["render_min"],data["render_max"]))
 
 		if options.unstacking:	#output a series numbered single image files
-			if options.compressbits>=0:
+			if options.compressbits >= 0:
 				data.write_compressed(os.path.splitext(outfile)[0]+'-'+str(img_index+1).zfill(len(str(nimg)))+ os.path.splitext(outfile)[-1],0,options.compressbits,nooutliers=options.nooutliers,erase=erase)
 			else:
 				data.write_image(os.path.splitext(outfile)[0]+'-'+str(img_index+1).zfill(len(str(nimg)))+ os.path.splitext(outfile)[-1], -1, EMUtil.ImageType.IMAGE_UNKNOWN, False, None, file_mode_map[options.outmode], not(options.swap))
 		else:   #output a single 2D image or a 2D stack
 			if options.append:
-				if options.compressbits>=0:
+				if options.compressbits >= 0:
 					data.write_compressed(outfile,-1,options.compressbits,nooutliers=options.nooutliers,erase=erase)
 				else:
 					data.write_image(outfile, -1, EMUtil.get_image_ext_type(options.outtype), False, None, file_mode_map[options.outmode], not(options.swap))
 			else:
-				if options.compressbits>=0:
+				if options.compressbits >= 0:
 					data.write_compressed(outfile,img_index,options.compressbits,nooutliers=options.nooutliers,erase=erase)
 				else:
 					data.write_image(outfile, img_index, EMUtil.get_image_ext_type(options.outtype), False, None, file_mode_map[options.outmode], not(options.swap))
@@ -771,10 +773,10 @@ def main():
 #parse_file() will read the input image file and return a list of EMData() object
 def parse_infile(infile, first, last, step, apix=None):
 	#def parse_infile(infile, indxs):
-	if infile[0]==":" :
+	if infile[0] == ":":
 		parm=infile.split(":")
-		if len(parm)==4 : parm.append(0)
-		if len(parm)!=5 :
+		if len(parm) == 4: parm.append(0)
+		if len(parm) != 5:
 			print("Error: please specify ':X:Y:Z:fillval' to create a new volume")
 			sys.exit(1)
 

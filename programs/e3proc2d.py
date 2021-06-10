@@ -263,9 +263,9 @@ def main():
 	multiple_files = (num_input_files > 1)
 
 	if options.extractboxes:
-			boxes={}
-			boxesbad=0
-			boxsize=128
+		boxes={}
+		boxesbad=0
+		boxsize=128
 
 	inp_num = 0
 
@@ -273,7 +273,7 @@ def main():
 		inp_num = inp_num + 1
 
 		if outpattern.lower()=="none":
-			outfile=None
+			outfile = None
 
 			if infile[0]==":": inp_ext=".hdf"
 			else: inp_ext = os.path.splitext(infile)[1]
@@ -663,7 +663,7 @@ def main():
 					hipix = int(d["nx"]*d["apix_x"]/25.0)
 					if hipix>old_div(d["ny"],2)-6: hipix=old_div(d["ny"],2)-6	# if A/pix is very large, this makes sure we get at least some info
 
-					if lopix == hipix: lopix,hipix = 3,old_div(d["nx"],5)	# in case the A/pix value is drastically out of range
+					if lopix == hipix: lopix,hipix = 3,old_div(d["nx"],5)  # in case the A/pix value is drastically out of range
 
 					r = f.calc_radial_dist(old_div(d["ny"],2),0,1.0,1)
 					lo = old_div(sum(r[lopix:hipix]),(hipix-lopix))
@@ -928,16 +928,13 @@ def main():
 						min_max_set = False
 
 					if options.outmode != "float" or dont_scale:
-
 						if options.outnorescale or dont_scale:
 							# This sets the minimum and maximum values to the range
 							# for the specified type, which should result in no rescaling
-
 							outmode = file_mode_map[options.outmode]
 
 							d["render_min"] = file_mode_range[outmode][0]
 							d["render_max"] = file_mode_range[outmode][1]
-
 						else:
 							if not min_max_set:
 								d["render_min"] = d["minimum"]
@@ -1018,7 +1015,7 @@ def main():
 
 							d.write_image(outfile, 0, out_type, False, region, out_mode, not_swap)
 
-						elif options.unstacking:	# output a series numbered single image files
+						elif options.unstacking:  # output a series numbered single image files
 							out_name = os.path.splitext(outfile)[0]+'-'+str(i+1).zfill(len(str(nimg)))+os.path.splitext(outfile)[-1]
 							if d["sigma"] == 0:
 								if options.verbose > 0:
@@ -1033,7 +1030,6 @@ def main():
 
 						else:   # output a single 2D image or a 2D stack
 							# optionally replace the output image with its rotational average
-
 							if options.rotavg:
 								rd = d.calc_radial_dist(d["nx"],0,0.5,0)
 								d = EMData(len(rd),1,1)
