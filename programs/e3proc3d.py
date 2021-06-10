@@ -286,12 +286,12 @@ def main():
 			c = img.calc_radial_dist(old_div(img["nx"],2),0,1,options.calcradial)
 			curves.append(c)
 
-		out = open(outfile,"w")
-		out.write("# {} mode {}".format(infile,options.calcradial))
-		for l in range(len(curves[0])):
-			out.write("\n{}".format(l))
-			for c in curves:
-				out.write("\t{}".format(c[l]))
+		with open(outfile,"w") as out:
+			out.write("# {} mode {}".format(infile,options.calcradial))
+			for l in range(len(curves[0])):
+				out.write("\n{}".format(l))
+				for c in curves:
+					out.write("\t{}".format(c[l]))
 
 		sys.exit(0)
 
