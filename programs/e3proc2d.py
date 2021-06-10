@@ -261,10 +261,7 @@ def main():
 	if options.extractboxes:
 		boxes={}
 
-	inp_num = 0
-
-	for infile in args[0 : num_input_files]:
-		inp_num = inp_num + 1
+	for inp_num, infile in enumerate(args[0: num_input_files], start=1):
 
 		if infile[0]==":": inp_ext=".hdf"
 		else: inp_ext = os.path.splitext(infile)[1]
@@ -467,9 +464,7 @@ def main():
 		if options.verbose > 1:
 			print("input file, output file, is three-d =", infile, outfile, is_3d)
 
-		count = 0
-		for i in range(n0, n1+1, options.step[1]):
-			count += 1
+		for count, i in enumerate(range(n0, n1+1, options.step[1]), start=1):
 			if options.verbose >= 1:
 				if time.time()-lasttime > 3 or options.verbose > 2 :
 					sys.stdout.write(" %7d\r" %i)

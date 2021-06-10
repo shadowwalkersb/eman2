@@ -374,8 +374,7 @@ def main():
 	# processors that only work out of place
 	oopprocs = {"misc.directional_sum"}
 
-	img_index = 0
-	for data in datlst:
+	for img_index, data in enumerate(datlst):
 		# if this is a list of images, we have header-only, and need to read the actual volume
 		if len(datlst) > 1:
 			data = EMData(data["source_path"],data["source_n"])
@@ -746,7 +745,6 @@ def main():
 				else:
 					data.write_image(outfile, img_index, EMUtil.get_image_ext_type(options.outtype), False, None, file_mode_map[options.outmode], not(options.swap))
 
-		img_index += 1
 		for append_option in append_options:	#clean up the multi-option counter for next image
 			index_d[append_option] = 0
 
