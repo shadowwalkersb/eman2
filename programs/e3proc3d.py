@@ -87,7 +87,7 @@ def main():
 	parser.add_argument("--nooutliers", type=int,help="With --compressbits, if set will truncate outlier values to preserve sigfigs for more useful values. default 1 (enabled)",default=1)
 	parser.add_argument("--diffmap", type=str, help="Will match the power spectrum of the specified file to the input file, then subtract it from the input file")
 
-	parser.add_argument("--fftclip", metavar="x,y,z", type=ast.literal_eval, help="Make the output have this size, rescaling by padding FFT.")
+	parser.add_argument("--fftclip", metavar="x,y,z", type=parse_list_arg(int,int,int), help="Make the output have this size, rescaling by padding FFT.")
 	parser.add_argument("--filtertable", type=str, action="append",help="Applies a 2 column (S,amp) file as a filter in Fourier space, assumed 0 outside the defined range.")
 	parser.add_argument("--first", metavar="n", type=int, default=0, help="the first image in the input to process [0 - n-1])")
 	parser.add_argument("--fouriershrink", metavar="n", type=float, action="append", help="Reduce an image size by an arbitrary scaling factor by clipping in Fourier space. eg - 2 will reduce image size to 1/2.")
@@ -676,11 +676,7 @@ def main():
 				index_d[option1] += 1
 
 			elif option1 == "fftclip":
-				if len(options.fftclip) == 3:
-					(fnx, fny, fnz) = options.fftclip
-				else:
-					print('fftclip option takes either 3 arguments. --fftclip=x,y,z')
-					return
+				fnx, fny, fnz = options.fftclip
 
 				fft = data.do_fft()
 				padfft = fft.get_clip(Region(0, 0, 0, fnx+2, fny, fnz))
