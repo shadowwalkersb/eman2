@@ -262,8 +262,7 @@ def main():
 
 	for inp_num, infile in enumerate(args[0: num_input_files], start=1):
 
-		if infile[0]==":": inp_ext=".hdf"
-		else: inp_ext = os.path.splitext(infile)[1]
+		inp_ext = ".hdf" if infile[0] == ":" else os.path.splitext(infile)[1]
 
 		if outpattern.lower()=="none":
 			outfile = None

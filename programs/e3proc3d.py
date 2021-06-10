@@ -262,14 +262,12 @@ def main():
 
 	n0 = options.first
 	n1 = options.last
-	if infile[0] == ":": nimg = 1
-	else: nimg = EMUtil.get_image_count(infile)
+	nimg = 1 if infile[0] == ":" else EMUtil.get_image_count(infile)
 	if not (0 <= n1 <= nimg ): n1 = nimg-1
 
 	# If the output file exists and has exactly one image we delete the file later if writing compressed
 	try:
-		if EMUtil.get_image_count(outfile) == 1: erase = True
-		else: erase = False
+		erase = (EMUtil.get_image_count(outfile) == 1)
 	except:
 		erase = False
 
@@ -278,8 +276,7 @@ def main():
 		n2 = int(options.step.split(",")[1])
 	else: n2 = 1
 
-	if options.alignref: alignref = EMData(options.alignref,0)
-	else: alignref = None
+	alignref = EMData(options.alignref,0) if options.alignref else None
 
 	if options.calcradial >= 0:
 		print("Computing radial real-space distribution. All other options ignored!")
