@@ -451,7 +451,6 @@ def main():
 				saxis = [old_div(x,apix) for x in xaxis]
 				Util.save_data(saxis[1],saxis[1]-saxis[0],fsc[1:-1],args[1])
 				if options.verbose: print("Exiting after FSC calculation")
-				sys.exit(0)
 
 			elif option1 == "calcsf":
 				dataf = data.do_fft()
