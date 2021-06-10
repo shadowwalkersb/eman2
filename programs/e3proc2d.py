@@ -175,7 +175,7 @@ def main():
 	parser.add_argument("--averager",type=str, choices=dump_averagers_list(), help="If --average is specified, this is the averager to use (e2help.py averager). Default=mean",default="mean")
 	parser.add_argument("--calcsf", metavar="outputfile", type=str, help="calculate a radial structure factor for the image and write it to the output file, must specify apix. divide into <n> angular bins")
 	parser.add_argument("--calccont", action="store_true", help="Compute the low resolution azimuthal contrast of each image and put it in the header as eval_contrast_lowres. Larger values imply more 'interesting' images.")
-	parser.add_argument("--clip", metavar="xsize,ysize", type=str, action="append", help="Specify the output size in pixels xsize,ysize[,xcenter,ycenter], images can be made larger or smaller.")
+	parser.add_argument("--clip", metavar="xsize,ysize[,xcenter,ycenter]", type=parse_list_arg([int,int],[int,int,int,int]), action="append", help="Specify the output size in pixels xsize,ysize[,xcenter,ycenter], images can be made larger or smaller.")
 	parser.add_argument("--exclude", metavar="exclude-list-file", type=str, help="Excludes image numbers, either a list of comma separated values, or a filename with one number per line, first image == 0")
 	parser.add_argument("--fftavg", metavar="filename", type=str, help="Incoherent Fourier average of all images and write a single power spectrum image")
 	parser.add_argument("--process", metavar="processor_name:param1=value1:param2=value2", type=str, action="append", help="apply a processor named 'processorname' with all its parameters/values.")
@@ -707,8 +707,8 @@ def main():
 					clipcx = old_div(nx,2)
 					clipcy = old_div(ny,2)
 
-					try: clipx,clipy,clipcx,clipcy = options.clip[ci].split(",")
-					except: clipx, clipy = options.clip[ci].split(",")
+					try: clipx,clipy,clipcx,clipcy = options.clip[ci]
+					except: clipx, clipy = options.clip[ci]
 
 					clipx, clipy = int(clipx),int(clipy)
 					clipcx, clipcy = int(clipcx),int(clipcy)
