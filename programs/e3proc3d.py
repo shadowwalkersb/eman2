@@ -189,7 +189,7 @@ def main():
 	'e2help.py processors -v 2' for a detailed list of available procesors
 
 """
-	parser = EMArgumentParser(description=description, allow_abbrev=False, version=EMANVERSION)
+	parser = EMArgumentParser(description=description, allow_abbrev=False)
 
 	parser.add_argument("--add", metavar="f", type=float, help="Adds a constant 'f' to the densities")
 	parser.add_argument("--addfile", type=str, action="append", help="Adds the volume to another volume of identical size")
