@@ -42,7 +42,27 @@ from collections import defaultdict
 
 def FragmentizeType(s):
 	par = s.partition(":")
+	# par = ast.literal_eval(s)
+	print("par:", par)
+	# par[0] = int(par[0])
+	# print(type(par[0]))
+	# print(type(par[2]))
 
+	result = int(float(par[0])), float(par[2])
+	# traceback.print_exc()
+	# try:
+	# 	result = int(par[0]), float(par[2])
+	# except ValueError:
+	# 	raise ValueError('ERROR: fragmentize requires <N>:<threshold>')
+	# except TypeError:
+	# 	raise TypeError('ERROR: fragmentize requires <N>:<threshold>')
+	# except:
+	# 	traceback.print_exc()
+		# raise Exception("fffff").with_traceback()
+	# if not (isinstance(par[0], int) and isinstance(par[2], float)):
+	# 	raise argparse.ArgumentTypeError("specify N:thr!")
+
+	# return int(par[0]), float(par[1])
 	return int(float(par[0])), float(par[2])
 
 
@@ -259,6 +279,10 @@ def main():
 	# this option uses one input map and produces a 3-D stack of output maps, so doesn't play with others
 	if options.fragmentize:
 		N, thr = options.fragmentize
+		print(type(N))
+		print(type(thr))
+		print(N, thr)
+		parser.error("N, thr")
 
 		try: os.unlink(outfile)
 		except: pass
