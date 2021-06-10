@@ -29,7 +29,6 @@
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  2111-1307 USA
 #
 from past.utils import old_div
-from builtins import range
 from EMAN2 import *
 import sys
 from math import *
@@ -175,9 +174,6 @@ def main():
 			seg2.process_inplace("math.linear",{"scale":-1.0,"shift":1.0})
 			map2 = map*seg2
 			map2.write_image(outfile,i)
-		seg = None                # free up memory
-		seg2 = None
-		model2 = None
 		print("Fragmentization complete! Exiting")
 		sys.exit(0)
 
@@ -371,9 +367,6 @@ def main():
 	if options.verbose > 0:
 		print("%d images, processing %d-%d (step %d)......"%(nimg, n0, n1,n2))
 
-	# processors that only work out of place
-	oopprocs = {"misc.directional_sum"}
-
 	for img_index, data in enumerate(datlst):
 		# if this is a list of images, we have header-only, and need to read the actual volume
 		if len(datlst) > 1:
@@ -400,13 +393,11 @@ def main():
 			elif option1 == "matchto":
 				mt = EMData(options.matchto[0])
 				data.process_inplace("filter.matchto",{"to":mt})
-				mt = None
 
 			elif option1 == "diffmap":
 				mt = EMData(options.diffmap)
 				mt.process_inplace("filter.matchto",{"to":data})
 				data.sub(mt)
-				mt = None
 
 			elif option1 == "calcfsc":
 				datafsc = EMData(options.calcfsc)
@@ -462,7 +453,7 @@ def main():
 						except:
 							pass
 
-				if filtername in oopprocs: data=data.process(filtername,param_dict)
+				if filtername == "misc.directional_sum": data=data.process(filtername,param_dict)
 				else:
 					try: data.process_inplace(filtername, param_dict)
 					except:
@@ -583,13 +574,11 @@ def main():
 			elif option1 == "addfile":
 				af = EMData(options.addfile[index_d[option1]],0)
 				data.add(af)
-				af = None
 				index_d[option1] += 1
 
 			elif option1 == "multfile":
 				mf=EMData(options.multfile[index_d[option1]],0)
 				data.mult(mf)
-				mf = None
 				index_d[option1] += 1
 
 			elif option1 == "add":
