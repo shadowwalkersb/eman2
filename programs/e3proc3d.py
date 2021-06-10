@@ -72,7 +72,7 @@ def main():
 	parser.add_argument("--add", metavar="f", type=float, help="Adds a constant 'f' to the densities")
 	parser.add_argument("--addfile", type=str, action="append", help="Adds the volume to another volume of identical size")
 	parser.add_argument("--align", metavar="aligner_name:param1=value1:param2=value2", type=str, action="append", help="Align input map to reference specified with --alignref. As with processors, a sequence of aligners is permitted")
-	parser.add_argument("--alignctod", type=str ,action="append", help="Rotates a map already aligned for C symmetry so the best 2-fold is positioned for specified D symmetry. Does not impose specified symmetry.")
+	parser.add_argument("--alignctod", type=parse_list_arg, action="append", help="Rotates a map already aligned for C symmetry so the best 2-fold is positioned for specified D symmetry. Does not impose specified symmetry.")
 	parser.add_argument("--alignref", metavar="filename", type=str, default=None, help="Alignment reference volume. May only be specified once.")
 	parser.add_argument("--apix", type=float, default=None, help="Default=None (not used). A/pixel for S scaling. Also sets/resets the apix of an image to this value.")
 	parser.add_argument("--append", action="store_true", help="Append output image, i.e., do not write inplace.")
@@ -494,9 +494,6 @@ def main():
 				if options.verbose > 0: print("Alignment: tz = ",best[1],"  dphi=", best[2])
 
 			elif option1 == "alignctod":
-				if options.alignctod[0][0].lower() != "d":
-					print("Error: please specify D symmetry as alignctod")
-					sys.exit(1)
 				nsym = int(options.alignctod[0][1:])
 				angrange = 360.0 /nsym		# probably more than necessary, but we'll do it anyway...
 				astep = 360.0/pi*atan(2.0/data["nx"])
