@@ -37,7 +37,6 @@ import os.path
 from time import time
 from numpy import arange
 import traceback
-import ast
 
 
 def main():
@@ -107,7 +106,7 @@ def main():
 	parser.add_argument("--mult", metavar="f", type=float, help="Scales the densities by a fixed number in the output")
 	parser.add_argument("--multfile", type=str, action="append", help="Multiplies the volume by another volume of identical size. This can be used to apply masks, etc.")
 
-	parser.add_argument("--origin", metavar="x,y,z", type=ast.literal_eval, help="Set the coordinates for the pixel (0,0,0) for Chimera. THIS HAS NO IMPACT ON IMAGE PROCESSING !")
+	parser.add_argument("--origin", metavar="x,y,z", type=parse_list_arg(int,int,int), help="Set the coordinates for the pixel (0,0,0) for Chimera. THIS HAS NO IMPACT ON IMAGE PROCESSING !")
 	parser.add_argument("--outmode",type=str, default="float", help="All EMAN2 programs write images with 4-byte floating point values when possible by default. This allows specifying an alternate format when supported (int8, int16, int32, uint8, uint16, uint32). Values are rescaled to fill MIN-MAX range.")
 	parser.add_argument("--outnorescale",action="store_true",help="If specified, floating point values will not be rescaled when writing data as integers. Values outside of range are truncated.")
 	parser.add_argument("--outtype", metavar="image-type", type=str, help="Set output image format, mrc, imagic, hdf, etc")
@@ -380,13 +379,7 @@ def main():
 
 		for option1 in optionlist:
 			if option1 == "origin":
-				if len(options.origin) == 3:
-					(originx, originy, originz) = options.origin
-				else:
-					print('')
-					return
-
-				data.set_xyz_origin(originx, originy, originz)
+				data.set_xyz_origin(*options.origin)
 
 			elif option1 == "matchto":
 				mt = EMData(options.matchto[0])
