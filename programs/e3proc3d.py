@@ -92,7 +92,7 @@ def main():
 	parser.add_argument("--filtertable", type=str, action="append",help="Applies a 2 column (S,amp) file as a filter in Fourier space, assumed 0 outside the defined range.")
 	parser.add_argument("--first", metavar="n", type=int, default=0, help="the first image in the input to process [0 - n-1])")
 	parser.add_argument("--fouriershrink", metavar="n", type=float, action="append", help="Reduce an image size by an arbitrary scaling factor by clipping in Fourier space. eg - 2 will reduce image size to 1/2.")
-	parser.add_argument("--fragmentize", type=str, default=None, help="Specify <N>:<thr> Randomly removes chunks from the input map and produces N derived maps. thr is the isosurface threshold for chunking. Don't combine with other options.")
+	parser.add_argument("--fragmentize", metavar="N,thr", type=parse_list_arg(int,float), default=None, help="Randomly removes chunks from the input map and produces N derived maps. thr is the isosurface threshold for chunking. Don't combine with other options.")
 
 	parser.add_argument("--icos2to5",action="store_true",help="Rotate an icosahedral map from 2-fold on Z (MRC standard) to 5-fold on Z (EMAN standard)  orientation")
 	parser.add_argument("--icos5to2",action="store_true",help="Rotate an icosahedral map from 5-fold on Z (EMAN standard) to 2-fold on Z (MRC standard) orientation")
@@ -159,14 +159,9 @@ def main():
 		sys.exit(1)
 
 	# this option uses one input map and produces a 3-D stack of output maps, so doesn't play with others
-	if options.fragmentize != None:
-		try:
-			N,thr = options.fragmentize.split(":")
-			N = int(N)
-			thr = float(thr)
-		except:
-			print("ERROR: fragmentize requires <N>:<threshold>")
-			sys.exit(1)
+	if options.fragmentize:
+		N, thr = options.fragmentize
+
 		try: os.unlink(outfile)
 		except: pass
 		map = EMData(infile,0)
