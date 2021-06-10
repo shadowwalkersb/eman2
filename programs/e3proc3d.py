@@ -680,7 +680,6 @@ def main():
 				fft = data.do_fft()
 				padfft = fft.get_clip(Region(0, 0, 0, fnx+2, fny, fnz))
 				data = padfft.do_ift()
-				index_d[option1] += 1
 
 			elif option1 == "tophalf":
 				data = data.get_top_half()
