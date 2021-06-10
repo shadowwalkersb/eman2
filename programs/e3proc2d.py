@@ -185,8 +185,6 @@ class SelfclAction(argparse.Action):
 
 
 def main():
-	progname = os.path.basename(sys.argv[0])
-	usage = progname + """ [options] <inputfile> ... <inputfile> <outputfile>"""
 	description = """
 
 	MRC stack files MUST use the .mrcs extension to be treated as a set of 2-D images (or you must 
@@ -225,7 +223,7 @@ def main():
 	'e2help.py processors -v 2' for a detailed list of available procesors
 	"""
 
-	parser = E3ArgumentParser(nargs=2,description=description,allow_abbrev=False)
+	parser = EMArgumentParser(allow_abbrev=False, description=description)
 	print(dir(parser))
 
 	parser.add_argument("--apix", type=float, help="A/pixel for S scaling")

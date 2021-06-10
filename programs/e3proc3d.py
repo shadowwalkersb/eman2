@@ -163,8 +163,6 @@ def parse_infile(infile, first, last, step, apix=None):
 
 
 def main():
-	progname = os.path.basename(sys.argv[0])
-	usage = progname + """ [options] <inputfile> <outputfile>"""
 	description = """
 	Generic 3-D image processing and file format conversion program.
 	All EMAN2 recognized file formats accepted (see Wiki for list).
