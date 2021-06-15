@@ -162,12 +162,6 @@ def test_selfcl(): pass
 
 
 class SelfclAction(argparse.Action):
-	def __init__(self, option_strings, dest, nargs=None, **kwargs):
-		# self.nargs = nargs
-		# if nargs is not None:
-		# 	raise ValueError("nargs not allowed")
-		super().__init__(option_strings, dest, nargs=nargs, **kwargs)
-
 	def __call__(self, parser, namespace, values, option_string=None):
 		# print('%r %r %r' % (namespace, values, option_string))
 		if not values[1] in range(3):
