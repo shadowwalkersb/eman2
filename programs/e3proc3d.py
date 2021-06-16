@@ -41,7 +41,8 @@ import ast
 
 def main():
 	progname = os.path.basename(sys.argv[0])
-	usage = progname + """ [options] <inputfile> <outputfile>
+	usage = progname + """ [options] <inputfile> <outputfile>"""
+	description = """
 	Generic 3-D image processing and file format conversion program.
 	All EMAN2 recognized file formats accepted (see Wiki for list).
 
@@ -65,7 +66,7 @@ def main():
 	'e2help.py processors -v 2' for a detailed list of available procesors
 
 """
-	parser = EMArgumentParser(usage=usage,allow_abbrev=False,version=EMANVERSION)
+	parser = EMArgumentParser(description=description, allow_abbrev=False, version=EMANVERSION)
 
 	parser.add_argument("--add", metavar="f", type=float, help="Adds a constant 'f' to the densities")
 	parser.add_argument("--addfile", type=str, action="append", help="Adds the volume to another volume of identical size")

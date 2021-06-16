@@ -128,7 +128,8 @@ def image_from_formula(n_x, n_y, n_z, formula):
 
 def main():
 	progname = os.path.basename(sys.argv[0])
-	usage = progname + """ [options] <inputfile> ... <inputfile> <outputfile>
+	usage = progname + """ [options] <inputfile> ... <inputfile> <outputfile>"""
+	description = """
 
 	MRC stack files MUST use the .mrcs extension to be treated as a set of 2-D images (or you must 
 	use one of the --threed* options)
@@ -166,7 +167,7 @@ def main():
 	'e2help.py processors -v 2' for a detailed list of available procesors
 	"""
 
-	parser = EMArgumentParser(usage=usage,allow_abbrev=False,version=EMANVERSION)
+	parser = EMArgumentParser(description=description, allow_abbrev=False, version=EMANVERSION)
 
 	parser.add_argument("--apix", type=float, help="A/pixel for S scaling")
 	parser.add_argument("--average", action="store_true", help="Averages all input images (without alignment) and writes a single output image")
