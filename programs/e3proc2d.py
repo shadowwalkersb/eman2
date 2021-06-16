@@ -274,7 +274,6 @@ def main():
 
 
 	# Output
-	parser.add_argument("--output", metavar="outfile", type=argparse.FileType('w'), help="output file.")
 	parser.add_argument("--outtype", metavar="image-type", type=str, default="unknown", help="output image format, 'mrc', 'imagic', 'hdf', etc. if specify spidersingle will output single 2D image rather than 2D stack.")
 	parser.add_argument("--inplace", action="store_true", help="Output overwrites input, USE SAME FILENAME, DO NOT 'clip' images.")
 	parser.add_argument("--compressbits", type=int,help="HDF only. Bits to keep for compression. -1 for no compression",default=-1)
