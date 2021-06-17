@@ -668,11 +668,15 @@ def main():
 					d.transform(xf)
 
 				elif option1 == "scale":
-					if val != 1.0:
-						d.scale(val)
+					scale_f = val
+
+					if scale_f != 1.0:
+						d.scale(scale_f)
 
 				elif option1 == "rotate":
-					if val != 0.0: d.rotate(val,0,0)
+					rotatef = val
+
+					if rotatef != 0.0: d.rotate(rotatef,0,0)
 
 				elif option1 == "translate":
 					tdx, tdy = val
@@ -696,29 +700,39 @@ def main():
 					except: pass
 
 				elif option1 == "randomize":
+					rnd = val
+
 					t = Transform()
-					t.set_params({"type":"2d", "alpha":random.uniform(-val[0],val[0]),
-								  "mirror":random.randint(0,val[2]), "tx":random.uniform(-val[1],val[1]),
-								  "ty":random.uniform(-val[1],val[1])})
+					t.set_params({"type":"2d", "alpha":random.uniform(-rnd[0],rnd[0]),
+								  "mirror":random.randint(0,rnd[2]), "tx":random.uniform(-rnd[1],rnd[1]),
+								  "ty":random.uniform(-rnd[1],rnd[1])})
 					d.transform(t)
 
 				elif option1 == "medianshrink":
-					if val > 1:
-						d.process_inplace("math.medianshrink",{"n":val})
+					shrink_f = val
+
+					if shrink_f > 1:
+						d.process_inplace("math.medianshrink",{"n":shrink_f})
 
 				elif option1 == "meanshrink":
-					if val > 1:
-						d.process_inplace("math.meanshrink",{"n":val})
+					mshrink = val
+
+					if mshrink > 1:
+						d.process_inplace("math.meanshrink",{"n":mshrink})
 
 				elif option1 == "fouriershrink":
-					if val > 1:
-						d.process_inplace("math.fft.resample",{"n":val})
+					fshrink = val
+
+					if fshrink > 1:
+						d.process_inplace("math.fft.resample",{"n":fshrink})
 
 				elif option1 == "headertransform":
+					xfmode = val
+
 					try: xform=d["xform.align2d"]
 					except: print("Error: particle has no xform.align2d header value")
 
-					if val == 1: xform.invert()
+					if xfmode == 1: xform.invert()
 
 					d.process_inplace("xform",{"transform":xform})
 
