@@ -332,14 +332,9 @@ def main():
 		opt2to3 = options.twod2threed
 
 		if not (options.threed2threed or options.threed2twod or options.twod2threed):
-			if is_inp3d and is_out3d:
-				options.threed2threed = True
-
-			if is_inp3d and not is_out3d:
-				options.threed2twod = True
-
-			if is_out3d and not is_inp3d:
-				options.twod2threed = True
+			options.threed2threed = (is_inp3d and     is_out3d)
+			options.threed2twod   = (is_inp3d and not is_out3d)
+			options.twod2threed   = (is_out3d and not is_inp3d)
 
 		if options.average or options.avgseq > 0:
 			averager = parsemodopt(options.averager)
