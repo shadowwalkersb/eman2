@@ -43,9 +43,6 @@ import traceback
 
 # constants
 
-HEADER_ONLY=True
-HEADER_AND_DATA=False
-
 xyplanes = ['xy', 'yx']
 xzplanes = ['xz', 'zx']
 yzplanes = ['yz', 'yz']
@@ -263,8 +260,6 @@ def main():
 
 	if options.extractboxes:
 		boxes={}
-		boxesbad=0
-		boxsize=128
 
 	inp_num = 0
 
@@ -300,7 +295,7 @@ def main():
 				num_inp_images = -1
 
 			if num_inp_images == 1:
-				[nxinp, nyinp, nzinp] = gimme_image_dimensions3D(infile)
+				nzinp = gimme_image_dimensions3D(infile)[2]
 
 				if nzinp == 1:
 					is_single_2d_image = True
@@ -359,14 +354,6 @@ def main():
 
 		n0 = options.first
 		n1 = options.last
-
-		sfout_n = 0
-		sfout = None
-		sf_amwid = 0
-
-		MAXMICROCTF = 1000
-		defocus_val = [0] * MAXMICROCTF
-		bfactor_val = [0] * MAXMICROCTF
 
 		if options.verbose > 2:
 			Log.logger().set_level(options.verbose-2)
@@ -433,8 +420,6 @@ def main():
 			threed = EMData()
 			threed.read_image(infile)
 
-		ld = EMData()
-
 		if options.step[0] > options.first:
 			n0 = options.step[0]
 
@@ -468,8 +453,6 @@ def main():
 				for i in read_number_file(options.exclude): imagelist[i] = 0
 
 			if options.verbose: print("inclusion list:", str(imagelist))
-
-		sfcurve1 = None
 
 		lasttime = time.time()
 		if outfile!=None:
@@ -632,11 +615,10 @@ def main():
 						else: boxes[bf]=[bl]
 						boxsize = d["nx"]
 					except:
-						boxesbad += 1
+						pass
 
 				elif option1 == "add":
 					d.add(options.add[index_d[option1]])
-					af = None
 					index_d[option1] += 1
 
 				elif option1 == "mult":
@@ -1031,14 +1013,6 @@ def main():
 
 			sf_dx = 1.0 / (apix * 2.0 * ny)
 			Util.save_data(0, sf_dx, curve, options.fftavg+".txt")
-
-		try:
-			n_outimg = EMUtil.get_image_count(outfile)
-
-			if options.verbose > 0:
-				print(str(n_outimg) + " images")
-		except:
-			pass
 
 		options.threed2threed = opt3to3
 		options.threed2twod   = opt3to2

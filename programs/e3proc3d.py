@@ -150,7 +150,6 @@ def main():
 
 	infile = args[0]
 	outfile = args[1]
-	is_new_file = not os.path.isfile(outfile)
 
 	out_ext = os.path.splitext(outfile)[1]
 
@@ -361,10 +360,6 @@ def main():
 	nx = x
 	ny = y
 	nz = z
-
-	origin_x = 0
-	origin_y = 0
-	origin_z = 0
 
 	apix = datlst[0]["apix_x"]  # default to apix_x from file
 	if options.apix:
