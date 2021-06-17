@@ -569,7 +569,7 @@ def main():
 				ny = d.get_ysize()
 
 				if option1 == "apix":
-					apix = options.apix
+					apix = val
 					d.set_attr('apix_x', apix)
 					d.set_attr('apix_y', apix)
 					d.set_attr('apix_z', apix)
@@ -612,7 +612,7 @@ def main():
 					d.add(val)
 
 				elif option1 == "mult":
-					d.mult(options.mult)
+					d.mult(val)
 
 				elif option1 == "calccont":
 					f = d.process("math.rotationalsubtract").do_fft()
@@ -658,7 +658,7 @@ def main():
 					d = d.make_rotational_footprint()
 
 				elif option1 == "fp":
-					d = d.make_footprint(options.fp)
+					d = d.make_footprint(val)
 
 				elif option1 == "anisotropic":
 					amount, angle = val
@@ -739,8 +739,8 @@ def main():
 				elif option1 == "selfcl":
 					sc = EMData()
 
-					scl = options.selfcl[0] // 2
-					sclmd = options.selfcl[1]
+					scl = val[0] // 2
+					sclmd = val[1]
 					if sclmd == 0:
 						sc.common_lines_real(d, d, scl, true)
 					else:
@@ -786,7 +786,7 @@ def main():
 					curve=[old_div(i,(dataf["nx"]*dataf["ny"]*dataf["nz"])) for i in curve]
 
 					sf_dx = 1.0 / (d["apix_x"] * ny)
-					Util.save_data(0, sf_dx, curve, options.calcsf)
+					Util.save_data(0, sf_dx, curve, val)
 
 				elif option1 == "interlv":
 					d.append_image(outfile, EMUtil.get_image_ext_type(options.outtype))
