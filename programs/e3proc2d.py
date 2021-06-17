@@ -233,8 +233,6 @@ def main():
 	# Parallelism
 	parser.add_argument("--parallel",action="store_true")
 
-	append_options = ["anisotropic","clip", "process", "meanshrink", "medianshrink", "fouriershrink", "scale", "randomize", "rotate", "translate","add", "headertransform"]
-
 	optionlist = get_optionlist(sys.argv[1:])
 
 	(options, args) = parser.parse_args()
@@ -259,8 +257,6 @@ def main():
 		print('The --step option contains both a step size and the first image to step from.')
 		print('Please use only the --step option rather than --step and --first.')
 		sys.exit(1)
-
-	no_2d_3d_options = (not (options.threed2threed or options.threed2twod or options.twod2threed))
 
 	num_input_files = len(args) - 1
 	outpattern = args[num_input_files]
@@ -349,7 +345,7 @@ def main():
 		opt3to2 = options.threed2twod
 		opt2to3 = options.twod2threed
 
-		if no_2d_3d_options:
+		if not (options.threed2threed or options.threed2twod or options.twod2threed):
 			if inp3d and out3d:
 				options.threed2threed = True
 
@@ -591,7 +587,7 @@ def main():
 
 			index_d = {}
 
-			for append_option in append_options:
+			for append_option in ["anisotropic","clip", "process", "meanshrink", "medianshrink", "fouriershrink", "scale", "randomize", "rotate", "translate","add", "headertransform"]:
 				index_d[append_option] = 0
 
 			if options.verbose > 1:
@@ -862,14 +858,12 @@ def main():
 					continue
 
 				elif option1 == "calcsf":
-					sfout = options.calcsf
 					dataf = d.do_fft()
 					curve = dataf.calc_radial_dist(old_div(ny,2), 0, 1.0,True)
 					curve=[old_div(i,(dataf["nx"]*dataf["ny"]*dataf["nz"])) for i in curve]
-					outfile2 = sfout
 
 					sf_dx = 1.0 / (d["apix_x"] * ny)
-					Util.save_data(0, sf_dx, curve, outfile2)
+					Util.save_data(0, sf_dx, curve, options.calcsf)
 
 				elif option1 == "interlv":
 					if not options.outtype:
@@ -1087,10 +1081,9 @@ def main():
 			fftavg.write_image(options.fftavg, 0)
 
 			curve = fftavg.calc_radial_dist(ny, 0, 0.5, 1)
-			outfile2 = options.fftavg+".txt"
 
 			sf_dx = 1.0 / (apix * 2.0 * ny)
-			Util.save_data(0, sf_dx, curve, outfile2)
+			Util.save_data(0, sf_dx, curve, options.fftavg+".txt")
 
 		try:
 			n_outimg = EMUtil.get_image_count(outfile)
