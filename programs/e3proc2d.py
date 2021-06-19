@@ -627,8 +627,8 @@ def main():
 					if lopix == hipix: lopix,hipix = 3,old_div(d["nx"],5)  # in case the A/pix value is drastically out of range
 
 					r = f.calc_radial_dist(old_div(d["ny"],2),0,1.0,1)
-					lo = old_div(sum(r[lopix:hipix]),(hipix-lopix))
-					hi = old_div(sum(r[hipix+1:-1]),(len(r)-hipix-2))
+					lo = sum(r[lopix:hipix]) / (hipix-lopix)
+					hi = sum(r[hipix+1:-1]) / (len(r)-hipix-2)
 
 					d["eval_contrast_lowres"] = old_div(lo,hi)
 
@@ -672,7 +672,7 @@ def main():
 						sys.exit(1)
 
 					rt=Transform({"type":"2d","alpha":angle})
-					xf=rt*Transform([amount,0,0,0,0,old_div(1,amount),0,0,0,0,1,0])*rt.inverse()
+					xf=rt*Transform([amount,0,0,0,0,1./amount,0,0,0,0,1,0])*rt.inverse()
 					d.transform(xf)
 
 					index_d[option1] += 1
