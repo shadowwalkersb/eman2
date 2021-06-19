@@ -268,10 +268,7 @@ def main():
 	for inp_num, infile in enumerate(args, start=1):
 		inp_ext = ".hdf" if infile[0] == ":" else os.path.splitext(infile)[1]
 
-		if not options.output:
-			outfile = None
-			out_ext = None
-		else:
+		if options.output:
 			outfile = changed_file_name(infile, options.output, inp_num, is_multiple_files)
 			out_ext = os.path.splitext(outfile)[1]
 
