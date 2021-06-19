@@ -286,7 +286,7 @@ def main():
 		# num_inp_images
 		if infile[0] == ":": 	# special flag to create a new image
 			num_inp_images = 2
-		elif os.path.isfile(infile):
+		else:
 			try:
 				num_inp_images = EMUtil.get_image_count(infile)
 			except:
@@ -305,10 +305,6 @@ def main():
 								options.inplace = True
 							else:
 								os.remove(outfile)
-		else:
-			num_inp_images = -1
-			print("Input file '" + infile + "' does not exist.")
-			continue
 
 		# num_out_images
 		if out_ext == inp_ext:
