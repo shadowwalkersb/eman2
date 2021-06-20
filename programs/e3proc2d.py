@@ -1006,9 +1006,9 @@ def main():
 
 		if options.extractboxes:
 			for k in list(boxes.keys()):
-				out=open(k+".box","w")
-				for c in boxes[k]:
-					out.write("{:1d}\t{:1d}\t{:1d}\t{:1d}\n".format(int(c[0]-old_div(boxsize,2)),int(c[1]-old_div(boxsize,2)),int(boxsize),int(boxsize)))
+				with open(k+".box","w") as out:
+					for c in boxes[k]:
+						out.write("{:1d}\t{:1d}\t{:1d}\t{:1d}\n".format(int(c[0]-old_div(boxsize,2)),int(c[1]-old_div(boxsize,2)),int(boxsize),int(boxsize)))
 
 	E2end(logid)
 
