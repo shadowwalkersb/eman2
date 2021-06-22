@@ -196,7 +196,7 @@ def main():
 	parser.add_argument("--fixintscaling", type=str, default=None, help="When writing to an 8 or 16 bit integer format the data must be scaled. 'noscale' will assume the pixel values are already correct, 'full' will insure the full range of values are included in the output, 'sane' will pick a good range, a number will set the range to mean+=sigma*number")
 
 	parser.add_argument("--norefs", action="store_true", help="Skip any input images which are marked as references (usually used with classes.*)")
-	parser.add_argument("--outtype", metavar="image-type", type=str, help="output image format, 'mrc', 'imagic', 'hdf', etc. if specify spidersingle will output single 2D image rather than 2D stack.")
+	parser.add_argument("--outtype", metavar="image-type", type=str, default="unknown", help="output image format, 'mrc', 'imagic', 'hdf', etc. if specify spidersingle will output single 2D image rather than 2D stack.")
 	parser.add_argument("--radon",  action="store_true", help="Do Radon transform")
 	parser.add_argument("--randomize", type=str, action="append",help="Randomly rotate/translate the image. Specify: da,dxy,flip  da is a uniform distribution over +-da degrees, dxy is a uniform distribution on x/y, if flip is 1, random handedness changes will occur")
 	parser.add_argument("--rotavg", action="store_true", help="Compute the 1-D rotational average of each image as a final step before writing the output")
@@ -812,16 +812,10 @@ def main():
 					Util.save_data(0, sf_dx, curve, options.calcsf)
 
 				elif option1 == "interlv":
-					if not options.outtype:
-						options.outtype = "unknown"
-
 					d.append_image(outfile, EMUtil.get_image_ext_type(options.outtype))
 					d.read_image(options.interlv, i)
 
 				elif option1 == "outtype":
-					if not options.outtype:
-						options.outtype = "unknown"
-
 					if options.verbose > 1:
 						print("output type =", options.outtype)
 
