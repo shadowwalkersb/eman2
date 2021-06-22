@@ -194,7 +194,8 @@ def main():
 	parser.add_argument("--compressbits", type=int,help="HDF only. Bits to keep for compression. -1 for no compression",default=-1)
 	parser.add_argument("--outmode", type=str, choices=file_mode_map.keys(), default="float", help=f"All EMAN2 programs write images with 4-byte floating point values when possible by default. This allows specifying an alternate format when supported ({file_mode_map.keys()}). Values are rescaled to fill MIN-MAX range.")
 	parser.add_argument("--outnorescale", action="store_true", help="If specified, floating point values will not be rescaled when writing data as integers. Values outside of range are truncated.")
-	parser.add_argument("--fixintscaling", type=str, default=None, help="When writing to an 8 or 16 bit integer format the data must be scaled. 'noscale' will assume the pixel values are already correct, 'full' will insure the full range of values are included in the output, 'sane' will pick a good range, a number will set the range to mean+=sigma*number")
+	parser.add_argument("--fixintscaling", type=str, default=None, help="When writing to an 8 or 16 bit integer format the data must be scaled. 'noscale' will assume the pixel values are already correct, 'full' will ensure the full range of values are included in the output, 'sane' will pick a good range, a number will set the range to mean+=sigma*number")
+	# choices = ['noscale', 'full', 'sane']
 
 	parser.add_argument("--norefs", action="store_true", help="Skip any input images which are marked as references (usually used with classes.*)")
 	parser.add_argument("--outtype", metavar="image-type", type=str, default="unknown", help="output image format, 'mrc', 'imagic', 'hdf', etc. if specify spidersingle will output single 2D image rather than 2D stack.")
