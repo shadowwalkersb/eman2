@@ -127,7 +127,7 @@ def main():
 
 	parser.add_argument("--tomoprep", action="store_true", help="Produces a special HDF file designed for rapid interactive tomography annotation. This option should be used alone.")
 	parser.add_argument("--tophalf", action="store_true", help="The output only keeps the top half map")
-	parser.add_argument("--trans", metavar="dx,dy,dz", type=str, action="append", help="Translate map by dx,dy,dz ")
+	parser.add_argument("--trans", metavar="dx,dy,dz", type=parse_list_arg(float,float,float), action="append", help="Translate map by dx,dy,dz ")
 
 	parser.add_argument("--unstacking", action="store_true", help="Process a stack of 3D images, then output as a series of numbered single image files")
 
@@ -588,8 +588,7 @@ def main():
 
 			elif option1 == "trans":
 				fi = index_d[option1]
-				dx,dy,dz = options.trans[fi].split(",")
-				data.translate(float(dx),float(dy),float(dz))
+				data.translate(*options.trans[fi])
 				index_d[option1] += 1
 
 			elif option1 == "rot":
