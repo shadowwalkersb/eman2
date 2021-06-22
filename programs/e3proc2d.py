@@ -390,8 +390,7 @@ def main():
 			plane = options.plane
 			[tomo_nx, tomo_ny, tomo_nz] = gimme_image_dimensions3D(infile)
 
-			if tomo_nz != 1:
-				is_3d = True
+			is_3d = (tomo_nz != 1)
 
 		if not is_3d:
 			if not (nimg > n1 >= 0):
@@ -431,12 +430,10 @@ def main():
 			if options.randomn >= nimg:
 				imagelist = [1]*nimg
 			else:
-				nk = 0
-				while nk < options.randomn:
+				for nk in range(options.randomn):
 					i = random.randrange(nimg)
 					if imagelist[i]: continue
 					imagelist[i] = 1
-					nk += 1
 		else: imagelist = [1]*nimg
 
 		if options.exclude:
@@ -468,12 +465,8 @@ def main():
 					sys.stdout.flush()
 					lasttime = time.time()
 
-			if imagelist:
-				if i < len(imagelist):
-					if not imagelist[i]:
-						continue
-				else:
-					continue
+			if imagelist and (i >= len(imagelist) or not imagelist[i]):
+				continue
 
 			if options.split > 1:
 				outfile = outfilename_no_ext + ".%02d." % (i % options.split) + outfilename_ext
@@ -841,10 +834,7 @@ def main():
 					elif options.outtype == "spidersingle":
 						if n1 != 0:
 							if i == 0:
-								if outfile.find('.spi') > 0:
-									nameprefix = outfile[:-4]
-								else:
-									nameprefix = outfile
+								nameprefix = outfile[:-4] if outfile.find('.spi') > 0 else outfile
 
 							spiderformat = "%s%%0%dd.spi" % (nameprefix, int(math.log10(n1+1-n0))+1)
 							outfile = spiderformat % i
@@ -956,7 +946,7 @@ def main():
 								rd = d.calc_radial_dist(d["nx"],0,0.5,0)
 								d = EMData(len(rd),1,1)
 
-								for x in range(len(rd)): d[x] = rd[x]
+								d[:len(rd)] = rd[:len(rd)]
 
 							if d["sigma"] == 0:
 								if options.verbose > 0:
