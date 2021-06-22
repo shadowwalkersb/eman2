@@ -729,8 +729,8 @@ class E3ArgumentParser(EMArgumentParser):
 		super(EMArgumentParser, self).__init__(prog=prog,usage=usage,description=description,epilog=epilog,parents=parents,formatter_class=formatter_class,prefix_chars=prefix_chars,fromfile_prefix_chars=fromfile_prefix_chars,argument_default=argument_default,conflict_handler=conflict_handler,add_help=add_help,allow_abbrev=allow_abbrev)
 		# if not nargs and nargs > 0:
 		# 	self.add_argument("infile", nargs=nargs, type=argparse.FileType('r'), help="Input file name")
-		self.add_argument("infile1", nargs=nargs, type=argparse.FileType('r'), help="Input file name 1")
-		self.add_argument("infile2", nargs='*', type=argparse.FileType('r'), help="Input file name 2")
+		self.add_argument("infile1", nargs=1, type=argparse.FileType('r'), help="Input file name 1")
+		self.add_argument("infile2", nargs=1, type=argparse.FileType('r'), help="Input file name 2")
 
 	def parse_args(self):
 		return super(EMArgumentParser, self).parse_args()

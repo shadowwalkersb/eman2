@@ -223,7 +223,7 @@ def main():
 	'e2help.py processors -v 2' for a detailed list of available procesors
 	"""
 
-	parser = EMArgumentParser(allow_abbrev=False, description=description)
+	parser = E3ArgumentParser(nargs=0,description=description,allow_abbrev=False)
 	print(dir(parser))
 
 	# Input
@@ -324,7 +324,8 @@ def main():
 		if val:
 			print(o) #, val)
 	args = options.infile
-
+	args = options.infile
+	parser.error(args)
 	parser.error(options)
 
 	if options.parallel:
