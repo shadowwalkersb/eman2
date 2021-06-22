@@ -42,6 +42,9 @@ import os
 import datetime
 import time
 
+# from e3argparse import E3ArgumentParser
+
+
 # constants
 
 xyplanes = ['xy', 'yx']
@@ -222,7 +225,8 @@ def main():
 	'e2help.py processors -v 2' for a detailed list of available procesors
 	"""
 
-	parser = EMArgumentParser(nargs=2,description=description,allow_abbrev=False)
+	parser = E3ArgumentParser(nargs=0,description=description,allow_abbrev=False)
+	print(dir(parser))
 
 	parser.add_argument("--apix", type=float, help="A/pixel for S scaling")
 	parser.add_argument("--average", metavar="N", nargs='?', type=int, help="Averages sets of N sequential frames or ALL. eg - if N=4 and the input contains 100 images, the output would be 25 images")
@@ -286,16 +290,11 @@ def main():
 	# Parallelism
 	parser.add_argument("--parallel",action="store_true")
 
-	options, args = parser.parse_args()
-	parser.error(options)
+	options = parser.parse_args()
+	args = options.infile
 
 	if options.parallel:
 		parser.error("Parallelism not supported. Please use e2proc2dpar.py")
-
-	if len(args) < 2:
-		print("usage: " + usage)
-		print("Please run '" + progname + " -h' for detailed options")
-		sys.exit(1)
 
 	try : options.step = int(options.step.split(",")[0]),int(options.step.split(",")[1])	# convert strings to tuple
 	except:

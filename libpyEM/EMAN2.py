@@ -664,7 +664,7 @@ def commandoptions(options,exclude=[]):
 
 class EMArgumentParser(argparse.ArgumentParser):
 	""" subclass of argparser to masquerade as optparser and run the GUI """
-	def __init__(self, prog=None,usage=None,description=None,epilog=None,nargs=None,version=None,parents=[],formatter_class=argparse.HelpFormatter,prefix_chars='-',fromfile_prefix_chars=None,argument_default=None,conflict_handler='error',add_help=True,allow_abbrev=True):
+	def __init__(self, prog=None,usage=None,description=None,epilog=None,version=None,parents=[],formatter_class=argparse.HelpFormatter,prefix_chars='-',fromfile_prefix_chars=None,argument_default=None,conflict_handler='error',add_help=True,allow_abbrev=True):
 		argparse.ArgumentParser.__init__(self,prog=prog,usage=usage,description=description,epilog=epilog,parents=parents,formatter_class=formatter_class,prefix_chars=prefix_chars,fromfile_prefix_chars=fromfile_prefix_chars,argument_default=argument_default,conflict_handler=conflict_handler,add_help=add_help,allow_abbrev=allow_abbrev)
 
 		# A list of options to add to the GUI
@@ -673,13 +673,7 @@ class EMArgumentParser(argparse.ArgumentParser):
 
 		if version:
 			self.add_argument('--version', action='version', version=version)
-		if not nargs:
-			self.add_argument("positionalargs", nargs="*")
-		else:
-			self.add_argument("infile", nargs=nargs, type=argparse.FileType('r'), help="Input file name")
-			# self.add_argument('inputs', nargs='+', type=argparse.FileType('r'),
-			# 					help='A list of .jpg or .jpeg files to serialize into a '
-			# 						 'request json')
+		self.add_argument("positionalargs", nargs="*")
 
 
 	def parse_args(self):
@@ -727,6 +721,20 @@ class EMArgumentParser(argparse.ArgumentParser):
 
 	def getGUIOptions(self):
 		return self.optionslist
+
+
+class E3ArgumentParser(EMArgumentParser):
+
+	def __init__(self,nargs=None, prog=None,usage=None,description=None,epilog=None,parents=[],formatter_class=argparse.HelpFormatter,prefix_chars='-',fromfile_prefix_chars=None,argument_default=None,conflict_handler='error',add_help=True,allow_abbrev=True):
+		super(EMArgumentParser, self).__init__(prog=prog,usage=usage,description=description,epilog=epilog,parents=parents,formatter_class=formatter_class,prefix_chars=prefix_chars,fromfile_prefix_chars=fromfile_prefix_chars,argument_default=argument_default,conflict_handler=conflict_handler,add_help=add_help,allow_abbrev=allow_abbrev)
+		# if not nargs and nargs > 0:
+		# 	self.add_argument("infile", nargs=nargs, type=argparse.FileType('r'), help="Input file name")
+		self.add_argument("infile1", nargs=1, type=argparse.FileType('r'), help="Input file name 1")
+		self.add_argument("infile2", nargs=1, type=argparse.FileType('r'), help="Input file name 2")
+
+	def parse_args(self):
+		return super(EMArgumentParser, self).parse_args()
+
 
 def parsesym(optstr):
 	# FIXME - this function is no longer necessary since I overwrite the Symmetry3D::get function (on the c side). d.woolford
