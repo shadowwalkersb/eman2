@@ -265,8 +265,10 @@ def main():
 		boxes = defaultdict(list)
 
 	for inp_num, infile in enumerate(args, start=1):
+		# inp_ext
 		inp_ext = ".hdf" if infile[0] == ":" else os.path.splitext(infile)[1]
 
+		# outfile, out_ext
 		if options.output:
 			outfile = changed_file_name(infile, options.output, inp_num, is_multiple_files)
 			out_ext = os.path.splitext(outfile)[1]
@@ -281,6 +283,7 @@ def main():
 
 		is_single_2d_image = False
 
+		# num_inp_images
 		if infile[0] == ":": 	# special flag to create a new image
 			num_inp_images = 2
 		elif os.path.isfile(infile):
@@ -307,6 +310,7 @@ def main():
 			print("Input file '" + infile + "' does not exist.")
 			continue
 
+		# num_out_images
 		if out_ext == inp_ext:
 			num_out_images = num_inp_images
 		elif out_ext == ".mrc":
@@ -330,6 +334,7 @@ def main():
 		opt3to2 = options.threed2twod
 		opt2to3 = options.twod2threed
 
+		# if all of *2* are NONE assign one
 		if not (options.threed2threed or options.threed2twod or options.twod2threed):
 			options.threed2threed = (    is_inp3d and     is_out3d)
 			options.threed2twod   = (    is_inp3d and not is_out3d)
@@ -353,6 +358,7 @@ def main():
 		threed_ysize = 0
 		nimg = 1
 
+		# is_3d, nimg
 		is_3d = False
 		if options.threed2threed or options.threed2twod:
 			d.read_image(infile, 0, True)
@@ -386,6 +392,7 @@ def main():
 
 			is_3d = (tomo_nz != 1)
 
+		# n1
 		if not is_3d:
 			if not (nimg > n1 >= 0):
 				n1 = nimg - 1
@@ -413,7 +420,7 @@ def main():
 		if options.verbose > 0:
 			print("%d images, processing %d-%d stepping by %d"%(nimg,n0,n1,options.step[1]))
 
-		# Now we deal with inclusion/exclusion lists
+		# inclusion/exclusion lists
 		if options.list:
 			imagelist = [0]*nimg
 
@@ -444,6 +451,8 @@ def main():
 			if options.verbose: print("inclusion list:", str(imagelist))
 
 		lasttime = time.time()
+
+		# outfilename_no_ext, outfilename_ext when outfile specified
 		if options.output:
 			outfilename_no_ext = outfile[:-4]
 			outfilename_ext = outfile[-3:]
@@ -463,12 +472,15 @@ def main():
 					sys.stdout.flush()
 					lasttime = time.time()
 
+			# ???
 			if imagelist and (i >= len(imagelist) or not imagelist[i]):
 				continue
 
+			# Split
 			if options.split > 1:
 				outfile = outfilename_no_ext + ".%02d." % (i % options.split) + outfilename_ext
 
+			# ???
 			if not is_3d:
 				if options.threed2threed or options.threed2twod:
 					d = EMData()
