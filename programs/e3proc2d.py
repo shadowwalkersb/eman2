@@ -282,7 +282,7 @@ def main():
 
 		is_single_2d_image = False
 
-		# num_inp_images
+		# num_inp_images, is_inp3d
 		if infile[0] == ":": 	# special flag to create a new image
 			num_inp_images = 2
 		else:
@@ -305,7 +305,9 @@ def main():
 							else:
 								os.remove(outfile)
 
-		# num_out_images
+		is_inp3d = (num_inp_images == 1)
+
+		# num_out_images, is_out3d
 		if out_ext == inp_ext:
 			num_out_images = num_inp_images
 		elif out_ext == ".mrc":
@@ -319,7 +321,6 @@ def main():
 		else:
 			num_out_images = 2
 
-		is_inp3d = (num_inp_images == 1)
 		is_out3d = (num_out_images == 1)
 
 		opt3to3 = options.threed2threed
