@@ -399,6 +399,7 @@ def main():
 		if options.step[0] > options.first:
 			n0 = options.step[0]
 
+		image_ids = range(n0, n1+1, options.step[1])
 		# inclusion/exclusion lists
 		if options.list:
 			image_ids = set(EMAN2.read_number_file(options.list))
@@ -433,11 +434,7 @@ def main():
 
 		dummy = False
 
-		for count, i in enumerate(range(n0, n1+1, options.step[1]), start=1):
-			# ???
-			if imagelist and (i >= len(imagelist) or not imagelist[i]):
-				continue
-
+		for count, i in enumerate(image_ids, start=1):
 			# Split
 			if options.split > 1:
 				outfile = outfilename_no_ext + ".%02d." % (i % options.split) + outfilename_ext
