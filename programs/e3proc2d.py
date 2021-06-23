@@ -127,6 +127,33 @@ def image_from_formula(n_x, n_y, n_z, formula):
 	return EMNumPy.numpy2em(emdn)
 
 
+def ClipType(s):
+	result = ast.literal_eval(s)
+
+	if len(result) != 2 and len(result) != 4:
+		raise argparse.ArgumentTypeError("provide 2 or 4 arguments!")
+
+	return result
+
+
+def AnisotropicType(s):
+	result = ast.literal_eval(s)
+
+	if len(result) != 2:
+		raise argparse.ArgumentTypeError("specify amount,angle!")
+
+	return float(result[0]), float(result[1])
+
+
+def RandomizeType(s):
+	result = ast.literal_eval(s)
+
+	if len(result) != 3:
+		raise argparse.ArgumentTypeError("specify da,dxy,flip!")
+
+	return float(result[0]), float(result[1]), int(result[2])
+
+
 def parse_infile_arg():
 	pass
 

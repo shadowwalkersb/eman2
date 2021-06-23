@@ -40,6 +40,48 @@ import traceback
 from collections import defaultdict
 
 
+def FragmentizeType(s):
+	par = s.partition(":")
+
+	return int(float(par[0])), float(par[2])
+
+
+def OriginType(s):
+	result = ast.literal_eval(s)
+
+	if len(result) != 3:
+		raise argparse.ArgumentTypeError("specify origin_x,origin_y,origin_z!")
+
+	return float(result[0]), float(result[1]), int(result[2])
+
+
+def AlignctodType(s):
+	result = ast.literal_eval(s)
+
+	if s[0][0].lower() != "d":
+		raise argparse.ArgumentTypeError("specify D symmetry as alignctod!")
+
+	return s
+
+
+def ClipType(s):
+	result = ast.literal_eval(s)
+
+	if len(result) != 1 and len(result) != 3 and len(result) != 6:
+		raise argparse.ArgumentTypeError("clip option takes 1, 3 or 6 arguments. --clip=x[,y,z[,xc,yc,zc]]!")
+
+	return result
+
+
+def FftclipType(s):
+	result = ast.literal_eval(s)
+
+	if len(result) != 3:
+		raise argparse.ArgumentTypeError("fftclip option takes either 3 arguments. --fftclip=x,y,z!")
+
+	return result
+
+
 def test_tomoprep(): pass  # depends on outfile, need to add dependency check ???
 def test_process(): pass
 def test_align(): pass  # depends on alignref, need to add dependency check
