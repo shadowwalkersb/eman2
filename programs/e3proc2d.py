@@ -323,10 +323,6 @@ def main():
 
 		is_out3d = (num_out_images == 1)
 
-		opt3to3 = options.threed2threed
-		opt3to2 = options.threed2twod
-		opt2to3 = options.twod2threed
-
 		# if all of *2* are NONE assign one
 		if not (options.threed2threed or options.threed2twod or options.twod2threed):
 			options.threed2threed = (    is_inp3d and     is_out3d)
@@ -881,10 +877,6 @@ def main():
 
 			sf_dx = 1.0 / (apix * 2.0 * ny)
 			Util.save_data(0, sf_dx, curve, options.fftavg+".txt")
-
-		options.threed2threed = opt3to3
-		options.threed2twod   = opt3to2
-		options.twod2threed   = opt2to3
 
 		if options.extractboxes:
 			for k in list(boxes.keys()):
