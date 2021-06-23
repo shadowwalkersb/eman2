@@ -383,12 +383,12 @@ def main():
 			nimg = EMUtil.get_image_count(infile)
 
 			# reads header only
-			plane = options.plane
 			[tomo_nx, tomo_ny, tomo_nz] = gimme_image_dimensions3D(infile)
 
 			is_3d = (tomo_nz != 1)
 
 		# n1
+		plane = options.plane
 		if not is_3d:
 			if not (nimg > n1 >= 0):
 				n1 = nimg - 1
