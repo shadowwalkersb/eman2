@@ -435,7 +435,7 @@ def main():
 
 		for count, i in enumerate(range(n0, n1+1, options.step[1]), start=1):
 			# ???
-			if imagelist and (i >= len(imagelist) or not imagelist[i]):
+			if not i in image_ids:
 				continue
 
 			# Split
