@@ -202,6 +202,7 @@ def main():
 	# choices = ['noscale', 'full', 'sane']
 
 	parser.add_argument("--norefs", action="store_true", help="Skip any input images which are marked as references (usually used with classes.*)")
+	parser.add_argument("--output", metavar="outfile", type=argparse.FileType('w'), help="output file.")
 	parser.add_argument("--outtype", metavar="image-type", type=str, default="unknown", help="output image format, 'mrc', 'imagic', 'hdf', etc. if specify spidersingle will output single 2D image rather than 2D stack.")
 	parser.add_argument("--radon",  action="store_true", help="Do Radon transform")
 	parser.add_argument("--randomize", metavar="da,dxy,flip", type=parse_list_arg(float,float,int), action="append",help="Randomly rotate/translate the image. Specify: da,dxy,flip  da is a uniform distribution over +-da degrees, dxy is a uniform distribution on x/y, if flip is 1, random handedness changes will occur")
@@ -259,21 +260,19 @@ def main():
 
 	optionlist = deque(get_optionlist(sys.argv[1:]))
 
-	num_input_files = len(args) - 1
-	outpattern = args[num_input_files]
-	is_multiple_files = (num_input_files > 1)
+	is_multiple_files = (len(args) > 1)
 
 	if options.extractboxes:
 		boxes = defaultdict(list)
 
-	for inp_num, infile in enumerate(args[0: num_input_files], start=1):
+	for inp_num, infile in enumerate(args, start=1):
 		inp_ext = ".hdf" if infile[0] == ":" else os.path.splitext(infile)[1]
 
-		if outpattern.lower()=="none":
+		if not options.output:
 			outfile = None
 			out_ext = None
 		else:
-			outfile = changed_file_name(infile, outpattern, inp_num, is_multiple_files)
+			outfile = changed_file_name(infile, options.output, inp_num, is_multiple_files)
 			out_ext = os.path.splitext(outfile)[1]
 
 			if out_ext == "" and is_multiple_files:
@@ -456,7 +455,7 @@ def main():
 			if options.verbose: print("inclusion list:", str(imagelist))
 
 		lasttime = time.time()
-		if outfile!=None:
+		if options.output:
 			outfilename_no_ext = outfile[:-4]
 			outfilename_ext = outfile[-3:]
 
@@ -926,7 +925,7 @@ def main():
 										print("Use the writejunk option to force writing this image to disk")
 									continue
 
-							if outfile != None:
+							if options.output:
 								if options.inplace:
 									if options.compressbits>=0:
 										d.write_compressed(outfile,i,options.compressbits,nooutliers=True)
