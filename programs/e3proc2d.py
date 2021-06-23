@@ -359,6 +359,7 @@ def main():
 		threed_ysize = 0
 		nimg = 1
 
+		is_3d = False
 		if options.threed2threed or options.threed2twod:
 			d.read_image(infile, 0, True)
 
@@ -380,15 +381,12 @@ def main():
 
 				threed_xsize = d.get_xsize()
 				threed_ysize = d.get_ysize()
-				is_3d = False
 		elif infile[0]==":":
 			nimg=1
-			is_3d=False
 		else:
 			nimg = EMUtil.get_image_count(infile)
 
 			# reads header only
-			is_3d = False
 			plane = options.plane
 			[tomo_nx, tomo_ny, tomo_nz] = gimme_image_dimensions3D(infile)
 
