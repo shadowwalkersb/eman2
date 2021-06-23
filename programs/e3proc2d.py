@@ -362,14 +362,14 @@ def main():
 		if options.threed2threed or options.threed2twod:
 			d.read_image(infile, 0, True)
 
-			if d.get_zsize() == 1:
+			nimg = d.get_zsize()
+
+			if nimg == 1:
 				print('Error: need 3D image to use this option')
 				return
 			else:
 				if options.verbose > 0:
 					print("Process 3D as a stack of %d 2D images" % d.get_zsize())
-
-				nimg = d.get_zsize()
 
 				if n1 > nimg:
 					print('The value for --last is greater than the number of images in the input stack. Exiting')
