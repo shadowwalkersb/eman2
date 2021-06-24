@@ -198,7 +198,7 @@ def main():
 	parser.add_argument("--compressbits", type=int,help="HDF only. Bits to keep for compression. -1 for no compression",default=-1)
 	parser.add_argument("--outmode", type=str, choices=EMAN2.file_mode_map.keys(), default="float", help=f"All EMAN2 programs write images with 4-byte floating point values when possible by default. This allows specifying an alternate format when supported ({EMAN2.file_mode_map.keys()}). Values are rescaled to fill MIN-MAX range.")
 	parser.add_argument("--outnorescale", action="store_true", help="If specified, floating point values will not be rescaled when writing data as integers. Values outside of range are truncated.")
-	parser.add_argument("--fixintscaling", type=str, default=None, help="When writing to an 8 or 16 bit integer format the data must be scaled. 'noscale' will assume the pixel values are already correct, 'full' will ensure the full range of values are included in the output, 'sane' will pick a good range, a number will set the range to mean+=sigma*number")
+	parser.add_argument("--fixintscaling", type=str, default=None, help="When writing to an 8 or 16 bit integer format the data must be scaled. 'full' will ensure the full range of values are included in the output, 'sane' will pick a good range, a number will set the range to mean+=sigma*number")
 	# choices = ['noscale', 'full', 'sane']
 
 	parser.add_argument("--norefs", action="store_true", help="Skip any input images which are marked as references (usually used with classes.*)")
@@ -810,9 +810,7 @@ def main():
 							spiderformat = "%s%%0%dd.spi" % (nameprefix, int(math.log10(n1+1-n0))+1)
 							outfile = spiderformat % i
 
-					dont_scale = (options.fixintscaling == "noscale")
-
-					if options.fixintscaling != None and not dont_scale:
+					if options.fixintscaling:
 						if options.fixintscaling == "sane":
 							sca = 2.5
 							d["render_min"] = d["mean"] - d["sigma"]*sca
@@ -835,8 +833,8 @@ def main():
 					else:
 						min_max_set = False
 
-					if options.outmode != "float" or dont_scale:
-						if options.outnorescale or dont_scale:
+					if options.outmode != "float" or not options.fixintscaling:
+						if options.outnorescale or not options.fixintscaling:
 							# This sets the minimum and maximum values to the range
 							# for the specified type, which should result in no rescaling
 							outmode = EMAN2.file_mode_map[options.outmode]
