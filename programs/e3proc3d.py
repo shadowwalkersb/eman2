@@ -40,6 +40,61 @@ import traceback
 from collections import defaultdict
 
 
+#parse_file() will read the input image file and return a list of EMData() object
+def parse_infile(infile, first, last, step, apix=None):
+	if infile[0] == ":":
+		parm=infile.split(":")
+		if len(parm) == 4: parm.append(0)
+		if len(parm) != 5:
+			print("Error: please specify ':X:Y:Z:fillval' to create a new volume")
+			sys.exit(1)
+
+		ret=EMData(int(parm[1]),int(parm[2]),int(parm[3]))
+		ret.to_value(float(parm[4]))
+		return [ret]
+
+	nimg = EMUtil.get_image_count(infile)
+
+	if nimg > 1:
+		d = EMData(infile,nimg-1)    # we read the last image, since it should always exist
+
+		x = d.get_xsize()
+		y = d.get_ysize()
+		z = d.get_zsize()
+
+		apixdata = d['apix_x']
+		if not apix:
+			apix = apixdata
+
+		if z == 1:
+			print("the images are 2D - I will now make a 3D image out of the 2D images")
+			data = []
+			return_data = EMData()
+			return_data.set_size(x, y, nimg)
+			for i in range(0, nimg):
+				d.read_image(infile, i)
+				return_data.insert_clip(d, (0, 0, i))
+			if apix:
+				return_data['apix_x']=apix
+				return_data['apix_y']=apix
+				return_data['apix_z']=apix
+			data.append(return_data)
+			return data
+		else:
+			print("the image is a 3D stack - I will process images from %d to %d" % (first, last))
+			data = []
+
+			for i in range(first, last+1, step):
+				d = EMData(infile,i,True)    # header only
+
+				if not first - last:
+					d = EMData(infile,i)    # header only
+
+				data.append(d)
+			return data
+	else: return [EMData(infile,0)]
+
+
 def main():
 	progname = os.path.basename(sys.argv[0])
 	usage = progname + """ [options] <inputfile> <outputfile>"""
@@ -717,61 +772,6 @@ def main():
 					data.write_image(outfile, img_index, EMUtil.get_image_ext_type(options.outtype), False, None, file_mode_map[options.outmode], not(options.swap))
 
 	E2end(logid)
-
-
-#parse_file() will read the input image file and return a list of EMData() object
-def parse_infile(infile, first, last, step, apix=None):
-	if infile[0] == ":":
-		parm=infile.split(":")
-		if len(parm) == 4: parm.append(0)
-		if len(parm) != 5:
-			print("Error: please specify ':X:Y:Z:fillval' to create a new volume")
-			sys.exit(1)
-
-		ret=EMData(int(parm[1]),int(parm[2]),int(parm[3]))
-		ret.to_value(float(parm[4]))
-		return [ret]
-
-	nimg = EMUtil.get_image_count(infile)
-
-	if nimg > 1:
-		d = EMData(infile,nimg-1)    # we read the last image, since it should always exist
-
-		x = d.get_xsize()
-		y = d.get_ysize()
-		z = d.get_zsize()
-
-		apixdata = d['apix_x']
-		if not apix:
-			apix = apixdata
-
-		if z == 1:
-			print("the images are 2D - I will now make a 3D image out of the 2D images")
-			data = []
-			return_data = EMData()
-			return_data.set_size(x, y, nimg)
-			for i in range(0, nimg):
-				d.read_image(infile, i)
-				return_data.insert_clip(d, (0, 0, i))
-			if apix:
-				return_data['apix_x']=apix
-				return_data['apix_y']=apix
-				return_data['apix_z']=apix
-			data.append(return_data)
-			return data
-		else:
-			print("the image is a 3D stack - I will process images from %d to %d" % (first, last))
-			data = []
-
-			for i in range(first, last+1, step):
-				d = EMData(infile,i,True)    # header only
-
-				if not first - last:
-					d = EMData(infile,i)    # header only
-
-				data.append(d)
-			return data
-	else: return [EMData(infile,0)]
 
 
 if __name__ == "__main__":
