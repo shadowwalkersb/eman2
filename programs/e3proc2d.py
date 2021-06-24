@@ -259,7 +259,7 @@ def main():
 	is_multiple_files = (num_input_files > 1)
 
 	if options.extractboxes:
-		boxes={}
+		boxes = defaultdict(list)
 
 	for inp_num, infile in enumerate(args[0: num_input_files], start=1):
 		inp_ext = ".hdf" if infile[0] == ":" else os.path.splitext(infile)[1]
@@ -598,8 +598,7 @@ def main():
 					try:
 						bf = base_name(d["ptcl_source_image"])
 						bl = d["ptcl_source_coord"]
-						if bf in boxes : boxes[bf].append(bl)
-						else: boxes[bf]=[bl]
+						boxes[bf].append(bl)
 						boxsize = d["nx"]
 					except:
 						pass
