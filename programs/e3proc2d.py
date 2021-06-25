@@ -296,11 +296,9 @@ def main():
 		is_inp3d = (EMUtil.get_image_count(infile) == 1 and gimme_image_dimensions3D(infile)[2] != 1)
 
 		# num_out_images, is_out3d
-		if out_ext == inp_ext:
-			if is_inp3d:
+		if out_ext == inp_ext and is_inp3d:
 				is_out3d = True
-		if out_ext != inp_ext and out_ext == ".mrc":
-			if not is_inp3d:
+		if out_ext != inp_ext and out_ext == ".mrc" and not is_inp3d:
 				is_out3d = True
 
 		if out_ext != inp_ext and out_ext != ".mrc":
