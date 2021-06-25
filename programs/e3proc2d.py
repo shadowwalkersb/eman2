@@ -293,10 +293,7 @@ def main():
 							else:
 								os.remove(outfile)
 
-		is_inp3d = False
-
-		if EMUtil.get_image_count(infile) == 1 and gimme_image_dimensions3D(infile)[2] != 1:
-			is_inp3d = True
+		is_inp3d = (EMUtil.get_image_count(infile) == 1 and gimme_image_dimensions3D(infile)[2] != 1)
 
 		# num_out_images, is_out3d
 		if out_ext == inp_ext:
