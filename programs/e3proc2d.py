@@ -315,16 +315,14 @@ def main():
 
 		# num_out_images, is_out3d
 		if out_ext == inp_ext:
-			num_out_images = num_inp_images
+			is_out3d = (num_inp_images == 1)
 		elif out_ext == ".mrc":
 			if num_inp_images > 1 and is_single_2d_image:
-				num_out_images = 2
+				is_out3d = False
 			else:
-				num_out_images = 1
+				is_out3d = True
 		else:
-			num_out_images = 2
-
-		is_out3d = (num_out_images == 1)
+			is_out3d = False
 
 		# if all of *2* are NONE assign one
 		if not (options.threed2threed or options.threed2twod or options.twod2threed):
