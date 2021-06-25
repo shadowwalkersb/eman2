@@ -303,14 +303,10 @@ def main():
 		# num_inp_images, is_inp3d
 		if infile[0] == ":": 	# special flag to create a new image
 			num_inp_images = 2
+		elif EMUtil.get_image_count(infile) == 1 and gimme_image_dimensions3D(infile)[2] != 1:
+			num_inp_images = 1
 		else:
-			num_inp_images = EMUtil.get_image_count(infile)
-
-			if num_inp_images == 1:
-				nzinp = gimme_image_dimensions3D(infile)[2]
-
-				if nzinp == 1:
-					num_inp_images = 2
+			num_inp_images = 2
 
 		is_inp3d = (num_inp_images == 1)
 
