@@ -316,12 +316,12 @@ def main():
 		# num_out_images, is_out3d
 		if out_ext == inp_ext:
 			is_out3d = (num_inp_images == 1)
-		elif out_ext == ".mrc":
+		if out_ext != inp_ext and out_ext == ".mrc":
 			if num_inp_images > 1 and is_single_2d_image:
 				is_out3d = False
 			else:
 				is_out3d = True
-		else:
+		if out_ext != inp_ext and out_ext != ".mrc":
 			is_out3d = False
 
 		# if all of *2* are NONE assign one
