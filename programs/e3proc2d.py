@@ -296,7 +296,7 @@ def main():
 		is_single_2d_image = False
 
 		# num_inp_images, is_inp3d
-		if infile[0] == ":":
+		if infile[0] == ":" or EMUtil.get_image_count(infile) != 1:
 			num_inp_images = 2
 			is_inp3d = False
 			is_single_2d_image = False
@@ -310,11 +310,6 @@ def main():
 					is_single_2d_image = False
 					num_inp_images = 1
 					is_inp3d = True
-		if not infile[0] == ":":
-			if not EMUtil.get_image_count(infile) == 1:
-				is_single_2d_image = False
-				is_inp3d = False
-				num_inp_images = 2
 
 		# num_out_images, is_out3d
 		if out_ext == inp_ext:
