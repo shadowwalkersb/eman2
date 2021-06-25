@@ -319,8 +319,6 @@ def main():
 				is_inp3d = False
 				num_inp_images = 2
 
-		is_inp3d = (num_inp_images == 1)
-
 		# num_out_images, is_out3d
 		if out_ext == inp_ext:
 			num_out_images = num_inp_images
