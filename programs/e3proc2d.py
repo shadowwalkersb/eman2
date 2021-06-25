@@ -314,11 +314,8 @@ def main():
 		if out_ext == inp_ext:
 			num_out_images = num_inp_images
 		elif out_ext == ".mrc":
-			if num_inp_images > 1:
-				if is_single_2d_image:
-					num_out_images = 2
-				else:
-					num_out_images = 1
+			if num_inp_images > 1 and is_single_2d_image:
+				num_out_images = 2
 			else:
 				num_out_images = 1
 		else:
