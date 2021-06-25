@@ -307,9 +307,7 @@ def main():
 			num_inp_images = EMUtil.get_image_count(infile)
 
 			if num_inp_images == 1:
-				nzinp = gimme_image_dimensions3D(infile)[2]
-
-				if nzinp == 1:
+				if gimme_image_dimensions3D(infile)[2] == 1:
 					num_inp_images = 2
 
 			if num_inp_images != 1:
