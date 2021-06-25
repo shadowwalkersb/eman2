@@ -288,10 +288,7 @@ def main():
 		if infile[0] == ":": 	# special flag to create a new image
 			num_inp_images = 2
 		else:
-			try:
-				num_inp_images = EMUtil.get_image_count(infile)
-			except:
-				num_inp_images = -1
+			num_inp_images = EMUtil.get_image_count(infile)
 
 			if num_inp_images == 1:
 				nzinp = gimme_image_dimensions3D(infile)[2]
