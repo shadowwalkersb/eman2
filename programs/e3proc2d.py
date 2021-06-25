@@ -298,16 +298,14 @@ def main():
 		if not infile[0] == ":" and EMUtil.get_image_count(infile) == 1 and gimme_image_dimensions3D(infile)[2] != 1:
 			is_inp3d = True
 
-		# num_inp_images, is_inp3d
-		if infile[0] == ":": 	# special flag to create a new image
-			num_inp_images = 2
-		if not infile[0] == ":" and EMUtil.get_image_count(infile) == 1 and gimme_image_dimensions3D(infile)[2] != 1:
-			num_inp_images = 1
-		if not infile[0] == ":" and not (EMUtil.get_image_count(infile) == 1 and gimme_image_dimensions3D(infile)[2] != 1):
-			num_inp_images = 2
-
 		# num_out_images, is_out3d
 		if out_ext == inp_ext:
+			if infile[0] == ":": 	# special flag to create a new image
+				num_inp_images = 2
+			if not infile[0] == ":" and EMUtil.get_image_count(infile) == 1 and gimme_image_dimensions3D(infile)[2] != 1:
+				num_inp_images = 1
+			if not infile[0] == ":" and not (EMUtil.get_image_count(infile) == 1 and gimme_image_dimensions3D(infile)[2] != 1):
+				num_inp_images = 2
 			is_out3d = (num_inp_images == 1)
 		if out_ext != inp_ext and out_ext == ".mrc":
 			is_out3d = True
