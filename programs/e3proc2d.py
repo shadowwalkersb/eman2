@@ -316,8 +316,7 @@ def main():
 		# num_out_images, is_out3d
 		if out_ext == inp_ext:
 			is_out3d = (num_inp_images == 1)
-		if out_ext != inp_ext and out_ext == ".mrc":
-			if not (num_inp_images > 1 and is_single_2d_image):
+		if out_ext != inp_ext and out_ext == ".mrc" and not (num_inp_images > 1 and is_single_2d_image):
 				is_out3d = True
 		if out_ext != inp_ext and out_ext != ".mrc":
 			is_out3d = False
