@@ -299,14 +299,11 @@ def main():
 			is_inp3d = True
 
 		# num_out_images, is_out3d
-		if out_ext == inp_ext:
-			if infile[0] == ":":
+		if out_ext == inp_ext and infile[0] == ":":
 				is_out3d = False
-		if out_ext == inp_ext:
-			if not infile[0] == ":" and EMUtil.get_image_count(infile) == 1 and gimme_image_dimensions3D(infile)[2] != 1:
+		if out_ext == inp_ext and not infile[0] == ":" and EMUtil.get_image_count(infile) == 1 and gimme_image_dimensions3D(infile)[2] != 1:
 				is_out3d = True
-		if out_ext == inp_ext:
-			if not infile[0] == ":" and not (EMUtil.get_image_count(infile) == 1 and gimme_image_dimensions3D(infile)[2] != 1):
+		if out_ext == inp_ext and not infile[0] == ":" and not (EMUtil.get_image_count(infile) == 1 and gimme_image_dimensions3D(infile)[2] != 1):
 				is_out3d = False
 		if out_ext != inp_ext and out_ext == ".mrc":
 			is_out3d = True
