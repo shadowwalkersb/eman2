@@ -282,6 +282,17 @@ def main():
 				print("Output file extension may not be .lst: " + outfile)
 				continue
 
+		# out_ext == ".mrc"
+		if not infile[0] == ":":
+			if EMUtil.get_image_count(infile) == 1:
+				if gimme_image_dimensions3D(infile)[2] == 1:
+					if out_ext == ".mrc":
+						if os.path.isfile(outfile):
+							if infile == outfile:
+								options.inplace = True
+							else:
+								os.remove(outfile)
+
 		is_single_2d_image = False
 
 		# num_inp_images, is_inp3d
@@ -296,13 +307,6 @@ def main():
 				if nzinp == 1:
 					is_single_2d_image = True
 					num_inp_images = 2
-
-					if out_ext == ".mrc":
-						if os.path.isfile(outfile):
-							if infile == outfile:
-								options.inplace = True
-							else:
-								os.remove(outfile)
 
 		is_inp3d = (num_inp_images == 1)
 
