@@ -312,6 +312,9 @@ def main():
 				if nzinp == 1:
 					num_inp_images = 2
 
+			if num_inp_images != 1:
+				num_inp_images = 2
+
 		is_inp3d = (num_inp_images == 1)
 
 		# num_out_images, is_out3d
