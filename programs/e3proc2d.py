@@ -307,7 +307,7 @@ def main():
 							is_out3d = False
 			else:
 				is_out3d = True
-		else:
+		if out_ext != inp_ext and out_ext != ".mrc":
 			is_out3d = False
 
 		# if all of *2* are NONE assign one
