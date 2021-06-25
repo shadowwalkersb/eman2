@@ -298,6 +298,8 @@ def main():
 		# num_inp_images, is_inp3d
 		if infile[0] == ":": 	# special flag to create a new image
 			num_inp_images = 2
+			is_inp3d = False
+			is_single_2d_image = False
 		else:
 			num_inp_images = EMUtil.get_image_count(infile)
 
@@ -307,6 +309,15 @@ def main():
 				if nzinp == 1:
 					is_single_2d_image = True
 					num_inp_images = 2
+					is_inp3d = False
+				else:
+					is_single_2d_image = False
+					num_inp_images = 1
+					is_inp3d = True
+			else:
+				is_single_2d_image = False
+				is_inp3d = False
+				num_inp_images = 2
 
 		is_inp3d = (num_inp_images == 1)
 
