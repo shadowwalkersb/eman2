@@ -293,8 +293,6 @@ def main():
 							else:
 								os.remove(outfile)
 
-		is_single_2d_image = False
-
 		# num_inp_images, is_inp3d
 		if infile[0] == ":": 	# special flag to create a new image
 			num_inp_images = 2
@@ -305,8 +303,14 @@ def main():
 				nzinp = gimme_image_dimensions3D(infile)[2]
 
 				if nzinp == 1:
-					is_single_2d_image = True
 					num_inp_images = 2
+
+		is_single_2d_image = False
+
+		if not infile[0] == ":":
+			if EMUtil.get_image_count(infile) == 1:
+				if gimme_image_dimensions3D(infile)[2] == 1:
+					is_single_2d_image = True
 
 		is_inp3d = (num_inp_images == 1)
 
