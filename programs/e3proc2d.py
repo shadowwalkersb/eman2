@@ -309,6 +309,8 @@ def main():
 			if num_inp_images == 1:
 				if gimme_image_dimensions3D(infile)[2] == 1:
 					num_inp_images = 2
+				if gimme_image_dimensions3D(infile)[2] != 1:
+					num_inp_images = 1
 
 			if num_inp_images != 1:
 				num_inp_images = 2
