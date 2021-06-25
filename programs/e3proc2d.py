@@ -306,7 +306,7 @@ def main():
 		else:
 			if EMUtil.get_image_count(infile) == 1 and gimme_image_dimensions3D(infile)[2] != 1:
 				num_inp_images = 1
-			else:
+			if not (EMUtil.get_image_count(infile) == 1 and gimme_image_dimensions3D(infile)[2] != 1):
 				num_inp_images = 2
 
 		is_inp3d = (num_inp_images == 1)
