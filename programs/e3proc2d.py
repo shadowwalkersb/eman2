@@ -529,18 +529,18 @@ def main():
 
 					d.read_image(infile, i, False, None, False, img_type)
 			else:
+				x, y, z = 0, 0, 0
+
 				if plane in xyplanes:
-					roi = Region(0,0,i,tomo_nx,tomo_ny,1)
-					d = threed.get_clip(roi)
-					d.set_size(tomo_nx,tomo_ny,1)
+					z, tomo_nz = i, 1
 				elif plane in xzplanes:
-					roi = Region(0,i,0,tomo_nx,1,tomo_nz)
-					d = threed.get_clip(roi)
-					d.set_size(tomo_nx,tomo_nz,1)
+					y, tomo_ny = i, 1
 				elif plane in yzplanes:
-					roi = Region(i,0,0,1,tomo_ny,tomo_nz)
-					d = threed.get_clip(roi)
-					d.set_size(tomo_ny,tomo_nz,1)
+					x, tomo_nx = i, 1
+
+				roi = Region(x, y, z, tomo_nx, tomo_ny, tomo_nz)
+				d = threed.get_clip(roi)
+				d.set_size(tomo_nx, tomo_ny, tomo_nz)
 
 			if not "outtype" in optionlist:
 				optionlist.append("outtype")
