@@ -363,6 +363,21 @@ def main():
 	if options.parallel:
 		parser.error("Parallelism not supported. Please use e2proc2dpar.py")
 
+	arg1 = "1,5,7,9:15:2,20:,:30,::3,in_idx.txt".split(',')
+	idxs = []
+	for s in arg1:
+		if s.isnumeric():
+			idxs.append(int(s))
+		elif ":" in s:
+			sl = [None] * 3
+			for i, k in enumerate(s.split(":")):
+				sl[i] = int(k) if len(k)>0 else None
+			idxs.append(slice(*sl))
+	a = [i for i in range(40)]
+	for i in idxs:
+		print("i: ", i, ": ", a[i])
+	sys.exit(0)
+
 	logid = E2init(sys.argv,options.ppid)
 
 	optionlist = deque(get_optionlist(sys.argv[1:]))
