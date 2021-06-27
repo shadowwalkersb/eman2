@@ -363,16 +363,46 @@ def main():
 	if options.parallel:
 		parser.error("Parallelism not supported. Please use e2proc2dpar.py")
 
+	# arg1 = parse_infile_arg(args[0])
+	arr = [1,2]
 	arg1 = "1,5,7,9:15:2,20:,:30,::3,in_idx.txt".split(',')
+	print(arg1)
+	# print(ast.parse(str(list(arg1))))
+	# tree = ast.parse(f"arr[{arg1}]")
+	# print(ast.dump(tree))
+	# eval(compile(tree, filename="<ast>", mode="exec"))
+	# print(ast.literal_eval(f"arr[{arg1}]"))
+	# print("Walk:")
+	# for n in ast.walk(tree):
+	# 	print(ast.dump(n))
+	# 	print(n)
 	idxs = []
 	for s in arg1:
 		if s.isnumeric():
 			idxs.append(int(s))
 		elif ":" in s:
+			print(s.split(":"))
 			sl = [None] * 3
 			for i, k in enumerate(s.split(":")):
 				sl[i] = int(k) if len(k)>0 else None
 			idxs.append(slice(*sl))
+		# print(type(int(s)))
+	# 	mode = 'eval'
+	# 	if ':' in s:
+	# 		# s = f"splice({s.replace(':', ',')})"
+	# 		# s = range(*ast.literal_eval(s.replace(':', ',')))
+	# 		# print(type(s))
+	# 		# print(s)
+	# 		# for i in s:
+	# 		# 	print(i)
+	# 		mode = 'exec'
+	# 		# s =
+	# 	# if mode == "exec":
+	# 	# 	print(s)
+	# 		# eval(ast.parse(s))
+	# 	# for n in ast.walk(ast.parse(s, mode=mode)):
+	# 	# 	print(ast.dump(n))
+	print(idxs)
 	a = [i for i in range(40)]
 	for i in idxs:
 		print("i: ", i, ": ", a[i])
