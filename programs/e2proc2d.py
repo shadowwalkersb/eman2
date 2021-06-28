@@ -958,7 +958,7 @@ def main():
 							#outfile = outfile + "%04d" % i + ".lst"
 							#options.outtype = "lst"
 
-					if options.fixintscaling != None and options.fixintscaling:
+					if options.fixintscaling:
 						if options.fixintscaling == "sane":
 							sca = 2.5
 							d["render_min"] = d["mean"] - d["sigma"]*sca
@@ -977,6 +977,7 @@ def main():
 							d["render_min"] = d["mean"] - d["sigma"]*sca
 							d["render_max"] = d["mean"] + d["sigma"]*sca
 
+					if options.fixintscaling:
 						min_max_set = True
 					else:
 						min_max_set = False
