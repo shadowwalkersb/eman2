@@ -749,8 +749,7 @@ def main():
 							d["render_min"] = d["mean"] - d["sigma"]*sca
 							d["render_max"] = d["mean"] + d["sigma"]*sca
 
-					if options.outmode != "float" or not options.fixintscaling:
-						if not options.fixintscaling:
+					if (options.outmode != "float" or not options.fixintscaling) and not options.fixintscaling:
 							# This sets the minimum and maximum values to the range
 							# for the specified type, which should result in no rescaling
 							outmode = EMAN2.file_mode_map[options.outmode]
