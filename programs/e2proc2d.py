@@ -988,10 +988,6 @@ def main():
 							d["render_min"] = file_mode_range[outmode][0]
 							d["render_max"] = file_mode_range[outmode][1]
 
-						elif not options.fixintscaling:
-								d["render_min"] = d["minimum"]
-								d["render_max"] = d["maximum"]
-
 					if options.avgseq > 1:
 						average.add_image(d)
 						if count%options.avgseq == 0:
