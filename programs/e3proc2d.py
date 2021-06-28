@@ -811,7 +811,7 @@ def main():
 						elif options.unstacking:  # output a series numbered single image files
 							out_name = os.path.splitext(outfile)[0]+'-'+str(i+1).zfill(len(str(nimg)))+os.path.splitext(outfile)[-1]
 							if d["sigma"] == 0:
-								if options.writejunk == False:
+								if not options.writejunk:
 									continue
 
 							d.write_image(out_name, 0, out_type, False, None, out_mode, not_swap)
@@ -825,7 +825,7 @@ def main():
 								d[:len(rd)] = rd[:len(rd)]
 
 							if d["sigma"] == 0:
-								if options.writejunk == False:
+								if not options.writejunk:
 									continue
 
 							if options.output:
