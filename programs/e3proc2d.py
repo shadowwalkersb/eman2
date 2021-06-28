@@ -363,6 +363,48 @@ def main():
 	if options.parallel:
 		parser.error("Parallelism not supported. Please use e2proc2dpar.py")
 
+	# arg1 = parse_infile_arg(args[0])
+	arr = [1,2]
+	arg1 = "1,5,7,9:15:2,20:,:30,::3,in_idx.txt" #.split(',')
+	print(arg1)
+	# print(ast.parse(str(list(arg1))))
+	tree = ast.parse(f"arr[{arg1}]")
+	# tree = ast.parse(arg1)
+	print(ast.dump(tree))
+	# eval(compile(tree, filename="<ast>", mode="exec"))
+	# print(ast.literal_eval(f"arr[{arg1}]"))
+	# print("Walk:")
+	for n in ast.walk(tree):
+		if isinstance(n, ast.Index):
+			# print(ast.dump(n))
+			print(n)
+			# print(dir(n))
+			# print(n.Value)
+	idxs = []
+	# for s in arg1:
+		# if s.isnumppend(slice(*sl))
+		# print(type(int(s)))
+	# 	mode = 'eval'
+	# 	if ':' in s:
+	# 		# s = f"splice({s.replace(':', ',')})"
+	# 		# s = range(*ast.literal_eval(s.replace(':', ',')))
+	# 		# print(type(s))
+	# 		# print(s)
+	# 		# for i in s:
+	# 		# 	print(i)
+	# 		mode = 'exec'
+	# 		# s =
+	# 	# if mode == "exec":
+	# 	# 	print(s)
+	# 		# eval(ast.parse(s))
+	# 	# for n in ast.walk(ast.parse(s, mode=mode)):
+	# 	# 	print(ast.dump(n))
+	print(idxs)
+	a = [i for i in range(40)]
+	for i in idxs:
+		print("i: ", i, ": ", a[i])
+	sys.exit(0)
+
 	logid = E2init(sys.argv,options.ppid)
 
 	optionlist = deque(get_optionlist(sys.argv[1:]))
