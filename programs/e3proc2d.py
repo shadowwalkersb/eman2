@@ -864,7 +864,7 @@ def main():
 				else: avg.write_image(outfile,-1)
 
 		if options.fftavg:
-			fftavg.mult(1.0 / sqrt(n1 - n0 + 1))
+			fftavg.mult(1.0 / sqrt(n1 - n0 + 1))  # n1-n0 or count
 			fftavg.write_image(options.fftavg, 0)
 
 			curve = fftavg.calc_radial_dist(ny, 0, 0.5, 1)
