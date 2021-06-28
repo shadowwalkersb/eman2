@@ -958,9 +958,7 @@ def main():
 							#outfile = outfile + "%04d" % i + ".lst"
 							#options.outtype = "lst"
 
-					dont_scale = (options.fixintscaling == "noscale")
-
-					if options.fixintscaling != None and not dont_scale:
+					if options.fixintscaling != None and options.fixintscaling:
 						if options.fixintscaling == "sane":
 							sca = 2.5
 							d["render_min"] = d["mean"] - d["sigma"]*sca
@@ -983,9 +981,9 @@ def main():
 					else:
 						min_max_set = False
 
-					if options.outmode != "float" or dont_scale:
+					if options.outmode != "float" or not options.fixintscaling:
 
-						if options.outnorescale or dont_scale:
+						if options.outnorescale or not options.fixintscaling:
 							# This sets the minimum and maximum values to the range
 							# for the specified type, which should result in no rescaling
 
