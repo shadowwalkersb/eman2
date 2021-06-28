@@ -386,6 +386,10 @@ def main():
 			for i, k in enumerate(s.split(":")):
 				sl[i] = int(k) if len(k)>0 else None
 			idxs.append(slice(*sl))
+		else:
+			with open(s) as fin:
+				nums = fin.read().replace('\n', ' ').replace(',', ' ').split()
+			print("nums: ", nums)
 		# print(type(int(s)))
 	# 	mode = 'eval'
 	# 	if ':' in s:
