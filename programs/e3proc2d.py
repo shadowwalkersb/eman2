@@ -758,9 +758,6 @@ def main():
 
 							d["render_min"] = EMAN2.file_mode_range[outmode][0]
 							d["render_max"] = EMAN2.file_mode_range[outmode][1]
-						elif not options.fixintscaling:
-							d["render_min"] = d["minimum"]
-							d["render_max"] = d["maximum"]
 
 					if options.average > 1:
 						average.add_image(d)
