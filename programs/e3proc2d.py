@@ -331,7 +331,6 @@ def main():
 		if options.average:
 			averager = parsemodopt(options.averager)
 			average = Averagers.get(averager[0], averager[1])
-		else: average = None
 
 		fftavg = None
 
@@ -852,7 +851,7 @@ def main():
 
 		# end of image loop
 
-		if average:
+		if options.average:
 			avg = average.finish()
 
 			if options.inplace:
