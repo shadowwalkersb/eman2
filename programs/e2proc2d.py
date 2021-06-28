@@ -977,11 +977,6 @@ def main():
 							d["render_min"] = d["mean"] - d["sigma"]*sca
 							d["render_max"] = d["mean"] + d["sigma"]*sca
 
-					if options.fixintscaling:
-						min_max_set = True
-					else:
-						min_max_set = False
-
 					if options.outmode != "float" or not options.fixintscaling:
 
 						if options.outnorescale or not options.fixintscaling:
@@ -994,7 +989,7 @@ def main():
 							d["render_max"] = file_mode_range[outmode][1]
 
 						else:
-							if not min_max_set:
+							if not options.fixintscaling:
 								d["render_min"] = d["minimum"]
 								d["render_max"] = d["maximum"]
 
