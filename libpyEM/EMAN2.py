@@ -829,24 +829,24 @@ parseparmobj_op_words = re.compile("\w*[^=+-\/\*%][\w.]*") # splits ("v1?2") int
 parseparmobj_logical_words = re.compile("\w*[^=!<>~][\w.]*") # splits ("v1?2") into ("v1","2") where ? can be any combination of the characters "=!<>~"
 def parsemodopt_logical(optstr):
 
-	if not optstr or len(optstr)==0 : return (None)
+	if not optstr or len(optstr)==0 : return None
 
-	p_1 = re.findall( parseparmobj_logical_words, optstr )
+	p_1 = re.findall(parseparmobj_logical_words, optstr)
 
-	if len(p_1)==0: return (optstr,{})
+	if len(p_1)==0: return optstr,{}
 	if len(p_1) != 2:
 		print("ERROR: parsemodopt_logical currently only supports single logical expressions")
 		print("Could not handle %s" %optstr)
-		return (None,None,None)
+		return None,None,None
 
-	p_2 = re.findall( parseparmobj_logical, optstr )
+	p_2 = re.findall(parseparmobj_logical, optstr)
 
 	if len(p_2) != 1:
 		print("ERROR: could not find logical expression in %s" %optstr)
-		return (None,None,None)
+		return None,None,None
 
 
-	if ( p_2[0] not in ["==", "<=", ">=", "!=", "~=", "<", ">"] ):
+	if p_2[0] not in ["==", "<=", ">=", "!=", "~=", "<", ">"]:
 		print("ERROR: parsemodopt_logical %s could not extract logical expression" %(p_2[0]))
 		print("Must be one of \"==\", \"<=\", \">=\", \"<\", \">\" \"!=\" or \~=\" ")
 		return (None,None,None)
@@ -858,26 +858,26 @@ def parsemodopt_operation(optstr):
 
 	if not optstr or len(optstr)==0 : return (None)
 
-	p_1 = re.findall( parseparmobj_op_words, optstr )
+	p_1 = re.findall(parseparmobj_op_words, optstr)
 	if len(p_1)==0: return (optstr,{})
 
 	if len(p_1) != 2:
 		print("ERROR: parsemodopt_logical currently only supports single logical expressions")
 		print("Could not handle %s" %optstr)
-		return (None,None,None)
+		return None,None,None
 
-	p_2 = re.findall( parseparmobj_op, optstr )
+	p_2 = re.findall(parseparmobj_op, optstr)
 	if len(p_2) != 1:
 		print("ERROR: could not find logical expression in %s" %optstr)
-		return (None,None,None)
+		return None,None,None
 
 
-	if ( p_2[0] not in ["+=", "-=", "*=", "/=", "%="]):
+	if p_2[0] not in ["+=", "-=", "*=", "/=", "%="]:
 		print("ERROR: parsemodopt_logical %s could not extract logical expression" %(p_2[0]))
 		print("Must be one of", "+=", "-=", "*=", "/=", "%=")
 		return (None,None,None)
 
-	return (p_1[0], p_2[0], p_1[1])
+	return p_1[0], p_2[0], p_1[1]
 
 def read_number_file(path):
 	"""This will read a text file containing a list of integers. The integers may be separated by any character(s). Any contiguous
@@ -893,23 +893,23 @@ def angle_ab_sym(sym,a,b,c=None,d=None):
 	"""Computes the angle of the rotation required to go from Transform A to Transform B under symmetry,
 	such that the smallest symmetry-related angle is returned. sym may be either a list of Transforms
 	or a symmetry specifier, eg "c4". For the two orientations, specify either
-	two Transform objects, or the symmetry followed by four floats in the order 
+	two Transform objects, or the symmetry followed by four floats in the order
 	AltA,AzA,AltB,AzB. Return in degrees."""
-	
+
 	if c!=None :
 		A=Transform({"type":"eman","alt":a,"az":b})
 		B=Transform({"type":"eman","alt":c,"az":d})
 	else :
 		A=a
 		B=b
-	
+
 	# easier to do it here
 	Bi=B.inverse()
-		
+
 	# needs to be a list of Transforms
 	if isinstance(sym,str):
 		sym=parsesym(sym).get_syms()
-		
+
 	#if not (isinstance(A,Transform) and isinstance(B,Transform)):
 		#raise Exception,"angle_ab_sym requries two transforms or 4 angles"
 
@@ -932,11 +932,11 @@ def sock_sendobj(sock,obj):
 	#sock.write(pack("<I",len(strobj)))
 	#sock.write(strobj)
 
-	
+
 def sock_recvobj(sock):
 	"""receives a packed length followed by a binary (pickled) object from a socket file object and returns"""
 	l=sock.recv(8,socket.MSG_WAITALL)
-	
+
 	try :
 		datlen=unpack("<Q",l)[0]
 	except:
@@ -959,10 +959,10 @@ display_magic=None		# VERY basic security for e3display
 
 def e3display(data,vtype="auto",vname=None,dname="Unknown",settings={},port=31980):
 	"""Server-based display function, mainly designed for use with Jupyter Lab sessions, but availble for
-	background monitoring of running jobs as well. 
-	data - data object of any (appropriate) type, if None will simply update the widget and return a PNG, 
+	background monitoring of running jobs as well.
+	data - data object of any (appropriate) type, if None will simply update the widget and return a PNG,
 	vtype - "image","imagemx","volume","plot2d","plot3d","histogram"
-	vname - name of a new or existing (type specific) display widget to use, if None 'default' will be used 
+	vname - name of a new or existing (type specific) display widget to use, if None 'default' will be used
 	dname - name for the data set, may be used as window title, or to support multiple object display in the same widget
 	settings - a dictionary of widget-specific settings
 	"""
@@ -984,9 +984,9 @@ def e3display(data,vtype="auto",vname=None,dname="Unknown",settings={},port=3198
 	sock_sendobj(sock,(data,vtype,vname,dname,settings))
 	ret=sock_recvobj(sock)
 	if ret[0]=="error": raise Exception(f"e3display error: {ret[1]}")
-	elif ret[0]=="png": 
+	elif ret[0]=="png":
 		nx,ny,png=ret[1]
-		
+
 	return ipywidgets.Image(value=png,format="png",width=nx,height=ny)
 
 
@@ -1185,10 +1185,10 @@ def launch_childprocess(cmd,handle_err=0):
 	else:
 		error = os.waitpid(p.pid, 0)[1]
 
-	if error and handle_err: 
+	if error and handle_err:
 		print("Error {} running: {}".format(error,cmd))
 		sys.exit(1)
-		
+
 	return error
 
 def process_running(pid):
@@ -1316,7 +1316,7 @@ def num_cpus():
 		print("error, in num_cpus - unknown platform string:",platform_string," - returning 2")
 		return 2
 
-def gimme_image_dimensions2D( imagefilename ):
+def gimme_image_dimensions2D(imagefilename):
 	"""returns the dimensions of the first image in a file (2-D)"""
 
 	e = EMData()
@@ -1324,7 +1324,7 @@ def gimme_image_dimensions2D( imagefilename ):
 	return (e.get_xsize(),e.get_ysize())
 
 # get the three dimensions of a an image
-def gimme_image_dimensions3D( imagefilename ):
+def gimme_image_dimensions3D(imagefilename):
 
 	#pdb.set_trace()
 
@@ -1383,7 +1383,7 @@ def get_supported_3d_formats():
 	'''
 	return ["hdf","spi","mrc","pif","emim","img","vtk","icos","xplor","em","fits"]
 
-def remove_file( file_name, img_couples_too=True ):
+def remove_file(file_name, img_couples_too=True):
 	'''
 	A function for removing a file from disk. Works for database style file names.
 	Adapted so that if you want to remove an img/hed couple it will automatically remove both.
@@ -1547,7 +1547,7 @@ def abs_path(name):
 	else:
 		return os.path.abspath(name)
 
-def base_name( file_name,extension=False,bdb_keep_dir=False,nodir=False ):
+def base_name(file_name,extension=False,bdb_keep_dir=False,nodir=False):
 	'''
 	wraps os.path.basename but returns something sensible for bdb syntax
 	if nodir is set, then the last path element will never be included, otherwise it is included following a set of standard rules.
@@ -1581,7 +1581,7 @@ def info_name(file_name,nodir=False):
 	"""This will return the name of the info file associated with a given image file, in the form info/basename_info.js"""
 	return "info/{}_info.json".format(base_name(file_name,nodir=nodir))
 
-def file_exists( file_name ):
+def file_exists(file_name):
 	'''
 	A function for checking if a file exists
 	basically wraps os.path.exists, but when an img or hed file is the argument, it
@@ -1589,7 +1589,7 @@ def file_exists( file_name ):
 	Also checks if the argument is a valid dictionary
 	'''
 
-	if ( os.path.exists(file_name) ):
+	if os.path.exists(file_name):
 		parts = file_name.split('.')
 		file_tag = parts[len(parts)-1]
 
@@ -1598,16 +1598,16 @@ def file_exists( file_name ):
 		for i in range(0,len(parts)-1):
 			name = name + parts[i] + '.'
 
-		if ( file_tag == 'hed' ):
-			if ( not os.path.exists(name+'img') ):
+		if file_tag == 'hed':
+			if not os.path.exists(name+'img'):
 				print("Warning - %s does not exist" %(name+'img'))
 				return False
-			else: return True;
-		elif (file_tag == 'img'):
-			if (not os.path.exists(name+'hed')):
+			else: return True
+		elif file_tag == 'img':
+			if not os.path.exists(name+'hed'):
 				print("Warning - %s does not exist" %(name+'hed'))
 				return False
-			else: return True;
+			else: return True
 		else:
 			return True
 	else:
@@ -1644,10 +1644,10 @@ if get_platform() == "Darwin":
 
 def display_path(path):
 	"""Will generate a suitable reduced path for use in title-bars on windows, etc."""
-	
+
 	try: full=os.path.abspath(path)
 	except: full=path
-	
+
 	full=full.replace("\\","/").split("/")
 	if len(full)==1: return full
 	return "/".join(full[-2:])
@@ -2063,14 +2063,14 @@ def data_dims_power_of(data,val):
 
 	test_cases = [data.get_xsize()]
 
-	if ( data.get_ndim() >= 2 ):
+	if data.get_ndim() >= 2:
 		test_cases.append(data.get_ysize())
-	if ( data.get_ndim == 3):
+	if data.get_ndim == 3:
 		test_cases.append(data.get_zsize())
 
 	for i in test_cases:
 		x = i
-		while ( x > 1 and x % val == 0 ): x /= val
+		while x > 1 and x % val == 0: x /= val
 		if x != 1:
 			return False
 
