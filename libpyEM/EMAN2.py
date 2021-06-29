@@ -2122,26 +2122,6 @@ def clear_dead_cudajobs():
 			print("removing deadfile ", lock)
 			os.unlink(lock)
 
-### Very odd function, I can't find it used anywhere, so I'm commenting it out.
-#def set_emdata_array(img, array):
-	#"""
-	#Return a new EMData object, set its data with a list of float, all all attribute are the same as input image.
-	#The array's size must be the same as the img's size, i.e. nx*ny or nx*ny*nz.
-	#img - a EMData object
-	#array - a list of float data
-	#"""
-	#import numpy
-	#dct = img.get_attr_dict()
-
-	#if len(array) != dict['nz']*dict['ny']*dict['nx']:
-		#print "Error: Array's size does not match nx*ny*nz"
-		#return
-
-	#numpy_array = numpy.reshape(numpy.array(array, numpy.float32), (dct['nz'], dct['ny'], dct['nx']))
-	#new_img = EMNumPy.numpy2em(numpy_array)
-	#new_img.set_attr_dict(dct)
-	#return new_img
-
 def write_FSC_file(fsc,filename):
 	"""Convenience function takes a standard FSC/FRC resulting from EMData.calc_fourier_shell_correlation and write it to
 	disk as a s,FSC text file."""
