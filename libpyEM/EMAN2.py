@@ -56,7 +56,6 @@ from struct import pack,unpack
 import json
 
 import threading
-#from Sparx import *
 
 HOMEDB=None
 
@@ -215,19 +214,19 @@ file_mode_intmap={
 file_mode_range={
 	EMUtil.EMDataType.EM_CHAR:(-128,127),
 	EMUtil.EMDataType.EM_UCHAR:(0,255),
-	EMUtil.EMDataType.EM_SHORT:(-32768,32767 ),
-	EMUtil.EMDataType.EM_USHORT:(0,65535 ),
-	EMUtil.EMDataType.EM_INT:(-2147483648,2147483647 ),
+	EMUtil.EMDataType.EM_SHORT:(-32768,32767),
+	EMUtil.EMDataType.EM_USHORT:(0,65535),
+	EMUtil.EMDataType.EM_INT:(-2147483648,2147483647),
 	EMUtil.EMDataType.EM_UINT:(0,4294967295),
-	EMUtil.EMDataType.EM_FLOAT:(-3.40282347e+38,3.40282347e+38 ),
+	EMUtil.EMDataType.EM_FLOAT:(-3.40282347e+38,3.40282347e+38),
 	int(EMUtil.EMDataType.EM_CHAR):(-128,127),
 	int(EMUtil.EMDataType.EM_UCHAR):(0,255),
-	int(EMUtil.EMDataType.EM_SHORT):(-32768,32767 ),
-	int(EMUtil.EMDataType.EM_USHORT):(0,65535 ),
-	int(EMUtil.EMDataType.EM_INT):(-2147483648,2147483647 ),
+	int(EMUtil.EMDataType.EM_SHORT):(-32768,32767),
+	int(EMUtil.EMDataType.EM_USHORT):(0,65535),
+	int(EMUtil.EMDataType.EM_INT):(-2147483648,2147483647),
 	int(EMUtil.EMDataType.EM_UINT):(0,4294967295),
-	int(EMUtil.EMDataType.EM_FLOAT):(-3.40282347e+38,3.40282347e+38 ),
-	int(EMUtil.EMDataType.EM_COMPRESSED):(-3.40282347e+38,3.40282347e+38 )
+	int(EMUtil.EMDataType.EM_FLOAT):(-3.40282347e+38,3.40282347e+38),
+	int(EMUtil.EMDataType.EM_COMPRESSED):(-3.40282347e+38,3.40282347e+38)
 	}
 
 class NotImplementedException(Exception):
