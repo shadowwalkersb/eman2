@@ -143,31 +143,32 @@ def stopautoflush():
 
 # These are very widely used and hard to find, so some shortcuts
 # Image file types
-IMAGE_MRC = EMUtil.ImageType.IMAGE_MRC
-IMAGE_EER = EMUtil.ImageType.IMAGE_EER
-IMAGE_EER2X = EMUtil.ImageType.IMAGE_EER2X
-IMAGE_EER4X = EMUtil.ImageType.IMAGE_EER4X
-IMAGE_SPIDER = EMUtil.ImageType.IMAGE_SPIDER
-IMAGE_SINGLE_SPIDER = EMUtil.ImageType.IMAGE_SINGLE_SPIDER
-IMAGE_IMAGIC = EMUtil.ImageType.IMAGE_IMAGIC
-IMAGE_HDF = EMUtil.ImageType.IMAGE_HDF
-IMAGE_DM3 = EMUtil.ImageType.IMAGE_DM3
-IMAGE_DM4 = EMUtil.ImageType.IMAGE_DM4
-IMAGE_TIFF = EMUtil.ImageType.IMAGE_TIFF
-IMAGE_PGM = EMUtil.ImageType.IMAGE_PGM
-IMAGE_LST = EMUtil.ImageType.IMAGE_LST
-IMAGE_PIF = EMUtil.ImageType.IMAGE_PIF
-IMAGE_VTK = EMUtil.ImageType.IMAGE_VTK
-IMAGE_PNG = EMUtil.ImageType.IMAGE_PNG
-IMAGE_SAL = EMUtil.ImageType.IMAGE_SAL
-IMAGE_ICOS = EMUtil.ImageType.IMAGE_ICOS
-IMAGE_EMIM = EMUtil.ImageType.IMAGE_EMIM
-IMAGE_GATAN2 = EMUtil.ImageType.IMAGE_GATAN2
-IMAGE_AMIRA = EMUtil.ImageType.IMAGE_AMIRA
-IMAGE_XPLOR = EMUtil.ImageType.IMAGE_XPLOR
-IMAGE_EM = EMUtil.ImageType.IMAGE_EM
-IMAGE_V4L = EMUtil.ImageType.IMAGE_V4L
-IMAGE_UNKNOWN = EMUtil.ImageType.IMAGE_UNKNOWN
+class IMAGE(Enum):
+	MRC = EMUtil.ImageType.IMAGE_MRC
+	EER = EMUtil.ImageType.IMAGE_EER
+	EER2X = EMUtil.ImageType.IMAGE_EER2X
+	EER4X = EMUtil.ImageType.IMAGE_EER4X
+	SPIDER = EMUtil.ImageType.IMAGE_SPIDER
+	SINGLE_SPIDER = EMUtil.ImageType.IMAGE_SINGLE_SPIDER
+	IMAGIC = EMUtil.ImageType.IMAGE_IMAGIC
+	HDF = EMUtil.ImageType.IMAGE_HDF
+	DM3 = EMUtil.ImageType.IMAGE_DM3
+	DM4 = EMUtil.ImageType.IMAGE_DM4
+	TIFF = EMUtil.ImageType.IMAGE_TIFF
+	PGM = EMUtil.ImageType.IMAGE_PGM
+	LST = EMUtil.ImageType.IMAGE_LST
+	PIF = EMUtil.ImageType.IMAGE_PIF
+	VTK = EMUtil.ImageType.IMAGE_VTK
+	PNG = EMUtil.ImageType.IMAGE_PNG
+	SAL = EMUtil.ImageType.IMAGE_SAL
+	ICOS = EMUtil.ImageType.IMAGE_ICOS
+	EMIM = EMUtil.ImageType.IMAGE_EMIM
+	GATAN2 = EMUtil.ImageType.IMAGE_GATAN2
+	AMIRA = EMUtil.ImageType.IMAGE_AMIRA
+	XPLOR = EMUtil.ImageType.IMAGE_XPLOR
+	EM = EMUtil.ImageType.IMAGE_EM
+	V4L = EMUtil.ImageType.IMAGE_V4L
+	UNKNOWN = EMUtil.ImageType.IMAGE_UNKNOWN
 
 # image data storage modes
 EM_UNKNOWN = EMUtil.EMDataType.EM_UNKNOWN
