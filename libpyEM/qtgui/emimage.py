@@ -35,7 +35,7 @@ from builtins import object
 import OpenGL
 OpenGL.ERROR_CHECKING = False
 from OpenGL import GL,GLU,GLUT
-from EMAN2 import Util,EMUtil,file_exists,IMAGE_UNKNOWN,gimme_image_dimensions3D,EMData
+from EMAN2 import Util,EMUtil,file_exists,IMAGE.UNKNOWN,gimme_image_dimensions3D,EMData
 import os
 from EMAN2 import Transform
 from .emscene3d import EMScene3D
@@ -173,7 +173,7 @@ class EMWidgetFromFile(object):
 			widget.set_data_from_file(filename)
 			return widget
 		
-		if em_file_type != IMAGE_UNKNOWN or filename[:4] == "bdb:":
+		if em_file_type != IMAGE.UNKNOWN or filename[:4] == "bdb:":
 			n = EMUtil.get_image_count(filename)
 			nx,ny,nz = gimme_image_dimensions3D(filename)
 			if n > 1 and nz == 1: 

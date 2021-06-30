@@ -2708,7 +2708,7 @@ def ali2d_ra(stack, maskfile = None, ir = 1, ou = -1, rs = 1, maxit = 10, check_
 		if(CTF and data_had_ctf == 0):   temp.set_attr('ctf_applied', 0)
 		set_params2D(temp, [alphan, sxn, syn, mir, 1.0])
 		write_header(stack, temp, im)
-		#temp.write_image(stack, im, EMUtil.ImageType.IMAGE_HDF, True)
+		#temp.write_image(stack, im, EMUtil.ImageType.IMAGE.HDF, True)
 	print_end_msg("ali2d_ra")
 
 def ali2d_rag(stack, maskfile = None, ir = 1, ou = -1, rs = 1, maxit = 10, check_mirror = False, CTF = False, rand_seed = 1000):
@@ -2870,7 +2870,7 @@ def ali2d_rag(stack, maskfile = None, ir = 1, ou = -1, rs = 1, maxit = 10, check
 		if(CTF and data_had_ctf == 0):   temp.set_attr('ctf_applied', 0)
 		temp.set_attr_dict({'alpha':alphan, 'sx':sxn, 'sy':syn, 'mirror': mir})
 		write_header(stack, temp, im)
-		#temp.write_image(stack, im, EMUtil.ImageType.IMAGE_HDF, True)
+		#temp.write_image(stack, im, EMUtil.ImageType.IMAGE.HDF, True)
 	if(ext == "bdb"):
 		DB.close_dict(ipath)
 	print_end_msg("ali2d_rag")
@@ -3144,12 +3144,12 @@ def ali2d_rac(stack, maskfile = None, ir = 1, ou = -1, rs = 1, nclass = 2, maxit
 		
 		#if(data_had_ctf == 0):   temp.set_attr('ctf_applied', 0)
 		write_header(stack, temp, im)
-		#temp.write_image(stack ,im, EMUtil.ImageType.IMAGE_HDF, True)
+		#temp.write_image(stack ,im, EMUtil.ImageType.IMAGE.HDF, True)
 	if(ext == "bdb"):
 		DB.close_dict(ipath)
 	del temp
 	del data
-	#for im in xrange(nima): data[im].write_image(stack, im, EMUtil.ImageType.IMAGE_HDF, True)
+	#for im in xrange(nima): data[im].write_image(stack, im, EMUtil.ImageType.IMAGE.HDF, True)
 	#transform2d(stack, "dala.hdf")
 	#ave, var, nclass = add_series_class("dala.hdf")
 	#for k in xrange(kc):
@@ -3577,7 +3577,7 @@ def ali2d_cross_res(stack, outdir, maskfile=None, ir=1, ou=-1, rs=1, xr="4 2 1 1
 		k=im%NG
 		imm = im//NG
 		write_header(stack, data[k][imm], im)
-		#data[k][imm].write_image(stack, im, EMUtil.ImageType.IMAGE_HDF, True)
+		#data[k][imm].write_image(stack, im, EMUtil.ImageType.IMAGE.HDF, True)
 	if(ext == "bdb"):
 		DB.close_dict(ipath)
 	print_end_msg("ali2d_cross_res")
@@ -13690,7 +13690,7 @@ def cpy(ins_list, ous):
 			from EMAN2db import db_open_dict
 
 		if nima == 1 and oextension == "spi":
-			get_im(ins).write_image(ous, 0, EMUtil.ImageType.IMAGE_SINGLE_SPIDER)
+			get_im(ins).write_image(ous, 0, EMUtil.ImageType.IMAGE.SINGLE_SPIDER)
 			
 		elif iextension == "bdb" and oextension == "bdb":
 			
@@ -22711,9 +22711,3 @@ def mref_ali3d_EQ_Kmeans_circular(ref_list, outdir, particle_list_file, Tracker)
 	if myid ==main_node:  log.add(" mref_ali3d_EQ_Kmeans finishes !")
 		
 ######
- 
- 
-
-			
-			
-			

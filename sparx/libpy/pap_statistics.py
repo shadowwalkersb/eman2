@@ -8377,7 +8377,7 @@ def kmn_g(data, numr, wr, stack, check_mirror = False, max_iter = 10, this_seed 
 		temp.read_image(stack, im, True)
 		#if(CTF and data_had_ctf == 0):   temp.set_attr('ctf_applied', 0)
 		temp.set_attr_dict({'alpha':alphan, 'sx':sxn, 'sy':syn, 'mirror': mir})
-		temp.write_image(stack, im, EMUtil.ImageType.IMAGE_HDF, True)
+		temp.write_image(stack, im, EMUtil.ImageType.IMAGE.HDF, True)
 	
 	ave1, ave2 =  ave_oe_series(stack)	
 	fsc(ave1, ave2, 1.0, "fsc_before_amoeba")
@@ -8433,7 +8433,7 @@ def kmn_g(data, numr, wr, stack, check_mirror = False, max_iter = 10, this_seed 
 			temp.read_image(stack, im, True)
 			#if(CTF and data_had_ctf == 0):   temp.set_attr('ctf_applied', 0)
 			temp.set_attr_dict({'alpha':alphan, 'sx':sxn, 'sy':syn, 'mirror': mir})
-			temp.write_image(stack, im, EMUtil.ImageType.IMAGE_HDF, True)
+			temp.write_image(stack, im, EMUtil.ImageType.IMAGE.HDF, True)
 
 		ave1, ave2 =  ave_oe_series(stack)	
 		fsc(ave1, ave2, 1.0, "fsc_trial_%02d"%(Iter+1))

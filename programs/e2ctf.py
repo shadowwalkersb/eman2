@@ -845,7 +845,7 @@ def process_stack(stackfile,phaseflip=None,phasehp=None,phasesmall=None,wiener=N
 			else :
 				ctf=default_ctf		# otherwise we're stuck with the values in the file forever
 				im1["ctf"]=ctf
-				im1.write_image(stackfile,i,EMUtil.ImageType.IMAGE_UNKNOWN,True)
+				im1.write_image(stackfile,i,EMUtil.ImageType.IMAGE.UNKNOWN,True)
 		if type(ctf)==EMAN1Ctf : ctf=default_ctf	# EMAN1 ctf needs a structure factor for this to work
 
 

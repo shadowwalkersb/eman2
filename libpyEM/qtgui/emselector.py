@@ -34,7 +34,7 @@ from builtins import range
 from builtins import object
 from EMAN2 import get_image_directory, get_dtag, EMData, \
 	get_files_and_directories, db_open_dict, remove_file, \
-	remove_directories_from_name, Util, EMUtil, IMAGE_UNKNOWN, base_name, \
+	remove_directories_from_name, Util, EMUtil, IMAGE.UNKNOWN, base_name, \
 	file_exists, base_name
 from EMAN2db import EMAN2DB, db_convert_path, db_open_dict, db_check_dict, e2getcwd
 from PyQt5 import QtCore, QtGui, QtWidgets, QtOpenGL
@@ -1329,7 +1329,7 @@ class EMFileSystemDelegate(EMBrowseDelegate):
 		return_items = []
 		item = None
 		extension = Util.get_filename_ext(url)
-		if EMUtil.get_image_ext_type(extension) != IMAGE_UNKNOWN and extension not in ["png","jpeg","jpg","JPG"]:
+		if EMUtil.get_image_ext_type(extension) != IMAGE.UNKNOWN and extension not in ["png","jpeg","jpg","JPG"]:
 			e = EMData()
 			e.read_image(url,0, True)
 			if EMUtil.get_image_count(url) > 1:
@@ -1355,7 +1355,7 @@ class EMFileSystemDelegate(EMBrowseDelegate):
 		return_items = []
 		item = None
 		extension = Util.get_filename_ext(vals[0])
-		if EMUtil.get_image_ext_type(extension) != IMAGE_UNKNOWN and extension not in ["png","jpeg","jpg","JPG"]:
+		if EMUtil.get_image_ext_type(extension) != IMAGE.UNKNOWN and extension not in ["png","jpeg","jpg","JPG"]:
 			e = EMData()
 			e.read_image(vals[0],0, True)
 			val_idx = 1
@@ -1393,7 +1393,7 @@ class EMFileSystemDelegate(EMBrowseDelegate):
 		# note, if this if statement is allowed to proceed on Windows in the case of a png then the program
 		# crashes. In December of 2008 I thus changed this if statement to automatically exclude unnecessary files
 		# such as pngs and jpges...etc.
-		if EMUtil.get_image_ext_type(extension) != IMAGE_UNKNOWN and extension not in ["png","jpeg","jpg","JPG"]:
+		if EMUtil.get_image_ext_type(extension) != IMAGE.UNKNOWN and extension not in ["png","jpeg","jpg","JPG"]:
 			try:
 				e.read_image(full_name,0, read_header_only)
 				if EMUtil.get_image_count(full_name) > 1:

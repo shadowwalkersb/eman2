@@ -104,7 +104,7 @@ improved with time."""
 		data[i].process_inplace('mask.sharp', {'outer_radius':old_div(data[i].get_xsize(),2)})
 
 #		 if i < 5 :
-#			 data[i].write_image('speed.hed', i, EMUtil.ImageType.IMAGE_IMAGIC)
+#			 data[i].write_image('speed.hed', i, EMUtil.ImageType.IMAGE.IMAGIC)
 
 	if options.low:
 		print('Low level tests starting. Please note that compiling with optimization may \

@@ -148,7 +148,7 @@ sp_global_def.BATCH = True
 sp_global_def.MPI = True
 
 NAME_OF_JSON_STATE_FILE = "my_state.json"
-NAME_OF_ORIGINAL_IMAGE_INDEX = "originalid"
+NAME_OF_ORIGINAL_IMAGE.INDEX = "originalid"
 NAME_OF_RUN_DIR = "run"
 NAME_OF_MAIN_DIR = "generation_"
 DIR_DELIM = os.sep
@@ -2885,4 +2885,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-

@@ -620,7 +620,7 @@ class TestProcessor(unittest.TestCase):
     def test_BinarizeProcessor(self):
         """test binary processor ............................"""
         imgfile1 = "test_BinarizeFilter.mrc"
-        TestUtil.make_image_file(imgfile1, IMAGE_MRC)
+        TestUtil.make_image_file(imgfile1, IMAGE.MRC)
         e = EMData()
         e.read_image(imgfile1)
         fnum = 1000
@@ -691,7 +691,7 @@ class TestProcessor(unittest.TestCase):
     def test_RangeThreshold(self):
         """test range threshhold processor .................."""
         imgfile1 = "test_RangeThreshold.mrc"
-        TestUtil.make_image_file(imgfile1, IMAGE_MRC)
+        TestUtil.make_image_file(imgfile1, IMAGE.MRC)
         e = EMData()
         e.read_image(imgfile1)
         low = 10

@@ -332,7 +332,7 @@ class EMPlot2DWidget(EMGLWidget):
 		file_type = Util.get_filename_ext(filename)
 		em_file_type = EMUtil.get_image_ext_type(file_type)
 
-		if em_file_type != IMAGE_UNKNOWN or filename[:4]=="bdb:" :
+		if em_file_type != IMAGE.UNKNOWN or filename[:4]=="bdb:" :
 
 			im=EMData.read_images(filename)
 			if len(im) == 1:
@@ -398,7 +398,7 @@ class EMPlot2DWidget(EMGLWidget):
 		em_file_type = EMUtil.get_image_ext_type(file_type)
 		data = None
 
-		if em_file_type != IMAGE_UNKNOWN or filename[:4]=="bdb:" :
+		if em_file_type != IMAGE.UNKNOWN or filename[:4]=="bdb:" :
 
 			im=EMData.read_images(filename)
 			if len(im) == 1:

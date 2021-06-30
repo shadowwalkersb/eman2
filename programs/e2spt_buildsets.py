@@ -64,7 +64,7 @@ def main():
 			for fm in pts:
 				n=EMUtil.get_image_count(fm)
 				p=[]
-				imgs=EMData.read_images(fm, [], IMAGE_UNKNOWN, True)
+				imgs=EMData.read_images(fm, [], IMAGE.UNKNOWN, True)
 				p=np.array([e["ptcl_source_coord"] for e in imgs])
 				#for i in range(n):
 					#e=EMData(fm, i, True)

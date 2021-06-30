@@ -40,7 +40,7 @@ from math import *
 import os
 import sys
 
-#a = EMUtil.ImageType.IMAGE_UNKNOWN
+#a = EMUtil.ImageType.IMAGE.UNKNOWN
 
 PROJ_FILE_ATTR = "projection_file" # this attribute important to e2simmxxplor
 PART_FILE_ATTR = "particle_file" # this attribute important to e2simmxxplor

@@ -399,11 +399,11 @@ map to the center of the volume."""
         else:
             sp_global_def.sxprint("Pixel_size is not set in the header!")
 
-        outmap.write_image(args[1], 0, EMAN2_cppwrap.EMUtil.ImageType.IMAGE_HDF)
+        outmap.write_image(args[1], 0, EMAN2_cppwrap.EMUtil.ImageType.IMAGE.HDF)
 
     elif filextension == ".spi":
         outmap.write_image(
-            args[1], 0, EMAN2_cppwrap.EMUtil.ImageType.IMAGE_SINGLE_SPIDER
+            args[1], 0, EMAN2_cppwrap.EMUtil.ImageType.IMAGE.SINGLE_SPIDER
         )
 
     else:

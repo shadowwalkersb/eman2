@@ -595,11 +595,11 @@ def main():
 						sys.exit(1)
 
 					if options.eer2x:
-						img_type = IMAGE_EER2X
+						img_type = IMAGE.EER2X
 					elif options.eer4x:
-						img_type = IMAGE_EER4X
+						img_type = IMAGE.EER4X
 					else:
-						img_type = IMAGE_UNKNOWN
+						img_type = IMAGE.UNKNOWN
 
 					d.read_image(infile, i, False, None, False, img_type)
 			else:

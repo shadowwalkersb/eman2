@@ -67,7 +67,7 @@ for n in range(size_agls): # another loop over Psi
     # set the value of phi, theta, and psi in the header of the volume
     im.read_image(name_vol, 0, True)
     im.set_attr_dict({'phi': agls[n][0], 'theta': agls[n][1], 'psi': 0, 's3x': 0, 's3y':0, 's3z': 0, 'scale': 1})
-    im.write_image(name_vol, 0, EMUtil.ImageType.IMAGE_HDF, True)
+    im.write_image(name_vol, 0, EMUtil.ImageType.IMAGE.HDF, True)
 
     # search the alignment
     ali_vol_rotate(name_vol, name_ref, 20, rad)
@@ -94,7 +94,7 @@ for n in range(size_agls): # another loop over Psi
     # set the value of phi, theta, and psi in the header of the volume
     im.read_image(name_mir, 0, True)
     im.set_attr_dict({'phi': agls[n][0], 'theta': agls[n][1], 'psi': 0, 's3x': 0, 's3y':0, 's3z': 0, 'scale': 1})
-    im.write_image(name_mir, 0, EMUtil.ImageType.IMAGE_HDF, True)
+    im.write_image(name_mir, 0, EMUtil.ImageType.IMAGE.HDF, True)
 
     # search the alignment
     ali_vol_rotate(name_mir, name_ref, 20, rad)
@@ -149,7 +149,7 @@ for n in psi:
     # set the value of phi, theta, and psi in the header of the volume
     im.read_image(name_vol, 0, True)
     im.set_attr_dict({'phi': phi, 'theta': theta, 'psi': n, 's3x': 0, 's3y':0, 's3z': 0, 'scale': 1})
-    im.write_image(name_vol, 0, EMUtil.ImageType.IMAGE_HDF, True)
+    im.write_image(name_vol, 0, EMUtil.ImageType.IMAGE.HDF, True)
 
     # search the alignment
     ali_vol_rotate(name_vol, name_ref, 20, rad)
@@ -178,7 +178,7 @@ for n in psi:
 #---- assignt the best start orientation on the volume ----
 im.read_image(name_vol, 0, True)
 im.set_attr_dict({'phi': phi, 'theta': theta, 'psi': best_pos, 's3x': 0, 's3y':0, 's3z': 0, 'scale': 1})
-im.write_image(name_vol, 0, EMUtil.ImageType.IMAGE_HDF, True)
+im.write_image(name_vol, 0, EMUtil.ImageType.IMAGE.HDF, True)
 
 # search the alignment
 ali_vol_rotate(name_vol, name_ref, 1.0, rad)
@@ -195,5 +195,3 @@ print('\n\n')
 print('best cc value:', cc)
 print('%10.3f\t%10.3f\t%10.3f' % (phi, theta, best_pos))
 if best_mir: print('use mirror structure')
-
-

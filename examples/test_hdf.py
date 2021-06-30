@@ -33,7 +33,7 @@ for a,ab in tests:
 		except: pass
 		if a==EM_COMPRESSED: 
 			im.write_compressed("/dev/shm/a.hdf",0,ab)
-		else: im.write_image("/dev/shm/a.hdf",0,IMAGE_HDF,False,None,a)
+		else: im.write_image("/dev/shm/a.hdf",0,IMAGE.HDF,False,None,a)
 		
 		im2=EMData("/dev/shm/a.hdf",0)
 		print(f"{-im.cmp('ccc',im2):1.5f}",end="\t")
@@ -47,14 +47,14 @@ for a,ab in tests:
 		try:
 			if b==EM_COMPRESSED: 
 				im.write_compressed("/dev/shm/a.hdf",0,bb)
-			else: im.write_image("/dev/shm/a.hdf",0,IMAGE_HDF,False,None,b)
+			else: im.write_image("/dev/shm/a.hdf",0,IMAGE.HDF,False,None,b)
 			print(" ",end="\t")
 		except:
 			print_exc()
 			print("ERR",end="\t")
 			os.unlink("/dev/shm/a.hdf")
 			if b==EM_COMPRESSED: im.write_compressed("/dev/shm/a.hdf",0,bb)
-			else: im.write_image("/dev/shm/a.hdf",0,IMAGE_HDF,False,None,b)
+			else: im.write_image("/dev/shm/a.hdf",0,IMAGE.HDF,False,None,b)
 		
 		im3=EMData("/dev/shm/a.hdf",0)
 		print(f"{-im.cmp('ccc',im3):1.5f}",end="\t")
@@ -64,4 +64,3 @@ for a,ab in tests:
 im4=test_image_3d()
 im4.write_image("/dev/shm/a.hdf",0)
 im4.write_compressed("/dev/shm/a.hdf",0)
-					 

@@ -1206,7 +1206,7 @@ def defocus_get_fast(indir, writetodoc="w", Pixel_size=1, volt=120, Cs=2, wgh=.1
 				if os.path.exists(mic_name) :
 					e = get_image (mic_name)
 					U______set_arb_params(e, ctf_param, ctf_dicts)  # THIS IS INCORRECT< PLEASE CHANGE
-					e.write_image(mic_name,0, EMUtil.ImageType.IMAGE_HDF, True)
+					e.write_image(mic_name,0, EMUtil.ImageType.IMAGE.HDF, True)
 					print("ctf parameters is written back into headers of ", mic_name)
 				#else :  print  mic_name, " Not found"
 	if(len(res) == 0 and  writetodoc == "l" ):				ERROR("No input file is found, check the input directory of file prefix", indir, 1)
@@ -6963,4 +6963,3 @@ def Xdefocusgett_vpp22(qse, roo, nx, voltage=300.0, Pixel_size=1.0, Cs=2.0, f_st
 	write_text_file([foki,ctf2[:len(foki)]],"toto1.txt")
 	'''
 	return defi, ampcont, subpw, ctf2, baseline, envelope, i_start, i_stop
-

@@ -275,7 +275,7 @@ def gather_metadata(pfile):
 		imgidx=img["class_ptcl_idxs"]
 		coord=img["ptcl_source_coord"]
 		
-		try: rhdrs=EMData.read_images(imgsrc,imgidx,IMAGE_UNKNOWN,True)
+		try: rhdrs=EMData.read_images(imgsrc,imgidx,IMAGE.UNKNOWN,True)
 		except:
 			print(f"couldn't read {imgidx} from {imgsrc}")
 			sys.exit(1)
@@ -318,4 +318,3 @@ def run(cmd):
 	
 if __name__ == '__main__':
 	main()
-	

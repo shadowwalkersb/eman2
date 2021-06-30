@@ -66,9 +66,9 @@ from .test_module import (
     give_ali2d_base_data,
 )
 from .test_module import (
-    IMAGE_2D,
-    IMAGE_3D,
-    IMAGE_BLANK_3D,
+    IMAGE.2D,
+    IMAGE.3D,
+    IMAGE.BLANK_3D,
 )
 
 from sphire.sphire.libpy.sp_utilities import even_angles
@@ -1051,8 +1051,8 @@ class Test_project3d(unittest.TestCase):
     def test_2Dimg_crashes_because_signal11SIGSEGV(self):
         self.assertTrue(True)
         """
-        return_new = fu.project3d(volume=IMAGE_2D, stack = None, mask = None, delta = 5, method = "S", phiEqpsi = "Minus", symmetry = "c1", listagls = None , listctfs = None, noise = None, realsp = False, trillinear = False)
-        return_old = oldfu.project3d(volume=IMAGE_2D, stack = None, mask = None, delta = 5, method = "S", phiEqpsi = "Minus", symmetry = "c1", listagls = None , listctfs = None, noise = None, realsp = False, trillinear = False)
+        return_new = fu.project3d(volume=IMAGE.2D, stack = None, mask = None, delta = 5, method = "S", phiEqpsi = "Minus", symmetry = "c1", listagls = None , listctfs = None, noise = None, realsp = False, trillinear = False)
+        return_old = oldfu.project3d(volume=IMAGE.2D, stack = None, mask = None, delta = 5, method = "S", phiEqpsi = "Minus", symmetry = "c1", listagls = None , listctfs = None, noise = None, realsp = False, trillinear = False)
         self.test_all_the_conditions(return_new, return_old)
         """
 
@@ -1129,7 +1129,7 @@ class Test_project3d(unittest.TestCase):
     def test_3Dimg_realsp_and_trilinear_error_msg(self):
         with self.assertRaises(SystemExit) as cm_new:
             return_new = fu.project3d(
-                volume=IMAGE_3D,
+                volume=IMAGE.3D,
                 stack=None,
                 mask=None,
                 delta=5,
@@ -1145,7 +1145,7 @@ class Test_project3d(unittest.TestCase):
         sp_global_def.BATCH = True
         with self.assertRaises(SystemExit) as cm_old:
             return_old = oldfu.project3d(
-                volume=IMAGE_3D,
+                volume=IMAGE.3D,
                 stack=None,
                 mask=None,
                 delta=5,
@@ -1417,7 +1417,7 @@ class Test_project3d(unittest.TestCase):
 
     def test_blank_img_default_case(self):
         return_new = fu.project3d(
-            volume=IMAGE_BLANK_3D,
+            volume=IMAGE.BLANK_3D,
             stack=None,
             mask=None,
             delta=5,
@@ -1431,7 +1431,7 @@ class Test_project3d(unittest.TestCase):
             trillinear=False,
         )
         return_old = oldfu.project3d(
-            volume=IMAGE_BLANK_3D,
+            volume=IMAGE.BLANK_3D,
             stack=None,
             mask=None,
             delta=5,
@@ -1697,7 +1697,7 @@ class Test_project3d(unittest.TestCase):
 
     def test_blank_img_trilinear_case(self):
         return_new = fu.project3d(
-            volume=IMAGE_BLANK_3D,
+            volume=IMAGE.BLANK_3D,
             stack=None,
             mask=None,
             delta=5,
@@ -1711,7 +1711,7 @@ class Test_project3d(unittest.TestCase):
             trillinear=True,
         )
         return_old = oldfu.project3d(
-            volume=IMAGE_BLANK_3D,
+            volume=IMAGE.BLANK_3D,
             stack=None,
             mask=None,
             delta=5,
@@ -1943,7 +1943,7 @@ class Test_project3d(unittest.TestCase):
 
     def test_3Dimg_realsp_case(self):
         return_new = fu.project3d(
-            volume=IMAGE_3D,
+            volume=IMAGE.3D,
             stack=None,
             mask=None,
             delta=5,
@@ -1957,7 +1957,7 @@ class Test_project3d(unittest.TestCase):
             trillinear=False,
         )
         return_old = oldfu.project3d(
-            volume=IMAGE_3D,
+            volume=IMAGE.3D,
             stack=None,
             mask=None,
             delta=5,
@@ -2190,7 +2190,7 @@ class Test_project3d(unittest.TestCase):
 
     def test_blank_img_realsp_case(self):
         return_new = fu.project3d(
-            volume=IMAGE_BLANK_3D,
+            volume=IMAGE.BLANK_3D,
             stack=None,
             mask=None,
             delta=5,
@@ -2204,7 +2204,7 @@ class Test_project3d(unittest.TestCase):
             trillinear=False,
         )
         return_old = oldfu.project3d(
-            volume=IMAGE_BLANK_3D,
+            volume=IMAGE.BLANK_3D,
             stack=None,
             mask=None,
             delta=5,
@@ -2440,8 +2440,8 @@ class Test_project3d(unittest.TestCase):
     def test_blank_img_with_noise(self):
         self.assertTrue(True)
         """
-        return_new = fu.project3d(volume=IMAGE_BLANK_3D, stack = None, mask = None, delta = 5, method = "S", phiEqpsi = "Minus", symmetry = "c1", listagls = None , listctfs = None, noise = 5, realsp = False, trillinear = False)
-        return_old = oldfu.project3d(volume=IMAGE_BLANK_3D, stack = None, mask = None, delta = 5, method = "S", phiEqpsi = "Minus", symmetry = "c1", listagls = None , listctfs = None, noise = 5, realsp = False, trillinear = False)
+        return_new = fu.project3d(volume=IMAGE.BLANK_3D, stack = None, mask = None, delta = 5, method = "S", phiEqpsi = "Minus", symmetry = "c1", listagls = None , listctfs = None, noise = 5, realsp = False, trillinear = False)
+        return_old = oldfu.project3d(volume=IMAGE.BLANK_3D, stack = None, mask = None, delta = 5, method = "S", phiEqpsi = "Minus", symmetry = "c1", listagls = None , listctfs = None, noise = 5, realsp = False, trillinear = False)
         self.test_all_the_conditions(return_new, return_old)
         """
 
@@ -2451,8 +2451,8 @@ class Test_project3d(unittest.TestCase):
     def test_3Dimg_with_noise(self):
         self.assertTrue(True)
         """
-        return_new = fu.project3d(volume=IMAGE_3D, stack = None, mask = None, delta = 5, method = "S", phiEqpsi = "Minus", symmetry = "c1", listagls = None , listctfs = None, noise = 5, realsp = False, trillinear = False)
-        return_old = oldfu.project3d(volume=IMAGE_3D, stack = None, mask = None, delta = 5, method = "S", phiEqpsi = "Minus", symmetry = "c1", listagls = None , listctfs = None, noise = 5, realsp = False, trillinear = False)
+        return_new = fu.project3d(volume=IMAGE.3D, stack = None, mask = None, delta = 5, method = "S", phiEqpsi = "Minus", symmetry = "c1", listagls = None , listctfs = None, noise = 5, realsp = False, trillinear = False)
+        return_old = oldfu.project3d(volume=IMAGE.3D, stack = None, mask = None, delta = 5, method = "S", phiEqpsi = "Minus", symmetry = "c1", listagls = None , listctfs = None, noise = 5, realsp = False, trillinear = False)
         self.test_all_the_conditions(return_new, return_old)
         """
 
@@ -2461,7 +2461,7 @@ class Test_project3d(unittest.TestCase):
         outold = path.join(ABSOLUTE_PATH, "project3old.hdf")
         # with self.assertRaises(SystemExit) as cm_new:
         return_new = fu.project3d(
-            volume=IMAGE_BLANK_3D,
+            volume=IMAGE.BLANK_3D,
             stack=outnew,
             mask=None,
             delta=5,
@@ -2477,7 +2477,7 @@ class Test_project3d(unittest.TestCase):
 
         # with self.assertRaises(SystemExit) as cm_old:
         return_old = oldfu.project3d(
-            volume=IMAGE_BLANK_3D,
+            volume=IMAGE.BLANK_3D,
             stack=outold,
             mask=None,
             delta=5,
@@ -2496,8 +2496,8 @@ class Test_project3d(unittest.TestCase):
     @unittest.skip("compatibility test failed")
     def test_3Dimg_with_mask(self):
         """
-        return_new = fu.project3d(volume=IMAGE_3D, stack = None, mask = MASK, delta = 5, method = "S", phiEqpsi = "Minus", symmetry = "c1", listagls = None , listctfs = None, noise = None, realsp = False, trillinear = False)
-        return_old = oldfu.project3d(volume=IMAGE_3D, stack = None, mask = MASK, delta = 5, method = "S", phiEqpsi = "Minus", symmetry = "c1", listagls = None , listctfs = None, noise = None, realsp = False, trillinear = False)
+        return_new = fu.project3d(volume=IMAGE.3D, stack = None, mask = MASK, delta = 5, method = "S", phiEqpsi = "Minus", symmetry = "c1", listagls = None , listctfs = None, noise = None, realsp = False, trillinear = False)
+        return_old = oldfu.project3d(volume=IMAGE.3D, stack = None, mask = MASK, delta = 5, method = "S", phiEqpsi = "Minus", symmetry = "c1", listagls = None , listctfs = None, noise = None, realsp = False, trillinear = False)
         self.test_all_the_conditions(return_new, return_old)
         self.assertTrue(array_equal(return_new[0].get_2dview().flatten(),
                                     [float('NaN'), float('NaN'), float('NaN'), float('NaN'), float('NaN'), float('NaN'),
@@ -2541,8 +2541,8 @@ class Test_project3d(unittest.TestCase):
     @unittest.skip("compatibility test failed")
     def test_blank_img_with_mask(self):
         """
-        return_new = fu.project3d(volume=IMAGE_BLANK_3D, stack = None, mask = MASK, delta = 5, method = "S", phiEqpsi = "Minus", symmetry = "c1", listagls = None , listctfs = None, noise = None, realsp = False, trillinear = False)
-        return_old = oldfu.project3d(volume=IMAGE_BLANK_3D, stack = None, mask = MASK, delta = 5, method = "S", phiEqpsi = "Minus", symmetry = "c1", listagls = None , listctfs = None, noise = None, realsp = False, trillinear = False)
+        return_new = fu.project3d(volume=IMAGE.BLANK_3D, stack = None, mask = MASK, delta = 5, method = "S", phiEqpsi = "Minus", symmetry = "c1", listagls = None , listctfs = None, noise = None, realsp = False, trillinear = False)
+        return_old = oldfu.project3d(volume=IMAGE.BLANK_3D, stack = None, mask = MASK, delta = 5, method = "S", phiEqpsi = "Minus", symmetry = "c1", listagls = None , listctfs = None, noise = None, realsp = False, trillinear = False)
         self.test_all_the_conditions(return_new, return_old)
         self.assertTrue(array_equal(return_new[0].get_2dview().flatten(),
                                     [float('NaN'), float('NaN'), float('NaN'), float('NaN'), float('NaN'), float('NaN'),
@@ -2623,7 +2623,7 @@ class Test_project3d(unittest.TestCase):
             ant=0.0,
         )
         return_new = fu.project3d(
-            volume=IMAGE_BLANK_3D,
+            volume=IMAGE.BLANK_3D,
             stack=None,
             mask=None,
             delta=5,
@@ -2637,7 +2637,7 @@ class Test_project3d(unittest.TestCase):
             trillinear=False,
         )
         return_old = oldfu.project3d(
-            volume=IMAGE_BLANK_3D,
+            volume=IMAGE.BLANK_3D,
             stack=None,
             mask=None,
             delta=5,
@@ -2869,7 +2869,7 @@ class Test_project3d(unittest.TestCase):
 
     def test_3Dimg_empty_listagls(self):
         return_new = fu.project3d(
-            volume=IMAGE_3D,
+            volume=IMAGE.3D,
             stack=None,
             mask=None,
             delta=5,
@@ -2883,7 +2883,7 @@ class Test_project3d(unittest.TestCase):
             trillinear=False,
         )
         return_old = oldfu.project3d(
-            volume=IMAGE_3D,
+            volume=IMAGE.3D,
             stack=None,
             mask=None,
             delta=5,
@@ -2901,7 +2901,7 @@ class Test_project3d(unittest.TestCase):
 
     def test_blank_img_empty_listagls(self):
         return_new = fu.project3d(
-            volume=IMAGE_BLANK_3D,
+            volume=IMAGE.BLANK_3D,
             stack=None,
             mask=None,
             delta=5,
@@ -2915,7 +2915,7 @@ class Test_project3d(unittest.TestCase):
             trillinear=False,
         )
         return_old = oldfu.project3d(
-            volume=IMAGE_BLANK_3D,
+            volume=IMAGE.BLANK_3D,
             stack=None,
             mask=None,
             delta=5,
@@ -3071,7 +3071,7 @@ class Test_ali_vol(unittest.TestCase):
         (vol, refv, ang_scale, shift_scale, radius) = self.argum[0]
         with self.assertRaises(RuntimeError) as cm_new:
             fu.ali_vol(
-                vol=IMAGE_2D,
+                vol=IMAGE.2D,
                 refv=refv,
                 ang_scale=ang_scale,
                 shift_scale=shift_scale,
@@ -3080,7 +3080,7 @@ class Test_ali_vol(unittest.TestCase):
             )
         with self.assertRaises(RuntimeError) as cm_old:
             oldfu.ali_vol(
-                vol=IMAGE_2D,
+                vol=IMAGE.2D,
                 refv=refv,
                 ang_scale=ang_scale,
                 shift_scale=shift_scale,
@@ -3100,7 +3100,7 @@ class Test_ali_vol(unittest.TestCase):
         with self.assertRaises(RuntimeError) as cm_new:
             fu.ali_vol(
                 vol=vol,
-                refv=IMAGE_2D,
+                refv=IMAGE.2D,
                 ang_scale=ang_scale,
                 shift_scale=shift_scale,
                 radius=radius,
@@ -3109,7 +3109,7 @@ class Test_ali_vol(unittest.TestCase):
         with self.assertRaises(RuntimeError) as cm_old:
             oldfu.ali_vol(
                 vol=vol,
-                refv=IMAGE_2D,
+                refv=IMAGE.2D,
                 ang_scale=ang_scale,
                 shift_scale=shift_scale,
                 radius=radius,

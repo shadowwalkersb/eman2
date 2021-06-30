@@ -628,7 +628,7 @@ class EMTmpFileHandle(object):
 		if not file_exists(file_name): raise
 		splt = file_name.split(".")
 		if len(file_name) > 4 and file_name[:4] == "bdb:": pass
-		elif EMUtil.get_image_ext_type(splt[-1]) == EMUtil.ImageType.IMAGE_UNKNOWN:
+		elif EMUtil.get_image_ext_type(splt[-1]) == EMUtil.ImageType.IMAGE.UNKNOWN:
 			raise
 		
 		if splt[-1] in ["img","hed"]: return EMImagicTmpFileHandle(file_name)
@@ -687,7 +687,7 @@ class EMGeneralTmpFileHandle(EMTmpFileHandleBase):
 		if not os.path.exists(file_name): raise
 		splt = file_name.split(".")
 		if len(splt) < 2: raise
-		if EMUtil.get_image_ext_type(splt[-1]) == EMUtil.ImageType.IMAGE_UNKNOWN:
+		if EMUtil.get_image_ext_type(splt[-1]) == EMUtil.ImageType.IMAGE.UNKNOWN:
 			raise
 		self.__file_ext = "."+splt[-1]
 		

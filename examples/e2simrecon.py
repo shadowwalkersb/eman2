@@ -108,7 +108,7 @@ Simulates the effects of a 3D reconstruction by including noise and rotational u
 		xf.set_rotation(k)
 		h["xform.projection"]=xf
 		h["ptcl_repr"]=1
-		h.write_image("simproj.hdf",i,IMAGE_UNKNOWN,True)
+		h.write_image("simproj.hdf",i,IMAGE.UNKNOWN,True)
 
 	com="e2make3dpar.py --input simproj.hdf --sym {} --output nonoise.hdf --keep 1 --pad -1 --mode gauss_var --threads {}".format(options.sym,options.threads)
 	run(com)

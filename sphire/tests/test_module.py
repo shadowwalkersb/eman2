@@ -250,40 +250,40 @@ def create_kb(dim, sizex=100, sizey=80, sizez=70):
 
 import copy
 """ In order to unittest the function which output is an EMData() we have to shrink the original images."""
-IMAGE_2D, IMAGE_2D_REFERENCE = get_real_data(dim=2)
+IMAGE.2D, IMAGE_2D_REFERENCE = get_real_data(dim=2)
 
-img2d_data = IMAGE_2D.get_2dview()
-img2d_dict = IMAGE_2D.get_attr_dict()
+img2d_data = IMAGE.2D.get_2dview()
+img2d_dict = IMAGE.2D.get_attr_dict()
 from EMAN2 import EMNumPy
 
-IMAGE_3D =EMNumPy.numpy2em(copy.deepcopy(img2d_data))
-IMAGE_3D.set_attr_dict(img2d_dict)
-IMAGE_2D.set_size(10, 10)
-IMAGE_2D_REFERENCE.set_size(10, 10)
-IMAGE_BLANK_2D = model_blank(nx=20, ny=20, bckg=0.0)
+IMAGE.3D =EMNumPy.numpy2em(copy.deepcopy(img2d_data))
+IMAGE.3D.set_attr_dict(img2d_dict)
+IMAGE.2D.set_size(10, 10)
+IMAGE.2D_REFERENCE.set_size(10, 10)
+IMAGE.BLANK_2D = model_blank(nx=20, ny=20, bckg=0.0)
 
 """The resized 3DIMAGE is blank --> hence I fake the 2DImage to be a 3DIMAGE """
 
-IMAGE_3D.set_size(10, 10, 10)
-IMAGE_BLANK_3D = model_blank(nx=10, ny=10, nz=10, bckg=0.0)
+IMAGE.3D.set_size(10, 10, 10)
+IMAGE.BLANK_3D = model_blank(nx=10, ny=10, nz=10, bckg=0.0)
 
 MASK = model_circle(r=2, nx=5, ny=5, nz=1)
-MASK_2DIMAGE = model_circle(r=2, nx=IMAGE_2D.get_xsize(), ny=IMAGE_2D.get_ysize(), nz=1)
-MASK_IMAGE_BLANK_2D = model_circle(
-    r=2, nx=IMAGE_BLANK_2D.get_xsize(), ny=IMAGE_BLANK_2D.get_ysize(), nz=1
+MASK_2DIMAGE = model_circle(r=2, nx=IMAGE.2D.get_xsize(), ny=IMAGE_2D.get_ysize(), nz=1)
+MASK_IMAGE.BLANK_2D = model_circle(
+    r=2, nx=IMAGE.BLANK_2D.get_xsize(), ny=IMAGE_BLANK_2D.get_ysize(), nz=1
 )
 MASK_3DIMAGE = model_circle(
-    r=2, nx=IMAGE_3D.get_xsize(), ny=IMAGE_3D.get_ysize(), nz=IMAGE_3D.get_zsize()
+    r=2, nx=IMAGE.3D.get_xsize(), ny=IMAGE_3D.get_ysize(), nz=IMAGE_3D.get_zsize()
 )
-MASK_IMAGE_BLANK_3D = model_circle(
+MASK_IMAGE.BLANK_3D = model_circle(
     r=2,
-    nx=IMAGE_BLANK_3D.get_xsize(),
-    ny=IMAGE_BLANK_3D.get_ysize(),
-    nz=IMAGE_BLANK_3D.get_zsize(),
+    nx=IMAGE.BLANK_3D.get_xsize(),
+    ny=IMAGE.BLANK_3D.get_ysize(),
+    nz=IMAGE.BLANK_3D.get_zsize(),
 )
 
-KB_IMAGE2D_SIZE = create_kb(dim=1, sizex=IMAGE_2D.get_xsize())
-KB_IMAGE3D_SIZE_CUBIC = create_kb(dim=1, sizex=IMAGE_3D.get_xsize())
+KB_IMAGE2D_SIZE = create_kb(dim=1, sizex=IMAGE.2D.get_xsize())
+KB_IMAGE3D_SIZE_CUBIC = create_kb(dim=1, sizex=IMAGE.3D.get_xsize())
 
 
 

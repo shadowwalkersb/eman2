@@ -203,13 +203,13 @@ class MissingWedgeViewer(QtWidgets.QWidget):
 		idx = int(self.volcombobox.currentIndex())
 		self.volumes[idx].set_attr('spt_wedge_mean',self.wedgemean)
 		self.volumes[idx].set_attr('spt_wedge_sigma',self.wedgesigma)
-		self.volumes[idx].write_image(self.filename, idx, EMUtil.ImageType.IMAGE_UNKNOWN, True)
+		self.volumes[idx].write_image(self.filename, idx, EMUtil.ImageType.IMAGE.UNKNOWN, True)
 		
 	def onManyVolStats(self):
 		for idx, volume in enumerate(self.volumes):
 			volume.set_attr('spt_wedge_mean',self.wedgemean)
 			volume.set_attr('spt_wedge_sigma',self.wedgesigma)
-			volume.write_image(self.filename, idx, EMUtil.ImageType.IMAGE_UNKNOWN, True)
+			volume.write_image(self.filename, idx, EMUtil.ImageType.IMAGE.UNKNOWN, True)
 		
 	def addData(self, wedge, name, color=None):
 		""" Add Data """

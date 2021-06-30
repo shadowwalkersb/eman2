@@ -726,8 +726,8 @@ def drop_image(imagename, destination, itype="h"):
 	"""
 
 	if type(destination) == type(""):
-		if(itype == "h"):    imgtype = EMUtil.ImageType.IMAGE_HDF
-		elif(itype == "s"):  imgtype = EMUtil.ImageType.IMAGE_SINGLE_SPIDER
+		if(itype == "h"):    imgtype = EMUtil.ImageType.IMAGE.HDF
+		elif(itype == "s"):  imgtype = EMUtil.ImageType.IMAGE.SINGLE_SPIDER
 		else:  ERROR("unknown image type","drop_image",1)
 		imagename.write_image(destination, 0, imgtype)
 	else:
@@ -3045,7 +3045,7 @@ def recv_attr_dict(main_node, stack, data, list_params, image_start, image_end, 
 			del  dis
 	del  value
 	for im in range(image_start, image_end):
-		data[im-image_start].write_image(stack, data[im-image_start].get_attr_default('ID', im), EMUtil.ImageType.IMAGE_HDF, True)
+		data[im-image_start].write_image(stack, data[im-image_start].get_attr_default('ID', im), EMUtil.ImageType.IMAGE.HDF, True)
 
 	for n in range(len(ldis)):
 		img_begin = ldis[n][0]
@@ -3080,7 +3080,7 @@ def recv_attr_dict(main_node, stack, data, list_params, image_start, image_end, 
 			dummy = EMData()
 			dummy.read_image(stack, imm, True)
 			set_arb_params(dummy, nvalue, list_params)
-			dummy.write_image(stack, dummy.get_attr_default('ID', im), EMUtil.ImageType.IMAGE_HDF, True)
+			dummy.write_image(stack, dummy.get_attr_default('ID', im), EMUtil.ImageType.IMAGE.HDF, True)
 
 def send_attr_dict(main_node, data, list_params, image_start, image_end, comm = -1):
 	import types
@@ -3314,7 +3314,7 @@ def write_headers(filename, data, lima):
 		#	data[i].write_image(filename, lima[i])
 	elif ftp == "hdf":
 		for i in range(len(lima)):
-			data[i].write_image(filename, lima[i], EMUtil.ImageType.IMAGE_HDF, True)
+			data[i].write_image(filename, lima[i], EMUtil.ImageType.IMAGE.HDF, True)
 	else:
 		ERROR("Unacceptable file format","write_headers",1)
 
@@ -3334,7 +3334,7 @@ def write_header(filename, data, lima):
 		DB = db_open_dict(filename)
 		DB.set_header(lima, data)
 	elif ftp == "hdf":
-		data.write_image(filename, lima, EMUtil.ImageType.IMAGE_HDF, True)
+		data.write_image(filename, lima, EMUtil.ImageType.IMAGE.HDF, True)
 	else:
 		ERROR("Unacceptable file format","write_headers",1)
 
@@ -7341,5 +7341,3 @@ def create_summovie_command(
             summovie_command.append('YES')
 
     return summovie_command
-
-

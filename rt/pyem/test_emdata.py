@@ -1527,7 +1527,7 @@ class TestEMData(unittest.TestCase):
         nx = 16
         ny = 16
         infile = "test_multi_array_c2d.mrc"
-        TestUtil.make_image_file(infile, IMAGE_MRC, EM_FLOAT, nx, ny)
+        TestUtil.make_image_file(infile, IMAGE.MRC, EM_FLOAT, nx, ny)
 
         e = EMData()
         e.read_image(infile)
@@ -1569,7 +1569,7 @@ class TestEMData(unittest.TestCase):
         ny = 16
         nz = 4
         infile = "test_multi_array_c3d.mrc"
-        TestUtil.make_image_file(infile, IMAGE_MRC, EM_FLOAT, nx, ny, nz)
+        TestUtil.make_image_file(infile, IMAGE.MRC, EM_FLOAT, nx, ny, nz)
 
         e = EMData()
         e.read_image(infile)
@@ -1630,7 +1630,7 @@ class TestEMData(unittest.TestCase):
     def test_transform(self):
         """test transform ..................................."""
         infile = "test_rotate_translate.mrc"
-        TestUtil.make_image_file(infile, IMAGE_MRC, EM_FLOAT, 16,16,16)
+        TestUtil.make_image_file(infile, IMAGE.MRC, EM_FLOAT, 16,16,16)
 
         x=EMData()
         x.read_image(infile)
@@ -1652,7 +1652,7 @@ class TestEMData(unittest.TestCase):
     def test_rotate_2d(self):
         """test rotate_2d ..................................."""
         infile = "test_rotate_2d.mrc"
-        TestUtil.make_image_file(infile, IMAGE_MRC, EM_FLOAT, 24, 32)
+        TestUtil.make_image_file(infile, IMAGE.MRC, EM_FLOAT, 24, 32)
 
         outfile1 = "test_rotate_2d_out_1.mrc"
         outfile2 = "test_rotate_2d_out_2.mrc"
@@ -2300,7 +2300,7 @@ class TestEMData(unittest.TestCase):
         """test image projection ............................"""
         n = 20
         infile = "test_project.mrc"
-        TestUtil.make_image_file(infile, IMAGE_MRC, EM_FLOAT, n, n, n)
+        TestUtil.make_image_file(infile, IMAGE.MRC, EM_FLOAT, n, n, n)
         volume = EMData()
         volume.read_image(infile)
         pi = math.pi
@@ -2316,7 +2316,7 @@ class TestEMData(unittest.TestCase):
     def test_calc_highest_locations(self):
         """test calculation of highest location ............."""
         infile = "test_calc_highest_locations.mrc"
-        TestUtil.make_image_file(infile, IMAGE_MRC, EM_FLOAT, 40, 60)
+        TestUtil.make_image_file(infile, IMAGE.MRC, EM_FLOAT, 40, 60)
         
         e = EMData()
         e.read_image(infile)
@@ -2331,7 +2331,7 @@ class TestEMData(unittest.TestCase):
     def test_get_attr_dict(self):
         """test get_attr_dict() function ...................."""
         imgfile = "tablet.mrc"
-        TestUtil.make_image_file(imgfile, IMAGE_MRC, EM_FLOAT, 40, 60)
+        TestUtil.make_image_file(imgfile, IMAGE.MRC, EM_FLOAT, 40, 60)
         
         e = EMData()
         e.read_image(imgfile)
@@ -2379,7 +2379,7 @@ class TestEMData(unittest.TestCase):
         ny = 48
         filebase = "test_get_clip_" + str(os.getpid())
         infile = filebase + ".mrc"
-        TestUtil.make_image_file(infile, IMAGE_MRC, EM_FLOAT, nx, ny)
+        TestUtil.make_image_file(infile, IMAGE.MRC, EM_FLOAT, nx, ny)
 
         e = EMData()
         e.read_image(infile)
@@ -2416,7 +2416,7 @@ class TestEMData(unittest.TestCase):
         nx = 16
         ny = 32
         infile = "test_complex_image_1.mrc"
-        TestUtil.make_image_file(infile, IMAGE_MRC, EM_FLOAT_COMPLEX, nx, ny)
+        TestUtil.make_image_file(infile, IMAGE.MRC, EM_FLOAT_COMPLEX, nx, ny)
 
         e = EMData()
         e.read_image(infile)
@@ -2437,7 +2437,7 @@ class TestEMData(unittest.TestCase):
         ny = 20
         nz = 2
         infile = "test_set_value_at_in.mrc"
-        TestUtil.make_image_file(infile, IMAGE_MRC, EM_FLOAT, nx, ny, nz)
+        TestUtil.make_image_file(infile, IMAGE.MRC, EM_FLOAT, nx, ny, nz)
         
         e = EMData()
         e.read_image(infile)
@@ -2494,7 +2494,7 @@ class TestEMData(unittest.TestCase):
     def test_calc_radial_dist(self):
         """test calc_radial_dist() function.................."""
         file1 = "test_calc_radial_dist.mrc"
-        TestUtil.make_image_file(file1, IMAGE_MRC)
+        TestUtil.make_image_file(file1, IMAGE.MRC)
         
         e1 = EMData()
         e1.read_image(file1)
@@ -2691,7 +2691,7 @@ class TestEMData(unittest.TestCase):
         nx = 16
         ny = 24
         file1 = "test_stat_locations.mrc"
-        TestUtil.make_image_file(file1, IMAGE_MRC, EM_FLOAT, nx, ny)
+        TestUtil.make_image_file(file1, IMAGE.MRC, EM_FLOAT, nx, ny)
         
         e1 = EMData()
         e1.read_image(file1)
@@ -2720,7 +2720,7 @@ class TestEMData(unittest.TestCase):
         nx = 16
         ny = 18
         nz = 2
-        TestUtil.make_image_file(file1, IMAGE_MRC, EM_FLOAT, nx, ny, nz)
+        TestUtil.make_image_file(file1, IMAGE.MRC, EM_FLOAT, nx, ny, nz)
         e = EMData()
         e.read_image(file1)
         
@@ -2741,7 +2741,7 @@ class TestEMData(unittest.TestCase):
     def no_test_ctf(self):
         """test ctf ........................................."""
         infile = "test_ctf_in.mrc"
-        TestUtil.make_image_file(infile, IMAGE_HDF)
+        TestUtil.make_image_file(infile, IMAGE.HDF)
         ctf = SimpleCtf()
         d = {"defocus":1, "bfactor":2, "amplitude":3, "ampcont":4, "noise1":5, "noise2":6, "noise3":7, "noise4":8, "voltage":9, "cs":10,"apix":11}
         

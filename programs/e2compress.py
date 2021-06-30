@@ -191,7 +191,7 @@ e2compress.py --nooutliers --outpath ../micrographs_5bit --threads 32 -v 2 --bit
 						renderminsig,rendermaxsig=options.sigrange.split(",")
 						im["render_min"]=im["mean"]-im["sigma"]*float(renderminsig)
 						im["render_max"]=im["mean"]+im["sigma"]*float(rendermaxsig)
-				im.write_image(tmpname,i,IMAGE_UNKNOWN,0,None,EM_COMPRESSED)
+				im.write_image(tmpname,i,IMAGE.UNKNOWN,0,None,EM_COMPRESSED)
 				
 			if options.verbose>1 : print("{:0.1f} s".format(time.time()-t0))
 			if os.path.isfile(tmpname):

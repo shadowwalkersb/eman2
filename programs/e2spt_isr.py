@@ -790,7 +790,7 @@ def writeparamtoheader( f, angs, param ):
 		print("Working on image", i)
 		imghdr = EMData( f, i, True)
 		imghdr[param]=angs[i]
-		imghdr.write_image( f, i, EMUtil.ImageType.IMAGE_HDF, True )
+		imghdr.write_image( f, i, EMUtil.ImageType.IMAGE.HDF, True )
 		
 	return 1
 	
@@ -1169,6 +1169,3 @@ def makevol( options, originalseriesfile, newseries, it, originalangles, origina
 	
 if '__main__' == __name__:
 	main()
-	
-
-	

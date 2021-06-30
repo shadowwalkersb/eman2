@@ -119,12 +119,12 @@ class TestEMIO(ImageIOTester):
 	def test_emio_write(self):
 		"""test em image file write ........................."""
 		infile = "test_emio_write_in.mrc"
-		TestUtil.make_image_file(infile, IMAGE_MRC)
+		TestUtil.make_image_file(infile, IMAGE.MRC)
 		e = EMData()
 		e.read_image(infile)
 		
 		outfile = "test_emio_write_out.em"
-		e.write_image(outfile, 0, IMAGE_EM)
+		e.write_image(outfile, 0, IMAGE.EM)
 		TestUtil.check_image(outfile)
 		
 		os.unlink(infile)
@@ -316,8 +316,8 @@ class TestSpiderIO(ImageIOTester):
 			file1 = "test_make_spider_1.spi"
 			nx1 = 100
 			ny1 = 24
-			TestUtil.make_image_file(file1, IMAGE_SPIDER, EM_FLOAT, nx1, nx1)
-			err = TestUtil.verify_image_file(file1, IMAGE_SPIDER, EM_FLOAT, nx1, nx1)
+			TestUtil.make_image_file(file1, IMAGE.SPIDER, EM_FLOAT, nx1, nx1)
+			err = TestUtil.verify_image_file(file1, IMAGE.SPIDER, EM_FLOAT, nx1, nx1)
 			self.assertEqual(err, 0)
 		finally:
 			testlib.safe_unlink(file1)
@@ -328,8 +328,8 @@ class TestSpiderIO(ImageIOTester):
 			file1 = "test_overwrite_spider.spi"
 			nx1 = 24
 			ny1 = 32
-			TestUtil.make_image_file(file1, IMAGE_SINGLE_SPIDER, EM_FLOAT, nx1, ny1)
-			TestUtil.make_image_file(file1, IMAGE_SINGLE_SPIDER, EM_FLOAT, nx1*2, ny1*2)
+			TestUtil.make_image_file(file1, IMAGE.SINGLE_SPIDER, EM_FLOAT, nx1, ny1)
+			TestUtil.make_image_file(file1, IMAGE.SINGLE_SPIDER, EM_FLOAT, nx1*2, ny1*2)
 		finally:
 			testlib.safe_unlink(file1)  
 		
@@ -443,7 +443,7 @@ class TestDF3IO(ImageIOTester):
 	def test_32bit_image(self):
 		"""test unsigned int df3 image I/O .................."""
 		e = test_image()
-		e.write_image(self.imgfile, -1, EMUtil.ImageType.IMAGE_DF3, False, None, EMUtil.EMDataType.EM_UINT)
+		e.write_image(self.imgfile, -1, EMUtil.ImageType.IMAGE.DF3, False, None, EMUtil.EMDataType.EM_UINT)
 		f = EMData()
 		f.read_image(self.imgfile)
 		self.assertEqual(f.get_attr('nx'), 128)
@@ -454,7 +454,7 @@ class TestDF3IO(ImageIOTester):
 	def test_16bit_image(self):
 		"""test unsigned short df3 image I/O ................"""
 		e = test_image()
-		e.write_image(self.imgfile, -1, EMUtil.ImageType.IMAGE_DF3, False, None, EMUtil.EMDataType.EM_USHORT)
+		e.write_image(self.imgfile, -1, EMUtil.ImageType.IMAGE.DF3, False, None, EMUtil.EMDataType.EM_USHORT)
 		f = EMData()
 		f.read_image(self.imgfile)
 		self.assertEqual(f.get_attr('nx'), 128)
@@ -465,7 +465,7 @@ class TestDF3IO(ImageIOTester):
 	def test_8bit_image(self):
 		"""test unsigned char df3 image I/O ................."""
 		e = test_image()
-		e.write_image(self.imgfile, -1, EMUtil.ImageType.IMAGE_DF3, False, None, EMUtil.EMDataType.EM_UCHAR)
+		e.write_image(self.imgfile, -1, EMUtil.ImageType.IMAGE.DF3, False, None, EMUtil.EMDataType.EM_UCHAR)
 		f = EMData()
 		f.read_image(self.imgfile)
 		self.assertEqual(f.get_attr('nx'), 128)
@@ -479,8 +479,8 @@ class TestHdfIO(ImageIOTester):
 	def test_make_image(self):
 		"""test make hdf image file ........................."""
 		imgfile = "test_make_image_1.h5"
-		TestUtil.make_image_file(imgfile, IMAGE_HDF, EM_FLOAT)
-		err = TestUtil.verify_image_file(imgfile, IMAGE_HDF, EM_FLOAT)
+		TestUtil.make_image_file(imgfile, IMAGE.HDF, EM_FLOAT)
+		err = TestUtil.verify_image_file(imgfile, IMAGE.HDF, EM_FLOAT)
 		self.assertEqual(err, 0)
 		testlib.safe_unlink(imgfile)
 		
@@ -490,7 +490,7 @@ class TestHdfIO(ImageIOTester):
 		ny = 30
 		nz = 2
 		imgfile = "test_read_image.h5"
-		TestUtil.make_image_file(imgfile, IMAGE_HDF, EM_FLOAT, nx, ny, nz)
+		TestUtil.make_image_file(imgfile, IMAGE.HDF, EM_FLOAT, nx, ny, nz)
 
 		e = EMData()
 		e.read_image(imgfile)
@@ -613,9 +613,9 @@ class TestHdfIO(ImageIOTester):
 		imgfile2 = "test_write_image_2.mrc"
 		imgfile3 = "test_write_image_3.mrc"
 
-		TestUtil.make_image_file(imgfile1, IMAGE_MRC)
-		TestUtil.make_image_file(imgfile2, IMAGE_MRC)
-		TestUtil.make_image_file(imgfile3, IMAGE_MRC)
+		TestUtil.make_image_file(imgfile1, IMAGE.MRC)
+		TestUtil.make_image_file(imgfile2, IMAGE.MRC)
+		TestUtil.make_image_file(imgfile3, IMAGE.MRC)
 
 		e1 = EMData()
 		e1.read_image(imgfile1)
@@ -674,7 +674,7 @@ class TestHdfIO(ImageIOTester):
 		"""test read/write 16 bit HDF5......................."""
 		file = '16bit.hdf'
 		e = test_image()
-		e.write_image(file, -1, EMUtil.ImageType.IMAGE_HDF, False, None, EMUtil.EMDataType.EM_USHORT)
+		e.write_image(file, -1, EMUtil.ImageType.IMAGE.HDF, False, None, EMUtil.EMDataType.EM_USHORT)
 		e2 = EMData(file)
 		self.assertEqual(e2.get_attr('datatype'), EMUtil.EMDataType.EM_USHORT)
 		testlib.safe_unlink(file)
@@ -683,7 +683,7 @@ class TestHdfIO(ImageIOTester):
 		"""test read/write 8 bit HDF5........................"""
 		file = '8bit.hdf'
 		e = test_image()
-		e.write_image(file, -1, EMUtil.ImageType.IMAGE_HDF, False, None, EMUtil.EMDataType.EM_UCHAR)
+		e.write_image(file, -1, EMUtil.ImageType.IMAGE.HDF, False, None, EMUtil.EMDataType.EM_UCHAR)
 		e2 = EMData(file)
 		self.assertEqual(e2.get_attr('datatype'), EMUtil.EMDataType.EM_UCHAR)
 		testlib.safe_unlink(file)
@@ -721,21 +721,21 @@ class TestMrcIO(ImageIOTester):
 		"""test overwrite mrc image file ...................."""
 		base = "overwrite_" + str(os.getpid())
 		imgfile1 = base + "_1.mrc"
-		TestUtil.make_image_file(imgfile1, IMAGE_MRC, EM_FLOAT, 10, 20, 1)
-		TestUtil.make_image_file(imgfile1, IMAGE_MRC, EM_FLOAT, 30, 40, 1)
+		TestUtil.make_image_file(imgfile1, IMAGE.MRC, EM_FLOAT, 10, 20, 1)
+		TestUtil.make_image_file(imgfile1, IMAGE.MRC, EM_FLOAT, 30, 40, 1)
 		e = EMData()
 		e.read_image(imgfile1)
-		self.assertEqual(TestUtil.verify_image_file(imgfile1, IMAGE_MRC, EM_FLOAT, 30, 40, 1), 0)
+		self.assertEqual(TestUtil.verify_image_file(imgfile1, IMAGE.MRC, EM_FLOAT, 30, 40, 1), 0)
 		
 		imgfile2 = base + "_2.mrc"
-		TestUtil.make_image_file(imgfile2, IMAGE_MRC, EM_FLOAT, 30, 40, 1)
-		TestUtil.make_image_file(imgfile2, IMAGE_MRC, EM_FLOAT, 10, 20, 1)
-		self.assertEqual(TestUtil.verify_image_file(imgfile2, IMAGE_MRC, EM_FLOAT, 10, 20, 1), 0)
+		TestUtil.make_image_file(imgfile2, IMAGE.MRC, EM_FLOAT, 30, 40, 1)
+		TestUtil.make_image_file(imgfile2, IMAGE.MRC, EM_FLOAT, 10, 20, 1)
+		self.assertEqual(TestUtil.verify_image_file(imgfile2, IMAGE.MRC, EM_FLOAT, 10, 20, 1), 0)
 		
 		imgfile3 = base + "_3.mrc"
-		TestUtil.make_image_file(imgfile3, IMAGE_MRC, EM_FLOAT, 30, 40, 1)
-		TestUtil.make_image_file2(imgfile3, IMAGE_MRC, EM_FLOAT, 30, 40, 1)
-		self.assertEqual(TestUtil.verify_image_file2(imgfile3, IMAGE_MRC, EM_FLOAT, 30, 40, 1), 0)
+		TestUtil.make_image_file(imgfile3, IMAGE.MRC, EM_FLOAT, 30, 40, 1)
+		TestUtil.make_image_file2(imgfile3, IMAGE.MRC, EM_FLOAT, 30, 40, 1)
+		self.assertEqual(TestUtil.verify_image_file2(imgfile3, IMAGE.MRC, EM_FLOAT, 30, 40, 1), 0)
 
 		os.unlink(imgfile1)
 		os.unlink(imgfile2)
@@ -750,20 +750,20 @@ class TestMrcIO(ImageIOTester):
 		img4 = base + "_sc.mrc"
 		img5 = base + "_fc.mrc"
 		
-		TestUtil.make_image_file(img1, IMAGE_MRC, EMUtil.EMDataType.EM_UCHAR)
-		self.assertEqual(TestUtil.verify_image_file(img1, IMAGE_MRC, EMUtil.EMDataType.EM_UCHAR), 0)
+		TestUtil.make_image_file(img1, IMAGE.MRC, EMUtil.EMDataType.EM_UCHAR)
+		self.assertEqual(TestUtil.verify_image_file(img1, IMAGE.MRC, EMUtil.EMDataType.EM_UCHAR), 0)
   
-		TestUtil.make_image_file(img2, IMAGE_MRC, EM_USHORT)
-		self.assertEqual(TestUtil.verify_image_file(img2, IMAGE_MRC, EM_USHORT), 0)
+		TestUtil.make_image_file(img2, IMAGE.MRC, EM_USHORT)
+		self.assertEqual(TestUtil.verify_image_file(img2, IMAGE.MRC, EM_USHORT), 0)
 		
-		TestUtil.make_image_file(img3, IMAGE_MRC, EM_FLOAT,64,64)
-		self.assertEqual(TestUtil.verify_image_file(img3, IMAGE_MRC, EM_FLOAT, 64,64), 0)
+		TestUtil.make_image_file(img3, IMAGE.MRC, EM_FLOAT,64,64)
+		self.assertEqual(TestUtil.verify_image_file(img3, IMAGE.MRC, EM_FLOAT, 64,64), 0)
 		
-		TestUtil.make_image_file(img4, IMAGE_MRC, EM_SHORT_COMPLEX)
-		self.assertEqual(TestUtil.verify_image_file(img4, IMAGE_MRC, EM_SHORT_COMPLEX), 0)
+		TestUtil.make_image_file(img4, IMAGE.MRC, EM_SHORT_COMPLEX)
+		self.assertEqual(TestUtil.verify_image_file(img4, IMAGE.MRC, EM_SHORT_COMPLEX), 0)
 		
-		TestUtil.make_image_file(img5, IMAGE_MRC, EM_FLOAT_COMPLEX)
-		self.assertEqual(TestUtil.verify_image_file(img5, IMAGE_MRC, EM_FLOAT_COMPLEX), 0)
+		TestUtil.make_image_file(img5, IMAGE.MRC, EM_FLOAT_COMPLEX)
+		self.assertEqual(TestUtil.verify_image_file(img5, IMAGE.MRC, EM_FLOAT_COMPLEX), 0)
 
 		os.unlink(img1)
 		os.unlink(img2)
@@ -772,7 +772,7 @@ class TestMrcIO(ImageIOTester):
 		os.unlink(img5)
 
 		img6 = base + "_3d.mrc"
-		TestUtil.make_image_file(img6, IMAGE_MRC, EM_FLOAT, 16,16,10)
+		TestUtil.make_image_file(img6, IMAGE.MRC, EM_FLOAT, 16,16,10)
 		os.unlink(img6)
 
 	test_make_image_file.broken = True
@@ -780,7 +780,7 @@ class TestMrcIO(ImageIOTester):
 	def test_complex_image(self):
 		"""test complex mrc image file ......................"""
 		imgfile1 = "test_complex_image.mrc"
-		TestUtil.make_image_file(imgfile1, IMAGE_MRC, EM_FLOAT)
+		TestUtil.make_image_file(imgfile1, IMAGE.MRC, EM_FLOAT)
 
 		imgfile2 = "test_complex_image_fft.mrc"
 
@@ -789,7 +789,7 @@ class TestMrcIO(ImageIOTester):
 		fft = e.do_fft()
 		fft.write_image(imgfile2)
 
-		self.assertEqual(TestUtil.verify_image_file(imgfile2, IMAGE_MRC, EM_FLOAT_COMPLEX,
+		self.assertEqual(TestUtil.verify_image_file(imgfile2, IMAGE.MRC, EM_FLOAT_COMPLEX,
 													e.get_xsize(), e.get_ysize(),
 													e.get_zsize()), 0)
 		
@@ -802,7 +802,7 @@ class TestMrcIO(ImageIOTester):
 		"""test mrc file label .............................."""
 		pid = str(os.getpid())
 		infile = "test_mrcio_label_in_" + pid + ".mrc"
-		TestUtil.make_image_file(infile, IMAGE_MRC)
+		TestUtil.make_image_file(infile, IMAGE.MRC)
 
 		e = EMData()
 		e.read_image(infile)
@@ -813,7 +813,7 @@ class TestMrcIO(ImageIOTester):
 		e.set_attr(labelname, label)
 
 		outfile="test_mrcio_label_out_" + pid + ".mrc"		
-		e.write_image(outfile, 0, IMAGE_MRC)
+		e.write_image(outfile, 0, IMAGE.MRC)
 		
 		e2 = EMData()
 		e2.read_image(outfile)
@@ -893,13 +893,13 @@ class TestImagicIO(ImageIOTester):
 	def test_no_ext_filename(self):  
 		"""test no extention file name ......................"""	  
 		infile = "test_no_ext_filename.mrc"
-		TestUtil.make_image_file(infile, IMAGE_MRC)
+		TestUtil.make_image_file(infile, IMAGE.MRC)
 
 		outfile = "test_no_ext_filename_out"
 		
 		img = EMData()
 		img.read_image(infile)
-		img.write_image(outfile, 0, IMAGE_IMAGIC)
+		img.write_image(outfile, 0, IMAGE.IMAGIC)
 
 		(hedfile, imgfile) = testlib.get_imagic_filename_pair(outfile)
 		os.unlink(infile)
@@ -909,7 +909,7 @@ class TestImagicIO(ImageIOTester):
 	def test_append_image(self):
 		"""test image appending ............................."""
 		infile = "test_append_image.hed"
-		TestUtil.make_image_file(infile, IMAGE_IMAGIC, EM_FLOAT, 16, 16, 10)
+		TestUtil.make_image_file(infile, IMAGE.IMAGIC, EM_FLOAT, 16, 16, 10)
 			   
 		e = EMData()
 		all_imgs = e.read_images(infile)
@@ -932,10 +932,10 @@ class TestImagicIO(ImageIOTester):
 		infile = "test_append_to_newfile_in.mrc"
 		outfile = "test_append_to_newfile_in.img"
 		
-		TestUtil.make_image_file(infile, IMAGE_MRC)
+		TestUtil.make_image_file(infile, IMAGE.MRC)
 		e = EMData()
 		e.read_image(infile)
-		e.append_image(outfile, IMAGE_IMAGIC)
+		e.append_image(outfile, IMAGE.IMAGIC)
 
 		# check e
 		(outhed, outimg) = testlib.get_imagic_filename_pair(outfile)
@@ -947,10 +947,10 @@ class TestImagicIO(ImageIOTester):
 	def test_append_to_existing_file(self):
 		"""test append image to existing file ..............."""
 		img1 = "test_append_to_existing_file_1.hed"
-		TestUtil.make_image_file(img1, IMAGE_IMAGIC)
+		TestUtil.make_image_file(img1, IMAGE.IMAGIC)
 		e = EMData()
 		e.read_image(img1, 0, False, None, True)
-		e.append_image(img1, IMAGE_IMAGIC)
+		e.append_image(img1, IMAGE.IMAGIC)
 
 		# verify here
 		(hedfile, imgfile) = testlib.get_imagic_filename_pair(img1)
@@ -961,12 +961,12 @@ class TestImagicIO(ImageIOTester):
 	def no_test_insert_to_newfile(self):
 		"""test insert image to new file ...................."""
 		img1 = "test_insert_to_newfile_in.hed"
-		TestUtil.make_image_file(img1, IMAGE_IMAGIC)
+		TestUtil.make_image_file(img1, IMAGE.IMAGIC)
 		e = EMData()
 		e.read_image(img1)
 		outfile = "test_insert_to_newfile_out.hed"
 		nimg = 4
-		e.write_image(outfile, nimg-1, IMAGE_IMAGIC)
+		e.write_image(outfile, nimg-1, IMAGE.IMAGIC)
 
 		nimg2 = EMUtil.get_image_count(outfile)
 		self.assertEqual(nimg2, nimg)
@@ -982,7 +982,7 @@ class TestImagicIO(ImageIOTester):
 	def test_insert_beyond_existing_file(self):
 		"""test insert image beyond existing file ..........."""
 		infile = "insert_beyond_existing_in.hed"
-		TestUtil.make_image_file(infile, IMAGE_IMAGIC)
+		TestUtil.make_image_file(infile, IMAGE.IMAGIC)
 		e = EMData()
 		e.read_image(infile, 0, False, None, True)
 
@@ -990,14 +990,14 @@ class TestImagicIO(ImageIOTester):
 		self.assertEqual(nimg1, 1)
 
 		n2 = 9
-		e.write_image(infile, n2, IMAGE_IMAGIC)
+		e.write_image(infile, n2, IMAGE.IMAGIC)
 		nimg2 = EMUtil.get_image_count(infile)
 		self.assertEqual(nimg2, n2+1)
 
 		# todo: verify images
 		
 		n3 = 14
-		e.write_image(infile, n3, IMAGE_IMAGIC)
+		e.write_image(infile, n3, IMAGE.IMAGIC)
 		nimg3 = EMUtil.get_image_count(infile)
 		self.assertEqual(nimg3, n3+1)
 
@@ -1011,13 +1011,13 @@ class TestImagicIO(ImageIOTester):
 	def no_test_insert_inside_existing_file(self):
 		"""test insert image in existing file ..............."""
 		infile = "test_insert_inside_existing_file_1.img"
-		TestUtil.make_image_file(infile, IMAGE_IMAGIC, EM_FLOAT, 20, 30, 20)
+		TestUtil.make_image_file(infile, IMAGE.IMAGIC, EM_FLOAT, 20, 30, 20)
 		
 		insertfile = "test_insert_inside_existing_file_2.mrc"
-		TestUtil.make_image_file(insertfile, IMAGE_MRC, EM_FLOAT, 20, 30)
+		TestUtil.make_image_file(insertfile, IMAGE.MRC, EM_FLOAT, 20, 30)
 		e = EMData()
 		e.read_image(insertfile)
-		e.write_image(infile, 2, IMAGE_IMAGIC)
+		e.write_image(infile, 2, IMAGE.IMAGIC)
 
 		# verify result
 		
@@ -1116,8 +1116,8 @@ class TestImageIO(unittest.TestCase):
 		"""test emdata overwriting .........................."""
 		imgfile1 = "test_emdata_overwriting_1.mrc"
 		imgfile2 = "test_emdata_overwriting_2.mrc"
-		TestUtil.make_image_file(imgfile1, IMAGE_MRC, EM_FLOAT, 16,32,2)
-		TestUtil.make_image_file(imgfile2, IMAGE_MRC, EM_FLOAT, 32, 24)
+		TestUtil.make_image_file(imgfile1, IMAGE.MRC, EM_FLOAT, 16,32,2)
+		TestUtil.make_image_file(imgfile2, IMAGE.MRC, EM_FLOAT, 32, 24)
 
 		a=EMData()
 		b=EMData()
@@ -1172,7 +1172,7 @@ class TestImageIO(unittest.TestCase):
 			outtype = imgtype
 			
 		is_3d = False
-		if imgtype == IMAGE_IMAGIC:
+		if imgtype == IMAGE.IMAGIC:
 		   is_3d = True
 
 		imgbase = Util.remove_filename_ext(imgfile)
@@ -1202,14 +1202,14 @@ class TestImageIO(unittest.TestCase):
 			e4.write_image(readfile_3d, 0, outtype)
 			TestUtil.check_image(readfile_3d, e4)
 
-			if outtype == IMAGE_IMAGIC:
+			if outtype == IMAGE.IMAGIC:
 				(hed3d, img3d) = testlib.get_imagic_filename_pair(readfile_3d)
 				os.unlink(hed3d)
 				os.unlink(img3d)
 			else:
 				os.unlink(readfile_3d)
 			 
-		if outtype == IMAGE_IMAGIC:
+		if outtype == IMAGE.IMAGIC:
 			(hed2d, img2d) = testlib.get_imagic_filename_pair(readfile_2d)
 			os.unlink(hed2d)
 			os.unlink(img2d)
@@ -1222,7 +1222,7 @@ class TestImageIO(unittest.TestCase):
 			outtype = imgtype
 		
 		is_3d = False
-		if imgtype == IMAGE_IMAGIC:
+		if imgtype == IMAGE.IMAGIC:
 			is_3d = True
 
 		imgbase = Util.remove_filename_ext(imgfile)
@@ -1253,7 +1253,7 @@ class TestImageIO(unittest.TestCase):
 		e3.to_zero()
 
 		image_index = 0
-		if outtype == IMAGE_SPIDER:
+		if outtype == IMAGE.SPIDER:
 			image_index = old_div(e.get_zsize(),2)
 		
 		e3.write_image(writefile_2d, image_index, outtype, False, region_2d)
@@ -1263,14 +1263,14 @@ class TestImageIO(unittest.TestCase):
 			e3.write_image(writefile_3d, image_index, outtype, False, region_3d)
 			TestUtil.check_image(writefile_3d)
 
-			if outtype  == IMAGE_IMAGIC:
+			if outtype  == IMAGE.IMAGIC:
 				(hed3d, img3d) = testlib.get_imagic_filename_pair(writefile_3d)
 				os.unlink(hed3d)
 				os.unlink(img3d)
 			else:
 				os.unlink(writefile_3d)
 				
-		if outtype == IMAGE_IMAGIC:
+		if outtype == IMAGE.IMAGIC:
 			(hed2d, img2d) = testlib.get_imagic_filename_pair(writefile_2d)
 			os.unlink(hed2d)
 			os.unlink(img2d)
@@ -1347,10 +1347,10 @@ class TestImageIO(unittest.TestCase):
 		"""test mrc io region ..............................."""
 		mrc2d = "test_mrcio_region_2d.mrc"
 		mrc3d = "test_mrcio_region_3d.mrc"
-		TestUtil.make_image_file(mrc2d, IMAGE_MRC, EM_FLOAT, 32,64)
-		TestUtil.make_image_file(mrc3d, IMAGE_MRC, EM_FLOAT, 32,32,12)		
-		self.region_read_write_test(IMAGE_MRC, mrc2d)
-		self.region_read_write_test(IMAGE_MRC, mrc3d)
+		TestUtil.make_image_file(mrc2d, IMAGE.MRC, EM_FLOAT, 32,64)
+		TestUtil.make_image_file(mrc3d, IMAGE.MRC, EM_FLOAT, 32,32,12)
+		self.region_read_write_test(IMAGE.MRC, mrc2d)
+		self.region_read_write_test(IMAGE.MRC, mrc3d)
 		if platform.system() != "Windows":
 			os.unlink(mrc2d)
 			os.unlink(mrc3d)
@@ -1359,8 +1359,8 @@ class TestImageIO(unittest.TestCase):
 	def no_test_imagicio_region(self):
 		"""test imagic io region ............................"""
 		infile = "test_imagicio_region_11.hed"
-		TestUtil.make_image_file(infile, IMAGE_IMAGIC, EM_FLOAT, 32,32,64)
-		self.region_read_write_test(IMAGE_IMAGIC, infile)
+		TestUtil.make_image_file(infile, IMAGE.IMAGIC, EM_FLOAT, 32,32,64)
+		self.region_read_write_test(IMAGE.IMAGIC, infile)
 
 		(hedfile1, imgfile1) = testlib.get_imagic_filename_pair(infile)
 		os.unlink(hedfile1)
@@ -1372,13 +1372,13 @@ class TestImageIO(unittest.TestCase):
 #		nx = 48
 #		ny = 64
 #		nz1 = 1
-#		TestUtil.make_image_file(file1, IMAGE_HDF, EM_FLOAT, nx, ny, nz1)
-#		self.region_read_write_test(IMAGE_HDF, file1)
+#		TestUtil.make_image_file(file1, IMAGE.HDF, EM_FLOAT, nx, ny, nz1)
+#		self.region_read_write_test(IMAGE.HDF, file1)
 #
 #		file2 = "test_hdfio_region_2.h5"
 #		nz2 = 12
-#		TestUtil.make_image_file(file2, IMAGE_HDF, EM_FLOAT, nx, ny, nz2)
-#		self.region_read_write_test(IMAGE_HDF, file2)
+#		TestUtil.make_image_file(file2, IMAGE.HDF, EM_FLOAT, nx, ny, nz2)
+#		self.region_read_write_test(IMAGE.HDF, file2)
 #
 #		os.unlink(file1)
 #		os.unlink(file2)
@@ -1438,8 +1438,8 @@ class TestImageIO(unittest.TestCase):
 		
   
 	def test_spiderio_region(self):
-		self.region_read_write_test(IMAGE_SINGLE_SPIDER, "spider-single.spi")
-		self.region_read_write_test(IMAGE_SPIDER, "spider-stack.spi")
+		self.region_read_write_test(IMAGE.SINGLE_SPIDER, "spider-single.spi")
+		self.region_read_write_test(IMAGE.SPIDER, "spider-stack.spi")
 
 	def test_emio_region(self):
 		self.region_read_write_test(EM, "20s2d.em")

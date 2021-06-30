@@ -144,31 +144,31 @@ def stopautoflush():
 # These are very widely used and hard to find, so some shortcuts
 # Image file types
 class IMAGE(Enum):
-	MRC = EMUtil.ImageType.IMAGE_MRC
-	EER = EMUtil.ImageType.IMAGE_EER
-	EER2X = EMUtil.ImageType.IMAGE_EER2X
-	EER4X = EMUtil.ImageType.IMAGE_EER4X
-	SPIDER = EMUtil.ImageType.IMAGE_SPIDER
-	SINGLE_SPIDER = EMUtil.ImageType.IMAGE_SINGLE_SPIDER
-	IMAGIC = EMUtil.ImageType.IMAGE_IMAGIC
-	HDF = EMUtil.ImageType.IMAGE_HDF
-	DM3 = EMUtil.ImageType.IMAGE_DM3
-	DM4 = EMUtil.ImageType.IMAGE_DM4
-	TIFF = EMUtil.ImageType.IMAGE_TIFF
-	PGM = EMUtil.ImageType.IMAGE_PGM
-	LST = EMUtil.ImageType.IMAGE_LST
-	PIF = EMUtil.ImageType.IMAGE_PIF
-	VTK = EMUtil.ImageType.IMAGE_VTK
-	PNG = EMUtil.ImageType.IMAGE_PNG
-	SAL = EMUtil.ImageType.IMAGE_SAL
-	ICOS = EMUtil.ImageType.IMAGE_ICOS
-	EMIM = EMUtil.ImageType.IMAGE_EMIM
-	GATAN2 = EMUtil.ImageType.IMAGE_GATAN2
-	AMIRA = EMUtil.ImageType.IMAGE_AMIRA
-	XPLOR = EMUtil.ImageType.IMAGE_XPLOR
-	EM = EMUtil.ImageType.IMAGE_EM
-	V4L = EMUtil.ImageType.IMAGE_V4L
-	UNKNOWN = EMUtil.ImageType.IMAGE_UNKNOWN
+	MRC = EMUtil.ImageType.IMAGE.MRC
+	EER = EMUtil.ImageType.IMAGE.EER
+	EER2X = EMUtil.ImageType.IMAGE.EER2X
+	EER4X = EMUtil.ImageType.IMAGE.EER4X
+	SPIDER = EMUtil.ImageType.IMAGE.SPIDER
+	SINGLE_SPIDER = EMUtil.ImageType.IMAGE.SINGLE_SPIDER
+	IMAGIC = EMUtil.ImageType.IMAGE.IMAGIC
+	HDF = EMUtil.ImageType.IMAGE.HDF
+	DM3 = EMUtil.ImageType.IMAGE.DM3
+	DM4 = EMUtil.ImageType.IMAGE.DM4
+	TIFF = EMUtil.ImageType.IMAGE.TIFF
+	PGM = EMUtil.ImageType.IMAGE.PGM
+	LST = EMUtil.ImageType.IMAGE.LST
+	PIF = EMUtil.ImageType.IMAGE.PIF
+	VTK = EMUtil.ImageType.IMAGE.VTK
+	PNG = EMUtil.ImageType.IMAGE.PNG
+	SAL = EMUtil.ImageType.IMAGE.SAL
+	ICOS = EMUtil.ImageType.IMAGE.ICOS
+	EMIM = EMUtil.ImageType.IMAGE.EMIM
+	GATAN2 = EMUtil.ImageType.IMAGE.GATAN2
+	AMIRA = EMUtil.ImageType.IMAGE.AMIRA
+	XPLOR = EMUtil.ImageType.IMAGE.XPLOR
+	EM = EMUtil.ImageType.IMAGE.EM
+	V4L = EMUtil.ImageType.IMAGE.V4L
+	UNKNOWN = EMUtil.ImageType.IMAGE.UNKNOWN
 
 # image data storage modes
 EM_UNKNOWN = EMUtil.EMDataType.EM_UNKNOWN
@@ -1789,7 +1789,7 @@ def write_test_boxing_images(name="test_box",num_im=10,type=0,n=100):
 
 	for i in range(num_im):
 		im = test_boxing_image(window_size,image_size,n)
-		im.write_image(name+"_"+str(i)+".mrc",0,EMUtil.ImageType.IMAGE_UNKNOWN, False,None,EMUtil.EMDataType.EM_SHORT)
+		im.write_image(name+"_"+str(i)+".mrc",0,EMUtil.ImageType.IMAGE.UNKNOWN, False,None,EMUtil.EMDataType.EM_SHORT)
 
 def test_boxing_image(window_size=(128,128),image_size=(4096,4096),n=100):
 	'''
@@ -2322,7 +2322,7 @@ but this method prevents multiple open/close operations on the #LSX file."""
 
 		return ret
 
-	def read_into_image(self,ret=None,N=0,hdronly=False,region=None,is_3d=False,imgtype=IMAGE_UNKNOWN):
+	def read_into_image(self,ret=None,N=0,hdronly=False,region=None,is_3d=False,imgtype=IMAGE.UNKNOWN):
 		"""This reads the image referenced by the nth record in the #LSX file. The same task can be accomplished with EMData.read_image,
 but this method prevents multiple open/close operations on the #LSX file."""
 
@@ -2363,7 +2363,7 @@ but this method prevents multiple open/close operations on the #LSX file."""
 		ret=[None]*ii	# ii is left with the total number of images to be returned
 		for fsp in d2r:
 			tpls=d2r[fsp]
-			imgs=EMData.read_images_c(fsp,[i[1] for i in tpls],IMAGE_UNKNOWN,hdronly)
+			imgs=EMData.read_images_c(fsp,[i[1] for i in tpls],IMAGE.UNKNOWN,hdronly)
 			for i,tpl in enumerate(tpls):
 				for k in tpl[2]: 
 					imgs[i][k]=tpl[2][k]
@@ -2659,7 +2659,7 @@ def db_read_image(self, fsp, *parms, **kparms):
 		if 'is_3d' not in kparms:
 			kparms['is_3d'] = False
 		if 'imgtype' not in kparms:
-			kparms['imgtype'] = IMAGE_UNKNOWN
+			kparms['imgtype'] = IMAGE.UNKNOWN
 
 	return self.read_image_c(fsp, *parms, **kparms)
 
@@ -2711,7 +2711,7 @@ EMData.read_images = staticmethod(db_read_images)
 def db_write_image(self, fsp, *parms):
 	"""write_image(fsp,image #,[image type],[header only],[region],[storage type],[use host endian])
 
-	help(EMUtil.ImageType) for a list of valid image types, eg EMUtil.ImageType.IMAGE_MRC
+	help(EMUtil.ImageType) for a list of valid image types, eg EMUtil.ImageType.IMAGE.MRC
 	help(EMUtil.EMDataType) for a list of valid storage types
 
 	Writes an image to a file or a bdb: entry. Note that for bdb: specifications, only image # is supported.
@@ -2734,7 +2734,7 @@ def db_write_image(self, fsp, *parms):
 		region = None
 		if len(parms) > 0: key = parms[0]
 		# if len(parms) > 1: read_header = parms[1]
-		# parsm[2] is unused : image_type=EMUtil.ImageType.IMAGE_UNKNOWN
+		# parsm[2] is unused : image_type=EMUtil.ImageType.IMAGE.UNKNOWN
 		if len(parms) > 3: region = parms[3]
 
 		db.set(self, key=key, region=region, txn=None)  # this makes region writing work
@@ -2824,7 +2824,7 @@ and the file size will increase.
 			im["render_max"]=im["maximum"]
 		
 		# would like to use the new write_images, but it isn't quite ready yet.
-		im.write_image(fsp,i+n,EMUtil.ImageType.IMAGE_UNKNOWN,0,None,EMUtil.EMDataType.EM_COMPRESSED)
+		im.write_image(fsp,i+n,EMUtil.ImageType.IMAGE.UNKNOWN,0,None,EMUtil.EMDataType.EM_COMPRESSED)
 	
 EMData.write_compressed=im_write_compressed
 

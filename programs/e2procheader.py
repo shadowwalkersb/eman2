@@ -286,10 +286,10 @@ def fixer(fyle, options):
 				
 					outputformat = fyle.split('.')[-1]
 					if '.hdf' in fyle[-4:]:
-						imgHdr.write_image(fyle,indx,EMUtil.ImageType.IMAGE_HDF,True)
+						imgHdr.write_image(fyle,indx,EMUtil.ImageType.IMAGE.HDF,True)
 					
 					elif fyle[-4:] in nonhdfformats:
-						imgHdr.write_image(fyle,-1,EMUtil.ImageType.IMAGE_MRC, True, None, EMUtil.EMDataType.EM_SHORT)
+						imgHdr.write_image(fyle,-1,EMUtil.ImageType.IMAGE.MRC, True, None, EMUtil.EMDataType.EM_SHORT)
 				
 					else:
 						print("ERROR: Only MRC (.mrc, .rec, .ali, .st) and HDF (.hdf) formats supported.")
@@ -335,9 +335,9 @@ def fixer(fyle, options):
 						outputformat = fyle.split('.')[-1]
 					
 						if '.hdf' in fyle.split('.')[-1]:
-							imgHdr.write_image(fyle,indx,EMUtil.ImageType.IMAGE_HDF,True)				
+							imgHdr.write_image(fyle,indx,EMUtil.ImageType.IMAGE.HDF,True)				
 						elif fyle.split('.')[-1] in nonhdfformats:
-							imgHdr.write_image(fyle,-1,EMUtil.ImageType.IMAGE_MRC, True, None, EMUtil.EMDataType.EM_SHORT)
+							imgHdr.write_image(fyle,-1,EMUtil.ImageType.IMAGE.MRC, True, None, EMUtil.EMDataType.EM_SHORT)
 						else:
 							print("ERROR: Only MRC (.mrc, .rec, .ali, .st) and HDF (.hdf) formats supported.")
 							sys.exit(1)

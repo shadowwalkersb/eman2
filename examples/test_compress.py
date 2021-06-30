@@ -48,7 +48,7 @@ for fi,fo in fls:
 			im=EMData(fi,i)
 			#compressed float
 			im["render_bits"]=t[1]
-			im.write_image(fot,i,IMAGE_UNKNOWN,0,None,t[0])
+			im.write_image(fot,i,IMAGE.UNKNOWN,0,None,t[0])
 		open(fot,"a")	# this should effectively do a 'sync'?
 		tm1=time.time()
 		if ti==0 :
@@ -73,4 +73,3 @@ for fi,fo in fls:
 		write_FSC_file(fsca,"testfsc_{}/".format(ti)+fo.replace(".hdf",".txt"))
 			
 	print("")
-

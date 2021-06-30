@@ -2032,7 +2032,7 @@ def cpy(ins_list, ous):
 
         if nima == 1 and oextension == "spi":
             sp_utilities.get_im(ins).write_image(
-                ous, 0, EMAN2_cppwrap.EMUtil.ImageType.IMAGE_SINGLE_SPIDER
+                ous, 0, EMAN2_cppwrap.EMUtil.ImageType.IMAGE.SINGLE_SPIDER
             )
 
         elif iextension == "bdb" and oextension == "bdb":

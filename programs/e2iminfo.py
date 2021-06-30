@@ -112,7 +112,7 @@ def main():
 			nimgs+=nimg
 			imgtype = EMUtil.get_image_type(imagefile)
 			imgtypename = EMUtil.get_imagetype_name(imgtype)
-			if imgtype == EMUtil.ImageType.IMAGE_SPIDER and not options.stat: 
+			if imgtype == EMUtil.ImageType.IMAGE.SPIDER and not options.stat: 
 				image_index = -1
 				
 			d=EMData()

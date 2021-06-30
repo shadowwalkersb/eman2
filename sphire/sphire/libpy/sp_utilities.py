@@ -499,9 +499,9 @@ def drop_image(imagename, destination, itype="h"):
 
     if type(destination) == type(""):
         if itype == "h":
-            imgtype = EMAN2_cppwrap.EMUtil.ImageType.IMAGE_HDF
+            imgtype = EMAN2_cppwrap.EMUtil.ImageType.IMAGE.HDF
         elif itype == "s":
-            imgtype = EMAN2_cppwrap.EMUtil.ImageType.IMAGE_SINGLE_SPIDER
+            imgtype = EMAN2_cppwrap.EMUtil.ImageType.IMAGE.SINGLE_SPIDER
         else:
             sp_global_def.ERROR("unknown image type", "drop_image", 1)
         imagename.write_image(destination, 0, imgtype)
@@ -2124,7 +2124,7 @@ def recv_attr_dict(
         data[im - image_start].write_image(
             stack,
             data[im - image_start].get_attr_default("ID", im),
-            EMAN2_cppwrap.EMUtil.ImageType.IMAGE_HDF,
+            EMAN2_cppwrap.EMUtil.ImageType.IMAGE.HDF,
             True,
         )
 
@@ -2164,7 +2164,7 @@ def recv_attr_dict(
             dummy.write_image(
                 stack,
                 dummy.get_attr_default("ID", im),
-                EMAN2_cppwrap.EMUtil.ImageType.IMAGE_HDF,
+                EMAN2_cppwrap.EMUtil.ImageType.IMAGE.HDF,
                 True,
             )
 
@@ -2415,7 +2415,7 @@ def write_headers(filename, data, lima):
     elif ftp == "hdf":
         for i in range(len(lima)):
             data[i].write_image(
-                filename, lima[i], EMAN2_cppwrap.EMUtil.ImageType.IMAGE_HDF, True
+                filename, lima[i], EMAN2_cppwrap.EMUtil.ImageType.IMAGE.HDF, True
             )
     else:
         sp_global_def.ERROR("Unacceptable file format", "write_headers", 1)
@@ -2435,7 +2435,7 @@ def write_header(filename, data, lima):
         DB = EMAN2db.db_open_dict(filename)
         DB.set_header(lima, data)
     elif ftp == "hdf":
-        data.write_image(filename, lima, EMAN2_cppwrap.EMUtil.ImageType.IMAGE_HDF, True)
+        data.write_image(filename, lima, EMAN2_cppwrap.EMUtil.ImageType.IMAGE.HDF, True)
     else:
         sp_global_def.ERROR("Unacceptable file format", "write_headers", 1)
 

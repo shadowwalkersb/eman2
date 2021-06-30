@@ -44,7 +44,7 @@ class TestCmp(unittest.TestCase):
     def test_variance(self):
         """test variance ...................................."""
         imgfile1 = "test_variance_1.mrc"
-        TestUtil.make_image_file(imgfile1, IMAGE_MRC)
+        TestUtil.make_image_file(imgfile1, IMAGE.MRC)
         e1 = EMData()
         e1.read_image(imgfile1)
 

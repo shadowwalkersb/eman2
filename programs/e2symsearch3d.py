@@ -304,7 +304,7 @@ def calcScores( stack, avg, resultsdict):
 		
 		img['spt_score'] = score
 	
-		img.write_image( stack, indx, EMUtil.ImageType.IMAGE_HDF, True, None, file_mode_map['float'] )
+		img.write_image( stack, indx, EMUtil.ImageType.IMAGE.HDF, True, None, file_mode_map['float'] )
 		scores.append( score )
 		
 		t = resultsdict[r][0]

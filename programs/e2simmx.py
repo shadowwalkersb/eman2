@@ -44,7 +44,7 @@ import traceback
 import random
 from EMAN2_utils import cmponetomany
 
-a = EMUtil.ImageType.IMAGE_UNKNOWN
+a = EMUtil.ImageType.IMAGE.UNKNOWN
 
 PROJ_FILE_ATTR = "projection_file" # this attribute important to e2simmxxplor
 PART_FILE_ATTR = "particle_file" # this attribute important to e2simmxxplor
@@ -313,7 +313,7 @@ class EMParallelSimMX(object):
 					l.read_image(self.args[2],0,False,Region(0,r,clen,1))
 					fill=l["maximum"]+.0001
 					l.process_inplace("threshold.belowtominval",{"minval":-1.0e37,"newval":fill})
-					l.write_image(self.args[2],0,EMUtil.ImageType.IMAGE_UNKNOWN,False,Region(0,r,clen,1))
+					l.write_image(self.args[2],0,EMUtil.ImageType.IMAGE.UNKNOWN,False,Region(0,r,clen,1))
 
 				print("Filling complete")
 
@@ -337,7 +337,7 @@ class EMParallelSimMX(object):
 
 		# Note this is region io - the init_memory function made sure the images exist and are the right dimensions (on disk)
 		for i,mxout in enumerate(result_data):
-			mxout.write_image(output,i,EMUtil.ImageType.IMAGE_UNKNOWN,False,r)
+			mxout.write_image(output,i,EMUtil.ImageType.IMAGE.UNKNOWN,False,r)
 
 
 def image_range(a,b=None):
@@ -833,7 +833,7 @@ def main():
 		for i,j in enumerate(mxout) : j.write_image(args[2],i)
 #		compress_hdf(args[2],0)
 	else :
-		for i,j in enumerate(mxout) : j.write_image(args[2],i,IMAGE_UNKNOWN,0,Region(crange[0],rrange[0],0,crange[1]-crange[0],rrange[1]-rrange[0],1))
+		for i,j in enumerate(mxout) : j.write_image(args[2],i,IMAGE.UNKNOWN,0,Region(crange[0],rrange[0],0,crange[1]-crange[0],rrange[1]-rrange[0],1))
 
 	E2end(E2n)
 

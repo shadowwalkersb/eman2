@@ -242,7 +242,7 @@ def main():
 		if options.compressbits>=0:
 			out.write_compressed(outfile,0,options.compressbits,nooutliers=options.nooutliers,erase=erase)
 		else:
-			try: out.write_image(outfile,0,IMAGE_UNKNOWN,0,None,EMUtil.EMDataType(stype))
+			try: out.write_image(outfile,0,IMAGE.UNKNOWN,0,None,EMUtil.EMDataType(stype))
 			except:
 				print("Failed to write in file mode matching input, reverting to floating point output")
 				out.write_image(outfile,0)
@@ -265,24 +265,24 @@ def main():
 			# Create an empty file of the correct size
 			tmp=EMData()
 			tmp.set_size(nx,nz,ny)
-			tmp.write_image(outfile,0,IMAGE_UNKNOWN,False,None,EM_UCHAR)
+			tmp.write_image(outfile,0,IMAGE.UNKNOWN,False,None,EM_UCHAR)
 
 			# Write the output volume slice by slice
 			for z in range(ny):
 				slice=EMData(infile,0,False,Region(0,z,0,nx,1,nz))
-				slice.write_image(outfile,0,IMAGE_UNKNOWN,False,Region(0,0,ny-z-1,nx,nz,1),EM_UCHAR)
+				slice.write_image(outfile,0,IMAGE.UNKNOWN,False,Region(0,0,ny-z-1,nx,nz,1),EM_UCHAR)
 
 			# Write
 		else:
 			# Create an empty file of the correct size
 			tmp=EMData()
 			tmp.set_size(nx,ny,nz)
-			tmp.write_image(outfile,0,IMAGE_UNKNOWN,False,None,EM_UCHAR)
+			tmp.write_image(outfile,0,IMAGE.UNKNOWN,False,None,EM_UCHAR)
 
 			# write the output volume slice by slice
 			for z in range(ny):
 				slice=EMData(infile,0,False,Region(0,0,z,nx,nz,1))
-				slice.write_image(outfile,0,IMAGE_UNKNOWN,False,Region(0,0,z,nx,nz,1),EM_UCHAR)
+				slice.write_image(outfile,0,IMAGE.UNKNOWN,False,Region(0,0,z,nx,nz,1),EM_UCHAR)
 
 		print("Complete !")
 		sys.exit(0)
@@ -765,7 +765,7 @@ def main():
 			if options.compressbits>=0:
 				data.write_compressed(os.path.splitext(outfile)[0]+'-'+str(img_index+1).zfill(len(str(nimg)))+ os.path.splitext(outfile)[-1],0,options.compressbits,nooutliers=options.nooutliers,erase=erase)
 			else:
-				data.write_image(os.path.splitext(outfile)[0]+'-'+str(img_index+1).zfill(len(str(nimg)))+ os.path.splitext(outfile)[-1], -1, EMUtil.ImageType.IMAGE_UNKNOWN, False, None, file_mode_map[options.outmode], not(options.swap))
+				data.write_image(os.path.splitext(outfile)[0]+'-'+str(img_index+1).zfill(len(str(nimg)))+ os.path.splitext(outfile)[-1], -1, EMUtil.ImageType.IMAGE.UNKNOWN, False, None, file_mode_map[options.outmode], not(options.swap))
 		else:   #output a single 2D image or a 2D stack
 			if options.append:
 				if options.compressbits>=0:
