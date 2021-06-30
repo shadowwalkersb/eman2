@@ -1625,7 +1625,7 @@ class EMImageFileType(EMFileType) :
 		"""Open in Chimera"""
 		if get_platform() == "Linux" :
 			# these types are supported natively in Chimera
-			if EMUtil.get_image_type(self.path) in (IMAGE.HDF, IMAGE_MRC, IMAGE_SPIDER, IMAGE_SINGLE_SPIDER) :
+			if EMUtil.get_image_type(self.path) in (IMAGE.HDF, IMAGE.MRC, IMAGE_SPIDER, IMAGE_SINGLE_SPIDER) :
 				os.system("chimera %s &"%self.path)
 			else :
 				os.system("e2proc3d.py %s /tmp/vol.hdf"%self.path)		# Probably not a good hack to use, but it will do for now...
@@ -1706,7 +1706,7 @@ class EMStackFileType(EMFileType) :
 		"""Open in Chimera"""
 		if get_platform() == "Linux":
 			# these types are supported natively in Chimera
-			if EMUtil.get_image_type("tst.hdf") in (IMAGE.HDF, IMAGE_MRC, IMAGE_SPIDER, IMAGE_SINGLE_SPIDER) :
+			if EMUtil.get_image_type("tst.hdf") in (IMAGE.HDF, IMAGE.MRC, IMAGE_SPIDER, IMAGE_SINGLE_SPIDER) :
 				os.system("chimera %s &"%self.path)
 			else:
 				os.system("e2proc3d.py %s /tmp/vol.hdf"%self.path)		# Probably not a good hack to use, but it will do for now...

@@ -24,10 +24,10 @@ ABSOLUTE_PATH_TO_MRC_FILES = (
 )
 TOLERANCE = 0.0075
 
-IMAGE_2D, IMAGE_2D_REFERENCE = get_real_data(dim=2)
-IMAGE_3D, STILL_NOT_VALID = get_real_data(dim=3)
-IMAGE_BLANK_2D = sp_utilities.model_blank(10, 10)
-IMAGE_BLANK_3D = sp_utilities.model_blank(10, 10, 10)
+IMAGE.2D, IMAGE_2D_REFERENCE = get_real_data(dim=2)
+IMAGE.3D, STILL_NOT_VALID = get_real_data(dim=3)
+IMAGE.BLANK_2D = sp_utilities.model_blank(10, 10)
+IMAGE.BLANK_3D = sp_utilities.model_blank(10, 10, 10)
 MASK = sp_utilities.model_circle(2, 5, 5)
 
 

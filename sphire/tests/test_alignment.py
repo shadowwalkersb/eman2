@@ -344,9 +344,9 @@ class Test_objective_function_just_ccc_has_minimum_reduced_only_shifts(unittest.
 
     def test_empty_args_returns_IndexError_list_index_out_of_range(self):
         with self.assertRaises(IndexError) as cm_new:
-            fu.objective_function_just_ccc_has_minimum_reduced_only_shifts(args=[], data=[self.volft, "", IMAGE.2D, IMAGE_2D])
+            fu.objective_function_just_ccc_has_minimum_reduced_only_shifts(args=[], data=[self.volft, "", IMAGE.2D, IMAGE.2D])
         with self.assertRaises(IndexError) as cm_old:
-            oldfu.objective_function_just_ccc_has_minimum_reduced_only_shifts(args=[], data=[self.volft,"",IMAGE.2D, IMAGE_2D])
+            oldfu.objective_function_just_ccc_has_minimum_reduced_only_shifts(args=[], data=[self.volft,"",IMAGE.2D, IMAGE.2D])
         self.assertEqual(str(cm_new.exception), "list index out of range")
         self.assertEqual(str(cm_new.exception), str(cm_old.exception))
 
@@ -541,9 +541,9 @@ class Test_eqproj(unittest.TestCase):
 
     def test_empty_args_returns_IndexError_list_index_out_of_range(self):
         with self.assertRaises(IndexError) as cm_new:
-            fu.eqproj(args=[], data=[IMAGE.2D,KB_IMAGE2D_SIZE,IMAGE_2D_REFERENCE,MASK_2DIMAGE])
+            fu.eqproj(args=[], data=[IMAGE.2D,KB_IMAGE2D_SIZE,IMAGE.2D_REFERENCE,MASK_2DIMAGE])
         with self.assertRaises(IndexError) as cm_old:
-            oldfu.eqproj(args=[], data=[IMAGE.2D,KB_IMAGE2D_SIZE,IMAGE_2D_REFERENCE,MASK_2DIMAGE])
+            oldfu.eqproj(args=[], data=[IMAGE.2D,KB_IMAGE2D_SIZE,IMAGE.2D_REFERENCE,MASK_2DIMAGE])
         self.assertEqual(str(cm_new.exception), "list index out of range")
         self.assertEqual(str(cm_new.exception), str(cm_old.exception))
 
@@ -556,7 +556,7 @@ class Test_eqproj(unittest.TestCase):
         self.assertEqual(str(cm_new.exception), str(cm_old.exception))
 
     def test_eqproj(self):
-        v2 = oldfu.eqproj(args=[1,2,3,4,5], data=[IMAGE.2D,KB_IMAGE2D_SIZE,IMAGE_2D_REFERENCE,MASK_2DIMAGE])
+        v2 = oldfu.eqproj(args=[1,2,3,4,5], data=[IMAGE.2D,KB_IMAGE2D_SIZE,IMAGE.2D_REFERENCE,MASK_2DIMAGE])
         pass
 
 
@@ -836,14 +836,14 @@ class Test_ormq_peaks(unittest.TestCase):
         '''
 
     def test_ormq_peaks_3DIMAGE(self):
-        return_old = oldfu.ormq_peaks(image=IMAGE.3D, crefim=IMAGE_BLANK_3D, xrng=self.xrng, yrng=self.yrng, step=self.step, mode=self.mode, numr=self.numr, cnx=self.cnx, cny=self.cny)
-        return_new = fu.ormq_peaks(image=IMAGE.3D, crefim=IMAGE_BLANK_3D, xrng=self.xrng, yrng=self.yrng,step=self.step, mode=self.mode, numr=self.numr, cnx=self.cnx, cny=self.cny)
+        return_old = oldfu.ormq_peaks(image=IMAGE.3D, crefim=IMAGE.BLANK_3D, xrng=self.xrng, yrng=self.yrng, step=self.step, mode=self.mode, numr=self.numr, cnx=self.cnx, cny=self.cny)
+        return_new = fu.ormq_peaks(image=IMAGE.3D, crefim=IMAGE.BLANK_3D, xrng=self.xrng, yrng=self.yrng,step=self.step, mode=self.mode, numr=self.numr, cnx=self.cnx, cny=self.cny)
         self.assertTrue(array_equal(return_old,return_new))
         self.assertTrue(array_equal(return_old, [[1.0, 128.0, 9.0, 9.0, 1.0, 0.0, 0.0, 0.0, 0], [1.0, 128.0, 9.0, 9.0, 1.0, 0.0, 0.0, 0.0, 1]]))
 
     def test_ormq_peaks_2DIMAGE(self):
-        return_old = oldfu.ormq_peaks(image=IMAGE.2D, crefim=IMAGE_BLANK_2D, xrng=self.xrng, yrng=self.yrng, step=self.step, mode=self.mode, numr=self.numr, cnx=6.0, cny=6.0)
-        return_new = fu.ormq_peaks(image=IMAGE.2D, crefim=IMAGE_BLANK_2D, xrng=self.xrng, yrng=self.yrng,step=self.step, mode=self.mode, numr=self.numr, cnx=6.0, cny=6.0)
+        return_old = oldfu.ormq_peaks(image=IMAGE.2D, crefim=IMAGE.BLANK_2D, xrng=self.xrng, yrng=self.yrng, step=self.step, mode=self.mode, numr=self.numr, cnx=6.0, cny=6.0)
+        return_new = fu.ormq_peaks(image=IMAGE.2D, crefim=IMAGE.BLANK_2D, xrng=self.xrng, yrng=self.yrng,step=self.step, mode=self.mode, numr=self.numr, cnx=6.0, cny=6.0)
         self.assertTrue(array_equal(return_old,return_new))
         self.assertTrue(array_equal(return_old, [[1.0, 128.0, 147.0, 147.0, 1.0, 0.0, 0.0, 0.0, 0], [1.0, 128.0, 147.0, 147.0, 1.0, 0.0, 0.0, 0.0, 1]]))
 
@@ -1650,7 +1650,7 @@ class Test_(unittest.TestCase):
         self.assertEqual(str(cm_new.exception), str(cm_old.exception))
 
     def test_(self):
-        peak, pixel_error = oldfu.proj_ali_incore_zoom(data=IMAGE.2D, refrings=[IMAGE_2D,IMAGE_2D], numr=self.numr, xrng=[], yrng=[],
+        peak, pixel_error = oldfu.proj_ali_incore_zoom(data=IMAGE.2D, refrings=[IMAGE.2D,IMAGE_2D], numr=self.numr, xrng=[], yrng=[],
                                                        step=1, finfo=None, sym="c1", delta_psi=0.0)
         pass
 
@@ -1713,8 +1713,8 @@ class Test_ornq_gridding(unittest.TestCase):
     def test_None_crefimg_crashes_because_SIGSEGV(self):
         pass
         '''
-        return_old = oldfu.ornq_gridding(image=[IMAGE.2D, IMAGE_2D, IMAGE_2D], crefim=None,shifts=[[1, 1], [2, 1], [1, 2]], shrink=2, kb=KB_IMAGE2D_SIZE, mode="H",numr=self.numr, cnx=36, cny=36, deltapsi=0.0)
-        return_new = fu.ornq_gridding(image=[IMAGE.2D, IMAGE_2D, IMAGE_2D], crefim=None,shifts=[[1, 1], [2, 1], [1, 2]], shrink=2, kb=KB_IMAGE2D_SIZE, mode="H",numr=self.numr, cnx=36, cny=36, deltapsi=0.0)
+        return_old = oldfu.ornq_gridding(image=[IMAGE.2D, IMAGE.2D, IMAGE_2D], crefim=None,shifts=[[1, 1], [2, 1], [1, 2]], shrink=2, kb=KB_IMAGE2D_SIZE, mode="H",numr=self.numr, cnx=36, cny=36, deltapsi=0.0)
+        return_new = fu.ornq_gridding(image=[IMAGE.2D, IMAGE.2D, IMAGE_2D], crefim=None,shifts=[[1, 1], [2, 1], [1, 2]], shrink=2, kb=KB_IMAGE2D_SIZE, mode="H",numr=self.numr, cnx=36, cny=36, deltapsi=0.0)
         self.assertTrue(array_equal(return_new, return_old))
         self.assertTrue(array_equal((291.77770256996155, 2, 4, 0, 17.63412950428409), return_old))
         '''
@@ -1722,37 +1722,37 @@ class Test_ornq_gridding(unittest.TestCase):
     def test_empty_crefimg_crashes_because_SIGSEGV(self):
         pass
         '''
-        return_old = oldfu.ornq_gridding(image=[IMAGE.2D, IMAGE_2D, IMAGE_2D], crefim=EMData(),shifts=[[1, 1], [2, 1], [1, 2]], shrink=2, kb=KB_IMAGE2D_SIZE, mode="H",numr=self.numr, cnx=36, cny=36, deltapsi=0.0)
-        return_new = fu.ornq_gridding(image=[IMAGE.2D, IMAGE_2D, IMAGE_2D], crefim=EMData(),shifts=[[1, 1], [2, 1], [1, 2]], shrink=2, kb=KB_IMAGE2D_SIZE, mode="H",numr=self.numr, cnx=36, cny=36, deltapsi=0.0)
+        return_old = oldfu.ornq_gridding(image=[IMAGE.2D, IMAGE.2D, IMAGE_2D], crefim=EMData(),shifts=[[1, 1], [2, 1], [1, 2]], shrink=2, kb=KB_IMAGE2D_SIZE, mode="H",numr=self.numr, cnx=36, cny=36, deltapsi=0.0)
+        return_new = fu.ornq_gridding(image=[IMAGE.2D, IMAGE.2D, IMAGE_2D], crefim=EMData(),shifts=[[1, 1], [2, 1], [1, 2]], shrink=2, kb=KB_IMAGE2D_SIZE, mode="H",numr=self.numr, cnx=36, cny=36, deltapsi=0.0)
         self.assertTrue(array_equal(return_new, return_old))
         self.assertTrue(array_equal((291.77770256996155, 2, 4, 0, 17.63412950428409), return_old))
         '''
 
     def test_None_kb_python_boost_ArgumentError(self):
         with self.assertRaises(IndexError) as cm_old:
-            oldfu.ornq_gridding(image=[IMAGE.2D, IMAGE_2D, IMAGE_2D], crefim=IMAGE_2D_REFERENCE,shifts=[[1, 1], [2, 1], [1, 2]], shrink=2, kb=None, mode="H",numr=self.numr, cnx=36, cny=36, deltapsi=0.0)
+            oldfu.ornq_gridding(image=[IMAGE.2D, IMAGE.2D, IMAGE_2D], crefim=IMAGE_2D_REFERENCE,shifts=[[1, 1], [2, 1], [1, 2]], shrink=2, kb=None, mode="H",numr=self.numr, cnx=36, cny=36, deltapsi=0.0)
         with self.assertRaises(IndexError) as cm_new:
-            fu.ornq_gridding(image=[IMAGE.2D, IMAGE_2D, IMAGE_2D], crefim=IMAGE_2D_REFERENCE,shifts=[[1, 1], [2, 1], [1, 2]], shrink=2, kb=None, mode="H",numr=self.numr, cnx=36, cny=36, deltapsi=0.0)
+            fu.ornq_gridding(image=[IMAGE.2D, IMAGE.2D, IMAGE_2D], crefim=IMAGE_2D_REFERENCE,shifts=[[1, 1], [2, 1], [1, 2]], shrink=2, kb=None, mode="H",numr=self.numr, cnx=36, cny=36, deltapsi=0.0)
         self.assertEqual(str(cm_new.exception), "list index out of range")
         self.assertEqual(str(cm_new.exception), str(cm_old.exception))
 
     def test_empty_kb_python_boost_ArgumentError(self):
         with self.assertRaises(IndexError) as cm_old:
-            oldfu.ornq_gridding(image=[IMAGE.2D, IMAGE_2D, IMAGE_2D], crefim=IMAGE_2D_REFERENCE,shifts=[[1, 1], [2, 1], [1, 2]], shrink=2, kb=EMData(), mode="H",numr=self.numr, cnx=36, cny=36, deltapsi=0.0)
+            oldfu.ornq_gridding(image=[IMAGE.2D, IMAGE.2D, IMAGE_2D], crefim=IMAGE_2D_REFERENCE,shifts=[[1, 1], [2, 1], [1, 2]], shrink=2, kb=EMData(), mode="H",numr=self.numr, cnx=36, cny=36, deltapsi=0.0)
         with self.assertRaises(IndexError) as cm_new:
-            fu.ornq_gridding(image=[IMAGE.2D, IMAGE_2D, IMAGE_2D], crefim=IMAGE_2D_REFERENCE,shifts=[[1, 1], [2, 1], [1, 2]], shrink=2, kb=EMData(), mode="H",numr=self.numr, cnx=36, cny=36, deltapsi=0.0)
+            fu.ornq_gridding(image=[IMAGE.2D, IMAGE.2D, IMAGE_2D], crefim=IMAGE_2D_REFERENCE,shifts=[[1, 1], [2, 1], [1, 2]], shrink=2, kb=EMData(), mode="H",numr=self.numr, cnx=36, cny=36, deltapsi=0.0)
         self.assertEqual(str(cm_new.exception), "list index out of range")
         self.assertEqual(str(cm_new.exception), str(cm_old.exception))
 
     def test_modeH(self):
-        return_old = oldfu.ornq_gridding(image=[IMAGE.2D, IMAGE_2D, IMAGE_2D], crefim=IMAGE_2D_REFERENCE,shifts=[[1, 1], [2, 1], [1, 2]], shrink=2, kb=KB_IMAGE2D_SIZE, mode="H",numr=self.numr, cnx=36, cny=36, deltapsi=0.0)
-        return_new = fu.ornq_gridding(image=[IMAGE.2D, IMAGE_2D, IMAGE_2D], crefim=IMAGE_2D_REFERENCE,shifts=[[1, 1], [2, 1], [1, 2]], shrink=2, kb=KB_IMAGE2D_SIZE, mode="H",numr=self.numr, cnx=36, cny=36, deltapsi=0.0)
+        return_old = oldfu.ornq_gridding(image=[IMAGE.2D, IMAGE.2D, IMAGE_2D], crefim=IMAGE_2D_REFERENCE,shifts=[[1, 1], [2, 1], [1, 2]], shrink=2, kb=KB_IMAGE2D_SIZE, mode="H",numr=self.numr, cnx=36, cny=36, deltapsi=0.0)
+        return_new = fu.ornq_gridding(image=[IMAGE.2D, IMAGE.2D, IMAGE_2D], crefim=IMAGE_2D_REFERENCE,shifts=[[1, 1], [2, 1], [1, 2]], shrink=2, kb=KB_IMAGE2D_SIZE, mode="H",numr=self.numr, cnx=36, cny=36, deltapsi=0.0)
         self.assertTrue(array_equal(return_new, return_old))
         self.assertTrue(array_equal((291.77770256996155, 2, 4, 0, 17.63412950428409), return_old))
 
     def test_modeF(self):
-        return_old = oldfu.ornq_gridding(image=[IMAGE.2D, IMAGE_2D, IMAGE_2D], crefim=IMAGE_2D_REFERENCE,shifts=[[1, 1], [2, 1], [1, 2]], shrink=2, kb=KB_IMAGE2D_SIZE, mode="F",numr=self.numr, cnx=36, cny=36, deltapsi=0.0)
-        return_new = fu.ornq_gridding(image=[IMAGE.2D, IMAGE_2D, IMAGE_2D], crefim=IMAGE_2D_REFERENCE,shifts=[[1, 1], [2, 1], [1, 2]], shrink=2, kb=KB_IMAGE2D_SIZE, mode="F",numr=self.numr, cnx=36, cny=36, deltapsi=0.0)
+        return_old = oldfu.ornq_gridding(image=[IMAGE.2D, IMAGE.2D, IMAGE_2D], crefim=IMAGE_2D_REFERENCE,shifts=[[1, 1], [2, 1], [1, 2]], shrink=2, kb=KB_IMAGE2D_SIZE, mode="F",numr=self.numr, cnx=36, cny=36, deltapsi=0.0)
+        return_new = fu.ornq_gridding(image=[IMAGE.2D, IMAGE.2D, IMAGE_2D], crefim=IMAGE_2D_REFERENCE,shifts=[[1, 1], [2, 1], [1, 2]], shrink=2, kb=KB_IMAGE2D_SIZE, mode="F",numr=self.numr, cnx=36, cny=36, deltapsi=0.0)
         self.assertTrue(array_equal(return_new, return_old))
         self.assertTrue(array_equal((111.66072607040405, 2, 4, 0, 17.346570451540014), return_old))
 
@@ -2561,7 +2561,7 @@ class Test_ali_vol_func_rotate(unittest.TestCase):
         print(IMAGE.3D.get_3dview().shape)
         print(MASK_3DIMAGE.get_3dview().shape)
 
-        data = [ IMAGE.3D, IMAGE_3D, MASK_3DIMAGE, [25.0, 45.0, 22.0, 0.5, 0.8, 1.2, 0 , 1.0], "ccc" ]
+        data = [ IMAGE.3D, IMAGE.3D, MASK_3DIMAGE, [25.0, 45.0, 22.0, 0.5, 0.8, 1.2, 0 , 1.0], "ccc" ]
         v = fu.ali_vol_func_rotate(params, data)
         # pass
 
@@ -2650,9 +2650,9 @@ class Test_fine_2D_refinement(unittest.TestCase):
         pass
         """
         with self.assertRaises(AttributeError) as cm_old:
-            oldfu.fine_2D_refinement(data=[deepcopy(IMAGE.2D)], br=1.75, mask=None, tavg=IMAGE_2D_REFERENCE,group=-1)
+            oldfu.fine_2D_refinement(data=[deepcopy(IMAGE.2D)], br=1.75, mask=None, tavg=IMAGE.2D_REFERENCE,group=-1)
         with self.assertRaises(AttributeError) as cm_new:
-            fu.fine_2D_refinement(data=[deepcopy(IMAGE.2D)], br=1.75, mask=None, tavg=IMAGE_2D_REFERENCE,group=-1)
+            fu.fine_2D_refinement(data=[deepcopy(IMAGE.2D)], br=1.75, mask=None, tavg=IMAGE.2D_REFERENCE,group=-1)
         self.assertEqual(str(cm_new.exception), str(cm_old.exception))
         self.assertEqual(str(cm_new.exception), "'NoneType' object has no attribute 'get_xsize'")
         """
@@ -2661,9 +2661,9 @@ class Test_fine_2D_refinement(unittest.TestCase):
         pass
         """
         with self.assertRaises(AttributeError) as cm_old:
-            oldfu.fine_2D_refinement(data=[deepcopy(IMAGE.2D)], br=1.75, mask=EMData(), tavg=IMAGE_2D_REFERENCE,group=-1)
+            oldfu.fine_2D_refinement(data=[deepcopy(IMAGE.2D)], br=1.75, mask=EMData(), tavg=IMAGE.2D_REFERENCE,group=-1)
         with self.assertRaises(AttributeError) as cm_new:
-            fu.fine_2D_refinement(data=[deepcopy(IMAGE.2D)], br=1.75, mask=EMData(), tavg=IMAGE_2D_REFERENCE,group=-1)
+            fu.fine_2D_refinement(data=[deepcopy(IMAGE.2D)], br=1.75, mask=EMData(), tavg=IMAGE.2D_REFERENCE,group=-1)
         self.assertEqual(str(cm_new.exception), str(cm_old.exception))
         self.assertEqual(str(cm_new.exception), "'NoneType' object has no attribute 'get_xsize'")
         """
@@ -2912,7 +2912,7 @@ class Test_align2d_direct3(unittest.TestCase):
     def test_NoneType_refim_returns_AttributeError(self):
         with self.assertRaises(AttributeError) as cm_new:
             fu.align2d_direct3(
-                input_images=[IMAGE.2D, IMAGE_2D],
+                input_images=[IMAGE.2D, IMAGE.2D],
                 refim=None,
                 xrng=1,
                 yrng=1,
@@ -2923,7 +2923,7 @@ class Test_align2d_direct3(unittest.TestCase):
             )
         with self.assertRaises(AttributeError) as cm_old:
             oldfu.align2d_direct3(
-                input_images=[IMAGE.2D, IMAGE_2D],
+                input_images=[IMAGE.2D, IMAGE.2D],
                 refim=None,
                 xrng=1,
                 yrng=1,
@@ -2941,7 +2941,7 @@ class Test_align2d_direct3(unittest.TestCase):
     def test_emptyType_refim_returns_RuntimeError_ImageDimensionException(self):
         with self.assertRaises(RuntimeError) as cm_new:
             fu.align2d_direct3(
-                input_images=[IMAGE.2D, IMAGE_2D],
+                input_images=[IMAGE.2D, IMAGE.2D],
                 refim=EMData(),
                 xrng=1,
                 yrng=1,
@@ -2952,7 +2952,7 @@ class Test_align2d_direct3(unittest.TestCase):
             )
         with self.assertRaises(RuntimeError) as cm_old:
             oldfu.align2d_direct3(
-                input_images=[IMAGE.2D, IMAGE_2D],
+                input_images=[IMAGE.2D, IMAGE.2D],
                 refim=EMData(),
                 xrng=1,
                 yrng=1,
@@ -2968,7 +2968,7 @@ class Test_align2d_direct3(unittest.TestCase):
 
     def test_without_ctf(self):
         return_new = fu.align2d_direct3(
-            input_images=[IMAGE.2D, IMAGE_2D],
+            input_images=[IMAGE.2D, IMAGE.2D],
             refim=IMAGE.2D,
             xrng=1,
             yrng=1,
@@ -2978,7 +2978,7 @@ class Test_align2d_direct3(unittest.TestCase):
             CTF=None,
         )
         return_old = oldfu.align2d_direct3(
-            input_images=[IMAGE.2D, IMAGE_2D],
+            input_images=[IMAGE.2D, IMAGE.2D],
             refim=IMAGE.2D,
             xrng=1,
             yrng=1,
@@ -3108,7 +3108,7 @@ class Test_ali_nvol(unittest.TestCase):
     #
     #     sp_utilities.set_params3D(IMAGE.3D, p)
     #
-    #     rr = fu.ali_nvol([IMAGE.3D, IMAGE_3D], new_mask)
+    #     rr = fu.ali_nvol([IMAGE.3D, IMAGE.3D], new_mask)
 
 
 class Test_alivol_mask_getref(unittest.TestCase):
@@ -4363,18 +4363,18 @@ class Test_alivol_mask(unittest.TestCase):
 
     def test_None_mask_returns_ArgumentError(self):
         with self.assertRaises(TypeError) as cm_new:
-            fu.alivol_mask(v=IMAGE.2D, vref=IMAGE_2D_REFERENCE, mask=None)
+            fu.alivol_mask(v=IMAGE.2D, vref=IMAGE.2D_REFERENCE, mask=None)
         with self.assertRaises(TypeError) as cm_old:
-            oldfu.alivol_mask(v=IMAGE.2D, vref=IMAGE_2D_REFERENCE, mask=None)
+            oldfu.alivol_mask(v=IMAGE.2D, vref=IMAGE.2D_REFERENCE, mask=None)
         output_msg = "Python argument types in\n    EMData.__imul__(EMData, NoneType)\ndid not match C++ signature:\n    __imul__(boost::python::back_reference<EMAN::EMData&>, EMAN::EMData)\n    __imul__(boost::python::back_reference<EMAN::EMData&>, float)"
         self.assertEqual(str(cm_new.exception), output_msg)
         self.assertEqual(str(cm_new.exception), str(cm_old.exception))
 
     def test_empty_mask_returns_RuntimeError(self):
         with self.assertRaises(RuntimeError) as cm_new:
-            fu.alivol_mask(v=IMAGE.2D, vref=IMAGE_2D_REFERENCE, mask=EMData())
+            fu.alivol_mask(v=IMAGE.2D, vref=IMAGE.2D_REFERENCE, mask=EMData())
         with self.assertRaises(RuntimeError) as cm_old:
-            oldfu.alivol_mask(v=IMAGE.2D, vref=IMAGE_2D_REFERENCE, mask=EMData())
+            oldfu.alivol_mask(v=IMAGE.2D, vref=IMAGE.2D_REFERENCE, mask=EMData())
         msg = str(cm_new.exception).split("'")
         msg_old = str(cm_old.exception).split("'")
         self.assertEqual(msg[0].split(" ")[0], "ImageFormatException")
@@ -4389,7 +4389,7 @@ class Test_alivol_mask(unittest.TestCase):
 
         sp_utilities.set_params3D(IMAGE.3D, p)
 
-        rr = fu.alivol_mask(IMAGE.3D, IMAGE_3D, new_mask)
+        rr = fu.alivol_mask(IMAGE.3D, IMAGE.3D, new_mask)
 
 
 """ end: new in sphire 1.3"""
@@ -9233,10 +9233,10 @@ class Test_align2d_scf(unittest.TestCase):
 
     def test_with_valid_params(self):
         return_new = fu.align2d_scf(
-            image=IMAGE.2D, refim=IMAGE_2D_REFERENCE, xrng=4, yrng=4, ou=174
+            image=IMAGE.2D, refim=IMAGE.2D_REFERENCE, xrng=4, yrng=4, ou=174
         )
         return_old = oldfu.align2d_scf(
-            image=IMAGE.2D, refim=IMAGE_2D_REFERENCE, xrng=4, yrng=4, ou=174
+            image=IMAGE.2D, refim=IMAGE.2D_REFERENCE, xrng=4, yrng=4, ou=174
         )
         self.assertTrue(array_equal(return_new, return_old))
         self.assertTrue(
@@ -9254,10 +9254,10 @@ class Test_align2d_scf(unittest.TestCase):
 
     def test_with_invalid_ou_error_msg_output(self):
         return_new = fu.align2d_scf(
-            image=IMAGE.2D, refim=IMAGE_2D_REFERENCE, xrng=4, yrng=4, ou=1
+            image=IMAGE.2D, refim=IMAGE.2D_REFERENCE, xrng=4, yrng=4, ou=1
         )
         return_old = oldfu.align2d_scf(
-            image=IMAGE.2D, refim=IMAGE_2D_REFERENCE, xrng=4, yrng=4, ou=1
+            image=IMAGE.2D, refim=IMAGE.2D_REFERENCE, xrng=4, yrng=4, ou=1
         )
         self.assertTrue(array_equal(return_new, return_old))
         self.assertTrue(
@@ -9288,11 +9288,11 @@ class Test_align2d_scf(unittest.TestCase):
     def test_with_DEFAULT_params_returns_IndexError_list_index_out_of_range(self):
         with self.assertRaises(IndexError) as cm_new:
             fu.align2d_scf(
-                image=IMAGE.2D, refim=IMAGE_2D_REFERENCE, xrng=-1, yrng=-1, ou=-1
+                image=IMAGE.2D, refim=IMAGE.2D_REFERENCE, xrng=-1, yrng=-1, ou=-1
             )
         with self.assertRaises(IndexError) as cm_old:
             oldfu.align2d_scf(
-                image=IMAGE.2D, refim=IMAGE_2D_REFERENCE, xrng=-1, yrng=-1, ou=-1
+                image=IMAGE.2D, refim=IMAGE.2D_REFERENCE, xrng=-1, yrng=-1, ou=-1
             )
         self.assertEqual(str(cm_new.exception), "list index out of range")
         self.assertEqual(str(cm_new.exception), str(cm_old.exception))
@@ -9302,11 +9302,11 @@ class Test_align2d_scf(unittest.TestCase):
     ):
         with self.assertRaises(IndexError) as cm_new:
             fu.align2d_scf(
-                image=IMAGE.2D, refim=IMAGE_2D_REFERENCE, xrng=-1, yrng=-1, ou=174
+                image=IMAGE.2D, refim=IMAGE.2D_REFERENCE, xrng=-1, yrng=-1, ou=174
             )
         with self.assertRaises(IndexError) as cm_old:
             oldfu.align2d_scf(
-                image=IMAGE.2D, refim=IMAGE_2D_REFERENCE, xrng=-1, yrng=-1, ou=174
+                image=IMAGE.2D, refim=IMAGE.2D_REFERENCE, xrng=-1, yrng=-1, ou=174
             )
         self.assertEqual(str(cm_new.exception), "list index out of range")
         self.assertEqual(str(cm_new.exception), str(cm_old.exception))

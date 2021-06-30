@@ -34,8 +34,8 @@ ABSOLUTE_PATH = path.dirname(path.realpath(__file__))
 
 
 
-IMAGE_2D, IMAGE_2D_REFERENCE = get_real_data(dim=2)
-IMAGE_3D, STILL_NOT_VALID = get_real_data(dim=3)
+IMAGE.2D, IMAGE_2D_REFERENCE = get_real_data(dim=2)
+IMAGE.3D, STILL_NOT_VALID = get_real_data(dim=3)
 TOLERANCE = 0.005
 MASK = model_circle(2, 5, 5)
 STACK_NAME = "bdb:" + path.join(
@@ -1325,7 +1325,7 @@ class Test_varf2d_MPI(unittest.TestCase):
         return_new = fu.varf2d_MPI(
             myid=self.main_node,
             data=self.data,
-            ave=IMAGE_2D,
+            ave=IMAGE.2D,
             mask=None,
             mode="a",
             CTF=False,
@@ -1335,7 +1335,7 @@ class Test_varf2d_MPI(unittest.TestCase):
         return_old = oldfu.varf2d_MPI(
             myid=self.main_node,
             data=self.data,
-            ave=IMAGE_2D,
+            ave=IMAGE.2D,
             mask=None,
             mode="a",
             CTF=False,
@@ -1360,7 +1360,7 @@ class Test_varf2d_MPI(unittest.TestCase):
         return_new = fu.varf2d_MPI(
             myid=self.main_node,
             data=self.data,
-            ave=IMAGE_3D,
+            ave=IMAGE.3D,
             mask=None,
             mode="a",
             CTF=False,
@@ -1370,7 +1370,7 @@ class Test_varf2d_MPI(unittest.TestCase):
         return_old = oldfu.varf2d_MPI(
             myid=self.main_node,
             data=self.data,
-            ave=IMAGE_3D,
+            ave=IMAGE.3D,
             mask=None,
             mode="a",
             CTF=False,
@@ -1440,7 +1440,7 @@ class Test_varf2d_MPI(unittest.TestCase):
         return_new = fu.varf2d_MPI(
             myid=self.main_node + 1,
             data=self.data,
-            ave=IMAGE_2D,
+            ave=IMAGE.2D,
             mask=None,
             mode="a",
             CTF=False,
@@ -1450,7 +1450,7 @@ class Test_varf2d_MPI(unittest.TestCase):
         return_old = oldfu.varf2d_MPI(
             myid=self.main_node + 1,
             data=self.data,
-            ave=IMAGE_2D,
+            ave=IMAGE.2D,
             mask=None,
             mode="a",
             CTF=False,
@@ -1479,7 +1479,7 @@ class Test_varf2d_MPI(unittest.TestCase):
         return_new = fu.varf2d_MPI(
             myid=self.main_node,
             data=self.data,
-            ave=IMAGE_2D,
+            ave=IMAGE.2D,
             mask=None,
             mode="a",
             CTF=True,
@@ -1489,7 +1489,7 @@ class Test_varf2d_MPI(unittest.TestCase):
         return_old = oldfu.varf2d_MPI(
             myid=self.main_node,
             data=self.data,
-            ave=IMAGE_2D,
+            ave=IMAGE.2D,
             mask=None,
             mode="a",
             CTF=True,
@@ -1559,7 +1559,7 @@ class Test_varf2d_MPI(unittest.TestCase):
         return_new = fu.varf2d_MPI(
             myid=self.main_node,
             data=self.data,
-            ave=IMAGE_2D,
+            ave=IMAGE.2D,
             mask=MASK,
             mode="a",
             CTF=False,
@@ -1569,7 +1569,7 @@ class Test_varf2d_MPI(unittest.TestCase):
         return_old = oldfu.varf2d_MPI(
             myid=self.main_node,
             data=self.data,
-            ave=IMAGE_2D,
+            ave=IMAGE.2D,
             mask=MASK,
             mode="a",
             CTF=False,
@@ -1598,7 +1598,7 @@ class Test_varf2d_MPI(unittest.TestCase):
         return_new = fu.varf2d_MPI(
             myid=self.main_node,
             data=self.data,
-            ave=IMAGE_2D,
+            ave=IMAGE.2D,
             mask=None,
             mode="not",
             CTF=False,
@@ -1608,7 +1608,7 @@ class Test_varf2d_MPI(unittest.TestCase):
         return_old = oldfu.varf2d_MPI(
             myid=self.main_node,
             data=self.data,
-            ave=IMAGE_2D,
+            ave=IMAGE.2D,
             mask=None,
             mode="not",
             CTF=False,
@@ -1678,7 +1678,7 @@ class Test_varf2d_MPI(unittest.TestCase):
         return_new = fu.varf2d_MPI(
             myid=self.main_node,
             data=self.data,
-            ave=IMAGE_2D,
+            ave=IMAGE.2D,
             mask=MASK,
             mode="not",
             CTF=False,
@@ -1688,7 +1688,7 @@ class Test_varf2d_MPI(unittest.TestCase):
         return_old = oldfu.varf2d_MPI(
             myid=self.main_node,
             data=self.data,
-            ave=IMAGE_2D,
+            ave=IMAGE.2D,
             mask=MASK,
             mode="not",
             CTF=False,

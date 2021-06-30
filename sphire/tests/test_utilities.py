@@ -84,11 +84,11 @@ from sphire.tests.test_module import (
     returns_values_in_file,
     remove_dir,
     ABSOLUTE_PATH_TO_SPHIRE_DEMO_RESULTS_FOLDER,
-    IMAGE_2D,
-    IMAGE_2D_REFERENCE,
-    IMAGE_3D,
-    IMAGE_BLANK_2D,
-    IMAGE_BLANK_3D,
+    IMAGE.2D,
+    IMAGE.2D_REFERENCE,
+    IMAGE.3D,
+    IMAGE.BLANK_2D,
+    IMAGE.BLANK_3D,
 )
 from sphire.sphire.libpy.sp_fundamentals import symclass as foundamental_symclasss
 
@@ -354,17 +354,17 @@ class Test_ce_fit(unittest.TestCase):
     def test_NoneType_inp_imagecrashes_because_signal11SIGSEV(self):
         pass
         '''
-        return_new = fu.ce_fit(inp_image=None, ref_image= IMAGE_2D_REFERENCE, mask_image=MASK)
-        return_old = oldfu.ce_fit(inp_image=None, ref_image= IMAGE_2D_REFERENCE, mask_image=MASK)
+        return_new = fu.ce_fit(inp_image=None, ref_image= IMAGE.2D_REFERENCE, mask_image=MASK)
+        return_old = oldfu.ce_fit(inp_image=None, ref_image= IMAGE.2D_REFERENCE, mask_image=MASK)
         self.assertEqual(return_new,return_old)
         self.assertEqual(return_new,None)
         '''
 
     def test_Empty_inp_image(self):
         with self.assertRaises(RuntimeError)as cm_new:
-            fu.ce_fit(inp_image=EMData(), ref_image= IMAGE_2D_REFERENCE, mask_image=MASK)
+            fu.ce_fit(inp_image=EMData(), ref_image= IMAGE.2D_REFERENCE, mask_image=MASK)
         with self.assertRaises(RuntimeError)as cm_old:
-            oldfu.ce_fit(inp_image=EMData(), ref_image= IMAGE_2D_REFERENCE, mask_image=MASK)
+            oldfu.ce_fit(inp_image=EMData(), ref_image= IMAGE.2D_REFERENCE, mask_image=MASK)
         msg = str(cm_new.exception).split("'")
         msg_old = str(cm_old.exception).split("'")
         self.assertEqual(msg[0].split(" ")[0], "InvalidValueException")
@@ -375,17 +375,17 @@ class Test_ce_fit(unittest.TestCase):
     def test_NoneType_ref_imagecrashes_because_signal11SIGSEV(self):
         pass
         '''
-        return_new = fu.ce_fit(inp_image=IMAGE_2D, ref_image= None, mask_image=MASK)
-        return_old = oldfu.ce_fit(inp_image=IMAGE_2D, ref_image= None, mask_image=MASK)
+        return_new = fu.ce_fit(inp_image=IMAGE.2D, ref_image= None, mask_image=MASK)
+        return_old = oldfu.ce_fit(inp_image=IMAGE.2D, ref_image= None, mask_image=MASK)
         self.assertEqual(return_new,return_old)
         self.assertEqual(return_new,None)
         '''
 
     def test_Empty_ref_image(self):
         with self.assertRaises(RuntimeError)as cm_new:
-            fu.ce_fit(inp_image=IMAGE_2D, ref_image= EMData(), mask_image=MASK)
+            fu.ce_fit(inp_image=IMAGE.2D, ref_image= EMData(), mask_image=MASK)
         with self.assertRaises(RuntimeError)as cm_old:
-            oldfu.ce_fit(inp_image=IMAGE_2D, ref_image= EMData(), mask_image=MASK)
+            oldfu.ce_fit(inp_image=IMAGE.2D, ref_image= EMData(), mask_image=MASK)
         msg = str(cm_new.exception).split("'")
         msg_old = str(cm_old.exception).split("'")
         self.assertEqual(msg[0].split(" ")[0], "InvalidValueException")
@@ -394,8 +394,8 @@ class Test_ce_fit(unittest.TestCase):
         self.assertEqual(msg[3], msg_old[3])
 
     def test_NoneType_mask_imagee(self):
-        return_new = fu.ce_fit(inp_image=IMAGE_2D, ref_image= IMAGE_2D_REFERENCE, mask_image=None)
-        return_old = oldfu.ce_fit(inp_image=IMAGE_2D, ref_image= IMAGE_2D_REFERENCE, mask_image=None)
+        return_new = fu.ce_fit(inp_image=IMAGE.2D, ref_image= IMAGE_2D_REFERENCE, mask_image=None)
+        return_old = oldfu.ce_fit(inp_image=IMAGE.2D, ref_image= IMAGE_2D_REFERENCE, mask_image=None)
         self.test_mixed_array(return_new[0],return_old[0])
         self.assertEqual(return_new[1],return_old[1])
         self.assertTrue(array_equal(return_new[2].get_3dview(), return_old[2].get_3dview()))
@@ -403,8 +403,8 @@ class Test_ce_fit(unittest.TestCase):
         self.assertEqual(return_new[1],'Corrected Image :')
 
     def test_NoneType_with_mask_image(self):
-        return_new = fu.ce_fit(inp_image=IMAGE_2D, ref_image= IMAGE_2D_REFERENCE, mask_image=MASK_2DIMAGE)
-        return_old = oldfu.ce_fit(inp_image=IMAGE_2D, ref_image= IMAGE_2D_REFERENCE, mask_image=MASK_2DIMAGE)
+        return_new = fu.ce_fit(inp_image=IMAGE.2D, ref_image= IMAGE_2D_REFERENCE, mask_image=MASK_2DIMAGE)
+        return_old = oldfu.ce_fit(inp_image=IMAGE.2D, ref_image= IMAGE_2D_REFERENCE, mask_image=MASK_2DIMAGE)
         self.test_mixed_array(return_new[0],return_old[0])
         self.assertEqual(return_new[1],return_old[1])
         self.assertTrue(array_equal(return_new[2].get_3dview(), return_old[2].get_3dview()))
@@ -413,9 +413,9 @@ class Test_ce_fit(unittest.TestCase):
 
     def test_Empty_mask_image(self):
         with self.assertRaises(RuntimeError)as cm_new:
-            fu.ce_fit(inp_image=IMAGE_2D, ref_image= IMAGE_2D_REFERENCE, mask_image=EMData())
+            fu.ce_fit(inp_image=IMAGE.2D, ref_image= IMAGE_2D_REFERENCE, mask_image=EMData())
         with self.assertRaises(RuntimeError)as cm_old:
-            oldfu.ce_fit(inp_image=IMAGE_2D, ref_image= IMAGE_2D_REFERENCE, mask_image=EMData())
+            oldfu.ce_fit(inp_image=IMAGE.2D, ref_image= IMAGE_2D_REFERENCE, mask_image=EMData())
         msg = str(cm_new.exception).split("'")
         msg_old = str(cm_old.exception).split("'")
         self.assertEqual(msg[0].split(" ")[0], "InvalidValueException")
@@ -423,11 +423,11 @@ class Test_ce_fit(unittest.TestCase):
         self.assertEqual(msg[0].split(" ")[0], msg_old[0].split(" ")[0])
         self.assertEqual(msg[3], msg_old[3])
 
-    def test_2DIMAGE_different_size_mask_runtimeError(self):
+    def test_2DIMAGE.different_size_mask_runtimeError(self):
         with self.assertRaises(RuntimeError)as cm_new:
-            fu.ce_fit(inp_image=IMAGE_2D, ref_image= IMAGE_2D_REFERENCE, mask_image=MASK)
+            fu.ce_fit(inp_image=IMAGE.2D, ref_image= IMAGE_2D_REFERENCE, mask_image=MASK)
         with self.assertRaises(RuntimeError)as cm_old:
-            oldfu.ce_fit(inp_image=IMAGE_2D, ref_image= IMAGE_2D_REFERENCE, mask_image=MASK)
+            oldfu.ce_fit(inp_image=IMAGE.2D, ref_image= IMAGE_2D_REFERENCE, mask_image=MASK)
         msg = str(cm_new.exception).split("'")
         msg_old = str(cm_old.exception).split("'")
         self.assertEqual(msg[0].split(" ")[0], "ImageDimensionException")
@@ -508,8 +508,8 @@ class Test_drop_png_image(unittest.TestCase):
         self.assertEqual(msg[3], msg_old[3])
 
     def test_NoneType_ref_image(self):
-        return_new = fu.drop_png_image(im=IMAGE_2D, trg='png')
-        return_old = oldfu.drop_png_image(im=IMAGE_2D, trg='png')
+        return_new = fu.drop_png_image(im=IMAGE.2D, trg='png')
+        return_old = oldfu.drop_png_image(im=IMAGE.2D, trg='png')
         self.assertEqual(return_new,return_old)
         self.assertEqual(return_new,None)
 
@@ -537,8 +537,8 @@ class Test_dump_row(unittest.TestCase):
         self.assertEqual(msg[3], msg_old[3])
 
     def test_NoneType_ref_inputage(self):
-        return_new = fu.dump_row(input=IMAGE_2D, fname="filename", ix=0, iz=0)
-        return_old = oldfu.dump_row(input=IMAGE_2D, fname="filename", ix=0, iz=0)
+        return_new = fu.dump_row(input=IMAGE.2D, fname="filename", ix=0, iz=0)
+        return_old = oldfu.dump_row(input=IMAGE.2D, fname="filename", ix=0, iz=0)
         self.assertEqual(return_new,return_old)
         self.assertEqual(return_new,None)
 
@@ -656,16 +656,16 @@ class Test_info(unittest.TestCase):
         self.assertEqual(str(cm_new.exception), str(cm_old.exception))
 
     def test_2dImg(self):
-        return_old = oldfu.info(image=IMAGE_2D, mask=None, Comment="")
-        return_new = fu.info(image=IMAGE_2D, mask=None, Comment="")
+        return_old = oldfu.info(image=IMAGE.2D, mask=None, Comment="")
+        return_new = fu.info(image=IMAGE.2D, mask=None, Comment="")
         self.assertTrue(array_equal(return_new, return_old))
         self.assertTrue(array_equal(return_old, (-0.34738418459892273, 1.3910515308380127, -4.196987152099609, 6.156104564666748, 352, 352, 1)))
 
     def test_2dImgwith_wrongsize_mask_RuntimeError_ImageDimensionException(self):
         with self.assertRaises(RuntimeError) as cm_new:
-            oldfu.info(image=IMAGE_2D, mask=MASK, Comment="")
+            oldfu.info(image=IMAGE.2D, mask=MASK, Comment="")
         with self.assertRaises(RuntimeError) as cm_old:
-            fu.info(image=IMAGE_2D, mask=MASK, Comment="")
+            fu.info(image=IMAGE.2D, mask=MASK, Comment="")
         msg = str(cm_new.exception).split("'")
         msg_old = str(cm_old.exception).split("'")
         self.assertEqual(msg[0].split(" ")[0], "ImageDimensionException")
@@ -675,16 +675,16 @@ class Test_info(unittest.TestCase):
         self.assertEqual(str(cm_new.exception), str(cm_old.exception))
 
     def test_2dImg_withMask(self):
-        return_old = oldfu.info(image=IMAGE_2D, mask=None, Comment="")
-        return_new = fu.info(image=IMAGE_2D, mask=None, Comment="")
+        return_old = oldfu.info(image=IMAGE.2D, mask=None, Comment="")
+        return_new = fu.info(image=IMAGE.2D, mask=None, Comment="")
         self.assertTrue(array_equal(return_new, return_old))
         self.assertTrue(array_equal(return_old, (1.617922306060791, 0.3879293203353882, 1.0218865871429443, 2.2291574478149414, 352, 352, 1)))
 
     def test_2dImgBlankwith_wrongsize_mask_RuntimeError_ImageDimensionException(self):
         with self.assertRaises(RuntimeError) as cm_new:
-            oldfu.info(image=IMAGE_BLANK_2D, mask=MASK, Comment="")
+            oldfu.info(image=IMAGE.BLANK_2D, mask=MASK, Comment="")
         with self.assertRaises(RuntimeError) as cm_old:
-            fu.info(image=IMAGE_BLANK_2D, mask=MASK, Comment="")
+            fu.info(image=IMAGE.BLANK_2D, mask=MASK, Comment="")
         msg = str(cm_new.exception).split("'")
         msg_old = str(cm_old.exception).split("'")
         self.assertEqual(msg[0].split(" ")[0], "ImageDimensionException")
@@ -694,28 +694,28 @@ class Test_info(unittest.TestCase):
         self.assertEqual(str(cm_new.exception), str(cm_old.exception))
 
     def test_2dblankImg(self):
-        return_old = oldfu.info(image=IMAGE_BLANK_2D, mask=None, Comment="")
-        return_new = fu.info(image=IMAGE_BLANK_2D, mask=None, Comment="")
+        return_old = oldfu.info(image=IMAGE.BLANK_2D, mask=None, Comment="")
+        return_new = fu.info(image=IMAGE.BLANK_2D, mask=None, Comment="")
         self.assertTrue(array_equal(return_new, return_old))
         self.assertTrue(array_equal(return_old, (0.0, 0.0, 0.0, 0.0, 10, 10, 1)))
 
     def test_2dblankImgwith_mask(self):
-        return_old = oldfu.info(image=IMAGE_BLANK_2D, mask=MASK_IMAGE_BLANK_2D, Comment="")
-        return_new = fu.info(image=IMAGE_BLANK_2D, mask=MASK_IMAGE_BLANK_2D, Comment="")
+        return_old = oldfu.info(image=IMAGE.BLANK_2D, mask=MASK_IMAGE_BLANK_2D, Comment="")
+        return_new = fu.info(image=IMAGE.BLANK_2D, mask=MASK_IMAGE_BLANK_2D, Comment="")
         self.assertTrue(array_equal(return_new, return_old))
         self.assertTrue(array_equal(return_old, (0.0, 0.0, 0.0, 0.0, 10, 10, 1)))
 
     def test_3dImg(self):
-        return_old = oldfu.info(image=IMAGE_3D, mask=None, Comment="")
-        return_new = fu.info(image=IMAGE_3D, mask=None, Comment="")
+        return_old = oldfu.info(image=IMAGE.3D, mask=None, Comment="")
+        return_new = fu.info(image=IMAGE.3D, mask=None, Comment="")
         self.assertTrue(array_equal(return_new, return_old))
         self.assertTrue(array_equal(return_old, (1.640047550201416, 8.512676239013672, -10.731719017028809, 144.96165466308594, 76, 76, 76)))
 
     def test_3dImgwith_wrongsize_mask_RuntimeError_ImageDimensionException(self):
         with self.assertRaises(RuntimeError) as cm_new:
-            oldfu.info(image=IMAGE_3D, mask=MASK, Comment="")
+            oldfu.info(image=IMAGE.3D, mask=MASK, Comment="")
         with self.assertRaises(RuntimeError) as cm_old:
-            fu.info(image=IMAGE_3D, mask=MASK, Comment="")
+            fu.info(image=IMAGE.3D, mask=MASK, Comment="")
         msg = str(cm_new.exception).split("'")
         msg_old = str(cm_old.exception).split("'")
         self.assertEqual(msg[0].split(" ")[0], "ImageDimensionException")
@@ -725,28 +725,28 @@ class Test_info(unittest.TestCase):
         self.assertEqual(str(cm_new.exception), str(cm_old.exception))
 
     def test_3dImgwith_mask(self):
-        return_old = oldfu.info(image=IMAGE_3D, mask=MASK_3DIMAGE, Comment="")
-        return_new = fu.info(image=IMAGE_3D, mask=MASK_3DIMAGE, Comment="")
+        return_old = oldfu.info(image=IMAGE.3D, mask=MASK_3DIMAGE, Comment="")
+        return_new = fu.info(image=IMAGE.3D, mask=MASK_3DIMAGE, Comment="")
         self.assertTrue(array_equal(return_new, return_old))
         self.assertTrue(array_equal(return_old, (24.25007438659668, 14.403861045837402, -10.731719017028809, 45.90932083129883, 76, 76, 76)))
 
     def test_3dblankImg(self):
-        return_old = oldfu.info(image=IMAGE_BLANK_3D, mask=None, Comment="")
-        return_new = fu.info(image=IMAGE_BLANK_3D, mask=None, Comment="")
+        return_old = oldfu.info(image=IMAGE.BLANK_3D, mask=None, Comment="")
+        return_new = fu.info(image=IMAGE.BLANK_3D, mask=None, Comment="")
         self.assertTrue(array_equal(return_new, return_old))
         self.assertTrue(array_equal(return_old, (0.0, 0.0, 0.0, 0.0, 10, 10, 10)))
 
     def test_3dblankImgwith_mask(self):
-        return_old = oldfu.info(image=IMAGE_BLANK_3D, mask=MASK_IMAGE_BLANK_3D, Comment="")
-        return_new = fu.info(image=IMAGE_BLANK_3D, mask=MASK_IMAGE_BLANK_3D, Comment="")
+        return_old = oldfu.info(image=IMAGE.BLANK_3D, mask=MASK_IMAGE_BLANK_3D, Comment="")
+        return_new = fu.info(image=IMAGE.BLANK_3D, mask=MASK_IMAGE_BLANK_3D, Comment="")
         self.assertTrue(array_equal(return_new, return_old))
         self.assertTrue(array_equal(return_old, (0.0, 0.0, 0.0, 0.0, 10, 10, 10)))
 
     def test_3dImgBlankwith_wrongsize_mask_RuntimeError_ImageDimensionException(self):
         with self.assertRaises(RuntimeError) as cm_new:
-            oldfu.info(image=IMAGE_BLANK_3D, mask=MASK, Comment="")
+            oldfu.info(image=IMAGE.BLANK_3D, mask=MASK, Comment="")
         with self.assertRaises(RuntimeError) as cm_old:
-            fu.info(image=IMAGE_BLANK_3D, mask=MASK, Comment="")
+            fu.info(image=IMAGE.BLANK_3D, mask=MASK, Comment="")
         msg = str(cm_new.exception).split("'")
         msg_old = str(cm_old.exception).split("'")
         self.assertEqual(msg[0].split(" ")[0], "ImageDimensionException")
@@ -861,30 +861,30 @@ class Test_sym_vol(unittest.TestCase):
 
     def test_NoneType_as_img_returns_AttributeError_NoneType_obj_hasnot_attribute_copy(self):
         with self.assertRaises(AttributeError) as cm_new:
-            fu.sym_vol(image=IMAGE_3D, symmetry="c1")
+            fu.sym_vol(image=IMAGE.3D, symmetry="c1")
         with self.assertRaises(AttributeError) as cm_old:
-            oldfu.sym_vol(image=IMAGE_3D, symmetry="c1")
+            oldfu.sym_vol(image=IMAGE.3D, symmetry="c1")
         self.assertEqual(str(cm_new.exception), "'NoneType' object has no attribute 'copy'")
         self.assertEqual(str(cm_new.exception), str(cm_old.exception))
 
     def test_sym_vol_c1_3Dimg(self):
-        return_old = oldfu.sym_vol(image=IMAGE_3D, symmetry="c1")
-        return_new = fu.sym_vol(image=IMAGE_3D, symmetry="c1")
+        return_old = oldfu.sym_vol(image=IMAGE.3D, symmetry="c1")
+        return_new = fu.sym_vol(image=IMAGE.3D, symmetry="c1")
         self.assertTrue(array_equal(return_new.get_3dview(), return_old.get_3dview()))
 
     def test_sym_vol_c1_2Dimg(self):
-        return_old = oldfu.sym_vol(image=IMAGE_2D, symmetry="c1")
-        return_new = fu.sym_vol(image=IMAGE_2D, symmetry="c1")
+        return_old = oldfu.sym_vol(image=IMAGE.2D, symmetry="c1")
+        return_new = fu.sym_vol(image=IMAGE.2D, symmetry="c1")
         self.assertTrue(array_equal(return_new.get_3dview(), return_old.get_3dview()))
 
     def test_sym_vol_d1_3Dimg(self):
-        return_old = oldfu.sym_vol(image=IMAGE_3D, symmetry="d1")
-        return_new = fu.sym_vol(image=IMAGE_3D, symmetry="d1")
+        return_old = oldfu.sym_vol(image=IMAGE.3D, symmetry="d1")
+        return_new = fu.sym_vol(image=IMAGE.3D, symmetry="d1")
         self.assertTrue(array_equal(return_new.get_3dview(), return_old.get_3dview()))
 
     def test_sym_vol_d1_2Dimg(self):
-        return_old = oldfu.sym_vol(image=IMAGE_2D, symmetry="d1")
-        return_new = fu.sym_vol(image=IMAGE_2D, symmetry="d1")
+        return_old = oldfu.sym_vol(image=IMAGE.2D, symmetry="d1")
+        return_new = fu.sym_vol(image=IMAGE.2D, symmetry="d1")
         self.assertTrue(array_equal(return_new.get_3dview(), return_old.get_3dview()))
 
 
@@ -932,15 +932,15 @@ class Test_check_attr(unittest.TestCase):
         self.assertEqual(str(cm_new.exception), str(cm_old.exception))
 
     def test_check_attr_returns_true(self):
-        return_old = oldfu.check_attr(ima=IMAGE_2D, num=1, params="apix_x", default_value=2, action="Warning")
-        return_new = fu.check_attr(ima=IMAGE_2D, num=1, params="apix_x", default_value=2, action="Warning")
+        return_old = oldfu.check_attr(ima=IMAGE.2D, num=1, params="apix_x", default_value=2, action="Warning")
+        return_new = fu.check_attr(ima=IMAGE.2D, num=1, params="apix_x", default_value=2, action="Warning")
         self.assertTrue(return_new)
         self.assertTrue(return_old)
 
 
     def test_check_attr_returns_false(self):
-        return_old = oldfu.check_attr(ima=IMAGE_2D, num=1, params="para", default_value=2, action="Warning")
-        return_new = fu.check_attr(ima=IMAGE_2D, num=1, params="para", default_value=2, action="Warning")
+        return_old = oldfu.check_attr(ima=IMAGE.2D, num=1, params="para", default_value=2, action="Warning")
+        return_new = fu.check_attr(ima=IMAGE.2D, num=1, params="para", default_value=2, action="Warning")
         self.assertFalse(return_new)
         self.assertFalse(return_old)
 
@@ -971,8 +971,8 @@ class Test_set_ctf(unittest.TestCase):
         self.assertEqual(str(cm_new.exception), str(cm_old.exception))
 
     def test_set_ctf(self):
-        return_old = oldfu.set_ctf(ima=IMAGE_2D, p=[0,1,1,1,1,1,1,1])
-        return_new = fu.set_ctf(ima=IMAGE_2D, p=[0,1,1,1,1,1,1,1])
+        return_old = oldfu.set_ctf(ima=IMAGE.2D, p=[0,1,1,1,1,1,1,1])
+        return_new = fu.set_ctf(ima=IMAGE.2D, p=[0,1,1,1,1,1,1,1])
 
 
 
@@ -1766,9 +1766,9 @@ class Test_get_attr_stack(unittest.TestCase):
 
     def test_attribute_no_found_runTimeError(self):
         with self.assertRaises(RuntimeError) as cm_new:
-            fu.get_attr_stack(data_stack=[IMAGE_2D,IMAGE_2D], attr_string="notfound")
+            fu.get_attr_stack(data_stack=[IMAGE.2D,IMAGE_2D], attr_string="notfound")
         with self.assertRaises(RuntimeError) as cm_old:
-            oldfu.get_attr_stack(data_stack=[IMAGE_2D,IMAGE_2D], attr_string="apix_x")
+            oldfu.get_attr_stack(data_stack=[IMAGE.2D,IMAGE_2D], attr_string="apix_x")
         msg = str(cm_new.exception).split("'")
         msg_old = str(cm_old.exception).split("'")
         self.assertEqual(msg[0].split(" ")[0], "NotExistingObjectException")
@@ -1778,8 +1778,8 @@ class Test_get_attr_stack(unittest.TestCase):
         self.assertEqual(str(cm_new.exception), str(cm_old.exception))
 
     def test_get_attr_stack(self):
-        return_old = oldfu.get_attr_stack(data_stack=[IMAGE_2D,IMAGE_2D], attr_string="apix_x")
-        return_new = fu.get_attr_stack(data_stack=[IMAGE_2D,IMAGE_2D], attr_string="")
+        return_old = oldfu.get_attr_stack(data_stack=[IMAGE.2D,IMAGE_2D], attr_string="apix_x")
+        return_new = fu.get_attr_stack(data_stack=[IMAGE.2D,IMAGE_2D], attr_string="")
         self.assertTrue(array_equal(return_new, return_old))
         self.assertTrue(array_equal([1.0, 1.0], return_old))
 
@@ -1800,8 +1800,8 @@ class Test_get_sorting_params(unittest.TestCase):
         Tracker["constants"]["main_node"] = 0
         Tracker["constants"]["nproc"] = 3
         Tracker["total_stack"] = 2
-        return_old =oldfu.get_sorting_params(Tracker=TRACKER, data=[IMAGE_2D,IMAGE_2D])
-        return_new = fu.get_sorting_params(Tracker=TRACKER, data=[IMAGE_2D,IMAGE_2D])
+        return_old =oldfu.get_sorting_params(Tracker=TRACKER, data=[IMAGE.2D,IMAGE_2D])
+        return_new = fu.get_sorting_params(Tracker=TRACKER, data=[IMAGE.2D,IMAGE_2D])
         self.assertTrue(array_equal(return_new, return_old))
 
 
@@ -2266,7 +2266,7 @@ class Test_center_2D(unittest.TestCase):
 
     def test_2DImg(self):
         return_new = fu.center_2D(
-            image_to_be_centered=IMAGE_2D,
+            image_to_be_centered=IMAGE.2D,
             center_method=1,
             searching_range=-1,
             Gauss_radius_inner=2,
@@ -2274,7 +2274,7 @@ class Test_center_2D(unittest.TestCase):
             self_defined_reference=None,
         )
         return_old = oldfu.center_2D(
-            image_to_be_centered=IMAGE_2D,
+            image_to_be_centered=IMAGE.2D,
             center_method=1,
             searching_range=-1,
             Gauss_radius_inner=2,
@@ -2398,7 +2398,7 @@ class Test_center_2D(unittest.TestCase):
 
     def test_2DBlankImg(self):
         return_new = fu.center_2D(
-            image_to_be_centered=IMAGE_BLANK_2D,
+            image_to_be_centered=IMAGE.BLANK_2D,
             center_method=1,
             searching_range=-1,
             Gauss_radius_inner=2,
@@ -2406,7 +2406,7 @@ class Test_center_2D(unittest.TestCase):
             self_defined_reference=None,
         )
         return_old = oldfu.center_2D(
-            image_to_be_centered=IMAGE_BLANK_2D,
+            image_to_be_centered=IMAGE.BLANK_2D,
             center_method=1,
             searching_range=-1,
             Gauss_radius_inner=2,
@@ -2831,7 +2831,7 @@ class Test_center_2D(unittest.TestCase):
     # todo: should be error??
     def test_3DImg(self):
         return_new = fu.center_2D(
-            image_to_be_centered=IMAGE_3D,
+            image_to_be_centered=IMAGE.3D,
             center_method=1,
             searching_range=-1,
             Gauss_radius_inner=2,
@@ -2839,7 +2839,7 @@ class Test_center_2D(unittest.TestCase):
             self_defined_reference=None,
         )
         return_old = oldfu.center_2D(
-            image_to_be_centered=IMAGE_3D,
+            image_to_be_centered=IMAGE.3D,
             center_method=1,
             searching_range=-1,
             Gauss_radius_inner=2,
@@ -3863,7 +3863,7 @@ class Test_center_2D(unittest.TestCase):
 
     def test_2DImgcenter_method0(self):
         return_new = fu.center_2D(
-            image_to_be_centered=IMAGE_2D,
+            image_to_be_centered=IMAGE.2D,
             center_method=0,
             searching_range=-1,
             Gauss_radius_inner=2,
@@ -3871,7 +3871,7 @@ class Test_center_2D(unittest.TestCase):
             self_defined_reference=True,
         )
         return_old = oldfu.center_2D(
-            image_to_be_centered=IMAGE_2D,
+            image_to_be_centered=IMAGE.2D,
             center_method=0,
             searching_range=-1,
             Gauss_radius_inner=2,
@@ -3997,7 +3997,7 @@ class Test_center_2D(unittest.TestCase):
         self
     ):
         return_new = fu.center_2D(
-            image_to_be_centered=IMAGE_2D,
+            image_to_be_centered=IMAGE.2D,
             center_method=1,
             searching_range=-1,
             Gauss_radius_inner=2,
@@ -4005,7 +4005,7 @@ class Test_center_2D(unittest.TestCase):
             self_defined_reference=True,
         )
         return_old = oldfu.center_2D(
-            image_to_be_centered=IMAGE_2D,
+            image_to_be_centered=IMAGE.2D,
             center_method=1,
             searching_range=-1,
             Gauss_radius_inner=2,
@@ -4131,7 +4131,7 @@ class Test_center_2D(unittest.TestCase):
         self
     ):
         return_new = fu.center_2D(
-            image_to_be_centered=IMAGE_2D,
+            image_to_be_centered=IMAGE.2D,
             center_method=2,
             searching_range=-1,
             Gauss_radius_inner=2,
@@ -4139,7 +4139,7 @@ class Test_center_2D(unittest.TestCase):
             self_defined_reference=True,
         )
         return_old = oldfu.center_2D(
-            image_to_be_centered=IMAGE_2D,
+            image_to_be_centered=IMAGE.2D,
             center_method=2,
             searching_range=-1,
             Gauss_radius_inner=2,
@@ -4265,7 +4265,7 @@ class Test_center_2D(unittest.TestCase):
         self
     ):
         return_new = fu.center_2D(
-            image_to_be_centered=IMAGE_2D,
+            image_to_be_centered=IMAGE.2D,
             center_method=3,
             searching_range=-1,
             Gauss_radius_inner=2,
@@ -4273,7 +4273,7 @@ class Test_center_2D(unittest.TestCase):
             self_defined_reference=True,
         )
         return_old = oldfu.center_2D(
-            image_to_be_centered=IMAGE_2D,
+            image_to_be_centered=IMAGE.2D,
             center_method=3,
             searching_range=-1,
             Gauss_radius_inner=2,
@@ -4401,8 +4401,8 @@ class Test_center_2D(unittest.TestCase):
     ):
         self.assertTrue(True)
         """
-        return_new = fu.center_2D(image_to_be_centered=IMAGE_2D ,center_method=4,searching_range=-1,Gauss_radius_inner=2,Gauss_radius_outter=7,self_defined_reference=True)
-        return_old = oldfu.center_2D(image_to_be_centered=IMAGE_2D ,center_method=4,searching_range=-1,Gauss_radius_inner=2,Gauss_radius_outter=7,self_defined_reference=True)
+        return_new = fu.center_2D(image_to_be_centered=IMAGE.2D ,center_method=4,searching_range=-1,Gauss_radius_inner=2,Gauss_radius_outter=7,self_defined_reference=True)
+        return_old = oldfu.center_2D(image_to_be_centered=IMAGE.2D ,center_method=4,searching_range=-1,Gauss_radius_inner=2,Gauss_radius_outter=7,self_defined_reference=True)
         self.assertTrue(array_equal(return_new.get_2dview(), return_old.get_2dview()))
         self.assertTrue(array_equal(return_new.get_2dview().flatten(), ))
         self.assertEqual(return_new[1], return_old[1])
@@ -4413,7 +4413,7 @@ class Test_center_2D(unittest.TestCase):
         self
     ):
         return_new = fu.center_2D(
-            image_to_be_centered=IMAGE_2D,
+            image_to_be_centered=IMAGE.2D,
             center_method=5,
             searching_range=-1,
             Gauss_radius_inner=2,
@@ -4421,7 +4421,7 @@ class Test_center_2D(unittest.TestCase):
             self_defined_reference=True,
         )
         return_old = oldfu.center_2D(
-            image_to_be_centered=IMAGE_2D,
+            image_to_be_centered=IMAGE.2D,
             center_method=5,
             searching_range=-1,
             Gauss_radius_inner=2,
@@ -4547,7 +4547,7 @@ class Test_center_2D(unittest.TestCase):
         self
     ):
         return_new = fu.center_2D(
-            image_to_be_centered=IMAGE_2D,
+            image_to_be_centered=IMAGE.2D,
             center_method=6,
             searching_range=-1,
             Gauss_radius_inner=2,
@@ -4555,7 +4555,7 @@ class Test_center_2D(unittest.TestCase):
             self_defined_reference=True,
         )
         return_old = oldfu.center_2D(
-            image_to_be_centered=IMAGE_2D,
+            image_to_be_centered=IMAGE.2D,
             center_method=6,
             searching_range=-1,
             Gauss_radius_inner=2,
@@ -4683,8 +4683,8 @@ class Test_center_2D(unittest.TestCase):
     ):
         self.assertTrue(True)
         """
-        return_new = fu.center_2D(image_to_be_centered=IMAGE_2D ,center_method=7,searching_range=-1,Gauss_radius_inner=2,Gauss_radius_outter=7,self_defined_reference=True)
-        return_old = oldfu.center_2D(image_to_be_centered=IMAGE_2D ,center_method=7,searching_range=-1,Gauss_radius_inner=2,Gauss_radius_outter=7,self_defined_reference=True)
+        return_new = fu.center_2D(image_to_be_centered=IMAGE.2D ,center_method=7,searching_range=-1,Gauss_radius_inner=2,Gauss_radius_outter=7,self_defined_reference=True)
+        return_old = oldfu.center_2D(image_to_be_centered=IMAGE.2D ,center_method=7,searching_range=-1,Gauss_radius_inner=2,Gauss_radius_outter=7,self_defined_reference=True)
         self.assertTrue(array_equal(return_new.get_2dview(), return_old.get_2dview()))
         self.assertTrue(array_equal(return_new.get_2dview().flatten(), ))
         self.assertEqual(return_new[1], return_old[1])
@@ -4695,7 +4695,7 @@ class Test_center_2D(unittest.TestCase):
         self
     ):
         return_new = fu.center_2D(
-            image_to_be_centered=IMAGE_2D,
+            image_to_be_centered=IMAGE.2D,
             center_method=1,
             searching_range=2,
             Gauss_radius_inner=2,
@@ -4703,7 +4703,7 @@ class Test_center_2D(unittest.TestCase):
             self_defined_reference=True,
         )
         return_old = oldfu.center_2D(
-            image_to_be_centered=IMAGE_2D,
+            image_to_be_centered=IMAGE.2D,
             center_method=1,
             searching_range=2,
             Gauss_radius_inner=2,
@@ -4829,7 +4829,7 @@ class Test_center_2D(unittest.TestCase):
         self
     ):
         return_new = fu.center_2D(
-            image_to_be_centered=IMAGE_2D,
+            image_to_be_centered=IMAGE.2D,
             center_method=2,
             searching_range=2,
             Gauss_radius_inner=2,
@@ -4837,7 +4837,7 @@ class Test_center_2D(unittest.TestCase):
             self_defined_reference=True,
         )
         return_old = oldfu.center_2D(
-            image_to_be_centered=IMAGE_2D,
+            image_to_be_centered=IMAGE.2D,
             center_method=2,
             searching_range=2,
             Gauss_radius_inner=2,
@@ -4963,7 +4963,7 @@ class Test_center_2D(unittest.TestCase):
         self
     ):
         return_new = fu.center_2D(
-            image_to_be_centered=IMAGE_2D,
+            image_to_be_centered=IMAGE.2D,
             center_method=3,
             searching_range=2,
             Gauss_radius_inner=2,
@@ -4971,7 +4971,7 @@ class Test_center_2D(unittest.TestCase):
             self_defined_reference=True,
         )
         return_old = oldfu.center_2D(
-            image_to_be_centered=IMAGE_2D,
+            image_to_be_centered=IMAGE.2D,
             center_method=3,
             searching_range=2,
             Gauss_radius_inner=2,
@@ -5099,8 +5099,8 @@ class Test_center_2D(unittest.TestCase):
     ):
         self.assertTrue(True)
         """
-        return_new = fu.center_2D(image_to_be_centered=IMAGE_2D ,center_method=4,searching_range=2,Gauss_radius_inner=2,Gauss_radius_outter=7,self_defined_reference=True)
-        return_old = oldfu.center_2D(image_to_be_centered=IMAGE_2D ,center_method=4,searching_range=2,Gauss_radius_inner=2,Gauss_radius_outter=7,self_defined_reference=True)
+        return_new = fu.center_2D(image_to_be_centered=IMAGE.2D ,center_method=4,searching_range=2,Gauss_radius_inner=2,Gauss_radius_outter=7,self_defined_reference=True)
+        return_old = oldfu.center_2D(image_to_be_centered=IMAGE.2D ,center_method=4,searching_range=2,Gauss_radius_inner=2,Gauss_radius_outter=7,self_defined_reference=True)
         self.assertTrue(array_equal(return_new.get_2dview(), return_old.get_2dview()))
         self.assertTrue(array_equal(return_new.get_2dview().flatten(), ))
         self.assertEqual(return_new[1], return_old[1])
@@ -5111,7 +5111,7 @@ class Test_center_2D(unittest.TestCase):
         self
     ):
         return_new = fu.center_2D(
-            image_to_be_centered=IMAGE_2D,
+            image_to_be_centered=IMAGE.2D,
             center_method=5,
             searching_range=2,
             Gauss_radius_inner=2,
@@ -5119,7 +5119,7 @@ class Test_center_2D(unittest.TestCase):
             self_defined_reference=True,
         )
         return_old = oldfu.center_2D(
-            image_to_be_centered=IMAGE_2D,
+            image_to_be_centered=IMAGE.2D,
             center_method=5,
             searching_range=2,
             Gauss_radius_inner=2,
@@ -5245,7 +5245,7 @@ class Test_center_2D(unittest.TestCase):
         self
     ):
         return_new = fu.center_2D(
-            image_to_be_centered=IMAGE_2D,
+            image_to_be_centered=IMAGE.2D,
             center_method=6,
             searching_range=2,
             Gauss_radius_inner=2,
@@ -5253,7 +5253,7 @@ class Test_center_2D(unittest.TestCase):
             self_defined_reference=True,
         )
         return_old = oldfu.center_2D(
-            image_to_be_centered=IMAGE_2D,
+            image_to_be_centered=IMAGE.2D,
             center_method=6,
             searching_range=2,
             Gauss_radius_inner=2,
@@ -5381,8 +5381,8 @@ class Test_center_2D(unittest.TestCase):
     ):
         self.assertTrue(True)
         """
-        return_new = fu.center_2D(image_to_be_centered=IMAGE_2D ,center_method=7,searching_range=2,Gauss_radius_inner=2,Gauss_radius_outter=7,self_defined_reference=True)
-        return_old = oldfu.center_2D(image_to_be_centered=IMAGE_2D ,center_method=7,searching_range=2,Gauss_radius_inner=2,Gauss_radius_outter=7,self_defined_reference=True)
+        return_new = fu.center_2D(image_to_be_centered=IMAGE.2D ,center_method=7,searching_range=2,Gauss_radius_inner=2,Gauss_radius_outter=7,self_defined_reference=True)
+        return_old = oldfu.center_2D(image_to_be_centered=IMAGE.2D ,center_method=7,searching_range=2,Gauss_radius_inner=2,Gauss_radius_outter=7,self_defined_reference=True)
         self.assertTrue(array_equal(return_new.get_2dview(), return_old.get_2dview()))
         self.assertTrue(array_equal(return_new.get_2dview().flatten(), ))
         self.assertEqual(return_new[1], return_old[1])
@@ -5393,7 +5393,7 @@ class Test_center_2D(unittest.TestCase):
         self
     ):
         return_new = fu.center_2D(
-            image_to_be_centered=IMAGE_2D,
+            image_to_be_centered=IMAGE.2D,
             center_method=1,
             searching_range=-1,
             Gauss_radius_inner=2,
@@ -5401,7 +5401,7 @@ class Test_center_2D(unittest.TestCase):
             self_defined_reference=False,
         )
         return_old = oldfu.center_2D(
-            image_to_be_centered=IMAGE_2D,
+            image_to_be_centered=IMAGE.2D,
             center_method=1,
             searching_range=-1,
             Gauss_radius_inner=2,
@@ -5527,7 +5527,7 @@ class Test_center_2D(unittest.TestCase):
         self
     ):
         return_new = fu.center_2D(
-            image_to_be_centered=IMAGE_2D,
+            image_to_be_centered=IMAGE.2D,
             center_method=2,
             searching_range=-1,
             Gauss_radius_inner=2,
@@ -5535,7 +5535,7 @@ class Test_center_2D(unittest.TestCase):
             self_defined_reference=False,
         )
         return_old = oldfu.center_2D(
-            image_to_be_centered=IMAGE_2D,
+            image_to_be_centered=IMAGE.2D,
             center_method=2,
             searching_range=-1,
             Gauss_radius_inner=2,
@@ -5661,7 +5661,7 @@ class Test_center_2D(unittest.TestCase):
         self
     ):
         return_new = fu.center_2D(
-            image_to_be_centered=IMAGE_2D,
+            image_to_be_centered=IMAGE.2D,
             center_method=3,
             searching_range=-1,
             Gauss_radius_inner=2,
@@ -5669,7 +5669,7 @@ class Test_center_2D(unittest.TestCase):
             self_defined_reference=False,
         )
         return_old = oldfu.center_2D(
-            image_to_be_centered=IMAGE_2D,
+            image_to_be_centered=IMAGE.2D,
             center_method=3,
             searching_range=-1,
             Gauss_radius_inner=2,
@@ -5798,8 +5798,8 @@ class Test_center_2D(unittest.TestCase):
     ):
         self.assertTrue(True)
         """
-        return_new = fu.center_2D(image_to_be_centered=IMAGE_2D ,center_method=4,searching_range=-1,Gauss_radius_inner=2,Gauss_radius_outter=7,self_defined_reference=False)
-        return_old = oldfu.center_2D(image_to_be_centered=IMAGE_2D ,center_method=4,searching_range=-1,Gauss_radius_inner=2,Gauss_radius_outter=7,self_defined_reference=False)
+        return_new = fu.center_2D(image_to_be_centered=IMAGE.2D ,center_method=4,searching_range=-1,Gauss_radius_inner=2,Gauss_radius_outter=7,self_defined_reference=False)
+        return_old = oldfu.center_2D(image_to_be_centered=IMAGE.2D ,center_method=4,searching_range=-1,Gauss_radius_inner=2,Gauss_radius_outter=7,self_defined_reference=False)
         self.assertTrue(array_equal(return_new.get_2dview(), return_old.get_2dview()))
         self.assertTrue(array_equal(return_new.get_2dview().flatten(), ))
         self.assertEqual(return_new[1], return_old[1])
@@ -5812,7 +5812,7 @@ class Test_center_2D(unittest.TestCase):
         self
     ):
         return_new = fu.center_2D(
-            image_to_be_centered=IMAGE_2D,
+            image_to_be_centered=IMAGE.2D,
             center_method=5,
             searching_range=-1,
             Gauss_radius_inner=2,
@@ -5820,7 +5820,7 @@ class Test_center_2D(unittest.TestCase):
             self_defined_reference=False,
         )
         return_old = oldfu.center_2D(
-            image_to_be_centered=IMAGE_2D,
+            image_to_be_centered=IMAGE.2D,
             center_method=5,
             searching_range=-1,
             Gauss_radius_inner=2,
@@ -5946,7 +5946,7 @@ class Test_center_2D(unittest.TestCase):
         self
     ):
         return_new = fu.center_2D(
-            image_to_be_centered=IMAGE_2D,
+            image_to_be_centered=IMAGE.2D,
             center_method=6,
             searching_range=-1,
             Gauss_radius_inner=2,
@@ -5954,7 +5954,7 @@ class Test_center_2D(unittest.TestCase):
             self_defined_reference=False,
         )
         return_old = oldfu.center_2D(
-            image_to_be_centered=IMAGE_2D,
+            image_to_be_centered=IMAGE.2D,
             center_method=6,
             searching_range=-1,
             Gauss_radius_inner=2,
@@ -6082,8 +6082,8 @@ class Test_center_2D(unittest.TestCase):
     ):
         self.assertTrue(True)
         """
-        return_new = fu.center_2D(image_to_be_centered=IMAGE_2D ,center_method=7,searching_range=-1,Gauss_radius_inner=2,Gauss_radius_outter=7,self_defined_reference=False)
-        return_old = oldfu.center_2D(image_to_be_centered=IMAGE_2D ,center_method=7,searching_range=-1,Gauss_radius_inner=2,Gauss_radius_outter=7,self_defined_reference=False)
+        return_new = fu.center_2D(image_to_be_centered=IMAGE.2D ,center_method=7,searching_range=-1,Gauss_radius_inner=2,Gauss_radius_outter=7,self_defined_reference=False)
+        return_old = oldfu.center_2D(image_to_be_centered=IMAGE.2D ,center_method=7,searching_range=-1,Gauss_radius_inner=2,Gauss_radius_outter=7,self_defined_reference=False)
         self.assertTrue(array_equal(return_new.get_2dview(), return_old.get_2dview()))
         self.assertTrue(array_equal(return_new.get_2dview().flatten(), ))
         self.assertEqual(return_new[1], return_old[1])
@@ -6096,7 +6096,7 @@ class Test_center_2D(unittest.TestCase):
         self
     ):
         return_new = fu.center_2D(
-            image_to_be_centered=IMAGE_2D,
+            image_to_be_centered=IMAGE.2D,
             center_method=1,
             searching_range=2,
             Gauss_radius_inner=2,
@@ -6104,7 +6104,7 @@ class Test_center_2D(unittest.TestCase):
             self_defined_reference=False,
         )
         return_old = oldfu.center_2D(
-            image_to_be_centered=IMAGE_2D,
+            image_to_be_centered=IMAGE.2D,
             center_method=1,
             searching_range=2,
             Gauss_radius_inner=2,
@@ -6230,7 +6230,7 @@ class Test_center_2D(unittest.TestCase):
         self
     ):
         return_new = fu.center_2D(
-            image_to_be_centered=IMAGE_2D,
+            image_to_be_centered=IMAGE.2D,
             center_method=2,
             searching_range=2,
             Gauss_radius_inner=2,
@@ -6238,7 +6238,7 @@ class Test_center_2D(unittest.TestCase):
             self_defined_reference=False,
         )
         return_old = oldfu.center_2D(
-            image_to_be_centered=IMAGE_2D,
+            image_to_be_centered=IMAGE.2D,
             center_method=2,
             searching_range=2,
             Gauss_radius_inner=2,
@@ -6364,7 +6364,7 @@ class Test_center_2D(unittest.TestCase):
         self
     ):
         return_new = fu.center_2D(
-            image_to_be_centered=IMAGE_2D,
+            image_to_be_centered=IMAGE.2D,
             center_method=3,
             searching_range=2,
             Gauss_radius_inner=2,
@@ -6372,7 +6372,7 @@ class Test_center_2D(unittest.TestCase):
             self_defined_reference=False,
         )
         return_old = oldfu.center_2D(
-            image_to_be_centered=IMAGE_2D,
+            image_to_be_centered=IMAGE.2D,
             center_method=3,
             searching_range=2,
             Gauss_radius_inner=2,
@@ -6500,8 +6500,8 @@ class Test_center_2D(unittest.TestCase):
     ):
         self.assertTrue(True)
         """
-        return_new = fu.center_2D(image_to_be_centered=IMAGE_2D ,center_method=4,searching_range=2,Gauss_radius_inner=2,Gauss_radius_outter=7,self_defined_reference=False)
-        return_old = oldfu.center_2D(image_to_be_centered=IMAGE_2D ,center_method=4,searching_range=2,Gauss_radius_inner=2,Gauss_radius_outter=7,self_defined_reference=False)
+        return_new = fu.center_2D(image_to_be_centered=IMAGE.2D ,center_method=4,searching_range=2,Gauss_radius_inner=2,Gauss_radius_outter=7,self_defined_reference=False)
+        return_old = oldfu.center_2D(image_to_be_centered=IMAGE.2D ,center_method=4,searching_range=2,Gauss_radius_inner=2,Gauss_radius_outter=7,self_defined_reference=False)
         self.assertTrue(array_equal(return_new.get_2dview(), return_old.get_2dview()))
         self.assertTrue(array_equal(return_new.get_2dview().flatten(), ))
         self.assertEqual(return_new[1], return_old[1])
@@ -6514,7 +6514,7 @@ class Test_center_2D(unittest.TestCase):
         self
     ):
         return_new = fu.center_2D(
-            image_to_be_centered=IMAGE_2D,
+            image_to_be_centered=IMAGE.2D,
             center_method=5,
             searching_range=2,
             Gauss_radius_inner=2,
@@ -6522,7 +6522,7 @@ class Test_center_2D(unittest.TestCase):
             self_defined_reference=False,
         )
         return_old = oldfu.center_2D(
-            image_to_be_centered=IMAGE_2D,
+            image_to_be_centered=IMAGE.2D,
             center_method=5,
             searching_range=2,
             Gauss_radius_inner=2,
@@ -6648,7 +6648,7 @@ class Test_center_2D(unittest.TestCase):
         self
     ):
         return_new = fu.center_2D(
-            image_to_be_centered=IMAGE_2D,
+            image_to_be_centered=IMAGE.2D,
             center_method=6,
             searching_range=2,
             Gauss_radius_inner=2,
@@ -6656,7 +6656,7 @@ class Test_center_2D(unittest.TestCase):
             self_defined_reference=False,
         )
         return_old = oldfu.center_2D(
-            image_to_be_centered=IMAGE_2D,
+            image_to_be_centered=IMAGE.2D,
             center_method=6,
             searching_range=2,
             Gauss_radius_inner=2,
@@ -6784,8 +6784,8 @@ class Test_center_2D(unittest.TestCase):
     ):
         self.assertTrue(True)
         """
-        return_new = fu.center_2D(image_to_be_centered=IMAGE_2D ,center_method=7,searching_range=2,Gauss_radius_inner=2,Gauss_radius_outter=7,self_defined_reference=False)
-        return_old = oldfu.center_2D(image_to_be_centered=IMAGE_2D ,center_method=7,searching_range=2,Gauss_radius_inner=2,Gauss_radius_outter=7,self_defined_reference=False)
+        return_new = fu.center_2D(image_to_be_centered=IMAGE.2D ,center_method=7,searching_range=2,Gauss_radius_inner=2,Gauss_radius_outter=7,self_defined_reference=False)
+        return_old = oldfu.center_2D(image_to_be_centered=IMAGE.2D ,center_method=7,searching_range=2,Gauss_radius_inner=2,Gauss_radius_outter=7,self_defined_reference=False)
         self.assertTrue(array_equal(return_new.get_2dview(), return_old.get_2dview()))
         self.assertTrue(array_equal(return_new.get_2dview().flatten(), ))
         self.assertEqual(return_new[1], return_old[1])
@@ -7799,25 +7799,25 @@ class Test_drop_image(unittest.TestCase):
     def test_invalid_type_returns_UnboundLocalError_imgtype_referenced_before_assignment(self):
         destination ='output.hdf'
         with self.assertRaises(UnboundLocalError) as cm_new:
-            fu.drop_image(IMAGE_2D, destination, itype="invalid")
+            fu.drop_image(IMAGE.2D, destination, itype="invalid")
         with self.assertRaises(UnboundLocalError) as cm_old:
-            oldfu.drop_image(IMAGE_2D, destination, itype="invalid")
+            oldfu.drop_image(IMAGE.2D, destination, itype="invalid")
         self.assertEqual(str(cm_new.exception), "local variable 'imgtype' referenced before assignment")
         self.assertEqual(str(cm_new.exception), str(cm_old.exception))
 
     @unittest.skip("it does not work under nosetests , anyway im not able to test it properly")
     def test_destination_is_not_a_file_returns_error_msg(self):
         destination = 3
-        return_new = fu.drop_image(IMAGE_2D, destination, itype="h")
-        return_old = oldfu.drop_image(IMAGE_2D, destination, itype="h")
+        return_new = fu.drop_image(IMAGE.2D, destination, itype="h")
+        return_old = oldfu.drop_image(IMAGE.2D, destination, itype="h")
         self.assertTrue(return_new is None)
         self.assertTrue(return_old is None)
 
     @unittest.skip("it does not work under nosetests , anyway im not able to test it properly")
     def test_drop_image2D_true_should_return_equal_objects1(self):
         destination ='output.hdf'
-        return_new = fu.drop_image(IMAGE_2D, destination, itype="h")
-        return_old = oldfu.drop_image(IMAGE_2D, destination, itype="h")
+        return_new = fu.drop_image(IMAGE.2D, destination, itype="h")
+        return_old = oldfu.drop_image(IMAGE.2D, destination, itype="h")
 
         if return_new is not None   and  return_old is not None:
             self.assertTrue(return_new, return_old)
@@ -8687,10 +8687,10 @@ class Test_gauss_edge(unittest.TestCase):
 
     def test_default_value_2Dreal_img(self):
         return_new = fu.gauss_edge(
-            sharp_edge_image=IMAGE_2D, kernel_size=7, gauss_standard_dev=3
+            sharp_edge_image=IMAGE.2D, kernel_size=7, gauss_standard_dev=3
         )
         return_old = oldfu.gauss_edge(
-            sharp_edge_image=IMAGE_2D, kernel_size=7, gauss_standard_dev=3
+            sharp_edge_image=IMAGE.2D, kernel_size=7, gauss_standard_dev=3
         )
         self.assertTrue(array_equal(return_new.get_2dview(), return_old.get_2dview()))
         self.assertTrue(
@@ -8803,10 +8803,10 @@ class Test_gauss_edge(unittest.TestCase):
 
     def test_default_value_3Dreal_img(self):
         return_new = fu.gauss_edge(
-            sharp_edge_image=IMAGE_3D, kernel_size=7, gauss_standard_dev=3
+            sharp_edge_image=IMAGE.3D, kernel_size=7, gauss_standard_dev=3
         )
         return_old = oldfu.gauss_edge(
-            sharp_edge_image=IMAGE_3D, kernel_size=7, gauss_standard_dev=3
+            sharp_edge_image=IMAGE.3D, kernel_size=7, gauss_standard_dev=3
         )
 
         self.assertTrue(array_equal(return_new.get_3dview(), return_old.get_3dview()))
@@ -9821,11 +9821,11 @@ class Test_gauss_edge(unittest.TestCase):
     def test_null_kernel_size_returns_RuntimeError_InvalidValueException(self):
         with self.assertRaises(RuntimeError) as cm_new:
             fu.gauss_edge(
-                sharp_edge_image=IMAGE_2D, kernel_size=0, gauss_standard_dev=3
+                sharp_edge_image=IMAGE.2D, kernel_size=0, gauss_standard_dev=3
             )
         with self.assertRaises(RuntimeError) as cm_old:
             oldfu.gauss_edge(
-                sharp_edge_image=IMAGE_2D, kernel_size=0, gauss_standard_dev=3
+                sharp_edge_image=IMAGE.2D, kernel_size=0, gauss_standard_dev=3
             )
         msg = str(cm_new.exception).split("'")
         msg_old = str(cm_old.exception).split("'")
@@ -9837,11 +9837,11 @@ class Test_gauss_edge(unittest.TestCase):
     def test_negative_kernel_size_returns_RuntimeError_InvalidValueException(self):
         with self.assertRaises(RuntimeError) as cm_new:
             fu.gauss_edge(
-                sharp_edge_image=IMAGE_2D, kernel_size=-2, gauss_standard_dev=3
+                sharp_edge_image=IMAGE.2D, kernel_size=-2, gauss_standard_dev=3
             )
         with self.assertRaises(RuntimeError) as cm_old:
             oldfu.gauss_edge(
-                sharp_edge_image=IMAGE_2D, kernel_size=-2, gauss_standard_dev=3
+                sharp_edge_image=IMAGE.2D, kernel_size=-2, gauss_standard_dev=3
             )
         msg = str(cm_new.exception).split("'")
         msg_old = str(cm_old.exception).split("'")
@@ -9864,8 +9864,8 @@ class Test_get_image(unittest.TestCase):
 
     def test_returns_input_img(self):
         """ I do not insert all the params because in this case they are not used"""
-        return_new = fu.get_image(imagename=IMAGE_2D, nx=0, ny=1, nz=1, im=0)
-        return_old = oldfu.get_image(imagename=IMAGE_2D, nx=0, ny=1, nz=1, im=0)
+        return_new = fu.get_image(imagename=IMAGE.2D, nx=0, ny=1, nz=1, im=0)
+        return_old = oldfu.get_image(imagename=IMAGE.2D, nx=0, ny=1, nz=1, im=0)
         self.assertTrue(array_equal(return_new.get_2dview(), return_old.get_2dview()))
 
         self.assertTrue(
@@ -10049,7 +10049,7 @@ class Test_get_image(unittest.TestCase):
 
 
 class Test_get_im(unittest.TestCase):
-    img_list = [IMAGE_3D, IMAGE_2D]
+    img_list = [IMAGE.3D, IMAGE_2D]
 
     def test_NoneType_as_img_returns_AttributeError_NoneType_obj_hasnot_attribute_process(
         self
@@ -10078,7 +10078,7 @@ class Test_get_im(unittest.TestCase):
         return_old = oldfu.get_im(stackname=self.img_list, im=0)
 
         self.assertTrue(array_equal(return_new.get_3dview(), return_old.get_3dview()))
-        self.assertTrue(array_equal(return_new.get_3dview(), IMAGE_3D.get_3dview()))
+        self.assertTrue(array_equal(return_new.get_3dview(), IMAGE.3D.get_3dview()))
 
     def test_returns_IndexError_list_index_out_of_range(self):
         with self.assertRaises(IndexError) as cm_new:
@@ -10101,8 +10101,8 @@ class Test_get_image_data(unittest.TestCase):
         self.assertEqual(str(cm_new.exception), str(cm_old.exception))
 
     def test_get_image_data(self):
-        return_new = fu.get_image_data(img=IMAGE_2D)
-        return_old = oldfu.get_image_data(img=IMAGE_2D)
+        return_new = fu.get_image_data(img=IMAGE.2D)
+        return_old = oldfu.get_image_data(img=IMAGE.2D)
         self.assertTrue(array_equal(return_new, return_old))
         self.assertTrue(
             array_equal(
@@ -11005,8 +11005,8 @@ class Test_peak_search(unittest.TestCase):
         self.assertEqual(str(cm_new.exception), str(cm_old.exception))
 
     def test_default_values(self):
-        return_new = fu.peak_search(e=IMAGE_2D, npeak=3, invert=1, print_screen=0)
-        return_old = oldfu.peak_search(e=IMAGE_2D, npeak=3, invert=1, print_screen=0)
+        return_new = fu.peak_search(e=IMAGE.2D, npeak=3, invert=1, print_screen=0)
+        return_old = oldfu.peak_search(e=IMAGE.2D, npeak=3, invert=1, print_screen=0)
         self.assertTrue(array_equal(return_new, return_old))
         self.assertTrue(
             array_equal(
@@ -11020,8 +11020,8 @@ class Test_peak_search(unittest.TestCase):
         )
 
     def test_inverted_sort(self):
-        return_new = fu.peak_search(e=IMAGE_2D, npeak=3, invert=-1, print_screen=0)
-        return_old = oldfu.peak_search(e=IMAGE_2D, npeak=3, invert=-1, print_screen=0)
+        return_new = fu.peak_search(e=IMAGE.2D, npeak=3, invert=-1, print_screen=0)
+        return_old = oldfu.peak_search(e=IMAGE.2D, npeak=3, invert=-1, print_screen=0)
         self.assertTrue(array_equal(return_new, return_old))
         self.assertTrue(array_equal(return_new, [[1.0, 5.0, 5.0, 1.0, 0.0, 0.0]]))
 
@@ -11070,7 +11070,7 @@ class Test_pad(unittest.TestCase):
     ):
         with self.assertRaises(RuntimeError) as cm_new:
             fu.pad(
-                image_to_be_padded=IMAGE_2D,
+                image_to_be_padded=IMAGE.2D,
                 new_nx=10,
                 new_ny=1,
                 new_nz=1,
@@ -11081,7 +11081,7 @@ class Test_pad(unittest.TestCase):
             )
         with self.assertRaises(RuntimeError) as cm_old:
             oldfu.pad(
-                image_to_be_padded=IMAGE_2D,
+                image_to_be_padded=IMAGE.2D,
                 new_nx=10,
                 new_ny=1,
                 new_nz=1,
@@ -11104,10 +11104,10 @@ class Test_pad(unittest.TestCase):
     def test_returns_RuntimeError_ImageDimensionException_offset_inconsistent(self):
         with self.assertRaises(RuntimeError) as cm_new:
             fu.pad(
-                image_to_be_padded=IMAGE_2D,
-                new_nx=IMAGE_2D.get_xsize() + 10,
-                new_ny=IMAGE_2D.get_ysize() + 10,
-                new_nz=IMAGE_2D.get_zsize() + 10,
+                image_to_be_padded=IMAGE.2D,
+                new_nx=IMAGE.2D.get_xsize() + 10,
+                new_ny=IMAGE.2D.get_ysize() + 10,
+                new_nz=IMAGE.2D.get_zsize() + 10,
                 background="average",
                 off_center_nx=100,
                 off_center_ny=100,
@@ -11115,10 +11115,10 @@ class Test_pad(unittest.TestCase):
             )
         with self.assertRaises(RuntimeError) as cm_old:
             oldfu.pad(
-                image_to_be_padded=IMAGE_2D,
-                new_nx=IMAGE_2D.get_xsize() + 10,
-                new_ny=IMAGE_2D.get_ysize() + 10,
-                new_nz=IMAGE_2D.get_zsize() + 10,
+                image_to_be_padded=IMAGE.2D,
+                new_nx=IMAGE.2D.get_xsize() + 10,
+                new_ny=IMAGE.2D.get_ysize() + 10,
+                new_nz=IMAGE.2D.get_zsize() + 10,
                 background="average",
                 off_center_nx=100,
                 off_center_ny=100,
@@ -11137,20 +11137,20 @@ class Test_pad(unittest.TestCase):
 
     def test_default_values(self):
         return_new = fu.pad(
-            image_to_be_padded=IMAGE_2D,
-            new_nx=IMAGE_2D.get_xsize() + 1,
-            new_ny=IMAGE_2D.get_ysize() + 1,
-            new_nz=IMAGE_2D.get_zsize() + 1,
+            image_to_be_padded=IMAGE.2D,
+            new_nx=IMAGE.2D.get_xsize() + 1,
+            new_ny=IMAGE.2D.get_ysize() + 1,
+            new_nz=IMAGE.2D.get_zsize() + 1,
             background="average",
             off_center_nx=0,
             off_center_ny=0,
             off_center_nz=0,
         )
         return_old = oldfu.pad(
-            image_to_be_padded=IMAGE_2D,
-            new_nx=IMAGE_2D.get_xsize() + 1,
-            new_ny=IMAGE_2D.get_ysize() + 1,
-            new_nz=IMAGE_2D.get_zsize() + 1,
+            image_to_be_padded=IMAGE.2D,
+            new_nx=IMAGE.2D.get_xsize() + 1,
+            new_ny=IMAGE.2D.get_ysize() + 1,
+            new_nz=IMAGE.2D.get_zsize() + 1,
             background="average",
             off_center_nx=0,
             off_center_ny=0,
@@ -11409,20 +11409,20 @@ class Test_pad(unittest.TestCase):
 
     def test_default_values_with_circumference_bckg(self):
         return_new = fu.pad(
-            image_to_be_padded=IMAGE_2D,
-            new_nx=IMAGE_2D.get_xsize() + 1,
-            new_ny=IMAGE_2D.get_ysize() + 1,
-            new_nz=IMAGE_2D.get_zsize() + 1,
+            image_to_be_padded=IMAGE.2D,
+            new_nx=IMAGE.2D.get_xsize() + 1,
+            new_ny=IMAGE.2D.get_ysize() + 1,
+            new_nz=IMAGE.2D.get_zsize() + 1,
             background="circumference",
             off_center_nx=0,
             off_center_ny=0,
             off_center_nz=0,
         )
         return_old = oldfu.pad(
-            image_to_be_padded=IMAGE_2D,
-            new_nx=IMAGE_2D.get_xsize() + 1,
-            new_ny=IMAGE_2D.get_ysize() + 1,
-            new_nz=IMAGE_2D.get_zsize() + 1,
+            image_to_be_padded=IMAGE.2D,
+            new_nx=IMAGE.2D.get_xsize() + 1,
+            new_ny=IMAGE.2D.get_ysize() + 1,
+            new_nz=IMAGE.2D.get_zsize() + 1,
             background="circumference",
             off_center_nx=0,
             off_center_ny=0,
@@ -11681,20 +11681,20 @@ class Test_pad(unittest.TestCase):
 
     def test_default_values_with_unknown_bckg(self):
         return_new = fu.pad(
-            image_to_be_padded=IMAGE_2D,
-            new_nx=IMAGE_2D.get_xsize() + 1,
-            new_ny=IMAGE_2D.get_ysize() + 1,
-            new_nz=IMAGE_2D.get_zsize() + 1,
+            image_to_be_padded=IMAGE.2D,
+            new_nx=IMAGE.2D.get_xsize() + 1,
+            new_ny=IMAGE.2D.get_ysize() + 1,
+            new_nz=IMAGE.2D.get_zsize() + 1,
             background="unknown",
             off_center_nx=0,
             off_center_ny=0,
             off_center_nz=0,
         )
         return_old = oldfu.pad(
-            image_to_be_padded=IMAGE_2D,
-            new_nx=IMAGE_2D.get_xsize() + 1,
-            new_ny=IMAGE_2D.get_ysize() + 1,
-            new_nz=IMAGE_2D.get_zsize() + 1,
+            image_to_be_padded=IMAGE.2D,
+            new_nx=IMAGE.2D.get_xsize() + 1,
+            new_ny=IMAGE.2D.get_ysize() + 1,
+            new_nz=IMAGE.2D.get_zsize() + 1,
             background="unknown",
             off_center_nx=0,
             off_center_ny=0,
@@ -14436,7 +14436,7 @@ class Test_reduce_EMData_to_root(unittest.TestCase):
         old_data = [EMNumPy.numpy2em(deepcopy(self.data[0].get_3dview()))]
         old_data[0].set_attr_dict(self.data[0].get_attr_dict())
 
-        # data = deepcopy(IMAGE_2D_REFERENCE)
+        # data = deepcopy(IMAGE.2D_REFERENCE)
         return_new = fu.reduce_EMData_to_root(new_data[0], myid=74, main_node=0, comm=-1)
         return_old = oldfu.reduce_EMData_to_root(old_data[0], myid=74, main_node=0, comm=-1)
 
@@ -14445,7 +14445,7 @@ class Test_reduce_EMData_to_root(unittest.TestCase):
         self.assertTrue(return_new is None)
 
     def test_with_MPI_COMM_WORLD(self):
-        # data = deepcopy(IMAGE_2D_REFERENCE)
+        # data = deepcopy(IMAGE.2D_REFERENCE)
 
         new_data = [EMNumPy.numpy2em(deepcopy(self.data[0].get_3dview()))]
         new_data[0].set_attr_dict(self.data[0].get_attr_dict())
@@ -14501,7 +14501,7 @@ TypeError: 'NoneType' object has no attribute '__getitem__'
         self.assertEqual(str(cm_new.exception), str(cm_old.exception))
 
     def test_wrong_image(self):
-        data = [IMAGE_3D, IMAGE_3D]
+        data = [IMAGE.3D, IMAGE_3D]
         with self.assertRaises(TypeError) as cm_new:
             fu.bcast_compacted_EMData_all_to_all(data, myid=74, comm=-1)
         with self.assertRaises(TypeError) as cm_old:
@@ -14576,7 +14576,7 @@ class Test_bcast_EMData_to_all(unittest.TestCase):
         self.assertEqual(str(cm_new.exception), str(cm_old.exception))
 
     def test_with_default_values(self):
-        # tavg = deepcopy(IMAGE_2D_REFERENCE)
+        # tavg = deepcopy(IMAGE.2D_REFERENCE)
         tavg_new = [EMNumPy.numpy2em(deepcopy(self.data[0].get_3dview()))]
         tavg_new[0].set_attr_dict(self.data[0].get_attr_dict())
         tavg_old = [EMNumPy.numpy2em(deepcopy(self.data[0].get_3dview()))]
@@ -14589,7 +14589,7 @@ class Test_bcast_EMData_to_all(unittest.TestCase):
         self.assertTrue(return_new is None)
 
     def test_with_myid_equal_sourcenode_default_valuqes(self):
-        # tavg = deepcopy(IMAGE_2D_REFERENCE)
+        # tavg = deepcopy(IMAGE.2D_REFERENCE)
         tavg_new = [EMNumPy.numpy2em(deepcopy(self.data[0].get_3dview()))]
         tavg_new[0].set_attr_dict(self.data[0].get_attr_dict())
         tavg_old = [EMNumPy.numpy2em(deepcopy(self.data[0].get_3dview()))]
@@ -14598,12 +14598,12 @@ class Test_bcast_EMData_to_all(unittest.TestCase):
         return_new = fu.bcast_EMData_to_all(tavg_new[0], myid=0, source_node=0, comm=-1)
         return_old = oldfu.bcast_EMData_to_all(tavg_old[0], myid=0, source_node=0, comm=-1)
 
-        # self.assertTrue(array_equal(IMAGE_2D_REFERENCE.get_3dview(), tavg.get_3dview()))
+        # self.assertTrue(array_equal(IMAGE.2D_REFERENCE.get_3dview(), tavg.get_3dview()))
         self.assertEqual(return_new, return_old)
         self.assertTrue(return_new is None)
 
     def test_with_MPI_COMM_WORLD(self):
-        # tavg = deepcopy(IMAGE_2D_REFERENCE)
+        # tavg = deepcopy(IMAGE.2D_REFERENCE)
         tavg_new = [EMNumPy.numpy2em(deepcopy(self.data[0].get_3dview()))]
         tavg_new[0].set_attr_dict(self.data[0].get_attr_dict())
         tavg_old = [EMNumPy.numpy2em(deepcopy(self.data[0].get_3dview()))]
@@ -14616,7 +14616,7 @@ class Test_bcast_EMData_to_all(unittest.TestCase):
         return_old = oldfu.bcast_EMData_to_all(
             tavg_old[0], myid=0, source_node=0, comm=MPI_COMM_WORLD
         )
-        # self.assertTrue(array_equal(IMAGE_2D_REFERENCE.get_3dview(), tavg.get_3dview()))
+        # self.assertTrue(array_equal(IMAGE.2D_REFERENCE.get_3dview(), tavg.get_3dview()))
         self.assertEqual(return_new, return_old)
         self.assertTrue(return_new is None)
 
@@ -14826,7 +14826,7 @@ class Test_bcast_list_to_all(unittest.TestCase):
     """
     in the nosetests the exception is not raised
     def test_myid_equal_sourcenode_and_wrong_type_in_listsender_returns_ValueError(self):
-        list_to_send=[IMAGE_2D]
+        list_to_send=[IMAGE.2D]
         with self.assertRaises(ValueError) as cm_new:
             fu.bcast_list_to_all(list_to_send, myid = self.source_node, source_node =self.source_node, mpi_comm= MPI_COMM_WORLD)
         with self.assertRaises(ValueError) as cm_old:
@@ -14836,7 +14836,7 @@ class Test_bcast_list_to_all(unittest.TestCase):
     """
 
     def test_wrong_type_in_listsender(self):
-        list_to_send = [IMAGE_2D]
+        list_to_send = [IMAGE.2D]
         return_new = fu.bcast_list_to_all(
             list_to_send,
             myid=self.myid,
@@ -15034,26 +15034,26 @@ class Test_circumference(unittest.TestCase):
         self.assertEqual(str(cm_new.exception), str(cm_old.exception))
 
     def test_with_default_values_2Dimg(self):
-        return_new = fu.circumference(deepcopy(IMAGE_BLANK_2D), inner=-1, outer=-1)
-        return_old = oldfu.circumference(deepcopy(IMAGE_BLANK_2D), inner=-1, outer=-1)
+        return_new = fu.circumference(deepcopy(IMAGE.BLANK_2D), inner=-1, outer=-1)
+        return_old = oldfu.circumference(deepcopy(IMAGE.BLANK_2D), inner=-1, outer=-1)
         self.assertTrue(array_equal(return_new.get_3dview(), return_old.get_3dview()))
 
     def test_with_default_values_3Dimg(self):
-        return_new = fu.circumference(deepcopy(IMAGE_BLANK_3D), inner=-1, outer=-1)
-        return_old = oldfu.circumference(deepcopy(IMAGE_BLANK_3D), inner=-1, outer=-1)
+        return_new = fu.circumference(deepcopy(IMAGE.BLANK_3D), inner=-1, outer=-1)
+        return_old = oldfu.circumference(deepcopy(IMAGE.BLANK_3D), inner=-1, outer=-1)
         self.assertTrue(array_equal(return_new.get_3dview(), return_old.get_3dview()))
 
     def test_with_invalid_mask_returns_RuntimeError_ImageFormatException(self):
         with self.assertRaises(RuntimeError) as cm_new:
             fu.circumference(
-                deepcopy(IMAGE_BLANK_2D),
-                inner=IMAGE_BLANK_2D.get_xsize() + 10,
+                deepcopy(IMAGE.BLANK_2D),
+                inner=IMAGE.BLANK_2D.get_xsize() + 10,
                 outer=-1,
             )
         with self.assertRaises(RuntimeError) as cm_old:
             oldfu.circumference(
-                deepcopy(IMAGE_BLANK_2D),
-                inner=IMAGE_BLANK_2D.get_xsize() + 10,
+                deepcopy(IMAGE.BLANK_2D),
+                inner=IMAGE.BLANK_2D.get_xsize() + 10,
                 outer=-1,
             )
         msg = str(cm_new.exception).split("'")
@@ -15066,10 +15066,10 @@ class Test_circumference(unittest.TestCase):
 
     def test_with_wrong_outer_value(self):
         return_new = fu.circumference(
-            deepcopy(IMAGE_BLANK_2D), inner=-1, outer=IMAGE_BLANK_2D.get_xsize() + 10
+            deepcopy(IMAGE.BLANK_2D), inner=-1, outer=IMAGE_BLANK_2D.get_xsize() + 10
         )
         return_old = oldfu.circumference(
-            deepcopy(IMAGE_BLANK_2D), inner=-1, outer=IMAGE_BLANK_2D.get_xsize() + 10
+            deepcopy(IMAGE.BLANK_2D), inner=-1, outer=IMAGE_BLANK_2D.get_xsize() + 10
         )
         self.assertTrue(array_equal(return_new.get_3dview(), return_old.get_3dview()))
 
@@ -15089,8 +15089,8 @@ class Test_write_headers(unittest.TestCase):
     def test_hdf_type(self):
         path_fu = path.join(ABSOLUTE_PATH, "test.hdf")
         path_oldfu = path.join(ABSOLUTE_PATH, "test1.hdf")
-        fu.write_headers(path_fu, [IMAGE_2D], [1])
-        oldfu.write_headers(path_oldfu, [IMAGE_2D], [1])
+        fu.write_headers(path_fu, [IMAGE.2D], [1])
+        oldfu.write_headers(path_oldfu, [IMAGE.2D], [1])
         self.assertEqual(
             returns_values_in_file(path_fu), returns_values_in_file(path_oldfu)
         )
@@ -15105,8 +15105,8 @@ class Test_write_headers(unittest.TestCase):
         f.close()
         f = open(path_oldfu, "w+")
         f.close()
-        fu.write_headers(path_fu, [IMAGE_2D], [1])
-        oldfu.write_headers(path_oldfu, [IMAGE_2D], [1])
+        fu.write_headers(path_fu, [IMAGE.2D], [1])
+        oldfu.write_headers(path_oldfu, [IMAGE.2D], [1])
         self.assertEqual(
             returns_values_in_file(path_fu), returns_values_in_file(path_oldfu)
         )
@@ -15117,8 +15117,8 @@ class Test_write_headers(unittest.TestCase):
     def test_hdf_type_AssertError_list_differ(self):
         path_fu = path.join(ABSOLUTE_PATH, "test.hdf")
         path_oldfu = path.join(ABSOLUTE_PATH, "test1.hdf")
-        fu.write_headers(path_fu, [IMAGE_2D], [2])
-        oldfu.write_headers(path_oldfu, [IMAGE_2D], [1])
+        fu.write_headers(path_fu, [IMAGE.2D], [2])
+        oldfu.write_headers(path_oldfu, [IMAGE.2D], [1])
         self.assertTrue(path.isfile(path_fu))
         self.assertTrue(path.isfile(path_oldfu))
         with self.assertRaises(AssertionError) as cm:
@@ -15144,10 +15144,10 @@ class Test_write_headers(unittest.TestCase):
         path_oldfu = path.join(ABSOLUTE_PATH, "test1.txt")
         sp_global_def.BATCH = True
         with self.assertRaises(SystemExit) as cm_new:
-            fu.write_headers(path_fu, [IMAGE_2D], [1])
+            fu.write_headers(path_fu, [IMAGE.2D], [1])
         sp_global_def.BATCH = True
         with self.assertRaises(SystemExit) as cm_old:
-            oldfu.write_headers(path_oldfu, [IMAGE_2D], [1])
+            oldfu.write_headers(path_oldfu, [IMAGE.2D], [1])
 
         # self.assertEqual(str(cm_new.exception), str(cm_old.exception))
         # self.assertFalse(path.isfile(path_fu))
@@ -15168,8 +15168,8 @@ class Test_write_header(unittest.TestCase):
     def test_hdf_type(self):
         path_fu = path.join(ABSOLUTE_PATH, "test.hdf")
         path_oldfu = path.join(ABSOLUTE_PATH, "test1.hdf")
-        fu.write_header(path_fu, IMAGE_2D, 1)
-        oldfu.write_header(path_oldfu, IMAGE_2D, 1)
+        fu.write_header(path_fu, IMAGE.2D, 1)
+        oldfu.write_header(path_oldfu, IMAGE.2D, 1)
         self.assertEqual(
             returns_values_in_file(path_fu), returns_values_in_file(path_oldfu)
         )
@@ -15184,8 +15184,8 @@ class Test_write_header(unittest.TestCase):
         f.close()
         f = open(path_oldfu, "w+")
         f.close()
-        fu.write_header(path_fu, IMAGE_2D, 1)
-        oldfu.write_header(path_oldfu, IMAGE_2D, 1)
+        fu.write_header(path_fu, IMAGE.2D, 1)
+        oldfu.write_header(path_oldfu, IMAGE.2D, 1)
         self.assertEqual(
             returns_values_in_file(path_fu), returns_values_in_file(path_oldfu)
         )
@@ -15196,8 +15196,8 @@ class Test_write_header(unittest.TestCase):
     def test_hdf_type_AssertError_list_differ(self):
         path_fu = path.join(ABSOLUTE_PATH, "test.hdf")
         path_oldfu = path.join(ABSOLUTE_PATH, "test1.hdf")
-        fu.write_header(path_fu, IMAGE_2D, 2)
-        oldfu.write_header(path_oldfu, IMAGE_2D, 1)
+        fu.write_header(path_fu, IMAGE.2D, 2)
+        oldfu.write_header(path_oldfu, IMAGE.2D, 1)
         self.assertTrue(path.isfile(path_fu))
         self.assertTrue(path.isfile(path_oldfu))
         with self.assertRaises(AssertionError) as cm:
@@ -15216,11 +15216,11 @@ class Test_write_header(unittest.TestCase):
         path_oldfu = path.join(ABSOLUTE_PATH, "test1.txt")
         sp_global_def.BATCH = True
         with self.assertRaises(SystemExit) as cm_new:
-            fu.write_header(path_fu, IMAGE_2D, 1)
+            fu.write_header(path_fu, IMAGE.2D, 1)
 
         sp_global_def.BATCH = True
         with self.assertRaises(SystemExit) as cm_old:
-            oldfu.write_header(path_oldfu, IMAGE_2D, 1)
+            oldfu.write_header(path_oldfu, IMAGE.2D, 1)
 
         self.assertEqual(str(cm_new.exception), str(cm_old.exception))
         # self.assertFalse(path.isfile(path_fu))
@@ -15300,9 +15300,9 @@ class Test_get_params2D(unittest.TestCase):
         self
     ):
         with self.assertRaises(RuntimeError) as cm_new:
-            fu.get_params2D(IMAGE_2D, xform="xform.align2d")
+            fu.get_params2D(IMAGE.2D, xform="xform.align2d")
         with self.assertRaises(RuntimeError) as cm_old:
-            oldfu.get_params2D(IMAGE_2D, xform="xform.align2d")
+            oldfu.get_params2D(IMAGE.2D, xform="xform.align2d")
         msg = str(cm_new.exception).split("'")
         msg_old = str(cm_old.exception).split("'")
         self.assertEqual(msg[0].split(" ")[0], "NotExistingObjectException")
@@ -15315,9 +15315,9 @@ class Test_get_params2D(unittest.TestCase):
         self
     ):
         with self.assertRaises(RuntimeError) as cm_new:
-            fu.get_params2D(IMAGE_3D, xform="xform.align2d")
+            fu.get_params2D(IMAGE.3D, xform="xform.align2d")
         with self.assertRaises(RuntimeError) as cm_old:
-            oldfu.get_params2D(IMAGE_3D, xform="xform.align2d")
+            oldfu.get_params2D(IMAGE.3D, xform="xform.align2d")
         msg = str(cm_new.exception).split("'")
         msg_old = str(cm_old.exception).split("'")
         self.assertEqual(msg[0].split(" ")[0], "NotExistingObjectException")
@@ -15471,17 +15471,17 @@ class Test_get_params3D(unittest.TestCase):
     # todo: I need a 3D image with 'xform.align3d' key
     """
     def test_get_params3D(self):
-        return_new = fu.get_params3D(IMAGE_3D, xform="xform.align3d")
-        return_old = oldfu.get_params3D(IMAGE_3D, xform="xform.align3d")
+        return_new = fu.get_params3D(IMAGE.3D, xform="xform.align3d")
+        return_old = oldfu.get_params3D(IMAGE.3D, xform="xform.align3d")
         self.assertTrue(array_equal(return_new,return_old))
         self.assertTrue(array_equal(return_new,(0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0, 1.0)))
     """
 
     def test_wrong_xform_returns_NotExistingObjectException_key_doesnot_exist(self):
         with self.assertRaises(RuntimeError) as cm_new:
-            fu.get_params3D(IMAGE_3D, xform="xform.align2d")
+            fu.get_params3D(IMAGE.3D, xform="xform.align2d")
         with self.assertRaises(RuntimeError) as cm_old:
-            oldfu.get_params3D(IMAGE_3D, xform="xform.align2d")
+            oldfu.get_params3D(IMAGE.3D, xform="xform.align2d")
         msg = str(cm_new.exception).split("'")
         msg_old = str(cm_old.exception).split("'")
         self.assertEqual(msg[0].split(" ")[0], "NotExistingObjectException")
@@ -15492,9 +15492,9 @@ class Test_get_params3D(unittest.TestCase):
 
     def test_wrong_input_img_returns_NotExistingObjectException_key_doesnot_exist(self):
         with self.assertRaises(RuntimeError) as cm_new:
-            fu.get_params3D(IMAGE_2D, xform="xform.align3d")
+            fu.get_params3D(IMAGE.2D, xform="xform.align3d")
         with self.assertRaises(RuntimeError) as cm_old:
-            oldfu.get_params3D(IMAGE_2D, xform="xform.align3d")
+            oldfu.get_params3D(IMAGE.2D, xform="xform.align3d")
         msg = str(cm_new.exception).split("'")
         msg_old = str(cm_old.exception).split("'")
         self.assertEqual(msg[0].split(" ")[0], "NotExistingObjectException")
@@ -15507,9 +15507,9 @@ class Test_get_params3D(unittest.TestCase):
         self.assertTrue(True)
         """
         with self.assertRaises(AttributeError) as cm_new:
-            fu.get_params3D(IMAGE_3D, xform="xform.align3d")
+            fu.get_params3D(IMAGE.3D, xform="xform.align3d")
         with self.assertRaises(AttributeError) as cm_old:
-            oldfu.get_params3D(IMAGE_3D, xform="xform.align3d")
+            oldfu.get_params3D(IMAGE.3D, xform="xform.align3d")
         self.assertEqual(str(cm_new.exception), "'NoneType' object has no attribute 'get_attr'")
         self.assertEqual(str(cm_new.exception), str(cm_old.exception))
         """
@@ -15528,16 +15528,16 @@ class Test_set_params3D(unittest.TestCase):
         self.assertEqual(str(cm_new.exception), str(cm_old.exception))
 
     def test_set_params3D(self):
-        fu_img = deepcopy(IMAGE_3D)
-        oldfu_img = deepcopy(IMAGE_3D)
+        fu_img = deepcopy(IMAGE.3D)
+        oldfu_img = deepcopy(IMAGE.3D)
         fu.set_params3D(fu_img, self.params, xform="xform.align3d")
         oldfu.set_params3D(oldfu_img, self.params, xform="xform.align3d")
         self.assertTrue(array_equal(fu.get_params3D(fu_img), oldfu.get_params3D(oldfu_img)))
-        self.assertFalse(array_equal(fu.get_params3D(fu_img), oldfu.get_params3D(IMAGE_3D)))
+        self.assertFalse(array_equal(fu.get_params3D(fu_img), oldfu.get_params3D(IMAGE.3D)))
 
     def test_less_params(self):
-        fu_img = deepcopy(IMAGE_3D)
-        oldfu_img = deepcopy(IMAGE_3D)
+        fu_img = deepcopy(IMAGE.3D)
+        oldfu_img = deepcopy(IMAGE.3D)
         with self.assertRaises(IndexError) as cm_new:
             fu.set_params3D(fu_img, [0,1], xform="xform.align3d")
         with self.assertRaises(IndexError) as cm_old:
@@ -15546,21 +15546,21 @@ class Test_set_params3D(unittest.TestCase):
         self.assertEqual(str(cm_new.exception), str(cm_old.exception))
 
     def test_wrong_xform_does_not_change_the_values_IS_IT_OK_OR_NOT(self):
-        fu_img = deepcopy(IMAGE_3D)
-        oldfu_img = deepcopy(IMAGE_3D)
+        fu_img = deepcopy(IMAGE.3D)
+        oldfu_img = deepcopy(IMAGE.3D)
         fu.set_params3D(fu_img, self.params, xform="xform.align2d")
         oldfu.set_params3D(oldfu_img, self.params, xform="xform.align2d")
         self.assertTrue(array_equal(fu.get_params3D(fu_img), oldfu.get_params3D(oldfu_img)))
-        #self.assertFalse(array_equal(fu.get_params3D(fu_img), oldfu.get_params3D(IMAGE_3D)))
+        #self.assertFalse(array_equal(fu.get_params3D(fu_img), oldfu.get_params3D(IMAGE.3D)))
 
     def test_wrong_input_img(self):
         # I called it wrong image just because in the 'get_params2D' there was an error due to the missing xform key
-        fu_img = deepcopy(IMAGE_2D)
-        oldfu_img = deepcopy(IMAGE_2D)
+        fu_img = deepcopy(IMAGE.2D)
+        oldfu_img = deepcopy(IMAGE.2D)
         fu.set_params3D(fu_img, self.params, xform="xform.align3d")
         oldfu.set_params3D(oldfu_img, self.params, xform="xform.align3d")
         self.assertTrue(array_equal(fu.get_params3D(fu_img), oldfu.get_params3D(oldfu_img)))
-        self.assertFalse(array_equal(fu.get_params3D(fu_img), oldfu.get_params3D(IMAGE_3D)))
+        self.assertFalse(array_equal(fu.get_params3D(fu_img), oldfu.get_params3D(IMAGE.3D)))
 
     def test_NoneType_as_img_returns_AttributeError_NoneType_obj_hasnot_attribute_process(self):
         with self.assertRaises(AttributeError) as cm_new:
@@ -15618,9 +15618,9 @@ class Test_get_params_proj(unittest.TestCase):
         self
     ):
         with self.assertRaises(RuntimeError) as cm_new:
-            fu.get_params_proj(IMAGE_2D, xform="xform.projection")
+            fu.get_params_proj(IMAGE.2D, xform="xform.projection")
         with self.assertRaises(RuntimeError) as cm_old:
-            oldfu.get_params_proj(IMAGE_2D, xform="xform.projection")
+            oldfu.get_params_proj(IMAGE.2D, xform="xform.projection")
         msg = str(cm_new.exception).split("'")
         msg_old = str(cm_old.exception).split("'")
         self.assertEqual(msg[0].split(" ")[0], "NotExistingObjectException")
@@ -15633,9 +15633,9 @@ class Test_get_params_proj(unittest.TestCase):
         self
     ):
         with self.assertRaises(RuntimeError) as cm_new:
-            fu.get_params_proj(IMAGE_3D, xform="xform.projection")
+            fu.get_params_proj(IMAGE.3D, xform="xform.projection")
         with self.assertRaises(RuntimeError) as cm_old:
-            oldfu.get_params_proj(IMAGE_3D, xform="xform.projection")
+            oldfu.get_params_proj(IMAGE.3D, xform="xform.projection")
         msg = str(cm_new.exception).split("'")
         msg_old = str(cm_old.exception).split("'")
         self.assertEqual(msg[0].split(" ")[0], "NotExistingObjectException")
@@ -15677,7 +15677,7 @@ class Test_set_params_proj(unittest.TestCase):
     def test_set_params_proj_using_wrongxform_returns_NotExistingObjectException_key_doesnot_exist(
         self
     ):  # error is ok
-        # fu_img = deepcopy(IMAGE_2D)
+        # fu_img = deepcopy(IMAGE.2D)
 
         fu_img = [EMNumPy.numpy2em(deepcopy(self.data[0].get_2dview()))]
         fu_img[0].set_attr_dict(self.data[0].get_attr_dict())
@@ -15697,8 +15697,8 @@ class Test_set_params_proj(unittest.TestCase):
     def test_set_params_proj_using_wrongxform2returns_NotExistingObjectException_key_doesnot_exist(
         self
     ):
-        # fu_img = deepcopy(IMAGE_2D)
-        # fu2_img = deepcopy(IMAGE_2D)
+        # fu_img = deepcopy(IMAGE.2D)
+        # fu2_img = deepcopy(IMAGE.2D)
 
         fu_img = [EMNumPy.numpy2em(deepcopy(self.data[0].get_2dview()))]
         fu_img[0].set_attr_dict(self.data[0].get_attr_dict())
@@ -15729,8 +15729,8 @@ class Test_set_params_proj(unittest.TestCase):
         # self.assertEqual(str(cm_new.exception), str(cm_old.exception))
 
     def test_set_params_proj(self):
-        # fu_img = deepcopy(IMAGE_2D)
-        # oldfu_img = deepcopy(IMAGE_2D)
+        # fu_img = deepcopy(IMAGE.2D)
+        # oldfu_img = deepcopy(IMAGE.2D)
 
         fu_img = [EMNumPy.numpy2em(deepcopy(self.data[0].get_2dview()))]
         fu_img[0].set_attr_dict(self.data[0].get_attr_dict())
@@ -15745,11 +15745,11 @@ class Test_set_params_proj(unittest.TestCase):
                 oldfu.get_params_proj(oldfu_img[0], xform="xform.projection"),
             )
         )
-        # self.assertFalse(array_equal(fu.get_params_proj(fu_img), fu.get_params_proj(IMAGE_2D))) # IMAGE2D has not key ''xform.projection'
+        # self.assertFalse(array_equal(fu.get_params_proj(fu_img), fu.get_params_proj(IMAGE.2D))) # IMAGE2D has not key ''xform.projection'
 
     def test_less_params(self):
-        # fu_img = deepcopy(IMAGE_2D)
-        # oldfu_img = deepcopy(IMAGE_2D)
+        # fu_img = deepcopy(IMAGE.2D)
+        # oldfu_img = deepcopy(IMAGE.2D)
 
         fu_img = [EMNumPy.numpy2em(deepcopy(self.data[0].get_2dview()))]
         fu_img[0].set_attr_dict(self.data[0].get_attr_dict())
@@ -15790,9 +15790,9 @@ class Test_get_ctf(unittest.TestCase):
 
     def test_wrong_img_returns_NotExistingObjectException_key_doesnot_exist(self):
         with self.assertRaises(RuntimeError) as cm_new:
-            fu.get_ctf(IMAGE_2D)
+            fu.get_ctf(IMAGE.2D)
         with self.assertRaises(RuntimeError) as cm_old:
-            oldfu.get_ctf(IMAGE_2D)
+            oldfu.get_ctf(IMAGE.2D)
         msg = str(cm_new.exception).split("'")
         msg_old = str(cm_old.exception).split("'")
         self.assertEqual(msg[0].split(" ")[0], "NotExistingObjectException")
@@ -18157,14 +18157,14 @@ class Test_get_pixel_size(unittest.TestCase):
         self.assertEqual(str(cm_new.exception), str(cm_old.exception))
 
     def test_get_pixel_size_img2d(self):
-        return_new = fu.get_pixel_size(img=IMAGE_2D)
-        return_old = oldfu.get_pixel_size(img=IMAGE_2D)
+        return_new = fu.get_pixel_size(img=IMAGE.2D)
+        return_old = oldfu.get_pixel_size(img=IMAGE.2D)
         self.assertEqual(return_new, return_old)
         self.assertEqual(return_new, 1)
 
     def test_get_pixel_size_img3d(self):
-        return_new = fu.get_pixel_size(img=IMAGE_3D)
-        return_old = oldfu.get_pixel_size(img=IMAGE_3D)
+        return_new = fu.get_pixel_size(img=IMAGE.3D)
+        return_old = oldfu.get_pixel_size(img=IMAGE.3D)
         self.assertEqual(return_new, return_old)
         self.assertEqual(return_new, 1)
 
@@ -18207,8 +18207,8 @@ class Test_set_pixel_size(unittest.TestCase):
         self.assertEqual(str(cm_new.exception), str(cm_old.exception))
 
     def test_set_pixel_size(self):
-        # img_fu = deepcopy(IMAGE_2D)
-        # img_fu_old = deepcopy(IMAGE_2D)
+        # img_fu = deepcopy(IMAGE.2D)
+        # img_fu_old = deepcopy(IMAGE.2D)
 
         img_fu = [EMNumPy.numpy2em(deepcopy(self.data[0].get_2dview()))]
         img_fu[0].set_attr_dict(self.data[0].get_attr_dict())
@@ -18317,11 +18317,11 @@ class Test_findall(unittest.TestCase):
 
 class Test_class_iterImagesList(unittest.TestCase):
     list_of_imgs = [
-        IMAGE_2D,
-        IMAGE_3D,
-        IMAGE_BLANK_2D,
-        IMAGE_BLANK_3D,
-        IMAGE_2D_REFERENCE,
+        IMAGE.2D,
+        IMAGE.3D,
+        IMAGE.BLANK_2D,
+        IMAGE.BLANK_3D,
+        IMAGE.2D_REFERENCE,
     ]
 
     def test_invalid_init(self):
@@ -19040,7 +19040,7 @@ class Test_eliminate_moons(unittest.TestCase):
         )
         self.assertEqual(str(cm_new.exception), str(cm_old.exception))
 
-    def test_real_case_IMAGE_3D(self):
+    def test_real_case_IMAGE.3D(self):
         moon_params = [0.4, 1]
         b, non = get_real_data(dim=3)
         b.set_size(10, 10, 10)
@@ -20064,7 +20064,7 @@ class Test_eliminate_moons(unittest.TestCase):
         #     )
         # )
 
-    def test_real_case_IMAGE_3D_no_change(self):
+    def test_real_case_IMAGE.3D_no_change(self):
         moon_params = [0.4, 1]
         b, non = get_real_data(dim=3)
         b.set_size(10, 10, 10)
@@ -20558,7 +20558,7 @@ class Test_get_sorting_attr_stack(unittest.TestCase):
         self.assertTrue(array_equal(return_new, []))
 
     def test_wrong_images_in_the_stack_RunTimeError(self):
-        stack=[IMAGE_2D,IMAGE_2D]
+        stack=[IMAGE.2D,IMAGE_2D]
         for i in range(len(stack)):
             stack[i].set_attr("group",i)
         with self.assertRaises(RuntimeError) as cm_new:
@@ -20622,7 +20622,7 @@ class Test_get_sorting_params_refine(unittest.TestCase):
         self.assertTrue(array_equal(return_new, []))
 
     def test_wrong_images_in_the_stack_RunTimeError(self):
-        stack=[IMAGE_2D,IMAGE_2D]
+        stack=[IMAGE.2D,IMAGE_2D]
         for i in range(len(stack)):
             stack[i].set_attr("group",i)
         Tracker = deepcopy(TRACKER)
@@ -20936,7 +20936,7 @@ class Test_get_resolution_mrk01(unittest.TestCase):
         self.assertEqual(str(cm_new.exception), str(cm_old.exception))
 
     def test_radi_not_integer(self):
-        v = [IMAGE_2D,IMAGE_2D_REFERENCE]
+        v = [IMAGE.2D,IMAGE_2D_REFERENCE]
         return_new = fu.get_resolution_mrk01(deepcopy(v), 0.5,0.15,ABSOLUTE_PATH, None)
         return_old = oldfu.get_resolution_mrk01(deepcopy(v), 0.5,0.15,ABSOLUTE_PATH,None)
         self.assertTrue(array_equal(return_new, return_old))
@@ -20944,16 +20944,16 @@ class Test_get_resolution_mrk01(unittest.TestCase):
         remove_list_of_file([path.join(ABSOLUTE_PATH,"fsc.txt")])
 
     def test_radi_integer_no_mask(self):
-        v = [IMAGE_3D,IMAGE_3D]
-        return_new = fu.get_resolution_mrk01(deepcopy(v), 1,IMAGE_3D.get_xsize(),ABSOLUTE_PATH, None)
-        return_old = oldfu.get_resolution_mrk01(deepcopy(v), 1,IMAGE_3D.get_xsize(),ABSOLUTE_PATH,None)
+        v = [IMAGE.3D,IMAGE_3D]
+        return_new = fu.get_resolution_mrk01(deepcopy(v), 1,IMAGE.3D.get_xsize(),ABSOLUTE_PATH, None)
+        return_old = oldfu.get_resolution_mrk01(deepcopy(v), 1,IMAGE.3D.get_xsize(),ABSOLUTE_PATH,None)
         self.assertTrue(array_equal(return_new, return_old))
         self.assertTrue(array_equal(return_new, (0.2, 0.2, 0.47)))
         remove_list_of_file([path.join(ABSOLUTE_PATH, "fsc.txt")])
 
     def test_radi_integer_with_mask(self):
-        v = [IMAGE_3D,IMAGE_3D]
-        mask_option = [fu.model_circle(1,IMAGE_3D.get_xsize(),IMAGE_3D.get_ysize(),IMAGE_3D.get_zsize())]
+        v = [IMAGE.3D,IMAGE_3D]
+        mask_option = [fu.model_circle(1,IMAGE.3D.get_xsize(),IMAGE_3D.get_ysize(),IMAGE_3D.get_zsize())]
         return_new = fu.get_resolution_mrk01(deepcopy(v), 1,None,ABSOLUTE_PATH, mask_option)
         return_old = oldfu.get_resolution_mrk01(deepcopy(v), 1,None,ABSOLUTE_PATH,mask_option)
         self.assertTrue(array_equal(return_new, return_old))
@@ -20961,8 +20961,8 @@ class Test_get_resolution_mrk01(unittest.TestCase):
         remove_list_of_file([path.join(ABSOLUTE_PATH, "fsc.txt")])
 
     def test_with_invalid_mask_returns_RuntimeError_ImageFormatException(self):
-        v = [IMAGE_3D,IMAGE_3D]
-        mask_option = [fu.model_circle(1,IMAGE_3D.get_xsize()+10,IMAGE_3D.get_ysize(),IMAGE_3D.get_zsize())]
+        v = [IMAGE.3D,IMAGE_3D]
+        mask_option = [fu.model_circle(1,IMAGE.3D.get_xsize()+10,IMAGE_3D.get_ysize(),IMAGE_3D.get_zsize())]
         with self.assertRaises(RuntimeError) as cm_new:
             fu.get_resolution_mrk01(deepcopy(v), 1,None,ABSOLUTE_PATH, mask_option)
         with self.assertRaises(RuntimeError) as cm_old:
@@ -21395,17 +21395,17 @@ class Test_apply_low_pass_filter(unittest.TestCase):
     def test_default_case(self):
         Tracker = deepcopy(TRACKER )
         Tracker["low_pass_filter"] = 0.087
-        return_new = fu.apply_low_pass_filter(refvol= [deepcopy(IMAGE_2D),deepcopy(IMAGE_2D)],Tracker=Tracker)
-        return_old = oldfu.apply_low_pass_filter(refvol=  [deepcopy(IMAGE_2D),deepcopy(IMAGE_2D)],Tracker=Tracker)
+        return_new = fu.apply_low_pass_filter(refvol= [deepcopy(IMAGE.2D),deepcopy(IMAGE_2D)],Tracker=Tracker)
+        return_old = oldfu.apply_low_pass_filter(refvol=  [deepcopy(IMAGE.2D),deepcopy(IMAGE_2D)],Tracker=Tracker)
         for i,j in zip(return_new,return_old):
             self.assertTrue(array_equal(i.get_3dview(), j.get_3dview()))
 
     def test_wrong_Tracker_KeyError(self):
         Tracker = deepcopy(TRACKER )
         with self.assertRaises(KeyError) as cm_new:
-            fu.apply_low_pass_filter(refvol= [deepcopy(IMAGE_2D),deepcopy(IMAGE_2D)],Tracker=Tracker)
+            fu.apply_low_pass_filter(refvol= [deepcopy(IMAGE.2D),deepcopy(IMAGE_2D)],Tracker=Tracker)
         with self.assertRaises(KeyError) as cm_old:
-            oldfu.apply_low_pass_filter(refvol= [deepcopy(IMAGE_2D),deepcopy(IMAGE_2D)],Tracker=Tracker)
+            oldfu.apply_low_pass_filter(refvol= [deepcopy(IMAGE.2D),deepcopy(IMAGE_2D)],Tracker=Tracker)
         self.assertEqual(str(cm_new.exception), 'low_pass_filter')
         self.assertEqual(str(cm_new.exception), str(cm_old.exception))
 

@@ -8,7 +8,7 @@ from sphire.sphire.libpy.sp_utilities import model_gauss_noise
 from EMAN2_cppwrap import EMData, EMAN2Ctf
 from copy import deepcopy
 
-from .test_module import IMAGE.2D, IMAGE_BLANK_2D, IMAGE_3D, IMAGE_BLANK_3D, MASK
+from .test_module import IMAGE.2D, IMAGE.BLANK_2D, IMAGE_3D, IMAGE_BLANK_3D, MASK
 
 from mpi import *
 
@@ -21750,7 +21750,7 @@ class Test_filt_vols(unittest.TestCase):
         (0, 0.2, 0.4, 0.6, 0.8, 1.0),
         (8, 9, 5, 77, 98, 200),
     )
-    vols = [IMAGE.3D, IMAGE_3D, IMAGE_3D]
+    vols = [IMAGE.3D, IMAGE.3D, IMAGE_3D]
     fscs = (dres, dres, dres)
 
     def test_all_the_conditions(self, return_new=None, return_old=None, skip=True):

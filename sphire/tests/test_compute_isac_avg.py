@@ -8,7 +8,7 @@ from sphire.bin_py3 import sp_compute_isac_avg as oldfu
 
 
 from os import path
-from .test_module import ABSOLUTE_OLDBIN_PATH,ABSOLUTE_BIN_PATH,remove_dir,IMAGE.2D,IMAGE_BLANK_2D,IMAGE_3D,ABSOLUTE_PATH_TO_SPHIRE_DEMO_RESULTS_FOLDER_NEW
+from .test_module import ABSOLUTE_OLDBIN_PATH,ABSOLUTE_BIN_PATH,remove_dir,IMAGE.2D,IMAGE.BLANK_2D,IMAGE_3D,ABSOLUTE_PATH_TO_SPHIRE_DEMO_RESULTS_FOLDER_NEW
 import unittest
 from sp_utilities import get_im
 
@@ -126,8 +126,8 @@ class Test_helperFunctions(unittest.TestCase):
     #todo: the images has to have the 'xform.align2d' key
     def test_compute_average_without_CTF(self):
         self.assertTrue(True)
-        #return_new=fu.compute_average(mlist=[IMAGE.2D,IMAGE_2D], radius=1, CTF=False)
-        #return_old=oldfu.compute_average(mlist=[IMAGE.2D,IMAGE_2D], radius=1, CTF=False)
+        #return_new=fu.compute_average(mlist=[IMAGE.2D,IMAGE.2D], radius=1, CTF=False)
+        #return_old=oldfu.compute_average(mlist=[IMAGE.2D,IMAGE.2D], radius=1, CTF=False)
 
 
 

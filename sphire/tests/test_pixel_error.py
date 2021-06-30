@@ -333,8 +333,8 @@ class Test_angle_error(unittest.TestCase):
 
 #todo: find a new image -->RuntimeError: NotExistingObjectException at /home/lusnig/src_sphire_1_3/eman2/libEM/emdata_metadata.cpp:1203: error with 'xform.align2d': 'The requested key does not exist' caught
 class Test_align_diff(unittest.TestCase):
-    data = [IMAGE_2D, IMAGE_2D_REFERENCE]
-    data2 = [IMAGE_3D, IMAGE_3D]
+    data = [IMAGE.2D, IMAGE_2D_REFERENCE]
+    data2 = [IMAGE.3D, IMAGE_3D]
 
     def test_wrong_number_params_too_few_parameters(self):
         with self.assertRaises(TypeError) as cm_new:
@@ -371,14 +371,14 @@ class Test_align_diff(unittest.TestCase):
         self.assertTrue(numpy_array_equal(return_new,return_old))
 
     def test_align_diff_with_data2(self):
-        return_new = fu.align_diff(data1=self.data, data2= [IMAGE_2D, IMAGE_2D], suffix="_ideal")
-        return_old = oldfu.align_diff(data1=self.data, data2=[IMAGE_2D, IMAGE_2D], suffix="_ideal")
+        return_new = fu.align_diff(data1=self.data, data2= [IMAGE.2D, IMAGE_2D], suffix="_ideal")
+        return_old = oldfu.align_diff(data1=self.data, data2=[IMAGE.2D, IMAGE_2D], suffix="_ideal")
         self.assertTrue(numpy_array_equal(return_new,return_old))
 
 
     def test_data_different_length(self):
-        return_new = fu.align_diff(data1=self.data, data2=[IMAGE_2D_REFERENCE], suffix="_ideal")
-        return_old = oldfu.align_diff(data1=self.data, data2=[IMAGE_2D_REFERENCE], suffix="_ideal")
+        return_new = fu.align_diff(data1=self.data, data2=[IMAGE.2D_REFERENCE], suffix="_ideal")
+        return_old = oldfu.align_diff(data1=self.data, data2=[IMAGE.2D_REFERENCE], suffix="_ideal")
         self.assertTrue(numpy_array_equal(return_new,return_old))
         self.assertTrue(numpy_array_equal(return_new, [0.0, 0.0, 0.0, 0]))
 
@@ -402,8 +402,8 @@ class Test_align_diff_textfile(unittest.TestCase):
 
 #todo: find a new image -->RuntimeError: NotExistingObjectException at /home/lusnig/src_sphire_1_3/eman2/libEM/emdata_metadata.cpp:1203: error with 'xform.align2d': 'The requested key does not exist' caught
 class Test_ave_ali_err(unittest.TestCase):
-    data = [IMAGE_2D, IMAGE_2D_REFERENCE]
-    data2 = [IMAGE_3D, IMAGE_3D]
+    data = [IMAGE.2D, IMAGE_2D_REFERENCE]
+    data2 = [IMAGE.3D, IMAGE_3D]
     def test_wrong_number_params_too_few_parameters(self):
         with self.assertRaises(TypeError) as cm_new:
             fu.ave_ali_err()
@@ -439,13 +439,13 @@ class Test_ave_ali_err(unittest.TestCase):
         self.assertTrue(numpy_array_equal(return_new, return_old))
 
     def test_ave_ali_err_with_data2(self):
-        return_new = fu.ave_ali_err(data1=self.data, data2=[IMAGE_2D, IMAGE_2D], suffix="_ideal", r=25)
-        return_old = oldfu.ave_ali_err(data1=self.data, data2=[IMAGE_2D, IMAGE_2D], suffix="_ideal", r=25)
+        return_new = fu.ave_ali_err(data1=self.data, data2=[IMAGE.2D, IMAGE_2D], suffix="_ideal", r=25)
+        return_old = oldfu.ave_ali_err(data1=self.data, data2=[IMAGE.2D, IMAGE_2D], suffix="_ideal", r=25)
         self.assertTrue(numpy_array_equal(return_new, return_old))
 
     def test_data_different_length(self):
-        return_new = fu.ave_ali_err(data1=self.data, data2=[IMAGE_2D_REFERENCE], suffix="_ideal", r=25)
-        return_old = oldfu.ave_ali_err(data1=self.data, data2=[IMAGE_2D_REFERENCE], suffix="_ideal", r=25)
+        return_new = fu.ave_ali_err(data1=self.data, data2=[IMAGE.2D_REFERENCE], suffix="_ideal", r=25)
+        return_old = oldfu.ave_ali_err(data1=self.data, data2=[IMAGE.2D_REFERENCE], suffix="_ideal", r=25)
         self.assertTrue(numpy_array_equal(return_new, return_old))
         self.assertTrue(numpy_array_equal(return_new, [0.0, 0.0, 0.0, 0]))
 

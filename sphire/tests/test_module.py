@@ -250,7 +250,7 @@ def create_kb(dim, sizex=100, sizey=80, sizez=70):
 
 import copy
 """ In order to unittest the function which output is an EMData() we have to shrink the original images."""
-IMAGE.2D, IMAGE_2D_REFERENCE = get_real_data(dim=2)
+IMAGE.2D, IMAGE.2D_REFERENCE = get_real_data(dim=2)
 
 img2d_data = IMAGE.2D.get_2dview()
 img2d_dict = IMAGE.2D.get_attr_dict()
@@ -268,12 +268,12 @@ IMAGE.3D.set_size(10, 10, 10)
 IMAGE.BLANK_3D = model_blank(nx=10, ny=10, nz=10, bckg=0.0)
 
 MASK = model_circle(r=2, nx=5, ny=5, nz=1)
-MASK_2DIMAGE = model_circle(r=2, nx=IMAGE.2D.get_xsize(), ny=IMAGE_2D.get_ysize(), nz=1)
+MASK_2DIMAGE = model_circle(r=2, nx=IMAGE.2D.get_xsize(), ny=IMAGE.2D.get_ysize(), nz=1)
 MASK_IMAGE.BLANK_2D = model_circle(
-    r=2, nx=IMAGE.BLANK_2D.get_xsize(), ny=IMAGE_BLANK_2D.get_ysize(), nz=1
+    r=2, nx=IMAGE.BLANK_2D.get_xsize(), ny=IMAGE.BLANK_2D.get_ysize(), nz=1
 )
 MASK_3DIMAGE = model_circle(
-    r=2, nx=IMAGE.3D.get_xsize(), ny=IMAGE_3D.get_ysize(), nz=IMAGE_3D.get_zsize()
+    r=2, nx=IMAGE.3D.get_xsize(), ny=IMAGE.3D.get_ysize(), nz=IMAGE_3D.get_zsize()
 )
 MASK_IMAGE.BLANK_3D = model_circle(
     r=2,
