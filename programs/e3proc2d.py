@@ -750,10 +750,6 @@ def main():
 							d["render_min"] = d["mean"] - d["sigma"]*sca
 							d["render_max"] = d["mean"] + d["sigma"]*sca
 
-						min_max_set = True
-					else:
-						min_max_set = False
-
 					if options.outmode != "float" or not options.fixintscaling:
 						if options.outnorescale or not options.fixintscaling:
 							# This sets the minimum and maximum values to the range
@@ -762,7 +758,7 @@ def main():
 
 							d["render_min"] = EMAN2.file_mode_range[outmode][0]
 							d["render_max"] = EMAN2.file_mode_range[outmode][1]
-						elif not min_max_set:
+						elif not options.fixintscaling:
 							d["render_min"] = d["minimum"]
 							d["render_max"] = d["maximum"]
 
