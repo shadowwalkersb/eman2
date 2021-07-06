@@ -401,10 +401,7 @@ def main():
 
 		# inclusion/exclusion lists
 		if options.list:
-			imagelist = [0]*nimg
-
-			for i in EMAN2.read_number_file(options.list):
-				imagelist[i] = 1
+			image_ids = set(EMAN2.read_number_file(options.list))
 
 		elif options.randomn > 0:
 			if options.randomn >= nimg:
@@ -417,15 +414,14 @@ def main():
 						continue
 					imagelist[i] = 1
 		else:
-			imagelist = [1]*nimg
+			image_ids = range(nimg)
 
 		if options.exclude:
 			if "," in options.exclude or options.exclude.isdigit():
 				for i in options.exclude.split(","):
-					imagelist[int(i)]=0
+					image_ids.remove(i)
 			else:
-				for i in EMAN2.read_number_file(options.exclude):
-					imagelist[i] = 0
+				image_ids - EMAN2.read_number_file(options.exclude)
 
 		# outfilename_no_ext, outfilename_ext when outfile specified
 		if options.output:
