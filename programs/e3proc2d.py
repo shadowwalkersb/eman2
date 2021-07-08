@@ -228,8 +228,6 @@ def main():
 	# Parallelism
 	parser.add_argument("--parallel",action="store_true")
 
-	optionlist = get_optionlist(sys.argv[1:])
-
 	options, args = parser.parse_args()
 
 	if options.parallel:
@@ -252,6 +250,8 @@ def main():
 		sys.exit(1)
 
 	logid = E2init(sys.argv,options.ppid)
+
+	optionlist = get_optionlist(sys.argv[1:])
 
 	num_input_files = len(args) - 1
 	outpattern = args[num_input_files]
