@@ -31,6 +31,7 @@
 
 from past.utils import old_div
 from EMAN2 import *
+import EMAN2
 from eman.proc import parse_list_arg
 from collections import defaultdict
 import sys
@@ -195,7 +196,7 @@ def main():
 	parser.add_argument("--medianshrink", metavar="n", type=int, action="append", help="Reduce an image size by an integral scaling factor, uses median filter. eg - 2 will reduce image size to 1/2. Clip is not required.")
 	parser.add_argument("--fouriershrink", metavar="n", type=float, action="append", help="Reduce an image size by an arbitrary scaling factor by clipping in Fourier space. eg - 2 will reduce image size to 1/2.")
 	parser.add_argument("--compressbits", type=int,help="HDF only. Bits to keep for compression. -1 for no compression",default=-1)
-	parser.add_argument("--outmode", type=str, choices=file_mode_map.keys(), default="float", help=f"All EMAN2 programs write images with 4-byte floating point values when possible by default. This allows specifying an alternate format when supported ({file_mode_map.keys()}). Values are rescaled to fill MIN-MAX range.")
+	parser.add_argument("--outmode", type=str, choices=EMAN2.file_mode_map.keys(), default="float", help=f"All EMAN2 programs write images with 4-byte floating point values when possible by default. This allows specifying an alternate format when supported ({EMAN2.file_mode_map.keys()}). Values are rescaled to fill MIN-MAX range.")
 	parser.add_argument("--outnorescale", action="store_true", help="If specified, floating point values will not be rescaled when writing data as integers. Values outside of range are truncated.")
 	parser.add_argument("--fixintscaling", type=str, default=None, help="When writing to an 8 or 16 bit integer format the data must be scaled. 'noscale' will assume the pixel values are already correct, 'full' will ensure the full range of values are included in the output, 'sane' will pick a good range, a number will set the range to mean+=sigma*number")
 	# choices = ['noscale', 'full', 'sane']
@@ -428,7 +429,7 @@ def main():
 		if options.list:
 			imagelist = [0]*nimg
 
-			for i in read_number_file(options.list):
+			for i in EMAN2.read_number_file(options.list):
 				imagelist[i] = 1
 
 		elif options.randomn > 0:
@@ -449,7 +450,7 @@ def main():
 				for i in options.exclude.split(","):
 					imagelist[int(i)]=0
 			else:
-				for i in read_number_file(options.exclude):
+				for i in EMAN2.read_number_file(options.exclude):
 					imagelist[i] = 0
 
 			if options.verbose: print("inclusion list:", str(imagelist))
@@ -593,7 +594,7 @@ def main():
 							except:
 								pass
 
-					if processorname in outplaceprocs:
+					if processorname in EMAN2.outplaceprocs:
 						d = d.process(processorname, param_dict)
 					else: d.process_inplace(processorname, param_dict)
 					index_d[option1] += 1
@@ -857,10 +858,10 @@ def main():
 						if options.outnorescale or dont_scale:
 							# This sets the minimum and maximum values to the range
 							# for the specified type, which should result in no rescaling
-							outmode = file_mode_map[options.outmode]
+							outmode = EMAN2.file_mode_map[options.outmode]
 
-							d["render_min"] = file_mode_range[outmode][0]
-							d["render_max"] = file_mode_range[outmode][1]
+							d["render_min"] = EMAN2.file_mode_range[outmode][0]
+							d["render_max"] = EMAN2.file_mode_range[outmode][1]
 						elif not min_max_set:
 							d["render_min"] = d["minimum"]
 							d["render_max"] = d["maximum"]
@@ -874,7 +875,7 @@ def main():
 						# write processed image to file
 
 						out_type = EMUtil.get_image_ext_type(options.outtype)
-						out_mode = file_mode_map[options.outmode]
+						out_mode = EMAN2.file_mode_map[options.outmode]
 						not_swap = not options.swap
 
 						if options.threed2threed or options.twod2threed:    # output a single 3D image
