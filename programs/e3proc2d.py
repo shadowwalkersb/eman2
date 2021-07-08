@@ -458,7 +458,7 @@ def main():
 			if outfilename_ext == "rcs" and outfile[-4:] == "mrcs":
 				outfilename_ext = outfile[-4:]
 
-		dummy = 0										#JESUS
+		dummy = 0
 
 		if options.verbose > 1:
 			print("input file, output file, is three-d =", infile, outfile, is_3d)
@@ -905,10 +905,7 @@ def main():
 						not_swap = not(options.swap)
 
 						if options.threed2threed or options.twod2threed:    # output a single 3D image
-							#shift = 0
-
-							if dummy == 0:	# The "dummy" volume, as termed by Grant, only needs to be created once
-												# This dummy variable changes to dummy=1 after that happens.
+							if dummy == 0:
 								z = nimg
 
 								if options.list:
