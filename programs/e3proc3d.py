@@ -75,8 +75,8 @@ def main():
 	parser.add_argument("--alignref", metavar="filename", type=str, default=None, help="Alignment reference volume. May only be specified once.")
 	parser.add_argument("--apix", type=float, default=None, help="Default=None (not used). A/pixel for S scaling. Also sets/resets the apix of an image to this value.")
 	parser.add_argument("--append", action="store_true", help="Append output image, i.e., do not write inplace.")
-	parser.add_argument("--average", action="store_true", help="Computes the average of a stack of 3D volumes", default=False)
-	parser.add_argument("--avg_byxf", action="store_true", help="Transform each volume by xform.align3d in its header before computing the average. Only used in --average mode.", default=False)
+	parser.add_argument("--average", action="store_true", help="Computes the average of a stack of 3D volumes")
+	parser.add_argument("--avg_byxf", action="store_true", help="Transform each volume by xform.align3d in its header before computing the average. Only used in --average mode.")
 	parser.add_argument("--averager", type=str, default="mean", help="Averager used for --average and --sym options")
 
 	parser.add_argument("--calcfsc", type=str, metavar="with input", help="Calculate a FSC curve between two models. Output is a txt file. This option is the name of the second volume.")
@@ -108,7 +108,7 @@ def main():
 
 	parser.add_argument("--origin", metavar="x,y,z", type=ast.literal_eval, help="Set the coordinates for the pixel (0,0,0) for Chimera. THIS HAS NO IMPACT ON IMAGE PROCESSING !")
 	parser.add_argument("--outmode",type=str, default="float", help="All EMAN2 programs write images with 4-byte floating point values when possible by default. This allows specifying an alternate format when supported (int8, int16, int32, uint8, uint16, uint32). Values are rescaled to fill MIN-MAX range.")
-	parser.add_argument("--outnorescale",action="store_true",default=False,help="If specified, floating point values will not be rescaled when writing data as integers. Values outside of range are truncated.")
+	parser.add_argument("--outnorescale",action="store_true",help="If specified, floating point values will not be rescaled when writing data as integers. Values outside of range are truncated.")
 	parser.add_argument("--outtype", metavar="image-type", type=str, help="Set output image format, mrc, imagic, hdf, etc")
 
 	parser.add_argument("--ppid", type=int, help="Set the PID of the parent process, used for cross platform PPID",default=-2)
@@ -122,14 +122,14 @@ def main():
 	parser.add_argument("--setsf", type=str, metavar="inputfile", help="Set the radial structure factor. Must specify apix.")
 	parser.add_argument("--setisosf", type=str, metavar="inputfile", help="Make the amplitude rotationally symmetric, and equivalent to provided structure factor")
 	parser.add_argument("--step",type=str,default=None,help="Specify <init>,<step>. Processes only a subset of the input data. For example, 0,2 would process only the even numbered particles")
-	parser.add_argument("--swap", action="store_true", help="Swap the byte order", default=False)
+	parser.add_argument("--swap", action="store_true", help="Swap the byte order")
 	parser.add_argument("--sym", dest = "sym", action="append", help = "Symmetry to impose - choices are: c<n>, d<n>, h<n>, tet, oct, icos")
 
-	parser.add_argument("--tomoprep", action="store_true", help="Produces a special HDF file designed for rapid interactive tomography annotation. This option should be used alone.", default=False)
+	parser.add_argument("--tomoprep", action="store_true", help="Produces a special HDF file designed for rapid interactive tomography annotation. This option should be used alone.")
 	parser.add_argument("--tophalf", action="store_true", help="The output only keeps the top half map")
 	parser.add_argument("--trans", metavar="dx,dy,dz", type=str, action="append", help="Translate map by dx,dy,dz ")
 
-	parser.add_argument("--unstacking", action="store_true", help="Process a stack of 3D images, then output as a series of numbered single image files", default=False)
+	parser.add_argument("--unstacking", action="store_true", help="Process a stack of 3D images, then output as a series of numbered single image files")
 
 	parser.add_argument("--verbose", "-v", dest="verbose", action="store", metavar="n", type=int, default=0, help="verbose level [0-9], higher number means higher level of verboseness")
 
