@@ -33,7 +33,7 @@ from past.utils import old_div
 from EMAN2 import *
 import EMAN2
 from eman.proc import parse_list_arg
-from collections import defaultdict
+from collections import defaultdict, deque
 import sys
 import os.path
 import math
@@ -257,7 +257,7 @@ def main():
 
 	logid = E2init(sys.argv,options.ppid)
 
-	optionlist = get_optionlist(sys.argv[1:])
+	optionlist = deque(get_optionlist(sys.argv[1:]))
 
 	num_input_files = len(args) - 1
 	outpattern = args[num_input_files]
@@ -555,12 +555,14 @@ def main():
 			if not "outtype" in optionlist:
 				optionlist.append("outtype")
 
-			index_d = defaultdict(int)
-
 			if options.verbose > 1:
 				print("option list =", optionlist)
 
-			for option1 in optionlist:
+			while optionlist:
+				option1 = optionlist.pop()
+				val = getattr(options, option1)
+				val = val.pop(0) if isinstance(val, list) else val
+
 				if options.verbose > 1:
 					print("option in option list =", option1)
 				nx = d.get_xsize()
@@ -581,8 +583,7 @@ def main():
 					except: pass
 
 				if option1 == "process":
-					fi = index_d[option1]
-					processorname, param_dict = parsemodopt(options.process[fi])
+					processorname, param_dict = parsemodopt(val)
 
 					if not param_dict: param_dict = {}
 
@@ -597,7 +598,6 @@ def main():
 					if processorname in EMAN2.outplaceprocs:
 						d = d.process(processorname, param_dict)
 					else: d.process_inplace(processorname, param_dict)
-					index_d[option1] += 1
 
 				elif option1 == "extractboxes":
 					try:
@@ -609,8 +609,7 @@ def main():
 						pass
 
 				elif option1 == "add":
-					d.add(options.add[index_d[option1]])
-					index_d[option1] += 1
+					d.add(val)
 
 				elif option1 == "mult":
 					d.mult(options.mult)
@@ -662,44 +661,35 @@ def main():
 					d = d.make_footprint(options.fp)
 
 				elif option1 == "anisotropic":
-					amount, angle = options.anisotropic[index_d[option1]]
+					amount, angle = val
 
 					rt=Transform({"type":"2d","alpha":angle})
 					xf=rt*Transform([amount,0,0,0,0,1./amount,0,0,0,0,1,0])*rt.inverse()
 					d.transform(xf)
 
-					index_d[option1] += 1
-
 				elif option1 == "scale":
-					scale_f = options.scale[index_d[option1]]
+					scale_f = val
 
 					if scale_f != 1.0:
 						d.scale(scale_f)
 
-					index_d[option1] += 1
-
 				elif option1 == "rotate":
-					rotatef = options.rotate[index_d[option1]]
+					rotatef = val
 
 					if rotatef != 0.0: d.rotate(rotatef,0,0)
 
-					index_d[option1] += 1
-
 				elif option1 == "translate":
-					tdx, tdy = options.translate[index_d[option1]]
+					tdx, tdy = val
 
 					if tdx != 0.0 or tdy != 0.0:
 						d.translate(tdx,tdy,0.0)
 
-					index_d[option1] += 1
-
 				elif option1 == "clip":
-					ci = index_d[option1]
 					clipcx = old_div(nx,2)
 					clipcy = old_div(ny,2)
 
-					try: clipx,clipy,clipcx,clipcy = options.clip[ci]
-					except: clipx, clipy = options.clip[ci]
+					try: clipx,clipy,clipcx,clipcy = val
+					except: clipx, clipy = val
 
 					clipx, clipy = int(clipx),int(clipy)
 					clipcx, clipcy = int(clipcx),int(clipcy)
@@ -709,11 +699,8 @@ def main():
 					try: d.set_attr("avgnimg", d.get_attr("avgnimg"))
 					except: pass
 
-					index_d[option1] += 1
-
 				elif option1 == "randomize":
-					ci = index_d[option1]
-					rnd = options.randomize[ci]
+					rnd = val
 
 					t = Transform()
 					t.set_params({"type":"2d", "alpha":random.uniform(-rnd[0],rnd[0]),
@@ -722,31 +709,25 @@ def main():
 					d.transform(t)
 
 				elif option1 == "medianshrink":
-					shrink_f = options.medianshrink[index_d[option1]]
+					shrink_f = val
 
 					if shrink_f > 1:
 						d.process_inplace("math.medianshrink",{"n":shrink_f})
 
-					index_d[option1] += 1
-
 				elif option1 == "meanshrink":
-					mshrink = options.meanshrink[index_d[option1]]
+					mshrink = val
 
 					if mshrink > 1:
 						d.process_inplace("math.meanshrink",{"n":mshrink})
 
-					index_d[option1] += 1
-
 				elif option1 == "fouriershrink":
-					fshrink = options.fouriershrink[index_d[option1]]
+					fshrink = val
 
 					if fshrink > 1:
 						d.process_inplace("math.fft.resample",{"n":fshrink})
 
-					index_d[option1] += 1
-
 				elif option1 == "headertransform":
-					xfmode = options.headertransform[index_d[option1]]
+					xfmode = val
 
 					try: xform=d["xform.align2d"]
 					except: print("Error: particle has no xform.align2d header value")
