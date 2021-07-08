@@ -208,7 +208,7 @@ def main():
 	parser.add_argument("--selfcl", metavar="steps mode", type=int, nargs=2, help="Output file will be a 180x180 self-common lines map for each image.")
 	parser.add_argument("--setsfpairs",  action="store_true", help="Applies the radial structure factor of the 1st image to the 2nd, the 3rd to the 4th, etc")
 	parser.add_argument("--split", metavar="n", type=int, default=1, help="Splits the input file into a set of n output files")
-	parser.add_argument("--translate", type=str, action="append", help="Translate by x,y pixels")
+	parser.add_argument("--translate", metavar="x,y", type=parse_list_arg(float,float), action="append", help="Translate by x,y pixels")
 	parser.add_argument("--headertransform", type=int, choices=[0, 1], action="append", help="This will take the xform.align2d header value from each particle, and apply it. Pass 0 to perform the transform or 1 to perform the inverse.")
 	parser.add_argument("--verbose", "-v", dest="verbose", action="store", metavar="n", type=int, help="verbose level [0-9], higher number means higher level of verboseness",default=1)
 	parser.add_argument("--plane", choices=xyplanes + xzplanes + yzplanes, type=str, default='xy', help="Change the plane of image processing, useful for processing 3D mrcs as 2D images.")
@@ -685,8 +685,7 @@ def main():
 					index_d[option1] += 1
 
 				elif option1 == "translate":
-					tdx,tdy = options.translate[index_d[option1]].split(",")
-					tdx,tdy = float(tdx),float(tdy)
+					tdx, tdy = options.translate[index_d[option1]]
 
 					if tdx != 0.0 or tdy != 0.0:
 						d.translate(tdx,tdy,0.0)
