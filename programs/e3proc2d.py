@@ -45,7 +45,6 @@ import traceback
 xyplanes = ['xy', 'yx']
 xzplanes = ['xz', 'zx']
 yzplanes = ['yz', 'yz']
-threedplanes = xyplanes + xzplanes + yzplanes
 
 
 def changed_file_name(input_name, output_pattern, input_number, multiple_inputs):
@@ -212,7 +211,7 @@ def main():
 	parser.add_argument("--translate", type=str, action="append", help="Translate by x,y pixels")
 	parser.add_argument("--headertransform", type=int, choices=[0, 1], action="append", help="This will take the xform.align2d header value from each particle, and apply it. Pass 0 to perform the transform or 1 to perform the inverse.")
 	parser.add_argument("--verbose", "-v", dest="verbose", action="store", metavar="n", type=int, help="verbose level [0-9], higher number means higher level of verboseness",default=1)
-	parser.add_argument("--plane", choices=threedplanes, type=str, default='xy', help="Change the plane of image processing, useful for processing 3D mrcs as 2D images.")
+	parser.add_argument("--plane", choices=xyplanes + xzplanes + yzplanes, type=str, default='xy', help="Change the plane of image processing, useful for processing 3D mrcs as 2D images.")
 	parser.add_argument("--writejunk", action="store_true", help="Writes the image even if its sigma is 0.", default=False)
 	parser.add_argument("--swap", action="store_true", help="Swap the byte order", default=False)
 	parser.add_argument("--threed2threed", action="store_true", help="Process 3D image as a stack of 2D slices, then output as a 3D image", default=False)
@@ -231,7 +230,7 @@ def main():
 
 	optionlist = get_optionlist(sys.argv[1:])
 
-	(options, args) = parser.parse_args()
+	options, args = parser.parse_args()
 
 	if options.parallel:
 		parser.error("Parallelism not supported. Please use e2proc2dpar.py")
@@ -583,7 +582,7 @@ def main():
 
 				if option1 == "process":
 					fi = index_d[option1]
-					(processorname, param_dict) = parsemodopt(options.process[fi])
+					processorname, param_dict = parsemodopt(options.process[fi])
 
 					if not param_dict: param_dict = {}
 
@@ -618,8 +617,7 @@ def main():
 					d.mult(options.mult)
 
 				elif option1 == "calccont":
-					dd = d.process("math.rotationalsubtract")
-					f = dd.do_fft()
+					f = d.process("math.rotationalsubtract").do_fft()
 
 					if d["apix_x"] <= 0: raise Exception("Error: 'calccont' requires an A/pix value, which is missing in the input images")
 
@@ -714,12 +712,11 @@ def main():
 					clipx, clipy = int(clipx),int(clipy)
 					clipcx, clipcy = int(clipcx),int(clipcy)
 
-					e = d.get_clip(Region(clipcx-old_div(clipx,2), clipcy-old_div(clipy,2), clipx, clipy))
+					d = d.get_clip(Region(clipcx-old_div(clipx,2), clipcy-old_div(clipy,2), clipx, clipy))
 
-					try: e.set_attr("avgnimg", d.get_attr("avgnimg"))
+					try: d.set_attr("avgnimg", d.get_attr("avgnimg"))
 					except: pass
 
-					d = e
 					index_d[option1] += 1
 
 				elif option1 == "randomize":
@@ -792,8 +789,7 @@ def main():
 							sys.exit(1)
 
 				elif option1 == "radon":
-					r = d.do_radon()
-					d = r
+					d = d.do_radon()
 
 				elif option1 == "average":
 					average.add_image(d)
@@ -901,7 +897,7 @@ def main():
 
 						out_type = EMUtil.get_image_ext_type(options.outtype)
 						out_mode = file_mode_map[options.outmode]
-						not_swap = not(options.swap)
+						not_swap = not options.swap
 
 						if options.threed2threed or options.twod2threed:    # output a single 3D image
 							if dummy == 0:

@@ -137,7 +137,7 @@ def main():
 
 	optionlist = get_optionlist(sys.argv[1:])
 
-	(options, args) = parser.parse_args()
+	options, args = parser.parse_args()
 
 	if len(args) != 2:
 		print("usage: " + usage)
@@ -439,7 +439,7 @@ def main():
 			elif option1 == "process":
 				fi = index_d[option1]
 				if options.verbose > 1: print("process -> ",options.process[fi])
-				(filtername, param_dict) = parsemodopt(options.process[fi])
+				filtername, param_dict = parsemodopt(options.process[fi])
 				if not param_dict: param_dict = {}
 
 				#Parse the options to convert the image file name to EMData object
@@ -536,7 +536,7 @@ def main():
 
 				fi = index_d[option1]
 				if options.verbose > 1: print("align -> ",options.align[fi])
-				(alignername, param_dict) = parsemodopt(options.align[fi])
+				alignername, param_dict = parsemodopt(options.align[fi])
 				if not param_dict: param_dict={}
 
 				#Parse the options to convert the image file name to EMData object
@@ -697,8 +697,7 @@ def main():
 				index_d[option1] += 1
 
 			elif option1 == "tophalf":
-				half = data.get_top_half()
-				data = half
+				data = data.get_top_half()
 
 			elif option1 == "outtype":
 				if not options.outtype:
