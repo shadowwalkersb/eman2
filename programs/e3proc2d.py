@@ -860,10 +860,9 @@ def main():
 
 							d["render_min"] = file_mode_range[outmode][0]
 							d["render_max"] = file_mode_range[outmode][1]
-						else:
-							if not min_max_set:
-								d["render_min"] = d["minimum"]
-								d["render_max"] = d["maximum"]
+						elif not min_max_set:
+							d["render_min"] = d["minimum"]
+							d["render_max"] = d["maximum"]
 
 					if options.avgseq > 1:
 						average.add_image(d)
