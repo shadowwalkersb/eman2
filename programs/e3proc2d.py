@@ -475,12 +475,12 @@ def main():
 				continue
 
 			if options.split > 1:
-				outfile = outfilename_no_ext + ".%02d." % (i % options.split) + outfilename_ext
+				outfile = outfilename_no_ext + ".%02d." % (i % options.split) + outfilename_ext   # what if i is excluded
 
 			if not is_3d:
 				if options.threed2threed or options.threed2twod:
 					d = EMData()
-					d.read_image(infile, 0, False, Region(0,0,i,threed_xsize,threed_ysize,1))
+					d.read_image(infile, 0, False, Region(0,0,i,threed_xsize,threed_ysize,1))   # what if i is excluded
 				elif infile[0] == ":":
 					vals = infile.split(":")
 
@@ -533,16 +533,16 @@ def main():
 					else:
 						img_type = IMAGE_UNKNOWN
 
-					d.read_image(infile, i, False, None, False, img_type)
+					d.read_image(infile, i, False, None, False, img_type)   # what if i is excluded
 			else:
 				x, y, z = 0, 0, 0
 
 				if plane in xyplanes:
-					z, tomo_nz = i, 1
+					z, tomo_nz = i, 1   # what if i is excluded
 				elif plane in xzplanes:
-					y, tomo_ny = i, 1
+					y, tomo_ny = i, 1   # what if i is excluded
 				elif plane in yzplanes:
-					x, tomo_nx = i, 1
+					x, tomo_nx = i, 1   # what if i is excluded
 
 				roi = Region(x, y, z, tomo_nx, tomo_ny, tomo_nz)
 				d = threed.get_clip(roi)
@@ -631,12 +631,12 @@ def main():
 				elif option1 == "norefs" and d["ptcl_repr"] <= 0:
 					continue
 
-				elif option1 == "setsfpairs":
+				elif option1 == "setsfpairs":  # how does this work with inclusion/exclusion
 					dataf = d.do_fft()
 					x0 = 0
 					step = 0.5
 
-					if i%2 == 0:
+					if i%2 == 0:   # what if i is excluded
 						sfcurve1 = dataf.calc_radial_dist(nx, x0, step)
 					else:
 						sfcurve2 = dataf.calc_radial_dist(nx, x0, step)
@@ -786,7 +786,7 @@ def main():
 
 				elif option1 == "interlv":
 					d.append_image(outfile, EMUtil.get_image_ext_type(options.outtype))
-					d.read_image(options.interlv, i)
+					d.read_image(options.interlv, i)   # what if i is excluded
 
 				elif option1 == "outtype":
 					if options.verbose > 1:
