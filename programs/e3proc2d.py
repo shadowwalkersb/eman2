@@ -887,8 +887,6 @@ def main():
 
 						if options.threed2threed or options.twod2threed:    # output a single 3D image
 							if not dummy:
-								z = nimg
-
 								if options.list:
 									f = open(options.list,'r')
 									lines = f.read().split(',')
@@ -902,6 +900,9 @@ def main():
 
 									f.close()
 									z = nimg - len(lines)
+
+								else:
+									z = nimg
 
 								out3d_img = EMData(d.get_xsize(), d.get_ysize(), z)
 
