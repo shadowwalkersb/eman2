@@ -426,15 +426,16 @@ def main():
 			for i in read_number_file(options.list): imagelist[i] = 1
 
 		elif options.randomn > 0:
-			imagelist = [0]*nimg
 			if options.randomn >= nimg:
 				imagelist = [1]*nimg
 			else:
+				imagelist = [0]*nimg
 				for nk in range(options.randomn):
 					i = random.randrange(nimg)
 					if imagelist[i]: continue
 					imagelist[i] = 1
-		else: imagelist = [1]*nimg
+		else:
+			imagelist = [1]*nimg
 
 		if options.exclude:
 			if "," in options.exclude or options.exclude.isdigit():
@@ -866,10 +867,9 @@ def main():
 
 							d["render_min"] = file_mode_range[outmode][0]
 							d["render_max"] = file_mode_range[outmode][1]
-						else:
-							if not min_max_set:
-								d["render_min"] = d["minimum"]
-								d["render_max"] = d["maximum"]
+						elif not min_max_set:
+							d["render_min"] = d["minimum"]
+							d["render_max"] = d["maximum"]
 
 					if options.avgseq > 1:
 						average.add_image(d)
@@ -885,8 +885,6 @@ def main():
 
 						if options.threed2threed or options.twod2threed:    # output a single 3D image
 							if not dummy:
-								z = nimg
-
 								if options.list:
 									f = open(options.list,'r')
 									lines = f.read().split(',')
@@ -900,6 +898,9 @@ def main():
 
 									f.close()
 									z = nimg - len(lines)
+
+								else:
+									z = nimg
 
 								out3d_img = EMData(d.get_xsize(), d.get_ysize(), z)
 
