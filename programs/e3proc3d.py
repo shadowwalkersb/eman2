@@ -264,7 +264,8 @@ def main():
 	n0 = options.first
 	n1 = options.last
 	nimg = 1 if infile[0] == ":" else EMUtil.get_image_count(infile)
-	if not (0 <= n1 <= nimg ): n1 = nimg-1
+	if not (0 <= n1 <= nimg):
+		n1 = nimg-1
 
 	# If the output file exists and has exactly one image we delete the file later if writing compressed
 	try:
@@ -375,8 +376,11 @@ def main():
 			data.set_attr('apix_y', apix)
 			data.set_attr('apix_z', apix)
 
-		if options.inputto1: data.to_one()			# replace all voxel values with 1.0
-		if options.resetxf: data["xform.align3d"]=Transform()
+		if options.inputto1:
+			data.to_one()			# replace all voxel values with 1.0
+
+		if options.resetxf:
+			data["xform.align3d"]=Transform()
 
 		for option1 in optionlist:
 			if option1 == "origin":
@@ -451,9 +455,11 @@ def main():
 						except:
 							pass
 
-				if filtername == "misc.directional_sum": data=data.process(filtername,param_dict)
+				if filtername == "misc.directional_sum":
+					data=data.process(filtername,param_dict)
 				else:
-					try: data.process_inplace(filtername, param_dict)
+					try:
+						data.process_inplace(filtername, param_dict)
 					except:
 						traceback.print_exc()
 						print("Error running processor: ",filtername,param_dict)

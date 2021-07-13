@@ -423,7 +423,8 @@ def main():
 		if options.list:
 			imagelist = [0]*nimg
 
-			for i in read_number_file(options.list): imagelist[i] = 1
+			for i in read_number_file(options.list):
+				imagelist[i] = 1
 
 		elif options.randomn > 0:
 			if options.randomn >= nimg:
@@ -432,7 +433,8 @@ def main():
 				imagelist = [0]*nimg
 				for nk in range(options.randomn):
 					i = random.randrange(nimg)
-					if imagelist[i]: continue
+					if imagelist[i]:
+						continue
 					imagelist[i] = 1
 		else:
 			imagelist = [1]*nimg
@@ -442,7 +444,8 @@ def main():
 				for i in options.exclude.split(","):
 					imagelist[int(i)]=0
 			else:
-				for i in read_number_file(options.exclude): imagelist[i] = 0
+				for i in read_number_file(options.exclude):
+					imagelist[i] = 0
 
 			if options.verbose: print("inclusion list:", str(imagelist))
 
@@ -613,12 +616,14 @@ def main():
 				elif option1 == "calccont":
 					f = d.process("math.rotationalsubtract").do_fft()
 
-					if d["apix_x"] <= 0: raise Exception("Error: 'calccont' requires an A/pix value, which is missing in the input images")
+					if d["apix_x"] <= 0:
+						raise Exception("Error: 'calccont' requires an A/pix value, which is missing in the input images")
 
 					lopix = int(d["nx"]*d["apix_x"]/150.0)
 					hipix = min(int(d["nx"] * d["apix_x"] / 25.0), old_div(d["ny"], 2) - 6)  # if A/pix is very large, this makes sure we get at least some info
 
-					if lopix == hipix: lopix,hipix = 3,old_div(d["nx"],5)  # in case the A/pix value is drastically out of range
+					if lopix == hipix:
+						lopix,hipix = 3,old_div(d["nx"],5)  # in case the A/pix value is drastically out of range
 
 					r = f.calc_radial_dist(old_div(d["ny"],2),0,1.0,1)
 					lo = sum(r[lopix:hipix]) / (hipix-lopix)
@@ -956,11 +961,13 @@ def main():
 								if options.inplace:
 									if options.compressbits>=0:
 										d.write_compressed(outfile,i,options.compressbits,nooutliers=True)
-									else: d.write_image(outfile, i, out_type, False, None, out_mode, not_swap)
+									else:
+										d.write_image(outfile, i, out_type, False, None, out_mode, not_swap)
 								else:  # append the image
 									if options.compressbits>=0:
 										d.write_compressed(outfile,-1,options.compressbits,nooutliers=True)
-									else: d.write_image(outfile, -1, out_type, False, None, out_mode, not_swap)
+									else:
+										d.write_image(outfile, -1, out_type, False, None, out_mode, not_swap)
 
 		# end of image loop
 
