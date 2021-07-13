@@ -187,8 +187,6 @@ def main():
 
 	parser.add_argument("--unstacking", action="store_true", help="Process a stack of 3D images, then output as a series of numbered single image files")
 
-	parser.add_argument("--verbose", "-v", dest="verbose", action="store", metavar="n", type=int, default=0, help="verbose level [0-9], higher number means higher level of verboseness")
-
 	optionlist = get_optionlist(sys.argv[1:])
 
 	options, args = parser.parse_args()
@@ -357,8 +355,6 @@ def main():
 				a.process_inplace('normalize.edgemean')
 				a.transform(a["xform.align3d"])
 			avgr.add_image(a)
-			if options.verbose:
-				print("Added ptcl %d / %d" %( i+1, old_div((n1-n0),n2) + 1))
 		avg = avgr.finish()
 
 		try:
@@ -408,9 +404,6 @@ def main():
 	if not "outtype" in optionlist:
 		optionlist.append("outtype")
 
-	if options.verbose > 0:
-		print("%d images, processing %d-%d (step %d)......"%(nimg, n0, n1,n2))
-
 	for img_index, data in enumerate(datlst):
 		index_d = defaultdict(int)
 
@@ -450,7 +443,6 @@ def main():
 				fsc = fsc[third:2*third]
 				saxis = [old_div(x,apix) for x in xaxis]
 				Util.save_data(saxis[1],saxis[1]-saxis[0],fsc[1:-1],args[1])
-				if options.verbose: print("Exiting after FSC calculation")
 
 			elif option1 == "calcsf":
 				dataf = data.do_fft()
@@ -459,30 +451,25 @@ def main():
 				Util.save_data(0, 1.0/(apix*ny), curve, options.calcsf)
 
 			elif option1 == "setsf":
-				if options.verbose > 1: print("setsf -> ",options.setsf)
 				sf = XYData()
 				sf.read_file(options.setsf)
 				data.process_inplace("filter.setstrucfac",{"apix":data["apix_x"],"strucfac":sf})
 
 			elif option1 == "setisosf":
-				if options.verbose > 1: print("setisosf -> ",options.setsf)
 				sf = XYData()
 				sf.read_file(options.setisosf)
 				data.process_inplace("filter.setisotropicpow",{"apix":data["apix_x"],"strucfac":sf})
 
 			elif option1 == "filtertable":
 				tf = options.filtertable[index_d[option1]]
-				if options.verbose > 1: print("Apply filter -> ",tf)
 				xy = XYData()
 				xy.read_file(tf)
 				ny = data["ny"]
 				filt = [xy.get_yatx_smooth(old_div(i,(apix*ny)),1) for i in range(int(ceil(ny*sqrt(3.0)/2)))]
-				if options.verbose > 1: print(filt)
 				data.process_inplace("filter.radialtable",{"table":filt})
 
 			elif option1 == "process":
 				fi = index_d[option1]
-				if options.verbose > 1: print("process -> ",options.process[fi])
 				filtername, param_dict = parsemodopt(options.process[fi])
 				if not param_dict: param_dict = {}
 
@@ -523,13 +510,11 @@ def main():
 						zimg = dsd.process("xform",{"transform":Transform({"type":"eman","tz":z,"phi":best[2]})})
 						tmp = (dsr.cmp("ccc",zimg),z,best[2],zimg)
 						if best[0] > tmp[0]: best=tmp
-					if options.verbose > 1: print(best[:3])
 
 					for phi in arange(best[2]-20.0,best[2]+20.0,dang*2.0):
 						zimg = dsd.process("xform",{"transform":Transform({"type":"eman","tz":best[1],"phi":phi})})
 						tmp = dsr.cmp("ccc",zimg),best[1],phi,zimg
 						if best[0] > tmp[0]: best = tmp
-					if options.verbose > 1: print(best[:3])
 
 				# Fix best() for full sampling
 				zimg = data.process("xform",{"transform":Transform({"type":"eman","tz":best[1]*2,"phi":best[2]})})
@@ -541,11 +526,9 @@ def main():
 						zimg = data.process("xform",{"transform":Transform({"type":"eman","tz":z,"phi":phi})})
 						tmp = zalignref.cmp("ccc",zimg),z,best[2],zimg
 						if best[0] > tmp[0]: best = tmp
-				if options.verbose > 1: print(best[:3])
 
 				data = best[3]
 				data["xform.align3d"] = Transform({"type":"eman","tz":best[1],"phi":best[2]})
-				if options.verbose > 0: print("Alignment: tz = ",best[1],"  dphi=", best[2])
 
 			elif option1 == "alignctod":
 				nsym = int(options.alignctod[0][1:])
@@ -559,7 +542,6 @@ def main():
 					datad = data.process("xform",{"transform":Transform({"type":"eman","alt":180.0,"az":az})})	# rotate 180, then about z
 					c = data.cmp("ccc",datad)
 					best = min(best,(c,az))
-					if options.verbose: print(azi,az,c,best)
 
 				bcen = best[1]
 				for azi in range(-4,5):
@@ -567,7 +549,6 @@ def main():
 					datad = data.process("xform",{"transform":Transform({"type":"eman","alt":180.0,"az":az})})	# rotate 180, then about z
 					c = data.cmp("ccc",datad)
 					best = min(best,(c,az))
-					if options.verbose: print(azi,az,c,best)
 
 				print("alignctod, rotate:",best[1]/2.0)
 				data.process_inplace("xform",{"transform":Transform({"type":"eman","az":best[1]/2.0})})	# 1/2 the angle to get it on the 2-fold
@@ -578,7 +559,6 @@ def main():
 					sys.exit(1)
 
 				fi = index_d[option1]
-				if options.verbose > 1: print("align -> ",options.align[fi])
 				alignername, param_dict = parsemodopt(options.align[fi])
 				if not param_dict: param_dict={}
 
@@ -606,7 +586,6 @@ def main():
 
 				# actual alignment
 				data = data.align(alignername,alignref, param_dict)
-				if options.verbose > 0: print("Final alignment:",data["xform.align3d"])
 				index_d[option1] += 1
 
 			elif option1 == "mult":

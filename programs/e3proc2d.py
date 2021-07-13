@@ -323,9 +323,6 @@ def main():
 		is_inp3d = (num_inp_images == 1)
 		is_out3d = (num_out_images == 1)
 
-		if options.verbose > 1:
-			print("input 3d, output 3d =", is_inp3d, is_out3d)
-
 		opt3to3 = options.threed2threed
 		opt3to2 = options.threed2twod
 		opt2to3 = options.twod2threed
@@ -346,9 +343,6 @@ def main():
 		n0 = options.first
 		n1 = options.last
 
-		if options.verbose > 2:
-			Log.logger().set_level(options.verbose-2)
-
 		d = EMData()
 		threed_xsize = 0
 		threed_ysize = 0
@@ -365,9 +359,6 @@ def main():
 				print('Error: need 3D image to use this option')
 				return
 			else:
-				if options.verbose > 0:
-					print("Process 3D as a stack of %d 2D images" % d.get_zsize())
-
 				if n1 > nimg:
 					print('The value for --last is greater than the number of images in the input stack. Exiting')
 					n1 = options.last
@@ -413,9 +404,6 @@ def main():
 		if options.step[0] > options.first:
 			n0 = options.step[0]
 
-		if options.verbose > 0:
-			print("%d images, processing %d-%d stepping by %d"%(nimg,n0,n1,options.step[1]))
-
 		# inclusion/exclusion lists
 		if options.list:
 			imagelist = [0]*nimg
@@ -444,10 +432,6 @@ def main():
 				for i in EMAN2.read_number_file(options.exclude):
 					imagelist[i] = 0
 
-			if options.verbose: print("inclusion list:", str(imagelist))
-
-		lasttime = time.time()
-
 		# outfilename_no_ext, outfilename_ext when outfile specified
 		if options.output:
 			outfilename_no_ext = outfile[:-4]
@@ -458,16 +442,7 @@ def main():
 
 		dummy = False
 
-		if options.verbose > 1:
-			print("input file, output file, is three-d =", infile, outfile, is_3d)
-
 		for count, i in enumerate(range(n0, n1+1, options.step[1]), start=1):
-			if options.verbose >= 1:
-				if time.time()-lasttime > 3 or options.verbose > 2 :
-					sys.stdout.write(" %7d\r" %i)
-					sys.stdout.flush()
-					lasttime = time.time()
-
 			# ???
 			if imagelist and (i >= len(imagelist) or not imagelist[i]):
 				continue
@@ -517,9 +492,6 @@ def main():
 
 					d = image_from_formula(n_x, n_y, n_z, func)
 				else:
-					if options.verbose > 1:
-						print("Read image #", i, "from input file:")
-
 					d = EMData()
 
 					if (options.eer2x or options.eer4x) and infile[-4:] != ".eer":
@@ -551,16 +523,11 @@ def main():
 			if not "outtype" in optionlist:
 				optionlist.append("outtype")
 
-			if options.verbose > 1:
-				print("option list =", optionlist)
-
 			while optionlist:
 				option1 = optionlist.pop()
 				val = getattr(options, option1)
 				val = val.pop(0) if isinstance(val, list) else val
 
-				if options.verbose > 1:
-					print("option in option list =", option1)
 				nx = d.get_xsize()
 				ny = d.get_ysize()
 
@@ -571,10 +538,6 @@ def main():
 					d.set_attr('apix_z', apix)
 
 					try:
-						if i == n0 and d["ctf"].apix != apix:
-							if options.verbose > 0:
-								print("Warning: A/pix value in CTF was %1.2f, changing to %1.2f. May impact CTF parameters."%(d["ctf"].apix,apix))
-
 						d["ctf"].apix = apix
 					except: pass
 
@@ -746,9 +709,6 @@ def main():
 						elif sclmd == 2:
 							sc.common_lines(e, e, sclmd, scl, true)
 						else:
-							if options.verbose > 0:
-								print("Error: invalid common-line mode '" + sclmd + "'")
-
 							sys.exit(1)
 
 				elif option1 == "radon":
@@ -786,9 +746,6 @@ def main():
 					d.read_image(options.interlv, i)
 
 				elif option1 == "outtype":
-					if options.verbose > 1:
-						print("output type =", options.outtype)
-
 					if i == 0:
 						original_outfile = outfile
 
@@ -892,12 +849,7 @@ def main():
 						elif options.unstacking:  # output a series numbered single image files
 							out_name = os.path.splitext(outfile)[0]+'-'+str(i+1).zfill(len(str(nimg)))+os.path.splitext(outfile)[-1]
 							if d["sigma"] == 0:
-								if options.verbose > 0:
-									print("Warning: sigma = 0 for image ",i)
-
 								if options.writejunk == False:
-									if options.verbose > 0:
-										print("Use the writejunk option to force writing this image to disk")
 									continue
 
 							d.write_image(out_name, 0, out_type, False, None, out_mode, not_swap)
@@ -911,12 +863,7 @@ def main():
 								d[:len(rd)] = rd[:len(rd)]
 
 							if d["sigma"] == 0:
-								if options.verbose > 0:
-									print("Warning: sigma = 0 for image ",i)
-
 								if options.writejunk == False:
-									if options.verbose > 0:
-										print("Use the writejunk option to force writing this image to disk")
 									continue
 
 							if options.output:
