@@ -325,6 +325,8 @@ def main():
 			print(o) #, val)
 	args = options.infile
 
+	parser.error(options)
+
 	if options.parallel:
 		parser.error("Parallelism not supported. Please use e2proc2dpar.py")
 
@@ -708,6 +710,9 @@ def main():
 				elif option1 == "clip":
 					clipcx = old_div(nx,2)
 					clipcy = old_div(ny,2)
+
+					print(options.clip[ci])
+					parser.error("END")
 
 					try: clipx,clipy,clipcx,clipcy = val
 					except: clipx, clipy = val
