@@ -434,7 +434,7 @@ def main():
 
 		dummy = False
 
-		for ???, i in enumerate(image_ids, start=1):
+		for count, i in enumerate(image_ids, start=1):
 			# Split
 			if options.split > 1:
 				outfile = outfilename_no_ext + ".%02d." % (i % options.split) + outfilename_ext
@@ -766,10 +766,10 @@ def main():
 
 					if options.average > 1:
 						average.add_image(d)
-						if ???%options.average == 0:
+						if count%options.average == 0:
 							d=average.finish()
 
-					if not options.average and (options.average<=1 or ???%options.average==0):  # skip writing the input image to output file
+					if not options.average and (options.average<=1 or count%options.average==0):  # skip writing the input image to output file
 						# write processed image to file
 
 						out_type = EMUtil.get_image_ext_type(options.outtype)
@@ -809,7 +809,7 @@ def main():
 
 							if options.list or options.exclude:
 								if imagelist[i] != 0:
-									region = Region(0, 0, imagelist[0:i].???(1), d.get_xsize(), d.get_ysize(), 1)
+									region = Region(0, 0, imagelist[0:i].count(1), d.get_xsize(), d.get_ysize(), 1)
 							else:
 								region = Region(0, 0, i, d.get_xsize(), d.get_ysize(), 1)
 
