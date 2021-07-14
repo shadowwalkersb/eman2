@@ -754,7 +754,7 @@ def parse_infile(infile, first, last, step, apix=None):
 	nimg = EMUtil.get_image_count(infile)
 
 	if nimg > 1:
-		d = EMData(infile,nimg-1)	# we read the last image, since it should always exist
+		d = EMData(infile,nimg-1)    # we read the last image, since it should always exist
 
 		x = d.get_xsize()
 		y = d.get_ysize()
@@ -783,10 +783,10 @@ def parse_infile(infile, first, last, step, apix=None):
 			data = []
 
 			for i in range(first, last+1, step):
-				d = EMData(infile,i,True)	# header only
+				d = EMData(infile,i,True)    # header only
 
 				if not first - last:
-					d = EMData(infile,i)	# header only
+					d = EMData(infile,i)    # header only
 
 				data.append(d)
 			return data

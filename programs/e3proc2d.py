@@ -262,7 +262,6 @@ def main():
 		boxes={}
 
 	for inp_num, infile in enumerate(args[0: num_input_files], start=1):
-
 		inp_ext = ".hdf" if infile[0] == ":" else os.path.splitext(infile)[1]
 
 		if outpattern.lower()=="none":
@@ -441,7 +440,7 @@ def main():
 					nk += 1
 		else: imagelist = [1]*nimg
 
-		if options.exclude :
+		if options.exclude:
 			if "," in options.exclude or options.exclude.isdigit():
 				for i in options.exclude.split(","):
 					imagelist[int(i)]=0
@@ -586,7 +585,7 @@ def main():
 					fi = index_d[option1]
 					(processorname, param_dict) = parsemodopt(options.process[fi])
 
-					if not param_dict : param_dict = {}
+					if not param_dict: param_dict = {}
 
 					# Parse the options to convert the image file name to EMData object
 					for key in list(param_dict.keys()):
@@ -861,7 +860,7 @@ def main():
 							sca = 2.5
 							d["render_min"] = d["mean"] - d["sigma"]*sca
 							d["render_max"] = d["mean"] + d["sigma"]*sca
-						elif options.fixintscaling == "full" :
+						elif options.fixintscaling == "full":
 							d["render_min"]=d["minimum"]*1.001
 							d["render_max"]=d["maximum"]*1.001
 						else:
@@ -977,7 +976,7 @@ def main():
 									if options.compressbits>=0:
 										d.write_compressed(outfile,i,options.compressbits,nooutliers=True)
 									else: d.write_image(outfile, i, out_type, False, None, out_mode, not_swap)
-								else: # append the image
+								else:  # append the image
 									if options.compressbits>=0:
 										d.write_compressed(outfile,-1,options.compressbits,nooutliers=True)
 									else: d.write_image(outfile, -1, out_type, False, None, out_mode, not_swap)
