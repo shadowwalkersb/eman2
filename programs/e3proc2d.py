@@ -161,6 +161,18 @@ def parse_infile_arg():
 def test_selfcl(): pass
 
 
+def SelfclType(s):
+	result = ast.literal_eval(s)
+
+	if len(result) != 2:
+		raise argparse.ArgumentTypeError("specify step,mode!")
+
+	if not result[1] in range(3):
+		raise ValueError("mode = {" + ast.literal_eval(range(3)) + "}!")
+
+	return int(result[0]), int(result[1])
+
+
 class SelfclAction(argparse.Action):
 	def __call__(self, parser, namespace, values, option_string=None):
 		# print('%r %r %r' % (namespace, values, option_string))
@@ -251,7 +263,7 @@ def main():
 	parser.add_argument("--fp",  type=int, choices=range(7), help="This generates rotational/translational 'footprints' for each input particle, the number indicates which algorithm to use (0-6)")
 	parser.add_argument("--scale", metavar="f", type=float, action="append", help="Scale by specified scaling factor. Clip must also be specified to change the dimensions of the output map.")
 	parser.add_argument("--anisotropic", metavar="amount,angle", type=parse_list_arg(float,float), action="append", help="Anisotropic scaling, stretches on one axis and compresses the orthogonal axis. Specify amount,angle. See e2evalrefine")
-	parser.add_argument("--selfcl", metavar="steps mode", type=int, nargs=2, action=SelfclAction, help="Output file will be a 180x180 self-common lines map for each image.")
+	parser.add_argument("--selfcl", metavar="steps,mode", type=SelfclType, help="Output file will be a 180x180 self-common lines map for each image.")
 	parser.add_argument("--setsfpairs",  action="store_true", help="Applies the radial structure factor of the 1st image to the 2nd, the 3rd to the 4th, etc")
 	parser.add_argument("--split", metavar="n", type=int, default=1, help="Splits the input file into a set of n output files")
 	parser.add_argument("--translate", metavar="x,y", type=parse_list_arg(float,float), action="append", help="Translate by x,y pixels")
