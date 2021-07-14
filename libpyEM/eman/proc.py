@@ -2,6 +2,26 @@ import argparse
 
 
 def parse_list_arg(*possible_types):
+	"""Return a function that can be passed to argparse.add_argument() as an argument to 'type'.
+
+	>>> parse_list_arg(int,float)("3, 4")
+	[3, 4.0]
+	>>> parse_list_arg(int,int)("3, 4")
+	[3, 4]
+	>>> parse_list_arg([int,int],[int,int,int])("3,4,5")
+	[3, 4, 5]
+	>>> parse_list_arg([int,int],[int,int,int])("3,4")
+	[3, 4]
+	>>> parse_list_arg([int,str],[int,int,int])("3,4")
+	[3, '4']
+	>>> parse_list_arg([int,str],[int,int,int])("3,4,5")
+	[3, 4, 5]
+	>>> parse_list_arg([int],[int,int],[int,int,int])("3,4")
+	[3, 4]
+	>>> parse_list_arg([int],[int,int],[int,int,int])("3")
+	[3]
+	"""
+
 	types_dict = {}
 	if not isinstance(possible_types[0], (tuple, list)):
 		types_dict[len(possible_types)] = possible_types
@@ -22,3 +42,8 @@ def parse_list_arg(*possible_types):
 				in zip(types, user_input_str)]
 
 	return str_to_tuple
+
+
+if __name__ == "__main__":
+	import doctest
+	doctest.testmod()
