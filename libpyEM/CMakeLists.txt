@@ -64,6 +64,11 @@ install(FILES ${empythonlibs}
 		COMPONENT PythonFiles
 		)
 
+install(DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/eman"
+		DESTINATION ${SP_DIR}
+		COMPONENT PythonFiles
+		)
+
 add_subdirectory(qtgui)
 
 target_link_libraries(pyUtils2         NumPy Boost::numpy37)

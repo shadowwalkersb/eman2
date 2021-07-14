@@ -30,6 +30,7 @@
 #
 from past.utils import old_div
 from EMAN2 import *
+from eman.proc import parse_list_arg
 import sys
 from math import *
 import os.path
