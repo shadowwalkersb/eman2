@@ -598,6 +598,8 @@ def main():
 				x = data["nx"]
 				y = data["ny"]
 				z = data["nz"]
+
+				print("options.clip: ", options.clip)
 				if len(options.clip) == 6:
 					(nx, ny, nz, xc, yc, zc) = options.clip
 				elif len(options.clip) == 3:
@@ -618,6 +620,9 @@ def main():
 					yc = old_div(y,2)
 					zc = old_div(z,2)
 
+				print("nx: ", nx)
+				print("ny: ", ny)
+				print("nz: ", nz)
 				if x != nx or y != ny or z != nz:
 					data.clip_inplace(Region(xc-old_div(nx,2), yc-old_div(ny,2), zc-old_div(nz,2), nx, ny, nz))
 					index_d[option1] += 1
