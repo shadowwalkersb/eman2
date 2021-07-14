@@ -37,6 +37,7 @@ import os.path
 from time import time
 from numpy import arange
 import traceback
+from collections import defaultdict
 
 
 def main():
@@ -132,8 +133,6 @@ def main():
 	parser.add_argument("--unstacking", action="store_true", help="Process a stack of 3D images, then output as a series of numbered single image files")
 
 	parser.add_argument("--verbose", "-v", dest="verbose", action="store", metavar="n", type=int, default=0, help="verbose level [0-9], higher number means higher level of verboseness")
-
-	append_options = ["clip", "fftclip", "process", "filter", "filtertable",  "meanshrink", "medianshrink", "fouriershrink", "scale", "sym", "multfile", "addfile", "trans", "rot", "align","ralignzphi","alignctod"]
 
 	optionlist = get_optionlist(sys.argv[1:])
 
@@ -318,10 +317,6 @@ def main():
 			avg.write_image(outfile,0)
 		sys.exit(1)
 
-	index_d = {}
-	for append_option in append_options:
-		index_d[append_option] = 0
-
 	if not (0 <= n0 <= nimg):
 		print("Your first index is out of range, changed to zero")
 		n0 = 0
@@ -362,6 +357,8 @@ def main():
 		print("%d images, processing %d-%d (step %d)......"%(nimg, n0, n1,n2))
 
 	for img_index, data in enumerate(datlst):
+		index_d = defaultdict(int)
+
 		# if this is a list of images, we have header-only, and need to read the actual volume
 		if len(datlst) > 1:
 			data = EMData(data["source_path"],data["source_n"])
@@ -717,9 +714,6 @@ def main():
 					data.write_compressed(outfile,img_index,options.compressbits,nooutliers=options.nooutliers,erase=erase)
 				else:
 					data.write_image(outfile, img_index, EMUtil.get_image_ext_type(options.outtype), False, None, file_mode_map[options.outmode], not(options.swap))
-
-		for append_option in append_options:	#clean up the multi-option counter for next image
-			index_d[append_option] = 0
 
 	E2end(logid)
 

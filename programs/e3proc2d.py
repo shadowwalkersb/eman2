@@ -32,6 +32,7 @@
 from past.utils import old_div
 from EMAN2 import *
 from eman.proc import parse_list_arg
+from collections import defaultdict
 import sys
 import os.path
 import math
@@ -549,10 +550,7 @@ def main():
 			if not "outtype" in optionlist:
 				optionlist.append("outtype")
 
-			index_d = {}
-
-			for append_option in ["anisotropic","clip", "process", "meanshrink", "medianshrink", "fouriershrink", "scale", "randomize", "rotate", "translate","add", "headertransform"]:
-				index_d[append_option] = 0
+			index_d = defaultdict(int)
 
 			if options.verbose > 1:
 				print("option list =", optionlist)
