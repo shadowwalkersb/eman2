@@ -127,6 +127,10 @@ def image_from_formula(n_x, n_y, n_z, formula):
 	return EMNumPy.numpy2em(emdn)
 
 
+def parse_infile_arg():
+	pass
+
+
 def main():
 	progname = os.path.basename(sys.argv[0])
 	usage = progname + """ [options] <inputfile> ... <inputfile> <outputfile>"""
