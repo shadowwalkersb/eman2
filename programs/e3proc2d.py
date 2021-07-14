@@ -211,7 +211,6 @@ def main():
 	parser.add_argument("--fp",  type=int, choices=range(7), help="This generates rotational/translational 'footprints' for each input particle, the number indicates which algorithm to use (0-6)")
 	parser.add_argument("--scale", metavar="f", type=float, action="append", help="Scale by specified scaling factor. Clip must also be specified to change the dimensions of the output map.")
 	parser.add_argument("--anisotropic", metavar="amount,angle", type=parse_list_arg(float,float), action="append", help="Anisotropic scaling, stretches on one axis and compresses the orthogonal axis. Specify amount,angle. See e2evalrefine")
-	parser.add_argument("--selfcl", metavar="steps mode", type=int, nargs=2, help="Output file will be a 180x180 self-common lines map for each image.")
 	parser.add_argument("--setsfpairs",  action="store_true", help="Applies the radial structure factor of the 1st image to the 2nd, the 3rd to the 4th, etc")
 	parser.add_argument("--split", metavar="n", type=int, default=1, help="Splits the input file into a set of n output files")
 	parser.add_argument("--translate", metavar="x,y", type=parse_list_arg(float,float), action="append", help="Translate by x,y pixels")
@@ -691,25 +690,6 @@ def main():
 					if xfmode == 1: xform.invert()
 
 					d.process_inplace("xform",{"transform":xform})
-
-				elif option1 == "selfcl":
-					sc = EMData()
-
-					scl = options.selfcl[0] // 2
-					sclmd = options.selfcl[1]
-					if sclmd == 0:
-						sc.common_lines_real(d, d, scl, true)
-					else:
-						e = d.copy()
-						e.process_inplace("xform.phaseorigin")
-
-						if sclmd == 1:
-							sc.common_lines(e, e, sclmd, scl, true)
-							sc.process_inplace("math.linear", Dict("shift", EMObject(-90.0), "scale", EMObject(-1.0)))
-						elif sclmd == 2:
-							sc.common_lines(e, e, sclmd, scl, true)
-						else:
-							sys.exit(1)
 
 				elif option1 == "radon":
 					d = d.do_radon()
