@@ -171,9 +171,8 @@ def main():
 	parser = EMArgumentParser(description=description, allow_abbrev=False, version=EMANVERSION)
 
 	parser.add_argument("--apix", type=float, help="A/pixel for S scaling")
-	parser.add_argument("--average", action="store_true", help="Averages all input images (without alignment) and writes a single output image")
-	parser.add_argument("--avgseq", metavar="N", type=int, default=0, help="Averages sets of N sequential frames. eg - if N=4 and the input contains 100 images, the output would be 25 images")
-	parser.add_argument("--averager",type=str, choices=dump_averagers_list(), help="If --average is specified, this is the averager to use (e2help.py averager). Default=mean",default="mean")
+	parser.add_argument("--average", metavar="N", nargs='?', type=int, help="Averages sets of N sequential frames or ALL. eg - if N=4 and the input contains 100 images, the output would be 25 images")
+	parser.add_argument("--averager",type=str,help="If --average is specified, this is the averager to use (e2help.py averager). Default=mean",default="mean")
 	parser.add_argument("--calcsf", metavar="outputfile", type=str, help="calculate a radial structure factor for the image and write it to the output file, must specify apix. divide into <n> angular bins")
 	parser.add_argument("--calccont", action="store_true", help="Compute the low resolution azimuthal contrast of each image and put it in the header as eval_contrast_lowres. Larger values imply more 'interesting' images.")
 	# parser.add_argument("--clip", metavar="xsize,ysize[,xcenter,ycenter]", type=parse_list_arg(int,int), action="append", help="Specify the output size in pixels xsize,ysize[,xcenter,ycenter], images can be made larger or smaller.")
@@ -329,7 +328,7 @@ def main():
 			options.threed2twod   = (    is_inp3d and not is_out3d)
 			options.twod2threed   = (not is_inp3d and     is_out3d)
 
-		if options.average or options.avgseq > 0:
+		if options.average:
 			averager = parsemodopt(options.averager)
 			average = Averagers.get(averager[0], averager[1])
 		else: average = None
@@ -772,12 +771,12 @@ def main():
 							d["render_min"] = d["minimum"]
 							d["render_max"] = d["maximum"]
 
-					if options.avgseq > 1:
+					if options.average > 1:
 						average.add_image(d)
-						if count%options.avgseq == 0:
+						if count%options.average == 0:
 							d=average.finish()
 
-					if not options.average and (options.avgseq<=1 or count%options.avgseq==0):	# skip writing the input image to output file
+					if not options.average and (options.average<=1 or count%options.average==0):  # skip writing the input image to output file
 						# write processed image to file
 
 						out_type = EMUtil.get_image_ext_type(options.outtype)
