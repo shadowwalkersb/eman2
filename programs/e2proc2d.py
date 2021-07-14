@@ -241,6 +241,8 @@ def main():
 	append_options = ["anisotropic","clip", "process", "meanshrink", "medianshrink", "fouriershrink", "scale", "randomize", "rotate", "translate", "multfile","addfile","add", "headertransform"]
 
 	optionlist = get_optionlist(sys.argv[1:])
+	print(optionlist)
+	# sys.exit(0)
 
 	(options, args) = parser.parse_args()
 
@@ -622,6 +624,8 @@ def main():
 			if not "outtype" in optionlist:
 				optionlist.append("outtype")
 
+			print(optionlist)
+			sys.exit(0)
 			index_d = {}
 
 			for append_option in append_options:

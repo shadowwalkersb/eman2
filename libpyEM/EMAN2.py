@@ -647,6 +647,7 @@ def intvararg_callback(option, opt_str, value, parser):
 	return
 
 def floatvararg_callback(option, opt_str, value, parser):
+	print(option, opt_str, value, parser)
 	v = [float(i) for i in value.split(',')]
 	setattr(parser.values, option.dest, v)
 	return

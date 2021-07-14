@@ -132,27 +132,39 @@ def image_from_formula(n_x, n_y, n_z, formula):
 
 def ClipType(s):
 	result = ast.literal_eval(s)
+	print(result)
+	print(len(result))
 
 	if len(result) != 2 and len(result) != 4:
 		raise argparse.ArgumentTypeError("provide 2 or 4 arguments!")
+		# raise ValueError
 
 	return result
 
 
 def AnisotropicType(s):
+	print(s)
 	result = ast.literal_eval(s)
+	print(result)
+	print(len(result))
 
 	if len(result) != 2:
 		raise argparse.ArgumentTypeError("specify amount,angle!")
+	# raise ValueError
 
 	return float(result[0]), float(result[1])
 
 
 def RandomizeType(s):
+	print("s:", s)
+	print("ast.literal_eval(s):", ast.literal_eval(s))
 	result = ast.literal_eval(s)
+	print("result:", result)
+	print("len(result):", len(result))
 
 	if len(result) != 3:
 		raise argparse.ArgumentTypeError("specify da,dxy,flip!")
+	# raise ValueError
 
 	return float(result[0]), float(result[1]), int(result[2])
 
@@ -308,20 +320,14 @@ def main():
 	parser.add_argument("--ppid", type=int, help="Set the PID of the parent process, used for cross platform PPID",default=-2)
 	parser.add_argument("--parallel",action="store_true")
 
-	options = parser.parse_args()
-	print(vars(parser._optionals))
-	print([s.partition('=')[0].lstrip('-') for s in sys.argv if s.startswith('-')])
-	# print(dir(options))
-	args = get_optionlist(sys.argv)
-	for i in range(len(args)):
-		print(args.pop(0))
-	print("\n\noptions:\n", vars(options))
-	for o in vars(options):
-		val = getattr(options, o)
-		if val:
-			print(o) #, val)
-	args = options.infile
-	parser.error(args)
+	(options, args) = parser.parse_args()
+	for k,v in vars(options).items():
+		if v:
+			print(k, v)
+	print(options)
+	print(vars(options))
+	sys.exit(0)
+
 	parser.error(options)
 
 	if options.parallel:
@@ -682,6 +688,8 @@ def main():
 
 				elif option1 == "anisotropic":
 					amount, angle = val
+					print(type(amount))
+					print(type(angle))
 
 					rt=Transform({"type":"2d","alpha":angle})
 					xf=rt*Transform([amount,0,0,0,0,1./amount,0,0,0,0,1,0])*rt.inverse()
@@ -700,11 +708,14 @@ def main():
 
 				elif option1 == "translate":
 					tdx, tdy = val
+					print(type(tdx))
+					print(type(tdy))
 
 					if tdx != 0.0 or tdy != 0.0:
 						d.translate(tdx,tdy,0.0)
 
 				elif option1 == "clip":
+					# parser.error(options.clip[ci])
 					clipcx = old_div(nx,2)
 					clipcy = old_div(ny,2)
 
@@ -724,6 +735,9 @@ def main():
 
 				elif option1 == "randomize":
 					rnd = val
+					print(type(rnd[0]))
+					print(type(rnd[1]))
+					print(type(rnd[2]))
 
 					t = Transform()
 					t.set_params({"type":"2d", "alpha":random.uniform(-rnd[0],rnd[0]),

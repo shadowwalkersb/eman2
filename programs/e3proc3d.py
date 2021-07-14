@@ -262,6 +262,8 @@ def main():
 	optionlist = get_optionlist(sys.argv[1:])
 
 	options, args = parser.parse_args()
+	print(options)
+	sys.exit(0)
 
 	if len(args) != 2:
 		print("usage: " + usage)
