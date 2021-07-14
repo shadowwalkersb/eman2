@@ -453,7 +453,7 @@ def main():
 			if outfilename_ext == "rcs" and outfile[-4:] == "mrcs":
 				outfilename_ext = outfile[-4:]
 
-		dummy = 0
+		dummy = False
 
 		if options.verbose > 1:
 			print("input file, output file, is three-d =", infile, outfile, is_3d)
@@ -884,7 +884,7 @@ def main():
 						not_swap = not options.swap
 
 						if options.threed2threed or options.twod2threed:    # output a single 3D image
-							if dummy == 0:
+							if not dummy:
 								z = nimg
 
 								if options.list:
@@ -911,7 +911,7 @@ def main():
 									pass
 
 								out3d_img.write_image(outfile, 0, out_type, False, None, out_mode, not_swap)
-								dummy = 1
+								dummy = True
 
 							if options.list or options.exclude:
 								if imagelist[i] != 0:
