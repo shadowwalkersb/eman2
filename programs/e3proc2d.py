@@ -196,6 +196,21 @@ class SelfclAction(argparse.Action):
 		setattr(namespace, self.dest, values)
 
 
+# input.hdf:1,2,3,3:5:7,in_idx.txt
+# fname, _, seq = infile.partition(':')
+def parse_infile_arg(s):
+	fname, _, seq = s.partition(':')
+	# seq = ast.walk(seq)
+
+	return seq
+	# return str(seq.split(','))
+
+# --opt=a,b[,c[,d]]
+# --opt=a,b,c
+# --opt=a,b
+# --opt=a,b,c,d
+
+
 def main():
 	description = """
 
@@ -239,6 +254,20 @@ def main():
 	print(dir(parser))
 
 	# Input
+	parser.add_argument("--apix", type=float, help="A/pixel for S scaling")
+	parser.add_argument("--average", metavar="N", nargs='?', type=int, help="Averages sets of N sequential frames or ALL. eg - if N=4 and the input contains 100 images, the output would be 25 images")
+	parser.add_argument("--averager",type=str,help="If --average is specified, this is the averager to use (e2help.py averager). Default=mean",default="mean")
+	parser.add_argument("--calcsf", metavar="outputfile", type=str, help="calculate a radial structure factor for the image and write it to the output file, must specify apix. divide into <n> angular bins")
+	parser.add_argument("--calccont", action="store_true", help="Compute the low resolution azimuthal contrast of each image and put it in the header as eval_contrast_lowres. Larger values imply more 'interesting' images.")
+	# parser.add_argument("--clip", metavar="xsize,ysize[,xcenter,ycenter]", type=parse_tuple_arg(int,int), action="append", help="Specify the output size in pixels xsize,ysize[,xcenter,ycenter], images can be made larger or smaller.")
+	parser.add_argument("--clip", metavar="xsize,ysize[,xcenter,ycenter]", type=parse_tuple_arg((int,int),(int,int,int,int)), action="append", help="Specify the output size in pixels xsize,ysize[,xcenter,ycenter], images can be made larger or smaller.")
+	# parser.add_argument("--clip", metavar="xsize,ysize[,xcenter,ycenter]", type=parse_tuple_arg((int,int),(int,int,int),(int,int,int,int)), action="append", help="Specify the output size in pixels xsize,ysize[,xcenter,ycenter], images can be made larger or smaller.")
+	# parser.add_argument("--clip", metavar="xsize,ysize[,xcenter,ycenter]", type=parse_tuple_arg([int,int],[int,int,int,int]), action="append", help="Specify the output size in pixels xsize,ysize[,xcenter,ycenter], images can be made larger or smaller.")
+	parser.add_argument("--exclude", metavar="exclude-list-file", type=str, help="Excludes image numbers, either a list of comma separated values, or a filename with one number per line, first image == 0")
+	parser.add_argument("--fftavg", metavar="filename", type=str, help="Incoherent Fourier average of all images and write a single power spectrum image")
+	parser.add_argument("--process", metavar="processor_name:param1=value1:param2=value2", type=str, action="append", help="apply a processor named 'processorname' with all its parameters/values.")
+	parser.add_argument("--mult", metavar="k", type=float, help="Multiply image by a constant. mult=-1 to invert contrast.")
+	parser.add_argument("--add", metavar="f", type=float,action="append",help="Adds a constant 'f' to the densities")
 	parser.add_argument("--first", metavar="n", type=int, default=0, help="the first image in the input to process [0 - n-1])")
 	parser.add_argument("--last", metavar="n", type=int, default=-1, help="the last image in the input to process")
 	parser.add_argument("--step",type=str,default="0,1",help="Specify <init>,<step>. Processes only a subset of the input data. For example, 0,2 would process only the even numbered particles")
@@ -305,6 +334,7 @@ def main():
 	parser.add_argument("--anisotropic", metavar="amount,angle", type=parse_list_arg(float,float), action="append", help="Anisotropic scaling, stretches on one axis and compresses the orthogonal axis. Specify amount,angle. See e2evalrefine")
 	parser.add_argument("--writejunk", action="store_true", help="Writes the image even if its sigma is 0.")
 
+	parser.add_argument("--setsfpairs",  action="store_true", help="Applies the radial structure factor of the 1st image to the 2nd, the 3rd to the 4th, etc")
 	parser.add_argument("--split", metavar="n", type=int, default=1, help="Splits the input file into a set of n output files")
 	parser.add_argument("--translate", metavar="x,y", type=parse_list_arg(float,float), action="append", help="Translate by x,y pixels")
 	parser.add_argument("--headertransform", type=int, choices=[0, 1], action="append", help="This will take the xform.align2d header value from each particle, and apply it. Pass 0 to perform the transform or 1 to perform the inverse.")
