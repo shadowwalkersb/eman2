@@ -40,6 +40,11 @@ import traceback
 from collections import defaultdict
 
 
+def test_tomoprep(): pass  # depends on outfile, need to add dependency check ???
+def test_process(): pass
+def test_align(): pass  # depends on alignref, need to add dependency check
+
+
 #parse_file() will read the input image file and return a list of EMData() object
 def parse_infile(infile, first, last, step, apix=None):
 	if infile[0] == ":":

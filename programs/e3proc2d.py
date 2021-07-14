@@ -131,6 +131,9 @@ def parse_infile_arg():
 	pass
 
 
+def test_selfcl(): pass
+
+
 def main():
 	progname = os.path.basename(sys.argv[0])
 	usage = progname + """ [options] <inputfile> ... <inputfile> <outputfile>"""
