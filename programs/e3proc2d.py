@@ -431,13 +431,11 @@ def main():
 			if options.randomn >= nimg:
 				imagelist = [1]*nimg
 			else:
-				nk = 0
-				while nk < options.randomn:
+				for nk in range(options.randomn):
 					i = random.randrange(nimg)
 					if imagelist[i]:
 						continue
 					imagelist[i] = 1
-					nk += 1
 		else: imagelist = [1]*nimg
 
 		if options.exclude:
