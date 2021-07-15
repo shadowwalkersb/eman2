@@ -169,9 +169,6 @@ def main():
 	parser = EMArgumentParser(description=description, allow_abbrev=False, version=EMANVERSION)
 
 	parser.add_argument("--apix", type=float, help="A/pixel for S scaling")
-	parser.add_argument("--average", action="store_true", help="Averages all input images (without alignment) and writes a single output image")
-	parser.add_argument("--avgseq", metavar="N", type=int, default=0, help="Averages sets of N sequential frames. eg - if N=4 and the input contains 100 images, the output would be 25 images")
-	parser.add_argument("--averager",type=str, choices=dump_averagers_list(), help="If --average is specified, this is the averager to use (e2help.py averager). Default=mean",default="mean")
 	parser.add_argument("--calcsf", metavar="outputfile", type=str, help="calculate a radial structure factor for the image and write it to the output file, must specify apix. divide into <n> angular bins")
 	parser.add_argument("--calccont", action="store_true", help="Compute the low resolution azimuthal contrast of each image and put it in the header as eval_contrast_lowres. Larger values imply more 'interesting' images.")
 	parser.add_argument("--clip", metavar="xsize,ysize[,xcenter,ycenter]", type=parse_list_arg([int,int],[int,int,int,int]), action="append", help="Specify the output size in pixels xsize,ysize[,xcenter,ycenter], images can be made larger or smaller.")
@@ -338,11 +335,6 @@ def main():
 
 			if is_out3d and not is_inp3d:
 				options.twod2threed = True
-
-		if options.average or options.avgseq > 0:
-			averager = parsemodopt(options.averager)
-			average = Averagers.get(averager[0], averager[1])
-		else: average = None
 
 		fftavg = None
 
@@ -778,10 +770,6 @@ def main():
 				elif option1 == "radon":
 					d = d.do_radon()
 
-				elif option1 == "average":
-					average.add_image(d)
-					continue
-
 				elif option1 == "fftavg":
 					if not fftavg:
 						fftavg = EMData()
@@ -864,112 +852,7 @@ def main():
 							d["render_min"] = d["minimum"]
 							d["render_max"] = d["maximum"]
 
-					if options.avgseq > 1:
-						average.add_image(d)
-						if count%options.avgseq == 0:
-							d=average.finish()
-
-					if not options.average and (options.avgseq<=1 or count%options.avgseq==0):	# skip writing the input image to output file
-						# write processed image to file
-
-						out_type = EMUtil.get_image_ext_type(options.outtype)
-						out_mode = file_mode_map[options.outmode]
-						not_swap = not options.swap
-
-						if options.threed2threed or options.twod2threed:    # output a single 3D image
-							if not dummy:
-								if options.list:
-									f = open(options.list,'r')
-									lines = f.read().split(',')
-
-									f.close()
-									z = len(lines)
-
-								elif options.exclude:
-									f = open(options.exclude,'r')
-									lines = f.read().split(',')
-
-									f.close()
-									z = nimg - len(lines)
-
-								else:
-									z = nimg
-
-								out3d_img = EMData(d.get_xsize(), d.get_ysize(), z)
-
-								try:
-									out3d_img["apix_x"] = d["apix_x"]
-									out3d_img["apix_y"] = d["apix_y"]
-									out3d_img["apix_z"] = d["apix_z"]
-								except:
-									pass
-
-								out3d_img.write_image(outfile, 0, out_type, False, None, out_mode, not_swap)
-								dummy = True
-
-							if options.list or options.exclude:
-								if imagelist[i] != 0:
-									region = Region(0, 0, imagelist[0:i].count(1), d.get_xsize(), d.get_ysize(), 1)
-							else:
-								region = Region(0, 0, i, d.get_xsize(), d.get_ysize(), 1)
-
-							d.write_image(outfile, 0, out_type, False, region, out_mode, not_swap)
-
-						elif options.unstacking:  # output a series numbered single image files
-							out_name = os.path.splitext(outfile)[0]+'-'+str(i+1).zfill(len(str(nimg)))+os.path.splitext(outfile)[-1]
-							if d["sigma"] == 0:
-								if options.verbose > 0:
-									print("Warning: sigma = 0 for image ",i)
-
-								if options.writejunk == False:
-									if options.verbose > 0:
-										print("Use the writejunk option to force writing this image to disk")
-									continue
-
-							d.write_image(out_name, 0, out_type, False, None, out_mode, not_swap)
-
-						else:   # output a single 2D image or a 2D stack
-							# optionally replace the output image with its rotational average
-							if options.rotavg:
-								rd = d.calc_radial_dist(d["nx"],0,0.5,0)
-								d = EMData(len(rd),1,1)
-
-								d[:len(rd)] = rd[:len(rd)]
-
-							if d["sigma"] == 0:
-								if options.verbose > 0:
-									print("Warning: sigma = 0 for image ",i)
-
-								if options.writejunk == False:
-									if options.verbose > 0:
-										print("Use the writejunk option to force writing this image to disk")
-									continue
-
-							if outfile != None:
-								if options.inplace:
-									if options.compressbits>=0:
-										d.write_compressed(outfile,i,options.compressbits,nooutliers=True)
-									else:
-										d.write_image(outfile, i, out_type, False, None, out_mode, not_swap)
-								else:  # append the image
-									if options.compressbits>=0:
-										d.write_compressed(outfile,-1,options.compressbits,nooutliers=True)
-									else:
-										d.write_image(outfile, -1, out_type, False, None, out_mode, not_swap)
-
 		# end of image loop
-
-		if average:
-			avg = average.finish()
-
-			if options.inplace:
-				if options.compressbits >= 0:
-					avg.write_compressed(outfile,0,options.compressbits,nooutliers=True)
-				else: avg.write_image(outfile,0)
-			else:
-				if options.compressbits >= 0:
-					avg.write_compressed(outfile,-1,options.compressbits,nooutliers=True)
-				else: avg.write_image(outfile,-1)
 
 		if options.fftavg:
 			fftavg.mult(1.0 / sqrt(n1 - n0 + 1))
