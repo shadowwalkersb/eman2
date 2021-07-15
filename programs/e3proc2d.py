@@ -328,43 +328,19 @@ def main():
 			Log.logger().set_level(options.verbose-2)
 
 		d = EMData()
-		threed_xsize = 0
-		threed_ysize = 0
 		nimg = 1
 
 		if infile[0]==":":
 			nimg=1
-			is_3d=False
 		else:
 			nimg = EMUtil.get_image_count(infile)
 
 			# reads header only
-			is_3d = False
 			plane = options.plane
 			[tomo_nx, tomo_ny, tomo_nz] = gimme_image_dimensions3D(infile)
 
-			is_3d = (tomo_nz != 1)
-
-		if not is_3d:
-			if not (nimg > n1 >= 0):
-				n1 = nimg - 1
-		else:
-			if plane in xyplanes:
-				n1 = tomo_nz-1
-			elif plane in xzplanes:
-				n1 = tomo_ny-1
-			elif plane in yzplanes:
-				n1 = tomo_nx-1
-
-			if 0 <= options.last < n1:
-				n1 = options.last
-			elif options.last > n1:
-				print('The value for --last is greater than the number of images in the input stack.')
-				print('It is being set to the maximum length of the images')
-				n1 = tomo_nz-1
-
-			threed = EMData()
-			threed.read_image(infile)
+		if not (nimg > n1 >= 0):
+			n1 = nimg - 1
 
 		if options.step[0] > options.first:
 			n0 = options.step[0]
@@ -412,9 +388,6 @@ def main():
 
 		dummy = False
 
-		if options.verbose > 1:
-			print("input file, output file, is three-d =", infile, outfile, is_3d)
-
 		for count, i in enumerate(range(n0, n1+1, options.step[1]), start=1):
 			if options.verbose >= 1:
 				if time.time()-lasttime > 3 or options.verbose > 2 :
@@ -428,73 +401,59 @@ def main():
 			if options.split > 1:
 				outfile = outfilename_no_ext + ".%02d." % (i % options.split) + outfilename_ext
 
-			if not is_3d:
-				if infile[0] == ":":
-					vals = infile.split(":")
+			if infile[0] == ":":
+				vals = infile.split(":")
 
-					if len(vals) not in (3,4,5):
-						print("Error: Specify new images as ':X:Y:f(x,y)' or ':X:Y:Z:f(x,y,z)', 0<=x<X, 0<=y<Y, 0<=z<Z")
-						sys.exit(1)
+				if len(vals) not in (3,4,5):
+					print("Error: Specify new images as ':X:Y:f(x,y)' or ':X:Y:Z:f(x,y,z)', 0<=x<X, 0<=y<Y, 0<=z<Z")
+					sys.exit(1)
 
-					n_x = int(vals[1])
-					n_y = int(vals[2])
-					n_z = 1
-					if len(vals) > 4: n_z = int(vals[3])
+				n_x = int(vals[1])
+				n_y = int(vals[2])
+				n_z = 1
+				if len(vals) > 4: n_z = int(vals[3])
 
-					if n_x <= 0 or n_y <= 0 or n_z <= 0:
-						print("Error: Image dimensions must be positive integers:", n_x, n_y, n_z)
-						sys.exit(1)
+				if n_x <= 0 or n_y <= 0 or n_z <= 0:
+					print("Error: Image dimensions must be positive integers:", n_x, n_y, n_z)
+					sys.exit(1)
 
-					func = "0"
-					if len(vals) >= 4: func = vals[-1]
+				func = "0"
+				if len(vals) >= 4: func = vals[-1]
 
-					try:
-						x  = 0.0
-						y  = 0.0
-						z  = 0.0
-						xn = 0.0
-						yn = 0.0
-						zn = 0.0
-						nx = 1
-						ny = 1
-						nz = 1
-						w = eval(func)
-					except:
-						print("Error: Syntax error in image expression '" + func + "'")
-						sys.exit(1)
+				try:
+					x  = 0.0
+					y  = 0.0
+					z  = 0.0
+					xn = 0.0
+					yn = 0.0
+					zn = 0.0
+					nx = 1
+					ny = 1
+					nz = 1
+					w = eval(func)
+				except:
+					print("Error: Syntax error in image expression '" + func + "'")
+					sys.exit(1)
 
-					d = image_from_formula(n_x, n_y, n_z, func)
-				else:
-					if options.verbose > 1:
-						print("Read image #", i, "from input file:")
-
-					d = EMData()
-
-					if (options.eer2x or options.eer4x) and infile[-4:] != ".eer":
-						print("Error: --eer2x and --eer4x options can be used only with EER files.")
-						sys.exit(1)
-
-					if options.eer2x:
-						img_type = IMAGE_EER2X
-					elif options.eer4x:
-						img_type = IMAGE_EER4X
-					else:
-						img_type = IMAGE_UNKNOWN
-
-					d.read_image(infile, i, False, None, False, img_type)
+				d = image_from_formula(n_x, n_y, n_z, func)
 			else:
-				x, y, z = 0, 0, 0
+				if options.verbose > 1:
+					print("Read image #", i, "from input file:")
 
-				if plane in xyplanes:
-					z, tomo_nz = i, 1
-				elif plane in xzplanes:
-					y, tomo_ny = i, 1
-				elif plane in yzplanes:
-					x, tomo_nx = i, 1
+				d = EMData()
 
-				roi = Region(x, y, z, tomo_nx, tomo_ny, tomo_nz)
-				d = threed.get_clip(roi)
-				d.set_size(tomo_nx, tomo_ny, tomo_nz)
+				if (options.eer2x or options.eer4x) and infile[-4:] != ".eer":
+					print("Error: --eer2x and --eer4x options can be used only with EER files.")
+					sys.exit(1)
+
+				if options.eer2x:
+					img_type = IMAGE_EER2X
+				elif options.eer4x:
+					img_type = IMAGE_EER4X
+				else:
+					img_type = IMAGE_UNKNOWN
+
+				d.read_image(infile, i, False, None, False, img_type)
 
 			if not "outtype" in optionlist:
 				optionlist.append("outtype")
