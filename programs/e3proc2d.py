@@ -173,7 +173,6 @@ def main():
 	parser.add_argument("--calccont", action="store_true", help="Compute the low resolution azimuthal contrast of each image and put it in the header as eval_contrast_lowres. Larger values imply more 'interesting' images.")
 	parser.add_argument("--clip", metavar="xsize,ysize[,xcenter,ycenter]", type=parse_list_arg([int,int],[int,int,int,int]), action="append", help="Specify the output size in pixels xsize,ysize[,xcenter,ycenter], images can be made larger or smaller.")
 	parser.add_argument("--exclude", metavar="exclude-list-file", type=str, help="Excludes image numbers, either a list of comma separated values, or a filename with one number per line, first image == 0")
-	parser.add_argument("--fftavg", metavar="filename", type=str, help="Incoherent Fourier average of all images and write a single power spectrum image")
 	parser.add_argument("--process", metavar="processor_name:param1=value1:param2=value2", type=str, action="append", help="apply a processor named 'processorname' with all its parameters/values.")
 	parser.add_argument("--mult", metavar="k", type=float, help="Multiply image by a constant. mult=-1 to invert contrast.")
 	parser.add_argument("--add", metavar="f", type=float,action="append",help="Adds a constant 'f' to the densities")
@@ -318,8 +317,6 @@ def main():
 
 		if options.verbose > 1:
 			print("input 3d, output 3d =", is_inp3d, is_out3d)
-
-		fftavg = None
 
 		n0 = options.first
 		n1 = options.last
@@ -687,21 +684,6 @@ def main():
 				elif option1 == "radon":
 					d = d.do_radon()
 
-				elif option1 == "fftavg":
-					if not fftavg:
-						fftavg = EMData()
-						fftavg.set_size(nx+2, ny)
-						fftavg.set_complex(1)
-						fftavg.to_zero()
-
-					d.process_inplace("mask.ringmean")
-					d.process_inplace("normalize")
-					df = d.do_fft()
-					df.mult(df.get_ysize())
-					fftavg.add_incoherent(df)
-
-					continue
-
 				elif option1 == "calcsf":
 					dataf = d.do_fft()
 					curve = dataf.calc_radial_dist(old_div(ny,2), 0, 1.0,True)
@@ -770,15 +752,6 @@ def main():
 							d["render_max"] = d["maximum"]
 
 		# end of image loop
-
-		if options.fftavg:
-			fftavg.mult(1.0 / sqrt(n1 - n0 + 1))
-			fftavg.write_image(options.fftavg, 0)
-
-			curve = fftavg.calc_radial_dist(ny, 0, 0.5, 1)
-
-			sf_dx = 1.0 / (apix * 2.0 * ny)
-			Util.save_data(0, sf_dx, curve, options.fftavg+".txt")
 
 		if options.extractboxes:
 			for k in list(boxes.keys()):
