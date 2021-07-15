@@ -211,9 +211,6 @@ def main():
 	parser.add_argument("--plane", choices=xyplanes + xzplanes + yzplanes, type=str, default='xy', help="Change the plane of image processing, useful for processing 3D mrcs as 2D images.")
 	parser.add_argument("--writejunk", action="store_true", help="Writes the image even if its sigma is 0.")
 	parser.add_argument("--swap", action="store_true", help="Swap the byte order")
-	parser.add_argument("--threed2threed", action="store_true", help="Process 3D image as a stack of 2D slices, then output as a 3D image")
-	parser.add_argument("--threed2twod", action="store_true", help="Process 3D image as a stack of 2D slices, then output as a 2D stack")
-	parser.add_argument("--twod2threed", action="store_true", help="Process a stack of 2D images, then output as a 3D image.")
 	parser.add_argument("--unstacking", action="store_true", help="Process a stack of 2D images, then output as a series of numbered single image files")
 	parser.add_argument("--ppid", type=int, help="Set the PID of the parent process, used for cross platform PPID",default=-2)
 	parser.add_argument("--step",type=str,default="0,1",help="Specify <init>,<step>. Processes only a subset of the input data. For example, 0,2 would process only the even numbered particles")
@@ -322,20 +319,6 @@ def main():
 		if options.verbose > 1:
 			print("input 3d, output 3d =", is_inp3d, is_out3d)
 
-		opt3to3 = options.threed2threed
-		opt3to2 = options.threed2twod
-		opt2to3 = options.twod2threed
-
-		if not (options.threed2threed or options.threed2twod or options.twod2threed):
-			if is_inp3d and is_out3d:
-				options.threed2threed = True
-
-			if is_inp3d and not is_out3d:
-				options.threed2twod = True
-
-			if is_out3d and not is_inp3d:
-				options.twod2threed = True
-
 		fftavg = None
 
 		n0 = options.first
@@ -349,29 +332,7 @@ def main():
 		threed_ysize = 0
 		nimg = 1
 
-		if options.threed2threed or options.threed2twod:
-			d.read_image(infile, 0, True)
-
-			if d.get_zsize() == 1:
-				print('Error: need 3D image to use this option')
-				return
-			else:
-				if options.verbose > 0:
-					print("Process 3D as a stack of %d 2D images" % d.get_zsize())
-
-				nimg = d.get_zsize()
-
-				if n1 > nimg:
-					print('The value for --last is greater than the number of images in the input stack. Exiting')
-					n1 = options.last
-
-				if options.step[0] > n0:
-					n0 = options.step[0]
-
-				threed_xsize = d.get_xsize()
-				threed_ysize = d.get_ysize()
-				is_3d = False
-		elif infile[0]==":":
+		if infile[0]==":":
 			nimg=1
 			is_3d=False
 		else:
@@ -468,10 +429,7 @@ def main():
 				outfile = outfilename_no_ext + ".%02d." % (i % options.split) + outfilename_ext
 
 			if not is_3d:
-				if options.threed2threed or options.threed2twod:
-					d = EMData()
-					d.read_image(infile, 0, False, Region(0,0,i,threed_xsize,threed_ysize,1))
-				elif infile[0] == ":":
+				if infile[0] == ":":
 					vals = infile.split(":")
 
 					if len(vals) not in (3,4,5):
@@ -862,10 +820,6 @@ def main():
 
 			sf_dx = 1.0 / (apix * 2.0 * ny)
 			Util.save_data(0, sf_dx, curve, options.fftavg+".txt")
-
-		options.threed2threed = opt3to3
-		options.threed2twod   = opt3to2
-		options.twod2threed   = opt2to3
 
 		if options.extractboxes:
 			for k in list(boxes.keys()):
