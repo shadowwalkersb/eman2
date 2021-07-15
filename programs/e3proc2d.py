@@ -427,16 +427,17 @@ def main():
 				imagelist[i] = 1
 
 		elif options.randomn > 0:
-			imagelist = [0]*nimg
 			if options.randomn >= nimg:
 				imagelist = [1]*nimg
 			else:
+				imagelist = [0]*nimg
 				for nk in range(options.randomn):
 					i = random.randrange(nimg)
 					if imagelist[i]:
 						continue
 					imagelist[i] = 1
-		else: imagelist = [1]*nimg
+		else:
+			imagelist = [1]*nimg
 
 		if options.exclude:
 			if "," in options.exclude or options.exclude.isdigit():
